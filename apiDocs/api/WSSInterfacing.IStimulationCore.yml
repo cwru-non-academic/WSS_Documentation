@@ -1,0 +1,495 @@
+### YamlMime:ManagedReference
+items:
+- uid: WSSInterfacing.IStimulationCore
+  commentId: T:WSSInterfacing.IStimulationCore
+  id: IStimulationCore
+  parent: WSSInterfacing
+  children:
+  - WSSInterfacing.IStimulationCore.GetCoreConfigController
+  - WSSInterfacing.IStimulationCore.Initialize
+  - WSSInterfacing.IStimulationCore.IsChannelInRange(System.Int32)
+  - WSSInterfacing.IStimulationCore.LoadConfigFile
+  - WSSInterfacing.IStimulationCore.Ready
+  - WSSInterfacing.IStimulationCore.Shutdown
+  - WSSInterfacing.IStimulationCore.StartStim(WSSInterfacing.WssTarget)
+  - WSSInterfacing.IStimulationCore.Started
+  - WSSInterfacing.IStimulationCore.StimulateAnalog(System.Int32,System.Int32,System.Single,System.Int32)
+  - WSSInterfacing.IStimulationCore.StopStim(WSSInterfacing.WssTarget)
+  - WSSInterfacing.IStimulationCore.Tick
+  - WSSInterfacing.IStimulationCore.ZeroOutStim(WSSInterfacing.WssTarget)
+  langs:
+  - csharp
+  - vb
+  name: IStimulationCore
+  nameWithType: IStimulationCore
+  fullName: WSSInterfacing.IStimulationCore
+  type: Interface
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: >-
+    Unity-agnostic stimulation core lifecycle and control surface.
+
+    Implementations manage connection, setup, and a background streaming loop.
+
+    Public mutators should enqueue edits and return immediately.
+  example: []
+  syntax:
+    content: public interface IStimulationCore
+    content.vb: Public Interface IStimulationCore
+- uid: WSSInterfacing.IStimulationCore.Initialize
+  commentId: M:WSSInterfacing.IStimulationCore.Initialize
+  id: Initialize
+  parent: WSSInterfacing.IStimulationCore
+  langs:
+  - csharp
+  - vb
+  name: Initialize()
+  nameWithType: IStimulationCore.Initialize()
+  fullName: WSSInterfacing.IStimulationCore.Initialize()
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: >-
+    Initializes the core: loads JSON config, prepares buffers, and begins connecting
+
+    to the transport. Non-blocking; call <xref href="WSSInterfacing.IStimulationCore.Tick" data-throw-if-not-resolved="false"></xref> to advance state.
+  example: []
+  syntax:
+    content: void Initialize()
+    content.vb: Sub Initialize()
+  overload: WSSInterfacing.IStimulationCore.Initialize*
+- uid: WSSInterfacing.IStimulationCore.Tick
+  commentId: M:WSSInterfacing.IStimulationCore.Tick
+  id: Tick
+  parent: WSSInterfacing.IStimulationCore
+  langs:
+  - csharp
+  - vb
+  name: Tick()
+  nameWithType: IStimulationCore.Tick()
+  fullName: WSSInterfacing.IStimulationCore.Tick()
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: >-
+    Advances the internal state machine (e.g., Connecting â†’ SettingUp â†’ Ready â†’ Streaming).
+
+    Call regularly from the main loop.
+  example: []
+  syntax:
+    content: void Tick()
+    content.vb: Sub Tick()
+  overload: WSSInterfacing.IStimulationCore.Tick*
+- uid: WSSInterfacing.IStimulationCore.Shutdown
+  commentId: M:WSSInterfacing.IStimulationCore.Shutdown
+  id: Shutdown
+  parent: WSSInterfacing.IStimulationCore
+  langs:
+  - csharp
+  - vb
+  name: Shutdown()
+  nameWithType: IStimulationCore.Shutdown()
+  fullName: WSSInterfacing.IStimulationCore.Shutdown()
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: >-
+    Stops streaming, attempts to zero outputs, disconnects transport, and releases resources.
+
+    Safe to call multiple times.
+  example: []
+  syntax:
+    content: void Shutdown()
+    content.vb: Sub Shutdown()
+  overload: WSSInterfacing.IStimulationCore.Shutdown*
+- uid: WSSInterfacing.IStimulationCore.Started
+  commentId: M:WSSInterfacing.IStimulationCore.Started
+  id: Started
+  parent: WSSInterfacing.IStimulationCore
+  langs:
+  - csharp
+  - vb
+  name: Started()
+  nameWithType: IStimulationCore.Started()
+  fullName: WSSInterfacing.IStimulationCore.Started()
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: True when device transport is started or streaming.
+  example: []
+  syntax:
+    content: bool Started()
+    return:
+      type: System.Boolean
+    content.vb: Function Started() As Boolean
+  overload: WSSInterfacing.IStimulationCore.Started*
+- uid: WSSInterfacing.IStimulationCore.Ready
+  commentId: M:WSSInterfacing.IStimulationCore.Ready
+  id: Ready
+  parent: WSSInterfacing.IStimulationCore
+  langs:
+  - csharp
+  - vb
+  name: Ready()
+  nameWithType: IStimulationCore.Ready()
+  fullName: WSSInterfacing.IStimulationCore.Ready()
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: True when the core is ready to accept start stimulation.
+  example: []
+  syntax:
+    content: bool Ready()
+    return:
+      type: System.Boolean
+    content.vb: Function Ready() As Boolean
+  overload: WSSInterfacing.IStimulationCore.Ready*
+- uid: WSSInterfacing.IStimulationCore.StimulateAnalog(System.Int32,System.Int32,System.Single,System.Int32)
+  commentId: M:WSSInterfacing.IStimulationCore.StimulateAnalog(System.Int32,System.Int32,System.Single,System.Int32)
+  id: StimulateAnalog(System.Int32,System.Int32,System.Single,System.Int32)
+  parent: WSSInterfacing.IStimulationCore
+  langs:
+  - csharp
+  - vb
+  name: StimulateAnalog(int, int, float, int)
+  nameWithType: IStimulationCore.StimulateAnalog(int, int, float, int)
+  fullName: WSSInterfacing.IStimulationCore.StimulateAnalog(int, int, float, int)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: >-
+    Caches per-channel amplitude, pulse width, and IPI. No I/O here;
+
+    the streaming loop pushes cached values to the device.
+  example: []
+  syntax:
+    content: void StimulateAnalog(int channel, int PW, float amp, int IPI)
+    parameters:
+    - id: channel
+      type: System.Int32
+      description: 1-based logical channel.
+    - id: PW
+      type: System.Int32
+      description: Pulse width (Âµs).
+    - id: amp
+      type: System.Single
+      description: Amplitude (mA domain; mapped to device scale during streaming).
+    - id: IPI
+      type: System.Int32
+      description: Inter-pulse interval (ms).
+    content.vb: Sub StimulateAnalog(channel As Integer, PW As Integer, amp As Single, IPI As Integer)
+  overload: WSSInterfacing.IStimulationCore.StimulateAnalog*
+  nameWithType.vb: IStimulationCore.StimulateAnalog(Integer, Integer, Single, Integer)
+  fullName.vb: WSSInterfacing.IStimulationCore.StimulateAnalog(Integer, Integer, Single, Integer)
+  name.vb: StimulateAnalog(Integer, Integer, Single, Integer)
+- uid: WSSInterfacing.IStimulationCore.ZeroOutStim(WSSInterfacing.WssTarget)
+  commentId: M:WSSInterfacing.IStimulationCore.ZeroOutStim(WSSInterfacing.WssTarget)
+  id: ZeroOutStim(WSSInterfacing.WssTarget)
+  parent: WSSInterfacing.IStimulationCore
+  langs:
+  - csharp
+  - vb
+  name: ZeroOutStim(WssTarget)
+  nameWithType: IStimulationCore.ZeroOutStim(WssTarget)
+  fullName: WSSInterfacing.IStimulationCore.ZeroOutStim(WSSInterfacing.WssTarget)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Sends a zero-out command. Does not alter cached values.
+  example: []
+  syntax:
+    content: void ZeroOutStim(WssTarget wssTarget)
+    parameters:
+    - id: wssTarget
+      type: WSSInterfacing.WssTarget
+      description: Target device or broadcast.
+    content.vb: Sub ZeroOutStim(wssTarget As WssTarget)
+  overload: WSSInterfacing.IStimulationCore.ZeroOutStim*
+- uid: WSSInterfacing.IStimulationCore.StartStim(WSSInterfacing.WssTarget)
+  commentId: M:WSSInterfacing.IStimulationCore.StartStim(WSSInterfacing.WssTarget)
+  id: StartStim(WSSInterfacing.WssTarget)
+  parent: WSSInterfacing.IStimulationCore
+  langs:
+  - csharp
+  - vb
+  name: StartStim(WssTarget)
+  nameWithType: IStimulationCore.StartStim(WssTarget)
+  fullName: WSSInterfacing.IStimulationCore.StartStim(WSSInterfacing.WssTarget)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Starts stimulation on the target and launches streaming when ready.
+  example: []
+  syntax:
+    content: void StartStim(WssTarget wssTarget)
+    parameters:
+    - id: wssTarget
+      type: WSSInterfacing.WssTarget
+      description: Target device or broadcast.
+    content.vb: Sub StartStim(wssTarget As WssTarget)
+  overload: WSSInterfacing.IStimulationCore.StartStim*
+- uid: WSSInterfacing.IStimulationCore.StopStim(WSSInterfacing.WssTarget)
+  commentId: M:WSSInterfacing.IStimulationCore.StopStim(WSSInterfacing.WssTarget)
+  id: StopStim(WSSInterfacing.WssTarget)
+  parent: WSSInterfacing.IStimulationCore
+  langs:
+  - csharp
+  - vb
+  name: StopStim(WssTarget)
+  nameWithType: IStimulationCore.StopStim(WssTarget)
+  fullName: WSSInterfacing.IStimulationCore.StopStim(WSSInterfacing.WssTarget)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Stops stimulation on the target and, if streaming, stops the background loop.
+  example: []
+  syntax:
+    content: void StopStim(WssTarget wssTarget)
+    parameters:
+    - id: wssTarget
+      type: WSSInterfacing.WssTarget
+      description: Target device or broadcast.
+    content.vb: Sub StopStim(wssTarget As WssTarget)
+  overload: WSSInterfacing.IStimulationCore.StopStim*
+- uid: WSSInterfacing.IStimulationCore.LoadConfigFile
+  commentId: M:WSSInterfacing.IStimulationCore.LoadConfigFile
+  id: LoadConfigFile
+  parent: WSSInterfacing.IStimulationCore
+  langs:
+  - csharp
+  - vb
+  name: LoadConfigFile()
+  nameWithType: IStimulationCore.LoadConfigFile()
+  fullName: WSSInterfacing.IStimulationCore.LoadConfigFile()
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Reloads the stimulation JSON configuration from disk into memory.
+  example: []
+  syntax:
+    content: void LoadConfigFile()
+    content.vb: Sub LoadConfigFile()
+  overload: WSSInterfacing.IStimulationCore.LoadConfigFile*
+- uid: WSSInterfacing.IStimulationCore.GetCoreConfigController
+  commentId: M:WSSInterfacing.IStimulationCore.GetCoreConfigController
+  id: GetCoreConfigController
+  parent: WSSInterfacing.IStimulationCore
+  langs:
+  - csharp
+  - vb
+  name: GetCoreConfigController()
+  nameWithType: IStimulationCore.GetCoreConfigController()
+  fullName: WSSInterfacing.IStimulationCore.GetCoreConfigController()
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Gets the JSON-backed stimulation configuration controller currently used by this core.
+  remarks: Returned reference is live, not a copy and thread safe.
+  example: []
+  syntax:
+    content: CoreConfigController GetCoreConfigController()
+    return:
+      type: WSSInterfacing.CoreConfigController
+      description: >-
+        The active <xref href="WSSInterfacing.CoreConfigController" data-throw-if-not-resolved="false"></xref> instance that provides read/write access
+
+        to stimulation parameters and constants loaded from the configuration file.
+    content.vb: Function GetCoreConfigController() As CoreConfigController
+  overload: WSSInterfacing.IStimulationCore.GetCoreConfigController*
+- uid: WSSInterfacing.IStimulationCore.IsChannelInRange(System.Int32)
+  commentId: M:WSSInterfacing.IStimulationCore.IsChannelInRange(System.Int32)
+  id: IsChannelInRange(System.Int32)
+  parent: WSSInterfacing.IStimulationCore
+  langs:
+  - csharp
+  - vb
+  name: IsChannelInRange(int)
+  nameWithType: IStimulationCore.IsChannelInRange(int)
+  fullName: WSSInterfacing.IStimulationCore.IsChannelInRange(int)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Returns true if <code class="paramref">ch</code> is within the valid channel range.
+  example: []
+  syntax:
+    content: bool IsChannelInRange(int ch)
+    parameters:
+    - id: ch
+      type: System.Int32
+      description: 1-based channel to check.
+    return:
+      type: System.Boolean
+    content.vb: Function IsChannelInRange(ch As Integer) As Boolean
+  overload: WSSInterfacing.IStimulationCore.IsChannelInRange*
+  nameWithType.vb: IStimulationCore.IsChannelInRange(Integer)
+  fullName.vb: WSSInterfacing.IStimulationCore.IsChannelInRange(Integer)
+  name.vb: IsChannelInRange(Integer)
+references:
+- uid: WSSInterfacing
+  commentId: N:WSSInterfacing
+  href: WSSInterfacing.html
+  name: WSSInterfacing
+  nameWithType: WSSInterfacing
+  fullName: WSSInterfacing
+- uid: WSSInterfacing.IStimulationCore.Tick
+  commentId: M:WSSInterfacing.IStimulationCore.Tick
+  parent: WSSInterfacing.IStimulationCore
+  href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_Tick
+  name: Tick()
+  nameWithType: IStimulationCore.Tick()
+  fullName: WSSInterfacing.IStimulationCore.Tick()
+  spec.csharp:
+  - uid: WSSInterfacing.IStimulationCore.Tick
+    name: Tick
+    href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_Tick
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: WSSInterfacing.IStimulationCore.Tick
+    name: Tick
+    href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_Tick
+  - name: (
+  - name: )
+- uid: WSSInterfacing.IStimulationCore.Initialize*
+  commentId: Overload:WSSInterfacing.IStimulationCore.Initialize
+  href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_Initialize
+  name: Initialize
+  nameWithType: IStimulationCore.Initialize
+  fullName: WSSInterfacing.IStimulationCore.Initialize
+- uid: WSSInterfacing.IStimulationCore
+  commentId: T:WSSInterfacing.IStimulationCore
+  parent: WSSInterfacing
+  href: WSSInterfacing.IStimulationCore.html
+  name: IStimulationCore
+  nameWithType: IStimulationCore
+  fullName: WSSInterfacing.IStimulationCore
+- uid: WSSInterfacing.IStimulationCore.Tick*
+  commentId: Overload:WSSInterfacing.IStimulationCore.Tick
+  href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_Tick
+  name: Tick
+  nameWithType: IStimulationCore.Tick
+  fullName: WSSInterfacing.IStimulationCore.Tick
+- uid: WSSInterfacing.IStimulationCore.Shutdown*
+  commentId: Overload:WSSInterfacing.IStimulationCore.Shutdown
+  href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_Shutdown
+  name: Shutdown
+  nameWithType: IStimulationCore.Shutdown
+  fullName: WSSInterfacing.IStimulationCore.Shutdown
+- uid: WSSInterfacing.IStimulationCore.Started*
+  commentId: Overload:WSSInterfacing.IStimulationCore.Started
+  href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_Started
+  name: Started
+  nameWithType: IStimulationCore.Started
+  fullName: WSSInterfacing.IStimulationCore.Started
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: WSSInterfacing.IStimulationCore.Ready*
+  commentId: Overload:WSSInterfacing.IStimulationCore.Ready
+  href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_Ready
+  name: Ready
+  nameWithType: IStimulationCore.Ready
+  fullName: WSSInterfacing.IStimulationCore.Ready
+- uid: WSSInterfacing.IStimulationCore.StimulateAnalog*
+  commentId: Overload:WSSInterfacing.IStimulationCore.StimulateAnalog
+  href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_StimulateAnalog_System_Int32_System_Int32_System_Single_System_Int32_
+  name: StimulateAnalog
+  nameWithType: IStimulationCore.StimulateAnalog
+  fullName: WSSInterfacing.IStimulationCore.StimulateAnalog
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: WSSInterfacing.IStimulationCore.ZeroOutStim*
+  commentId: Overload:WSSInterfacing.IStimulationCore.ZeroOutStim
+  href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_ZeroOutStim_WSSInterfacing_WssTarget_
+  name: ZeroOutStim
+  nameWithType: IStimulationCore.ZeroOutStim
+  fullName: WSSInterfacing.IStimulationCore.ZeroOutStim
+- uid: WSSInterfacing.WssTarget
+  commentId: T:WSSInterfacing.WssTarget
+  parent: WSSInterfacing
+  href: WSSInterfacing.WssTarget.html
+  name: WssTarget
+  nameWithType: WssTarget
+  fullName: WSSInterfacing.WssTarget
+- uid: WSSInterfacing.IStimulationCore.StartStim*
+  commentId: Overload:WSSInterfacing.IStimulationCore.StartStim
+  href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_StartStim_WSSInterfacing_WssTarget_
+  name: StartStim
+  nameWithType: IStimulationCore.StartStim
+  fullName: WSSInterfacing.IStimulationCore.StartStim
+- uid: WSSInterfacing.IStimulationCore.StopStim*
+  commentId: Overload:WSSInterfacing.IStimulationCore.StopStim
+  href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_StopStim_WSSInterfacing_WssTarget_
+  name: StopStim
+  nameWithType: IStimulationCore.StopStim
+  fullName: WSSInterfacing.IStimulationCore.StopStim
+- uid: WSSInterfacing.IStimulationCore.LoadConfigFile*
+  commentId: Overload:WSSInterfacing.IStimulationCore.LoadConfigFile
+  href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_LoadConfigFile
+  name: LoadConfigFile
+  nameWithType: IStimulationCore.LoadConfigFile
+  fullName: WSSInterfacing.IStimulationCore.LoadConfigFile
+- uid: WSSInterfacing.CoreConfigController
+  commentId: T:WSSInterfacing.CoreConfigController
+  parent: WSSInterfacing
+  href: WSSInterfacing.CoreConfigController.html
+  name: CoreConfigController
+  nameWithType: CoreConfigController
+  fullName: WSSInterfacing.CoreConfigController
+- uid: WSSInterfacing.IStimulationCore.GetCoreConfigController*
+  commentId: Overload:WSSInterfacing.IStimulationCore.GetCoreConfigController
+  href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_GetCoreConfigController
+  name: GetCoreConfigController
+  nameWithType: IStimulationCore.GetCoreConfigController
+  fullName: WSSInterfacing.IStimulationCore.GetCoreConfigController
+- uid: WSSInterfacing.IStimulationCore.IsChannelInRange*
+  commentId: Overload:WSSInterfacing.IStimulationCore.IsChannelInRange
+  href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_IsChannelInRange_System_Int32_
+  name: IsChannelInRange
+  nameWithType: IStimulationCore.IsChannelInRange
+  fullName: WSSInterfacing.IStimulationCore.IsChannelInRange

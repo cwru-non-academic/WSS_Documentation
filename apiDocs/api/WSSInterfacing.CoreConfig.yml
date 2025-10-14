@@ -1,0 +1,131 @@
+### YamlMime:ManagedReference
+items:
+- uid: WSSInterfacing.CoreConfig
+  commentId: T:WSSInterfacing.CoreConfig
+  id: CoreConfig
+  parent: WSSInterfacing
+  children:
+  - WSSInterfacing.CoreConfig.firmware
+  - WSSInterfacing.CoreConfig.maxWSS
+  langs:
+  - csharp
+  - vb
+  name: CoreConfig
+  nameWithType: CoreConfig
+  fullName: WSSInterfacing.CoreConfig
+  type: Class
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: >-
+    Strongly-typed core configuration model persisted in JSON.
+
+    Exposes the maximum number of WSS devices and the firmware version string.
+  example: []
+  syntax:
+    content: public sealed class CoreConfig
+    content.vb: Public NotInheritable Class CoreConfig
+  inheritance:
+  - System.Object
+- uid: WSSInterfacing.CoreConfig.maxWSS
+  commentId: P:WSSInterfacing.CoreConfig.maxWSS
+  id: maxWSS
+  parent: WSSInterfacing.CoreConfig
+  langs:
+  - csharp
+  - vb
+  name: maxWSS
+  nameWithType: CoreConfig.maxWSS
+  fullName: WSSInterfacing.CoreConfig.maxWSS
+  type: Property
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Maximum number of WSS devices supported by this app.
+  example: []
+  syntax:
+    content: public int maxWSS { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property maxWSS As Integer
+  overload: WSSInterfacing.CoreConfig.maxWSS*
+- uid: WSSInterfacing.CoreConfig.firmware
+  commentId: P:WSSInterfacing.CoreConfig.firmware
+  id: firmware
+  parent: WSSInterfacing.CoreConfig
+  langs:
+  - csharp
+  - vb
+  name: firmware
+  nameWithType: CoreConfig.firmware
+  fullName: WSSInterfacing.CoreConfig.firmware
+  type: Property
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Firmware version string (e.g., "H03", "J03").
+  example: []
+  syntax:
+    content: public string firmware { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property firmware As String
+  overload: WSSInterfacing.CoreConfig.firmware*
+references:
+- uid: WSSInterfacing
+  commentId: N:WSSInterfacing
+  href: WSSInterfacing.html
+  name: WSSInterfacing
+  nameWithType: WSSInterfacing
+  fullName: WSSInterfacing
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: WSSInterfacing.CoreConfig.maxWSS*
+  commentId: Overload:WSSInterfacing.CoreConfig.maxWSS
+  href: WSSInterfacing.CoreConfig.html#WSSInterfacing_CoreConfig_maxWSS
+  name: maxWSS
+  nameWithType: CoreConfig.maxWSS
+  fullName: WSSInterfacing.CoreConfig.maxWSS
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: WSSInterfacing.CoreConfig.firmware*
+  commentId: Overload:WSSInterfacing.CoreConfig.firmware
+  href: WSSInterfacing.CoreConfig.html#WSSInterfacing_CoreConfig_firmware
+  name: firmware
+  nameWithType: CoreConfig.firmware
+  fullName: WSSInterfacing.CoreConfig.firmware
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String

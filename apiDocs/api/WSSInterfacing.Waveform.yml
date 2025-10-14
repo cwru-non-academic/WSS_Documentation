@@ -1,0 +1,207 @@
+### YamlMime:ManagedReference
+items:
+- uid: WSSInterfacing.Waveform
+  commentId: T:WSSInterfacing.Waveform
+  id: Waveform
+  parent: WSSInterfacing
+  children:
+  - WSSInterfacing.Waveform.#ctor(System.Int32[],System.Int32[],System.Single)
+  - WSSInterfacing.Waveform.anShape
+  - WSSInterfacing.Waveform.area
+  - WSSInterfacing.Waveform.catShape
+  langs:
+  - csharp
+  - vb
+  name: Waveform
+  nameWithType: Waveform
+  fullName: WSSInterfacing.Waveform
+  type: Class
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: >-
+    Immutable waveform container holding cathodic and anodic shape arrays and
+
+    the computed total area used for balanced charge calculations.
+  example: []
+  syntax:
+    content: >-
+      [Serializable]
+
+      public class Waveform
+    content.vb: >-
+      <Serializable>
+
+      Public Class Waveform
+  inheritance:
+  - System.Object
+  attributes:
+  - type: System.SerializableAttribute
+    ctor: System.SerializableAttribute.#ctor
+    arguments: []
+- uid: WSSInterfacing.Waveform.catShape
+  commentId: F:WSSInterfacing.Waveform.catShape
+  id: catShape
+  parent: WSSInterfacing.Waveform
+  langs:
+  - csharp
+  - vb
+  name: catShape
+  nameWithType: Waveform.catShape
+  fullName: WSSInterfacing.Waveform.catShape
+  type: Field
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Cathodic (primary) phase samples.
+  example: []
+  syntax:
+    content: public int[] catShape
+    return:
+      type: System.Int32[]
+    content.vb: Public catShape As Integer()
+- uid: WSSInterfacing.Waveform.anShape
+  commentId: F:WSSInterfacing.Waveform.anShape
+  id: anShape
+  parent: WSSInterfacing.Waveform
+  langs:
+  - csharp
+  - vb
+  name: anShape
+  nameWithType: Waveform.anShape
+  fullName: WSSInterfacing.Waveform.anShape
+  type: Field
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Anodic (recharge) phase samples.
+  example: []
+  syntax:
+    content: public int[] anShape
+    return:
+      type: System.Int32[]
+    content.vb: Public anShape As Integer()
+- uid: WSSInterfacing.Waveform.area
+  commentId: F:WSSInterfacing.Waveform.area
+  id: area
+  parent: WSSInterfacing.Waveform
+  langs:
+  - csharp
+  - vb
+  name: area
+  nameWithType: Waveform.area
+  fullName: WSSInterfacing.Waveform.area
+  type: Field
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Total area under the waveform used for computing recharge amplitude.
+  example: []
+  syntax:
+    content: public float area
+    return:
+      type: System.Single
+    content.vb: Public area As Single
+- uid: WSSInterfacing.Waveform.#ctor(System.Int32[],System.Int32[],System.Single)
+  commentId: M:WSSInterfacing.Waveform.#ctor(System.Int32[],System.Int32[],System.Single)
+  id: '#ctor(System.Int32[],System.Int32[],System.Single)'
+  parent: WSSInterfacing.Waveform
+  langs:
+  - csharp
+  - vb
+  name: Waveform(int[], int[], float)
+  nameWithType: Waveform.Waveform(int[], int[], float)
+  fullName: WSSInterfacing.Waveform.Waveform(int[], int[], float)
+  type: Constructor
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Creates a new <xref href="WSSInterfacing.Waveform" data-throw-if-not-resolved="false"></xref> from catodic and anodic arrays and area value.
+  example: []
+  syntax:
+    content: public Waveform(int[] catWaveform, int[] anodicWaveform, float area)
+    parameters:
+    - id: catWaveform
+      type: System.Int32[]
+      description: Cathodic shape samples.
+    - id: anodicWaveform
+      type: System.Int32[]
+      description: Anodic shape samples.
+    - id: area
+      type: System.Single
+      description: Computed total area.
+    content.vb: Public Sub New(catWaveform As Integer(), anodicWaveform As Integer(), area As Single)
+  overload: WSSInterfacing.Waveform.#ctor*
+  nameWithType.vb: Waveform.New(Integer(), Integer(), Single)
+  fullName.vb: WSSInterfacing.Waveform.New(Integer(), Integer(), Single)
+  name.vb: New(Integer(), Integer(), Single)
+references:
+- uid: WSSInterfacing
+  commentId: N:WSSInterfacing
+  href: WSSInterfacing.html
+  name: WSSInterfacing
+  nameWithType: WSSInterfacing
+  fullName: WSSInterfacing
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Int32[]
+  isExternal: true
+  name: int[]
+  nameWithType: int[]
+  fullName: int[]
+  nameWithType.vb: Integer()
+  fullName.vb: Integer()
+  name.vb: Integer()
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: WSSInterfacing.Waveform
+  commentId: T:WSSInterfacing.Waveform
+  parent: WSSInterfacing
+  href: WSSInterfacing.Waveform.html
+  name: Waveform
+  nameWithType: Waveform
+  fullName: WSSInterfacing.Waveform
+- uid: WSSInterfacing.Waveform.#ctor*
+  commentId: Overload:WSSInterfacing.Waveform.#ctor
+  href: WSSInterfacing.Waveform.html#WSSInterfacing_Waveform__ctor_System_Int32___System_Int32___System_Single_
+  name: Waveform
+  nameWithType: Waveform.Waveform
+  fullName: WSSInterfacing.Waveform.Waveform
+  nameWithType.vb: Waveform.New
+  fullName.vb: WSSInterfacing.Waveform.New
+  name.vb: New

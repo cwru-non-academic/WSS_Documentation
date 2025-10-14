@@ -1,0 +1,2241 @@
+### YamlMime:ManagedReference
+items:
+- uid: WSSInterfacing.IStimParamsCore
+  commentId: T:WSSInterfacing.IStimParamsCore
+  id: IStimParamsCore
+  parent: WSSInterfacing
+  children:
+  - WSSInterfacing.IStimParamsCore.AddOrUpdateStimParam(System.String,System.Single)
+  - WSSInterfacing.IStimParamsCore.GetAllStimParams
+  - WSSInterfacing.IStimParamsCore.GetChannelAmp(System.Int32)
+  - WSSInterfacing.IStimParamsCore.GetChannelIPI(System.Int32)
+  - WSSInterfacing.IStimParamsCore.GetChannelPWMax(System.Int32)
+  - WSSInterfacing.IStimParamsCore.GetChannelPWMin(System.Int32)
+  - WSSInterfacing.IStimParamsCore.GetStimIntensity(System.Int32)
+  - WSSInterfacing.IStimParamsCore.GetStimParam(System.String)
+  - WSSInterfacing.IStimParamsCore.GetStimParamsConfigController
+  - WSSInterfacing.IStimParamsCore.LoadParamsJson
+  - WSSInterfacing.IStimParamsCore.LoadParamsJson(System.String)
+  - WSSInterfacing.IStimParamsCore.SaveParamsJson
+  - WSSInterfacing.IStimParamsCore.SetChannelAmp(System.Int32,System.Single)
+  - WSSInterfacing.IStimParamsCore.SetChannelIPI(System.Int32,System.Int32)
+  - WSSInterfacing.IStimParamsCore.SetChannelPWMax(System.Int32,System.Int32)
+  - WSSInterfacing.IStimParamsCore.SetChannelPWMin(System.Int32,System.Int32)
+  - WSSInterfacing.IStimParamsCore.StimulateNormalized(System.Int32,System.Single)
+  - WSSInterfacing.IStimParamsCore.TryGetBasic(WSSInterfacing.IBasicStimulation@)
+  - WSSInterfacing.IStimParamsCore.TryGetStimParam(System.String,System.Single@)
+  langs:
+  - csharp
+  - vb
+  name: IStimParamsCore
+  nameWithType: IStimParamsCore
+  fullName: WSSInterfacing.IStimParamsCore
+  type: Interface
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: >-
+    Core + parameters surface layered over <xref href="WSSInterfacing.IStimulationCore" data-throw-if-not-resolved="false"></xref>.
+
+    Provides normalized-drive stimulation, per-channel parameter access,
+
+    and JSON persistence for stimulation parameters. BASIC is optional and
+
+    can be exposed via <xref href="WSSInterfacing.IStimParamsCore.TryGetBasic(WSSInterfacing.IBasicStimulation%40)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: 'public interface IStimParamsCore : IStimulationCore'
+    content.vb: Public Interface IStimParamsCore Inherits IStimulationCore
+  inheritedMembers:
+  - WSSInterfacing.IStimulationCore.Initialize
+  - WSSInterfacing.IStimulationCore.Tick
+  - WSSInterfacing.IStimulationCore.Shutdown
+  - WSSInterfacing.IStimulationCore.Started
+  - WSSInterfacing.IStimulationCore.Ready
+  - WSSInterfacing.IStimulationCore.StimulateAnalog(System.Int32,System.Int32,System.Single,System.Int32)
+  - WSSInterfacing.IStimulationCore.ZeroOutStim(WSSInterfacing.WssTarget)
+  - WSSInterfacing.IStimulationCore.StartStim(WSSInterfacing.WssTarget)
+  - WSSInterfacing.IStimulationCore.StopStim(WSSInterfacing.WssTarget)
+  - WSSInterfacing.IStimulationCore.LoadConfigFile
+  - WSSInterfacing.IStimulationCore.GetCoreConfigController
+  - WSSInterfacing.IStimulationCore.IsChannelInRange(System.Int32)
+  extensionMethods:
+  - WSSInterfacing.IStimParamsCore.WSSInterfacing.StimParamsBasicExtensions.LoadBoard(WSSInterfacing.WssTarget)
+  - WSSInterfacing.IStimParamsCore.WSSInterfacing.StimParamsBasicExtensions.LoadWaveform(System.String,System.Int32)
+  - WSSInterfacing.IStimParamsCore.WSSInterfacing.StimParamsBasicExtensions.RequestConfigs(System.Int32,System.Int32,WSSInterfacing.WssTarget)
+  - WSSInterfacing.IStimParamsCore.WSSInterfacing.StimParamsBasicExtensions.SaveBoard(WSSInterfacing.WssTarget)
+  - WSSInterfacing.IStimParamsCore.WSSInterfacing.StimParamsBasicExtensions.TryUpdateWaveform(WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+  - WSSInterfacing.IStimParamsCore.WSSInterfacing.StimParamsBasicExtensions.UpdateEventShape(System.Int32,System.Int32,System.Int32,WSSInterfacing.WssTarget)
+  - WSSInterfacing.IStimParamsCore.WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform(System.Int32[],System.Int32,WSSInterfacing.WssTarget)
+  - WSSInterfacing.IStimParamsCore.WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform(WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+  - WSSInterfacing.IStimParamsCore.WSSInterfacing.StimParamsBasicExtensions.WaveformSetup(WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+- uid: WSSInterfacing.IStimParamsCore.StimulateNormalized(System.Int32,System.Single)
+  commentId: M:WSSInterfacing.IStimParamsCore.StimulateNormalized(System.Int32,System.Single)
+  id: StimulateNormalized(System.Int32,System.Single)
+  parent: WSSInterfacing.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: StimulateNormalized(int, float)
+  nameWithType: IStimParamsCore.StimulateNormalized(int, float)
+  fullName: WSSInterfacing.IStimParamsCore.StimulateNormalized(int, float)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: >-
+    Computes a pulse width from a normalized value in [0,1] using per-channel
+
+    parameters (minPW, maxPW, amp, IPI) and forwards the result to the core.
+
+    Implementations clamp the input to [0,1] and cache the last PW sent.
+  example: []
+  syntax:
+    content: void StimulateNormalized(int channel, float normalizedValue)
+    parameters:
+    - id: channel
+      type: System.Int32
+      description: 1-based logical channel.
+    - id: normalizedValue
+      type: System.Single
+      description: Normalized drive in [0,1].
+    content.vb: Sub StimulateNormalized(channel As Integer, normalizedValue As Single)
+  overload: WSSInterfacing.IStimParamsCore.StimulateNormalized*
+  nameWithType.vb: IStimParamsCore.StimulateNormalized(Integer, Single)
+  fullName.vb: WSSInterfacing.IStimParamsCore.StimulateNormalized(Integer, Single)
+  name.vb: StimulateNormalized(Integer, Single)
+- uid: WSSInterfacing.IStimParamsCore.GetStimIntensity(System.Int32)
+  commentId: M:WSSInterfacing.IStimParamsCore.GetStimIntensity(System.Int32)
+  id: GetStimIntensity(System.Int32)
+  parent: WSSInterfacing.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: GetStimIntensity(int)
+  nameWithType: IStimParamsCore.GetStimIntensity(int)
+  fullName: WSSInterfacing.IStimParamsCore.GetStimIntensity(int)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: >-
+    Returns the most recently computed stimulation intensity for the channel.
+
+    For PW-driven systems, this is the last pulse width (Âµs) sent by
+
+    <xref href="WSSInterfacing.IStimParamsCore.StimulateNormalized(System.Int32%2cSystem.Single)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: float GetStimIntensity(int channel)
+    parameters:
+    - id: channel
+      type: System.Int32
+      description: 1-based logical channel.
+    return:
+      type: System.Single
+    content.vb: Function GetStimIntensity(channel As Integer) As Single
+  overload: WSSInterfacing.IStimParamsCore.GetStimIntensity*
+  nameWithType.vb: IStimParamsCore.GetStimIntensity(Integer)
+  fullName.vb: WSSInterfacing.IStimParamsCore.GetStimIntensity(Integer)
+  name.vb: GetStimIntensity(Integer)
+- uid: WSSInterfacing.IStimParamsCore.SaveParamsJson
+  commentId: M:WSSInterfacing.IStimParamsCore.SaveParamsJson
+  id: SaveParamsJson
+  parent: WSSInterfacing.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: SaveParamsJson()
+  nameWithType: IStimParamsCore.SaveParamsJson()
+  fullName: WSSInterfacing.IStimParamsCore.SaveParamsJson()
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Saves the current stimulation-parameters JSON to disk.
+  example: []
+  syntax:
+    content: void SaveParamsJson()
+    content.vb: Sub SaveParamsJson()
+  overload: WSSInterfacing.IStimParamsCore.SaveParamsJson*
+- uid: WSSInterfacing.IStimParamsCore.LoadParamsJson
+  commentId: M:WSSInterfacing.IStimParamsCore.LoadParamsJson
+  id: LoadParamsJson
+  parent: WSSInterfacing.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: LoadParamsJson()
+  nameWithType: IStimParamsCore.LoadParamsJson()
+  fullName: WSSInterfacing.IStimParamsCore.LoadParamsJson()
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Loads the stimulation-parameters JSON from the default location.
+  example: []
+  syntax:
+    content: void LoadParamsJson()
+    content.vb: Sub LoadParamsJson()
+  overload: WSSInterfacing.IStimParamsCore.LoadParamsJson*
+- uid: WSSInterfacing.IStimParamsCore.LoadParamsJson(System.String)
+  commentId: M:WSSInterfacing.IStimParamsCore.LoadParamsJson(System.String)
+  id: LoadParamsJson(System.String)
+  parent: WSSInterfacing.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: LoadParamsJson(string)
+  nameWithType: IStimParamsCore.LoadParamsJson(string)
+  fullName: WSSInterfacing.IStimParamsCore.LoadParamsJson(string)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Loads the stimulation-parameters JSON from a specific file path or directory.
+  example: []
+  syntax:
+    content: void LoadParamsJson(string path)
+    parameters:
+    - id: path
+      type: System.String
+      description: File path or directory.
+    content.vb: Sub LoadParamsJson(path As String)
+  overload: WSSInterfacing.IStimParamsCore.LoadParamsJson*
+  nameWithType.vb: IStimParamsCore.LoadParamsJson(String)
+  fullName.vb: WSSInterfacing.IStimParamsCore.LoadParamsJson(String)
+  name.vb: LoadParamsJson(String)
+- uid: WSSInterfacing.IStimParamsCore.AddOrUpdateStimParam(System.String,System.Single)
+  commentId: M:WSSInterfacing.IStimParamsCore.AddOrUpdateStimParam(System.String,System.Single)
+  id: AddOrUpdateStimParam(System.String,System.Single)
+  parent: WSSInterfacing.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: AddOrUpdateStimParam(string, float)
+  nameWithType: IStimParamsCore.AddOrUpdateStimParam(string, float)
+  fullName: WSSInterfacing.IStimParamsCore.AddOrUpdateStimParam(string, float)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: >-
+    Adds or updates a parameter by dotted key. Examples:
+
+    <code>stim.ch.1.amp</code>, <code>stim.ch.2.minPW</code>, <code>stim.ch.3.maxPW</code>, <code>stim.ch.4.IPI</code>.
+  example: []
+  syntax:
+    content: void AddOrUpdateStimParam(string key, float value)
+    parameters:
+    - id: key
+      type: System.String
+      description: Dotted parameter key.
+    - id: value
+      type: System.Single
+      description: Value to set.
+    content.vb: Sub AddOrUpdateStimParam(key As String, value As Single)
+  overload: WSSInterfacing.IStimParamsCore.AddOrUpdateStimParam*
+  nameWithType.vb: IStimParamsCore.AddOrUpdateStimParam(String, Single)
+  fullName.vb: WSSInterfacing.IStimParamsCore.AddOrUpdateStimParam(String, Single)
+  name.vb: AddOrUpdateStimParam(String, Single)
+- uid: WSSInterfacing.IStimParamsCore.GetStimParam(System.String)
+  commentId: M:WSSInterfacing.IStimParamsCore.GetStimParam(System.String)
+  id: GetStimParam(System.String)
+  parent: WSSInterfacing.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: GetStimParam(string)
+  nameWithType: IStimParamsCore.GetStimParam(string)
+  fullName: WSSInterfacing.IStimParamsCore.GetStimParam(string)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Reads a parameter by dotted key. Throws if the key is missing.
+  example: []
+  syntax:
+    content: float GetStimParam(string key)
+    parameters:
+    - id: key
+      type: System.String
+      description: Dotted parameter key.
+    return:
+      type: System.Single
+    content.vb: Function GetStimParam(key As String) As Single
+  overload: WSSInterfacing.IStimParamsCore.GetStimParam*
+  nameWithType.vb: IStimParamsCore.GetStimParam(String)
+  fullName.vb: WSSInterfacing.IStimParamsCore.GetStimParam(String)
+  name.vb: GetStimParam(String)
+- uid: WSSInterfacing.IStimParamsCore.TryGetStimParam(System.String,System.Single@)
+  commentId: M:WSSInterfacing.IStimParamsCore.TryGetStimParam(System.String,System.Single@)
+  id: TryGetStimParam(System.String,System.Single@)
+  parent: WSSInterfacing.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: TryGetStimParam(string, out float)
+  nameWithType: IStimParamsCore.TryGetStimParam(string, out float)
+  fullName: WSSInterfacing.IStimParamsCore.TryGetStimParam(string, out float)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Tries to read a parameter by dotted key.
+  example: []
+  syntax:
+    content: bool TryGetStimParam(string key, out float value)
+    parameters:
+    - id: key
+      type: System.String
+      description: Dotted parameter key.
+    - id: value
+      type: System.Single
+      description: Out value if the key exists.
+    return:
+      type: System.Boolean
+      description: <code>true</code> if found, otherwise <code>false</code>.
+    content.vb: Function TryGetStimParam(key As String, value As Single) As Boolean
+  overload: WSSInterfacing.IStimParamsCore.TryGetStimParam*
+  nameWithType.vb: IStimParamsCore.TryGetStimParam(String, Single)
+  fullName.vb: WSSInterfacing.IStimParamsCore.TryGetStimParam(String, Single)
+  name.vb: TryGetStimParam(String, Single)
+- uid: WSSInterfacing.IStimParamsCore.GetAllStimParams
+  commentId: M:WSSInterfacing.IStimParamsCore.GetAllStimParams
+  id: GetAllStimParams
+  parent: WSSInterfacing.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: GetAllStimParams()
+  nameWithType: IStimParamsCore.GetAllStimParams()
+  fullName: WSSInterfacing.IStimParamsCore.GetAllStimParams()
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Returns a copy of all current stimulation parameters as a dotted-key map.
+  example: []
+  syntax:
+    content: Dictionary<string, float> GetAllStimParams()
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,System.Single}
+    content.vb: Function GetAllStimParams() As Dictionary(Of String, Single)
+  overload: WSSInterfacing.IStimParamsCore.GetAllStimParams*
+- uid: WSSInterfacing.IStimParamsCore.GetStimParamsConfigController
+  commentId: M:WSSInterfacing.IStimParamsCore.GetStimParamsConfigController
+  id: GetStimParamsConfigController
+  parent: WSSInterfacing.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: GetStimParamsConfigController()
+  nameWithType: IStimParamsCore.GetStimParamsConfigController()
+  fullName: WSSInterfacing.IStimParamsCore.GetStimParamsConfigController()
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Returns the parameters/configuration controller for stimulation params.
+  example: []
+  syntax:
+    content: StimParamsConfigController GetStimParamsConfigController()
+    return:
+      type: WSSInterfacing.StimParamsConfigController
+    content.vb: Function GetStimParamsConfigController() As StimParamsConfigController
+  overload: WSSInterfacing.IStimParamsCore.GetStimParamsConfigController*
+- uid: WSSInterfacing.IStimParamsCore.SetChannelAmp(System.Int32,System.Single)
+  commentId: M:WSSInterfacing.IStimParamsCore.SetChannelAmp(System.Int32,System.Single)
+  id: SetChannelAmp(System.Int32,System.Single)
+  parent: WSSInterfacing.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: SetChannelAmp(int, float)
+  nameWithType: IStimParamsCore.SetChannelAmp(int, float)
+  fullName: WSSInterfacing.IStimParamsCore.SetChannelAmp(int, float)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Sets per-channel amplitude in mA.
+  example: []
+  syntax:
+    content: void SetChannelAmp(int ch, float mA)
+    parameters:
+    - id: ch
+      type: System.Int32
+      description: 1-based logical channel.
+    - id: mA
+      type: System.Single
+      description: Amplitude in milliamps.
+    content.vb: Sub SetChannelAmp(ch As Integer, mA As Single)
+  overload: WSSInterfacing.IStimParamsCore.SetChannelAmp*
+  nameWithType.vb: IStimParamsCore.SetChannelAmp(Integer, Single)
+  fullName.vb: WSSInterfacing.IStimParamsCore.SetChannelAmp(Integer, Single)
+  name.vb: SetChannelAmp(Integer, Single)
+- uid: WSSInterfacing.IStimParamsCore.SetChannelPWMin(System.Int32,System.Int32)
+  commentId: M:WSSInterfacing.IStimParamsCore.SetChannelPWMin(System.Int32,System.Int32)
+  id: SetChannelPWMin(System.Int32,System.Int32)
+  parent: WSSInterfacing.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: SetChannelPWMin(int, int)
+  nameWithType: IStimParamsCore.SetChannelPWMin(int, int)
+  fullName: WSSInterfacing.IStimParamsCore.SetChannelPWMin(int, int)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Sets per-channel minimum pulse width in Âµs.
+  example: []
+  syntax:
+    content: void SetChannelPWMin(int ch, int us)
+    parameters:
+    - id: ch
+      type: System.Int32
+    - id: us
+      type: System.Int32
+    content.vb: Sub SetChannelPWMin(ch As Integer, us As Integer)
+  overload: WSSInterfacing.IStimParamsCore.SetChannelPWMin*
+  nameWithType.vb: IStimParamsCore.SetChannelPWMin(Integer, Integer)
+  fullName.vb: WSSInterfacing.IStimParamsCore.SetChannelPWMin(Integer, Integer)
+  name.vb: SetChannelPWMin(Integer, Integer)
+- uid: WSSInterfacing.IStimParamsCore.SetChannelPWMax(System.Int32,System.Int32)
+  commentId: M:WSSInterfacing.IStimParamsCore.SetChannelPWMax(System.Int32,System.Int32)
+  id: SetChannelPWMax(System.Int32,System.Int32)
+  parent: WSSInterfacing.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: SetChannelPWMax(int, int)
+  nameWithType: IStimParamsCore.SetChannelPWMax(int, int)
+  fullName: WSSInterfacing.IStimParamsCore.SetChannelPWMax(int, int)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Sets per-channel maximum pulse width in Âµs.
+  example: []
+  syntax:
+    content: void SetChannelPWMax(int ch, int us)
+    parameters:
+    - id: ch
+      type: System.Int32
+    - id: us
+      type: System.Int32
+    content.vb: Sub SetChannelPWMax(ch As Integer, us As Integer)
+  overload: WSSInterfacing.IStimParamsCore.SetChannelPWMax*
+  nameWithType.vb: IStimParamsCore.SetChannelPWMax(Integer, Integer)
+  fullName.vb: WSSInterfacing.IStimParamsCore.SetChannelPWMax(Integer, Integer)
+  name.vb: SetChannelPWMax(Integer, Integer)
+- uid: WSSInterfacing.IStimParamsCore.SetChannelIPI(System.Int32,System.Int32)
+  commentId: M:WSSInterfacing.IStimParamsCore.SetChannelIPI(System.Int32,System.Int32)
+  id: SetChannelIPI(System.Int32,System.Int32)
+  parent: WSSInterfacing.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: SetChannelIPI(int, int)
+  nameWithType: IStimParamsCore.SetChannelIPI(int, int)
+  fullName: WSSInterfacing.IStimParamsCore.SetChannelIPI(int, int)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Sets per-channel IPI in ms.
+  example: []
+  syntax:
+    content: void SetChannelIPI(int ch, int ms)
+    parameters:
+    - id: ch
+      type: System.Int32
+    - id: ms
+      type: System.Int32
+    content.vb: Sub SetChannelIPI(ch As Integer, ms As Integer)
+  overload: WSSInterfacing.IStimParamsCore.SetChannelIPI*
+  nameWithType.vb: IStimParamsCore.SetChannelIPI(Integer, Integer)
+  fullName.vb: WSSInterfacing.IStimParamsCore.SetChannelIPI(Integer, Integer)
+  name.vb: SetChannelIPI(Integer, Integer)
+- uid: WSSInterfacing.IStimParamsCore.GetChannelAmp(System.Int32)
+  commentId: M:WSSInterfacing.IStimParamsCore.GetChannelAmp(System.Int32)
+  id: GetChannelAmp(System.Int32)
+  parent: WSSInterfacing.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: GetChannelAmp(int)
+  nameWithType: IStimParamsCore.GetChannelAmp(int)
+  fullName: WSSInterfacing.IStimParamsCore.GetChannelAmp(int)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Gets per-channel amplitude in mA.
+  example: []
+  syntax:
+    content: float GetChannelAmp(int ch)
+    parameters:
+    - id: ch
+      type: System.Int32
+    return:
+      type: System.Single
+    content.vb: Function GetChannelAmp(ch As Integer) As Single
+  overload: WSSInterfacing.IStimParamsCore.GetChannelAmp*
+  nameWithType.vb: IStimParamsCore.GetChannelAmp(Integer)
+  fullName.vb: WSSInterfacing.IStimParamsCore.GetChannelAmp(Integer)
+  name.vb: GetChannelAmp(Integer)
+- uid: WSSInterfacing.IStimParamsCore.GetChannelPWMin(System.Int32)
+  commentId: M:WSSInterfacing.IStimParamsCore.GetChannelPWMin(System.Int32)
+  id: GetChannelPWMin(System.Int32)
+  parent: WSSInterfacing.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: GetChannelPWMin(int)
+  nameWithType: IStimParamsCore.GetChannelPWMin(int)
+  fullName: WSSInterfacing.IStimParamsCore.GetChannelPWMin(int)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Gets per-channel minimum pulse width in Âµs.
+  example: []
+  syntax:
+    content: int GetChannelPWMin(int ch)
+    parameters:
+    - id: ch
+      type: System.Int32
+    return:
+      type: System.Int32
+    content.vb: Function GetChannelPWMin(ch As Integer) As Integer
+  overload: WSSInterfacing.IStimParamsCore.GetChannelPWMin*
+  nameWithType.vb: IStimParamsCore.GetChannelPWMin(Integer)
+  fullName.vb: WSSInterfacing.IStimParamsCore.GetChannelPWMin(Integer)
+  name.vb: GetChannelPWMin(Integer)
+- uid: WSSInterfacing.IStimParamsCore.GetChannelPWMax(System.Int32)
+  commentId: M:WSSInterfacing.IStimParamsCore.GetChannelPWMax(System.Int32)
+  id: GetChannelPWMax(System.Int32)
+  parent: WSSInterfacing.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: GetChannelPWMax(int)
+  nameWithType: IStimParamsCore.GetChannelPWMax(int)
+  fullName: WSSInterfacing.IStimParamsCore.GetChannelPWMax(int)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Gets per-channel maximum pulse width in Âµs.
+  example: []
+  syntax:
+    content: int GetChannelPWMax(int ch)
+    parameters:
+    - id: ch
+      type: System.Int32
+    return:
+      type: System.Int32
+    content.vb: Function GetChannelPWMax(ch As Integer) As Integer
+  overload: WSSInterfacing.IStimParamsCore.GetChannelPWMax*
+  nameWithType.vb: IStimParamsCore.GetChannelPWMax(Integer)
+  fullName.vb: WSSInterfacing.IStimParamsCore.GetChannelPWMax(Integer)
+  name.vb: GetChannelPWMax(Integer)
+- uid: WSSInterfacing.IStimParamsCore.GetChannelIPI(System.Int32)
+  commentId: M:WSSInterfacing.IStimParamsCore.GetChannelIPI(System.Int32)
+  id: GetChannelIPI(System.Int32)
+  parent: WSSInterfacing.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: GetChannelIPI(int)
+  nameWithType: IStimParamsCore.GetChannelIPI(int)
+  fullName: WSSInterfacing.IStimParamsCore.GetChannelIPI(int)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Gets per-channel IPI in ms.
+  example: []
+  syntax:
+    content: int GetChannelIPI(int ch)
+    parameters:
+    - id: ch
+      type: System.Int32
+    return:
+      type: System.Int32
+    content.vb: Function GetChannelIPI(ch As Integer) As Integer
+  overload: WSSInterfacing.IStimParamsCore.GetChannelIPI*
+  nameWithType.vb: IStimParamsCore.GetChannelIPI(Integer)
+  fullName.vb: WSSInterfacing.IStimParamsCore.GetChannelIPI(Integer)
+  name.vb: GetChannelIPI(Integer)
+- uid: WSSInterfacing.IStimParamsCore.TryGetBasic(WSSInterfacing.IBasicStimulation@)
+  commentId: M:WSSInterfacing.IStimParamsCore.TryGetBasic(WSSInterfacing.IBasicStimulation@)
+  id: TryGetBasic(WSSInterfacing.IBasicStimulation@)
+  parent: WSSInterfacing.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: TryGetBasic(out IBasicStimulation)
+  nameWithType: IStimParamsCore.TryGetBasic(out IBasicStimulation)
+  fullName: WSSInterfacing.IStimParamsCore.TryGetBasic(out WSSInterfacing.IBasicStimulation)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: >-
+    Exposes the optional BASIC capability if available from the wrapped core.
+
+    Returns <code>true</code> and sets <code class="paramref">basic</code> if supported.
+  example: []
+  syntax:
+    content: bool TryGetBasic(out IBasicStimulation basic)
+    parameters:
+    - id: basic
+      type: WSSInterfacing.IBasicStimulation
+      description: Out parameter for the BASIC interface.
+    return:
+      type: System.Boolean
+    content.vb: Function TryGetBasic(basic As IBasicStimulation) As Boolean
+  overload: WSSInterfacing.IStimParamsCore.TryGetBasic*
+  nameWithType.vb: IStimParamsCore.TryGetBasic(IBasicStimulation)
+  fullName.vb: WSSInterfacing.IStimParamsCore.TryGetBasic(WSSInterfacing.IBasicStimulation)
+  name.vb: TryGetBasic(IBasicStimulation)
+references:
+- uid: WSSInterfacing.IStimulationCore
+  commentId: T:WSSInterfacing.IStimulationCore
+  parent: WSSInterfacing
+  href: WSSInterfacing.IStimulationCore.html
+  name: IStimulationCore
+  nameWithType: IStimulationCore
+  fullName: WSSInterfacing.IStimulationCore
+- uid: WSSInterfacing.IStimParamsCore.TryGetBasic(WSSInterfacing.IBasicStimulation@)
+  commentId: M:WSSInterfacing.IStimParamsCore.TryGetBasic(WSSInterfacing.IBasicStimulation@)
+  parent: WSSInterfacing.IStimParamsCore
+  href: WSSInterfacing.IStimParamsCore.html#WSSInterfacing_IStimParamsCore_TryGetBasic_WSSInterfacing_IBasicStimulation__
+  name: TryGetBasic(out IBasicStimulation)
+  nameWithType: IStimParamsCore.TryGetBasic(out IBasicStimulation)
+  fullName: WSSInterfacing.IStimParamsCore.TryGetBasic(out WSSInterfacing.IBasicStimulation)
+  nameWithType.vb: IStimParamsCore.TryGetBasic(IBasicStimulation)
+  fullName.vb: WSSInterfacing.IStimParamsCore.TryGetBasic(WSSInterfacing.IBasicStimulation)
+  name.vb: TryGetBasic(IBasicStimulation)
+  spec.csharp:
+  - uid: WSSInterfacing.IStimParamsCore.TryGetBasic(WSSInterfacing.IBasicStimulation@)
+    name: TryGetBasic
+    href: WSSInterfacing.IStimParamsCore.html#WSSInterfacing_IStimParamsCore_TryGetBasic_WSSInterfacing_IBasicStimulation__
+  - name: (
+  - name: out
+  - name: " "
+  - uid: WSSInterfacing.IBasicStimulation
+    name: IBasicStimulation
+    href: WSSInterfacing.IBasicStimulation.html
+  - name: )
+  spec.vb:
+  - uid: WSSInterfacing.IStimParamsCore.TryGetBasic(WSSInterfacing.IBasicStimulation@)
+    name: TryGetBasic
+    href: WSSInterfacing.IStimParamsCore.html#WSSInterfacing_IStimParamsCore_TryGetBasic_WSSInterfacing_IBasicStimulation__
+  - name: (
+  - uid: WSSInterfacing.IBasicStimulation
+    name: IBasicStimulation
+    href: WSSInterfacing.IBasicStimulation.html
+  - name: )
+- uid: WSSInterfacing
+  commentId: N:WSSInterfacing
+  href: WSSInterfacing.html
+  name: WSSInterfacing
+  nameWithType: WSSInterfacing
+  fullName: WSSInterfacing
+- uid: WSSInterfacing.IStimulationCore.Initialize
+  commentId: M:WSSInterfacing.IStimulationCore.Initialize
+  parent: WSSInterfacing.IStimulationCore
+  href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_Initialize
+  name: Initialize()
+  nameWithType: IStimulationCore.Initialize()
+  fullName: WSSInterfacing.IStimulationCore.Initialize()
+  spec.csharp:
+  - uid: WSSInterfacing.IStimulationCore.Initialize
+    name: Initialize
+    href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_Initialize
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: WSSInterfacing.IStimulationCore.Initialize
+    name: Initialize
+    href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_Initialize
+  - name: (
+  - name: )
+- uid: WSSInterfacing.IStimulationCore.Tick
+  commentId: M:WSSInterfacing.IStimulationCore.Tick
+  parent: WSSInterfacing.IStimulationCore
+  href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_Tick
+  name: Tick()
+  nameWithType: IStimulationCore.Tick()
+  fullName: WSSInterfacing.IStimulationCore.Tick()
+  spec.csharp:
+  - uid: WSSInterfacing.IStimulationCore.Tick
+    name: Tick
+    href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_Tick
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: WSSInterfacing.IStimulationCore.Tick
+    name: Tick
+    href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_Tick
+  - name: (
+  - name: )
+- uid: WSSInterfacing.IStimulationCore.Shutdown
+  commentId: M:WSSInterfacing.IStimulationCore.Shutdown
+  parent: WSSInterfacing.IStimulationCore
+  href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_Shutdown
+  name: Shutdown()
+  nameWithType: IStimulationCore.Shutdown()
+  fullName: WSSInterfacing.IStimulationCore.Shutdown()
+  spec.csharp:
+  - uid: WSSInterfacing.IStimulationCore.Shutdown
+    name: Shutdown
+    href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_Shutdown
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: WSSInterfacing.IStimulationCore.Shutdown
+    name: Shutdown
+    href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_Shutdown
+  - name: (
+  - name: )
+- uid: WSSInterfacing.IStimulationCore.Started
+  commentId: M:WSSInterfacing.IStimulationCore.Started
+  parent: WSSInterfacing.IStimulationCore
+  href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_Started
+  name: Started()
+  nameWithType: IStimulationCore.Started()
+  fullName: WSSInterfacing.IStimulationCore.Started()
+  spec.csharp:
+  - uid: WSSInterfacing.IStimulationCore.Started
+    name: Started
+    href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_Started
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: WSSInterfacing.IStimulationCore.Started
+    name: Started
+    href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_Started
+  - name: (
+  - name: )
+- uid: WSSInterfacing.IStimulationCore.Ready
+  commentId: M:WSSInterfacing.IStimulationCore.Ready
+  parent: WSSInterfacing.IStimulationCore
+  href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_Ready
+  name: Ready()
+  nameWithType: IStimulationCore.Ready()
+  fullName: WSSInterfacing.IStimulationCore.Ready()
+  spec.csharp:
+  - uid: WSSInterfacing.IStimulationCore.Ready
+    name: Ready
+    href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_Ready
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: WSSInterfacing.IStimulationCore.Ready
+    name: Ready
+    href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_Ready
+  - name: (
+  - name: )
+- uid: WSSInterfacing.IStimulationCore.StimulateAnalog(System.Int32,System.Int32,System.Single,System.Int32)
+  commentId: M:WSSInterfacing.IStimulationCore.StimulateAnalog(System.Int32,System.Int32,System.Single,System.Int32)
+  parent: WSSInterfacing.IStimulationCore
+  isExternal: true
+  href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_StimulateAnalog_System_Int32_System_Int32_System_Single_System_Int32_
+  name: StimulateAnalog(int, int, float, int)
+  nameWithType: IStimulationCore.StimulateAnalog(int, int, float, int)
+  fullName: WSSInterfacing.IStimulationCore.StimulateAnalog(int, int, float, int)
+  nameWithType.vb: IStimulationCore.StimulateAnalog(Integer, Integer, Single, Integer)
+  fullName.vb: WSSInterfacing.IStimulationCore.StimulateAnalog(Integer, Integer, Single, Integer)
+  name.vb: StimulateAnalog(Integer, Integer, Single, Integer)
+  spec.csharp:
+  - uid: WSSInterfacing.IStimulationCore.StimulateAnalog(System.Int32,System.Int32,System.Single,System.Int32)
+    name: StimulateAnalog
+    href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_StimulateAnalog_System_Int32_System_Int32_System_Single_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: WSSInterfacing.IStimulationCore.StimulateAnalog(System.Int32,System.Int32,System.Single,System.Int32)
+    name: StimulateAnalog
+    href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_StimulateAnalog_System_Int32_System_Int32_System_Single_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: WSSInterfacing.IStimulationCore.ZeroOutStim(WSSInterfacing.WssTarget)
+  commentId: M:WSSInterfacing.IStimulationCore.ZeroOutStim(WSSInterfacing.WssTarget)
+  parent: WSSInterfacing.IStimulationCore
+  href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_ZeroOutStim_WSSInterfacing_WssTarget_
+  name: ZeroOutStim(WssTarget)
+  nameWithType: IStimulationCore.ZeroOutStim(WssTarget)
+  fullName: WSSInterfacing.IStimulationCore.ZeroOutStim(WSSInterfacing.WssTarget)
+  spec.csharp:
+  - uid: WSSInterfacing.IStimulationCore.ZeroOutStim(WSSInterfacing.WssTarget)
+    name: ZeroOutStim
+    href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_ZeroOutStim_WSSInterfacing_WssTarget_
+  - name: (
+  - uid: WSSInterfacing.WssTarget
+    name: WssTarget
+    href: WSSInterfacing.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: WSSInterfacing.IStimulationCore.ZeroOutStim(WSSInterfacing.WssTarget)
+    name: ZeroOutStim
+    href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_ZeroOutStim_WSSInterfacing_WssTarget_
+  - name: (
+  - uid: WSSInterfacing.WssTarget
+    name: WssTarget
+    href: WSSInterfacing.WssTarget.html
+  - name: )
+- uid: WSSInterfacing.IStimulationCore.StartStim(WSSInterfacing.WssTarget)
+  commentId: M:WSSInterfacing.IStimulationCore.StartStim(WSSInterfacing.WssTarget)
+  parent: WSSInterfacing.IStimulationCore
+  href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_StartStim_WSSInterfacing_WssTarget_
+  name: StartStim(WssTarget)
+  nameWithType: IStimulationCore.StartStim(WssTarget)
+  fullName: WSSInterfacing.IStimulationCore.StartStim(WSSInterfacing.WssTarget)
+  spec.csharp:
+  - uid: WSSInterfacing.IStimulationCore.StartStim(WSSInterfacing.WssTarget)
+    name: StartStim
+    href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_StartStim_WSSInterfacing_WssTarget_
+  - name: (
+  - uid: WSSInterfacing.WssTarget
+    name: WssTarget
+    href: WSSInterfacing.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: WSSInterfacing.IStimulationCore.StartStim(WSSInterfacing.WssTarget)
+    name: StartStim
+    href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_StartStim_WSSInterfacing_WssTarget_
+  - name: (
+  - uid: WSSInterfacing.WssTarget
+    name: WssTarget
+    href: WSSInterfacing.WssTarget.html
+  - name: )
+- uid: WSSInterfacing.IStimulationCore.StopStim(WSSInterfacing.WssTarget)
+  commentId: M:WSSInterfacing.IStimulationCore.StopStim(WSSInterfacing.WssTarget)
+  parent: WSSInterfacing.IStimulationCore
+  href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_StopStim_WSSInterfacing_WssTarget_
+  name: StopStim(WssTarget)
+  nameWithType: IStimulationCore.StopStim(WssTarget)
+  fullName: WSSInterfacing.IStimulationCore.StopStim(WSSInterfacing.WssTarget)
+  spec.csharp:
+  - uid: WSSInterfacing.IStimulationCore.StopStim(WSSInterfacing.WssTarget)
+    name: StopStim
+    href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_StopStim_WSSInterfacing_WssTarget_
+  - name: (
+  - uid: WSSInterfacing.WssTarget
+    name: WssTarget
+    href: WSSInterfacing.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: WSSInterfacing.IStimulationCore.StopStim(WSSInterfacing.WssTarget)
+    name: StopStim
+    href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_StopStim_WSSInterfacing_WssTarget_
+  - name: (
+  - uid: WSSInterfacing.WssTarget
+    name: WssTarget
+    href: WSSInterfacing.WssTarget.html
+  - name: )
+- uid: WSSInterfacing.IStimulationCore.LoadConfigFile
+  commentId: M:WSSInterfacing.IStimulationCore.LoadConfigFile
+  parent: WSSInterfacing.IStimulationCore
+  href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_LoadConfigFile
+  name: LoadConfigFile()
+  nameWithType: IStimulationCore.LoadConfigFile()
+  fullName: WSSInterfacing.IStimulationCore.LoadConfigFile()
+  spec.csharp:
+  - uid: WSSInterfacing.IStimulationCore.LoadConfigFile
+    name: LoadConfigFile
+    href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_LoadConfigFile
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: WSSInterfacing.IStimulationCore.LoadConfigFile
+    name: LoadConfigFile
+    href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_LoadConfigFile
+  - name: (
+  - name: )
+- uid: WSSInterfacing.IStimulationCore.GetCoreConfigController
+  commentId: M:WSSInterfacing.IStimulationCore.GetCoreConfigController
+  parent: WSSInterfacing.IStimulationCore
+  href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_GetCoreConfigController
+  name: GetCoreConfigController()
+  nameWithType: IStimulationCore.GetCoreConfigController()
+  fullName: WSSInterfacing.IStimulationCore.GetCoreConfigController()
+  spec.csharp:
+  - uid: WSSInterfacing.IStimulationCore.GetCoreConfigController
+    name: GetCoreConfigController
+    href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_GetCoreConfigController
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: WSSInterfacing.IStimulationCore.GetCoreConfigController
+    name: GetCoreConfigController
+    href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_GetCoreConfigController
+  - name: (
+  - name: )
+- uid: WSSInterfacing.IStimulationCore.IsChannelInRange(System.Int32)
+  commentId: M:WSSInterfacing.IStimulationCore.IsChannelInRange(System.Int32)
+  parent: WSSInterfacing.IStimulationCore
+  isExternal: true
+  href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_IsChannelInRange_System_Int32_
+  name: IsChannelInRange(int)
+  nameWithType: IStimulationCore.IsChannelInRange(int)
+  fullName: WSSInterfacing.IStimulationCore.IsChannelInRange(int)
+  nameWithType.vb: IStimulationCore.IsChannelInRange(Integer)
+  fullName.vb: WSSInterfacing.IStimulationCore.IsChannelInRange(Integer)
+  name.vb: IsChannelInRange(Integer)
+  spec.csharp:
+  - uid: WSSInterfacing.IStimulationCore.IsChannelInRange(System.Int32)
+    name: IsChannelInRange
+    href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_IsChannelInRange_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: WSSInterfacing.IStimulationCore.IsChannelInRange(System.Int32)
+    name: IsChannelInRange
+    href: WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_IsChannelInRange_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: WSSInterfacing.IStimParamsCore.WSSInterfacing.StimParamsBasicExtensions.LoadBoard(WSSInterfacing.WssTarget)
+  commentId: M:WSSInterfacing.StimParamsBasicExtensions.LoadBoard(WSSInterfacing.IStimParamsCore,WSSInterfacing.WssTarget)
+  parent: WSSInterfacing.StimParamsBasicExtensions
+  definition: WSSInterfacing.StimParamsBasicExtensions.LoadBoard(WSSInterfacing.IStimParamsCore,WSSInterfacing.WssTarget)
+  href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_LoadBoard_WSSInterfacing_IStimParamsCore_WSSInterfacing_WssTarget_
+  name: LoadBoard(IStimParamsCore, WssTarget)
+  nameWithType: StimParamsBasicExtensions.LoadBoard(IStimParamsCore, WssTarget)
+  fullName: WSSInterfacing.StimParamsBasicExtensions.LoadBoard(WSSInterfacing.IStimParamsCore, WSSInterfacing.WssTarget)
+  spec.csharp:
+  - uid: WSSInterfacing.StimParamsBasicExtensions.LoadBoard(WSSInterfacing.IStimParamsCore,WSSInterfacing.WssTarget)
+    name: LoadBoard
+    href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_LoadBoard_WSSInterfacing_IStimParamsCore_WSSInterfacing_WssTarget_
+  - name: (
+  - uid: WSSInterfacing.IStimParamsCore
+    name: IStimParamsCore
+    href: WSSInterfacing.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WssTarget
+    name: WssTarget
+    href: WSSInterfacing.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: WSSInterfacing.StimParamsBasicExtensions.LoadBoard(WSSInterfacing.IStimParamsCore,WSSInterfacing.WssTarget)
+    name: LoadBoard
+    href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_LoadBoard_WSSInterfacing_IStimParamsCore_WSSInterfacing_WssTarget_
+  - name: (
+  - uid: WSSInterfacing.IStimParamsCore
+    name: IStimParamsCore
+    href: WSSInterfacing.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WssTarget
+    name: WssTarget
+    href: WSSInterfacing.WssTarget.html
+  - name: )
+- uid: WSSInterfacing.IStimParamsCore.WSSInterfacing.StimParamsBasicExtensions.LoadWaveform(System.String,System.Int32)
+  commentId: M:WSSInterfacing.StimParamsBasicExtensions.LoadWaveform(WSSInterfacing.IStimParamsCore,System.String,System.Int32)
+  parent: WSSInterfacing.StimParamsBasicExtensions
+  definition: WSSInterfacing.StimParamsBasicExtensions.LoadWaveform(WSSInterfacing.IStimParamsCore,System.String,System.Int32)
+  href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_LoadWaveform_WSSInterfacing_IStimParamsCore_System_String_System_Int32_
+  name: LoadWaveform(IStimParamsCore, string, int)
+  nameWithType: StimParamsBasicExtensions.LoadWaveform(IStimParamsCore, string, int)
+  fullName: WSSInterfacing.StimParamsBasicExtensions.LoadWaveform(WSSInterfacing.IStimParamsCore, string, int)
+  nameWithType.vb: StimParamsBasicExtensions.LoadWaveform(IStimParamsCore, String, Integer)
+  fullName.vb: WSSInterfacing.StimParamsBasicExtensions.LoadWaveform(WSSInterfacing.IStimParamsCore, String, Integer)
+  name.vb: LoadWaveform(IStimParamsCore, String, Integer)
+  spec.csharp:
+  - uid: WSSInterfacing.StimParamsBasicExtensions.LoadWaveform(WSSInterfacing.IStimParamsCore,System.String,System.Int32)
+    name: LoadWaveform
+    href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_LoadWaveform_WSSInterfacing_IStimParamsCore_System_String_System_Int32_
+  - name: (
+  - uid: WSSInterfacing.IStimParamsCore
+    name: IStimParamsCore
+    href: WSSInterfacing.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: WSSInterfacing.StimParamsBasicExtensions.LoadWaveform(WSSInterfacing.IStimParamsCore,System.String,System.Int32)
+    name: LoadWaveform
+    href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_LoadWaveform_WSSInterfacing_IStimParamsCore_System_String_System_Int32_
+  - name: (
+  - uid: WSSInterfacing.IStimParamsCore
+    name: IStimParamsCore
+    href: WSSInterfacing.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: WSSInterfacing.IStimParamsCore.WSSInterfacing.StimParamsBasicExtensions.RequestConfigs(System.Int32,System.Int32,WSSInterfacing.WssTarget)
+  commentId: M:WSSInterfacing.StimParamsBasicExtensions.RequestConfigs(WSSInterfacing.IStimParamsCore,System.Int32,System.Int32,WSSInterfacing.WssTarget)
+  parent: WSSInterfacing.StimParamsBasicExtensions
+  definition: WSSInterfacing.StimParamsBasicExtensions.RequestConfigs(WSSInterfacing.IStimParamsCore,System.Int32,System.Int32,WSSInterfacing.WssTarget)
+  href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_RequestConfigs_WSSInterfacing_IStimParamsCore_System_Int32_System_Int32_WSSInterfacing_WssTarget_
+  name: RequestConfigs(IStimParamsCore, int, int, WssTarget)
+  nameWithType: StimParamsBasicExtensions.RequestConfigs(IStimParamsCore, int, int, WssTarget)
+  fullName: WSSInterfacing.StimParamsBasicExtensions.RequestConfigs(WSSInterfacing.IStimParamsCore, int, int, WSSInterfacing.WssTarget)
+  nameWithType.vb: StimParamsBasicExtensions.RequestConfigs(IStimParamsCore, Integer, Integer, WssTarget)
+  fullName.vb: WSSInterfacing.StimParamsBasicExtensions.RequestConfigs(WSSInterfacing.IStimParamsCore, Integer, Integer, WSSInterfacing.WssTarget)
+  name.vb: RequestConfigs(IStimParamsCore, Integer, Integer, WssTarget)
+  spec.csharp:
+  - uid: WSSInterfacing.StimParamsBasicExtensions.RequestConfigs(WSSInterfacing.IStimParamsCore,System.Int32,System.Int32,WSSInterfacing.WssTarget)
+    name: RequestConfigs
+    href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_RequestConfigs_WSSInterfacing_IStimParamsCore_System_Int32_System_Int32_WSSInterfacing_WssTarget_
+  - name: (
+  - uid: WSSInterfacing.IStimParamsCore
+    name: IStimParamsCore
+    href: WSSInterfacing.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WssTarget
+    name: WssTarget
+    href: WSSInterfacing.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: WSSInterfacing.StimParamsBasicExtensions.RequestConfigs(WSSInterfacing.IStimParamsCore,System.Int32,System.Int32,WSSInterfacing.WssTarget)
+    name: RequestConfigs
+    href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_RequestConfigs_WSSInterfacing_IStimParamsCore_System_Int32_System_Int32_WSSInterfacing_WssTarget_
+  - name: (
+  - uid: WSSInterfacing.IStimParamsCore
+    name: IStimParamsCore
+    href: WSSInterfacing.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WssTarget
+    name: WssTarget
+    href: WSSInterfacing.WssTarget.html
+  - name: )
+- uid: WSSInterfacing.IStimParamsCore.WSSInterfacing.StimParamsBasicExtensions.SaveBoard(WSSInterfacing.WssTarget)
+  commentId: M:WSSInterfacing.StimParamsBasicExtensions.SaveBoard(WSSInterfacing.IStimParamsCore,WSSInterfacing.WssTarget)
+  parent: WSSInterfacing.StimParamsBasicExtensions
+  definition: WSSInterfacing.StimParamsBasicExtensions.SaveBoard(WSSInterfacing.IStimParamsCore,WSSInterfacing.WssTarget)
+  href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_SaveBoard_WSSInterfacing_IStimParamsCore_WSSInterfacing_WssTarget_
+  name: SaveBoard(IStimParamsCore, WssTarget)
+  nameWithType: StimParamsBasicExtensions.SaveBoard(IStimParamsCore, WssTarget)
+  fullName: WSSInterfacing.StimParamsBasicExtensions.SaveBoard(WSSInterfacing.IStimParamsCore, WSSInterfacing.WssTarget)
+  spec.csharp:
+  - uid: WSSInterfacing.StimParamsBasicExtensions.SaveBoard(WSSInterfacing.IStimParamsCore,WSSInterfacing.WssTarget)
+    name: SaveBoard
+    href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_SaveBoard_WSSInterfacing_IStimParamsCore_WSSInterfacing_WssTarget_
+  - name: (
+  - uid: WSSInterfacing.IStimParamsCore
+    name: IStimParamsCore
+    href: WSSInterfacing.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WssTarget
+    name: WssTarget
+    href: WSSInterfacing.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: WSSInterfacing.StimParamsBasicExtensions.SaveBoard(WSSInterfacing.IStimParamsCore,WSSInterfacing.WssTarget)
+    name: SaveBoard
+    href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_SaveBoard_WSSInterfacing_IStimParamsCore_WSSInterfacing_WssTarget_
+  - name: (
+  - uid: WSSInterfacing.IStimParamsCore
+    name: IStimParamsCore
+    href: WSSInterfacing.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WssTarget
+    name: WssTarget
+    href: WSSInterfacing.WssTarget.html
+  - name: )
+- uid: WSSInterfacing.IStimParamsCore.WSSInterfacing.StimParamsBasicExtensions.TryUpdateWaveform(WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+  commentId: M:WSSInterfacing.StimParamsBasicExtensions.TryUpdateWaveform(WSSInterfacing.IStimParamsCore,WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+  parent: WSSInterfacing.StimParamsBasicExtensions
+  definition: WSSInterfacing.StimParamsBasicExtensions.TryUpdateWaveform(WSSInterfacing.IStimParamsCore,WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+  href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_TryUpdateWaveform_WSSInterfacing_IStimParamsCore_WSSInterfacing_WaveformBuilder_System_Int32_WSSInterfacing_WssTarget_
+  name: TryUpdateWaveform(IStimParamsCore, WaveformBuilder, int, WssTarget)
+  nameWithType: StimParamsBasicExtensions.TryUpdateWaveform(IStimParamsCore, WaveformBuilder, int, WssTarget)
+  fullName: WSSInterfacing.StimParamsBasicExtensions.TryUpdateWaveform(WSSInterfacing.IStimParamsCore, WSSInterfacing.WaveformBuilder, int, WSSInterfacing.WssTarget)
+  nameWithType.vb: StimParamsBasicExtensions.TryUpdateWaveform(IStimParamsCore, WaveformBuilder, Integer, WssTarget)
+  fullName.vb: WSSInterfacing.StimParamsBasicExtensions.TryUpdateWaveform(WSSInterfacing.IStimParamsCore, WSSInterfacing.WaveformBuilder, Integer, WSSInterfacing.WssTarget)
+  name.vb: TryUpdateWaveform(IStimParamsCore, WaveformBuilder, Integer, WssTarget)
+  spec.csharp:
+  - uid: WSSInterfacing.StimParamsBasicExtensions.TryUpdateWaveform(WSSInterfacing.IStimParamsCore,WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+    name: TryUpdateWaveform
+    href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_TryUpdateWaveform_WSSInterfacing_IStimParamsCore_WSSInterfacing_WaveformBuilder_System_Int32_WSSInterfacing_WssTarget_
+  - name: (
+  - uid: WSSInterfacing.IStimParamsCore
+    name: IStimParamsCore
+    href: WSSInterfacing.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WaveformBuilder
+    name: WaveformBuilder
+    href: WSSInterfacing.WaveformBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WssTarget
+    name: WssTarget
+    href: WSSInterfacing.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: WSSInterfacing.StimParamsBasicExtensions.TryUpdateWaveform(WSSInterfacing.IStimParamsCore,WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+    name: TryUpdateWaveform
+    href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_TryUpdateWaveform_WSSInterfacing_IStimParamsCore_WSSInterfacing_WaveformBuilder_System_Int32_WSSInterfacing_WssTarget_
+  - name: (
+  - uid: WSSInterfacing.IStimParamsCore
+    name: IStimParamsCore
+    href: WSSInterfacing.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WaveformBuilder
+    name: WaveformBuilder
+    href: WSSInterfacing.WaveformBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WssTarget
+    name: WssTarget
+    href: WSSInterfacing.WssTarget.html
+  - name: )
+- uid: WSSInterfacing.IStimParamsCore.WSSInterfacing.StimParamsBasicExtensions.UpdateEventShape(System.Int32,System.Int32,System.Int32,WSSInterfacing.WssTarget)
+  commentId: M:WSSInterfacing.StimParamsBasicExtensions.UpdateEventShape(WSSInterfacing.IStimParamsCore,System.Int32,System.Int32,System.Int32,WSSInterfacing.WssTarget)
+  parent: WSSInterfacing.StimParamsBasicExtensions
+  definition: WSSInterfacing.StimParamsBasicExtensions.UpdateEventShape(WSSInterfacing.IStimParamsCore,System.Int32,System.Int32,System.Int32,WSSInterfacing.WssTarget)
+  href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_UpdateEventShape_WSSInterfacing_IStimParamsCore_System_Int32_System_Int32_System_Int32_WSSInterfacing_WssTarget_
+  name: UpdateEventShape(IStimParamsCore, int, int, int, WssTarget)
+  nameWithType: StimParamsBasicExtensions.UpdateEventShape(IStimParamsCore, int, int, int, WssTarget)
+  fullName: WSSInterfacing.StimParamsBasicExtensions.UpdateEventShape(WSSInterfacing.IStimParamsCore, int, int, int, WSSInterfacing.WssTarget)
+  nameWithType.vb: StimParamsBasicExtensions.UpdateEventShape(IStimParamsCore, Integer, Integer, Integer, WssTarget)
+  fullName.vb: WSSInterfacing.StimParamsBasicExtensions.UpdateEventShape(WSSInterfacing.IStimParamsCore, Integer, Integer, Integer, WSSInterfacing.WssTarget)
+  name.vb: UpdateEventShape(IStimParamsCore, Integer, Integer, Integer, WssTarget)
+  spec.csharp:
+  - uid: WSSInterfacing.StimParamsBasicExtensions.UpdateEventShape(WSSInterfacing.IStimParamsCore,System.Int32,System.Int32,System.Int32,WSSInterfacing.WssTarget)
+    name: UpdateEventShape
+    href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_UpdateEventShape_WSSInterfacing_IStimParamsCore_System_Int32_System_Int32_System_Int32_WSSInterfacing_WssTarget_
+  - name: (
+  - uid: WSSInterfacing.IStimParamsCore
+    name: IStimParamsCore
+    href: WSSInterfacing.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WssTarget
+    name: WssTarget
+    href: WSSInterfacing.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: WSSInterfacing.StimParamsBasicExtensions.UpdateEventShape(WSSInterfacing.IStimParamsCore,System.Int32,System.Int32,System.Int32,WSSInterfacing.WssTarget)
+    name: UpdateEventShape
+    href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_UpdateEventShape_WSSInterfacing_IStimParamsCore_System_Int32_System_Int32_System_Int32_WSSInterfacing_WssTarget_
+  - name: (
+  - uid: WSSInterfacing.IStimParamsCore
+    name: IStimParamsCore
+    href: WSSInterfacing.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WssTarget
+    name: WssTarget
+    href: WSSInterfacing.WssTarget.html
+  - name: )
+- uid: WSSInterfacing.IStimParamsCore.WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform(System.Int32[],System.Int32,WSSInterfacing.WssTarget)
+  commentId: M:WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform(WSSInterfacing.IStimParamsCore,System.Int32[],System.Int32,WSSInterfacing.WssTarget)
+  parent: WSSInterfacing.StimParamsBasicExtensions
+  definition: WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform(WSSInterfacing.IStimParamsCore,System.Int32[],System.Int32,WSSInterfacing.WssTarget)
+  href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_UpdateWaveform_WSSInterfacing_IStimParamsCore_System_Int32___System_Int32_WSSInterfacing_WssTarget_
+  name: UpdateWaveform(IStimParamsCore, int[], int, WssTarget)
+  nameWithType: StimParamsBasicExtensions.UpdateWaveform(IStimParamsCore, int[], int, WssTarget)
+  fullName: WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform(WSSInterfacing.IStimParamsCore, int[], int, WSSInterfacing.WssTarget)
+  nameWithType.vb: StimParamsBasicExtensions.UpdateWaveform(IStimParamsCore, Integer(), Integer, WssTarget)
+  fullName.vb: WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform(WSSInterfacing.IStimParamsCore, Integer(), Integer, WSSInterfacing.WssTarget)
+  name.vb: UpdateWaveform(IStimParamsCore, Integer(), Integer, WssTarget)
+  spec.csharp:
+  - uid: WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform(WSSInterfacing.IStimParamsCore,System.Int32[],System.Int32,WSSInterfacing.WssTarget)
+    name: UpdateWaveform
+    href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_UpdateWaveform_WSSInterfacing_IStimParamsCore_System_Int32___System_Int32_WSSInterfacing_WssTarget_
+  - name: (
+  - uid: WSSInterfacing.IStimParamsCore
+    name: IStimParamsCore
+    href: WSSInterfacing.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WssTarget
+    name: WssTarget
+    href: WSSInterfacing.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform(WSSInterfacing.IStimParamsCore,System.Int32[],System.Int32,WSSInterfacing.WssTarget)
+    name: UpdateWaveform
+    href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_UpdateWaveform_WSSInterfacing_IStimParamsCore_System_Int32___System_Int32_WSSInterfacing_WssTarget_
+  - name: (
+  - uid: WSSInterfacing.IStimParamsCore
+    name: IStimParamsCore
+    href: WSSInterfacing.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WssTarget
+    name: WssTarget
+    href: WSSInterfacing.WssTarget.html
+  - name: )
+- uid: WSSInterfacing.IStimParamsCore.WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform(WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+  commentId: M:WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform(WSSInterfacing.IStimParamsCore,WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+  parent: WSSInterfacing.StimParamsBasicExtensions
+  definition: WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform(WSSInterfacing.IStimParamsCore,WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+  href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_UpdateWaveform_WSSInterfacing_IStimParamsCore_WSSInterfacing_WaveformBuilder_System_Int32_WSSInterfacing_WssTarget_
+  name: UpdateWaveform(IStimParamsCore, WaveformBuilder, int, WssTarget)
+  nameWithType: StimParamsBasicExtensions.UpdateWaveform(IStimParamsCore, WaveformBuilder, int, WssTarget)
+  fullName: WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform(WSSInterfacing.IStimParamsCore, WSSInterfacing.WaveformBuilder, int, WSSInterfacing.WssTarget)
+  nameWithType.vb: StimParamsBasicExtensions.UpdateWaveform(IStimParamsCore, WaveformBuilder, Integer, WssTarget)
+  fullName.vb: WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform(WSSInterfacing.IStimParamsCore, WSSInterfacing.WaveformBuilder, Integer, WSSInterfacing.WssTarget)
+  name.vb: UpdateWaveform(IStimParamsCore, WaveformBuilder, Integer, WssTarget)
+  spec.csharp:
+  - uid: WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform(WSSInterfacing.IStimParamsCore,WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+    name: UpdateWaveform
+    href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_UpdateWaveform_WSSInterfacing_IStimParamsCore_WSSInterfacing_WaveformBuilder_System_Int32_WSSInterfacing_WssTarget_
+  - name: (
+  - uid: WSSInterfacing.IStimParamsCore
+    name: IStimParamsCore
+    href: WSSInterfacing.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WaveformBuilder
+    name: WaveformBuilder
+    href: WSSInterfacing.WaveformBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WssTarget
+    name: WssTarget
+    href: WSSInterfacing.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform(WSSInterfacing.IStimParamsCore,WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+    name: UpdateWaveform
+    href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_UpdateWaveform_WSSInterfacing_IStimParamsCore_WSSInterfacing_WaveformBuilder_System_Int32_WSSInterfacing_WssTarget_
+  - name: (
+  - uid: WSSInterfacing.IStimParamsCore
+    name: IStimParamsCore
+    href: WSSInterfacing.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WaveformBuilder
+    name: WaveformBuilder
+    href: WSSInterfacing.WaveformBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WssTarget
+    name: WssTarget
+    href: WSSInterfacing.WssTarget.html
+  - name: )
+- uid: WSSInterfacing.IStimParamsCore.WSSInterfacing.StimParamsBasicExtensions.WaveformSetup(WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+  commentId: M:WSSInterfacing.StimParamsBasicExtensions.WaveformSetup(WSSInterfacing.IStimParamsCore,WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+  parent: WSSInterfacing.StimParamsBasicExtensions
+  definition: WSSInterfacing.StimParamsBasicExtensions.WaveformSetup(WSSInterfacing.IStimParamsCore,WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+  href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_WaveformSetup_WSSInterfacing_IStimParamsCore_WSSInterfacing_WaveformBuilder_System_Int32_WSSInterfacing_WssTarget_
+  name: WaveformSetup(IStimParamsCore, WaveformBuilder, int, WssTarget)
+  nameWithType: StimParamsBasicExtensions.WaveformSetup(IStimParamsCore, WaveformBuilder, int, WssTarget)
+  fullName: WSSInterfacing.StimParamsBasicExtensions.WaveformSetup(WSSInterfacing.IStimParamsCore, WSSInterfacing.WaveformBuilder, int, WSSInterfacing.WssTarget)
+  nameWithType.vb: StimParamsBasicExtensions.WaveformSetup(IStimParamsCore, WaveformBuilder, Integer, WssTarget)
+  fullName.vb: WSSInterfacing.StimParamsBasicExtensions.WaveformSetup(WSSInterfacing.IStimParamsCore, WSSInterfacing.WaveformBuilder, Integer, WSSInterfacing.WssTarget)
+  name.vb: WaveformSetup(IStimParamsCore, WaveformBuilder, Integer, WssTarget)
+  spec.csharp:
+  - uid: WSSInterfacing.StimParamsBasicExtensions.WaveformSetup(WSSInterfacing.IStimParamsCore,WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+    name: WaveformSetup
+    href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_WaveformSetup_WSSInterfacing_IStimParamsCore_WSSInterfacing_WaveformBuilder_System_Int32_WSSInterfacing_WssTarget_
+  - name: (
+  - uid: WSSInterfacing.IStimParamsCore
+    name: IStimParamsCore
+    href: WSSInterfacing.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WaveformBuilder
+    name: WaveformBuilder
+    href: WSSInterfacing.WaveformBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WssTarget
+    name: WssTarget
+    href: WSSInterfacing.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: WSSInterfacing.StimParamsBasicExtensions.WaveformSetup(WSSInterfacing.IStimParamsCore,WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+    name: WaveformSetup
+    href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_WaveformSetup_WSSInterfacing_IStimParamsCore_WSSInterfacing_WaveformBuilder_System_Int32_WSSInterfacing_WssTarget_
+  - name: (
+  - uid: WSSInterfacing.IStimParamsCore
+    name: IStimParamsCore
+    href: WSSInterfacing.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WaveformBuilder
+    name: WaveformBuilder
+    href: WSSInterfacing.WaveformBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WssTarget
+    name: WssTarget
+    href: WSSInterfacing.WssTarget.html
+  - name: )
+- uid: WSSInterfacing.IStimParamsCore
+  commentId: T:WSSInterfacing.IStimParamsCore
+  parent: WSSInterfacing
+  href: WSSInterfacing.IStimParamsCore.html
+  name: IStimParamsCore
+  nameWithType: IStimParamsCore
+  fullName: WSSInterfacing.IStimParamsCore
+- uid: WSSInterfacing.StimParamsBasicExtensions.LoadBoard(WSSInterfacing.IStimParamsCore,WSSInterfacing.WssTarget)
+  commentId: M:WSSInterfacing.StimParamsBasicExtensions.LoadBoard(WSSInterfacing.IStimParamsCore,WSSInterfacing.WssTarget)
+  href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_LoadBoard_WSSInterfacing_IStimParamsCore_WSSInterfacing_WssTarget_
+  name: LoadBoard(IStimParamsCore, WssTarget)
+  nameWithType: StimParamsBasicExtensions.LoadBoard(IStimParamsCore, WssTarget)
+  fullName: WSSInterfacing.StimParamsBasicExtensions.LoadBoard(WSSInterfacing.IStimParamsCore, WSSInterfacing.WssTarget)
+  spec.csharp:
+  - uid: WSSInterfacing.StimParamsBasicExtensions.LoadBoard(WSSInterfacing.IStimParamsCore,WSSInterfacing.WssTarget)
+    name: LoadBoard
+    href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_LoadBoard_WSSInterfacing_IStimParamsCore_WSSInterfacing_WssTarget_
+  - name: (
+  - uid: WSSInterfacing.IStimParamsCore
+    name: IStimParamsCore
+    href: WSSInterfacing.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WssTarget
+    name: WssTarget
+    href: WSSInterfacing.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: WSSInterfacing.StimParamsBasicExtensions.LoadBoard(WSSInterfacing.IStimParamsCore,WSSInterfacing.WssTarget)
+    name: LoadBoard
+    href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_LoadBoard_WSSInterfacing_IStimParamsCore_WSSInterfacing_WssTarget_
+  - name: (
+  - uid: WSSInterfacing.IStimParamsCore
+    name: IStimParamsCore
+    href: WSSInterfacing.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WssTarget
+    name: WssTarget
+    href: WSSInterfacing.WssTarget.html
+  - name: )
+- uid: WSSInterfacing.StimParamsBasicExtensions
+  commentId: T:WSSInterfacing.StimParamsBasicExtensions
+  parent: WSSInterfacing
+  href: WSSInterfacing.StimParamsBasicExtensions.html
+  name: StimParamsBasicExtensions
+  nameWithType: StimParamsBasicExtensions
+  fullName: WSSInterfacing.StimParamsBasicExtensions
+- uid: WSSInterfacing.StimParamsBasicExtensions.LoadWaveform(WSSInterfacing.IStimParamsCore,System.String,System.Int32)
+  commentId: M:WSSInterfacing.StimParamsBasicExtensions.LoadWaveform(WSSInterfacing.IStimParamsCore,System.String,System.Int32)
+  isExternal: true
+  href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_LoadWaveform_WSSInterfacing_IStimParamsCore_System_String_System_Int32_
+  name: LoadWaveform(IStimParamsCore, string, int)
+  nameWithType: StimParamsBasicExtensions.LoadWaveform(IStimParamsCore, string, int)
+  fullName: WSSInterfacing.StimParamsBasicExtensions.LoadWaveform(WSSInterfacing.IStimParamsCore, string, int)
+  nameWithType.vb: StimParamsBasicExtensions.LoadWaveform(IStimParamsCore, String, Integer)
+  fullName.vb: WSSInterfacing.StimParamsBasicExtensions.LoadWaveform(WSSInterfacing.IStimParamsCore, String, Integer)
+  name.vb: LoadWaveform(IStimParamsCore, String, Integer)
+  spec.csharp:
+  - uid: WSSInterfacing.StimParamsBasicExtensions.LoadWaveform(WSSInterfacing.IStimParamsCore,System.String,System.Int32)
+    name: LoadWaveform
+    href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_LoadWaveform_WSSInterfacing_IStimParamsCore_System_String_System_Int32_
+  - name: (
+  - uid: WSSInterfacing.IStimParamsCore
+    name: IStimParamsCore
+    href: WSSInterfacing.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: WSSInterfacing.StimParamsBasicExtensions.LoadWaveform(WSSInterfacing.IStimParamsCore,System.String,System.Int32)
+    name: LoadWaveform
+    href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_LoadWaveform_WSSInterfacing_IStimParamsCore_System_String_System_Int32_
+  - name: (
+  - uid: WSSInterfacing.IStimParamsCore
+    name: IStimParamsCore
+    href: WSSInterfacing.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: WSSInterfacing.StimParamsBasicExtensions.RequestConfigs(WSSInterfacing.IStimParamsCore,System.Int32,System.Int32,WSSInterfacing.WssTarget)
+  commentId: M:WSSInterfacing.StimParamsBasicExtensions.RequestConfigs(WSSInterfacing.IStimParamsCore,System.Int32,System.Int32,WSSInterfacing.WssTarget)
+  isExternal: true
+  href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_RequestConfigs_WSSInterfacing_IStimParamsCore_System_Int32_System_Int32_WSSInterfacing_WssTarget_
+  name: RequestConfigs(IStimParamsCore, int, int, WssTarget)
+  nameWithType: StimParamsBasicExtensions.RequestConfigs(IStimParamsCore, int, int, WssTarget)
+  fullName: WSSInterfacing.StimParamsBasicExtensions.RequestConfigs(WSSInterfacing.IStimParamsCore, int, int, WSSInterfacing.WssTarget)
+  nameWithType.vb: StimParamsBasicExtensions.RequestConfigs(IStimParamsCore, Integer, Integer, WssTarget)
+  fullName.vb: WSSInterfacing.StimParamsBasicExtensions.RequestConfigs(WSSInterfacing.IStimParamsCore, Integer, Integer, WSSInterfacing.WssTarget)
+  name.vb: RequestConfigs(IStimParamsCore, Integer, Integer, WssTarget)
+  spec.csharp:
+  - uid: WSSInterfacing.StimParamsBasicExtensions.RequestConfigs(WSSInterfacing.IStimParamsCore,System.Int32,System.Int32,WSSInterfacing.WssTarget)
+    name: RequestConfigs
+    href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_RequestConfigs_WSSInterfacing_IStimParamsCore_System_Int32_System_Int32_WSSInterfacing_WssTarget_
+  - name: (
+  - uid: WSSInterfacing.IStimParamsCore
+    name: IStimParamsCore
+    href: WSSInterfacing.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WssTarget
+    name: WssTarget
+    href: WSSInterfacing.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: WSSInterfacing.StimParamsBasicExtensions.RequestConfigs(WSSInterfacing.IStimParamsCore,System.Int32,System.Int32,WSSInterfacing.WssTarget)
+    name: RequestConfigs
+    href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_RequestConfigs_WSSInterfacing_IStimParamsCore_System_Int32_System_Int32_WSSInterfacing_WssTarget_
+  - name: (
+  - uid: WSSInterfacing.IStimParamsCore
+    name: IStimParamsCore
+    href: WSSInterfacing.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WssTarget
+    name: WssTarget
+    href: WSSInterfacing.WssTarget.html
+  - name: )
+- uid: WSSInterfacing.StimParamsBasicExtensions.SaveBoard(WSSInterfacing.IStimParamsCore,WSSInterfacing.WssTarget)
+  commentId: M:WSSInterfacing.StimParamsBasicExtensions.SaveBoard(WSSInterfacing.IStimParamsCore,WSSInterfacing.WssTarget)
+  href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_SaveBoard_WSSInterfacing_IStimParamsCore_WSSInterfacing_WssTarget_
+  name: SaveBoard(IStimParamsCore, WssTarget)
+  nameWithType: StimParamsBasicExtensions.SaveBoard(IStimParamsCore, WssTarget)
+  fullName: WSSInterfacing.StimParamsBasicExtensions.SaveBoard(WSSInterfacing.IStimParamsCore, WSSInterfacing.WssTarget)
+  spec.csharp:
+  - uid: WSSInterfacing.StimParamsBasicExtensions.SaveBoard(WSSInterfacing.IStimParamsCore,WSSInterfacing.WssTarget)
+    name: SaveBoard
+    href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_SaveBoard_WSSInterfacing_IStimParamsCore_WSSInterfacing_WssTarget_
+  - name: (
+  - uid: WSSInterfacing.IStimParamsCore
+    name: IStimParamsCore
+    href: WSSInterfacing.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WssTarget
+    name: WssTarget
+    href: WSSInterfacing.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: WSSInterfacing.StimParamsBasicExtensions.SaveBoard(WSSInterfacing.IStimParamsCore,WSSInterfacing.WssTarget)
+    name: SaveBoard
+    href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_SaveBoard_WSSInterfacing_IStimParamsCore_WSSInterfacing_WssTarget_
+  - name: (
+  - uid: WSSInterfacing.IStimParamsCore
+    name: IStimParamsCore
+    href: WSSInterfacing.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WssTarget
+    name: WssTarget
+    href: WSSInterfacing.WssTarget.html
+  - name: )
+- uid: WSSInterfacing.StimParamsBasicExtensions.TryUpdateWaveform(WSSInterfacing.IStimParamsCore,WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+  commentId: M:WSSInterfacing.StimParamsBasicExtensions.TryUpdateWaveform(WSSInterfacing.IStimParamsCore,WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+  isExternal: true
+  href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_TryUpdateWaveform_WSSInterfacing_IStimParamsCore_WSSInterfacing_WaveformBuilder_System_Int32_WSSInterfacing_WssTarget_
+  name: TryUpdateWaveform(IStimParamsCore, WaveformBuilder, int, WssTarget)
+  nameWithType: StimParamsBasicExtensions.TryUpdateWaveform(IStimParamsCore, WaveformBuilder, int, WssTarget)
+  fullName: WSSInterfacing.StimParamsBasicExtensions.TryUpdateWaveform(WSSInterfacing.IStimParamsCore, WSSInterfacing.WaveformBuilder, int, WSSInterfacing.WssTarget)
+  nameWithType.vb: StimParamsBasicExtensions.TryUpdateWaveform(IStimParamsCore, WaveformBuilder, Integer, WssTarget)
+  fullName.vb: WSSInterfacing.StimParamsBasicExtensions.TryUpdateWaveform(WSSInterfacing.IStimParamsCore, WSSInterfacing.WaveformBuilder, Integer, WSSInterfacing.WssTarget)
+  name.vb: TryUpdateWaveform(IStimParamsCore, WaveformBuilder, Integer, WssTarget)
+  spec.csharp:
+  - uid: WSSInterfacing.StimParamsBasicExtensions.TryUpdateWaveform(WSSInterfacing.IStimParamsCore,WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+    name: TryUpdateWaveform
+    href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_TryUpdateWaveform_WSSInterfacing_IStimParamsCore_WSSInterfacing_WaveformBuilder_System_Int32_WSSInterfacing_WssTarget_
+  - name: (
+  - uid: WSSInterfacing.IStimParamsCore
+    name: IStimParamsCore
+    href: WSSInterfacing.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WaveformBuilder
+    name: WaveformBuilder
+    href: WSSInterfacing.WaveformBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WssTarget
+    name: WssTarget
+    href: WSSInterfacing.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: WSSInterfacing.StimParamsBasicExtensions.TryUpdateWaveform(WSSInterfacing.IStimParamsCore,WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+    name: TryUpdateWaveform
+    href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_TryUpdateWaveform_WSSInterfacing_IStimParamsCore_WSSInterfacing_WaveformBuilder_System_Int32_WSSInterfacing_WssTarget_
+  - name: (
+  - uid: WSSInterfacing.IStimParamsCore
+    name: IStimParamsCore
+    href: WSSInterfacing.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WaveformBuilder
+    name: WaveformBuilder
+    href: WSSInterfacing.WaveformBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WssTarget
+    name: WssTarget
+    href: WSSInterfacing.WssTarget.html
+  - name: )
+- uid: WSSInterfacing.StimParamsBasicExtensions.UpdateEventShape(WSSInterfacing.IStimParamsCore,System.Int32,System.Int32,System.Int32,WSSInterfacing.WssTarget)
+  commentId: M:WSSInterfacing.StimParamsBasicExtensions.UpdateEventShape(WSSInterfacing.IStimParamsCore,System.Int32,System.Int32,System.Int32,WSSInterfacing.WssTarget)
+  isExternal: true
+  href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_UpdateEventShape_WSSInterfacing_IStimParamsCore_System_Int32_System_Int32_System_Int32_WSSInterfacing_WssTarget_
+  name: UpdateEventShape(IStimParamsCore, int, int, int, WssTarget)
+  nameWithType: StimParamsBasicExtensions.UpdateEventShape(IStimParamsCore, int, int, int, WssTarget)
+  fullName: WSSInterfacing.StimParamsBasicExtensions.UpdateEventShape(WSSInterfacing.IStimParamsCore, int, int, int, WSSInterfacing.WssTarget)
+  nameWithType.vb: StimParamsBasicExtensions.UpdateEventShape(IStimParamsCore, Integer, Integer, Integer, WssTarget)
+  fullName.vb: WSSInterfacing.StimParamsBasicExtensions.UpdateEventShape(WSSInterfacing.IStimParamsCore, Integer, Integer, Integer, WSSInterfacing.WssTarget)
+  name.vb: UpdateEventShape(IStimParamsCore, Integer, Integer, Integer, WssTarget)
+  spec.csharp:
+  - uid: WSSInterfacing.StimParamsBasicExtensions.UpdateEventShape(WSSInterfacing.IStimParamsCore,System.Int32,System.Int32,System.Int32,WSSInterfacing.WssTarget)
+    name: UpdateEventShape
+    href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_UpdateEventShape_WSSInterfacing_IStimParamsCore_System_Int32_System_Int32_System_Int32_WSSInterfacing_WssTarget_
+  - name: (
+  - uid: WSSInterfacing.IStimParamsCore
+    name: IStimParamsCore
+    href: WSSInterfacing.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WssTarget
+    name: WssTarget
+    href: WSSInterfacing.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: WSSInterfacing.StimParamsBasicExtensions.UpdateEventShape(WSSInterfacing.IStimParamsCore,System.Int32,System.Int32,System.Int32,WSSInterfacing.WssTarget)
+    name: UpdateEventShape
+    href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_UpdateEventShape_WSSInterfacing_IStimParamsCore_System_Int32_System_Int32_System_Int32_WSSInterfacing_WssTarget_
+  - name: (
+  - uid: WSSInterfacing.IStimParamsCore
+    name: IStimParamsCore
+    href: WSSInterfacing.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WssTarget
+    name: WssTarget
+    href: WSSInterfacing.WssTarget.html
+  - name: )
+- uid: WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform(WSSInterfacing.IStimParamsCore,System.Int32[],System.Int32,WSSInterfacing.WssTarget)
+  commentId: M:WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform(WSSInterfacing.IStimParamsCore,System.Int32[],System.Int32,WSSInterfacing.WssTarget)
+  isExternal: true
+  href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_UpdateWaveform_WSSInterfacing_IStimParamsCore_System_Int32___System_Int32_WSSInterfacing_WssTarget_
+  name: UpdateWaveform(IStimParamsCore, int[], int, WssTarget)
+  nameWithType: StimParamsBasicExtensions.UpdateWaveform(IStimParamsCore, int[], int, WssTarget)
+  fullName: WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform(WSSInterfacing.IStimParamsCore, int[], int, WSSInterfacing.WssTarget)
+  nameWithType.vb: StimParamsBasicExtensions.UpdateWaveform(IStimParamsCore, Integer(), Integer, WssTarget)
+  fullName.vb: WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform(WSSInterfacing.IStimParamsCore, Integer(), Integer, WSSInterfacing.WssTarget)
+  name.vb: UpdateWaveform(IStimParamsCore, Integer(), Integer, WssTarget)
+  spec.csharp:
+  - uid: WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform(WSSInterfacing.IStimParamsCore,System.Int32[],System.Int32,WSSInterfacing.WssTarget)
+    name: UpdateWaveform
+    href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_UpdateWaveform_WSSInterfacing_IStimParamsCore_System_Int32___System_Int32_WSSInterfacing_WssTarget_
+  - name: (
+  - uid: WSSInterfacing.IStimParamsCore
+    name: IStimParamsCore
+    href: WSSInterfacing.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WssTarget
+    name: WssTarget
+    href: WSSInterfacing.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform(WSSInterfacing.IStimParamsCore,System.Int32[],System.Int32,WSSInterfacing.WssTarget)
+    name: UpdateWaveform
+    href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_UpdateWaveform_WSSInterfacing_IStimParamsCore_System_Int32___System_Int32_WSSInterfacing_WssTarget_
+  - name: (
+  - uid: WSSInterfacing.IStimParamsCore
+    name: IStimParamsCore
+    href: WSSInterfacing.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WssTarget
+    name: WssTarget
+    href: WSSInterfacing.WssTarget.html
+  - name: )
+- uid: WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform(WSSInterfacing.IStimParamsCore,WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+  commentId: M:WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform(WSSInterfacing.IStimParamsCore,WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+  isExternal: true
+  href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_UpdateWaveform_WSSInterfacing_IStimParamsCore_WSSInterfacing_WaveformBuilder_System_Int32_WSSInterfacing_WssTarget_
+  name: UpdateWaveform(IStimParamsCore, WaveformBuilder, int, WssTarget)
+  nameWithType: StimParamsBasicExtensions.UpdateWaveform(IStimParamsCore, WaveformBuilder, int, WssTarget)
+  fullName: WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform(WSSInterfacing.IStimParamsCore, WSSInterfacing.WaveformBuilder, int, WSSInterfacing.WssTarget)
+  nameWithType.vb: StimParamsBasicExtensions.UpdateWaveform(IStimParamsCore, WaveformBuilder, Integer, WssTarget)
+  fullName.vb: WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform(WSSInterfacing.IStimParamsCore, WSSInterfacing.WaveformBuilder, Integer, WSSInterfacing.WssTarget)
+  name.vb: UpdateWaveform(IStimParamsCore, WaveformBuilder, Integer, WssTarget)
+  spec.csharp:
+  - uid: WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform(WSSInterfacing.IStimParamsCore,WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+    name: UpdateWaveform
+    href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_UpdateWaveform_WSSInterfacing_IStimParamsCore_WSSInterfacing_WaveformBuilder_System_Int32_WSSInterfacing_WssTarget_
+  - name: (
+  - uid: WSSInterfacing.IStimParamsCore
+    name: IStimParamsCore
+    href: WSSInterfacing.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WaveformBuilder
+    name: WaveformBuilder
+    href: WSSInterfacing.WaveformBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WssTarget
+    name: WssTarget
+    href: WSSInterfacing.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform(WSSInterfacing.IStimParamsCore,WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+    name: UpdateWaveform
+    href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_UpdateWaveform_WSSInterfacing_IStimParamsCore_WSSInterfacing_WaveformBuilder_System_Int32_WSSInterfacing_WssTarget_
+  - name: (
+  - uid: WSSInterfacing.IStimParamsCore
+    name: IStimParamsCore
+    href: WSSInterfacing.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WaveformBuilder
+    name: WaveformBuilder
+    href: WSSInterfacing.WaveformBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WssTarget
+    name: WssTarget
+    href: WSSInterfacing.WssTarget.html
+  - name: )
+- uid: WSSInterfacing.StimParamsBasicExtensions.WaveformSetup(WSSInterfacing.IStimParamsCore,WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+  commentId: M:WSSInterfacing.StimParamsBasicExtensions.WaveformSetup(WSSInterfacing.IStimParamsCore,WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+  isExternal: true
+  href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_WaveformSetup_WSSInterfacing_IStimParamsCore_WSSInterfacing_WaveformBuilder_System_Int32_WSSInterfacing_WssTarget_
+  name: WaveformSetup(IStimParamsCore, WaveformBuilder, int, WssTarget)
+  nameWithType: StimParamsBasicExtensions.WaveformSetup(IStimParamsCore, WaveformBuilder, int, WssTarget)
+  fullName: WSSInterfacing.StimParamsBasicExtensions.WaveformSetup(WSSInterfacing.IStimParamsCore, WSSInterfacing.WaveformBuilder, int, WSSInterfacing.WssTarget)
+  nameWithType.vb: StimParamsBasicExtensions.WaveformSetup(IStimParamsCore, WaveformBuilder, Integer, WssTarget)
+  fullName.vb: WSSInterfacing.StimParamsBasicExtensions.WaveformSetup(WSSInterfacing.IStimParamsCore, WSSInterfacing.WaveformBuilder, Integer, WSSInterfacing.WssTarget)
+  name.vb: WaveformSetup(IStimParamsCore, WaveformBuilder, Integer, WssTarget)
+  spec.csharp:
+  - uid: WSSInterfacing.StimParamsBasicExtensions.WaveformSetup(WSSInterfacing.IStimParamsCore,WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+    name: WaveformSetup
+    href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_WaveformSetup_WSSInterfacing_IStimParamsCore_WSSInterfacing_WaveformBuilder_System_Int32_WSSInterfacing_WssTarget_
+  - name: (
+  - uid: WSSInterfacing.IStimParamsCore
+    name: IStimParamsCore
+    href: WSSInterfacing.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WaveformBuilder
+    name: WaveformBuilder
+    href: WSSInterfacing.WaveformBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WssTarget
+    name: WssTarget
+    href: WSSInterfacing.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: WSSInterfacing.StimParamsBasicExtensions.WaveformSetup(WSSInterfacing.IStimParamsCore,WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+    name: WaveformSetup
+    href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_WaveformSetup_WSSInterfacing_IStimParamsCore_WSSInterfacing_WaveformBuilder_System_Int32_WSSInterfacing_WssTarget_
+  - name: (
+  - uid: WSSInterfacing.IStimParamsCore
+    name: IStimParamsCore
+    href: WSSInterfacing.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WaveformBuilder
+    name: WaveformBuilder
+    href: WSSInterfacing.WaveformBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: WSSInterfacing.WssTarget
+    name: WssTarget
+    href: WSSInterfacing.WssTarget.html
+  - name: )
+- uid: WSSInterfacing.IStimParamsCore.StimulateNormalized*
+  commentId: Overload:WSSInterfacing.IStimParamsCore.StimulateNormalized
+  href: WSSInterfacing.IStimParamsCore.html#WSSInterfacing_IStimParamsCore_StimulateNormalized_System_Int32_System_Single_
+  name: StimulateNormalized
+  nameWithType: IStimParamsCore.StimulateNormalized
+  fullName: WSSInterfacing.IStimParamsCore.StimulateNormalized
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: WSSInterfacing.IStimParamsCore.StimulateNormalized(System.Int32,System.Single)
+  commentId: M:WSSInterfacing.IStimParamsCore.StimulateNormalized(System.Int32,System.Single)
+  parent: WSSInterfacing.IStimParamsCore
+  isExternal: true
+  href: WSSInterfacing.IStimParamsCore.html#WSSInterfacing_IStimParamsCore_StimulateNormalized_System_Int32_System_Single_
+  name: StimulateNormalized(int, float)
+  nameWithType: IStimParamsCore.StimulateNormalized(int, float)
+  fullName: WSSInterfacing.IStimParamsCore.StimulateNormalized(int, float)
+  nameWithType.vb: IStimParamsCore.StimulateNormalized(Integer, Single)
+  fullName.vb: WSSInterfacing.IStimParamsCore.StimulateNormalized(Integer, Single)
+  name.vb: StimulateNormalized(Integer, Single)
+  spec.csharp:
+  - uid: WSSInterfacing.IStimParamsCore.StimulateNormalized(System.Int32,System.Single)
+    name: StimulateNormalized
+    href: WSSInterfacing.IStimParamsCore.html#WSSInterfacing_IStimParamsCore_StimulateNormalized_System_Int32_System_Single_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: WSSInterfacing.IStimParamsCore.StimulateNormalized(System.Int32,System.Single)
+    name: StimulateNormalized
+    href: WSSInterfacing.IStimParamsCore.html#WSSInterfacing_IStimParamsCore_StimulateNormalized_System_Int32_System_Single_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+  - name: )
+- uid: WSSInterfacing.IStimParamsCore.GetStimIntensity*
+  commentId: Overload:WSSInterfacing.IStimParamsCore.GetStimIntensity
+  href: WSSInterfacing.IStimParamsCore.html#WSSInterfacing_IStimParamsCore_GetStimIntensity_System_Int32_
+  name: GetStimIntensity
+  nameWithType: IStimParamsCore.GetStimIntensity
+  fullName: WSSInterfacing.IStimParamsCore.GetStimIntensity
+- uid: WSSInterfacing.IStimParamsCore.SaveParamsJson*
+  commentId: Overload:WSSInterfacing.IStimParamsCore.SaveParamsJson
+  href: WSSInterfacing.IStimParamsCore.html#WSSInterfacing_IStimParamsCore_SaveParamsJson
+  name: SaveParamsJson
+  nameWithType: IStimParamsCore.SaveParamsJson
+  fullName: WSSInterfacing.IStimParamsCore.SaveParamsJson
+- uid: WSSInterfacing.IStimParamsCore.LoadParamsJson*
+  commentId: Overload:WSSInterfacing.IStimParamsCore.LoadParamsJson
+  href: WSSInterfacing.IStimParamsCore.html#WSSInterfacing_IStimParamsCore_LoadParamsJson
+  name: LoadParamsJson
+  nameWithType: IStimParamsCore.LoadParamsJson
+  fullName: WSSInterfacing.IStimParamsCore.LoadParamsJson
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: WSSInterfacing.IStimParamsCore.AddOrUpdateStimParam*
+  commentId: Overload:WSSInterfacing.IStimParamsCore.AddOrUpdateStimParam
+  href: WSSInterfacing.IStimParamsCore.html#WSSInterfacing_IStimParamsCore_AddOrUpdateStimParam_System_String_System_Single_
+  name: AddOrUpdateStimParam
+  nameWithType: IStimParamsCore.AddOrUpdateStimParam
+  fullName: WSSInterfacing.IStimParamsCore.AddOrUpdateStimParam
+- uid: WSSInterfacing.IStimParamsCore.GetStimParam*
+  commentId: Overload:WSSInterfacing.IStimParamsCore.GetStimParam
+  href: WSSInterfacing.IStimParamsCore.html#WSSInterfacing_IStimParamsCore_GetStimParam_System_String_
+  name: GetStimParam
+  nameWithType: IStimParamsCore.GetStimParam
+  fullName: WSSInterfacing.IStimParamsCore.GetStimParam
+- uid: WSSInterfacing.IStimParamsCore.TryGetStimParam*
+  commentId: Overload:WSSInterfacing.IStimParamsCore.TryGetStimParam
+  href: WSSInterfacing.IStimParamsCore.html#WSSInterfacing_IStimParamsCore_TryGetStimParam_System_String_System_Single__
+  name: TryGetStimParam
+  nameWithType: IStimParamsCore.TryGetStimParam
+  fullName: WSSInterfacing.IStimParamsCore.TryGetStimParam
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: WSSInterfacing.IStimParamsCore.GetAllStimParams*
+  commentId: Overload:WSSInterfacing.IStimParamsCore.GetAllStimParams
+  href: WSSInterfacing.IStimParamsCore.html#WSSInterfacing_IStimParamsCore_GetAllStimParams
+  name: GetAllStimParams
+  nameWithType: IStimParamsCore.GetAllStimParams
+  fullName: WSSInterfacing.IStimParamsCore.GetAllStimParams
+- uid: System.Collections.Generic.Dictionary{System.String,System.Single}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,System.Single}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  name: Dictionary<string, float>
+  nameWithType: Dictionary<string, float>
+  fullName: System.Collections.Generic.Dictionary<string, float>
+  nameWithType.vb: Dictionary(Of String, Single)
+  fullName.vb: System.Collections.Generic.Dictionary(Of String, Single)
+  name.vb: Dictionary(Of String, Single)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: WSSInterfacing.IStimParamsCore.GetStimParamsConfigController*
+  commentId: Overload:WSSInterfacing.IStimParamsCore.GetStimParamsConfigController
+  href: WSSInterfacing.IStimParamsCore.html#WSSInterfacing_IStimParamsCore_GetStimParamsConfigController
+  name: GetStimParamsConfigController
+  nameWithType: IStimParamsCore.GetStimParamsConfigController
+  fullName: WSSInterfacing.IStimParamsCore.GetStimParamsConfigController
+- uid: WSSInterfacing.StimParamsConfigController
+  commentId: T:WSSInterfacing.StimParamsConfigController
+  parent: WSSInterfacing
+  href: WSSInterfacing.StimParamsConfigController.html
+  name: StimParamsConfigController
+  nameWithType: StimParamsConfigController
+  fullName: WSSInterfacing.StimParamsConfigController
+- uid: WSSInterfacing.IStimParamsCore.SetChannelAmp*
+  commentId: Overload:WSSInterfacing.IStimParamsCore.SetChannelAmp
+  href: WSSInterfacing.IStimParamsCore.html#WSSInterfacing_IStimParamsCore_SetChannelAmp_System_Int32_System_Single_
+  name: SetChannelAmp
+  nameWithType: IStimParamsCore.SetChannelAmp
+  fullName: WSSInterfacing.IStimParamsCore.SetChannelAmp
+- uid: WSSInterfacing.IStimParamsCore.SetChannelPWMin*
+  commentId: Overload:WSSInterfacing.IStimParamsCore.SetChannelPWMin
+  href: WSSInterfacing.IStimParamsCore.html#WSSInterfacing_IStimParamsCore_SetChannelPWMin_System_Int32_System_Int32_
+  name: SetChannelPWMin
+  nameWithType: IStimParamsCore.SetChannelPWMin
+  fullName: WSSInterfacing.IStimParamsCore.SetChannelPWMin
+- uid: WSSInterfacing.IStimParamsCore.SetChannelPWMax*
+  commentId: Overload:WSSInterfacing.IStimParamsCore.SetChannelPWMax
+  href: WSSInterfacing.IStimParamsCore.html#WSSInterfacing_IStimParamsCore_SetChannelPWMax_System_Int32_System_Int32_
+  name: SetChannelPWMax
+  nameWithType: IStimParamsCore.SetChannelPWMax
+  fullName: WSSInterfacing.IStimParamsCore.SetChannelPWMax
+- uid: WSSInterfacing.IStimParamsCore.SetChannelIPI*
+  commentId: Overload:WSSInterfacing.IStimParamsCore.SetChannelIPI
+  href: WSSInterfacing.IStimParamsCore.html#WSSInterfacing_IStimParamsCore_SetChannelIPI_System_Int32_System_Int32_
+  name: SetChannelIPI
+  nameWithType: IStimParamsCore.SetChannelIPI
+  fullName: WSSInterfacing.IStimParamsCore.SetChannelIPI
+- uid: WSSInterfacing.IStimParamsCore.GetChannelAmp*
+  commentId: Overload:WSSInterfacing.IStimParamsCore.GetChannelAmp
+  href: WSSInterfacing.IStimParamsCore.html#WSSInterfacing_IStimParamsCore_GetChannelAmp_System_Int32_
+  name: GetChannelAmp
+  nameWithType: IStimParamsCore.GetChannelAmp
+  fullName: WSSInterfacing.IStimParamsCore.GetChannelAmp
+- uid: WSSInterfacing.IStimParamsCore.GetChannelPWMin*
+  commentId: Overload:WSSInterfacing.IStimParamsCore.GetChannelPWMin
+  href: WSSInterfacing.IStimParamsCore.html#WSSInterfacing_IStimParamsCore_GetChannelPWMin_System_Int32_
+  name: GetChannelPWMin
+  nameWithType: IStimParamsCore.GetChannelPWMin
+  fullName: WSSInterfacing.IStimParamsCore.GetChannelPWMin
+- uid: WSSInterfacing.IStimParamsCore.GetChannelPWMax*
+  commentId: Overload:WSSInterfacing.IStimParamsCore.GetChannelPWMax
+  href: WSSInterfacing.IStimParamsCore.html#WSSInterfacing_IStimParamsCore_GetChannelPWMax_System_Int32_
+  name: GetChannelPWMax
+  nameWithType: IStimParamsCore.GetChannelPWMax
+  fullName: WSSInterfacing.IStimParamsCore.GetChannelPWMax
+- uid: WSSInterfacing.IStimParamsCore.GetChannelIPI*
+  commentId: Overload:WSSInterfacing.IStimParamsCore.GetChannelIPI
+  href: WSSInterfacing.IStimParamsCore.html#WSSInterfacing_IStimParamsCore_GetChannelIPI_System_Int32_
+  name: GetChannelIPI
+  nameWithType: IStimParamsCore.GetChannelIPI
+  fullName: WSSInterfacing.IStimParamsCore.GetChannelIPI
+- uid: WSSInterfacing.IStimParamsCore.TryGetBasic*
+  commentId: Overload:WSSInterfacing.IStimParamsCore.TryGetBasic
+  href: WSSInterfacing.IStimParamsCore.html#WSSInterfacing_IStimParamsCore_TryGetBasic_WSSInterfacing_IBasicStimulation__
+  name: TryGetBasic
+  nameWithType: IStimParamsCore.TryGetBasic
+  fullName: WSSInterfacing.IStimParamsCore.TryGetBasic
+- uid: WSSInterfacing.IBasicStimulation
+  commentId: T:WSSInterfacing.IBasicStimulation
+  parent: WSSInterfacing
+  href: WSSInterfacing.IBasicStimulation.html
+  name: IBasicStimulation
+  nameWithType: IBasicStimulation
+  fullName: WSSInterfacing.IBasicStimulation

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Namespace WSSInterfacing | WSS Interfacing Documentation </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Namespace WSSInterfacing | WSS Interfacing Documentation ">
+    
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="WSSInterfacing">
+
+  <h1 id="WSSInterfacing" data-uid="WSSInterfacing" class="text-break">Namespace WSSInterfacing</h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+    <h3 id="classes">
+Classes
+</h3>
+      <h4><a class="xref" href="WSSInterfacing.CoreConfig.html">CoreConfig</a></h4>
+      <section><p>Strongly-typed core configuration model persisted in JSON.
+Exposes the maximum number of WSS devices and the firmware version string.</p>
+</section>
+      <h4><a class="xref" href="WSSInterfacing.CoreConfigController.html">CoreConfigController</a></h4>
+      <section><p>Controls loading, validating, reading, and writing a stimulation configuration JSON file.
+Thread-safe. Ensures a valid default config exists on disk.</p>
+</section>
+      <h4><a class="xref" href="WSSInterfacing.DictConfigBase.html">DictConfigBase</a></h4>
+      <section><p>Base class for JSON-backed configuration objects that expose dotted-key access.
+Wraps a <span class="xref">Newtonsoft.Json.Linq.JObject</span> and provides thread-safe getters/setters and save.</p>
+</section>
+      <h4><a class="xref" href="WSSInterfacing.JsonReader.html">JsonReader</a></h4>
+      <section><p>Lightweight helpers for loading and saving JSON configuration files.
+Provides typed object and <span class="xref">Newtonsoft.Json.Linq.JObject</span> utilities and
+ensures parent directories exist before writes.</p>
+</section>
+      <h4><a class="xref" href="WSSInterfacing.Log.html">Log</a></h4>
+      <section><p>Minimal logging facade that writes to Unity's console when running inside
+Unity, and falls back to System.Console on nonâ€‘Unity environments.</p>
+</section>
+      <h4><a class="xref" href="WSSInterfacing.ModelConfig.html">ModelConfig</a></h4>
+      <section><p>JSON-backed model configuration that stores controller mode and constants
+under a dotted-key hierarchy (e.g., &quot;calib.mode&quot;, &quot;constants.PModeProportional&quot;).
+Provides typed access helpers via <a class="xref" href="WSSInterfacing.DictConfigBase.html">DictConfigBase</a>.</p>
+</section>
+      <h4><a class="xref" href="WSSInterfacing.ModelConfigController.html">ModelConfigController</a></h4>
+      <section><p>High-level controller for <a class="xref" href="WSSInterfacing.ModelConfig.html">ModelConfig</a> persistence and keyed access.
+Paths may be file or directory; if a directory is given, the file name <code>modelConfig.json</code> is used.
+Dotted keys address JSON nodes, e.g. <code>&quot;calib.mode&quot;</code>, <code>&quot;calib.targets.index.threshold&quot;</code>.</p>
+</section>
+      <h4><a class="xref" href="WSSInterfacing.ModelParamsLayer.html">ModelParamsLayer</a></h4>
+      <section><p>Model-driven layer (P/PD) that sits on top of an existing params layer.
+Computes PW from normalized magnitudes and stimulates via the wrapped core.</p>
+</section>
+      <h4><a class="xref" href="WSSInterfacing.SerialPortTransport.html">SerialPortTransport</a></h4>
+      <section><p>Serial-port implementation of <a class="xref" href="WSSInterfacing.ITransport.html">ITransport</a> for WSS communications.
+Wraps <span class="xref">System.IO.Ports.SerialPort</span> and exposes an event-driven receive API that works well in Unity/.NET Standard 2.0.</p>
+</section>
+      <h4><a class="xref" href="WSSInterfacing.StimParamsBasicExtensions.html">StimParamsBasicExtensions</a></h4>
+      <section><p>Convenience extension methods over <a class="xref" href="WSSInterfacing.IStimParamsCore.html">IStimParamsCore</a> that forward
+to the optional BASIC layer (<a class="xref" href="WSSInterfacing.IBasicStimulation.html">IBasicStimulation</a>). These helpers
+make common operations (waveform upload, shape selection, save/load, requests)
+concise while preserving the core API surface.</p>
+</section>
+      <h4><a class="xref" href="WSSInterfacing.StimParamsConfig.html">StimParamsConfig</a></h4>
+      <section><p>JSON-backed stimulation-parameters configuration. Inherits common JSON
+handling from <a class="xref" href="WSSInterfacing.DictConfigBase.html">DictConfigBase</a> and seeds default per-channel
+values under the <code>stim.ch</code> hierarchy.</p>
+</section>
+      <h4><a class="xref" href="WSSInterfacing.StimParamsConfigController.html">StimParamsConfigController</a></h4>
+      <section><p>Provides high-level access to stimulation parameter configuration.
+Automatically seeds channel entries based on max WSS count and ensures safe access.
+Supports only dotted keys of form &quot;stim.ch.{N}.{leaf}&quot;.</p>
+</section>
+      <h4><a class="xref" href="WSSInterfacing.StimParamsLayer.html">StimParamsLayer</a></h4>
+      <section><p>Layer that wraps an <a class="xref" href="WSSInterfacing.IStimulationCore.html">IStimulationCore</a> and a <a class="xref" href="WSSInterfacing.StimParamsConfigController.html">StimParamsConfigController</a>.
+Computes pulse widths from normalized inputs and forwards stimulation to the core.
+Also exposes dotted-key parameter access and an optional BASIC capability.</p>
+</section>
+      <h4><a class="xref" href="WSSInterfacing.Stimulation.html">Stimulation</a></h4>
+      <section><p>High-level Unity wrapper for the full stimulation model layer.
+Extends <code>StimParamsLayer</code> with proportional and derivative control modes,
+calibration constants, and model-based drive computation.
+This is the top-level interface that user code should normally interact with.</p>
+</section>
+      <h4><a class="xref" href="WSSInterfacing.StimulationParams.html">StimulationParams</a></h4>
+      <section><p>Unity wrapper that composes a params layer (<code>StimParamsLayer</code>) over a core WSS implementation.
+Extends the basic interface with per-finger calibration parameters, normalized drive, and JSON persistence.
+All public stimulation APIs accept a finger string and map to a channel via <span class="xref">WSSInterfacing.StimulationParams.FingerToChannel(string)</span>.</p>
+</section>
+      <h4><a class="xref" href="WSSInterfacing.Stimulationbasic.html">Stimulationbasic</a></h4>
+      <section><p>Basic Unity MonoBehaviour wrapper for the WSS stimulation core.
+Handles initialization, configuration, and waveform control for connected WSS stimulators.
+Designed as the simplest interface layer exposing low-level stimulation functionality.</p>
+</section>
+      <h4><a class="xref" href="WSSInterfacing.TestModeTransport.html">TestModeTransport</a></h4>
+      <section><p>In-memory transport for debugging and unit tests. No real I/O.
+Features: artificial latency, jitter, inbound chunking, and drop simulation.
+Default auto-responder validates checksum, flips sender/target, and echoes or replaces payload.</p>
+</section>
+      <h4><a class="xref" href="WSSInterfacing.WSSVersionHandler.html">WSSVersionHandler</a></h4>
+      <section><p>Handles WSS firmware version parsing and feature availability based on supported firmware versions.</p>
+</section>
+      <h4><a class="xref" href="WSSInterfacing.Waveform.html">Waveform</a></h4>
+      <section><p>Immutable waveform container holding cathodic and anodic shape arrays and
+the computed total area used for balanced charge calculations.</p>
+</section>
+      <h4><a class="xref" href="WSSInterfacing.WaveformBuilder.html">WaveformBuilder</a></h4>
+      <section><p>Utility for constructing charge-balanced stimulation waveforms.
+Given a cathodic shape, it computes a matching anodic recharge segment and
+exposes helpers to retrieve shapes and total area.</p>
+</section>
+      <h4><a class="xref" href="WSSInterfacing.WssClient.html">WssClient</a></h4>
+      <section><p>Low-level WSS protocol client. Frames commands using an <a class="xref" href="WSSInterfacing.IFrameCodec.html">IFrameCodec</a>,
+sends them over an <a class="xref" href="WSSInterfacing.ITransport.html">ITransport</a>, and correlates responses by
+<code>(target,msgId)</code>. Provides async connect/disconnect and a request/response
+pipeline used by higher-level cores and layers.</p>
+</section>
+      <h4><a class="xref" href="WSSInterfacing.WssFrameCodec.html">WssFrameCodec</a></h4>
+      <section><p>WSS frame codec implementing a SLIP-like protocol:</p>
+<ul><li><b>END</b> (<code>0xC0</code>) terminates a frame.</li><li><b>ESC</b> (<code>0xDB</code>) escapes special bytes inside the frame.</li><li><b>END_SUB</b> (<code>0xDC</code>) represents END when escaped.</li><li><b>ESC_SUB</b> (<code>0xDD</code>) represents ESC when escaped.</li></ul>
+Frames on the wire are <code>[sender][target][payload...][checksum][END]</code>.
+The checksum is computed over all bytes except the last two (checksum + END).
+</section>
+      <h4><a class="xref" href="WSSInterfacing.WssStimulationCore.html">WssStimulationCore</a></h4>
+      <section><p>Unity-agnostic WSS stimulation core that manages connection, setup (via a queued step runner),
+and a background streaming loop. Public mutator methods enqueue device edits and return immediately.</p>
+</section>
+      <h4><a class="xref" href="WSSInterfacing.portScanner.html">portScanner</a></h4>
+      <section><p>Simple Unity helper that scans available serial ports and allows selecting
+one from a UI dropdown to force the COM port used by the stimulation script.
+Attach this to a separate GameObject and wire the <a class="xref" href="WSSInterfacing.portScanner.html#WSSInterfacing_portScanner_selectPort">selectPort()</a>
+method to a UI event (e.g., button click) to apply the chosen port.</p>
+</section>
+    <h3 id="interfaces">
+Interfaces
+</h3>
+      <h4><a class="xref" href="WSSInterfacing.IBasicStimulation.html">IBasicStimulation</a></h4>
+      <section><p>Basic stimulation operations that upload or select waveforms and manage
+board configuration. Calls are non-blocking; implementations may enqueue
+setup steps and return immediately.</p>
+</section>
+      <h4><a class="xref" href="WSSInterfacing.ICoreConfig.html">ICoreConfig</a></h4>
+      <section><p>Read-only view of core configuration values loaded from the JSON config file.
+Implementations expose firmware information and global limits.</p>
+</section>
+      <h4><a class="xref" href="WSSInterfacing.IFrameCodec.html">IFrameCodec</a></h4>
+      <section><p>Contract for framing and deframing WSS messages over byte-stream transports (Serial, BLE, TCP).</p>
+</section>
+      <h4><a class="xref" href="WSSInterfacing.IModelParamsCore.html">IModelParamsCore</a></h4>
+      <section><p>Model-driven stimulation surface layered over params + core.
+Extends params API and adds controller-mode stimulation (P/PD).</p>
+</section>
+      <h4><a class="xref" href="WSSInterfacing.IStimParamsCore.html">IStimParamsCore</a></h4>
+      <section><p>Core + parameters surface layered over <a class="xref" href="WSSInterfacing.IStimulationCore.html">IStimulationCore</a>.
+Provides normalized-drive stimulation, per-channel parameter access,
+and JSON persistence for stimulation parameters. BASIC is optional and
+can be exposed via <a class="xref" href="WSSInterfacing.IStimParamsCore.html#WSSInterfacing_IStimParamsCore_TryGetBasic_WSSInterfacing_IBasicStimulation__">TryGetBasic(out IBasicStimulation)</a>.</p>
+</section>
+      <h4><a class="xref" href="WSSInterfacing.IStimulationCore.html">IStimulationCore</a></h4>
+      <section><p>Unity-agnostic stimulation core lifecycle and control surface.
+Implementations manage connection, setup, and a background streaming loop.
+Public mutators should enqueue edits and return immediately.</p>
+</section>
+      <h4><a class="xref" href="WSSInterfacing.ITransport.html">ITransport</a></h4>
+      <section><p>Abstraction over a byte-stream transport (e.g., Serial, Bluetooth, TCP) used by the WSS client.
+Implementations should surface incoming bytes via <a class="xref" href="WSSInterfacing.ITransport.html#WSSInterfacing_ITransport_BytesReceived">BytesReceived</a> and provide
+async connect/disconnect/send operations.</p>
+</section>
+    <h3 id="enums">
+Enums
+</h3>
+      <h4><a class="xref" href="WSSInterfacing.WSSLimits.html">WSSLimits</a></h4>
+      <section><p>Device- and protocol-level numeric limits and sizes used by the WSS stack.
+Values reflect firmware constraints such as maximum pulse width and buffer sizes.</p>
+</section>
+      <h4><a class="xref" href="WSSInterfacing.WSSMessageIDs.html">WSSMessageIDs</a></h4>
+      <section><p>Protocol message identifiers used by the WSS firmware.
+Values correspond to on-wire command codes.</p>
+</section>
+      <h4><a class="xref" href="WSSInterfacing.WSSVersionHandler.SupportedVersions.html">WSSVersionHandler.SupportedVersions</a></h4>
+      <section><p>Enum representing known supported WSS firmware versions.
+Integer values correspond to internal numeric codes.</p>
+</section>
+      <h4><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></h4>
+      <section><p>Addresses for targeting individual WSS units or broadcasting to all.
+Values are on-wire destination IDs used by commands.</p>
+</section>
+
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

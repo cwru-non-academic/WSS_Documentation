@@ -1,0 +1,363 @@
+### YamlMime:ManagedReference
+items:
+- uid: WSSInterfacing.WSSVersionHandler
+  commentId: T:WSSInterfacing.WSSVersionHandler
+  id: WSSVersionHandler
+  parent: WSSInterfacing
+  children:
+  - WSSInterfacing.WSSVersionHandler.#ctor(System.String)
+  - WSSInterfacing.WSSVersionHandler.GetVersion
+  - WSSInterfacing.WSSVersionHandler.IsAmplitudeCheckAvailable
+  - WSSInterfacing.WSSVersionHandler.IsFeatureAvailable(System.String)
+  - WSSInterfacing.WSSVersionHandler.IsLEDSettingsAvailable
+  - WSSInterfacing.WSSVersionHandler.ToString
+  - WSSInterfacing.WSSVersionHandler.isVersionSupported(System.String)
+  langs:
+  - csharp
+  - vb
+  name: WSSVersionHandler
+  nameWithType: WSSVersionHandler
+  fullName: WSSInterfacing.WSSVersionHandler
+  type: Class
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Handles WSS firmware version parsing and feature availability based on supported firmware versions.
+  example: []
+  syntax:
+    content: public class WSSVersionHandler
+    content.vb: Public Class WSSVersionHandler
+  inheritance:
+  - System.Object
+- uid: WSSInterfacing.WSSVersionHandler.#ctor(System.String)
+  commentId: M:WSSInterfacing.WSSVersionHandler.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: WSSInterfacing.WSSVersionHandler
+  langs:
+  - csharp
+  - vb
+  name: WSSVersionHandler(string)
+  nameWithType: WSSVersionHandler.WSSVersionHandler(string)
+  fullName: WSSInterfacing.WSSVersionHandler.WSSVersionHandler(string)
+  type: Constructor
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: >-
+    Initializes a new instance of the <xref href="WSSInterfacing.WSSVersionHandler" data-throw-if-not-resolved="false"></xref> class using a string version.
+
+    Defaults to <xref href="WSSInterfacing.WSSVersionHandler.SupportedVersions.H03" data-throw-if-not-resolved="false"></xref> if an unknown version string is provided.
+  example: []
+  syntax:
+    content: public WSSVersionHandler(string strVersion)
+    parameters:
+    - id: strVersion
+      type: System.String
+      description: Firmware version string (e.g., "H03", "J03").
+    content.vb: Public Sub New(strVersion As String)
+  overload: WSSInterfacing.WSSVersionHandler.#ctor*
+  nameWithType.vb: WSSVersionHandler.New(String)
+  fullName.vb: WSSInterfacing.WSSVersionHandler.New(String)
+  name.vb: New(String)
+- uid: WSSInterfacing.WSSVersionHandler.isVersionSupported(System.String)
+  commentId: M:WSSInterfacing.WSSVersionHandler.isVersionSupported(System.String)
+  id: isVersionSupported(System.String)
+  parent: WSSInterfacing.WSSVersionHandler
+  langs:
+  - csharp
+  - vb
+  name: isVersionSupported(string)
+  nameWithType: WSSVersionHandler.isVersionSupported(string)
+  fullName: WSSInterfacing.WSSVersionHandler.isVersionSupported(string)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Determines whether the specified firmware version string is supported by this application.
+  example: []
+  syntax:
+    content: public bool isVersionSupported(string strVersion)
+    parameters:
+    - id: strVersion
+      type: System.String
+      description: Firmware version identifier to check (for example, <code>"H03"</code> or <code>"J03"</code>).
+    return:
+      type: System.Boolean
+      description: >-
+        <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the supplied version is recognized and supported; 
+
+        otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+    content.vb: Public Function isVersionSupported(strVersion As String) As Boolean
+  overload: WSSInterfacing.WSSVersionHandler.isVersionSupported*
+  nameWithType.vb: WSSVersionHandler.isVersionSupported(String)
+  fullName.vb: WSSInterfacing.WSSVersionHandler.isVersionSupported(String)
+  name.vb: isVersionSupported(String)
+- uid: WSSInterfacing.WSSVersionHandler.GetVersion
+  commentId: M:WSSInterfacing.WSSVersionHandler.GetVersion
+  id: GetVersion
+  parent: WSSInterfacing.WSSVersionHandler
+  langs:
+  - csharp
+  - vb
+  name: GetVersion()
+  nameWithType: WSSVersionHandler.GetVersion()
+  fullName: WSSInterfacing.WSSVersionHandler.GetVersion()
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Gets the current firmware version as a named enum.
+  example: []
+  syntax:
+    content: public WSSVersionHandler.SupportedVersions GetVersion()
+    return:
+      type: WSSInterfacing.WSSVersionHandler.SupportedVersions
+      description: The current <xref href="WSSInterfacing.WSSVersionHandler.SupportedVersions" data-throw-if-not-resolved="false"></xref> enum value.
+    content.vb: Public Function GetVersion() As WSSVersionHandler.SupportedVersions
+  overload: WSSInterfacing.WSSVersionHandler.GetVersion*
+- uid: WSSInterfacing.WSSVersionHandler.IsFeatureAvailable(System.String)
+  commentId: M:WSSInterfacing.WSSVersionHandler.IsFeatureAvailable(System.String)
+  id: IsFeatureAvailable(System.String)
+  parent: WSSInterfacing.WSSVersionHandler
+  langs:
+  - csharp
+  - vb
+  name: IsFeatureAvailable(string)
+  nameWithType: WSSVersionHandler.IsFeatureAvailable(string)
+  fullName: WSSInterfacing.WSSVersionHandler.IsFeatureAvailable(string)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Checks if the specified feature is supported by the current firmware version.
+  example: []
+  syntax:
+    content: public bool IsFeatureAvailable(string feature)
+    parameters:
+    - id: feature
+      type: System.String
+      description: The name of the feature to check (e.g., "AmplitudeCheck").
+    return:
+      type: System.Boolean
+      description: <code>true</code> if the feature is available in this firmware version; otherwise, <code>false</code>.
+    content.vb: Public Function IsFeatureAvailable(feature As String) As Boolean
+  overload: WSSInterfacing.WSSVersionHandler.IsFeatureAvailable*
+  nameWithType.vb: WSSVersionHandler.IsFeatureAvailable(String)
+  fullName.vb: WSSInterfacing.WSSVersionHandler.IsFeatureAvailable(String)
+  name.vb: IsFeatureAvailable(String)
+- uid: WSSInterfacing.WSSVersionHandler.IsAmplitudeCheckAvailable
+  commentId: M:WSSInterfacing.WSSVersionHandler.IsAmplitudeCheckAvailable
+  id: IsAmplitudeCheckAvailable
+  parent: WSSInterfacing.WSSVersionHandler
+  langs:
+  - csharp
+  - vb
+  name: IsAmplitudeCheckAvailable()
+  nameWithType: WSSVersionHandler.IsAmplitudeCheckAvailable()
+  fullName: WSSInterfacing.WSSVersionHandler.IsAmplitudeCheckAvailable()
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Indicates whether amplitude check support is available in the current firmware version.
+  example: []
+  syntax:
+    content: public bool IsAmplitudeCheckAvailable()
+    return:
+      type: System.Boolean
+      description: <code>true</code> if amplitude check is supported; otherwise, <code>false</code>.
+    content.vb: Public Function IsAmplitudeCheckAvailable() As Boolean
+  overload: WSSInterfacing.WSSVersionHandler.IsAmplitudeCheckAvailable*
+- uid: WSSInterfacing.WSSVersionHandler.IsLEDSettingsAvailable
+  commentId: M:WSSInterfacing.WSSVersionHandler.IsLEDSettingsAvailable
+  id: IsLEDSettingsAvailable
+  parent: WSSInterfacing.WSSVersionHandler
+  langs:
+  - csharp
+  - vb
+  name: IsLEDSettingsAvailable()
+  nameWithType: WSSVersionHandler.IsLEDSettingsAvailable()
+  fullName: WSSInterfacing.WSSVersionHandler.IsLEDSettingsAvailable()
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Indicates whether LED settings are available in the current firmware version.
+  example: []
+  syntax:
+    content: public bool IsLEDSettingsAvailable()
+    return:
+      type: System.Boolean
+      description: <code>true</code> if LED settings are supported; otherwise, <code>false</code>.
+    content.vb: Public Function IsLEDSettingsAvailable() As Boolean
+  overload: WSSInterfacing.WSSVersionHandler.IsLEDSettingsAvailable*
+- uid: WSSInterfacing.WSSVersionHandler.ToString
+  commentId: M:WSSInterfacing.WSSVersionHandler.ToString
+  id: ToString
+  parent: WSSInterfacing.WSSVersionHandler
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: WSSVersionHandler.ToString()
+  fullName: WSSInterfacing.WSSVersionHandler.ToString()
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Returns the string representation of the current firmware version (e.g., "H03").
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+      description: The string name of the current firmware version.
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.Object.ToString
+  overload: WSSInterfacing.WSSVersionHandler.ToString*
+references:
+- uid: WSSInterfacing
+  commentId: N:WSSInterfacing
+  href: WSSInterfacing.html
+  name: WSSInterfacing
+  nameWithType: WSSInterfacing
+  fullName: WSSInterfacing
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: WSSInterfacing.WSSVersionHandler
+  commentId: T:WSSInterfacing.WSSVersionHandler
+  parent: WSSInterfacing
+  href: WSSInterfacing.WSSVersionHandler.html
+  name: WSSVersionHandler
+  nameWithType: WSSVersionHandler
+  fullName: WSSInterfacing.WSSVersionHandler
+- uid: WSSInterfacing.WSSVersionHandler.SupportedVersions.H03
+  commentId: F:WSSInterfacing.WSSVersionHandler.SupportedVersions.H03
+  href: WSSInterfacing.WSSVersionHandler.SupportedVersions.html#WSSInterfacing_WSSVersionHandler_SupportedVersions_H03
+  name: H03
+  nameWithType: WSSVersionHandler.SupportedVersions.H03
+  fullName: WSSInterfacing.WSSVersionHandler.SupportedVersions.H03
+- uid: WSSInterfacing.WSSVersionHandler.#ctor*
+  commentId: Overload:WSSInterfacing.WSSVersionHandler.#ctor
+  href: WSSInterfacing.WSSVersionHandler.html#WSSInterfacing_WSSVersionHandler__ctor_System_String_
+  name: WSSVersionHandler
+  nameWithType: WSSVersionHandler.WSSVersionHandler
+  fullName: WSSInterfacing.WSSVersionHandler.WSSVersionHandler
+  nameWithType.vb: WSSVersionHandler.New
+  fullName.vb: WSSInterfacing.WSSVersionHandler.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: WSSInterfacing.WSSVersionHandler.isVersionSupported*
+  commentId: Overload:WSSInterfacing.WSSVersionHandler.isVersionSupported
+  href: WSSInterfacing.WSSVersionHandler.html#WSSInterfacing_WSSVersionHandler_isVersionSupported_System_String_
+  name: isVersionSupported
+  nameWithType: WSSVersionHandler.isVersionSupported
+  fullName: WSSInterfacing.WSSVersionHandler.isVersionSupported
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: WSSInterfacing.WSSVersionHandler.SupportedVersions
+  commentId: T:WSSInterfacing.WSSVersionHandler.SupportedVersions
+  parent: WSSInterfacing
+  href: WSSInterfacing.WSSVersionHandler.html
+  name: WSSVersionHandler.SupportedVersions
+  nameWithType: WSSVersionHandler.SupportedVersions
+  fullName: WSSInterfacing.WSSVersionHandler.SupportedVersions
+  spec.csharp:
+  - uid: WSSInterfacing.WSSVersionHandler
+    name: WSSVersionHandler
+    href: WSSInterfacing.WSSVersionHandler.html
+  - name: .
+  - uid: WSSInterfacing.WSSVersionHandler.SupportedVersions
+    name: SupportedVersions
+    href: WSSInterfacing.WSSVersionHandler.SupportedVersions.html
+  spec.vb:
+  - uid: WSSInterfacing.WSSVersionHandler
+    name: WSSVersionHandler
+    href: WSSInterfacing.WSSVersionHandler.html
+  - name: .
+  - uid: WSSInterfacing.WSSVersionHandler.SupportedVersions
+    name: SupportedVersions
+    href: WSSInterfacing.WSSVersionHandler.SupportedVersions.html
+- uid: WSSInterfacing.WSSVersionHandler.GetVersion*
+  commentId: Overload:WSSInterfacing.WSSVersionHandler.GetVersion
+  href: WSSInterfacing.WSSVersionHandler.html#WSSInterfacing_WSSVersionHandler_GetVersion
+  name: GetVersion
+  nameWithType: WSSVersionHandler.GetVersion
+  fullName: WSSInterfacing.WSSVersionHandler.GetVersion
+- uid: WSSInterfacing.WSSVersionHandler.IsFeatureAvailable*
+  commentId: Overload:WSSInterfacing.WSSVersionHandler.IsFeatureAvailable
+  href: WSSInterfacing.WSSVersionHandler.html#WSSInterfacing_WSSVersionHandler_IsFeatureAvailable_System_String_
+  name: IsFeatureAvailable
+  nameWithType: WSSVersionHandler.IsFeatureAvailable
+  fullName: WSSInterfacing.WSSVersionHandler.IsFeatureAvailable
+- uid: WSSInterfacing.WSSVersionHandler.IsAmplitudeCheckAvailable*
+  commentId: Overload:WSSInterfacing.WSSVersionHandler.IsAmplitudeCheckAvailable
+  href: WSSInterfacing.WSSVersionHandler.html#WSSInterfacing_WSSVersionHandler_IsAmplitudeCheckAvailable
+  name: IsAmplitudeCheckAvailable
+  nameWithType: WSSVersionHandler.IsAmplitudeCheckAvailable
+  fullName: WSSInterfacing.WSSVersionHandler.IsAmplitudeCheckAvailable
+- uid: WSSInterfacing.WSSVersionHandler.IsLEDSettingsAvailable*
+  commentId: Overload:WSSInterfacing.WSSVersionHandler.IsLEDSettingsAvailable
+  href: WSSInterfacing.WSSVersionHandler.html#WSSInterfacing_WSSVersionHandler_IsLEDSettingsAvailable
+  name: IsLEDSettingsAvailable
+  nameWithType: WSSVersionHandler.IsLEDSettingsAvailable
+  fullName: WSSInterfacing.WSSVersionHandler.IsLEDSettingsAvailable
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: WSSInterfacing.WSSVersionHandler.ToString*
+  commentId: Overload:WSSInterfacing.WSSVersionHandler.ToString
+  href: WSSInterfacing.WSSVersionHandler.html#WSSInterfacing_WSSVersionHandler_ToString
+  name: ToString
+  nameWithType: WSSVersionHandler.ToString
+  fullName: WSSInterfacing.WSSVersionHandler.ToString

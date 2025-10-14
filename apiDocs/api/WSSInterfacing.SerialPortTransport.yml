@@ -1,0 +1,880 @@
+### YamlMime:ManagedReference
+items:
+- uid: WSSInterfacing.SerialPortTransport
+  commentId: T:WSSInterfacing.SerialPortTransport
+  id: SerialPortTransport
+  parent: WSSInterfacing
+  children:
+  - WSSInterfacing.SerialPortTransport.#ctor(System.Int32,System.IO.Ports.Parity,System.Int32,System.IO.Ports.StopBits,System.Int32)
+  - WSSInterfacing.SerialPortTransport.#ctor(System.String,System.Int32,System.IO.Ports.Parity,System.Int32,System.IO.Ports.StopBits,System.Int32)
+  - WSSInterfacing.SerialPortTransport.BytesReceived
+  - WSSInterfacing.SerialPortTransport.ConnectAsync(System.Threading.CancellationToken)
+  - WSSInterfacing.SerialPortTransport.DisconnectAsync(System.Threading.CancellationToken)
+  - WSSInterfacing.SerialPortTransport.Dispose
+  - WSSInterfacing.SerialPortTransport.IsConnected
+  - WSSInterfacing.SerialPortTransport.SendAsync(System.Byte[],System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: SerialPortTransport
+  nameWithType: SerialPortTransport
+  fullName: WSSInterfacing.SerialPortTransport
+  type: Class
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: >-
+    Serial-port implementation of <xref href="WSSInterfacing.ITransport" data-throw-if-not-resolved="false"></xref> for WSS communications.
+
+    Wraps <xref href="System.IO.Ports.SerialPort" data-throw-if-not-resolved="false"></xref> and exposes an event-driven receive API that works well in Unity/.NET Standard 2.0.
+  remarks: >-
+    <p><b>Threading:</b> <xref href="WSSInterfacing.SerialPortTransport.BytesReceived" data-throw-if-not-resolved="false"></xref> is raised from a background task. If your app (e.g., Unity)
+
+    requires main-thread processing, marshal the callback to the main thread before touching UI/GameObjects.</p>
+
+    <p><b>Chunking:</b> Serial I/O does not preserve message boundaries. Each chunk may contain partial frames or
+
+    multiple frames. Always pass chunks to a frame codec/deframer.</p>
+
+    <p><b>Timeouts:</b> The read loop polls <xref href="System.IO.Ports.SerialPort.BytesToRead" data-throw-if-not-resolved="false"></xref> and catches <xref href="System.TimeoutException" data-throw-if-not-resolved="false"></xref>s,
+
+    which are normal with short read timeouts.</p>
+  example: []
+  syntax:
+    content: 'public sealed class SerialPortTransport : ITransport'
+    content.vb: Public NotInheritable Class SerialPortTransport Implements ITransport
+  inheritance:
+  - System.Object
+  implements:
+  - WSSInterfacing.ITransport
+- uid: WSSInterfacing.SerialPortTransport.#ctor(System.String,System.Int32,System.IO.Ports.Parity,System.Int32,System.IO.Ports.StopBits,System.Int32)
+  commentId: M:WSSInterfacing.SerialPortTransport.#ctor(System.String,System.Int32,System.IO.Ports.Parity,System.Int32,System.IO.Ports.StopBits,System.Int32)
+  id: '#ctor(System.String,System.Int32,System.IO.Ports.Parity,System.Int32,System.IO.Ports.StopBits,System.Int32)'
+  parent: WSSInterfacing.SerialPortTransport
+  langs:
+  - csharp
+  - vb
+  name: SerialPortTransport(string, int, Parity, int, StopBits, int)
+  nameWithType: SerialPortTransport.SerialPortTransport(string, int, Parity, int, StopBits, int)
+  fullName: WSSInterfacing.SerialPortTransport.SerialPortTransport(string, int, System.IO.Ports.Parity, int, System.IO.Ports.StopBits, int)
+  type: Constructor
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Creates a serial transport bound to the given port name and parameters.
+  example: []
+  syntax:
+    content: public SerialPortTransport(string portName, int baud = 115200, Parity parity = Parity.None, int dataBits = 8, StopBits stopBits = StopBits.One, int readTimeoutMs = 10)
+    parameters:
+    - id: portName
+      type: System.String
+      description: Port name (e.g., <code>"COM5"</code> on Windows, <code>"/dev/ttyUSB0"</code> on Linux/macOS).
+    - id: baud
+      type: System.Int32
+      description: Baud rate. Default is 115200.
+    - id: parity
+      type: System.IO.Ports.Parity
+      description: Parity setting. Default is <xref href="System.IO.Ports.Parity.None" data-throw-if-not-resolved="false"></xref>.
+    - id: dataBits
+      type: System.Int32
+      description: Data bits. Default is 8.
+    - id: stopBits
+      type: System.IO.Ports.StopBits
+      description: Stop bits. Default is <xref href="System.IO.Ports.StopBits.One" data-throw-if-not-resolved="false"></xref>.
+    - id: readTimeoutMs
+      type: System.Int32
+      description: >-
+        Synchronous read timeout in milliseconds (used by <xref href="System.IO.Ports.SerialPort.Read(System.Byte%5b%5d%2cSystem.Int32%2cSystem.Int32)" data-throw-if-not-resolved="false"></xref>).
+
+        Typical value is small (e.g., 10ms). Timeouts are caught and ignored in the read loop.
+    content.vb: Public Sub New(portName As String, baud As Integer = 115200, parity As Parity = Parity.None, dataBits As Integer = 8, stopBits As StopBits = StopBits.One, readTimeoutMs As Integer = 10)
+  overload: WSSInterfacing.SerialPortTransport.#ctor*
+  nameWithType.vb: SerialPortTransport.New(String, Integer, Parity, Integer, StopBits, Integer)
+  fullName.vb: WSSInterfacing.SerialPortTransport.New(String, Integer, System.IO.Ports.Parity, Integer, System.IO.Ports.StopBits, Integer)
+  name.vb: New(String, Integer, Parity, Integer, StopBits, Integer)
+- uid: WSSInterfacing.SerialPortTransport.#ctor(System.Int32,System.IO.Ports.Parity,System.Int32,System.IO.Ports.StopBits,System.Int32)
+  commentId: M:WSSInterfacing.SerialPortTransport.#ctor(System.Int32,System.IO.Ports.Parity,System.Int32,System.IO.Ports.StopBits,System.Int32)
+  id: '#ctor(System.Int32,System.IO.Ports.Parity,System.Int32,System.IO.Ports.StopBits,System.Int32)'
+  parent: WSSInterfacing.SerialPortTransport
+  langs:
+  - csharp
+  - vb
+  name: SerialPortTransport(int, Parity, int, StopBits, int)
+  nameWithType: SerialPortTransport.SerialPortTransport(int, Parity, int, StopBits, int)
+  fullName: WSSInterfacing.SerialPortTransport.SerialPortTransport(int, System.IO.Ports.Parity, int, System.IO.Ports.StopBits, int)
+  type: Constructor
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Creates a serial transport bound to the given parameters. Th port name is automatically selected as the firts port in the list.
+  example: []
+  syntax:
+    content: public SerialPortTransport(int baud = 115200, Parity parity = Parity.None, int dataBits = 8, StopBits stopBits = StopBits.One, int readTimeoutMs = 10)
+    parameters:
+    - id: baud
+      type: System.Int32
+      description: Baud rate. Default is 115200.
+    - id: parity
+      type: System.IO.Ports.Parity
+      description: Parity setting. Default is <xref href="System.IO.Ports.Parity.None" data-throw-if-not-resolved="false"></xref>.
+    - id: dataBits
+      type: System.Int32
+      description: Data bits. Default is 8.
+    - id: stopBits
+      type: System.IO.Ports.StopBits
+      description: Stop bits. Default is <xref href="System.IO.Ports.StopBits.One" data-throw-if-not-resolved="false"></xref>.
+    - id: readTimeoutMs
+      type: System.Int32
+      description: >-
+        Synchronous read timeout in milliseconds (used by <xref href="System.IO.Ports.SerialPort.Read(System.Byte%5b%5d%2cSystem.Int32%2cSystem.Int32)" data-throw-if-not-resolved="false"></xref>).
+
+        Typical value is small (e.g., 10ms). Timeouts are caught and ignored in the read loop.
+    content.vb: Public Sub New(baud As Integer = 115200, parity As Parity = Parity.None, dataBits As Integer = 8, stopBits As StopBits = StopBits.One, readTimeoutMs As Integer = 10)
+  overload: WSSInterfacing.SerialPortTransport.#ctor*
+  nameWithType.vb: SerialPortTransport.New(Integer, Parity, Integer, StopBits, Integer)
+  fullName.vb: WSSInterfacing.SerialPortTransport.New(Integer, System.IO.Ports.Parity, Integer, System.IO.Ports.StopBits, Integer)
+  name.vb: New(Integer, Parity, Integer, StopBits, Integer)
+- uid: WSSInterfacing.SerialPortTransport.IsConnected
+  commentId: P:WSSInterfacing.SerialPortTransport.IsConnected
+  id: IsConnected
+  parent: WSSInterfacing.SerialPortTransport
+  langs:
+  - csharp
+  - vb
+  name: IsConnected
+  nameWithType: SerialPortTransport.IsConnected
+  fullName: WSSInterfacing.SerialPortTransport.IsConnected
+  type: Property
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Gets whether the transport is currently connected/open.
+  example: []
+  syntax:
+    content: public bool IsConnected { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsConnected As Boolean
+  overload: WSSInterfacing.SerialPortTransport.IsConnected*
+  implements:
+  - WSSInterfacing.ITransport.IsConnected
+- uid: WSSInterfacing.SerialPortTransport.BytesReceived
+  commentId: E:WSSInterfacing.SerialPortTransport.BytesReceived
+  id: BytesReceived
+  parent: WSSInterfacing.SerialPortTransport
+  langs:
+  - csharp
+  - vb
+  name: BytesReceived
+  nameWithType: SerialPortTransport.BytesReceived
+  fullName: WSSInterfacing.SerialPortTransport.BytesReceived
+  type: Event
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: >-
+    Raised whenever raw bytes arrive from the underlying transport.
+
+    Each invocation may represent any number of bytes (including zero, depending on implementation),
+
+    and may contain partial or multiple protocol frames.
+  remarks: >-
+    <p>
+
+    Implementations should invoke this event promptly as data becomes available.
+
+    Callers should treat the provided buffer as read-only and copy it if they need to retain it.
+
+    </p>
+
+    <p>
+
+    This event is typically raised on a background thread. Consumers should marshal to the main thread
+
+    if required by their environment.
+
+    </p>
+  example: []
+  syntax:
+    content: public event Action<byte[]> BytesReceived
+    return:
+      type: System.Action{System.Byte[]}
+    content.vb: Public Event BytesReceived As Action(Of Byte())
+  implements:
+  - WSSInterfacing.ITransport.BytesReceived
+- uid: WSSInterfacing.SerialPortTransport.ConnectAsync(System.Threading.CancellationToken)
+  commentId: M:WSSInterfacing.SerialPortTransport.ConnectAsync(System.Threading.CancellationToken)
+  id: ConnectAsync(System.Threading.CancellationToken)
+  parent: WSSInterfacing.SerialPortTransport
+  langs:
+  - csharp
+  - vb
+  name: ConnectAsync(CancellationToken)
+  nameWithType: SerialPortTransport.ConnectAsync(CancellationToken)
+  fullName: WSSInterfacing.SerialPortTransport.ConnectAsync(System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Opens/initializes the transport connection (e.g., open a serial port, connect a socket, start BLE session).
+  remarks: Opens the serial port and starts a background read loop that forwards incoming data to <xref href="WSSInterfacing.SerialPortTransport.BytesReceived" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public Task ConnectAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Optional cancellation token to abort the connect attempt.
+    return:
+      type: System.Threading.Tasks.Task
+      description: A task that completes when the transport is connected.
+    content.vb: Public Function ConnectAsync(ct As CancellationToken = Nothing) As Task
+  overload: WSSInterfacing.SerialPortTransport.ConnectAsync*
+  exceptions:
+  - type: System.ObjectDisposedException
+    commentId: T:System.ObjectDisposedException
+    description: If the instance has been disposed.
+  - type: System.OperationCanceledException
+    commentId: T:System.OperationCanceledException
+    description: If <code class="paramref">ct</code> is canceled.
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: Implementations may throw transport-specific exceptions (e.g., unauthorized port access, device not found).
+  implements:
+  - WSSInterfacing.ITransport.ConnectAsync(System.Threading.CancellationToken)
+- uid: WSSInterfacing.SerialPortTransport.DisconnectAsync(System.Threading.CancellationToken)
+  commentId: M:WSSInterfacing.SerialPortTransport.DisconnectAsync(System.Threading.CancellationToken)
+  id: DisconnectAsync(System.Threading.CancellationToken)
+  parent: WSSInterfacing.SerialPortTransport
+  langs:
+  - csharp
+  - vb
+  name: DisconnectAsync(CancellationToken)
+  nameWithType: SerialPortTransport.DisconnectAsync(CancellationToken)
+  fullName: WSSInterfacing.SerialPortTransport.DisconnectAsync(System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Closes the transport connection and stops any background receive loop.
+  remarks: Stops the background read loop and closes the serial port.
+  example: []
+  syntax:
+    content: public Task DisconnectAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Optional cancellation token to abort a long-running disconnect.
+    return:
+      type: System.Threading.Tasks.Task
+      description: A task that completes when the transport is fully disconnected.
+    content.vb: Public Function DisconnectAsync(ct As CancellationToken = Nothing) As Task
+  overload: WSSInterfacing.SerialPortTransport.DisconnectAsync*
+  exceptions:
+  - type: System.ObjectDisposedException
+    commentId: T:System.ObjectDisposedException
+    description: If the instance has been disposed.
+  - type: System.OperationCanceledException
+    commentId: T:System.OperationCanceledException
+    description: If <code class="paramref">ct</code> is canceled.
+  implements:
+  - WSSInterfacing.ITransport.DisconnectAsync(System.Threading.CancellationToken)
+- uid: WSSInterfacing.SerialPortTransport.SendAsync(System.Byte[],System.Threading.CancellationToken)
+  commentId: M:WSSInterfacing.SerialPortTransport.SendAsync(System.Byte[],System.Threading.CancellationToken)
+  id: SendAsync(System.Byte[],System.Threading.CancellationToken)
+  parent: WSSInterfacing.SerialPortTransport
+  langs:
+  - csharp
+  - vb
+  name: SendAsync(byte[], CancellationToken)
+  nameWithType: SerialPortTransport.SendAsync(byte[], CancellationToken)
+  fullName: WSSInterfacing.SerialPortTransport.SendAsync(byte[], System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Sends a block of bytes over the transport.
+  remarks: Writes the buffer synchronously to the underlying <xref href="System.IO.Ports.SerialPort" data-throw-if-not-resolved="false"></xref> and flushes the base stream.
+  example: []
+  syntax:
+    content: public Task SendAsync(byte[] data, CancellationToken ct = default)
+    parameters:
+    - id: data
+      type: System.Byte[]
+      description: The bytes to write. Callers should provide a buffer that will not be mutated during send.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: >-
+        Optional cancellation token to cancel the send before it is written.
+
+        For some transports (e.g., synchronous serial writes), cancellation may only be observed before the write starts.
+    return:
+      type: System.Threading.Tasks.Task
+      description: A task that completes when the bytes have been handed off to the transport.
+    content.vb: Public Function SendAsync(data As Byte(), ct As CancellationToken = Nothing) As Task
+  overload: WSSInterfacing.SerialPortTransport.SendAsync*
+  exceptions:
+  - type: System.ObjectDisposedException
+    commentId: T:System.ObjectDisposedException
+    description: If the instance has been disposed.
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: If the transport is not connected.
+  - type: System.OperationCanceledException
+    commentId: T:System.OperationCanceledException
+    description: If <code class="paramref">ct</code> is canceled.
+  implements:
+  - WSSInterfacing.ITransport.SendAsync(System.Byte[],System.Threading.CancellationToken)
+  nameWithType.vb: SerialPortTransport.SendAsync(Byte(), CancellationToken)
+  fullName.vb: WSSInterfacing.SerialPortTransport.SendAsync(Byte(), System.Threading.CancellationToken)
+  name.vb: SendAsync(Byte(), CancellationToken)
+- uid: WSSInterfacing.SerialPortTransport.Dispose
+  commentId: M:WSSInterfacing.SerialPortTransport.Dispose
+  id: Dispose
+  parent: WSSInterfacing.SerialPortTransport
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: SerialPortTransport.Dispose()
+  fullName: WSSInterfacing.SerialPortTransport.Dispose()
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Disposes the serial port and stops the read loop.
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: WSSInterfacing.SerialPortTransport.Dispose*
+references:
+- uid: WSSInterfacing.ITransport
+  commentId: T:WSSInterfacing.ITransport
+  parent: WSSInterfacing
+  href: WSSInterfacing.ITransport.html
+  name: ITransport
+  nameWithType: ITransport
+  fullName: WSSInterfacing.ITransport
+- uid: System.IO.Ports.SerialPort
+  commentId: T:System.IO.Ports.SerialPort
+  isExternal: true
+  name: SerialPort
+  nameWithType: SerialPort
+  fullName: System.IO.Ports.SerialPort
+- uid: WSSInterfacing.SerialPortTransport.BytesReceived
+  commentId: E:WSSInterfacing.SerialPortTransport.BytesReceived
+  href: WSSInterfacing.SerialPortTransport.html#WSSInterfacing_SerialPortTransport_BytesReceived
+  name: BytesReceived
+  nameWithType: SerialPortTransport.BytesReceived
+  fullName: WSSInterfacing.SerialPortTransport.BytesReceived
+- uid: System.IO.Ports.SerialPort.BytesToRead
+  commentId: P:System.IO.Ports.SerialPort.BytesToRead
+  isExternal: true
+  name: BytesToRead
+  nameWithType: SerialPort.BytesToRead
+  fullName: System.IO.Ports.SerialPort.BytesToRead
+- uid: System.TimeoutException
+  commentId: T:System.TimeoutException
+  isExternal: true
+  name: TimeoutException
+  nameWithType: TimeoutException
+  fullName: System.TimeoutException
+- uid: WSSInterfacing
+  commentId: N:WSSInterfacing
+  href: WSSInterfacing.html
+  name: WSSInterfacing
+  nameWithType: WSSInterfacing
+  fullName: WSSInterfacing
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.IO.Ports.Parity.None
+  commentId: F:System.IO.Ports.Parity.None
+  isExternal: true
+  name: None
+  nameWithType: Parity.None
+  fullName: System.IO.Ports.Parity.None
+- uid: System.IO.Ports.StopBits.One
+  commentId: F:System.IO.Ports.StopBits.One
+  isExternal: true
+  name: One
+  nameWithType: StopBits.One
+  fullName: System.IO.Ports.StopBits.One
+- uid: System.IO.Ports.SerialPort.Read(System.Byte[],System.Int32,System.Int32)
+  commentId: M:System.IO.Ports.SerialPort.Read(System.Byte[],System.Int32,System.Int32)
+  isExternal: true
+  name: Read(byte[], int, int)
+  nameWithType: SerialPort.Read(byte[], int, int)
+  fullName: System.IO.Ports.SerialPort.Read(byte[], int, int)
+  nameWithType.vb: SerialPort.Read(Byte(), Integer, Integer)
+  fullName.vb: System.IO.Ports.SerialPort.Read(Byte(), Integer, Integer)
+  name.vb: Read(Byte(), Integer, Integer)
+  spec.csharp:
+  - uid: System.IO.Ports.SerialPort.Read(System.Byte[],System.Int32,System.Int32)
+    name: Read
+    isExternal: true
+  - name: (
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: System.IO.Ports.SerialPort.Read(System.Byte[],System.Int32,System.Int32)
+    name: Read
+    isExternal: true
+  - name: (
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: WSSInterfacing.SerialPortTransport.#ctor*
+  commentId: Overload:WSSInterfacing.SerialPortTransport.#ctor
+  href: WSSInterfacing.SerialPortTransport.html#WSSInterfacing_SerialPortTransport__ctor_System_String_System_Int32_System_IO_Ports_Parity_System_Int32_System_IO_Ports_StopBits_System_Int32_
+  name: SerialPortTransport
+  nameWithType: SerialPortTransport.SerialPortTransport
+  fullName: WSSInterfacing.SerialPortTransport.SerialPortTransport
+  nameWithType.vb: SerialPortTransport.New
+  fullName.vb: WSSInterfacing.SerialPortTransport.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.IO.Ports.Parity
+  commentId: T:System.IO.Ports.Parity
+  parent: System.IO.Ports
+  isExternal: true
+  name: Parity
+  nameWithType: Parity
+  fullName: System.IO.Ports.Parity
+- uid: System.IO.Ports.StopBits
+  commentId: T:System.IO.Ports.StopBits
+  parent: System.IO.Ports
+  isExternal: true
+  name: StopBits
+  nameWithType: StopBits
+  fullName: System.IO.Ports.StopBits
+- uid: System.IO.Ports
+  commentId: N:System.IO.Ports
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.IO.Ports
+  nameWithType: System.IO.Ports
+  fullName: System.IO.Ports
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+  - name: .
+  - uid: System.IO.Ports
+    name: Ports
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.ports
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+  - name: .
+  - uid: System.IO.Ports
+    name: Ports
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.ports
+- uid: WSSInterfacing.SerialPortTransport.IsConnected*
+  commentId: Overload:WSSInterfacing.SerialPortTransport.IsConnected
+  href: WSSInterfacing.SerialPortTransport.html#WSSInterfacing_SerialPortTransport_IsConnected
+  name: IsConnected
+  nameWithType: SerialPortTransport.IsConnected
+  fullName: WSSInterfacing.SerialPortTransport.IsConnected
+- uid: WSSInterfacing.ITransport.IsConnected
+  commentId: P:WSSInterfacing.ITransport.IsConnected
+  parent: WSSInterfacing.ITransport
+  href: WSSInterfacing.ITransport.html#WSSInterfacing_ITransport_IsConnected
+  name: IsConnected
+  nameWithType: ITransport.IsConnected
+  fullName: WSSInterfacing.ITransport.IsConnected
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: WSSInterfacing.ITransport.BytesReceived
+  commentId: E:WSSInterfacing.ITransport.BytesReceived
+  parent: WSSInterfacing.ITransport
+  href: WSSInterfacing.ITransport.html#WSSInterfacing_ITransport_BytesReceived
+  name: BytesReceived
+  nameWithType: ITransport.BytesReceived
+  fullName: WSSInterfacing.ITransport.BytesReceived
+- uid: System.Action{System.Byte[]}
+  commentId: T:System.Action{System.Byte[]}
+  parent: System
+  definition: System.Action`1
+  name: Action<byte[]>
+  nameWithType: Action<byte[]>
+  fullName: System.Action<byte[]>
+  nameWithType.vb: Action(Of Byte())
+  fullName.vb: System.Action(Of Byte())
+  name.vb: Action(Of Byte())
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+  - name: <
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+  - name: '['
+  - name: ']'
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+  - name: (
+  - name: )
+  - name: )
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.ObjectDisposedException
+  commentId: T:System.ObjectDisposedException
+  isExternal: true
+  name: ObjectDisposedException
+  nameWithType: ObjectDisposedException
+  fullName: System.ObjectDisposedException
+- uid: System.OperationCanceledException
+  commentId: T:System.OperationCanceledException
+  isExternal: true
+  name: OperationCanceledException
+  nameWithType: OperationCanceledException
+  fullName: System.OperationCanceledException
+- uid: System.Exception
+  commentId: T:System.Exception
+  parent: System
+  isExternal: true
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: WSSInterfacing.SerialPortTransport.ConnectAsync*
+  commentId: Overload:WSSInterfacing.SerialPortTransport.ConnectAsync
+  href: WSSInterfacing.SerialPortTransport.html#WSSInterfacing_SerialPortTransport_ConnectAsync_System_Threading_CancellationToken_
+  name: ConnectAsync
+  nameWithType: SerialPortTransport.ConnectAsync
+  fullName: WSSInterfacing.SerialPortTransport.ConnectAsync
+- uid: WSSInterfacing.ITransport.ConnectAsync(System.Threading.CancellationToken)
+  commentId: M:WSSInterfacing.ITransport.ConnectAsync(System.Threading.CancellationToken)
+  parent: WSSInterfacing.ITransport
+  isExternal: true
+  href: WSSInterfacing.ITransport.html#WSSInterfacing_ITransport_ConnectAsync_System_Threading_CancellationToken_
+  name: ConnectAsync(CancellationToken)
+  nameWithType: ITransport.ConnectAsync(CancellationToken)
+  fullName: WSSInterfacing.ITransport.ConnectAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: WSSInterfacing.ITransport.ConnectAsync(System.Threading.CancellationToken)
+    name: ConnectAsync
+    href: WSSInterfacing.ITransport.html#WSSInterfacing_ITransport_ConnectAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: WSSInterfacing.ITransport.ConnectAsync(System.Threading.CancellationToken)
+    name: ConnectAsync
+    href: WSSInterfacing.ITransport.html#WSSInterfacing_ITransport_ConnectAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+  - name: )
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: WSSInterfacing.SerialPortTransport.DisconnectAsync*
+  commentId: Overload:WSSInterfacing.SerialPortTransport.DisconnectAsync
+  href: WSSInterfacing.SerialPortTransport.html#WSSInterfacing_SerialPortTransport_DisconnectAsync_System_Threading_CancellationToken_
+  name: DisconnectAsync
+  nameWithType: SerialPortTransport.DisconnectAsync
+  fullName: WSSInterfacing.SerialPortTransport.DisconnectAsync
+- uid: WSSInterfacing.ITransport.DisconnectAsync(System.Threading.CancellationToken)
+  commentId: M:WSSInterfacing.ITransport.DisconnectAsync(System.Threading.CancellationToken)
+  parent: WSSInterfacing.ITransport
+  isExternal: true
+  href: WSSInterfacing.ITransport.html#WSSInterfacing_ITransport_DisconnectAsync_System_Threading_CancellationToken_
+  name: DisconnectAsync(CancellationToken)
+  nameWithType: ITransport.DisconnectAsync(CancellationToken)
+  fullName: WSSInterfacing.ITransport.DisconnectAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: WSSInterfacing.ITransport.DisconnectAsync(System.Threading.CancellationToken)
+    name: DisconnectAsync
+    href: WSSInterfacing.ITransport.html#WSSInterfacing_ITransport_DisconnectAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: WSSInterfacing.ITransport.DisconnectAsync(System.Threading.CancellationToken)
+    name: DisconnectAsync
+    href: WSSInterfacing.ITransport.html#WSSInterfacing_ITransport_DisconnectAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+  - name: )
+- uid: System.InvalidOperationException
+  commentId: T:System.InvalidOperationException
+  isExternal: true
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
+- uid: WSSInterfacing.SerialPortTransport.SendAsync*
+  commentId: Overload:WSSInterfacing.SerialPortTransport.SendAsync
+  href: WSSInterfacing.SerialPortTransport.html#WSSInterfacing_SerialPortTransport_SendAsync_System_Byte___System_Threading_CancellationToken_
+  name: SendAsync
+  nameWithType: SerialPortTransport.SendAsync
+  fullName: WSSInterfacing.SerialPortTransport.SendAsync
+- uid: WSSInterfacing.ITransport.SendAsync(System.Byte[],System.Threading.CancellationToken)
+  commentId: M:WSSInterfacing.ITransport.SendAsync(System.Byte[],System.Threading.CancellationToken)
+  parent: WSSInterfacing.ITransport
+  isExternal: true
+  href: WSSInterfacing.ITransport.html#WSSInterfacing_ITransport_SendAsync_System_Byte___System_Threading_CancellationToken_
+  name: SendAsync(byte[], CancellationToken)
+  nameWithType: ITransport.SendAsync(byte[], CancellationToken)
+  fullName: WSSInterfacing.ITransport.SendAsync(byte[], System.Threading.CancellationToken)
+  nameWithType.vb: ITransport.SendAsync(Byte(), CancellationToken)
+  fullName.vb: WSSInterfacing.ITransport.SendAsync(Byte(), System.Threading.CancellationToken)
+  name.vb: SendAsync(Byte(), CancellationToken)
+  spec.csharp:
+  - uid: WSSInterfacing.ITransport.SendAsync(System.Byte[],System.Threading.CancellationToken)
+    name: SendAsync
+    href: WSSInterfacing.ITransport.html#WSSInterfacing_ITransport_SendAsync_System_Byte___System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: WSSInterfacing.ITransport.SendAsync(System.Byte[],System.Threading.CancellationToken)
+    name: SendAsync
+    href: WSSInterfacing.ITransport.html#WSSInterfacing_ITransport_SendAsync_System_Byte___System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+  - name: )
+- uid: System.Byte[]
+  isExternal: true
+  name: byte[]
+  nameWithType: byte[]
+  fullName: byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+  - name: (
+  - name: )
+- uid: WSSInterfacing.SerialPortTransport.Dispose*
+  commentId: Overload:WSSInterfacing.SerialPortTransport.Dispose
+  href: WSSInterfacing.SerialPortTransport.html#WSSInterfacing_SerialPortTransport_Dispose
+  name: Dispose
+  nameWithType: SerialPortTransport.Dispose
+  fullName: WSSInterfacing.SerialPortTransport.Dispose

@@ -1,0 +1,600 @@
+﻿---
+output:
+  html_document: default
+  pdf_document: default
+---
+# WSS Commands
+
+This is a complete, self-contained reference for constructing and sending messages to the Wearable Stimulation System (WSS). Use this together with SimpleSerial.Rmd for port setup and sending raw bytes.
+
+- Protocol framing and checksum
+- Addressing (host/targets)
+- Message ID list
+- Linked command index and per-command details (inputs, examples, full frames with checksum)
+
+## Command Index
+
+- [Reset (0x04)](#reset-0x04)
+- [Echo (0x07)](#echo-0x07)
+- [Request Analog (0x02)](#request-analog-0x02)
+- [Module Query (0x01)](#module-query-0x01)
+- [Clear (0x40)](#clear-0x40)
+- [Request Config (0x41)](#request-config-0x41)
+- [Create Contact Config (0x42)](#create-contact-config-0x42)
+- [Delete Contact Config (0x43)](#delete-contact-config-0x43)
+- [Create Event (0x44)](#create-event-0x44)
+- [Delete Event (0x45)](#delete-event-0x45)
+- [Add Event To Schedule (0x46)](#add-event-to-schedule-0x46)
+- [Remove Event From Schedule (0x47)](#remove-event-from-schedule-0x47)
+- [Move Event To Schedule (0x48)](#move-event-to-schedule-0x48)
+- [Edit Event Config (0x49)](#edit-event-config-0x49)
+- [Create Schedule (0x4A)](#create-schedule-0x4a)
+- [Delete Schedule (0x4B)](#delete-schedule-0x4b)
+- [Sync Group (0x4C)](#sync-group-0x4c)
+- [Change Group State (0x4D)](#change-group-state-0x4d)
+- [Change Schedule Config (0x4E)](#change-schedule-config-0x4e)
+- [Reset Schedules (0x4F)](#reset-schedules-0x4f)
+- [Custom Waveform (0x9D)](#custom-waveform-0x9d)
+- [Stimulation Switch (0x0B)](#stimulation-switch-0x0b)
+- [Streaming Updates (0x30–0x33)](#streaming-updates-0x30–0x33)
+
+## Protocol Overview
+
+Frames on the wire use a SLIP-like transport with escaping.
+
+- Terminator: END = 0xC0
+- Escape: ESC = 0xDB, END_SUB = 0xDC, ESC_SUB = 0xDD
+- Escaping applies to all bytes except the final END terminator.
+- Layout (unescaped):
+  - [sender][target][cmd][len][data..][checksum][END]
+  - `checksum` is computed over all preceding bytes except the final END.
+
+Checksum (from WssFrameCodec):
+
+- Sum all included bytes, fold to 8 bits, then XOR with 0xFF
+- Pseudocode: `sum = sum(bytes[:-1]); sum = ((sum & 0xFF) + (sum >> 8)) ^ 0xFF`
+
+## Addressing
+
+The second byte identifies the destination WSS device (or broadcast).
+
+| Name | Value | Meaning |
+|------|-------|---------|
+| Host | 0x00  | Sender address used by the PC (typical) |
+| Wss1 | 0x81  | First device |
+| Wss2 | 0x82  | Second device |
+| Wss3 | 0x83  | Third device |
+| Broadcast | 0x8F | Broadcast to all devices |
+
+## Message IDs
+
+Primary command codes used in the `cmd` field:
+
+| Name | Code | Description |
+|------|------|-------------|
+| ModuleQuery | 0x01 | Query module identity / settings |
+| RequestAnalog | 0x02 | Request analog readings |
+| Reset | 0x04 | Device reset |
+| Error | 0x05 | Error/status reply |
+| Echo | 0x07 | Ping/pong echo (2 data bytes echoed back) |
+| BoardCommands | 0x09 | Board-level control (subcommands below) |
+| StimulationSwitch | 0x0B | Start/Stop stimulation switch |
+| StreamChangeAll | 0x30 | Stream PA+PW+IPI (3×3 bytes) |
+| StreamChangeNoIPI | 0x31 | Stream PA+PW only |
+| StreamChangeNoPW | 0x32 | Stream PA+IPI only |
+| StreamChangeNoPA | 0x33 | Stream PW+IPI only |
+| Clear | 0x40 | Clear contacts/events/schedules/all |
+| RequestConfig | 0x41 | Request config blocks (selectors) |
+| CreateContactConfig | 0x42 | Define output contact roles |
+| DeleteContactConfig | 0x43 | Delete contact config |
+| CreateEvent | 0x44 | Create event (variants) |
+| DeleteEvent | 0x45 | Delete event |
+| AddEventToSchedule | 0x46 | Add event to schedule |
+| RemoveEventFromSchedule | 0x47 | Remove event from schedule |
+| MoveEventToSchedule | 0x48 | Move event to schedule |
+| EditEventConfig | 0x49 | Edit event fields (subcommands below) |
+| CreateSchedule | 0x4A | Create schedule |
+| DeleteSchedule | 0x4B | Delete schedule |
+| SyncGroup | 0x4C | Emit sync signal |
+| ChangeGroupState | 0x4D | Change group state |
+| ChangeScheduleConfig | 0x4E | Change schedule fields |
+| ResetSchedule | 0x4F | Reset schedules |
+| CustomWaveform | 0x9D | Upload custom waveform (chunks) |
+
+## Command Reference
+
+Conventions:
+- Length (`len`) is the number of data bytes only.
+- All single-byte fields are 0–255 unless noted.
+- 16-bit fields are big-endian: High byte, then Low byte.
+
+### Reset (0x04)
+- Purpose: Software reset of microcontroller.
+- Payload: none (`len = 0`)
+
+Inputs
+
+| Input  | Description              | Example Value |
+|--------|--------------------------|---------------|
+| target | Destination WSS address  | `0x81` (Wss1) |
+
+Example frame (unescaped)
+
+- sender `00`, target `81`, cmd `04`, len `00`
+- checksum = ((00+81+04+00) fold8) xor FF = 7A
+
+Bytes: `00 81 04 00 7A C0`
+
+### Echo (0x07)
+- Purpose: Echo two bytes back to confirm link.
+- Payload: `[echo0][echo1]`
+- Units: opaque bytes
+
+Inputs
+
+| Input  | Description                  | Example Value |
+|--------|------------------------------|---------------|
+| target | Destination WSS address      | `0x81` (Wss1) |
+| echo0  | First echoed data byte       | `0x12`        |
+| echo1  | Second echoed data byte      | `0xAB`        |
+
+Example frame (unescaped)
+
+- `00 81 07 02 12 AB` → checksum = `B7`
+
+Bytes: `00 81 07 02 12 AB B7 C0`
+
+### Request Analog (0x02)
+- Purpose: Request battery/impedance (firmware support pending).
+- Payload: `[0x01]`
+
+Inputs
+
+| Input  | Description             | Example Value |
+|--------|-------------------------|---------------|
+| target | Destination WSS address | `0x81`        |
+| code   | Analog subcode          | `0x01`        |
+
+Example frame (unescaped)
+
+- `00 81 02 01 01` → checksum = `7A`
+
+Bytes: `00 81 02 01 01 7A C0`
+
+### Module Query (0x01)
+- Purpose: Read module identity/settings.
+- Payload: `[moduleIndex]`
+  - `0` = serial number, `1` = settings array
+
+Inputs
+
+| Input       | Description                 | Example Value |
+|-------------|-----------------------------|---------------|
+| target      | Destination WSS address     | `0x81`        |
+| moduleIndex | 0=serial, 1=settings array  | `0x01`        |
+
+Example frame (unescaped)
+
+- `00 81 01 01 01` → checksum = `7B`
+
+Bytes: `00 81 01 01 01 7B C0`
+
+### Clear (0x40)
+- Purpose: Clear groups of resources.
+- Payload: `[configIndex]`
+  - `0` = all, `1` = events, `2` = schedules, `3` = contacts
+
+Inputs
+
+| Input       | Description                 | Example Value |
+|-------------|-----------------------------|---------------|
+| target      | Destination WSS address     | `0x81`        |
+| configIndex | What to clear               | `0x01` (events) |
+
+Example frame (unescaped)
+
+- `00 81 40 01 01` → checksum = `3C`
+
+Bytes: `00 81 40 01 01 3C C0`
+
+### Request Config (0x41)
+- Purpose: Request specific config blocks.
+- Payload: `[selector0][selector1][id]`
+- Selectors:
+  - 0x00,0x00 → Output Configuration List
+  - 0x00,0x01 → Output Configuration details
+  - 0x01,0x00 → Event List
+  - 0x01,0x01 → Event Basic configuration
+  - 0x01,0x02 → Event Output configuration
+  - 0x01,0x03 → Event Stimulation configuration
+  - 0x01,0x04 → Event Shape configuration
+  - 0x01,0x05 → Event Burst configuration
+  - 0x02,0x00 → Schedule Basic configuration
+  - 0x02,0x01 → Schedule Listing
+
+Inputs
+
+| Input     | Description                             | Example Value |
+|-----------|-----------------------------------------|---------------|
+| target    | Destination WSS address                 | `0x81`        |
+| selector0 | Category (00=Output, 01=Event, 02=Sched)| `0x01`        |
+| selector1 | Type per category                       | `0x04` (Event Shape) |
+| id        | Item ID                                 | `0x02`        |
+
+Example frame (unescaped)
+
+- `00 81 41 03 01 04 02` → checksum = `33`
+
+Bytes: `00 81 41 03 01 04 02 33 C0`
+
+### Create Contact Config (0x42)
+- Purpose: Define output roles for stimulation and recharge.
+- Payload: `[contactId][stimByte][rechargeByte][ledByte?]`
+  - `ledByte` present only if firmware supports LED settings (J03+)
+- Encoding (per 2-bit, 4 outputs packed into a byte):
+  - 00 = not used, 10 = source (anode), 11 = sink (cathode)
+  - Index 0 = closest to switch (see code’s reversing notes)
+
+Inputs
+
+| Input        | Description                                 | Example Value |
+|--------------|---------------------------------------------|---------------|
+| target       | Destination WSS address                      | `0x81`        |
+| contactId    | Contact configuration ID                     | `0x05`        |
+| stimByte     | Packed roles for stim phase (4×2‑bit)        | `0xA8`        |
+| rechargeByte | Packed roles for recharge phase              | `0x80`        |
+| ledByte      | Optional LED bitmask (J03+ only)             | `0x03`        |
+
+Example frame (with LEDs, unescaped)
+
+- `00 81 42 04 05 A8 80 03` → checksum = `07`
+
+Bytes: `00 81 42 04 05 A8 80 03 07 C0`
+
+### Delete Contact Config (0x43)
+- Payload: `[contactId]`
+
+Inputs
+
+| Input     | Description                 | Example Value |
+|-----------|-----------------------------|---------------|
+| target    | Destination WSS address     | `0x81`        |
+| contactId | Contact configuration ID    | `0x05`        |
+
+Example frame
+
+- `00 81 43 01 05` → checksum = `35`
+
+Bytes: `00 81 43 01 05 35 C0`
+
+### Create Event (0x44)
+- Variant A — basic:
+  - Payload: `[eventId][delayMs][contactConfigId]`
+  - Units: `delayMs` 0–255 ms
+- Variant B — with shapes:
+  - Payload: `[eventId][delayMs][contactConfigId][standardShapeId][rechargeShapeId]`
+- Variant C — full PWs (wide/8-bit) and shapes (advanced):
+  - See EditEventPw below for PW units/order.
+
+Inputs (Variant A)
+
+| Input           | Description                         | Example Value |
+|-----------------|-------------------------------------|---------------|
+| target          | Destination WSS address             | `0x81`        |
+| eventId         | Event ID (0–255)                    | `0x10`        |
+| delayMs         | Delay from schedule start (ms)      | `0x14` (20)   |
+| contactConfigId | Contact configuration ID            | `0x05`        |
+
+Example frame (Variant A)
+
+- `00 81 44 03 10 14 05` → checksum = `0E`
+
+Bytes: `00 81 44 03 10 14 05 0E C0`
+
+### Delete Event (0x45)
+- Payload: `[eventId]`
+
+Inputs
+
+| Input   | Description                 | Example Value |
+|---------|-----------------------------|---------------|
+| target  | Destination WSS address     | `0x81`        |
+| eventId | Event ID (0–255)            | `0x10`        |
+
+Example frame
+
+- `00 81 45 01 10` → checksum = `28`
+
+Bytes: `00 81 45 01 10 28 C0`
+
+### Add Event To Schedule (0x46)
+- Payload: `[eventId][scheduleId]`
+
+Inputs
+
+| Input      | Description                 | Example Value |
+|------------|-----------------------------|---------------|
+| target     | Destination WSS address     | `0x81`        |
+| eventId    | Event ID                    | `0x10`        |
+| scheduleId | Schedule ID                 | `0x01`        |
+
+Example frame
+
+- `00 81 46 02 10 01` → checksum = `25`
+
+Bytes: `00 81 46 02 10 01 25 C0`
+
+### Remove Event From Schedule (0x47)
+- Payload: `[eventId]`
+
+Inputs
+
+| Input   | Description                 | Example Value |
+|---------|-----------------------------|---------------|
+| target  | Destination WSS address     | `0x81`        |
+| eventId | Event ID                    | `0x10`        |
+
+Example frame
+
+- `00 81 47 01 10` → checksum = `26`
+
+Bytes: `00 81 47 01 10 26 C0`
+
+### Move Event To Schedule (0x48)
+- Payload: `[eventId][scheduleId][delayMs]`
+- Units: `delayMs` 0–255 ms (this variant)
+
+Inputs
+
+| Input      | Description                      | Example Value |
+|------------|----------------------------------|---------------|
+| target     | Destination WSS address          | `0x81`        |
+| eventId    | Event ID                         | `0x10`        |
+| scheduleId | Destination schedule ID          | `0x02`        |
+| delayMs    | Start delay in ms (0–255)        | `0x0A` (10)   |
+
+Example frame
+
+- `00 81 48 03 10 02 0A` → checksum = `17`
+
+Bytes: `00 81 48 03 10 02 0A 17 C0`
+
+### Edit Event Config (0x49)
+- Subcommands and payloads:
+
+1) Contact config
+- `[eventId][0x01][contactConfigId]`
+
+2) Pulse widths (μs) and IPD (μs)
+- 8-bit variant (all ≤ 255): `[eventId][0x02][stdPW][IPD][rechPW]`
+- 16-bit variant: `[eventId][0x02][stdPW_H stdPW_L][IPD_H IPD_L][rechPW_H rechPW_L]`
+  - Units: microseconds (std/rech PW), IPD in μs (code clamps IPD ≤ 1000)
+  - Wire order: stdPW, IPD, rechPW
+
+3) Amplitudes (device units: 0–255)
+- `[eventId][0x04][s0 s1 s2 s3 r0 r1 r2 r3]`
+
+4) Shapes
+- `[eventId][0x05][standardShapeId][rechargeShapeId]`
+  - Shape map: 0=Rect, 1=Rect(DAC), 2=Sine, 3=Gaussian, 4=Exp↑, 5=Exp↓, 6=Linear↑, 7=Linear↓, 10=Trapezoid, 11–13=User1–3
+
+5) Delay
+- `[eventId][0x06][delayMs]` (0–255 ms)
+
+6) Ratio
+- `[eventId][0x07][ratio]` where `ratio ∈ {1,2,4,8}`
+
+7) Enable bit
+- `[eventId][0x08][enable]` where `enable ∈ {0,1}`
+
+Inputs (PW Subcommand, 8‑bit example)
+
+| Input     | Description                               | Example Value |
+|-----------|-------------------------------------------|---------------|
+| target    | Destination WSS address                    | `0x81`        |
+| eventId   | Event ID                                   | `0x10`        |
+| subcmd    | `0x02` for pulse widths/IPD                | `0x02`        |
+| stdPW     | Standard PW (μs)                           | `0x32` (50)   |
+| IPD       | Inter‑phase delay (μs)                     | `0x0A` (10)   |
+| rechPW    | Recharge PW (μs)                           | `0x14` (20)   |
+
+Example frame (PW, 8‑bit)
+
+- `00 81 49 04 10 02 32 0A 14` → checksum = `CE`
+
+Bytes: `00 81 49 04 10 02 32 0A 14 CE C0`
+
+Inputs (Shape Subcommand)
+
+| Input     | Description                               | Example Value |
+|-----------|-------------------------------------------|---------------|
+| target    | Destination WSS address                    | `0x81`        |
+| eventId   | Event ID                                   | `0x10`        |
+| subcmd    | `0x05` for shapes                          | `0x05`        |
+| stdShape  | Standard shape ID                          | `0x00` (Rect) |
+| recShape  | Recharge shape ID                          | `0x02` (Sine) |
+
+Example frame (Shape)
+
+- `00 81 49 04 10 05 00 02` → checksum = `1A`
+
+Bytes: `00 81 49 04 10 05 00 02 1A C0`
+
+### Create Schedule (0x4A)
+- Payload: `[scheduleId][duration_H][duration_L][syncSignal]`
+- Units: duration in ms (16‑bit)
+
+Inputs
+
+| Input       | Description                        | Example Value |
+|-------------|------------------------------------|---------------|
+| target      | Destination WSS address            | `0x81`        |
+| scheduleId  | Schedule ID                        | `0x01`        |
+| duration    | Duration in ms (16‑bit, big‑endian) | `0x01 F4` (500) |
+| syncSignal  | Sync group ID                      | `0x00`        |
+
+Example frame
+
+- `00 81 4A 04 01 01 F4 00` → checksum = `39`
+
+Bytes: `00 81 4A 04 01 01 F4 00 39 C0`
+
+### Delete Schedule (0x4B)
+- Payload: `[scheduleId]`
+
+Inputs
+
+| Input      | Description                 | Example Value |
+|------------|-----------------------------|---------------|
+| target     | Destination WSS address     | `0x81`        |
+| scheduleId | Schedule ID                 | `0x01`        |
+
+Example frame
+
+- `00 81 4B 01 01` → checksum = `31`
+
+Bytes: `00 81 4B 01 01 31 C0`
+
+### Sync Group (0x4C)
+- Payload: `[syncSignal]`
+- Notes: Starts schedules in the group from READY→ACTIVE
+
+Inputs
+
+| Input      | Description                 | Example Value |
+|------------|-----------------------------|---------------|
+| target     | Destination WSS address     | `0x81`        |
+| syncSignal | Sync group ID               | `0x01`        |
+
+Example frame
+
+- `00 81 4C 01 01` → checksum = `30`
+
+Bytes: `00 81 4C 01 01 30 C0`
+
+### Change Group State (0x4D)
+- Payload: `[syncSignal][state]`
+- States: 0=ACTIVE, 1=READY, 2=SUSPEND
+
+Inputs
+
+| Input      | Description                        | Example Value |
+|------------|------------------------------------|---------------|
+| target     | Destination WSS address            | `0x81`        |
+| syncSignal | Sync group ID                      | `0x01`        |
+| state      | 0=ACTIVE,1=READY,2=SUSPEND         | `0x01` (READY) |
+
+Example frame
+
+- `00 81 4D 02 01 01` → checksum = `2D`
+
+Bytes: `00 81 4D 02 01 01 2D C0`
+
+### Change Schedule Config (0x4E)
+- Subcommands
+  - State: `[0x01][scheduleId][state]`
+  - Group: `[0x02][scheduleId][syncSignal]`
+  - Duration: `[0x03][scheduleId][duration]` (8‑bit variant)
+
+Inputs (State subcmd)
+
+| Input       | Description                    | Example Value |
+|-------------|--------------------------------|---------------|
+| target      | Destination WSS address        | `0x81`        |
+| subcmd      | `0x01`                         | `0x01`        |
+| scheduleId  | Schedule ID                    | `0x01`        |
+| state       | 0=ACTIVE,1=READY,2=SUSPEND     | `0x00` (ACTIVE) |
+
+Example frame (State)
+
+- `00 81 4E 03 01 01 00` → checksum = `2B`
+
+Bytes: `00 81 4E 03 01 01 00 2B C0`
+
+### Reset Schedules (0x4F)
+- Payload: none
+
+Inputs
+
+| Input  | Description                 | Example Value |
+|--------|-----------------------------|---------------|
+| target | Destination WSS address     | `0x81`        |
+
+Example frame
+
+- `00 81 4F 00` → checksum = `2F`
+
+Bytes: `00 81 4F 00 2F C0`
+
+### Custom Waveform (0x9D)
+- Purpose: Upload 32‑sample custom waveform in 4 chunks of 8 samples.
+- Chunk payload: `[slot][msgNumber][s0_H s0_L]…[s7_H s7_L]`
+  - `msgNumber ∈ {0,1,2,3}` for consecutive 8‑sample chunks
+  - Sample units: 0..2000 (16‑bit big‑endian)
+
+Inputs (one chunk)
+
+| Input      | Description                               | Example Value |
+|------------|-------------------------------------------|---------------|
+| target     | Destination WSS address                    | `0x81`        |
+| slot       | Waveform slot                              | `0x0B`        |
+| msgNumber  | Chunk index (0..3)                         | `0x00`        |
+| s0..s7     | 8 samples (16‑bit big‑endian, 0..2000)     | `0x03 E8` (1000) each |
+
+Example frame (first chunk, s0..s7 all 1000)
+
+- `00 81 9D 12 0B 00 03 E8 03 E8 03 E8 03 E8 03 E8 03 E8 03 E8 03 E8` → checksum = `64`
+
+Bytes: `00 81 9D 12 0B 00 03 E8 03 E8 03 E8 03 E8 03 E8 03 E8 03 E8 03 E8 64 C0`
+
+### Stimulation Switch (0x0B)
+- Start stim: payload `[0x03]`
+- Stop  stim: payload `[0x04]`
+
+Inputs
+
+| Input  | Description                 | Example Value |
+|--------|-----------------------------|---------------|
+| target | Destination WSS address     | `0x8F` (Broadcast) |
+| mode   | 0x03=start, 0x04=stop       | `0x03`        |
+
+Example frame (Start, broadcast)
+
+- `00 8F 0B 01 03` → checksum = `61`
+
+Bytes: `00 8F 0B 01 03 61 C0`
+
+### Streaming Updates (0x30–0x33)
+- Updates three schedules in one shot. Each group is 3 bytes: values for schedule 1, 2, 3.
+- All values are 0..255 (1 byte). Pick opcode based on which group is omitted:
+
+| Opcode | Groups present                        | Payload layout |
+|--------|---------------------------------------|----------------|
+| 0x30   | PA, PW, IPI                           | [PA0..2][PW0..2][IPI0..2] |
+| 0x31   | PA, PW (IPI omitted)                  | [PA0..2][PW0..2][00 00 00] |
+| 0x32   | PA, IPI (PW omitted)                  | [PA0..2][00 00 00][IPI0..2] |
+| 0x33   | PW, IPI (PA omitted)                  | [00 00 00][PW0..2][IPI0..2] |
+
+Inputs (0x33 PW+IPI, omit PA)
+
+| Input  | Description                                 | Example Value |
+|--------|---------------------------------------------|---------------|
+| target | Destination WSS address                      | `0x8F` (Broadcast) |
+| PW0..2 | Pulse widths for WSS1..3 (0..255)           | `0x10 0x14 0x18` |
+| IPI0..2| Inter‑pulse intervals for WSS1..3 (0..255)  | `0x0A 0x0A 0x0A` |
+
+Example frame (0x33)
+
+- `00 8F 33 09 00 00 00 10 14 18 0A 0A 0A` → checksum = `D9`
+
+Bytes: `00 8F 33 09 00 00 00 10 14 18 0A 0A 0A D9 C0`
+
+## Units and Limits
+
+From WSSLimits:
+- Pulse width (long): ≤ 5400 μs (16‑bit path)
+- IPD: ≤ 1000 μs
+- One byte max: 255
+- Custom waveform amplitude: ≤ 2000
+- LEDs: 8 (LED bitmask sized to 8)
+

@@ -1,0 +1,113 @@
+﻿---
+output:
+  html_document: default
+  pdf_document: default
+---
+# Simple Serial Communication with WSS
+
+This guide shows how to list ports, configure a serial connection, and send/receive a simple Echo message to a WSS device from macOS, Windows, and MATLAB.
+
+> The WSS radio receiver shows up as a USB–Serial device. Replace the example port (e.g., `/dev/tty.usbserial-AB0XXXXX` or `COM7`) with your actual device.
+
+## macOS
+
+### List serial ports
+```bash
+ls /dev/tty.*
+# USB‑Serial devices only
+ls /dev/tty.usbserial*
+```
+
+### Configure the serial port
+- Baud rate: 115200
+- Data bits: 8
+- Stop bits: 1
+- Parity: none
+- Flow control: none
+
+```bash
+stty -f /dev/tty.usbserial-AB0XXXXX 115200 cs8 -cstopb -parenb -ixon -crtscts
+```
+
+### Send an Echo message
+```bash
+echo "00 81 07 02 12 AB B7 C0" | xxd -r -p > echo_msg.bin
+cat echo_msg.bin > /dev/tty.usbserial-AB0XXXXX
+```
+
+### Read the response
+```bash
+# raw bytes
+cat /dev/tty.usbserial-AB0XXXXX
+# pretty‑print as hex
+cat /dev/tty.usbserial-AB0XXXXX | xxd
+```
+
+Expected: the device replies with the same payload (12 AB) in the frame.
+
+## Windows (PowerShell)
+
+### List COM ports
+```powershell
+[System.IO.Ports.SerialPort]::GetPortNames()
+```
+
+### Send and read Echo via PowerShell
+```powershell
+$portName = 'COM7'            # change to your COM port
+$baud     = 115200
+$sp = New-Object System.IO.Ports.SerialPort $portName, $baud, 'None', 8, 'One'
+$sp.Handshake = 'None'
+$sp.Open()
+
+# Echo message bytes
+[byte[]]$tx = 0x00,0x81,0x07,0x02,0x12,0xAB,0xB7,0xC0
+$sp.Write($tx, 0, $tx.Count)
+Start-Sleep -Milliseconds 100
+
+# Read any available bytes
+$available = $sp.BytesToRead
+if ($available -gt 0) {
+  $buf = New-Object byte[] $available
+  [void]$sp.Read($buf, 0, $available)
+  ($buf | ForEach-Object { $_.ToString('X2') }) -join ' '
+} else {
+  Write-Host 'No data available.'
+}
+
+$sp.Close()
+$sp.Dispose()
+```
+
+### Alternative tools
+- Serial terminals such as PuTTY or Tera Term work well for testing.
+- For binary frames, ensure you send raw bytes (not ASCII) and disable line endings.
+
+## MATLAB
+
+Works on macOS and Windows. Change `port` to your device.
+
+```matlab
+port = '/dev/tty.usbserial-AB0OD22E';  % On Windows: 'COM7'
+s = serialport(port, 115200, ...
+    'DataBits', 8, ...
+    'Parity', 'none', ...
+    'StopBits', 1, ...
+    'FlowControl', 'none');
+
+msg = uint8([0x00, 0x81, 0x07, 0x02, 0x12, 0xAB, 0xB7, 0xC0]);
+write(s, msg, 'uint8');
+pause(0.1);
+
+if s.NumBytesAvailable > 0
+    response = read(s, s.NumBytesAvailable, 'uint8');
+    disp('Received:');
+    disp(response);
+end
+```
+
+## Troubleshooting
+- macOS permissions: allow Terminal/MATLAB under System Settings → Privacy & Security → Developer Tools.
+- Only one program can have the serial port open at a time.
+- Drivers: Some USB‑Serial adapters need vendor drivers; install if the device does not appear.
+- If you only see ASCII in terminals, you may be sending text not bytes; use scripts above.

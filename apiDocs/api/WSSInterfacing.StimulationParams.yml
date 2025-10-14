@@ -1,0 +1,1950 @@
+### YamlMime:ManagedReference
+items:
+- uid: WSSInterfacing.StimulationParams
+  commentId: T:WSSInterfacing.StimulationParams
+  id: StimulationParams
+  parent: WSSInterfacing
+  children:
+  - WSSInterfacing.StimulationParams.AddOrUpdateStimParam(System.String,System.Single)
+  - WSSInterfacing.StimulationParams.Awake
+  - WSSInterfacing.StimulationParams.GetAllStimParams
+  - WSSInterfacing.StimulationParams.GetChannelAmp(System.String)
+  - WSSInterfacing.StimulationParams.GetChannelIPI(System.String)
+  - WSSInterfacing.StimulationParams.GetChannelPWMax(System.String)
+  - WSSInterfacing.StimulationParams.GetChannelPWMin(System.String)
+  - WSSInterfacing.StimulationParams.GetCoreConfigCTRL
+  - WSSInterfacing.StimulationParams.GetLastPulseWidth(System.String)
+  - WSSInterfacing.StimulationParams.GetStimParam(System.String)
+  - WSSInterfacing.StimulationParams.IsFingerValid(System.String)
+  - WSSInterfacing.StimulationParams.LoadParamsJson
+  - WSSInterfacing.StimulationParams.LoadParamsJson(System.String)
+  - WSSInterfacing.StimulationParams.Ready
+  - WSSInterfacing.StimulationParams.Save
+  - WSSInterfacing.StimulationParams.Save(System.Int32)
+  - WSSInterfacing.StimulationParams.SaveParamsJson
+  - WSSInterfacing.StimulationParams.SetChannelAmp(System.String,System.Single)
+  - WSSInterfacing.StimulationParams.SetChannelIPI(System.String,System.Int32)
+  - WSSInterfacing.StimulationParams.SetChannelPWMax(System.String,System.Int32)
+  - WSSInterfacing.StimulationParams.SetChannelPWMin(System.String,System.Int32)
+  - WSSInterfacing.StimulationParams.StartStimulation
+  - WSSInterfacing.StimulationParams.Started
+  - WSSInterfacing.StimulationParams.StimulateAnalog(System.String,System.Int32,System.Int32,System.Int32)
+  - WSSInterfacing.StimulationParams.StimulateNormalized(System.String,System.Single)
+  - WSSInterfacing.StimulationParams.StopStimulation
+  - WSSInterfacing.StimulationParams.TryGetStimParam(System.String,System.Single@)
+  - WSSInterfacing.StimulationParams.UpdateChannelParams(System.String,System.Int32,System.Int32,System.Int32)
+  - WSSInterfacing.StimulationParams.UpdateIPD(System.Int32,System.Int32)
+  - WSSInterfacing.StimulationParams.UpdateIPD(System.Int32,System.Int32,System.Int32)
+  - WSSInterfacing.StimulationParams.WaveformSetup(System.Int32,WSSInterfacing.WaveformBuilder,System.Int32)
+  - WSSInterfacing.StimulationParams.WaveformSetup(WSSInterfacing.WaveformBuilder,System.Int32)
+  - WSSInterfacing.StimulationParams.comPort
+  - WSSInterfacing.StimulationParams.forcePort
+  - WSSInterfacing.StimulationParams.load
+  - WSSInterfacing.StimulationParams.load(System.Int32)
+  - WSSInterfacing.StimulationParams.loadWaveform(System.String,System.Int32)
+  - WSSInterfacing.StimulationParams.releaseRadio
+  - WSSInterfacing.StimulationParams.request_Configs(System.Int32,System.Int32,System.Int32)
+  - WSSInterfacing.StimulationParams.resetRadio
+  - WSSInterfacing.StimulationParams.started
+  - WSSInterfacing.StimulationParams.updateWaveform(System.Int32,System.Int32,System.Int32)
+  - WSSInterfacing.StimulationParams.updateWaveform(System.Int32,System.Int32,System.Int32,System.Int32)
+  - WSSInterfacing.StimulationParams.updateWaveform(System.Int32,System.Int32[],System.Int32)
+  - WSSInterfacing.StimulationParams.updateWaveform(System.Int32,WSSInterfacing.WaveformBuilder,System.Int32)
+  - WSSInterfacing.StimulationParams.updateWaveform(System.Int32[],System.Int32)
+  - WSSInterfacing.StimulationParams.updateWaveform(WSSInterfacing.WaveformBuilder,System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: StimulationParams
+  nameWithType: StimulationParams
+  fullName: WSSInterfacing.StimulationParams
+  type: Class
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: >-
+    Unity wrapper that composes a params layer (<code>StimParamsLayer</code>) over a core WSS implementation.
+
+    Extends the basic interface with per-finger calibration parameters, normalized drive, and JSON persistence.
+
+    All public stimulation APIs accept a finger string and map to a channel via <xref href="WSSInterfacing.StimulationParams.FingerToChannel(System.String)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: 'public class StimulationParams : MonoBehaviour'
+    content.vb: Public Class StimulationParams Inherits MonoBehaviour
+  inheritance:
+  - System.Object
+  - UnityEngine.Object
+  - UnityEngine.Component
+  - UnityEngine.Behaviour
+  - UnityEngine.MonoBehaviour
+- uid: WSSInterfacing.StimulationParams.forcePort
+  commentId: F:WSSInterfacing.StimulationParams.forcePort
+  id: forcePort
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: forcePort
+  nameWithType: StimulationParams.forcePort
+  fullName: WSSInterfacing.StimulationParams.forcePort
+  type: Field
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Forces connection to a specific COM port instead of auto-detecting.
+  example: []
+  syntax:
+    content: >-
+      [SerializeField]
+
+      public bool forcePort
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <SerializeField>
+
+      Public forcePort As Boolean
+  attributes:
+  - type: UnityEngine.SerializeField
+    ctor: UnityEngine.SerializeField.#ctor
+    arguments: []
+- uid: WSSInterfacing.StimulationParams.comPort
+  commentId: F:WSSInterfacing.StimulationParams.comPort
+  id: comPort
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: comPort
+  nameWithType: StimulationParams.comPort
+  fullName: WSSInterfacing.StimulationParams.comPort
+  type: Field
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Target COM port to use when <xref href="WSSInterfacing.StimulationParams.forcePort" data-throw-if-not-resolved="false"></xref> is enabled.
+  example: []
+  syntax:
+    content: >-
+      [SerializeField]
+
+      public string comPort
+    return:
+      type: System.String
+    content.vb: >-
+      <SerializeField>
+
+      Public comPort As String
+  attributes:
+  - type: UnityEngine.SerializeField
+    ctor: UnityEngine.SerializeField.#ctor
+    arguments: []
+- uid: WSSInterfacing.StimulationParams.started
+  commentId: F:WSSInterfacing.StimulationParams.started
+  id: started
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: started
+  nameWithType: StimulationParams.started
+  fullName: WSSInterfacing.StimulationParams.started
+  type: Field
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: True after <xref href="WSSInterfacing.StimulationParams.StartStimulation" data-throw-if-not-resolved="false"></xref> succeeds.
+  example: []
+  syntax:
+    content: public bool started
+    return:
+      type: System.Boolean
+    content.vb: Public started As Boolean
+- uid: WSSInterfacing.StimulationParams.Awake
+  commentId: M:WSSInterfacing.StimulationParams.Awake
+  id: Awake
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: Awake()
+  nameWithType: StimulationParams.Awake()
+  fullName: WSSInterfacing.StimulationParams.Awake()
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: >-
+    Builds the core WSS and wraps it with <code>StimParamsLayer</code>.
+
+    Tries to expose <xref href="WSSInterfacing.IBasicStimulation" data-throw-if-not-resolved="false"></xref> if available.
+  example: []
+  syntax:
+    content: public void Awake()
+    content.vb: Public Sub Awake()
+  overload: WSSInterfacing.StimulationParams.Awake*
+- uid: WSSInterfacing.StimulationParams.releaseRadio
+  commentId: M:WSSInterfacing.StimulationParams.releaseRadio
+  id: releaseRadio
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: releaseRadio()
+  nameWithType: StimulationParams.releaseRadio()
+  fullName: WSSInterfacing.StimulationParams.releaseRadio()
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Explicitly releases the radio connection.
+  example: []
+  syntax:
+    content: public void releaseRadio()
+    content.vb: Public Sub releaseRadio()
+  overload: WSSInterfacing.StimulationParams.releaseRadio*
+- uid: WSSInterfacing.StimulationParams.resetRadio
+  commentId: M:WSSInterfacing.StimulationParams.resetRadio
+  id: resetRadio
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: resetRadio()
+  nameWithType: StimulationParams.resetRadio()
+  fullName: WSSInterfacing.StimulationParams.resetRadio()
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Performs a radio reset by shutting down and re-initializing the connection.
+  example: []
+  syntax:
+    content: public void resetRadio()
+    content.vb: Public Sub resetRadio()
+  overload: WSSInterfacing.StimulationParams.resetRadio*
+- uid: WSSInterfacing.StimulationParams.StimulateAnalog(System.String,System.Int32,System.Int32,System.Int32)
+  commentId: M:WSSInterfacing.StimulationParams.StimulateAnalog(System.String,System.Int32,System.Int32,System.Int32)
+  id: StimulateAnalog(System.String,System.Int32,System.Int32,System.Int32)
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: StimulateAnalog(string, int, int, int)
+  nameWithType: StimulationParams.StimulateAnalog(string, int, int, int)
+  fullName: WSSInterfacing.StimulationParams.StimulateAnalog(string, int, int, int)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: >-
+    Direct analog stimulation using raw parameters.
+
+    Prefer <xref href="WSSInterfacing.StimulationParams.StimulateNormalized(System.String%2cSystem.Single)" data-throw-if-not-resolved="false"></xref> for analog sensors.
+  example: []
+  syntax:
+    content: public void StimulateAnalog(string finger, int PW, int amp = 3, int IPI = 10)
+    parameters:
+    - id: finger
+      type: System.String
+      description: Finger name or channel alias (e.g., "index" or "ch2").
+    - id: PW
+      type: System.Int32
+      description: Pulse width in microseconds.
+    - id: amp
+      type: System.Int32
+      description: Amplitude in milliamps (default = 3).
+    - id: IPI
+      type: System.Int32
+      description: Inter-pulse interval in milliseconds (default = 10).
+    content.vb: Public Sub StimulateAnalog(finger As String, PW As Integer, amp As Integer = 3, IPI As Integer = 10)
+  overload: WSSInterfacing.StimulationParams.StimulateAnalog*
+  nameWithType.vb: StimulationParams.StimulateAnalog(String, Integer, Integer, Integer)
+  fullName.vb: WSSInterfacing.StimulationParams.StimulateAnalog(String, Integer, Integer, Integer)
+  name.vb: StimulateAnalog(String, Integer, Integer, Integer)
+- uid: WSSInterfacing.StimulationParams.StartStimulation
+  commentId: M:WSSInterfacing.StimulationParams.StartStimulation
+  id: StartStimulation
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: StartStimulation()
+  nameWithType: StimulationParams.StartStimulation()
+  fullName: WSSInterfacing.StimulationParams.StartStimulation()
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Starts stimulation on the target and launches streaming when ready.
+  remarks: Broadcasts to all connected WSS units.
+  example: []
+  syntax:
+    content: public void StartStimulation()
+    content.vb: Public Sub StartStimulation()
+  overload: WSSInterfacing.StimulationParams.StartStimulation*
+- uid: WSSInterfacing.StimulationParams.StopStimulation
+  commentId: M:WSSInterfacing.StimulationParams.StopStimulation
+  id: StopStimulation
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: StopStimulation()
+  nameWithType: StimulationParams.StopStimulation()
+  fullName: WSSInterfacing.StimulationParams.StopStimulation()
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Stops stimulation on the target and, if streaming, stops the background loop.
+  remarks: Broadcasts to all connected WSS units.
+  example: []
+  syntax:
+    content: public void StopStimulation()
+    content.vb: Public Sub StopStimulation()
+  overload: WSSInterfacing.StimulationParams.StopStimulation*
+- uid: WSSInterfacing.StimulationParams.Save(System.Int32)
+  commentId: M:WSSInterfacing.StimulationParams.Save(System.Int32)
+  id: Save(System.Int32)
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: Save(int)
+  nameWithType: StimulationParams.Save(int)
+  fullName: WSSInterfacing.StimulationParams.Save(int)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: >-
+    Saves board settings to non-volatile memory. Implementations should
+
+    pause streaming if needed, perform the save, then resume.
+  example: []
+  syntax:
+    content: public void Save(int targetWSS)
+    parameters:
+    - id: targetWSS
+      type: System.Int32
+      description: 0=broadcast, 1..3=unit index.
+    content.vb: Public Sub Save(targetWSS As Integer)
+  overload: WSSInterfacing.StimulationParams.Save*
+  nameWithType.vb: StimulationParams.Save(Integer)
+  fullName.vb: WSSInterfacing.StimulationParams.Save(Integer)
+  name.vb: Save(Integer)
+- uid: WSSInterfacing.StimulationParams.Save
+  commentId: M:WSSInterfacing.StimulationParams.Save
+  id: Save
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: Save()
+  nameWithType: StimulationParams.Save()
+  fullName: WSSInterfacing.StimulationParams.Save()
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: >-
+    Saves board settings to non-volatile memory. Implementations should
+
+    pause streaming if needed, perform the save, then resume.
+  remarks: Broadcasts to all connected WSS units.
+  example: []
+  syntax:
+    content: public void Save()
+    content.vb: Public Sub Save()
+  overload: WSSInterfacing.StimulationParams.Save*
+- uid: WSSInterfacing.StimulationParams.load(System.Int32)
+  commentId: M:WSSInterfacing.StimulationParams.load(System.Int32)
+  id: load(System.Int32)
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: load(int)
+  nameWithType: StimulationParams.load(int)
+  fullName: WSSInterfacing.StimulationParams.load(int)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: >-
+    Loads board settings from non-volatile memory. Implementations should
+
+    pause streaming if needed, perform the load, then resume.
+  example: []
+  syntax:
+    content: public void load(int targetWSS)
+    parameters:
+    - id: targetWSS
+      type: System.Int32
+    content.vb: Public Sub load(targetWSS As Integer)
+  overload: WSSInterfacing.StimulationParams.load*
+  nameWithType.vb: StimulationParams.load(Integer)
+  fullName.vb: WSSInterfacing.StimulationParams.load(Integer)
+  name.vb: load(Integer)
+- uid: WSSInterfacing.StimulationParams.load
+  commentId: M:WSSInterfacing.StimulationParams.load
+  id: load
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: load()
+  nameWithType: StimulationParams.load()
+  fullName: WSSInterfacing.StimulationParams.load()
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: >-
+    Loads board settings from non-volatile memory. Implementations should
+
+    pause streaming if needed, perform the load, then resume.
+  remarks: Broadcasts to all connected WSS units.
+  example: []
+  syntax:
+    content: public void load()
+    content.vb: Public Sub load()
+  overload: WSSInterfacing.StimulationParams.load*
+- uid: WSSInterfacing.StimulationParams.request_Configs(System.Int32,System.Int32,System.Int32)
+  commentId: M:WSSInterfacing.StimulationParams.request_Configs(System.Int32,System.Int32,System.Int32)
+  id: request_Configs(System.Int32,System.Int32,System.Int32)
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: request_Configs(int, int, int)
+  nameWithType: StimulationParams.request_Configs(int, int, int)
+  fullName: WSSInterfacing.StimulationParams.request_Configs(int, int, int)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Requests configuration blocks from the device.
+  example: []
+  syntax:
+    content: public void request_Configs(int targetWSS, int command, int id)
+    parameters:
+    - id: targetWSS
+      type: System.Int32
+      description: 0=broadcast, 1..3=unit index.
+    - id: command
+      type: System.Int32
+      description: Command group identifier.
+    - id: id
+      type: System.Int32
+      description: Sub-id / selector.
+    content.vb: Public Sub request_Configs(targetWSS As Integer, command As Integer, id As Integer)
+  overload: WSSInterfacing.StimulationParams.request_Configs*
+  nameWithType.vb: StimulationParams.request_Configs(Integer, Integer, Integer)
+  fullName.vb: WSSInterfacing.StimulationParams.request_Configs(Integer, Integer, Integer)
+  name.vb: request_Configs(Integer, Integer, Integer)
+- uid: WSSInterfacing.StimulationParams.updateWaveform(System.Int32[],System.Int32)
+  commentId: M:WSSInterfacing.StimulationParams.updateWaveform(System.Int32[],System.Int32)
+  id: updateWaveform(System.Int32[],System.Int32)
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: updateWaveform(int[], int)
+  nameWithType: StimulationParams.updateWaveform(int[], int)
+  fullName: WSSInterfacing.StimulationParams.updateWaveform(int[], int)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: >-
+    Builds a custom waveform from raw points and schedules the upload
+
+    for the specified <code class="paramref">eventID</code>.
+  remarks: Broadcasts to all connected WSS units.
+  example: []
+  syntax:
+    content: public void updateWaveform(int[] waveform, int eventID)
+    parameters:
+    - id: waveform
+      type: System.Int32[]
+      description: Concatenated waveform definition.
+    - id: eventID
+      type: System.Int32
+      description: Event slot to target.
+    content.vb: Public Sub updateWaveform(waveform As Integer(), eventID As Integer)
+  overload: WSSInterfacing.StimulationParams.updateWaveform*
+  nameWithType.vb: StimulationParams.updateWaveform(Integer(), Integer)
+  fullName.vb: WSSInterfacing.StimulationParams.updateWaveform(Integer(), Integer)
+  name.vb: updateWaveform(Integer(), Integer)
+- uid: WSSInterfacing.StimulationParams.updateWaveform(System.Int32,System.Int32[],System.Int32)
+  commentId: M:WSSInterfacing.StimulationParams.updateWaveform(System.Int32,System.Int32[],System.Int32)
+  id: updateWaveform(System.Int32,System.Int32[],System.Int32)
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: updateWaveform(int, int[], int)
+  nameWithType: StimulationParams.updateWaveform(int, int[], int)
+  fullName: WSSInterfacing.StimulationParams.updateWaveform(int, int[], int)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Updates the waveform parameters for a specific event on a target unit.
+  example: []
+  syntax:
+    content: public void updateWaveform(int targetWSS, int[] waveform, int eventID)
+    parameters:
+    - id: targetWSS
+      type: System.Int32
+    - id: waveform
+      type: System.Int32[]
+      description: Concatenated waveform definition.
+    - id: eventID
+      type: System.Int32
+      description: Event slot to target.
+    content.vb: Public Sub updateWaveform(targetWSS As Integer, waveform As Integer(), eventID As Integer)
+  overload: WSSInterfacing.StimulationParams.updateWaveform*
+  nameWithType.vb: StimulationParams.updateWaveform(Integer, Integer(), Integer)
+  fullName.vb: WSSInterfacing.StimulationParams.updateWaveform(Integer, Integer(), Integer)
+  name.vb: updateWaveform(Integer, Integer(), Integer)
+- uid: WSSInterfacing.StimulationParams.updateWaveform(System.Int32,System.Int32,System.Int32)
+  commentId: M:WSSInterfacing.StimulationParams.updateWaveform(System.Int32,System.Int32,System.Int32)
+  id: updateWaveform(System.Int32,System.Int32,System.Int32)
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: updateWaveform(int, int, int)
+  nameWithType: StimulationParams.updateWaveform(int, int, int)
+  fullName: WSSInterfacing.StimulationParams.updateWaveform(int, int, int)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: >-
+    Selects a predefined or custom waveform shape from device memory.
+
+    Slots 0â€“10 are predefined. Slots 11â€“13 are custom.
+  example: []
+  syntax:
+    content: public void updateWaveform(int cathodicWaveform, int anodicWaveform, int eventID)
+    parameters:
+    - id: cathodicWaveform
+      type: System.Int32
+      description: Shape ID for the standard phase.
+    - id: anodicWaveform
+      type: System.Int32
+      description: Shape ID for the recharge phase.
+    - id: eventID
+      type: System.Int32
+      description: Event slot to modify.
+    content.vb: Public Sub updateWaveform(cathodicWaveform As Integer, anodicWaveform As Integer, eventID As Integer)
+  overload: WSSInterfacing.StimulationParams.updateWaveform*
+  nameWithType.vb: StimulationParams.updateWaveform(Integer, Integer, Integer)
+  fullName.vb: WSSInterfacing.StimulationParams.updateWaveform(Integer, Integer, Integer)
+  name.vb: updateWaveform(Integer, Integer, Integer)
+- uid: WSSInterfacing.StimulationParams.updateWaveform(System.Int32,System.Int32,System.Int32,System.Int32)
+  commentId: M:WSSInterfacing.StimulationParams.updateWaveform(System.Int32,System.Int32,System.Int32,System.Int32)
+  id: updateWaveform(System.Int32,System.Int32,System.Int32,System.Int32)
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: updateWaveform(int, int, int, int)
+  nameWithType: StimulationParams.updateWaveform(int, int, int, int)
+  fullName: WSSInterfacing.StimulationParams.updateWaveform(int, int, int, int)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Shape selection on a target unit.
+  example: []
+  syntax:
+    content: public void updateWaveform(int targetWSS, int cathodicWaveform, int anodicWaveform, int eventID)
+    parameters:
+    - id: targetWSS
+      type: System.Int32
+    - id: cathodicWaveform
+      type: System.Int32
+      description: Shape ID for the standard phase.
+    - id: anodicWaveform
+      type: System.Int32
+      description: Shape ID for the recharge phase.
+    - id: eventID
+      type: System.Int32
+      description: Event slot to modify.
+    content.vb: Public Sub updateWaveform(targetWSS As Integer, cathodicWaveform As Integer, anodicWaveform As Integer, eventID As Integer)
+  overload: WSSInterfacing.StimulationParams.updateWaveform*
+  nameWithType.vb: StimulationParams.updateWaveform(Integer, Integer, Integer, Integer)
+  fullName.vb: WSSInterfacing.StimulationParams.updateWaveform(Integer, Integer, Integer, Integer)
+  name.vb: updateWaveform(Integer, Integer, Integer, Integer)
+- uid: WSSInterfacing.StimulationParams.updateWaveform(WSSInterfacing.WaveformBuilder,System.Int32)
+  commentId: M:WSSInterfacing.StimulationParams.updateWaveform(WSSInterfacing.WaveformBuilder,System.Int32)
+  id: updateWaveform(WSSInterfacing.WaveformBuilder,System.Int32)
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: updateWaveform(WaveformBuilder, int)
+  nameWithType: StimulationParams.updateWaveform(WaveformBuilder, int)
+  fullName: WSSInterfacing.StimulationParams.updateWaveform(WSSInterfacing.WaveformBuilder, int)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Updates waveform using JSON-loaded builder definition for all units.
+  remarks: Broadcasts to all connected WSS units.
+  example: []
+  syntax:
+    content: public void updateWaveform(WaveformBuilder waveform, int eventID)
+    parameters:
+    - id: waveform
+      type: WSSInterfacing.WaveformBuilder
+      description: Prepared <xref href="WSSInterfacing.WaveformBuilder" data-throw-if-not-resolved="false"></xref>.
+    - id: eventID
+      type: System.Int32
+      description: Event slot to target.
+    content.vb: Public Sub updateWaveform(waveform As WaveformBuilder, eventID As Integer)
+  overload: WSSInterfacing.StimulationParams.updateWaveform*
+  nameWithType.vb: StimulationParams.updateWaveform(WaveformBuilder, Integer)
+  fullName.vb: WSSInterfacing.StimulationParams.updateWaveform(WSSInterfacing.WaveformBuilder, Integer)
+  name.vb: updateWaveform(WaveformBuilder, Integer)
+- uid: WSSInterfacing.StimulationParams.updateWaveform(System.Int32,WSSInterfacing.WaveformBuilder,System.Int32)
+  commentId: M:WSSInterfacing.StimulationParams.updateWaveform(System.Int32,WSSInterfacing.WaveformBuilder,System.Int32)
+  id: updateWaveform(System.Int32,WSSInterfacing.WaveformBuilder,System.Int32)
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: updateWaveform(int, WaveformBuilder, int)
+  nameWithType: StimulationParams.updateWaveform(int, WaveformBuilder, int)
+  fullName: WSSInterfacing.StimulationParams.updateWaveform(int, WSSInterfacing.WaveformBuilder, int)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Updates waveform using JSON-loaded builder definition for a target unit.
+  example: []
+  syntax:
+    content: public void updateWaveform(int targetWSS, WaveformBuilder waveform, int eventID)
+    parameters:
+    - id: targetWSS
+      type: System.Int32
+    - id: waveform
+      type: WSSInterfacing.WaveformBuilder
+      description: Prepared <xref href="WSSInterfacing.WaveformBuilder" data-throw-if-not-resolved="false"></xref>.
+    - id: eventID
+      type: System.Int32
+      description: Event slot to target.
+    content.vb: Public Sub updateWaveform(targetWSS As Integer, waveform As WaveformBuilder, eventID As Integer)
+  overload: WSSInterfacing.StimulationParams.updateWaveform*
+  nameWithType.vb: StimulationParams.updateWaveform(Integer, WaveformBuilder, Integer)
+  fullName.vb: WSSInterfacing.StimulationParams.updateWaveform(Integer, WSSInterfacing.WaveformBuilder, Integer)
+  name.vb: updateWaveform(Integer, WaveformBuilder, Integer)
+- uid: WSSInterfacing.StimulationParams.loadWaveform(System.String,System.Int32)
+  commentId: M:WSSInterfacing.StimulationParams.loadWaveform(System.String,System.Int32)
+  id: loadWaveform(System.String,System.Int32)
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: loadWaveform(string, int)
+  nameWithType: StimulationParams.loadWaveform(string, int)
+  fullName: WSSInterfacing.StimulationParams.loadWaveform(string, int)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Loads a waveform definition from external file.
+  example: []
+  syntax:
+    content: public void loadWaveform(string fileName, int eventID)
+    parameters:
+    - id: fileName
+      type: System.String
+      description: "File name or path; â€œWF.jsonâ€\x9D suffix is enforced."
+    - id: eventID
+      type: System.Int32
+      description: Event slot to target.
+    content.vb: Public Sub loadWaveform(fileName As String, eventID As Integer)
+  overload: WSSInterfacing.StimulationParams.loadWaveform*
+  nameWithType.vb: StimulationParams.loadWaveform(String, Integer)
+  fullName.vb: WSSInterfacing.StimulationParams.loadWaveform(String, Integer)
+  name.vb: loadWaveform(String, Integer)
+- uid: WSSInterfacing.StimulationParams.WaveformSetup(WSSInterfacing.WaveformBuilder,System.Int32)
+  commentId: M:WSSInterfacing.StimulationParams.WaveformSetup(WSSInterfacing.WaveformBuilder,System.Int32)
+  id: WaveformSetup(WSSInterfacing.WaveformBuilder,System.Int32)
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: WaveformSetup(WaveformBuilder, int)
+  nameWithType: StimulationParams.WaveformSetup(WaveformBuilder, int)
+  fullName: WSSInterfacing.StimulationParams.WaveformSetup(WSSInterfacing.WaveformBuilder, int)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Defines a custom waveform for the specified event slot on all units.
+  example: []
+  syntax:
+    content: public void WaveformSetup(WaveformBuilder wave, int eventID)
+    parameters:
+    - id: wave
+      type: WSSInterfacing.WaveformBuilder
+      description: Waveform builder.
+    - id: eventID
+      type: System.Int32
+      description: Event slot to target.
+    content.vb: Public Sub WaveformSetup(wave As WaveformBuilder, eventID As Integer)
+  overload: WSSInterfacing.StimulationParams.WaveformSetup*
+  nameWithType.vb: StimulationParams.WaveformSetup(WaveformBuilder, Integer)
+  fullName.vb: WSSInterfacing.StimulationParams.WaveformSetup(WSSInterfacing.WaveformBuilder, Integer)
+  name.vb: WaveformSetup(WaveformBuilder, Integer)
+- uid: WSSInterfacing.StimulationParams.WaveformSetup(System.Int32,WSSInterfacing.WaveformBuilder,System.Int32)
+  commentId: M:WSSInterfacing.StimulationParams.WaveformSetup(System.Int32,WSSInterfacing.WaveformBuilder,System.Int32)
+  id: WaveformSetup(System.Int32,WSSInterfacing.WaveformBuilder,System.Int32)
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: WaveformSetup(int, WaveformBuilder, int)
+  nameWithType: StimulationParams.WaveformSetup(int, WaveformBuilder, int)
+  fullName: WSSInterfacing.StimulationParams.WaveformSetup(int, WSSInterfacing.WaveformBuilder, int)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Defines a custom waveform for the specified event slot on a target unit.
+  example: []
+  syntax:
+    content: public void WaveformSetup(int targetWSS, WaveformBuilder wave, int eventID)
+    parameters:
+    - id: targetWSS
+      type: System.Int32
+    - id: wave
+      type: WSSInterfacing.WaveformBuilder
+      description: Waveform builder.
+    - id: eventID
+      type: System.Int32
+      description: Event slot to target.
+    content.vb: Public Sub WaveformSetup(targetWSS As Integer, wave As WaveformBuilder, eventID As Integer)
+  overload: WSSInterfacing.StimulationParams.WaveformSetup*
+  nameWithType.vb: StimulationParams.WaveformSetup(Integer, WaveformBuilder, Integer)
+  fullName.vb: WSSInterfacing.StimulationParams.WaveformSetup(Integer, WSSInterfacing.WaveformBuilder, Integer)
+  name.vb: WaveformSetup(Integer, WaveformBuilder, Integer)
+- uid: WSSInterfacing.StimulationParams.UpdateIPD(System.Int32,System.Int32)
+  commentId: M:WSSInterfacing.StimulationParams.UpdateIPD(System.Int32,System.Int32)
+  id: UpdateIPD(System.Int32,System.Int32)
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: UpdateIPD(int, int)
+  nameWithType: StimulationParams.UpdateIPD(int, int)
+  fullName: WSSInterfacing.StimulationParams.UpdateIPD(int, int)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: >-
+    Updates inter-phase delay (IPD) for a specific <code class="paramref">eventID</code> via setup commands (with replies).
+
+    If currently Streaming, the core pauses streaming, sends the edit, and resumes when done.
+  remarks: Broadcasts to all connected WSS units.
+  example: []
+  syntax:
+    content: public void UpdateIPD(int ipd, int eventID)
+    parameters:
+    - id: ipd
+      type: System.Int32
+      description: Inter-phase delay in microseconds (clamped internally).
+    - id: eventID
+      type: System.Int32
+      description: Event slot to target.
+    content.vb: Public Sub UpdateIPD(ipd As Integer, eventID As Integer)
+  overload: WSSInterfacing.StimulationParams.UpdateIPD*
+  nameWithType.vb: StimulationParams.UpdateIPD(Integer, Integer)
+  fullName.vb: WSSInterfacing.StimulationParams.UpdateIPD(Integer, Integer)
+  name.vb: UpdateIPD(Integer, Integer)
+- uid: WSSInterfacing.StimulationParams.UpdateIPD(System.Int32,System.Int32,System.Int32)
+  commentId: M:WSSInterfacing.StimulationParams.UpdateIPD(System.Int32,System.Int32,System.Int32)
+  id: UpdateIPD(System.Int32,System.Int32,System.Int32)
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: UpdateIPD(int, int, int)
+  nameWithType: StimulationParams.UpdateIPD(int, int, int)
+  fullName: WSSInterfacing.StimulationParams.UpdateIPD(int, int, int)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: >-
+    Updates inter-phase delay (IPD) for a specific <code class="paramref">eventID</code> via setup commands (with replies).
+
+    If currently Streaming, the core pauses streaming, sends the edit, and resumes when done.
+  example: []
+  syntax:
+    content: public void UpdateIPD(int targetWSS, int ipd, int eventID)
+    parameters:
+    - id: targetWSS
+      type: System.Int32
+    - id: ipd
+      type: System.Int32
+      description: Inter-phase delay in microseconds (clamped internally).
+    - id: eventID
+      type: System.Int32
+      description: Event slot to target.
+    content.vb: Public Sub UpdateIPD(targetWSS As Integer, ipd As Integer, eventID As Integer)
+  overload: WSSInterfacing.StimulationParams.UpdateIPD*
+  nameWithType.vb: StimulationParams.UpdateIPD(Integer, Integer, Integer)
+  fullName.vb: WSSInterfacing.StimulationParams.UpdateIPD(Integer, Integer, Integer)
+  name.vb: UpdateIPD(Integer, Integer, Integer)
+- uid: WSSInterfacing.StimulationParams.StimulateNormalized(System.String,System.Single)
+  commentId: M:WSSInterfacing.StimulationParams.StimulateNormalized(System.String,System.Single)
+  id: StimulateNormalized(System.String,System.Single)
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: StimulateNormalized(string, float)
+  nameWithType: StimulationParams.StimulateNormalized(string, float)
+  fullName: WSSInterfacing.StimulationParams.StimulateNormalized(string, float)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Normalized drive [0..1]. Computes PW via per-finger min/max and stimulates.
+  example: []
+  syntax:
+    content: public void StimulateNormalized(string finger, float value01)
+    parameters:
+    - id: finger
+      type: System.String
+      description: Finger label or alias (e.g., "index", "ring", "ch2").
+    - id: value01
+      type: System.Single
+      description: Normalized drive in [0,1]. Values are clamped.
+    content.vb: Public Sub StimulateNormalized(finger As String, value01 As Single)
+  overload: WSSInterfacing.StimulationParams.StimulateNormalized*
+  nameWithType.vb: StimulationParams.StimulateNormalized(String, Single)
+  fullName.vb: WSSInterfacing.StimulationParams.StimulateNormalized(String, Single)
+  name.vb: StimulateNormalized(String, Single)
+- uid: WSSInterfacing.StimulationParams.GetLastPulseWidth(System.String)
+  commentId: M:WSSInterfacing.StimulationParams.GetLastPulseWidth(System.String)
+  id: GetLastPulseWidth(System.String)
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: GetLastPulseWidth(string)
+  nameWithType: StimulationParams.GetLastPulseWidth(string)
+  fullName: WSSInterfacing.StimulationParams.GetLastPulseWidth(string)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Returns the last computed intensity for a finger. For PW-driven systems this is PW (Âµs).
+  example: []
+  syntax:
+    content: public int GetLastPulseWidth(string finger)
+    parameters:
+    - id: finger
+      type: System.String
+      description: Finger label or alias.
+    return:
+      type: System.Int32
+    content.vb: Public Function GetLastPulseWidth(finger As String) As Integer
+  overload: WSSInterfacing.StimulationParams.GetLastPulseWidth*
+  nameWithType.vb: StimulationParams.GetLastPulseWidth(String)
+  fullName.vb: WSSInterfacing.StimulationParams.GetLastPulseWidth(String)
+  name.vb: GetLastPulseWidth(String)
+- uid: WSSInterfacing.StimulationParams.SetChannelAmp(System.String,System.Single)
+  commentId: M:WSSInterfacing.StimulationParams.SetChannelAmp(System.String,System.Single)
+  id: SetChannelAmp(System.String,System.Single)
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: SetChannelAmp(string, float)
+  nameWithType: StimulationParams.SetChannelAmp(string, float)
+  fullName: WSSInterfacing.StimulationParams.SetChannelAmp(string, float)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Sets per-finger amplitude in mA.
+  example: []
+  syntax:
+    content: public void SetChannelAmp(string finger, float mA)
+    parameters:
+    - id: finger
+      type: System.String
+    - id: mA
+      type: System.Single
+      description: Amplitude in milliamps.
+    content.vb: Public Sub SetChannelAmp(finger As String, mA As Single)
+  overload: WSSInterfacing.StimulationParams.SetChannelAmp*
+  nameWithType.vb: StimulationParams.SetChannelAmp(String, Single)
+  fullName.vb: WSSInterfacing.StimulationParams.SetChannelAmp(String, Single)
+  name.vb: SetChannelAmp(String, Single)
+- uid: WSSInterfacing.StimulationParams.SetChannelPWMin(System.String,System.Int32)
+  commentId: M:WSSInterfacing.StimulationParams.SetChannelPWMin(System.String,System.Int32)
+  id: SetChannelPWMin(System.String,System.Int32)
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: SetChannelPWMin(string, int)
+  nameWithType: StimulationParams.SetChannelPWMin(string, int)
+  fullName: WSSInterfacing.StimulationParams.SetChannelPWMin(string, int)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Sets per-finger minimum PW in Âµs.
+  example: []
+  syntax:
+    content: public void SetChannelPWMin(string finger, int us)
+    parameters:
+    - id: finger
+      type: System.String
+    - id: us
+      type: System.Int32
+    content.vb: Public Sub SetChannelPWMin(finger As String, us As Integer)
+  overload: WSSInterfacing.StimulationParams.SetChannelPWMin*
+  nameWithType.vb: StimulationParams.SetChannelPWMin(String, Integer)
+  fullName.vb: WSSInterfacing.StimulationParams.SetChannelPWMin(String, Integer)
+  name.vb: SetChannelPWMin(String, Integer)
+- uid: WSSInterfacing.StimulationParams.SetChannelPWMax(System.String,System.Int32)
+  commentId: M:WSSInterfacing.StimulationParams.SetChannelPWMax(System.String,System.Int32)
+  id: SetChannelPWMax(System.String,System.Int32)
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: SetChannelPWMax(string, int)
+  nameWithType: StimulationParams.SetChannelPWMax(string, int)
+  fullName: WSSInterfacing.StimulationParams.SetChannelPWMax(string, int)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Sets per-finger maximum PW in Âµs.
+  example: []
+  syntax:
+    content: public void SetChannelPWMax(string finger, int us)
+    parameters:
+    - id: finger
+      type: System.String
+    - id: us
+      type: System.Int32
+    content.vb: Public Sub SetChannelPWMax(finger As String, us As Integer)
+  overload: WSSInterfacing.StimulationParams.SetChannelPWMax*
+  nameWithType.vb: StimulationParams.SetChannelPWMax(String, Integer)
+  fullName.vb: WSSInterfacing.StimulationParams.SetChannelPWMax(String, Integer)
+  name.vb: SetChannelPWMax(String, Integer)
+- uid: WSSInterfacing.StimulationParams.SetChannelIPI(System.String,System.Int32)
+  commentId: M:WSSInterfacing.StimulationParams.SetChannelIPI(System.String,System.Int32)
+  id: SetChannelIPI(System.String,System.Int32)
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: SetChannelIPI(string, int)
+  nameWithType: StimulationParams.SetChannelIPI(string, int)
+  fullName: WSSInterfacing.StimulationParams.SetChannelIPI(string, int)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Sets per-finger IPI in ms.
+  example: []
+  syntax:
+    content: public void SetChannelIPI(string finger, int ms)
+    parameters:
+    - id: finger
+      type: System.String
+    - id: ms
+      type: System.Int32
+    content.vb: Public Sub SetChannelIPI(finger As String, ms As Integer)
+  overload: WSSInterfacing.StimulationParams.SetChannelIPI*
+  nameWithType.vb: StimulationParams.SetChannelIPI(String, Integer)
+  fullName.vb: WSSInterfacing.StimulationParams.SetChannelIPI(String, Integer)
+  name.vb: SetChannelIPI(String, Integer)
+- uid: WSSInterfacing.StimulationParams.GetChannelAmp(System.String)
+  commentId: M:WSSInterfacing.StimulationParams.GetChannelAmp(System.String)
+  id: GetChannelAmp(System.String)
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: GetChannelAmp(string)
+  nameWithType: StimulationParams.GetChannelAmp(string)
+  fullName: WSSInterfacing.StimulationParams.GetChannelAmp(string)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Gets per-finger amplitude in mA.
+  example: []
+  syntax:
+    content: public float GetChannelAmp(string finger)
+    parameters:
+    - id: finger
+      type: System.String
+    return:
+      type: System.Single
+    content.vb: Public Function GetChannelAmp(finger As String) As Single
+  overload: WSSInterfacing.StimulationParams.GetChannelAmp*
+  nameWithType.vb: StimulationParams.GetChannelAmp(String)
+  fullName.vb: WSSInterfacing.StimulationParams.GetChannelAmp(String)
+  name.vb: GetChannelAmp(String)
+- uid: WSSInterfacing.StimulationParams.GetChannelPWMin(System.String)
+  commentId: M:WSSInterfacing.StimulationParams.GetChannelPWMin(System.String)
+  id: GetChannelPWMin(System.String)
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: GetChannelPWMin(string)
+  nameWithType: StimulationParams.GetChannelPWMin(string)
+  fullName: WSSInterfacing.StimulationParams.GetChannelPWMin(string)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Gets per-finger minimum PW in Âµs.
+  example: []
+  syntax:
+    content: public int GetChannelPWMin(string finger)
+    parameters:
+    - id: finger
+      type: System.String
+    return:
+      type: System.Int32
+    content.vb: Public Function GetChannelPWMin(finger As String) As Integer
+  overload: WSSInterfacing.StimulationParams.GetChannelPWMin*
+  nameWithType.vb: StimulationParams.GetChannelPWMin(String)
+  fullName.vb: WSSInterfacing.StimulationParams.GetChannelPWMin(String)
+  name.vb: GetChannelPWMin(String)
+- uid: WSSInterfacing.StimulationParams.GetChannelPWMax(System.String)
+  commentId: M:WSSInterfacing.StimulationParams.GetChannelPWMax(System.String)
+  id: GetChannelPWMax(System.String)
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: GetChannelPWMax(string)
+  nameWithType: StimulationParams.GetChannelPWMax(string)
+  fullName: WSSInterfacing.StimulationParams.GetChannelPWMax(string)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Gets per-finger maximum PW in Âµs.
+  example: []
+  syntax:
+    content: public int GetChannelPWMax(string finger)
+    parameters:
+    - id: finger
+      type: System.String
+    return:
+      type: System.Int32
+    content.vb: Public Function GetChannelPWMax(finger As String) As Integer
+  overload: WSSInterfacing.StimulationParams.GetChannelPWMax*
+  nameWithType.vb: StimulationParams.GetChannelPWMax(String)
+  fullName.vb: WSSInterfacing.StimulationParams.GetChannelPWMax(String)
+  name.vb: GetChannelPWMax(String)
+- uid: WSSInterfacing.StimulationParams.GetChannelIPI(System.String)
+  commentId: M:WSSInterfacing.StimulationParams.GetChannelIPI(System.String)
+  id: GetChannelIPI(System.String)
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: GetChannelIPI(string)
+  nameWithType: StimulationParams.GetChannelIPI(string)
+  fullName: WSSInterfacing.StimulationParams.GetChannelIPI(string)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Gets per-finger IPI in ms.
+  example: []
+  syntax:
+    content: public int GetChannelIPI(string finger)
+    parameters:
+    - id: finger
+      type: System.String
+    return:
+      type: System.Int32
+    content.vb: Public Function GetChannelIPI(finger As String) As Integer
+  overload: WSSInterfacing.StimulationParams.GetChannelIPI*
+  nameWithType.vb: StimulationParams.GetChannelIPI(String)
+  fullName.vb: WSSInterfacing.StimulationParams.GetChannelIPI(String)
+  name.vb: GetChannelIPI(String)
+- uid: WSSInterfacing.StimulationParams.IsFingerValid(System.String)
+  commentId: M:WSSInterfacing.StimulationParams.IsFingerValid(System.String)
+  id: IsFingerValid(System.String)
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: IsFingerValid(string)
+  nameWithType: StimulationParams.IsFingerValid(string)
+  fullName: WSSInterfacing.StimulationParams.IsFingerValid(string)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Returns true if the finger maps to a valid channel for the current configuration.
+  example: []
+  syntax:
+    content: public bool IsFingerValid(string finger)
+    parameters:
+    - id: finger
+      type: System.String
+    return:
+      type: System.Boolean
+    content.vb: Public Function IsFingerValid(finger As String) As Boolean
+  overload: WSSInterfacing.StimulationParams.IsFingerValid*
+  nameWithType.vb: StimulationParams.IsFingerValid(String)
+  fullName.vb: WSSInterfacing.StimulationParams.IsFingerValid(String)
+  name.vb: IsFingerValid(String)
+- uid: WSSInterfacing.StimulationParams.SaveParamsJson
+  commentId: M:WSSInterfacing.StimulationParams.SaveParamsJson
+  id: SaveParamsJson
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: SaveParamsJson()
+  nameWithType: StimulationParams.SaveParamsJson()
+  fullName: WSSInterfacing.StimulationParams.SaveParamsJson()
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Saves current params JSON to disk.
+  example: []
+  syntax:
+    content: public void SaveParamsJson()
+    content.vb: Public Sub SaveParamsJson()
+  overload: WSSInterfacing.StimulationParams.SaveParamsJson*
+- uid: WSSInterfacing.StimulationParams.LoadParamsJson
+  commentId: M:WSSInterfacing.StimulationParams.LoadParamsJson
+  id: LoadParamsJson
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: LoadParamsJson()
+  nameWithType: StimulationParams.LoadParamsJson()
+  fullName: WSSInterfacing.StimulationParams.LoadParamsJson()
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Loads params JSON from default location.
+  example: []
+  syntax:
+    content: public void LoadParamsJson()
+    content.vb: Public Sub LoadParamsJson()
+  overload: WSSInterfacing.StimulationParams.LoadParamsJson*
+- uid: WSSInterfacing.StimulationParams.LoadParamsJson(System.String)
+  commentId: M:WSSInterfacing.StimulationParams.LoadParamsJson(System.String)
+  id: LoadParamsJson(System.String)
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: LoadParamsJson(string)
+  nameWithType: StimulationParams.LoadParamsJson(string)
+  fullName: WSSInterfacing.StimulationParams.LoadParamsJson(string)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Loads params JSON from a given file or directory.
+  example: []
+  syntax:
+    content: public void LoadParamsJson(string pathOrDir)
+    parameters:
+    - id: pathOrDir
+      type: System.String
+      description: File path or directory with default name.
+    content.vb: Public Sub LoadParamsJson(pathOrDir As String)
+  overload: WSSInterfacing.StimulationParams.LoadParamsJson*
+  nameWithType.vb: StimulationParams.LoadParamsJson(String)
+  fullName.vb: WSSInterfacing.StimulationParams.LoadParamsJson(String)
+  name.vb: LoadParamsJson(String)
+- uid: WSSInterfacing.StimulationParams.AddOrUpdateStimParam(System.String,System.Single)
+  commentId: M:WSSInterfacing.StimulationParams.AddOrUpdateStimParam(System.String,System.Single)
+  id: AddOrUpdateStimParam(System.String,System.Single)
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: AddOrUpdateStimParam(string, float)
+  nameWithType: StimulationParams.AddOrUpdateStimParam(string, float)
+  fullName: WSSInterfacing.StimulationParams.AddOrUpdateStimParam(string, float)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: 'Sets a parameter by dotted key. Examples: "stim.ch.0.amp", "stim.ch.1.minPW".'
+  example: []
+  syntax:
+    content: public void AddOrUpdateStimParam(string key, float value)
+    parameters:
+    - id: key
+      type: System.String
+      description: Dotted parameter key.
+    - id: value
+      type: System.Single
+      description: Value to set.
+    content.vb: Public Sub AddOrUpdateStimParam(key As String, value As Single)
+  overload: WSSInterfacing.StimulationParams.AddOrUpdateStimParam*
+  nameWithType.vb: StimulationParams.AddOrUpdateStimParam(String, Single)
+  fullName.vb: WSSInterfacing.StimulationParams.AddOrUpdateStimParam(String, Single)
+  name.vb: AddOrUpdateStimParam(String, Single)
+- uid: WSSInterfacing.StimulationParams.GetStimParam(System.String)
+  commentId: M:WSSInterfacing.StimulationParams.GetStimParam(System.String)
+  id: GetStimParam(System.String)
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: GetStimParam(string)
+  nameWithType: StimulationParams.GetStimParam(string)
+  fullName: WSSInterfacing.StimulationParams.GetStimParam(string)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Gets a parameter by dotted key.
+  example: []
+  syntax:
+    content: public float GetStimParam(string key)
+    parameters:
+    - id: key
+      type: System.String
+      description: Dotted parameter key.
+    return:
+      type: System.Single
+    content.vb: Public Function GetStimParam(key As String) As Single
+  overload: WSSInterfacing.StimulationParams.GetStimParam*
+  nameWithType.vb: StimulationParams.GetStimParam(String)
+  fullName.vb: WSSInterfacing.StimulationParams.GetStimParam(String)
+  name.vb: GetStimParam(String)
+- uid: WSSInterfacing.StimulationParams.TryGetStimParam(System.String,System.Single@)
+  commentId: M:WSSInterfacing.StimulationParams.TryGetStimParam(System.String,System.Single@)
+  id: TryGetStimParam(System.String,System.Single@)
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: TryGetStimParam(string, out float)
+  nameWithType: StimulationParams.TryGetStimParam(string, out float)
+  fullName: WSSInterfacing.StimulationParams.TryGetStimParam(string, out float)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Tries to read a parameter by dotted key.
+  example: []
+  syntax:
+    content: public bool TryGetStimParam(string key, out float v)
+    parameters:
+    - id: key
+      type: System.String
+      description: Dotted parameter key.
+    - id: v
+      type: System.Single
+    return:
+      type: System.Boolean
+      description: <code>true</code> if found, otherwise <code>false</code>.
+    content.vb: Public Function TryGetStimParam(key As String, v As Single) As Boolean
+  overload: WSSInterfacing.StimulationParams.TryGetStimParam*
+  nameWithType.vb: StimulationParams.TryGetStimParam(String, Single)
+  fullName.vb: WSSInterfacing.StimulationParams.TryGetStimParam(String, Single)
+  name.vb: TryGetStimParam(String, Single)
+- uid: WSSInterfacing.StimulationParams.GetAllStimParams
+  commentId: M:WSSInterfacing.StimulationParams.GetAllStimParams
+  id: GetAllStimParams
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: GetAllStimParams()
+  nameWithType: StimulationParams.GetAllStimParams()
+  fullName: WSSInterfacing.StimulationParams.GetAllStimParams()
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Returns a copy of all current params as dotted-key map.
+  example: []
+  syntax:
+    content: public Dictionary<string, float> GetAllStimParams()
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,System.Single}
+    content.vb: Public Function GetAllStimParams() As Dictionary(Of String, Single)
+  overload: WSSInterfacing.StimulationParams.GetAllStimParams*
+- uid: WSSInterfacing.StimulationParams.UpdateChannelParams(System.String,System.Int32,System.Int32,System.Int32)
+  commentId: M:WSSInterfacing.StimulationParams.UpdateChannelParams(System.String,System.Int32,System.Int32,System.Int32)
+  id: UpdateChannelParams(System.String,System.Int32,System.Int32,System.Int32)
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: UpdateChannelParams(string, int, int, int)
+  nameWithType: StimulationParams.UpdateChannelParams(string, int, int, int)
+  fullName: WSSInterfacing.StimulationParams.UpdateChannelParams(string, int, int, int)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Updates per-finger calibration params.
+  example: []
+  syntax:
+    content: public void UpdateChannelParams(string finger, int max, int min, int amp)
+    parameters:
+    - id: finger
+      type: System.String
+      description: e.g., "index", "ring", or "ch2".
+    - id: max
+      type: System.Int32
+      description: Max PW (Âµs).
+    - id: min
+      type: System.Int32
+      description: Min PW (Âµs).
+    - id: amp
+      type: System.Int32
+      description: Amplitude (mA).
+    content.vb: Public Sub UpdateChannelParams(finger As String, max As Integer, min As Integer, amp As Integer)
+  overload: WSSInterfacing.StimulationParams.UpdateChannelParams*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: If finger maps to an invalid channel.
+  nameWithType.vb: StimulationParams.UpdateChannelParams(String, Integer, Integer, Integer)
+  fullName.vb: WSSInterfacing.StimulationParams.UpdateChannelParams(String, Integer, Integer, Integer)
+  name.vb: UpdateChannelParams(String, Integer, Integer, Integer)
+- uid: WSSInterfacing.StimulationParams.Ready
+  commentId: M:WSSInterfacing.StimulationParams.Ready
+  id: Ready
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: Ready()
+  nameWithType: StimulationParams.Ready()
+  fullName: WSSInterfacing.StimulationParams.Ready()
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: True when the core is ready to accept start stimulation.
+  example: []
+  syntax:
+    content: public bool Ready()
+    return:
+      type: System.Boolean
+    content.vb: Public Function Ready() As Boolean
+  overload: WSSInterfacing.StimulationParams.Ready*
+- uid: WSSInterfacing.StimulationParams.Started
+  commentId: M:WSSInterfacing.StimulationParams.Started
+  id: Started
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: Started()
+  nameWithType: StimulationParams.Started()
+  fullName: WSSInterfacing.StimulationParams.Started()
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: True when device transport is started or streaming.
+  example: []
+  syntax:
+    content: public bool Started()
+    return:
+      type: System.Boolean
+    content.vb: Public Function Started() As Boolean
+  overload: WSSInterfacing.StimulationParams.Started*
+- uid: WSSInterfacing.StimulationParams.GetCoreConfigCTRL
+  commentId: M:WSSInterfacing.StimulationParams.GetCoreConfigCTRL
+  id: GetCoreConfigCTRL
+  parent: WSSInterfacing.StimulationParams
+  langs:
+  - csharp
+  - vb
+  name: GetCoreConfigCTRL()
+  nameWithType: StimulationParams.GetCoreConfigCTRL()
+  fullName: WSSInterfacing.StimulationParams.GetCoreConfigCTRL()
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Provides access to the core configuration controller.
+  example: []
+  syntax:
+    content: public CoreConfigController GetCoreConfigCTRL()
+    return:
+      type: WSSInterfacing.CoreConfigController
+    content.vb: Public Function GetCoreConfigCTRL() As CoreConfigController
+  overload: WSSInterfacing.StimulationParams.GetCoreConfigCTRL*
+references:
+- uid: WSSInterfacing.StimulationParams.FingerToChannel(System.String)
+  commentId: M:WSSInterfacing.StimulationParams.FingerToChannel(System.String)
+  isExternal: true
+  name: FingerToChannel(string)
+  nameWithType: StimulationParams.FingerToChannel(string)
+  fullName: WSSInterfacing.StimulationParams.FingerToChannel(string)
+  nameWithType.vb: StimulationParams.FingerToChannel(String)
+  fullName.vb: WSSInterfacing.StimulationParams.FingerToChannel(String)
+  name.vb: FingerToChannel(String)
+  spec.csharp:
+  - uid: WSSInterfacing.StimulationParams.FingerToChannel(System.String)
+    name: FingerToChannel
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: WSSInterfacing.StimulationParams.FingerToChannel(System.String)
+    name: FingerToChannel
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: )
+- uid: WSSInterfacing
+  commentId: N:WSSInterfacing
+  href: WSSInterfacing.html
+  name: WSSInterfacing
+  nameWithType: WSSInterfacing
+  fullName: WSSInterfacing
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: UnityEngine.Object
+  commentId: T:UnityEngine.Object
+  parent: UnityEngine
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: UnityEngine.Object
+- uid: UnityEngine.Component
+  commentId: T:UnityEngine.Component
+  parent: UnityEngine
+  isExternal: true
+  name: Component
+  nameWithType: Component
+  fullName: UnityEngine.Component
+- uid: UnityEngine.Behaviour
+  commentId: T:UnityEngine.Behaviour
+  parent: UnityEngine
+  isExternal: true
+  name: Behaviour
+  nameWithType: Behaviour
+  fullName: UnityEngine.Behaviour
+- uid: UnityEngine.MonoBehaviour
+  commentId: T:UnityEngine.MonoBehaviour
+  parent: UnityEngine
+  isExternal: true
+  name: MonoBehaviour
+  nameWithType: MonoBehaviour
+  fullName: UnityEngine.MonoBehaviour
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: UnityEngine
+  commentId: N:UnityEngine
+  isExternal: true
+  name: UnityEngine
+  nameWithType: UnityEngine
+  fullName: UnityEngine
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: WSSInterfacing.StimulationParams.forcePort
+  commentId: F:WSSInterfacing.StimulationParams.forcePort
+  href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_forcePort
+  name: forcePort
+  nameWithType: StimulationParams.forcePort
+  fullName: WSSInterfacing.StimulationParams.forcePort
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: WSSInterfacing.StimulationParams.StartStimulation
+  commentId: M:WSSInterfacing.StimulationParams.StartStimulation
+  href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_StartStimulation
+  name: StartStimulation()
+  nameWithType: StimulationParams.StartStimulation()
+  fullName: WSSInterfacing.StimulationParams.StartStimulation()
+  spec.csharp:
+  - uid: WSSInterfacing.StimulationParams.StartStimulation
+    name: StartStimulation
+    href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_StartStimulation
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: WSSInterfacing.StimulationParams.StartStimulation
+    name: StartStimulation
+    href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_StartStimulation
+  - name: (
+  - name: )
+- uid: WSSInterfacing.IBasicStimulation
+  commentId: T:WSSInterfacing.IBasicStimulation
+  parent: WSSInterfacing
+  href: WSSInterfacing.IBasicStimulation.html
+  name: IBasicStimulation
+  nameWithType: IBasicStimulation
+  fullName: WSSInterfacing.IBasicStimulation
+- uid: WSSInterfacing.StimulationParams.Awake*
+  commentId: Overload:WSSInterfacing.StimulationParams.Awake
+  href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_Awake
+  name: Awake
+  nameWithType: StimulationParams.Awake
+  fullName: WSSInterfacing.StimulationParams.Awake
+- uid: WSSInterfacing.StimulationParams.releaseRadio*
+  commentId: Overload:WSSInterfacing.StimulationParams.releaseRadio
+  href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_releaseRadio
+  name: releaseRadio
+  nameWithType: StimulationParams.releaseRadio
+  fullName: WSSInterfacing.StimulationParams.releaseRadio
+- uid: WSSInterfacing.StimulationParams.resetRadio*
+  commentId: Overload:WSSInterfacing.StimulationParams.resetRadio
+  href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_resetRadio
+  name: resetRadio
+  nameWithType: StimulationParams.resetRadio
+  fullName: WSSInterfacing.StimulationParams.resetRadio
+- uid: WSSInterfacing.StimulationParams.StimulateNormalized(System.String,System.Single)
+  commentId: M:WSSInterfacing.StimulationParams.StimulateNormalized(System.String,System.Single)
+  isExternal: true
+  href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_StimulateNormalized_System_String_System_Single_
+  name: StimulateNormalized(string, float)
+  nameWithType: StimulationParams.StimulateNormalized(string, float)
+  fullName: WSSInterfacing.StimulationParams.StimulateNormalized(string, float)
+  nameWithType.vb: StimulationParams.StimulateNormalized(String, Single)
+  fullName.vb: WSSInterfacing.StimulationParams.StimulateNormalized(String, Single)
+  name.vb: StimulateNormalized(String, Single)
+  spec.csharp:
+  - uid: WSSInterfacing.StimulationParams.StimulateNormalized(System.String,System.Single)
+    name: StimulateNormalized
+    href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_StimulateNormalized_System_String_System_Single_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: WSSInterfacing.StimulationParams.StimulateNormalized(System.String,System.Single)
+    name: StimulateNormalized
+    href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_StimulateNormalized_System_String_System_Single_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+  - name: )
+- uid: WSSInterfacing.StimulationParams.StimulateAnalog*
+  commentId: Overload:WSSInterfacing.StimulationParams.StimulateAnalog
+  href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_StimulateAnalog_System_String_System_Int32_System_Int32_System_Int32_
+  name: StimulateAnalog
+  nameWithType: StimulationParams.StimulateAnalog
+  fullName: WSSInterfacing.StimulationParams.StimulateAnalog
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: WSSInterfacing.StimulationParams.StartStimulation*
+  commentId: Overload:WSSInterfacing.StimulationParams.StartStimulation
+  href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_StartStimulation
+  name: StartStimulation
+  nameWithType: StimulationParams.StartStimulation
+  fullName: WSSInterfacing.StimulationParams.StartStimulation
+- uid: WSSInterfacing.StimulationParams.StopStimulation*
+  commentId: Overload:WSSInterfacing.StimulationParams.StopStimulation
+  href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_StopStimulation
+  name: StopStimulation
+  nameWithType: StimulationParams.StopStimulation
+  fullName: WSSInterfacing.StimulationParams.StopStimulation
+- uid: WSSInterfacing.StimulationParams.Save*
+  commentId: Overload:WSSInterfacing.StimulationParams.Save
+  href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_Save_System_Int32_
+  name: Save
+  nameWithType: StimulationParams.Save
+  fullName: WSSInterfacing.StimulationParams.Save
+- uid: WSSInterfacing.StimulationParams.load*
+  commentId: Overload:WSSInterfacing.StimulationParams.load
+  href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_load_System_Int32_
+  name: load
+  nameWithType: StimulationParams.load
+  fullName: WSSInterfacing.StimulationParams.load
+- uid: WSSInterfacing.StimulationParams.request_Configs*
+  commentId: Overload:WSSInterfacing.StimulationParams.request_Configs
+  href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_request_Configs_System_Int32_System_Int32_System_Int32_
+  name: request_Configs
+  nameWithType: StimulationParams.request_Configs
+  fullName: WSSInterfacing.StimulationParams.request_Configs
+- uid: WSSInterfacing.StimulationParams.updateWaveform*
+  commentId: Overload:WSSInterfacing.StimulationParams.updateWaveform
+  href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_updateWaveform_System_Int32___System_Int32_
+  name: updateWaveform
+  nameWithType: StimulationParams.updateWaveform
+  fullName: WSSInterfacing.StimulationParams.updateWaveform
+- uid: System.Int32[]
+  isExternal: true
+  name: int[]
+  nameWithType: int[]
+  fullName: int[]
+  nameWithType.vb: Integer()
+  fullName.vb: Integer()
+  name.vb: Integer()
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: (
+  - name: )
+- uid: WSSInterfacing.WaveformBuilder
+  commentId: T:WSSInterfacing.WaveformBuilder
+  parent: WSSInterfacing
+  href: WSSInterfacing.WaveformBuilder.html
+  name: WaveformBuilder
+  nameWithType: WaveformBuilder
+  fullName: WSSInterfacing.WaveformBuilder
+- uid: WSSInterfacing.StimulationParams.loadWaveform*
+  commentId: Overload:WSSInterfacing.StimulationParams.loadWaveform
+  href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_loadWaveform_System_String_System_Int32_
+  name: loadWaveform
+  nameWithType: StimulationParams.loadWaveform
+  fullName: WSSInterfacing.StimulationParams.loadWaveform
+- uid: WSSInterfacing.StimulationParams.WaveformSetup*
+  commentId: Overload:WSSInterfacing.StimulationParams.WaveformSetup
+  href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_WaveformSetup_WSSInterfacing_WaveformBuilder_System_Int32_
+  name: WaveformSetup
+  nameWithType: StimulationParams.WaveformSetup
+  fullName: WSSInterfacing.StimulationParams.WaveformSetup
+- uid: WSSInterfacing.StimulationParams.UpdateIPD*
+  commentId: Overload:WSSInterfacing.StimulationParams.UpdateIPD
+  href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_UpdateIPD_System_Int32_System_Int32_
+  name: UpdateIPD
+  nameWithType: StimulationParams.UpdateIPD
+  fullName: WSSInterfacing.StimulationParams.UpdateIPD
+- uid: WSSInterfacing.StimulationParams.StimulateNormalized*
+  commentId: Overload:WSSInterfacing.StimulationParams.StimulateNormalized
+  href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_StimulateNormalized_System_String_System_Single_
+  name: StimulateNormalized
+  nameWithType: StimulationParams.StimulateNormalized
+  fullName: WSSInterfacing.StimulationParams.StimulateNormalized
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: WSSInterfacing.StimulationParams.GetLastPulseWidth*
+  commentId: Overload:WSSInterfacing.StimulationParams.GetLastPulseWidth
+  href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_GetLastPulseWidth_System_String_
+  name: GetLastPulseWidth
+  nameWithType: StimulationParams.GetLastPulseWidth
+  fullName: WSSInterfacing.StimulationParams.GetLastPulseWidth
+- uid: WSSInterfacing.StimulationParams.SetChannelAmp*
+  commentId: Overload:WSSInterfacing.StimulationParams.SetChannelAmp
+  href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_SetChannelAmp_System_String_System_Single_
+  name: SetChannelAmp
+  nameWithType: StimulationParams.SetChannelAmp
+  fullName: WSSInterfacing.StimulationParams.SetChannelAmp
+- uid: WSSInterfacing.StimulationParams.SetChannelPWMin*
+  commentId: Overload:WSSInterfacing.StimulationParams.SetChannelPWMin
+  href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_SetChannelPWMin_System_String_System_Int32_
+  name: SetChannelPWMin
+  nameWithType: StimulationParams.SetChannelPWMin
+  fullName: WSSInterfacing.StimulationParams.SetChannelPWMin
+- uid: WSSInterfacing.StimulationParams.SetChannelPWMax*
+  commentId: Overload:WSSInterfacing.StimulationParams.SetChannelPWMax
+  href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_SetChannelPWMax_System_String_System_Int32_
+  name: SetChannelPWMax
+  nameWithType: StimulationParams.SetChannelPWMax
+  fullName: WSSInterfacing.StimulationParams.SetChannelPWMax
+- uid: WSSInterfacing.StimulationParams.SetChannelIPI*
+  commentId: Overload:WSSInterfacing.StimulationParams.SetChannelIPI
+  href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_SetChannelIPI_System_String_System_Int32_
+  name: SetChannelIPI
+  nameWithType: StimulationParams.SetChannelIPI
+  fullName: WSSInterfacing.StimulationParams.SetChannelIPI
+- uid: WSSInterfacing.StimulationParams.GetChannelAmp*
+  commentId: Overload:WSSInterfacing.StimulationParams.GetChannelAmp
+  href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_GetChannelAmp_System_String_
+  name: GetChannelAmp
+  nameWithType: StimulationParams.GetChannelAmp
+  fullName: WSSInterfacing.StimulationParams.GetChannelAmp
+- uid: WSSInterfacing.StimulationParams.GetChannelPWMin*
+  commentId: Overload:WSSInterfacing.StimulationParams.GetChannelPWMin
+  href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_GetChannelPWMin_System_String_
+  name: GetChannelPWMin
+  nameWithType: StimulationParams.GetChannelPWMin
+  fullName: WSSInterfacing.StimulationParams.GetChannelPWMin
+- uid: WSSInterfacing.StimulationParams.GetChannelPWMax*
+  commentId: Overload:WSSInterfacing.StimulationParams.GetChannelPWMax
+  href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_GetChannelPWMax_System_String_
+  name: GetChannelPWMax
+  nameWithType: StimulationParams.GetChannelPWMax
+  fullName: WSSInterfacing.StimulationParams.GetChannelPWMax
+- uid: WSSInterfacing.StimulationParams.GetChannelIPI*
+  commentId: Overload:WSSInterfacing.StimulationParams.GetChannelIPI
+  href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_GetChannelIPI_System_String_
+  name: GetChannelIPI
+  nameWithType: StimulationParams.GetChannelIPI
+  fullName: WSSInterfacing.StimulationParams.GetChannelIPI
+- uid: WSSInterfacing.StimulationParams.IsFingerValid*
+  commentId: Overload:WSSInterfacing.StimulationParams.IsFingerValid
+  href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_IsFingerValid_System_String_
+  name: IsFingerValid
+  nameWithType: StimulationParams.IsFingerValid
+  fullName: WSSInterfacing.StimulationParams.IsFingerValid
+- uid: WSSInterfacing.StimulationParams.SaveParamsJson*
+  commentId: Overload:WSSInterfacing.StimulationParams.SaveParamsJson
+  href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_SaveParamsJson
+  name: SaveParamsJson
+  nameWithType: StimulationParams.SaveParamsJson
+  fullName: WSSInterfacing.StimulationParams.SaveParamsJson
+- uid: WSSInterfacing.StimulationParams.LoadParamsJson*
+  commentId: Overload:WSSInterfacing.StimulationParams.LoadParamsJson
+  href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_LoadParamsJson
+  name: LoadParamsJson
+  nameWithType: StimulationParams.LoadParamsJson
+  fullName: WSSInterfacing.StimulationParams.LoadParamsJson
+- uid: WSSInterfacing.StimulationParams.AddOrUpdateStimParam*
+  commentId: Overload:WSSInterfacing.StimulationParams.AddOrUpdateStimParam
+  href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_AddOrUpdateStimParam_System_String_System_Single_
+  name: AddOrUpdateStimParam
+  nameWithType: StimulationParams.AddOrUpdateStimParam
+  fullName: WSSInterfacing.StimulationParams.AddOrUpdateStimParam
+- uid: WSSInterfacing.StimulationParams.GetStimParam*
+  commentId: Overload:WSSInterfacing.StimulationParams.GetStimParam
+  href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_GetStimParam_System_String_
+  name: GetStimParam
+  nameWithType: StimulationParams.GetStimParam
+  fullName: WSSInterfacing.StimulationParams.GetStimParam
+- uid: WSSInterfacing.StimulationParams.TryGetStimParam*
+  commentId: Overload:WSSInterfacing.StimulationParams.TryGetStimParam
+  href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_TryGetStimParam_System_String_System_Single__
+  name: TryGetStimParam
+  nameWithType: StimulationParams.TryGetStimParam
+  fullName: WSSInterfacing.StimulationParams.TryGetStimParam
+- uid: WSSInterfacing.StimulationParams.GetAllStimParams*
+  commentId: Overload:WSSInterfacing.StimulationParams.GetAllStimParams
+  href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_GetAllStimParams
+  name: GetAllStimParams
+  nameWithType: StimulationParams.GetAllStimParams
+  fullName: WSSInterfacing.StimulationParams.GetAllStimParams
+- uid: System.Collections.Generic.Dictionary{System.String,System.Single}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,System.Single}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  name: Dictionary<string, float>
+  nameWithType: Dictionary<string, float>
+  fullName: System.Collections.Generic.Dictionary<string, float>
+  nameWithType.vb: Dictionary(Of String, Single)
+  fullName.vb: System.Collections.Generic.Dictionary(Of String, Single)
+  name.vb: Dictionary(Of String, Single)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.ArgumentOutOfRangeException
+  commentId: T:System.ArgumentOutOfRangeException
+  isExternal: true
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
+- uid: WSSInterfacing.StimulationParams.UpdateChannelParams*
+  commentId: Overload:WSSInterfacing.StimulationParams.UpdateChannelParams
+  href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_UpdateChannelParams_System_String_System_Int32_System_Int32_System_Int32_
+  name: UpdateChannelParams
+  nameWithType: StimulationParams.UpdateChannelParams
+  fullName: WSSInterfacing.StimulationParams.UpdateChannelParams
+- uid: WSSInterfacing.StimulationParams.Ready*
+  commentId: Overload:WSSInterfacing.StimulationParams.Ready
+  href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_Ready
+  name: Ready
+  nameWithType: StimulationParams.Ready
+  fullName: WSSInterfacing.StimulationParams.Ready
+- uid: WSSInterfacing.StimulationParams.Started*
+  commentId: Overload:WSSInterfacing.StimulationParams.Started
+  href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_Started
+  name: Started
+  nameWithType: StimulationParams.Started
+  fullName: WSSInterfacing.StimulationParams.Started
+- uid: WSSInterfacing.StimulationParams.GetCoreConfigCTRL*
+  commentId: Overload:WSSInterfacing.StimulationParams.GetCoreConfigCTRL
+  href: WSSInterfacing.StimulationParams.html#WSSInterfacing_StimulationParams_GetCoreConfigCTRL
+  name: GetCoreConfigCTRL
+  nameWithType: StimulationParams.GetCoreConfigCTRL
+  fullName: WSSInterfacing.StimulationParams.GetCoreConfigCTRL
+- uid: WSSInterfacing.CoreConfigController
+  commentId: T:WSSInterfacing.CoreConfigController
+  parent: WSSInterfacing
+  href: WSSInterfacing.CoreConfigController.html
+  name: CoreConfigController
+  nameWithType: CoreConfigController
+  fullName: WSSInterfacing.CoreConfigController

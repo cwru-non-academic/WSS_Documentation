@@ -1,0 +1,3159 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ApiProject</name>
+    </assembly>
+    <members>
+        <member name="T:WSSInterfacing.IStimParamsCore">
+            <summary>
+            Core + parameters surface layered over <see cref="T:WSSInterfacing.IStimulationCore"/>.
+            Provides normalized-drive stimulation, per-channel parameter access,
+            and JSON persistence for stimulation parameters. BASIC is optional and
+            can be exposed via <see cref="M:WSSInterfacing.IStimParamsCore.TryGetBasic(WSSInterfacing.IBasicStimulation@)"/>.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.IStimParamsCore.StimulateNormalized(System.Int32,System.Single)">
+            <summary>
+            Computes a pulse width from a normalized value in [0,1] using per-channel
+            parameters (minPW, maxPW, amp, IPI) and forwards the result to the core.
+            Implementations clamp the input to [0,1] and cache the last PW sent.
+            </summary>
+            <param name="channel">1-based logical channel.</param>
+            <param name="normalizedValue">Normalized drive in [0,1].</param>
+        </member>
+        <member name="M:WSSInterfacing.IStimParamsCore.GetStimIntensity(System.Int32)">
+            <summary>
+            Returns the most recently computed stimulation intensity for the channel.
+            For PW-driven systems, this is the last pulse width (Âµs) sent by
+            <see cref="M:WSSInterfacing.IStimParamsCore.StimulateNormalized(System.Int32,System.Single)"/>.
+            </summary>
+            <param name="channel">1-based logical channel.</param>
+        </member>
+        <member name="M:WSSInterfacing.IStimParamsCore.SaveParamsJson">
+            <summary>
+            Saves the current stimulation-parameters JSON to disk.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.IStimParamsCore.LoadParamsJson">
+            <summary>
+            Loads the stimulation-parameters JSON from the default location.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.IStimParamsCore.LoadParamsJson(System.String)">
+            <summary>
+            Loads the stimulation-parameters JSON from a specific file path or directory.
+            </summary>
+            <param name="path">File path or directory.</param>
+        </member>
+        <member name="M:WSSInterfacing.IStimParamsCore.AddOrUpdateStimParam(System.String,System.Single)">
+            <summary>
+            Adds or updates a parameter by dotted key. Examples:
+            <c>stim.ch.1.amp</c>, <c>stim.ch.2.minPW</c>, <c>stim.ch.3.maxPW</c>, <c>stim.ch.4.IPI</c>.
+            </summary>
+            <param name="key">Dotted parameter key.</param>
+            <param name="value">Value to set.</param>
+        </member>
+        <member name="M:WSSInterfacing.IStimParamsCore.GetStimParam(System.String)">
+            <summary>
+            Reads a parameter by dotted key. Throws if the key is missing.
+            </summary>
+            <param name="key">Dotted parameter key.</param>
+        </member>
+        <member name="M:WSSInterfacing.IStimParamsCore.TryGetStimParam(System.String,System.Single@)">
+            <summary>
+            Tries to read a parameter by dotted key.
+            </summary>
+            <param name="key">Dotted parameter key.</param>
+            <param name="value">Out value if the key exists.</param>
+            <returns><c>true</c> if found, otherwise <c>false</c>.</returns>
+        </member>
+        <member name="M:WSSInterfacing.IStimParamsCore.GetAllStimParams">
+            <summary>
+            Returns a copy of all current stimulation parameters as a dotted-key map.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.IStimParamsCore.GetStimParamsConfigController">
+            <summary>
+            Returns the parameters/configuration controller for stimulation params.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.IStimParamsCore.SetChannelAmp(System.Int32,System.Single)">
+            <summary>Sets per-channel amplitude in mA.</summary>
+            <param name="ch">1-based logical channel.</param>
+            <param name="mA">Amplitude in milliamps.</param>
+        </member>
+        <member name="M:WSSInterfacing.IStimParamsCore.SetChannelPWMin(System.Int32,System.Int32)">
+            <summary>Sets per-channel minimum pulse width in Âµs.</summary>
+        </member>
+        <member name="M:WSSInterfacing.IStimParamsCore.SetChannelPWMax(System.Int32,System.Int32)">
+            <summary>Sets per-channel maximum pulse width in Âµs.</summary>
+        </member>
+        <member name="M:WSSInterfacing.IStimParamsCore.SetChannelIPI(System.Int32,System.Int32)">
+            <summary>Sets per-channel IPI in ms.</summary>
+        </member>
+        <member name="M:WSSInterfacing.IStimParamsCore.GetChannelAmp(System.Int32)">
+            <summary>Gets per-channel amplitude in mA.</summary>
+        </member>
+        <member name="M:WSSInterfacing.IStimParamsCore.GetChannelPWMin(System.Int32)">
+            <summary>Gets per-channel minimum pulse width in Âµs.</summary>
+        </member>
+        <member name="M:WSSInterfacing.IStimParamsCore.GetChannelPWMax(System.Int32)">
+            <summary>Gets per-channel maximum pulse width in Âµs.</summary>
+        </member>
+        <member name="M:WSSInterfacing.IStimParamsCore.GetChannelIPI(System.Int32)">
+            <summary>Gets per-channel IPI in ms.</summary>
+        </member>
+        <member name="M:WSSInterfacing.IStimParamsCore.TryGetBasic(WSSInterfacing.IBasicStimulation@)">
+            <summary>
+            Exposes the optional BASIC capability if available from the wrapped core.
+            Returns <c>true</c> and sets <paramref name="basic"/> if supported.
+            </summary>
+            <param name="basic">Out parameter for the BASIC interface.</param>
+        </member>
+        <member name="T:WSSInterfacing.StimParamsConfig">
+            <summary>
+            JSON-backed stimulation-parameters configuration. Inherits common JSON
+            handling from <see cref="T:WSSInterfacing.DictConfigBase"/> and seeds default per-channel
+            values under the <c>stim.ch</c> hierarchy.
+            </summary>
+        </member>
+        <member name="T:WSSInterfacing.StimParamsConfigController">
+            <summary>
+            Provides high-level access to stimulation parameter configuration.
+            Automatically seeds channel entries based on max WSS count and ensures safe access.
+            Supports only dotted keys of form "stim.ch.{N}.{leaf}".
+            </summary>
+        </member>
+        <member name="F:WSSInterfacing.StimParamsConfigController.ChannelsPerWss">
+            <summary>Fixed number of channels per WSS hardware unit.</summary>
+        </member>
+        <member name="P:WSSInterfacing.StimParamsConfigController.MaxWss">
+            <summary>Number of WSS units allowed by configuration.</summary>
+        </member>
+        <member name="P:WSSInterfacing.StimParamsConfigController.TotalChannels">
+            <summary>Total number of channels (ChannelsPerWss Ã— MaxWss).</summary>
+        </member>
+        <member name="P:WSSInterfacing.StimParamsConfigController.PerWss">
+            <summary>Hardware constant: channels per WSS.</summary>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsConfigController.#ctor(System.String,System.Int32)">
+            <summary>
+            Constructs a new stimulation parameter controller using the provided JSON path and max WSS value.
+            Automatically creates default channel entries if missing.
+            </summary>
+            <param name="path">Path to the JSON configuration file.</param>
+            <param name="maxWss">Maximum number of WSS devices supported by this instance.</param>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsConfigController.SaveParamsJson">
+            <summary>
+            Persists the current stimulation params to disk using the underlying config's Save().
+            Thread-safe via the config layer.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsConfigController.LoadParamsJson">
+            <summary>
+            Reloads the current context file (same path used at construction or the last Load(path)).
+            Reinstantiates the config to re-read JSON from disk, then ensures channel template exists.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsConfigController.LoadParamsJson(System.String)">
+            <summary>
+            Loads a new context file. If <paramref name="path"/> is a directory,
+            uses "stimParams.json" within it. Replaces the active config and backfills the template.
+            </summary>
+            <param name="path">Absolute/relative file path or directory.</param>
+            <exception cref="T:System.ArgumentException">If the path is null or whitespace.</exception>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsConfigController.AddOrUpdateStimParam(System.String,System.Single)">
+            <summary>
+            Adds or updates a stimulation parameter at the specified dotted key.
+            </summary>
+            <param name="key">Parameter key (e.g., "stim.ch.1.amp").</param>
+            <param name="value">Value to assign.</param>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsConfigController.GetStimParam(System.String)">
+            <summary>
+            Retrieves a stimulation parameter value.
+            </summary>
+            <param name="key">Parameter key (e.g., "stim.ch.1.maxPW").</param>
+            <returns>Parameter value as float.</returns>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsConfigController.TryGetStimParam(System.String,System.Single@)">
+            <summary>
+            Attempts to retrieve a stimulation parameter value without throwing.
+            </summary>
+            <param name="key">Parameter key.</param>
+            <param name="value">Output value if found.</param>
+            <returns>True if the parameter exists.</returns>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsConfigController.GetAllStimParams">
+            <summary>
+            Returns all numeric stimulation parameters as a flat dictionary of dotted keys and float values.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsConfigController.SetChannelAmp(System.Int32,System.Single)">
+            <summary>Sets channel amplitude in milliamps.</summary>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsConfigController.SetChannelPWMin(System.Int32,System.Int32)">
+            <summary>Sets minimum pulse width for the specified channel in micro seconds.</summary>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsConfigController.SetChannelPWMax(System.Int32,System.Int32)">
+            <summary>Sets maximum pulse width for the specified channel in micro seconds.</summary>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsConfigController.SetChannelIPI(System.Int32,System.Int32)">
+            <summary>Sets inter-pulse interval (IPI) for the specified channel in mili seconds.</summary>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsConfigController.GetChannelAmp(System.Int32)">
+            <summary>Gets channel amplitude in mili amps.</summary>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsConfigController.GetChannelPWMin(System.Int32)">
+            <summary>Gets minimum pulse width for a channel in micro seconds.</summary>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsConfigController.GetChannelPWMax(System.Int32)">
+            <summary>Gets maximum pulse width for a channel in micro seconds.</summary>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsConfigController.GetChannelIPI(System.Int32)">
+            <summary>Gets inter-pulse interval (IPI) for a channel in mili seconds.</summary>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsConfigController.IsChannelInRange(System.Int32)">
+            <summary>Checks whether a channel index is within the valid range.</summary>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsConfigController.ValidateChannel(System.Int32)">
+            <summary>Validates that the channel index is within the allowed range.</summary>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsConfigController.EnforceChannelBoundsIfKey(System.String)">
+            <summary>Ensures a dotted key refers to a valid channel if it contains "stim.ch.{N}".</summary>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsConfigController.EnsureTemplate(System.Int32)">
+            <summary>Creates missing channel entries in the JSON structure up to the total channel count.</summary>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsConfigController.Root">
+            <summary>Accesses the root JObject of the loaded configuration via reflection.</summary>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsConfigController.CollectFloats(System.String,Newtonsoft.Json.Linq.JObject,System.Collections.Generic.Dictionary{System.String,System.Single})">
+            <summary>Recursively collects all numeric values under a JSON subtree into a flat key/value map.</summary>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsConfigController.ValidateKey(System.String)">
+            <summary>Ensures that a configuration key string is valid and not empty.</summary>
+        </member>
+        <member name="T:WSSInterfacing.StimParamsLayer">
+            <summary>
+            Layer that wraps an <see cref="T:WSSInterfacing.IStimulationCore"/> and a <see cref="T:WSSInterfacing.StimParamsConfigController"/>.
+            Computes pulse widths from normalized inputs and forwards stimulation to the core.
+            Also exposes dotted-key parameter access and an optional BASIC capability.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsLayer.#ctor(WSSInterfacing.IStimulationCore,System.String)">
+            <summary>
+            Constructs the layer over an existing core and a params context path.
+            </summary>
+            <param name="core">Initialized stimulation core to wrap.</param>
+            <param name="pathOrDir">Params file path or directory.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if <paramref name="core"/> is null.</exception>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsLayer.StimulateNormalized(System.Int32,System.Single)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsLayer.GetStimIntensity(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsLayer.GetStimParamsConfigController">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsLayer.SaveParamsJson">
+            <inheritdoc cref="M:WSSInterfacing.StimParamsConfigController.SaveParamsJson"/>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsLayer.LoadParamsJson">
+            <inheritdoc cref="M:WSSInterfacing.StimParamsConfigController.LoadParamsJson"/>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsLayer.LoadParamsJson(System.String)">
+            <inheritdoc cref="M:WSSInterfacing.StimParamsConfigController.LoadParamsJson(System.String)"/>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsLayer.AddOrUpdateStimParam(System.String,System.Single)">
+            <inheritdoc cref="M:WSSInterfacing.StimParamsConfigController.AddOrUpdateStimParam(System.String,System.Single)"/>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsLayer.GetStimParam(System.String)">
+            <inheritdoc cref="M:WSSInterfacing.StimParamsConfigController.GetStimParam(System.String)"/>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsLayer.TryGetStimParam(System.String,System.Single@)">
+            <inheritdoc cref="M:WSSInterfacing.StimParamsConfigController.TryGetStimParam(System.String,System.Single@)"/>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsLayer.GetAllStimParams">
+            <inheritdoc cref="M:WSSInterfacing.StimParamsConfigController.GetAllStimParams"/>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsLayer.SetChannelAmp(System.Int32,System.Single)">
+            <inheritdoc cref="M:WSSInterfacing.StimParamsConfigController.SetChannelAmp(System.Int32,System.Single)"/>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsLayer.SetChannelPWMin(System.Int32,System.Int32)">
+            <inheritdoc cref="M:WSSInterfacing.StimParamsConfigController.SetChannelPWMin(System.Int32,System.Int32)"/>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsLayer.SetChannelPWMax(System.Int32,System.Int32)">
+            <inheritdoc cref="M:WSSInterfacing.StimParamsConfigController.SetChannelPWMax(System.Int32,System.Int32)"/>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsLayer.SetChannelIPI(System.Int32,System.Int32)">
+            <inheritdoc cref="M:WSSInterfacing.StimParamsConfigController.SetChannelIPI(System.Int32,System.Int32)"/>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsLayer.GetChannelAmp(System.Int32)">
+            <inheritdoc cref="M:WSSInterfacing.StimParamsConfigController.GetChannelAmp(System.Int32)"/>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsLayer.GetChannelPWMin(System.Int32)">
+            <inheritdoc cref="M:WSSInterfacing.StimParamsConfigController.GetChannelPWMin(System.Int32)"/>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsLayer.GetChannelPWMax(System.Int32)">
+            <inheritdoc cref="M:WSSInterfacing.StimParamsConfigController.GetChannelPWMax(System.Int32)"/>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsLayer.GetChannelIPI(System.Int32)">
+            <inheritdoc cref="M:WSSInterfacing.StimParamsConfigController.GetChannelIPI(System.Int32)"/>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsLayer.IsChannelInRange(System.Int32)">
+            <inheritdoc cref="M:WSSInterfacing.StimParamsConfigController.IsChannelInRange(System.Int32)"/>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsLayer.TryGetBasic(WSSInterfacing.IBasicStimulation@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsLayer.Initialize">
+            <inheritdoc cref="M:WSSInterfacing.IStimulationCore.Initialize"/>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsLayer.Tick">
+            <inheritdoc cref="M:WSSInterfacing.IStimulationCore.Tick"/>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsLayer.Shutdown">
+            <inheritdoc cref="M:WSSInterfacing.IStimulationCore.Shutdown"/>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsLayer.Started">
+            <inheritdoc cref="M:WSSInterfacing.IStimulationCore.Started"/>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsLayer.Ready">
+            <inheritdoc cref="M:WSSInterfacing.IStimulationCore.Ready"/>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsLayer.StimulateAnalog(System.Int32,System.Int32,System.Single,System.Int32)">
+            <inheritdoc cref="M:WSSInterfacing.IStimulationCore.StimulateAnalog(System.Int32,System.Int32,System.Single,System.Int32)"/>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsLayer.ZeroOutStim(WSSInterfacing.WssTarget)">
+            <inheritdoc cref="M:WSSInterfacing.IStimulationCore.ZeroOutStim(WSSInterfacing.WssTarget)"/>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsLayer.StartStim(WSSInterfacing.WssTarget)">
+            <inheritdoc cref="M:WSSInterfacing.IStimulationCore.StartStim(WSSInterfacing.WssTarget)"/>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsLayer.StopStim(WSSInterfacing.WssTarget)">
+            <inheritdoc cref="M:WSSInterfacing.IStimulationCore.StopStim(WSSInterfacing.WssTarget)"/>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsLayer.LoadConfigFile">
+            <inheritdoc cref="M:WSSInterfacing.IStimulationCore.LoadConfigFile"/>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsLayer.GetCoreConfigController">
+            <inheritdoc cref="M:WSSInterfacing.IStimulationCore.GetCoreConfigController"/>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsLayer.Dispose">
+            <inheritdoc cref="M:System.IDisposable.Dispose"/>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsLayer.InitArrays">
+            <summary>
+            Initializes internal arrays that cache per-channel pulse width results.
+            </summary>
+        </member>
+        <member name="T:WSSInterfacing.IModelParamsCore">
+            <summary>
+            Model-driven stimulation surface layered over params + core.
+            Extends params API and adds controller-mode stimulation (P/PD).
+            </summary>
+            <remarks>
+            Fingers may be logical names (e.g., <c>"thumb"</c>, <c>"index"</c>) or channel aliases (e.g., <c>"ch3"</c>),
+            resolved by your Fingerâ†’Channel mapping.
+            </remarks>
+        </member>
+        <member name="M:WSSInterfacing.IModelParamsCore.IsModeValid">
+            <summary>
+            Validates the current controller mode from model config (e.g., <c>P</c> or <c>PD</c>).
+            </summary>
+            <returns><c>true</c> if the mode is supported; otherwise <c>false</c>.</returns>
+            <example>
+            <code>
+            if (!model.IsModeValid()) { /* fallback or warn */ }
+            </code>
+            </example>
+        </member>
+        <member name="M:WSSInterfacing.IModelParamsCore.StimWithMode(System.Int32,System.Single)">
+            <summary>
+            Computes a pulse width from <paramref name="magnitude"/> using the active controller mode
+            and stimulates the resolved channel. Updates cached per-channel PW and amp internally.
+            </summary>
+            <param name="ch">1-based channel index.</param>
+            <param name="magnitude">Normalized input typically in [0..1]. Values are clamped.</param>
+            <example>
+            <code>
+            model.StimWithMode("index", 0.42f);     // P/PD mapping â†’ PW â†’ StimulateAnalog
+            model.StimWithMode("ch3",   0.75f);
+            </code>
+            </example>
+        </member>
+        <member name="M:WSSInterfacing.IModelParamsCore.GetModelConfigController">
+            <summary>
+            Returns the model-layer configuration controller used to read and write model constants
+            (e.g., proportional/derivative gains, offsets, and mode selection).
+            </summary>
+            <returns>The active <see cref="T:WSSInterfacing.ModelConfigController"/> instance.</returns>
+            <remarks>
+            Use this to query constants like <c>PModeProportional</c> or to persist model settings.
+            </remarks>
+            <example>
+            <code>
+            var mc = model.GetModelConfigController();
+            float kp = mc.GetConstant("PModeProportional");
+            mc.SetConstant("PDModeDerivative", 0.15f);
+            mc.SaveJson();
+            </code>
+            </example>
+        </member>
+        <member name="T:WSSInterfacing.ModelConfig">
+            <summary>
+            JSON-backed model configuration that stores controller mode and constants
+            under a dotted-key hierarchy (e.g., "calib.mode", "constants.PModeProportional").
+            Provides typed access helpers via <see cref="T:WSSInterfacing.DictConfigBase"/>.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.ModelConfig.GetModeRequired">
+            <summary>
+            Gets the required calibration mode from key "calib.mode". Throws if missing.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.ModelConfig.TryGet``1(System.String,``0@)">
+            <summary>
+            Attempts to read a value at <paramref name="key"/> and convert it to <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">Target type (non-nullable).</typeparam>
+            <param name="key">Dotted key path.</param>
+            <param name="value">Result when conversion succeeds.</param>
+            <returns><c>true</c> if the value exists and converts; otherwise <c>false</c>.</returns>
+        </member>
+        <member name="M:WSSInterfacing.ModelConfig.GetOrDefault``1(System.String,``0)">
+            <summary>
+            Returns the value at <paramref name="key"/> or a default when missing.
+            </summary>
+            <typeparam name="T">Target type.</typeparam>
+            <param name="key">Dotted key path.</param>
+            <param name="dflt">Fallback value when the key is absent.</param>
+        </member>
+        <member name="M:WSSInterfacing.ModelConfig.GetRequired``1(System.String)">
+            <summary>
+            Gets a required value at <paramref name="key"/>. Throws if missing or invalid.
+            </summary>
+            <typeparam name="T">Target type.</typeparam>
+            <param name="key">Dotted key path.</param>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException">When the key is not present.</exception>
+        </member>
+        <member name="T:WSSInterfacing.ModelConfigController">
+            <summary>
+            High-level controller for <see cref="T:WSSInterfacing.ModelConfig"/> persistence and keyed access.
+            Paths may be file or directory; if a directory is given, the file name <c>modelConfig.json</c> is used.
+            Dotted keys address JSON nodes, e.g. <c>"calib.mode"</c>, <c>"calib.targets.index.threshold"</c>.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.ModelConfigController.#ctor(System.String)">
+            <summary>
+            Create or open a model config at <paramref name="path"/>.
+            If <paramref name="path"/> is a directory, appends <c>modelConfig.json</c>.
+            Ensures the file exists by saving defaults when first created.
+            </summary>
+            <param name="path">
+            File path like <c>"C:\data\modelConfig.json"</c> or directory like <c>"C:\data\"</c>.
+            </param>
+            <exception cref="T:System.ArgumentException">When <paramref name="path"/> is null or whitespace.</exception>
+            <example>
+            <code>
+            var mc = new ModelConfigController(@"Configs\");      // uses Configs\modelConfig.json
+            var mc2 = new ModelConfigController(@"Configs\m.json"); // uses given file directly
+            </code>
+            </example>
+        </member>
+        <member name="M:WSSInterfacing.ModelConfigController.SaveModelJson">
+            <summary>
+            Save the current in-memory model configuration to disk.
+            Uses <see cref="M:WSSInterfacing.DictConfigBase.Save"/>.
+            Call after any Set/Update to persist changes.
+            </summary>
+            <example>
+            <code>
+            mc.SetModelParam("calib.mode", "midpoint");
+            mc.SaveModelJson();
+            </code>
+            </example>
+        </member>
+        <member name="M:WSSInterfacing.ModelConfigController.LoadModelJson">
+            <summary>
+            Reload the current model configuration from its existing path.
+            Reinstantiates the underlying <see cref="T:WSSInterfacing.ModelConfig"/> so disk edits are reflected in memory.
+            </summary>
+            <example>
+            <code>
+            // external tool edited the JSON on disk:
+            mc.LoadModelJson(); // refresh memory view
+            </code>
+            </example>
+        </member>
+        <member name="M:WSSInterfacing.ModelConfigController.LoadModelJson(System.String)">
+            <summary>
+            Load a model configuration from a new path. If <paramref name="path"/> is a directory,
+            appends <c>modelConfig.json</c>.
+            Replaces the active config instance.
+            </summary>
+            <param name="path">File path like <c>"..\profiles\a.json"</c> or directory like <c>"..\profiles\"</c>.</param>
+            <exception cref="T:System.ArgumentException">When <paramref name="path"/> is null or whitespace.</exception>
+            <example>
+            <code>
+            mc.LoadModelJson(@"Profiles\UserA\");       // Profiles\UserA\modelConfig.json
+            mc.LoadModelJson(@"Profiles\AltModel.json"); // specific file
+            </code>
+            </example>
+        </member>
+        <member name="M:WSSInterfacing.ModelConfigController.SetModelParam``1(System.String,``0)">
+            <summary>
+            Set a value at the dotted key and immediately save.
+            Use for scalars or small objects that serialize to a JSON value.
+            </summary>
+            <typeparam name="T">Serializable type (e.g., <c>string</c>, <c>int</c>, <c>float</c>, small POCO).</typeparam>
+            <param name="key">Dotted key, e.g., <c>"calib.mode"</c>, <c>"calib.targets.index.threshold"</c>.</param>
+            <param name="value">Value to write.</param>
+            <exception cref="T:System.ArgumentException">If <paramref name="key"/> is null or whitespace.</exception>
+            <example>
+            <code>
+            mc.SetModelParam("calib.mode", "midpoint");
+            mc.SetModelParam("calib.targets.index.threshold", 0.42f);
+            </code>
+            </example>
+        </member>
+        <member name="M:WSSInterfacing.ModelConfigController.GetModelParam``1(System.String)">
+            <summary>
+            Get a required typed value from a dotted key.
+            Throws if the key is missing or the value cannot be converted to <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">Expected return type.</typeparam>
+            <param name="key">Dotted key, e.g., <c>"calib.mode"</c>.</param>
+            <returns>Value at the key as <typeparamref name="T"/>.</returns>
+            <exception cref="T:System.ArgumentException">If <paramref name="key"/> is null or whitespace.</exception>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException">If the key does not exist.</exception>
+            <example>
+            <code>
+            string mode = mc.GetModelParam&lt;string&gt;("calib.mode");
+            float thr   = mc.GetModelParam&lt;float&gt;("calib.targets.index.threshold");
+            </code>
+            </example>
+        </member>
+        <member name="M:WSSInterfacing.ModelConfigController.TryGetModelParam``1(System.String,``0@)">
+            <summary>
+            Try to get a typed value without throwing.
+            </summary>
+            <typeparam name="T">Expected return type.</typeparam>
+            <param name="key">Dotted key, e.g., <c>"calib.targets.middle.gain"</c>.</param>
+            <param name="value">Output value when found and convertible.</param>
+            <returns><c>true</c> if the key exists and was converted; otherwise <c>false</c>.</returns>
+            <exception cref="T:System.ArgumentException">If <paramref name="key"/> is null or whitespace.</exception>
+            <example>
+            <code>
+            if (mc.TryGetModelParam("calib.targets.thumb.offset", out float off)) { /* use off */ }
+            </code>
+            </example>
+        </member>
+        <member name="M:WSSInterfacing.ModelConfigController.GetOrDefault``1(System.String,``0)">
+            <summary>
+            Get a typed value or a default when missing.
+            Does not throw on absent keys.
+            </summary>
+            <typeparam name="T">Expected return type.</typeparam>
+            <param name="key">Dotted key, e.g., <c>"calib.sampling.rateHz"</c>.</param>
+            <param name="dflt">Fallback value to return when the key is missing.</param>
+            <returns>Value at the key, or <paramref name="dflt"/> if absent.</returns>
+            <example>
+            <code>
+            int rate = mc.GetOrDefault("calib.sampling.rateHz", 1000);
+            </code>
+            </example>
+        </member>
+        <member name="M:WSSInterfacing.ModelConfigController.GetCalibMode">
+            <summary>
+            Get the modelâ€™s calibration mode from <c>"calib.mode"</c>. Throws if missing.
+            </summary>
+            <returns>Calibration mode string, e.g., <c>"midpoint"</c>, <c>"sweep"</c>.</returns>
+            <example>
+            <code>
+            string mode = mc.GetCalibMode();
+            </code>
+            </example>
+        </member>
+        <member name="M:WSSInterfacing.ModelConfigController.SetCalibMode(System.String)">
+            <summary>
+            Set <c>"calib.mode"</c> and save.
+            </summary>
+            <param name="mode">Non-empty mode string, e.g., <c>"midpoint"</c>.</param>
+            <exception cref="T:System.ArgumentException">If <paramref name="mode"/> is null or whitespace.</exception>
+            <example>
+            <code>
+            mc.SetCalibMode("midpoint");
+            </code>
+            </example>
+        </member>
+        <member name="M:WSSInterfacing.ModelConfigController.GetAllCalibParams">
+            <summary>
+            Return a flat snapshot of scalar values under <c>"calib"</c>.
+            Keys are dotted, e.g., <c>"calib.mode"</c>, <c>"calib.targets.index.threshold"</c>.
+            </summary>
+            <returns>A copy of key/value pairs as strings.</returns>
+            <example>
+            <code>
+            var all = mc.GetAllCalibParams();
+            foreach (var kv in all) Debug.Log($"{kv.Key} = {kv.Value}");
+            </code>
+            </example>
+        </member>
+        <member name="M:WSSInterfacing.ModelConfigController.ValidateKey(System.String)">
+            <summary>Validate non-empty keys.</summary>
+        </member>
+        <member name="M:WSSInterfacing.ModelConfigController.Root">
+            <summary>Access underlying JSON object from the config.</summary>
+        </member>
+        <member name="M:WSSInterfacing.ModelConfigController.CollectScalars(System.String,Newtonsoft.Json.Linq.JObject,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>Collect plain (non-array, non-object) JSON values into a flat dotted map.</summary>
+        </member>
+        <member name="T:WSSInterfacing.ModelParamsLayer">
+            <summary>
+            Model-driven layer (P/PD) that sits on top of an existing params layer.
+            Computes PW from normalized magnitudes and stimulates via the wrapped core.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.ModelParamsLayer.IsModeValid">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.ModelParamsLayer.StimWithMode(System.Int32,System.Single)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.ModelParamsLayer.GetModelConfigController">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.ModelParamsLayer.StimulateNormalized(System.Int32,System.Single)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.ModelParamsLayer.GetStimIntensity(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.ModelParamsLayer.SaveParamsJson">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.ModelParamsLayer.LoadParamsJson">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.ModelParamsLayer.LoadParamsJson(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.ModelParamsLayer.GetStimParamsConfigController">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.ModelParamsLayer.AddOrUpdateStimParam(System.String,System.Single)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.ModelParamsLayer.GetStimParam(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.ModelParamsLayer.TryGetStimParam(System.String,System.Single@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.ModelParamsLayer.GetAllStimParams">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.ModelParamsLayer.SetChannelAmp(System.Int32,System.Single)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.ModelParamsLayer.SetChannelPWMin(System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.ModelParamsLayer.SetChannelPWMax(System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.ModelParamsLayer.SetChannelIPI(System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.ModelParamsLayer.GetChannelAmp(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.ModelParamsLayer.GetChannelPWMin(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.ModelParamsLayer.GetChannelPWMax(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.ModelParamsLayer.GetChannelIPI(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.ModelParamsLayer.IsChannelInRange(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.ModelParamsLayer.TryGetBasic(WSSInterfacing.IBasicStimulation@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.ModelParamsLayer.Initialize">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.ModelParamsLayer.Tick">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.ModelParamsLayer.Shutdown">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.ModelParamsLayer.Started">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.ModelParamsLayer.Ready">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.ModelParamsLayer.StimulateAnalog(System.Int32,System.Int32,System.Single,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.ModelParamsLayer.ZeroOutStim(WSSInterfacing.WssTarget)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.ModelParamsLayer.StartStim(WSSInterfacing.WssTarget)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.ModelParamsLayer.StopStim(WSSInterfacing.WssTarget)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.ModelParamsLayer.LoadConfigFile">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.ModelParamsLayer.GetCoreConfigController">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.ModelParamsLayer.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.ModelParamsLayer.EnsureModelArrays">
+            <summary>
+            Ensures model-layer working arrays exist and match the current channel count.
+            Starts the internal stopwatch on first use and initializes per-channel state.
+            </summary>
+            <remarks>
+            Channel count is derived from <see cref="P:WSSInterfacing.CoreConfigController.MaxWss"/> on the inner core.
+            Arrays hold last magnitude, derivative estimate, and previous timestamps per channel.
+            </remarks>
+        </member>
+        <member name="M:WSSInterfacing.ModelParamsLayer.VerifyStimMode">
+            <summary>
+            Verifies that the active controller mode in the model config is supported.
+            </summary>
+            <remarks>
+            Sets the private flag <c>_validMode</c> to true for modes <c>"P"</c> or <c>"PD"</c>, false otherwise.
+            Uses <c>_modelCfg.GetCalibMode()</c>.
+            </remarks>
+        </member>
+        <member name="M:WSSInterfacing.ModelParamsLayer.CalculateMagnitude(System.Int32,System.Single)">
+            <summary>
+            Computes a normalized output magnitude for a 1-based channel using the current controller mode.
+            </summary>
+            <param name="channel1">1-based channel index.</param>
+            <param name="magnitude01">Input magnitude, clamped to [0,1].</param>
+            <returns>
+            Normalized output in [0,1] after applying P or PD mapping with model constants and a finite-difference derivative.
+            Returns 0 if the channel index is out of range.
+            </returns>
+            <remarks>
+            Updates per-channel caches: current magnitude, previous magnitude, derivative estimate, and last timestamp (seconds).
+            PD mode uses keys: <c>PDModeDerivative</c>, <c>PDModeProportional</c>, <c>PDModeOffset</c>.  
+            P mode uses keys: <c>PModeProportional</c>, <c>PModeOffset</c>.  
+            Missing constants fall back to defaults used in code.
+            </remarks>
+        </member>
+        <member name="M:WSSInterfacing.ModelParamsLayer.Clamp01(System.Single)">
+            <summary>
+            Clamps a float to the inclusive range [0,1].
+            </summary>
+            <param name="x">Value to clamp.</param>
+            <returns><c>0</c> if <paramref name="x"/> &lt; 0, <c>1</c> if &gt; 1, otherwise <paramref name="x"/>.</returns>
+        </member>
+        <member name="T:WSSInterfacing.Log">
+            <summary>
+            Minimal logging facade that writes to Unity's console when running inside
+            Unity, and falls back to System.Console on nonâ€‘Unity environments.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.Log.Info(System.String)">
+            <summary>
+            Logs an informational message.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.Log.Warn(System.String)">
+            <summary>
+            Logs a warning message.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.Log.Error(System.String,System.Exception)">
+            <summary>
+            Logs an error message, optionally including an exception's details.
+            </summary>
+            <param name="msg">Message to log.</param>
+            <param name="ex">Optional exception to append.</param>
+        </member>
+        <member name="T:WSSInterfacing.portScanner">
+            <summary>
+            Simple Unity helper that scans available serial ports and allows selecting
+            one from a UI dropdown to force the COM port used by the stimulation script.
+            Attach this to a separate GameObject and wire the <see cref="M:WSSInterfacing.portScanner.selectPort"/>
+            method to a UI event (e.g., button click) to apply the chosen port.
+            </summary>
+        </member>
+        <member name="F:WSSInterfacing.portScanner.stim">
+            <summary>
+            Reference to the <see cref="T:WSSInterfacing.Stimulation"/> component whose <c>comPort</c>
+            will be set based on dropdown selection.
+            </summary>
+        </member>
+        <member name="F:WSSInterfacing.portScanner.serialList">
+            <summary>
+            Dropdown populated with detected serial port names.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.portScanner.Start">
+            <summary>
+            Unity Start hook. No-op; port list is generated on enable.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.portScanner.OnEnable">
+            <summary>
+            Disables the stimulation component temporarily and populates the dropdown
+            with available serial ports.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.portScanner.Update">
+            <summary>
+            Unity Update hook. No-op; present for completeness.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.portScanner.generatePortList">
+            <summary>
+            Queries the system for serial ports and updates the dropdown options.
+            Adds an "empty" placeholder when no ports are found.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.portScanner.OnDisable">
+            <summary>
+            Unity OnDisable hook. No-op.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.portScanner.selectPort">
+            <summary>
+            Applies the selected COM port to the stimulation script and re-enables it.
+            </summary>
+        </member>
+        <member name="T:WSSInterfacing.StimulationParams">
+            <summary>
+            Unity wrapper that composes a params layer (<c>StimParamsLayer</c>) over a core WSS implementation.
+            Extends the basic interface with per-finger calibration parameters, normalized drive, and JSON persistence.
+            All public stimulation APIs accept a finger string and map to a channel via <see cref="M:WSSInterfacing.StimulationParams.FingerToChannel(System.String)"/>.
+            </summary>
+        </member>
+        <member name="F:WSSInterfacing.StimulationParams.forcePort">
+            <summary>
+            Forces connection to a specific COM port instead of auto-detecting.
+            </summary>
+        </member>
+        <member name="F:WSSInterfacing.StimulationParams.testMode">
+            <summary>
+            Enables simulated test mode without real hardware communication.
+            </summary>
+        </member>
+        <member name="F:WSSInterfacing.StimulationParams.maxSetupTries">
+            <summary>
+            Maximum number of setup retries before failing initialization.
+            </summary>
+        </member>
+        <member name="F:WSSInterfacing.StimulationParams.comPort">
+            <summary>
+            Target COM port to use when <see cref="F:WSSInterfacing.StimulationParams.forcePort"/> is enabled.
+            </summary>
+        </member>
+        <member name="F:WSSInterfacing.StimulationParams.started">
+            <summary>True after <see cref="M:WSSInterfacing.StimulationParams.StartStimulation"/> succeeds.</summary>
+        </member>
+        <member name="F:WSSInterfacing.StimulationParams.basicSupported">
+            <summary>True if the underlying core exposes basic-stimulation APIs.</summary>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.Awake">
+            <summary>
+            Builds the core WSS and wraps it with <c>StimParamsLayer</c>.
+            Tries to expose <see cref="T:WSSInterfacing.IBasicStimulation"/> if available.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.OnEnable">
+            <summary>
+            Initializes the WSS device connection when the component becomes active.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.Update">
+            <summary>
+            Performs periodic updates and tick cycles for communication and task execution.
+            Press <c>A</c> to manually reload the core configuration file for testing.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.OnDisable">
+            <summary>
+            Ensures proper device shutdown when the component is disabled.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.releaseRadio">
+            <summary>
+            Explicitly releases the radio connection.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.resetRadio">
+            <summary>
+            Performs a radio reset by shutting down and re-initializing the connection.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.StimulateAnalog(System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Direct analog stimulation using raw parameters.
+            Prefer <see cref="M:WSSInterfacing.StimulationParams.StimulateNormalized(System.String,System.Single)"/> for analog sensors.
+            </summary>
+            <param name="finger">Finger name or channel alias (e.g., "index" or "ch2").</param>
+            <param name="PW">Pulse width in microseconds.</param>
+            <param name="amp">Amplitude in milliamps (default = 3).</param>
+            <param name="IPI">Inter-pulse interval in milliseconds (default = 10).</param>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.StartStimulation">
+            <inheritdoc cref="M:WSSInterfacing.IStimulationCore.StartStim(WSSInterfacing.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.StopStimulation">
+            <inheritdoc cref="M:WSSInterfacing.IStimulationCore.StopStim(WSSInterfacing.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.Save(System.Int32)">
+            <inheritdoc cref="M:WSSInterfacing.IBasicStimulation.Save(WSSInterfacing.WssTarget)"/>
+            <param name="targetWSS">0=broadcast, 1..3=unit index.</param>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.Save">
+            <inheritdoc cref="M:WSSInterfacing.IBasicStimulation.Save(WSSInterfacing.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.load(System.Int32)">
+            <inheritdoc cref="M:WSSInterfacing.IBasicStimulation.Load(WSSInterfacing.WssTarget)"/>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.load">
+            <inheritdoc cref="M:WSSInterfacing.IBasicStimulation.Load(WSSInterfacing.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.request_Configs(System.Int32,System.Int32,System.Int32)">
+            <inheritdoc cref="M:WSSInterfacing.IBasicStimulation.Request_Configs(System.Int32,System.Int32,WSSInterfacing.WssTarget)"/>
+            <param name="targetWSS">0=broadcast, 1..3=unit index.</param>
+            <param name="command">Configuration block selector.</param>
+            <param name="id">Optional block id.</param>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.updateWaveform(System.Int32[],System.Int32)">
+            <inheritdoc cref="M:WSSInterfacing.IBasicStimulation.UpdateWaveform(System.Int32[],System.Int32,WSSInterfacing.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+            <param name="waveform">Serialized device waveform.</param>
+            <param name="eventID">Target event slot.</param>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.updateWaveform(System.Int32,System.Int32[],System.Int32)">
+            <summary>
+            Updates the waveform parameters for a specific event on a target unit.
+            </summary>
+            <inheritdoc cref="M:WSSInterfacing.IBasicStimulation.UpdateWaveform(System.Int32[],System.Int32,WSSInterfacing.WssTarget)"/>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.updateWaveform(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Selects a predefined or custom waveform shape from device memory.
+            Slots 0â€“10 are predefined. Slots 11â€“13 are custom.
+            </summary>
+            <inheritdoc cref="M:WSSInterfacing.IBasicStimulation.UpdateEventShape(System.Int32,System.Int32,System.Int32,WSSInterfacing.WssTarget)"/>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.updateWaveform(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Shape selection on a target unit.
+            </summary>
+            <inheritdoc cref="M:WSSInterfacing.IBasicStimulation.UpdateEventShape(System.Int32,System.Int32,System.Int32,WSSInterfacing.WssTarget)"/>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.updateWaveform(WSSInterfacing.WaveformBuilder,System.Int32)">
+            <summary>
+            Updates waveform using JSON-loaded builder definition for all units.
+            </summary>
+            <inheritdoc cref="M:WSSInterfacing.IBasicStimulation.UpdateWaveform(WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.updateWaveform(System.Int32,WSSInterfacing.WaveformBuilder,System.Int32)">
+            <summary>
+            Updates waveform using JSON-loaded builder definition for a target unit.
+            </summary>
+            <inheritdoc cref="M:WSSInterfacing.IBasicStimulation.UpdateWaveform(WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)"/>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.loadWaveform(System.String,System.Int32)">
+            <summary>Loads a waveform definition from external file.</summary>
+            <inheritdoc cref="M:WSSInterfacing.IBasicStimulation.LoadWaveform(System.String,System.Int32)"/>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.WaveformSetup(WSSInterfacing.WaveformBuilder,System.Int32)">
+            <summary>Defines a custom waveform for the specified event slot on all units.</summary>
+            <inheritdoc cref="M:WSSInterfacing.IBasicStimulation.WaveformSetup(WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)"/>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.WaveformSetup(System.Int32,WSSInterfacing.WaveformBuilder,System.Int32)">
+            <summary>Defines a custom waveform for the specified event slot on a target unit.</summary>
+            <inheritdoc cref="M:WSSInterfacing.IBasicStimulation.WaveformSetup(WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)"/>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.UpdateIPD(System.Int32,System.Int32)">
+            <inheritdoc cref="M:WSSInterfacing.IBasicStimulation.UpdateIPD(System.Int32,System.Int32,WSSInterfacing.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.UpdateIPD(System.Int32,System.Int32,System.Int32)">
+            <inheritdoc cref="M:WSSInterfacing.IBasicStimulation.UpdateIPD(System.Int32,System.Int32,WSSInterfacing.WssTarget)"/>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.StimulateNormalized(System.String,System.Single)">
+            <summary>
+            Normalized drive [0..1]. Computes PW via per-finger min/max and stimulates.
+            </summary>
+            <param name="finger">Finger label or alias (e.g., "index", "ring", "ch2").</param>
+            <param name="value01">Normalized drive in [0,1]. Values are clamped.</param>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.GetLastPulseWidth(System.String)">
+            <summary>
+            Returns the last computed intensity for a finger. For PW-driven systems this is PW (Âµs).
+            </summary>
+            <param name="finger">Finger label or alias.</param>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.SetChannelAmp(System.String,System.Single)">
+            <summary>Sets per-finger amplitude in mA.</summary>
+            <inheritdoc cref="M:WSSInterfacing.IStimParamsCore.SetChannelAmp(System.Int32,System.Single)"/>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.SetChannelPWMin(System.String,System.Int32)">
+            <summary>Sets per-finger minimum PW in Âµs.</summary>
+            <inheritdoc cref="M:WSSInterfacing.IStimParamsCore.SetChannelPWMin(System.Int32,System.Int32)"/>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.SetChannelPWMax(System.String,System.Int32)">
+            <summary>Sets per-finger maximum PW in Âµs.</summary>
+            <inheritdoc cref="M:WSSInterfacing.IStimParamsCore.SetChannelPWMax(System.Int32,System.Int32)"/>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.SetChannelIPI(System.String,System.Int32)">
+            <summary>Sets per-finger IPI in ms.</summary>
+            <inheritdoc cref="M:WSSInterfacing.IStimParamsCore.SetChannelIPI(System.Int32,System.Int32)"/>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.GetChannelAmp(System.String)">
+            <summary>Gets per-finger amplitude in mA.</summary>
+            <inheritdoc cref="M:WSSInterfacing.IStimParamsCore.GetChannelAmp(System.Int32)"/>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.GetChannelPWMin(System.String)">
+            <summary>Gets per-finger minimum PW in Âµs.</summary>
+            <inheritdoc cref="M:WSSInterfacing.IStimParamsCore.GetChannelPWMin(System.Int32)"/>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.GetChannelPWMax(System.String)">
+            <summary>Gets per-finger maximum PW in Âµs.</summary>
+            <inheritdoc cref="M:WSSInterfacing.IStimParamsCore.GetChannelPWMax(System.Int32)"/>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.GetChannelIPI(System.String)">
+            <summary>Gets per-finger IPI in ms.</summary>
+            <inheritdoc cref="M:WSSInterfacing.IStimParamsCore.GetChannelIPI(System.Int32)"/>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.IsFingerValid(System.String)">
+            <summary>Returns true if the finger maps to a valid channel for the current configuration.</summary>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.SaveParamsJson">
+            <summary>Saves current params JSON to disk.</summary>
+            <inheritdoc cref="M:WSSInterfacing.IStimParamsCore.SaveParamsJson"/>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.LoadParamsJson">
+            <summary>Loads params JSON from default location.</summary>
+            <inheritdoc cref="M:WSSInterfacing.IStimParamsCore.LoadParamsJson"/>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.LoadParamsJson(System.String)">
+            <summary>Loads params JSON from a given file or directory.</summary>
+            <param name="pathOrDir">File path or directory with default name.</param>
+            <inheritdoc cref="M:WSSInterfacing.IStimParamsCore.LoadParamsJson(System.String)"/>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.AddOrUpdateStimParam(System.String,System.Single)">
+            <summary>
+            Sets a parameter by dotted key. Examples: "stim.ch.0.amp", "stim.ch.1.minPW".
+            </summary>
+            <inheritdoc cref="M:WSSInterfacing.IStimParamsCore.AddOrUpdateStimParam(System.String,System.Single)"/>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.GetStimParam(System.String)">
+            <summary>Gets a parameter by dotted key.</summary>
+            <inheritdoc cref="M:WSSInterfacing.IStimParamsCore.GetStimParam(System.String)"/>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.TryGetStimParam(System.String,System.Single@)">
+            <summary>Tries to read a parameter by dotted key.</summary>
+            <inheritdoc cref="M:WSSInterfacing.IStimParamsCore.TryGetStimParam(System.String,System.Single@)"/>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.GetAllStimParams">
+            <summary>Returns a copy of all current params as dotted-key map.</summary>
+            <inheritdoc cref="M:WSSInterfacing.IStimParamsCore.GetAllStimParams"/>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.UpdateChannelParams(System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Updates per-finger calibration params.
+            </summary>
+            <param name="finger">e.g., "index", "ring", or "ch2".</param>
+            <param name="max">Max PW (Âµs).</param>
+            <param name="min">Min PW (Âµs).</param>
+            <param name="amp">Amplitude (mA).</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">If finger maps to an invalid channel.</exception>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.Ready">
+            <inheritdoc cref="M:WSSInterfacing.IStimulationCore.Ready"/>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.Started">
+            <inheritdoc cref="M:WSSInterfacing.IStimulationCore.Started"/>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.GetCoreConfigCTRL">
+            <summary>Provides access to the core configuration controller.</summary>
+        </member>
+        <member name="M:WSSInterfacing.StimulationParams.FingerToChannel(System.String)">
+            <summary>
+            Maps a finger label or alias to a device channel.
+            Supports "thumb/index/middle/ring/pinky" and "chN" aliases.
+            Returns 0 on invalid or empty input.
+            </summary>
+        </member>
+        <member name="T:WSSInterfacing.Stimulation">
+            <summary>
+            High-level Unity wrapper for the full stimulation model layer.
+            Extends <c>StimParamsLayer</c> with proportional and derivative control modes,
+            calibration constants, and model-based drive computation.
+            This is the top-level interface that user code should normally interact with.
+            </summary>
+        </member>
+        <member name="F:WSSInterfacing.Stimulation.forcePort">
+            <summary>
+            Forces connection to a specific COM port instead of auto-detecting.
+            </summary>
+        </member>
+        <member name="F:WSSInterfacing.Stimulation.testMode">
+            <summary>
+            Enables simulated test mode without real hardware communication.
+            </summary>
+        </member>
+        <member name="F:WSSInterfacing.Stimulation.maxSetupTries">
+            <summary>
+            Maximum number of setup retries before failing initialization.
+            </summary>
+        </member>
+        <member name="F:WSSInterfacing.Stimulation.comPort">
+            <summary>
+            Target COM port to use when <see cref="F:WSSInterfacing.Stimulation.forcePort"/> is enabled.
+            </summary>
+        </member>
+        <member name="F:WSSInterfacing.Stimulation.started">
+            <summary>True after <see cref="M:WSSInterfacing.Stimulation.StartStimulation"/> succeeds.</summary>
+        </member>
+        <member name="F:WSSInterfacing.Stimulation.basicSupported">
+            <summary>True if the underlying core exposes basic-stimulation APIs.</summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.Awake">
+            <summary>
+            Creates the full stimulation stack: core → params layer → model layer.
+            Detects hardware if <see cref="F:WSSInterfacing.Stimulation.forcePort"/> is false.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.OnEnable">
+            <summary>Initializes the WSS device connection when the component becomes active.</summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.Update">
+            <summary>
+            Advances communication tick and listens for debug input.
+            Press <c>A</c> to reload configuration file manually.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.OnDisable">
+            <summary>Ensures clean shutdown when the component is disabled.</summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.releaseRadio">
+            <summary>Explicitly closes the radio connection.</summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.resetRadio">
+            <summary>Resets the radio by shutting down and reinitializing the device.</summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.StimulateAnalog(System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Direct analog stimulation using raw parameters.
+            Recommended only for discrete-sensor triggers.
+            </summary>
+            <param name="finger">Finger label or alias (e.g., "index" or "ch2").</param>
+            <param name="PW">Pulse width in microseconds.</param>
+            <param name="amp">Amplitude in milliamps (default = 3).</param>
+            <param name="IPI">Inter-pulse interval in milliseconds (default = 10).</param>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.StartStimulation">
+            <inheritdoc cref="M:WSSInterfacing.IStimulationCore.StartStim(WSSInterfacing.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.StopStimulation">
+            <inheritdoc cref="M:WSSInterfacing.IStimulationCore.StopStim(WSSInterfacing.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.Save(System.Int32)">
+            <inheritdoc cref="M:WSSInterfacing.IBasicStimulation.Save(WSSInterfacing.WssTarget)"/>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.Save">
+            <inheritdoc cref="M:WSSInterfacing.IBasicStimulation.Save(WSSInterfacing.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.load(System.Int32)">
+            <inheritdoc cref="M:WSSInterfacing.IBasicStimulation.Load(WSSInterfacing.WssTarget)"/>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.load">
+            <inheritdoc cref="M:WSSInterfacing.IBasicStimulation.Load(WSSInterfacing.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.request_Configs(System.Int32,System.Int32,System.Int32)">
+            <inheritdoc cref="M:WSSInterfacing.IBasicStimulation.Request_Configs(System.Int32,System.Int32,WSSInterfacing.WssTarget)"/>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.updateWaveform(System.Int32[],System.Int32)">
+            <inheritdoc cref="M:WSSInterfacing.IBasicStimulation.UpdateWaveform(System.Int32[],System.Int32,WSSInterfacing.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.updateWaveform(System.Int32,System.Int32[],System.Int32)">
+            <inheritdoc cref="M:WSSInterfacing.IBasicStimulation.UpdateWaveform(System.Int32[],System.Int32,WSSInterfacing.WssTarget)"/>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.updateWaveform(System.Int32,System.Int32,System.Int32)">
+            <inheritdoc cref="M:WSSInterfacing.IBasicStimulation.UpdateEventShape(System.Int32,System.Int32,System.Int32,WSSInterfacing.WssTarget)"/>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.updateWaveform(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Selects predefined or custom waveform shapes for a specific WSS target.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.updateWaveform(WSSInterfacing.WaveformBuilder,System.Int32)">
+            <inheritdoc cref="M:WSSInterfacing.IBasicStimulation.UpdateWaveform(WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.updateWaveform(System.Int32,WSSInterfacing.WaveformBuilder,System.Int32)">
+            <summary>Loads a waveform definition from JSON for a target unit.</summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.loadWaveform(System.String,System.Int32)">
+            <summary>Loads a waveform file into memory.</summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.WaveformSetup(WSSInterfacing.WaveformBuilder,System.Int32)">
+            <summary>Defines a custom waveform for an event slot on all units.</summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.WaveformSetup(System.Int32,WSSInterfacing.WaveformBuilder,System.Int32)">
+            <summary>Defines a custom waveform for an event slot on a specific unit.</summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.UpdateIPD(System.Int32,System.Int32)">
+            <inheritdoc cref="M:WSSInterfacing.IBasicStimulation.UpdateIPD(System.Int32,System.Int32,WSSInterfacing.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.UpdateIPD(System.Int32,System.Int32,System.Int32)">
+            <inheritdoc cref="M:WSSInterfacing.IBasicStimulation.UpdateIPD(System.Int32,System.Int32,WSSInterfacing.WssTarget)"/>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.StimulateNormalized(System.String,System.Single)">
+            <summary>
+            Normalized drive [0..1]. Computes PW via per-finger calibration and model constants, then stimulates.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.GetStimIntensity(System.String)">
+            <summary>Returns last computed pulse width for the specified finger.</summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.SaveParamsJson">
+            <summary>Saves model-layer parameters JSON to disk.</summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.LoadParamsJson">
+            <summary>Loads model-layer parameters JSON from default location.</summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.LoadParamsJson(System.String)">
+            <summary>Loads model-layer parameters JSON from a specified path.</summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.AddOrUpdateStimParam(System.String,System.Single)">
+            <summary>Sets a parameter by dotted key (e.g., "stim.ch.1.amp").</summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.GetStimParam(System.String)">
+            <summary>Gets a parameter by dotted key.</summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.TryGetStimParam(System.String,System.Single@)">
+            <summary>Attempts to read a parameter by key, returns <c>true</c> on success.</summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.GetAllStimParams">
+            <summary>Returns a dictionary copy of all current stimulation parameters.</summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.SetChannelAmp(System.String,System.Single)">
+            <summary>Sets per-finger amplitude in milliamps.</summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.SetChannelPWMin(System.String,System.Int32)">
+            <summary>Sets per-finger minimum PW in microseconds.</summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.SetChannelPWMax(System.String,System.Int32)">
+            <summary>Sets per-finger maximum PW in microseconds.</summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.SetChannelIPI(System.String,System.Int32)">
+            <summary>Sets per-finger IPI in milliseconds.</summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.GetChannelAmp(System.String)">
+            <summary>Gets per-finger amplitude in milliamps.</summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.GetChannelPWMin(System.String)">
+            <summary>Gets per-finger minimum PW in microseconds.</summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.GetChannelPWMax(System.String)">
+            <summary>Gets per-finger maximum PW in microseconds.</summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.GetChannelIPI(System.String)">
+            <summary>Gets per-finger IPI in milliseconds.</summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.IsFingerValid(System.String)">
+            <summary>Checks whether the specified finger maps to a valid channel index.</summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.StimWithMode(System.String,System.Single)">
+            <summary>
+            Applies model-driven stimulation using proportional or PD mode.
+            </summary>
+            <param name="finger">Finger label or alias.</param>
+            <param name="magnitude">Normalized or physical magnitude input to the model.</param>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.UpdateChannelParams(System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Updates calibration parameters for a specific finger.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.isModeValid">
+            <summary>Returns <c>true</c> if the model mode currently loaded is valid.</summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.Ready">
+            <summary>Returns <c>true</c> if the device is initialized and ready.</summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.Started">
+            <summary>Returns <c>true</c> if stimulation is currently active.</summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.GetModelConfigCTRL">
+            <summary>Provides access to the model configuration controller.</summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.GetCoreConfigCTRL">
+            <summary>Provides access to the core configuration controller.</summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulation.FingerToChannel(System.String)">
+            <summary>
+            Maps a finger label or alias to its numeric channel.
+            Supports "thumb", "index", "middle", "ring", "pinky" or "little",
+            and generic "chN" notation. Returns 0 if invalid.
+            </summary>
+        </member>
+        <member name="T:WSSInterfacing.Stimulationbasic">
+            <summary>
+            Basic Unity MonoBehaviour wrapper for the WSS stimulation core.
+            Handles initialization, configuration, and waveform control for connected WSS stimulators.
+            Designed as the simplest interface layer exposing low-level stimulation functionality.
+            </summary>
+        </member>
+        <member name="F:WSSInterfacing.Stimulationbasic.forcePort">
+            <summary>
+            Forces connection to a specific COM port instead of auto-detecting.
+            </summary>
+        </member>
+        <member name="F:WSSInterfacing.Stimulationbasic.testMode">
+            <summary>
+            Enables simulated test mode without real hardware communication.
+            </summary>
+        </member>
+        <member name="F:WSSInterfacing.Stimulationbasic.maxSetupTries">
+            <summary>
+            Maximum number of setup retries before failing initialization.
+            </summary>
+        </member>
+        <member name="F:WSSInterfacing.Stimulationbasic.comPort">
+            <summary>
+            Target COM port to use when <see cref="F:WSSInterfacing.Stimulationbasic.forcePort"/> is enabled.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulationbasic.Awake">
+            <summary>
+            Creates and configures the stimulation core controller.
+            Uses either a forced COM port or default auto-detected connection.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulationbasic.OnEnable">
+            <summary>
+            Initializes the WSS device connection when the component becomes active.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulationbasic.Update">
+            <summary>
+            Performs periodic updates and tick cycles for communication and task execution.
+            Press <c>A</c> key to manually reload the configuration file for testing.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulationbasic.OnDisable">
+            <summary>
+            Ensures proper device shutdown when the component is disabled.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulationbasic.releaseRadio">
+            <summary>
+            Explicitly releases the radio connection.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulationbasic.resetRadio">
+            <summary>
+            Performs a radio reset by shutting down and re-initializing the connection.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulationbasic.StimulateAnalog(System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Sends an analog stimulation command to a mapped channel.
+            </summary>
+            <param name="finger">Finger name or channel alias (e.g., "index" or "ch2").</param>
+            <param name="PW">Pulse width in microseconds.</param>
+            <param name="amp">Amplitude in milliamps (default = 3).</param>
+            <param name="IPI">Inter-pulse interval in milliseconds (default = 10).</param>
+        </member>
+        <member name="M:WSSInterfacing.Stimulationbasic.StartStimulation">
+            <inheritdoc cref="M:WSSInterfacing.IStimulationCore.StartStim(WSSInterfacing.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:WSSInterfacing.Stimulationbasic.StopStimulation">
+            <inheritdoc cref="M:WSSInterfacing.IStimulationCore.StopStim(WSSInterfacing.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:WSSInterfacing.Stimulationbasic.Save(System.Int32)">
+            <inheritdoc cref="M:WSSInterfacing.IBasicStimulation.Save(WSSInterfacing.WssTarget)"/>
+        </member>
+        <member name="M:WSSInterfacing.Stimulationbasic.Save">
+            <inheritdoc cref="M:WSSInterfacing.IBasicStimulation.Save(WSSInterfacing.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:WSSInterfacing.Stimulationbasic.load(System.Int32)">
+            <inheritdoc cref="M:WSSInterfacing.IBasicStimulation.Load(WSSInterfacing.WssTarget)"/>
+        </member>
+        <member name="M:WSSInterfacing.Stimulationbasic.load">
+            <inheritdoc cref="M:WSSInterfacing.IBasicStimulation.Load(WSSInterfacing.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:WSSInterfacing.Stimulationbasic.request_Configs(System.Int32,System.Int32,System.Int32)">
+            <inheritdoc cref="M:WSSInterfacing.IBasicStimulation.Request_Configs(System.Int32,System.Int32,WSSInterfacing.WssTarget)"/>
+        </member>
+        <member name="M:WSSInterfacing.Stimulationbasic.updateWaveform(System.Int32[],System.Int32)">
+            <inheritdoc cref="M:WSSInterfacing.IBasicStimulation.UpdateWaveform(System.Int32[],System.Int32,WSSInterfacing.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:WSSInterfacing.Stimulationbasic.updateWaveform(System.Int32,System.Int32,System.Int32)">
+            <inheritdoc cref="M:WSSInterfacing.IBasicStimulation.UpdateEventShape(System.Int32,System.Int32,System.Int32,WSSInterfacing.WssTarget)"/>
+        </member>
+        <member name="M:WSSInterfacing.Stimulationbasic.updateWaveform(WSSInterfacing.WaveformBuilder,System.Int32)">
+            <inheritdoc cref="M:WSSInterfacing.IBasicStimulation.UpdateWaveform(WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:WSSInterfacing.Stimulationbasic.loadWaveform(System.String,System.Int32)">
+            <inheritdoc cref="M:WSSInterfacing.IBasicStimulation.LoadWaveform(System.String,System.Int32)"/>
+        </member>
+        <member name="M:WSSInterfacing.Stimulationbasic.WaveformSetup(WSSInterfacing.WaveformBuilder,System.Int32)">
+            <inheritdoc cref="M:WSSInterfacing.IBasicStimulation.WaveformSetup(WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:WSSInterfacing.Stimulationbasic.UpdateIPD(System.Int32,System.Int32)">
+            <inheritdoc cref="M:WSSInterfacing.IBasicStimulation.UpdateIPD(System.Int32,System.Int32,WSSInterfacing.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:WSSInterfacing.Stimulationbasic.UpdateIPD(System.Int32,System.Int32,System.Int32)">
+            <inheritdoc cref="M:WSSInterfacing.IBasicStimulation.UpdateIPD(System.Int32,System.Int32,WSSInterfacing.WssTarget)"/>
+        </member>
+        <member name="M:WSSInterfacing.Stimulationbasic.Ready">
+            <summary>Returns <c>true</c> if the device has completed setup and is ready.</summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulationbasic.Started">
+            <summary>Returns <c>true</c> if stimulation is currently active.</summary>
+        </member>
+        <member name="M:WSSInterfacing.Stimulationbasic.GetCoreConfigCTRL">
+            <summary>Provides access to the core configuration controller.</summary>
+        </member>
+        <member name="T:WSSInterfacing.CoreConfig">
+            <summary>
+            Strongly-typed core configuration model persisted in JSON.
+            Exposes the maximum number of WSS devices and the firmware version string.
+            </summary>
+        </member>
+        <member name="P:WSSInterfacing.CoreConfig.maxWSS">
+            <summary>Maximum number of WSS devices supported by this app.</summary>
+        </member>
+        <member name="P:WSSInterfacing.CoreConfig.firmware">
+            <summary>Firmware version string (e.g., "H03", "J03").</summary>
+        </member>
+        <member name="T:WSSInterfacing.CoreConfigController">
+            <summary>
+            Controls loading, validating, reading, and writing a stimulation configuration JSON file.
+            Thread-safe. Ensures a valid default config exists on disk.
+            </summary>
+        </member>
+        <member name="P:WSSInterfacing.CoreConfigController._configPath">
+            <summary>Resolved file path to the configuration JSON.</summary>
+        </member>
+        <member name="M:WSSInterfacing.CoreConfigController.#ctor">
+            <summary>
+            Initializes a controller that reads/writes "stimConfig.json" in the current directory.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.CoreConfigController.#ctor(System.String)">
+            <summary>
+            Initializes a controller pointing to a custom path.
+            If a directory path is provided, "stimConfig.json" is created inside it.
+            </summary>
+            <param name="path">Absolute or relative file path, or a directory path.</param>
+            <exception cref="T:System.ArgumentException">Thrown when <paramref name="path"/> is null, empty, or whitespace.</exception>
+        </member>
+        <member name="P:WSSInterfacing.CoreConfigController.IsLoaded">
+            <summary>
+            Indicates whether the JSON configuration has been loaded into memory.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.CoreConfigController.LoadJson">
+            <summary>
+            Loads the configuration from disk. Creates and saves a default config if missing or invalid.
+            Safe to call multiple times.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.CoreConfigController.LoadJson(System.String)">
+            <summary>
+            Loads the core configuration from disk at the specified <paramref name="path"/>.
+            If <paramref name="path"/> is a directory, the file name <c>core.json</c> is appended.
+            If the file does not exist or is invalid, a default configuration is created and saved.
+            Safe to call multiple times; the operation is thread-safe.
+            </summary>
+            <param name="path">
+            Absolute or relative file path, or a directory path ending with a path separator.
+            </param>
+        </member>
+        <member name="M:WSSInterfacing.CoreConfigController.SaveJson">
+            <summary>
+            Threads safe, persists the current configuration to disk.
+            No-op if not loaded yet.
+            </summary>
+        </member>
+        <member name="P:WSSInterfacing.CoreConfigController.MaxWss">
+            <summary>
+            Gets max number of WSS supported by this app.
+            Thread safe get.
+            </summary>
+        </member>
+        <member name="P:WSSInterfacing.CoreConfigController.Firmware">
+            <summary>
+            Gets the firmware version saved on config.
+            Thread safe get.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.CoreConfigController.SetMaxWss(System.Int32)">
+            <summary>
+            Updates the maximum number of supported WSS devices in the loaded configuration
+            and immediately persists the change to disk. Thread safe.
+            </summary>
+            <param name="v">
+            New maximum WSS count. Must be greater than zero.
+            </param>
+        </member>
+        <member name="M:WSSInterfacing.CoreConfigController.SetFirmware(System.String,WSSInterfacing.WSSVersionHandler)">
+            <summary>
+            Updates the firmware version recorded in the configuration and immediately saves it to disk.
+            Thread safe.
+            </summary>
+            <param name="v">
+            Firmware version string to record (for example, "H03").
+            </param>
+            <param name="verHandler">
+            Version handler used to validate whether the supplied firmware string is supported.
+            </param>
+        </member>
+        <member name="T:WSSInterfacing.DictConfigBase">
+            <summary>
+            Base class for JSON-backed configuration objects that expose dotted-key access.
+            Wraps a <see cref="T:Newtonsoft.Json.Linq.JObject"/> and provides thread-safe getters/setters and save.
+            </summary>
+        </member>
+        <member name="F:WSSInterfacing.DictConfigBase._root">
+            <summary>Root JSON object for this configuration.</summary>
+        </member>
+        <member name="P:WSSInterfacing.DictConfigBase.Path">
+            <summary>Resolved file path used for persistence.</summary>
+        </member>
+        <member name="M:WSSInterfacing.DictConfigBase.#ctor(System.String,Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Initializes the configuration by loading a JSON file (or writing defaults when missing).
+            </summary>
+            <param name="path">Destination file path. Parent directory is created when needed.</param>
+            <param name="defaults">Default JSON content to save and use when the file does not exist.</param>
+        </member>
+        <member name="M:WSSInterfacing.DictConfigBase.Save">
+            <summary>Persists the current JSON content to <see cref="P:WSSInterfacing.DictConfigBase.Path"/>.</summary>
+        </member>
+        <member name="M:WSSInterfacing.DictConfigBase.TryGetFloat(System.String,System.Single@)">
+            <summary>Try to read a float from a dotted key.</summary>
+        </member>
+        <member name="M:WSSInterfacing.DictConfigBase.TryGetInt(System.String,System.Int32@)">
+            <summary>Try to read an int from a dotted key.</summary>
+        </member>
+        <member name="M:WSSInterfacing.DictConfigBase.TryGetString(System.String,System.String@)">
+            <summary>Try to read a string from a dotted key.</summary>
+        </member>
+        <member name="M:WSSInterfacing.DictConfigBase.TryGetFloatArray(System.String,System.Single[]@)">
+            <summary>Try to read a float array from a dotted key.</summary>
+        </member>
+        <member name="M:WSSInterfacing.DictConfigBase.GetFloat(System.String,System.Single)">
+            <summary>Gets a float or returns a default when missing.</summary>
+        </member>
+        <member name="M:WSSInterfacing.DictConfigBase.GetInt(System.String,System.Int32)">
+            <summary>Gets an int or returns a default when missing.</summary>
+        </member>
+        <member name="M:WSSInterfacing.DictConfigBase.GetString(System.String,System.String)">
+            <summary>Gets a string or returns a default when missing.</summary>
+        </member>
+        <member name="M:WSSInterfacing.DictConfigBase.Set(System.String,Newtonsoft.Json.Linq.JToken)">
+            <summary>
+            Writes <paramref name="value"/> at <paramref name="dottedKey"/>, creating intermediate objects as needed.
+            </summary>
+            <param name="dottedKey">Dotted key, e.g., "constants.PModeProportional".</param>
+            <param name="value">JSON token to assign.</param>
+        </member>
+        <member name="T:WSSInterfacing.JsonReader">
+            <summary>
+            Lightweight helpers for loading and saving JSON configuration files.
+            Provides typed object and <see cref="T:Newtonsoft.Json.Linq.JObject"/> utilities and
+            ensures parent directories exist before writes.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.JsonReader.LoadObject``1(System.String,``0)">
+            <summary>
+            Loads a JSON file into a typed object. If the file is missing or invalid,
+            writes <paramref name="defaults"/> to disk and returns it.
+            </summary>
+            <typeparam name="T">Reference type to deserialize to.</typeparam>
+            <param name="path">File path to read from.</param>
+            <param name="defaults">Default instance to persist and return when missing/invalid.</param>
+            <returns>The deserialized object, or <paramref name="defaults"/> when not present/invalid.</returns>
+        </member>
+        <member name="M:WSSInterfacing.JsonReader.SaveObject``1(System.String,``0)">
+            <summary>
+            Serializes <paramref name="obj"/> to indented JSON at <paramref name="path"/>.
+            Creates the parent directory when needed.
+            </summary>
+            <typeparam name="T">Type of the object to serialize.</typeparam>
+            <param name="path">Destination file path.</param>
+            <param name="obj">Object to serialize.</param>
+        </member>
+        <member name="M:WSSInterfacing.JsonReader.LoadJObject(System.String,Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Loads a JSON file into a <see cref="T:Newtonsoft.Json.Linq.JObject"/>. If the file is missing,
+            writes <paramref name="defaults"/> to disk and returns it.
+            </summary>
+            <param name="path">File path to read from.</param>
+            <param name="defaults">Default JSON object to persist and return when missing.</param>
+            <returns>Parsed <see cref="T:Newtonsoft.Json.Linq.JObject"/>.</returns>
+        </member>
+        <member name="M:WSSInterfacing.JsonReader.SaveJObject(System.String,Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Writes a <see cref="T:Newtonsoft.Json.Linq.JObject"/> to disk with indented formatting.
+            Ensures the parent directory exists.
+            </summary>
+            <param name="path">Destination file path.</param>
+            <param name="obj">JSON object to write.</param>
+        </member>
+        <member name="M:WSSInterfacing.JsonReader.EnsureDir(System.String)">
+            <summary>
+            Ensures that the directory containing <paramref name="path"/> exists.
+            No-op when the directory is null, empty, or already present.
+            </summary>
+            <param name="path">Target file path.</param>
+        </member>
+        <member name="T:WSSInterfacing.IBasicStimulation">
+            <summary>
+            Basic stimulation operations that upload or select waveforms and manage
+            board configuration. Calls are non-blocking; implementations may enqueue
+            setup steps and return immediately.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.IBasicStimulation.UpdateEventShape(System.Int32,System.Int32,System.Int32,WSSInterfacing.WssTarget)">
+            <summary>
+            Sets event shape IDs directly for the given <paramref name="eventID"/>.
+            Implementations should send setup edits with replies.
+            </summary>
+            <param name="cathodicWaveform">Shape ID for the standard phase.</param>
+            <param name="anodicWaveform">Shape ID for the recharge phase.</param>
+            <param name="eventID">Event slot to modify.</param>
+            <param name="wssTarget">Target device or broadcast.</param>
+        </member>
+        <member name="M:WSSInterfacing.IBasicStimulation.UpdateWaveform(WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)">
+            <summary>
+            Uploads a prepared waveform and assigns shapes for <paramref name="eventID"/>.
+            </summary>
+            <param name="waveform">Prepared <see cref="T:WSSInterfacing.WaveformBuilder"/>.</param>
+            <param name="eventID">Event slot to target.</param>
+            <param name="wssTarget">Target device or broadcast.</param>
+        </member>
+        <member name="M:WSSInterfacing.IBasicStimulation.UpdateWaveform(System.Int32[],System.Int32,WSSInterfacing.WssTarget)">
+            <summary>
+            Builds a custom waveform from raw points and schedules the upload
+            for the specified <paramref name="eventID"/>.
+            </summary>
+            <param name="waveform">Concatenated waveform definition.</param>
+            <param name="eventID">Event slot to target.</param>
+            <param name="wssTarget">Target device or broadcast.</param>
+        </member>
+        <member name="M:WSSInterfacing.IBasicStimulation.LoadWaveform(System.String,System.Int32)">
+            <summary>
+            Loads a waveform JSON file (â€¦WF.json), builds it, and enqueues an upload.
+            </summary>
+            <param name="fileName">File name or path; â€œWF.jsonâ€ suffix is enforced.</param>
+            <param name="eventID">Event slot to target.</param>
+        </member>
+        <member name="M:WSSInterfacing.IBasicStimulation.WaveformSetup(WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)">
+            <summary>
+            Schedules the upload of custom waveform chunks and points
+            <paramref name="eventID"/> at the uploaded shapes.
+            </summary>
+            <param name="wave">Waveform builder.</param>
+            <param name="eventID">Event slot to target.</param>
+            <param name="wssTarget">Target device or broadcast.</param>
+        </member>
+        <member name="M:WSSInterfacing.IBasicStimulation.Save(WSSInterfacing.WssTarget)">
+            <summary>
+            Saves board settings to non-volatile memory. Implementations should
+            pause streaming if needed, perform the save, then resume.
+            </summary>
+            <param name="wssTarget">Target device or broadcast.</param>
+        </member>
+        <member name="M:WSSInterfacing.IBasicStimulation.Load(WSSInterfacing.WssTarget)">
+            <summary>
+            Loads board settings from non-volatile memory. Implementations should
+            pause streaming if needed, perform the load, then resume.
+            </summary>
+            <param name="wssTarget">Target device or broadcast.</param>
+        </member>
+        <member name="M:WSSInterfacing.IBasicStimulation.Request_Configs(System.Int32,System.Int32,WSSInterfacing.WssTarget)">
+            <summary>
+            Requests configuration blocks from the device.
+            </summary>
+            <param name="command">Command group identifier.</param>
+            <param name="id">Sub-id / selector.</param>
+            <param name="wssTarget">Target device or broadcast.</param>
+        </member>
+        <member name="M:WSSInterfacing.IBasicStimulation.UpdateIPD(System.Int32,WSSInterfacing.WssTarget)">
+            <summary>
+            Updates inter-phase delay (IPD) for events 1–3 via setup commands (with replies).
+            If currently Streaming, the core pauses streaming, sends edits, and resumes when done.
+            </summary>
+            <param name="ipd">Inter-phase delay in microseconds (clamped internally).</param>
+            <param name="wssTarget">Target device or broadcast.</param>
+        </member>
+        <member name="M:WSSInterfacing.IBasicStimulation.UpdateIPD(System.Int32,System.Int32,WSSInterfacing.WssTarget)">
+            <summary>
+            Updates inter-phase delay (IPD) for a specific <paramref name="eventID"/> via setup commands (with replies).
+            If currently Streaming, the core pauses streaming, sends the edit, and resumes when done.
+            </summary>
+            <param name="ipd">Inter-phase delay in microseconds (clamped internally).</param>
+            <param name="eventID">Event slot to target.</param>
+            <param name="wssTarget">Target device or broadcast.</param>
+        </member>
+        <member name="T:WSSInterfacing.ICoreConfig">
+            <summary>
+            Read-only view of core configuration values loaded from the JSON config file.
+            Implementations expose firmware information and global limits.
+            </summary>
+        </member>
+        <member name="P:WSSInterfacing.ICoreConfig.MaxWss">
+            <summary>
+            Maximum number of WSS devices supported by this configuration.
+            </summary>
+        </member>
+        <member name="P:WSSInterfacing.ICoreConfig.Firmware">
+            <summary>
+            Firmware version string (e.g., "H03", "J03").
+            </summary>
+        </member>
+        <member name="T:WSSInterfacing.IFrameCodec">
+            <summary>
+            Contract for framing and deframing WSS messages over byte-stream transports (Serial, BLE, TCP).
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.IFrameCodec.Frame(System.Byte,System.Byte,System.Byte[])">
+            <summary>
+            Builds a wire-safe frame for transmission using SLIP-style escaping.
+            Output format (before escaping): <c>[sender][target][payload...][checksum][END]</c>.
+            </summary>
+            <param name="sender">Sender address byte.</param>
+            <param name="target">Target/receiver address byte (e.g., device address or broadcast).</param>
+            <param name="payload">
+            The protocol payload (e.g., <c>[cmd][len][...]</c>). The codec does not modify the payload.
+            </param>
+            <returns>Escaped frame ready to send (always terminates with END).</returns>
+        </member>
+        <member name="M:WSSInterfacing.IFrameCodec.Deframe(System.Byte[])">
+            <summary>
+            Progressive deframer: feed any-size incoming chunks and get back zero or more
+            complete, unescaped frames. Each returned frame has the format
+            <c>[sender][target][payload...][checksum]</c> (END is consumed).
+            </summary>
+            <param name="chunk">A raw byte chunk from the transport (may be partial or contain multiple frames).</param>
+            <returns>0..N complete, unescaped frames (END removed). Checksum is not validated here.</returns>
+        </member>
+        <member name="T:WSSInterfacing.IStimulationCore">
+            <summary>
+            Unity-agnostic stimulation core lifecycle and control surface.
+            Implementations manage connection, setup, and a background streaming loop.
+            Public mutators should enqueue edits and return immediately.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.IStimulationCore.Initialize">
+            <summary>
+            Initializes the core: loads JSON config, prepares buffers, and begins connecting
+            to the transport. Non-blocking; call <see cref="M:WSSInterfacing.IStimulationCore.Tick"/> to advance state.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.IStimulationCore.Tick">
+            <summary>
+            Advances the internal state machine (e.g., Connecting â†’ SettingUp â†’ Ready â†’ Streaming).
+            Call regularly from the main loop.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.IStimulationCore.Shutdown">
+            <summary>
+            Stops streaming, attempts to zero outputs, disconnects transport, and releases resources.
+            Safe to call multiple times.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.IStimulationCore.Started">
+            <summary>
+            True when device transport is started or streaming.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.IStimulationCore.Ready">
+            <summary>
+            True when the core is ready to accept start stimulation.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.IStimulationCore.StimulateAnalog(System.Int32,System.Int32,System.Single,System.Int32)">
+            <summary>
+            Caches per-channel amplitude, pulse width, and IPI. No I/O here;
+            the streaming loop pushes cached values to the device.
+            </summary>
+            <param name="channel">1-based logical channel.</param>
+            <param name="PW">Pulse width (Âµs).</param>
+            <param name="amp">Amplitude (mA domain; mapped to device scale during streaming).</param>
+            <param name="IPI">Inter-pulse interval (ms).</param>
+        </member>
+        <member name="M:WSSInterfacing.IStimulationCore.ZeroOutStim(WSSInterfacing.WssTarget)">
+            <summary>
+            Sends a zero-out command. Does not alter cached values.
+            </summary>
+            <param name="wssTarget">Target device or broadcast.</param>
+        </member>
+        <member name="M:WSSInterfacing.IStimulationCore.StartStim(WSSInterfacing.WssTarget)">
+            <summary>
+            Starts stimulation on the target and launches streaming when ready.
+            </summary>
+            <param name="wssTarget">Target device or broadcast.</param>
+        </member>
+        <member name="M:WSSInterfacing.IStimulationCore.StopStim(WSSInterfacing.WssTarget)">
+            <summary>
+            Stops stimulation on the target and, if streaming, stops the background loop.
+            </summary>
+            <param name="wssTarget">Target device or broadcast.</param>
+        </member>
+        <member name="M:WSSInterfacing.IStimulationCore.LoadConfigFile">
+            <summary>
+            Reloads the stimulation JSON configuration from disk into memory.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.IStimulationCore.GetCoreConfigController">
+            <summary>
+            Gets the JSON-backed stimulation configuration controller currently used by this core.
+            </summary>
+            <returns>
+            The active <see cref="T:WSSInterfacing.CoreConfigController"/> instance that provides read/write access
+            to stimulation parameters and constants loaded from the configuration file.
+            </returns>
+            <remarks>
+            Returned reference is live, not a copy and thread safe.
+            </remarks>
+        </member>
+        <member name="M:WSSInterfacing.IStimulationCore.IsChannelInRange(System.Int32)">
+            <summary>
+            Returns true if <paramref name="ch"/> is within the valid channel range.
+            </summary>
+            <param name="ch">1-based channel to check.</param>
+        </member>
+        <member name="T:WSSInterfacing.ITransport">
+            <summary>
+            Abstraction over a byte-stream transport (e.g., Serial, Bluetooth, TCP) used by the WSS client.
+            Implementations should surface incoming bytes via <see cref="E:WSSInterfacing.ITransport.BytesReceived"/> and provide
+            async connect/disconnect/send operations.
+            </summary>
+            <remarks>
+            <para>
+            This interface is intentionally minimal and transport-agnostic so the higher-level WSS client
+            can be reused with different physical links (UART/COM, RFCOMM, BLE GATT, sockets).
+            </para>
+            <para>
+            <b>Threading:</b> Implementations typically raise <see cref="E:WSSInterfacing.ITransport.BytesReceived"/> from a background thread.
+            If your application (e.g., Unity) requires main-thread access for processing, marshal the callback
+            to the main thread before touching UI/GameObjects.
+            </para>
+            <para>
+            <b>Chunking:</b> Incoming chunks may contain partial frames, multiple frames, or arbitrary boundaries.
+            Always pass chunks to a frame codec/deframer instead of assuming message boundaries align with reads.
+            </para>
+            </remarks>
+        </member>
+        <member name="P:WSSInterfacing.ITransport.IsConnected">
+            <summary>
+            Gets whether the transport is currently connected/open.
+            </summary>
+        </member>
+        <member name="E:WSSInterfacing.ITransport.BytesReceived">
+            <summary>
+            Raised whenever raw bytes arrive from the underlying transport.
+            Each invocation may represent any number of bytes (including zero, depending on implementation),
+            and may contain partial or multiple protocol frames.
+            </summary>
+            <remarks>
+            <para>
+            Implementations should invoke this event promptly as data becomes available.
+            Callers should treat the provided buffer as read-only and copy it if they need to retain it.
+            </para>
+            <para>
+            This event is typically raised on a background thread. Consumers should marshal to the main thread
+            if required by their environment.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:WSSInterfacing.ITransport.ConnectAsync(System.Threading.CancellationToken)">
+            <summary>
+            Opens/initializes the transport connection (e.g., open a serial port, connect a socket, start BLE session).
+            </summary>
+            <param name="ct">Optional cancellation token to abort the connect attempt.</param>
+            <returns>A task that completes when the transport is connected.</returns>
+            <exception cref="T:System.ObjectDisposedException">If the instance has been disposed.</exception>
+            <exception cref="T:System.OperationCanceledException">If <paramref name="ct"/> is canceled.</exception>
+            <exception cref="T:System.Exception">
+            Implementations may throw transport-specific exceptions (e.g., unauthorized port access, device not found).
+            </exception>
+        </member>
+        <member name="M:WSSInterfacing.ITransport.DisconnectAsync(System.Threading.CancellationToken)">
+            <summary>
+            Closes the transport connection and stops any background receive loop.
+            </summary>
+            <param name="ct">Optional cancellation token to abort a long-running disconnect.</param>
+            <returns>A task that completes when the transport is fully disconnected.</returns>
+            <exception cref="T:System.ObjectDisposedException">If the instance has been disposed.</exception>
+            <exception cref="T:System.OperationCanceledException">If <paramref name="ct"/> is canceled.</exception>
+        </member>
+        <member name="M:WSSInterfacing.ITransport.SendAsync(System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Sends a block of bytes over the transport.
+            </summary>
+            <param name="data">The bytes to write. Callers should provide a buffer that will not be mutated during send.</param>
+            <param name="ct">
+            Optional cancellation token to cancel the send before it is written.
+            For some transports (e.g., synchronous serial writes), cancellation may only be observed before the write starts.
+            </param>
+            <returns>A task that completes when the bytes have been handed off to the transport.</returns>
+            <exception cref="T:System.ObjectDisposedException">If the instance has been disposed.</exception>
+            <exception cref="T:System.InvalidOperationException">If the transport is not connected.</exception>
+            <exception cref="T:System.OperationCanceledException">If <paramref name="ct"/> is canceled.</exception>
+        </member>
+        <member name="T:WSSInterfacing.SerialPortTransport">
+            <summary>
+            Serial-port implementation of <see cref="T:WSSInterfacing.ITransport"/> for WSS communications.
+            Wraps <see cref="T:System.IO.Ports.SerialPort"/> and exposes an event-driven receive API that works well in Unity/.NET Standard 2.0.
+            </summary>
+            <remarks>
+            <para><b>Threading:</b> <see cref="E:WSSInterfacing.SerialPortTransport.BytesReceived"/> is raised from a background task. If your app (e.g., Unity)
+            requires main-thread processing, marshal the callback to the main thread before touching UI/GameObjects.</para>
+            <para><b>Chunking:</b> Serial I/O does not preserve message boundaries. Each chunk may contain partial frames or
+            multiple frames. Always pass chunks to a frame codec/deframer.</para>
+            <para><b>Timeouts:</b> The read loop polls <see cref="P:System.IO.Ports.SerialPort.BytesToRead"/> and catches <see cref="T:System.TimeoutException"/>s,
+            which are normal with short read timeouts.</para>
+            </remarks>
+        </member>
+        <member name="M:WSSInterfacing.SerialPortTransport.#ctor(System.String,System.Int32,System.IO.Ports.Parity,System.Int32,System.IO.Ports.StopBits,System.Int32)">
+            <summary>
+            Creates a serial transport bound to the given port name and parameters.
+            </summary>
+            <param name="portName">Port name (e.g., <c>"COM5"</c> on Windows, <c>"/dev/ttyUSB0"</c> on Linux/macOS).</param>
+            <param name="baud">Baud rate. Default is 115200.</param>
+            <param name="parity">Parity setting. Default is <see cref="F:System.IO.Ports.Parity.None"/>.</param>
+            <param name="dataBits">Data bits. Default is 8.</param>
+            <param name="stopBits">Stop bits. Default is <see cref="F:System.IO.Ports.StopBits.One"/>.</param>
+            <param name="readTimeoutMs">
+            Synchronous read timeout in milliseconds (used by <see cref="M:System.IO.Ports.SerialPort.Read(System.Byte[],System.Int32,System.Int32)"/>).
+            Typical value is small (e.g., 10ms). Timeouts are caught and ignored in the read loop.
+            </param>
+        </member>
+        <member name="M:WSSInterfacing.SerialPortTransport.#ctor(System.Int32,System.IO.Ports.Parity,System.Int32,System.IO.Ports.StopBits,System.Int32)">
+            <summary>
+            Creates a serial transport bound to the given parameters. Th port name is automatically selected as the firts port in the list.
+            </summary>
+            <param name="baud">Baud rate. Default is 115200.</param>
+            <param name="parity">Parity setting. Default is <see cref="F:System.IO.Ports.Parity.None"/>.</param>
+            <param name="dataBits">Data bits. Default is 8.</param>
+            <param name="stopBits">Stop bits. Default is <see cref="F:System.IO.Ports.StopBits.One"/>.</param>
+            <param name="readTimeoutMs">
+            Synchronous read timeout in milliseconds (used by <see cref="M:System.IO.Ports.SerialPort.Read(System.Byte[],System.Int32,System.Int32)"/>).
+            Typical value is small (e.g., 10ms). Timeouts are caught and ignored in the read loop.
+            </param>
+        </member>
+        <member name="P:WSSInterfacing.SerialPortTransport.IsConnected">
+            <inheritdoc/>
+        </member>
+        <member name="E:WSSInterfacing.SerialPortTransport.BytesReceived">
+            <inheritdoc/>
+            <remarks>
+            This event is typically raised on a background thread by the internal read loop.
+            Consumers should copy the buffer if it needs to be retained beyond the callback.
+            </remarks>
+        </member>
+        <member name="M:WSSInterfacing.SerialPortTransport.ConnectAsync(System.Threading.CancellationToken)">
+            <inheritdoc/>
+            <remarks>
+            Opens the serial port and starts a background read loop that forwards incoming data to <see cref="E:WSSInterfacing.SerialPortTransport.BytesReceived"/>.
+            </remarks>
+        </member>
+        <member name="M:WSSInterfacing.SerialPortTransport.DisconnectAsync(System.Threading.CancellationToken)">
+            <inheritdoc/>
+            <remarks>
+            Stops the background read loop and closes the serial port.
+            </remarks>
+        </member>
+        <member name="M:WSSInterfacing.SerialPortTransport.SendAsync(System.Byte[],System.Threading.CancellationToken)">
+            <inheritdoc/>
+            <remarks>
+            Writes the buffer synchronously to the underlying <see cref="T:System.IO.Ports.SerialPort"/> and flushes the base stream.
+            </remarks>
+        </member>
+        <member name="M:WSSInterfacing.SerialPortTransport.ReadLoopAsync">
+            <summary>
+            Background task that polls the serial port and raises <see cref="E:WSSInterfacing.SerialPortTransport.BytesReceived"/> when data arrives.
+            </summary>
+            <remarks>
+            The loop polls <see cref="P:System.IO.Ports.SerialPort.BytesToRead"/> and performs short delays (2ms) when idle
+            to reduce CPU usage. It exits on cancellation or unexpected exceptions.
+            </remarks>
+        </member>
+        <member name="M:WSSInterfacing.SerialPortTransport.Dispose">
+            <summary>
+            Disposes the serial port and stops the read loop.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.SerialPortTransport.GetComPort(System.String)">
+            <summary>
+            Selects a serial COM port. If <paramref name="preferredPort"/> is provided,
+            that port is used. Otherwise, prefers ports whose PNPDeviceID contains
+            <c>VID_0403&amp;PID_6001</c> (FTDI FT232R). If none match, returns the lowest
+            COM port by natural sort (COM2, COM10, â€¦).
+            </summary>
+            <param name="preferredPort">Exact port name to use, e.g., <c>COM11</c>. Optional.</param>
+            <returns>The selected COM port name, e.g., <c>COM3</c>.</returns>
+            <exception cref="T:System.InvalidOperationException">No serial ports found.</exception>
+            <remarks>
+            Uses WMI (<c>Win32_SerialPort</c>) to read <c>PNPDeviceID</c>. On .NET Core/5+,
+            add the <c>System.Management</c> package. If the VID/PID probe fails, the method
+            falls back to the lowest COM by natural sort.
+            </remarks>
+        </member>
+        <member name="T:WSSInterfacing.StimParamsBasicExtensions">
+            <summary>
+            Convenience extension methods over <see cref="T:WSSInterfacing.IStimParamsCore"/> that forward
+            to the optional BASIC layer (<see cref="T:WSSInterfacing.IBasicStimulation"/>). These helpers
+            make common operations (waveform upload, shape selection, save/load, requests)
+            concise while preserving the core API surface.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform(WSSInterfacing.IStimParamsCore,WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)">
+            <summary>Forward to BASIC.UpdateWaveform(WaveformBuilder,...).</summary>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform(WSSInterfacing.IStimParamsCore,System.Int32[],System.Int32,WSSInterfacing.WssTarget)">
+            <summary>Forward to BASIC.UpdateWaveform(int[],...).</summary>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsBasicExtensions.UpdateEventShape(WSSInterfacing.IStimParamsCore,System.Int32,System.Int32,System.Int32,WSSInterfacing.WssTarget)">
+            <summary>Forward to BASIC.UpdateEventShape(...).</summary>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsBasicExtensions.LoadWaveform(WSSInterfacing.IStimParamsCore,System.String,System.Int32)">
+            <summary>Forward to BASIC.LoadWaveform(...).</summary>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsBasicExtensions.WaveformSetup(WSSInterfacing.IStimParamsCore,WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)">
+            <summary>Forward to BASIC.WaveformSetup(...).</summary>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsBasicExtensions.SaveBoard(WSSInterfacing.IStimParamsCore,WSSInterfacing.WssTarget)">
+            <summary>Forward to BASIC.Save(...).</summary>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsBasicExtensions.LoadBoard(WSSInterfacing.IStimParamsCore,WSSInterfacing.WssTarget)">
+            <summary>Forward to BASIC.Load(...).</summary>
+        </member>
+        <member name="M:WSSInterfacing.StimParamsBasicExtensions.RequestConfigs(WSSInterfacing.IStimParamsCore,System.Int32,System.Int32,WSSInterfacing.WssTarget)">
+            <summary>Forward to BASIC.Request_Configs(...).</summary>
+        </member>
+        <member name="T:WSSInterfacing.Waveform">
+            <summary>
+            Immutable waveform container holding cathodic and anodic shape arrays and
+            the computed total area used for balanced charge calculations.
+            </summary>
+        </member>
+        <member name="F:WSSInterfacing.Waveform.catShape">
+            <summary>
+            Cathodic (primary) phase samples.
+            </summary>
+        </member>
+        <member name="F:WSSInterfacing.Waveform.anShape">
+            <summary>
+            Anodic (recharge) phase samples.
+            </summary>
+        </member>
+        <member name="F:WSSInterfacing.Waveform.area">
+            <summary>
+            Total area under the waveform used for computing recharge amplitude.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.Waveform.#ctor(System.Int32[],System.Int32[],System.Single)">
+            <summary>
+            Creates a new <see cref="T:WSSInterfacing.Waveform"/> from catodic and anodic arrays and area value.
+            </summary>
+            <param name="catWaveform">Cathodic shape samples.</param>
+            <param name="anodicWaveform">Anodic shape samples.</param>
+            <param name="area">Computed total area.</param>
+        </member>
+        <member name="T:WSSInterfacing.WaveformBuilder">
+            <summary>
+            Utility for constructing charge-balanced stimulation waveforms.
+            Given a cathodic shape, it computes a matching anodic recharge segment and
+            exposes helpers to retrieve shapes and total area.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.WaveformBuilder.#ctor(System.Int32[])">
+            <summary>
+            Initializes a builder from a cathodic waveform and computes a recharge segment
+            with equal area.
+            </summary>
+            <param name="catWaveform">Cathodic samples (length 32).</param>
+        </member>
+        <member name="M:WSSInterfacing.WaveformBuilder.#ctor(WSSInterfacing.Waveform)">
+            <summary>
+            Initializes a builder from an existing <see cref="T:WSSInterfacing.Waveform"/>.
+            </summary>
+            <param name="wave">Existing waveform instance.</param>
+        </member>
+        <member name="M:WSSInterfacing.WaveformBuilder.areaCalculation(System.Int32[])">
+            <summary>
+            Computes the total area for the cathodic waveform using a rectangle+triangle approximation.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.WaveformBuilder.anodicWaveMaker(System.Single)">
+            <summary>
+            Produces a constant recharge segment sized to match the given area.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.WaveformBuilder.getAnodicShapeArray">
+            <summary>
+            Returns the computed anodic (recharge) shape array.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.WaveformBuilder.getCatShapeArray">
+            <summary>
+            Returns the cathodic (primary) shape array.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.WaveformBuilder.getArea">
+            <summary>
+            Returns the total area computed for the cathodic waveform.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.WaveformBuilder.getWave">
+            <summary>
+            Builds the immutable <see cref="T:WSSInterfacing.Waveform"/> instance with current shapes and area.
+            </summary>
+        </member>
+        <member name="T:WSSInterfacing.TestModeTransport">
+            <summary>
+            In-memory transport for debugging and unit tests. No real I/O.
+            Features: artificial latency, jitter, inbound chunking, and drop simulation.
+            Default auto-responder validates checksum, flips sender/target, and echoes or replaces payload.
+            </summary>
+        </member>
+        <member name="P:WSSInterfacing.TestModeTransport.BaseLatency">
+            <summary>Artificial latency applied to inbound delivery.</summary>
+        </member>
+        <member name="P:WSSInterfacing.TestModeTransport.JitterMs">
+            <summary>Random jitter added to BaseLatency, in milliseconds.</summary>
+        </member>
+        <member name="P:WSSInterfacing.TestModeTransport.MaxInboundChunkSize">
+            <summary>If >0, splits inbound payloads into chunks of up to this size.</summary>
+        </member>
+        <member name="P:WSSInterfacing.TestModeTransport.InboundDropProbability">
+            <summary>Probability [0..1] of randomly dropping an inbound chunk.</summary>
+        </member>
+        <member name="P:WSSInterfacing.TestModeTransport.Rng">
+            <summary>Random generator used for jitter, chunk sizing, and drops.</summary>
+        </member>
+        <member name="P:WSSInterfacing.TestModeTransport.FallbackPayload">
+            <summary>Payload used when incoming checksum is invalid.</summary>
+        </member>
+        <member name="P:WSSInterfacing.TestModeTransport.AutoResponderAsync">
+            <summary>Optional override auto-responder. If null, the built-in default responder is used.</summary>
+        </member>
+        <member name="P:WSSInterfacing.TestModeTransport.IsConnected">
+            <inheritdoc/>
+        </member>
+        <member name="E:WSSInterfacing.TestModeTransport.BytesReceived">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.TestModeTransport.#ctor(System.Nullable{System.TimeSpan},System.Int32,System.Int32,System.Double,System.Random,System.Byte[],System.Func{System.Byte[],System.Threading.Tasks.Task{System.Byte[]}})">
+            <summary>
+            Initializes a new <see cref="T:WSSInterfacing.TestModeTransport"/> with optional configuration.
+            </summary>
+            <param name="baseLatency">Artificial latency applied to inbound delivery (default 0).</param>
+            <param name="jitterMs">Random jitter in milliseconds (default 0).</param>
+            <param name="maxInboundChunkSize">If &gt;0, splits inbound payloads (default 0).</param>
+            <param name="inboundDropProbability">Probability [0..1] of dropping an inbound chunk (default 0.0).</param>
+            <param name="rng">Random generator to use (default new Random(1234)).</param>
+            <param name="fallbackPayload">Payload used when checksum fails (default {0xE1,0xE2,0xE3}).</param>
+            <param name="autoResponderAsync">Optional override auto-responder (default null = built-in).</param>
+        </member>
+        <member name="M:WSSInterfacing.TestModeTransport.ConnectAsync(System.Threading.CancellationToken)">
+            <inheritdoc/>
+            <summary>
+            Connects the transport. No real I/O occurs, only state change.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.TestModeTransport.DisconnectAsync(System.Threading.CancellationToken)">
+            <inheritdoc/>
+            <summary>
+            Disconnects the transport and cancels any pending operations.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.TestModeTransport.SendAsync(System.Byte[],System.Threading.CancellationToken)">
+            <inheritdoc/>
+            <summary>
+            Sends bytes into the transport. The default auto-responder will generate a reply
+            based on checksum validation and invoke <see cref="E:WSSInterfacing.TestModeTransport.BytesReceived"/>.
+            </summary>
+            <param name="data">Outbound bytes to simulate sending.</param>
+            <param name="ct">Optional cancellation token.</param>
+        </member>
+        <member name="M:WSSInterfacing.TestModeTransport.EnqueueIncoming(System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Injects inbound bytes as if received from a physical device. They are subject
+            to latency, jitter, chunking, and drop settings before being delivered.
+            </summary>
+            <param name="payload">Raw inbound payload.</param>
+            <param name="ct">Optional cancellation token.</param>
+        </member>
+        <member name="M:WSSInterfacing.TestModeTransport.Dispose">
+            <inheritdoc/>
+            <summary>
+            Disposes the transport, cancels background operations, and releases resources.
+            </summary>
+        </member>
+        <member name="T:WSSInterfacing.WssClient">
+            <summary>
+            Low-level WSS protocol client. Frames commands using an <see cref="T:WSSInterfacing.IFrameCodec"/>,
+            sends them over an <see cref="T:WSSInterfacing.ITransport"/>, and correlates responses by
+            <c>(target,msgId)</c>. Provides async connect/disconnect and a request/response
+            pipeline used by higher-level cores and layers.
+            </summary>
+        </member>
+        <member name="P:WSSInterfacing.WssClient.Started">
+            <summary>
+            Indicates whether the WSS client connection has been started.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.#ctor(WSSInterfacing.ITransport,WSSInterfacing.IFrameCodec,WSSInterfacing.WSSVersionHandler,System.Byte)">
+            <summary>Initializes a new client over the provided transport and frame codec.</summary>
+            <param name="transport">Underlying byte transport (e.g., serial, BLE).</param>
+            <param name="codec">Frame codec (escape/unescape + checksum).</param>
+            <param name="versionHandler">Firmware version handler for capability checks and message variants.</param>
+            <param name="sender">Sender address byte (defaults to 0x00).</param>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.ConnectAsync(System.Threading.CancellationToken)">
+            <summary>
+            Establishes a connection to the specified WSS device.
+            </summary>
+            <param name="ct">The cancellation token to observe.</param>
+            <returns>A task representing the asynchronous connection operation.</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown if already connected to the target.</exception>
+            <exception cref="T:System.IO.IOException">Thrown if the connection attempt fails.</exception>
+            <exception cref="T:System.OperationCanceledException">Thrown if the operation is canceled.</exception>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.DisconnectAsync(System.Threading.CancellationToken)">
+            <summary>
+            Closes the active connection to the specified WSS device.
+            </summary>
+            <param name="ct">The cancellation token to observe.</param>
+            <returns>A task representing the asynchronous disconnection operation.</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown if not connected to the target.</exception>
+            <exception cref="T:System.IO.IOException">Thrown if the disconnection fails due to a transport error.</exception>
+            <exception cref="T:System.OperationCanceledException">Thrown if the operation is canceled.</exception>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.SendCmdAsync(WSSInterfacing.WSSMessageIDs,WSSInterfacing.WssTarget,System.Threading.CancellationToken,System.Byte[])">
+            <summary>
+            Builds payload [cmd][len][data...], frames it, sends it, and awaits one response
+            for the (target, msgId) key.
+            </summary>
+            <param name="msgId">The WSS message ID to send.</param>
+            <param name="target">Target device to send to.</param>
+            <param name="ct">Cancellation token to cancel the send/wait.</param>
+            <param name="dataBytes">Payload data bytes (excluding cmd/len).</param>
+            <returns>Response as a string, after processing.</returns>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.SendAwaitOneAsync(System.Threading.Tasks.TaskCompletionSource{System.Byte[]},System.Byte[],System.ValueTuple{System.Byte,System.Byte},System.Threading.CancellationToken)">
+            <summary>
+            Sends a previously framed command and awaits a single response for the specified (target,msgId) key.
+            </summary>
+            <param name="tcs">Completion source to complete when a matching frame arrives.</param>
+            <param name="framed">Fully framed bytes to send (already includes cmd/len and escaping).</param>
+            <param name="key">Key used to correlate the response: (target,msgId).</param>
+            <param name="ct">Cancellation token. A 2s internal timeout is also applied.</param>
+            <returns>Processed response string.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown if <paramref name="framed"/> is null.</exception>
+            <exception cref="T:System.IO.IOException">Thrown if the underlying connection encounters an error.</exception>
+            <exception cref="T:System.OperationCanceledException">Thrown if the operation is canceled.</exception>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.SendFireAndForgetAsync(WSSInterfacing.WSSMessageIDs,WSSInterfacing.WssTarget,System.Threading.CancellationToken,System.Byte[])">
+            <summary>
+            Fire-and-forget send: builds [cmd][len][data...] and sends without awaiting a reply.
+            Use for one-way streaming opcodes (e.g., 0x30..0x33).
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.OnBytes(System.Byte[])">
+            <summary>
+            Handles incoming byte chunks, deframes them into complete frames, and completes the oldest waiter
+            in the FIFO queue for the corresponding (target,msgId) key.
+            </summary>
+            <param name="chunk">Raw bytes received from the transport.</param>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.ProcessFrame(System.Byte[])">
+            <summary>
+            Processes a complete frame of data received from the WSS connection.
+            it will extract information from replies and just foward message if it is only a mirror reply.
+            </summary>
+            <param name="frame">The received frame of bytes.</param>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.Dispose">
+            <summary>
+            Releases all resources used by the <see cref="T:WSSInterfacing.WssClient"/>.
+            Closes the connection and cleans up internal state.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.StartStim(WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>
+            Sends the "start stimulation".
+            0x01 = Start Ack expected.
+            Broadcast is acceptable for a system-wide switch.
+            </summary>
+            <param name="target">Target device (often Broadcast).</param>
+            <param name="ct">Cancellation token.</param>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.StopStim(WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>
+            Sends the "stop stimulation" switch (opcode 0x0B).
+            0x00 = Stop Ack expected.
+            Broadcast is acceptable for a system-wide switch.
+            </summary>
+            <param name="target">Target device (often Broadcast).</param>
+            <param name="ct">Cancellation token.</param>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.Reset(WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>Resets the microcontroller (0x04).</summary>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.Echo(System.Int32,System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>
+            Echo round-trip (0x07). Two opaque data bytes are echoed back.
+            Untested, and reading from WSS devices is not yet implemented.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.RequestAnalog(WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>
+            Requests specific battery and impedance data from the WSS device.
+            TODO Not implemented in firmware, and reading from WSS devices is not yet implemented.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.Clear(System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>
+            Clears groups of resources (0x40): 0=All, 1=Events, 2=Schedules, 3=Contacts.
+            </summary>
+            <param name="configIndex">Clear events(1), schedules(2), contacts(3), all(0).</param>
+            <param name="target">Target device to send to.</param>
+            <param name="ct">Cancellation token to cancel the send/wait.</param>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.ModuleQuery(System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>
+            Gets settings or information for that target WSS (0x01): 0=serial number, 1=settings array.
+            </summary>
+            <param name="moduleIndex">serial number(0), settings array(1).</param>
+            <param name="target">Target device to send to.</param>
+            <param name="ct">Cancellation token to cancel the send/wait.</param>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.RequestConfigs(System.Int32,System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>
+            Sends a request to the WSS target for a specific configuration type.
+            This is a general-purpose request that can target output configs, events,
+            schedules, and their various sub-configurations.
+            Untested, and reading from WSS devices is not yet implemented.
+            </summary>
+            <param name="command">
+            Integer code that selects which configuration to request:
+            0 = Output Configuration List
+            1 = Output Configuration details
+            2 = Event List
+            3 = Basic Event configuration
+            4 = Event output configuration
+            5 = Event stimulation configuration
+            6 = Event shape configuration
+            7 = Event burst configuration
+            8 = Schedule basic configuration
+            9 = Schedule listing
+            </param>
+            <param name="id">ID associated with the requested configuration (0â€“255).</param>
+            <param name="target">Target WSS device to query (default: Wss1).</param>
+            <param name="ct">Optional cancellation token.</param>
+            <returns>Processed response string from the WSS target.</returns>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.CreateContactConfig(System.Int32,System.Int32[],System.Int32[],System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>
+            Creates a contact configuration for the stimulator.
+            Defines the sources and sinks for stimulation and recharge phases.
+            </summary>
+            <param name="contactId">
+            ID for the contact configuration (0â€“255).
+            </param>
+            <param name="stimSetup">
+            Array of 4 integers (0 = not used, 1 = source, 2 = sink) representing
+            the stimulation phase for each output on the stimulator.  
+            Index 0 = closest to switch, index 3 = farthest from switch.
+            </param>
+            <param name="rechargeSetup">
+            Array of 4 integers (0 = not used, 1 = source, 2 = sink) representing
+            the recharge phase for each output on the stimulator.  
+            Index 0 = closest to switch, index 3 = farthest from switch.
+            </param>
+            /// <param name="LEDs">
+            Optional int representing LED locations to light during stimulation
+            Index int read as binary so 0011 or 3 is both the first and second LEDs (first is clossest to the switch).
+            1 in binary is on and 0 is off. The trigering of the event will trigger the on LEDs
+            Ignored if not supported by firmware.
+            Pass -1 to indicate no LED configuration.
+            </param>
+            <param name="target">The WSS target device to send the configuration to.</param>
+            <param name="ct">Optional cancellation token.</param>
+            <returns>Processed response string from the WSS target.</returns>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.EncodeContactSetup(System.Int32[])">
+            <summary>
+            Encodes a contact configuration array into a single byte.
+            </summary>
+            <param name="setup">
+            Array of 4 integers (0 = not used, 1 = source, 2 = sink),
+            index 0 = farthest from switch, index 3 = closest to switch.
+            </param>
+            <returns>
+            Encoded byte: 2 bits per contact, 00 = not used, 10 = source, 11 = sink.
+            </returns>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.DeleteContactConfig(System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>
+            Deletes an existing contact configuration on the WSS device by its ID.
+            </summary>
+            <param name="contactId">The contact configuration ID to delete (0â€“255).</param>
+            <param name="target">The WSS target device to send the request to (default: Wss1).</param>
+            <param name="ct">Optional cancellation token to cancel the operation.</param>
+            <returns>Processed response string from the WSS target.</returns>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.CreateEvent(System.Int32,System.Int32,System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>
+            Creates a basic event on the WSS device.
+            </summary>
+            <param name="eventId">Event ID (0â€“255).</param>
+            <param name="delayMs">Delay from schedule start in milliseconds (0â€“255 in this command variant).</param>
+            <param name="contactConfigId">Contact configuration ID (0â€“255).</param>
+            <param name="target">Target WSS device (default: Wss1).</param>
+            <param name="ct">Optional cancellation token.</param>
+            <returns>Processed response string from the WSS target.</returns>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.CreateEvent(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>
+            Creates an event with explicit shape IDs for the standard and recharge phases.
+            </summary>
+            <param name="eventId">Event ID (0â€“255).</param>
+            <param name="delayMs">Delay from schedule start in milliseconds (0â€“255 in this command variant).</param>
+            <param name="contactConfigId">Contact configuration ID (0â€“255).</param>
+            <param name="standardShapeId">
+            Shape ID used during the standard (stim) phase:
+            0=Rectangular (default), 1=Rectangular (DAC), 2=Sine, 3=Gaussian,
+            4=Exponential Increase, 5=Exponential Decrease,
+            6=Linear Increase, 7=Linear Decrease,
+            10=Trapezoid (setup required),
+            11=User Program 1 (setup required),
+            12=User Program 2 (setup required),
+            13=User Program 3 (setup required).
+            </param>
+            <param name="rechargeShapeId">
+            Shape ID used during the recharge phase (same mapping as <paramref name="standardShapeId"/>).
+            </param>
+            <param name="target">Target WSS device (default: Wss1).</param>
+            <param name="ct">Optional cancellation token.</param>
+            <returns>Processed response string from the WSS target.</returns>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.CreateEvent(System.Int32,System.Int32,System.Int32,System.Int32[],System.Int32[],System.Int32[],WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>
+            Creates an event with amplitude arrays for standard/recharge phases plus pulse width settings.
+            PW fields are sent as 8-bit if all â‰¤ oneByte; otherwise all three (std, IPD, rech) are encoded as 16-bit big-endian.
+            Wire order for PW matches your original: [stdPW, IPD, rechPW].
+            </summary>
+            <param name="eventId">Event ID (0â€“255 or your chosen cap).</param>
+            <param name="delayMs">Delay from schedule start in milliseconds (0â€“255 in this variant).</param>
+            <param name="contactConfigId">Contact configuration ID (0â€“255).</param>
+            <param name="standardAmp">Four amplitudes for the standard (stim) phase (0â€“255 each).</param>
+            <param name="rechargeAmp">Four amplitudes for the recharge phase (0â€“255 each).</param>
+            <param name="pw">Three PW parameters: [standardPW, rechargePW, IPD] in microseconds.</param>
+            <param name="target">Target WSS device.</param>
+            <param name="ct">Cancellation token.</param>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.CreateEvent(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32[],System.Int32[],System.Int32[],WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>
+            Creates an event with explicit shape IDs, amplitude arrays for standard/recharge phases, and pulse width settings.
+            PW fields are sent as 8-bit if all â‰¤ oneByte; otherwise all three (std, IPD, rech) are encoded as 16-bit big-endian.
+            Wire order for PW matches your original: [stdPW, IPD, rechPW].
+            </summary>
+            <param name="eventId">Event ID (0â€“255 or your chosen cap).</param>
+            <param name="delayMs">Delay from schedule start in milliseconds (0â€“255 in this variant).</param>
+            <param name="contactConfigId">Contact configuration ID (0â€“255).</param>
+            <param name="standardShapeId">
+            Shape ID used during the standard (stim) phase:
+            0=Rectangular (default), 1=Rectangular (DAC), 2=Sine, 3=Gaussian,
+            4=Exponential Increase, 5=Exponential Decrease,
+            6=Linear Increase, 7=Linear Decrease,
+            10=Trapezoid (setup required),
+            11=User Program 1 (setup required),
+            12=User Program 2 (setup required),
+            13=User Program 3 (setup required).
+            </param>
+            <param name="rechargeShapeId">
+            Shape ID used during the recharge phase (same mapping as <paramref name="standardShapeId"/>).
+            </param>
+            <param name="standardAmp">Four amplitudes for the standard (stim) phase (0â€“255 each).</param>
+            <param name="rechargeAmp">Four amplitudes for the recharge phase (0â€“255 each).</param>
+            <param name="pw">Three PW parameters: [standardPW, rechargePW, IPD] in microseconds.</param>
+            <param name="target">Target WSS device.</param>
+            <param name="ct">Cancellation token.</param>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.DeleteEvent(System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>
+            Deletes an existing event on the WSS device by its ID.
+            </summary>
+            <param name="eventId">Event ID (0â€“255).</param>
+            <param name="target">Target WSS device (default: Wss1).</param>
+            <param name="ct">Cancellation token.</param>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.AddEventToSchedule(System.Int32,System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>
+            Adds an event to a schedule.
+            </summary>
+            <param name="eventId">Event ID (0â€“255).</param>
+            <param name="scheduleId">Schedule ID (0â€“255).</param>
+            <param name="target">Target WSS device (default: Wss1).</param>
+            <param name="ct">Cancellation token.</param>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.DeleteEventFromSchedule(System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>
+            Removes an event from its assigned schedule.
+            </summary>
+            <param name="eventId">Event ID (0â€“255).</param>
+            <param name="target">Target WSS device (default: Wss1).</param>
+            <param name="ct">Cancellation token.</param>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.MoveEventToSchedule(System.Int32,System.Int32,System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>
+            Moves an event to a different schedule with a new delay offset.
+            Fails on-device if <paramref name="delayMs"/> exceeds the schedule period.
+            </summary>
+            <param name="eventId">Event ID (0â€“255).</param>
+            <param name="scheduleId">Destination schedule ID (0â€“255).</param>
+            <param name="delayMs">Delay from schedule start in milliseconds (0â€“255 in this variant).</param>
+            <param name="target">Target WSS device (default: Wss1).</param>
+            <param name="ct">Cancellation token.</param>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.EditEventContactConfig(System.Int32,System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>
+            Changes an event's output/contact configuration by ID.
+            </summary>
+            <param name="eventId">Event ID (0â€“255).</param>
+            <param name="contactConfigId">Output/contact configuration ID (0â€“255).</param>
+            <param name="target">Target WSS device (default: Wss1).</param>
+            <param name="ct">Cancellation token.</param>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.EditEventPw(System.Int32,System.Int32[],WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>
+            Changes an event's pulse widths: [standardPW, rechargePW, IPD] (Î¼s).
+            Uses 8-bit fields if all â‰¤ oneByte; otherwise encodes all three as 16-bit big-endian.
+            Wire order matches firmware: [stdPW, IPD, rechPW].
+            </summary>
+            <param name="eventId">Event ID (0â€“255).</param>
+            <param name="pw">Three PW values: [standardPW, rechargePW, IPD] in microseconds.</param>
+            <param name="target">Target WSS device (default: Wss1).</param>
+            <param name="ct">Cancellation token.</param>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.EditEventAmp(System.Int32,System.Int32[],System.Int32[],WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>
+            Changes an event's amplitude configuration for standard and recharge phases.
+            </summary>
+            <param name="eventId">Event ID (0â€“255).</param>
+            <param name="standardAmp">Four amplitudes for the standard (stim) phase, 0â€“255 each.</param>
+            <param name="rechargeAmp">Four amplitudes for the recharge phase, 0â€“255 each.</param>
+            <param name="target">Target WSS device (default: Wss1).</param>
+            <param name="ct">Cancellation token.</param>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.EditEventShape(System.Int32,System.Int32,System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>Changes an event's shape configuration.</summary>
+            <param name="eventId">Event ID (0â€“255).</param>
+            <param name="standardShapeId">
+            Shape ID used during the standard (stim) phase:
+            0=Rectangular (default), 1=Rectangular (DAC), 2=Sine, 3=Gaussian,
+            4=Exponential Increase, 5=Exponential Decrease,
+            6=Linear Increase, 7=Linear Decrease,
+            10=Trapezoid (setup required),
+            11=User Program 1 (setup required),
+            12=User Program 2 (setup required),
+            13=User Program 3 (setup required).
+            </param>
+            <param name="rechargeShapeId">
+            Shape ID used during the recharge phase (same mapping as <paramref name="standardShapeId"/>).
+            </param>
+            <param name="target">Target WSS device.</param>
+            <param name="ct">Cancellation token.</param>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.EditEventDelay(System.Int32,System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>Changes an event's delay (ms from schedule start).</summary>
+            <param name="eventId">Event ID (0â€“255).</param>
+            <param name="delayMs">Delay in milliseconds (0â€“255 in this variant).</param>
+            <param name="target">Target WSS device.</param>
+            <param name="ct">Cancellation token.</param>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.EditEventRatio(System.Int32,System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>Changes an event's ratio (allowed: 1, 2, 4, 8).</summary>
+            <param name="eventId">Event ID (0â€“255).</param>
+            <param name="ratio">Ratio value (must be one of 1, 2, 4, 8).</param>
+            <param name="target">Target WSS device.</param>
+            <param name="ct">Cancellation token.</param>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.EditEventEnableBit(System.Int32,System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>Changes an event's ratio (allowed: 1, 2, 4, 8).</summary>
+            <param name="eventId">Event ID (0â€“255).</param>
+            <param name="enable">enable bit (0 or 1).</param>
+            <param name="target">Target WSS device.</param>
+            <param name="ct">Cancellation token.</param>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.CreateSchedule(System.Int32,System.Int32,System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>Creates a schedule.</summary>
+            <param name="scheduleId">Schedule ID (0â€“255).</param>
+            <param name="durationMs">Duration in milliseconds (16-bit, big-endian on wire).</param>
+            <param name="syncSignal">Sync group ID (0â€“255).</param>
+            <param name="target">Target WSS device.</param>
+            <param name="ct">Cancellation token.</param>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.DeleteSchedule(System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>Deletes a schedule by ID.</summary>
+            <param name="scheduleId">Schedule ID (0â€“255).</param>
+            <param name="target">Target WSS device.</param>
+            <param name="ct">Cancellation token.</param>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.SyncGroup(System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>Sends a sync signal; starts schedules in the group from READY to ACTIVE.</summary>
+            <param name="syncSignal">Sync group ID (0â€“255).</param>
+            <param name="target">Target WSS device.</param>
+            <param name="ct">Cancellation token.</param>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.ChangeGroupState(System.Int32,System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>Changes a sync group's state: READY=1, ACTIVE=0, SUSPEND=2.</summary>
+            <param name="syncSignal">Sync group ID (0â€“255).</param>
+            <param name="state">State (0=ACTIVE, 1=READY, 2=SUSPEND).</param>
+            <param name="target">Target WSS device.</param>
+            <param name="ct">Cancellation token.</param>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.ChangeScheduleState(System.Int32,System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>Changes a schedule's state.</summary>
+            <param name="scheduleId">Schedule ID (0â€“255).</param>
+            <param name="state">State (0=ACTIVE, 1=READY, 2=SUSPEND).</param>
+            <param name="target">Target WSS device.</param>
+            <param name="ct">Cancellation token.</param>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.ChangeScheduleGroup(System.Int32,System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>Changes a schedule's sync group.</summary>
+            <param name="scheduleId">Schedule ID (0â€“255).</param>
+            <param name="syncSignal">Sync group ID (0â€“255).</param>
+            <param name="target">Target WSS device.</param>
+            <param name="ct">Cancellation token.</param>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.ChangeScheduleDuration(System.Int32,System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>Changes a schedule's duration (8-bit variant). For 16-bit, prefer recreating the schedule.</summary>
+            <param name="scheduleId">Schedule ID (0â€“255).</param>
+            <param name="durationMs">Duration in milliseconds (0â€“255 in this subcommand TODO expand this command to the full range od=f 0 to 1000).</param>
+            <param name="target">Target WSS device.</param>
+            <param name="ct">Cancellation token.</param>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.ResetSchedules(WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>Resets all schedules.</summary>
+            <param name="target">Target WSS device.</param>
+            <param name="ct">Cancellation token.</param>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.SetCustomWaveform(System.Int32,System.Int32[],System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>
+            Uploads a custom waveform chunk (8 samples) into a slot.
+            Call this 4 times (msgNumber 0..3) to send all 32 samples.
+            Each sample is encoded as 16-bit big-endian.
+            </summary>
+            <param name="slot">Waveform slot (0â€“255).</param>
+            <param name="waveformChunk8">Exactly 8 sample values for this chunk (0..2000 each).</param>
+            <param name="msgNumber">Chunk index (0..3) â€” send four chunks to fill 32 samples.</param>
+            <param name="target">Target WSS device.</param>
+            <param name="ct">Cancellation token.</param>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.EditSettings(System.Int32,System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>
+            Writes a single settings byte at <paramref name="address"/> to <paramref name="value"/>.
+            </summary>
+            <param name="address">Settings address (0â€“255).</param>
+            <param name="value">Value to write (0â€“255).</param>
+            <param name="target">Target WSS device.</param>
+            <param name="ct">Cancellation token.</param>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.PopulateBoardSettings(WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>
+            Loads settings from FRAM into the active board settings.
+            </summary>
+            <param name="target">Target WSS device.</param>
+            <param name="ct">Cancellation token.</param>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.PopulateFramSettings(WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>
+            Saves current board settings into FRAM.
+            </summary>
+            <param name="target">Target WSS device.</param>
+            <param name="ct">Cancellation token.</param>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.EraseLog(WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>
+            Erases device log data.
+            </summary>
+            <param name="target">Target WSS device.</param>
+            <param name="ct">Cancellation token.</param>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.GetLog(WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>
+            Requests device log data (raw read mode on device side)
+            Untested TODO.
+            </summary>
+            <param name="target">Target WSS device.</param>
+            <param name="ct">Cancellation token.</param>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.StreamChange(System.Int32[],System.Int32[],System.Int32[],WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>
+            Streams changes to PA (amplitude), PW (pulse width), and IPI (period) for up to three schedules in one shot.
+            Pass exactly one of the arrays as <c>null</c> to omit that group (protocol supports omitting at most one group).
+            Uses opcodes:
+              0x30 = PA+PW+IPI,  0x31 = PA+PW (no IPI),  0x32 = PA+IPI (no PW),  0x33 = PW+IPI (no PA).
+            All elements are 0..255 in this streaming variant (one byte each).
+            </summary>
+            <param name="pa">Three amplitudes (0..255) or null to keep PA unchanged.</param>
+            <param name="pw">Three pulse widths (0..255) or null to keep PW unchanged.</param>
+            <param name="ipi">Three periods in ms (0..255) or null to keep IPI unchanged.</param>
+            <param name="target">Target WSS; streaming commonly uses Broadcast.</param>
+            <param name="ct">Cancellation token.</param>
+        </member>
+        <member name="M:WSSInterfacing.WssClient.ZeroOutStim(WSSInterfacing.WssTarget,System.Threading.CancellationToken)">
+            <summary>
+            Convenience: streams zeros to PA, PW, and IPI (effectively stopping stimulation).
+            Uses opcode 0x31 (PA+PW, no IPI) with trailing zeros to match the original layout.
+            </summary>
+            <param name="target">Target WSS (default Broadcast).</param>
+            <param name="ct">Cancellation token.</param>
+        </member>
+        <member name="T:WSSInterfacing.WssFrameCodec">
+            <summary>
+            WSS frame codec implementing a SLIP-like protocol:
+            <list type="bullet">
+            <item><description><b>END</b> (<c>0xC0</c>) terminates a frame.</description></item>
+            <item><description><b>ESC</b> (<c>0xDB</c>) escapes special bytes inside the frame.</description></item>
+            <item><description><b>END_SUB</b> (<c>0xDC</c>) represents END when escaped.</description></item>
+            <item><description><b>ESC_SUB</b> (<c>0xDD</c>) represents ESC when escaped.</description></item>
+            </list>
+            Frames on the wire are <c>[sender][target][payload...][checksum][END]</c>.
+            The checksum is computed over all bytes except the last two (checksum + END).
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.WssFrameCodec.Frame(System.Byte,System.Byte,System.Byte[])">
+            <inheritdoc />
+        </member>
+        <member name="M:WSSInterfacing.WssFrameCodec.Deframe(System.Byte[])">
+            <inheritdoc />
+        </member>
+        <member name="M:WSSInterfacing.WssFrameCodec.TryUnescapeAndValidate(System.ReadOnlySpan{System.Byte},System.Byte[]@)">
+            <summary>
+            Attempts to unescape and validate a single frame (without END), returning false if
+            the checksum does not match. Useful if you want checksum enforcement at the codec layer.
+            </summary>
+            <param name="preEscaped">Escaped frame bytes (without the END terminator).</param>
+            <param name="output">
+            On success, the unescaped frame <c>[sender][target][payload...][checksum]</c>.
+            On failure, <see cref="M:System.Array.Empty``1"/> is returned.
+            </param>
+            <returns><c>true</c> if the checksum is valid; otherwise <c>false</c>.</returns>
+        </member>
+        <member name="M:WSSInterfacing.WssFrameCodec.Unescape(System.Collections.Generic.List{System.Byte})">
+            <summary>
+            Unescapes an accumulated frame (without END) into raw bytes.
+            Does not validate checksum; see <see cref="M:WSSInterfacing.WssFrameCodec.TryUnescapeAndValidate(System.ReadOnlySpan{System.Byte},System.Byte[]@)"/>.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.WssFrameCodec.ComputeChecksum(System.Byte[],System.Int32)">
+            <summary>
+            Computes the WSS checksum by summing all included bytes, folding to 8 bits,
+            and XOR'ing with 0xFF. The last <paramref name="trailerBytesToSkip"/> bytes are excluded.
+            </summary>
+            <param name="buffer">Buffer that contains the frame data.</param>
+            <param name="trailerBytesToSkip">
+            Number of trailing bytes to exclude from the sum.
+            Use 2 for outbound frames (<c>[checksum][END]</c>), 1 for inbound frames (<c>[checksum]</c>).
+            </param>
+        </member>
+        <member name="T:WSSInterfacing.WSSLimits">
+            <summary>
+            Device- and protocol-level numeric limits and sizes used by the WSS stack.
+            Values reflect firmware constraints such as maximum pulse width and buffer sizes.
+            </summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSLimits.oneByte">
+            <summary>Max value that fits in one byte.</summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSLimits.shape">
+            <summary>Number of custom waveform slots.</summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSLimits.moduleIndex">
+            <summary>Index of the module ID field in replies.</summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSLimits.clearIndex">
+            <summary>Index used by Clear command payload.</summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSLimits.pulseWidthLong">
+            <summary>Maximum long-form pulse width (Âµs) supported by firmware.</summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSLimits.state">
+            <summary>State field size (bytes).</summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSLimits.customWaveformChunks">
+            <summary>Number of chunks used to upload a custom waveform.</summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSLimits.Frequency">
+            <summary>Timer base frequency used by device (Hz).</summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSLimits.customWaveformMaxAmp">
+            <summary>Maximum allowed custom waveform amplitude (device units).</summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSLimits.IPD">
+            <summary>Maximum inter-pulse delay (ms).</summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSLimits.LEDs">
+            <summary>Number of addressable LEDs.</summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSLimits.enable">
+            <summary>Value used to represent an enabled state.</summary>
+        </member>
+        <member name="T:WSSInterfacing.WSSMessageIDs">
+            <summary>
+            Protocol message identifiers used by the WSS firmware.
+            Values correspond to on-wire command codes.
+            </summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSMessageIDs.Error">
+            <summary>Error reply or status.</summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSMessageIDs.ModuleQuery">
+            <summary>Queries module identity and capabilities.</summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSMessageIDs.Reset">
+            <summary>Device reset command.</summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSMessageIDs.Echo">
+            <summary>Ping/pong transport echo.</summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSMessageIDs.RequestAnalog">
+            <summary>Requests analog value(s).</summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSMessageIDs.Clear">
+            <summary>Clears device state or buffers.</summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSMessageIDs.RequestConfig">
+            <summary>Requests configuration block.</summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSMessageIDs.CreateContactConfig">
+            <summary>Creates a contact configuration.</summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSMessageIDs.DeleteContactConfig">
+            <summary>Deletes a contact configuration.</summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSMessageIDs.CreateEvent">
+            <summary>Creates a stimulation event.</summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSMessageIDs.DeleteEvent">
+            <summary>Deletes a stimulation event.</summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSMessageIDs.AddEventToSchedule">
+            <summary>Adds an event to a schedule.</summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSMessageIDs.RemoveEventFromSchedule">
+            <summary>Removes an event from a schedule.</summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSMessageIDs.MoveEventToSchedule">
+            <summary>Moves an event within a schedule.</summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSMessageIDs.EditEventConfig">
+            <summary>Edits an existing event configuration.</summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSMessageIDs.CreateSchedule">
+            <summary>Creates a stimulation schedule.</summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSMessageIDs.DeleteSchedule">
+            <summary>Deletes a stimulation schedule.</summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSMessageIDs.SyncGroup">
+            <summary>Synchronizes a group of devices.</summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSMessageIDs.ChangeGroupState">
+            <summary>Changes a group state.</summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSMessageIDs.ChangeScheduleConfig">
+            <summary>Changes schedule configuration.</summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSMessageIDs.ResetSchedule">
+            <summary>Resets schedule to defaults.</summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSMessageIDs.CustomWaveform">
+            <summary>Uploads or selects a custom waveform.</summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSMessageIDs.StimulationSwitch">
+            <summary>Global stimulation on/off switch.</summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSMessageIDs.BoardCommands">
+            <summary>Generic board control and diagnostics.</summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSMessageIDs.StreamChangeAll">
+            <summary>Streaming update: all fields.</summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSMessageIDs.StreamChangeNoIPI">
+            <summary>Streaming update: no IPI field.</summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSMessageIDs.StreamChangeNoPA">
+            <summary>Streaming update: no pulse amplitude.</summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSMessageIDs.StreamChangeNoPW">
+            <summary>Streaming update: no pulse width.</summary>
+        </member>
+        <member name="T:WSSInterfacing.WssStimulationCore">
+            <summary>
+            Unity-agnostic WSS stimulation core that manages connection, setup (via a queued step runner),
+            and a background streaming loop. Public mutator methods enqueue device edits and return immediately.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.WssStimulationCore.#ctor(System.String,System.String,System.Boolean,System.Int32)">
+            <summary>Construct with explicit COM port.</summary>
+        </member>
+        <member name="M:WSSInterfacing.WssStimulationCore.#ctor(System.String,System.Boolean,System.Int32)">
+            <summary>Construct without specifying COM port (let transport decide).</summary>
+        </member>
+        <member name="M:WSSInterfacing.WssStimulationCore.Initialize">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.WssStimulationCore.Tick">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.WssStimulationCore.Shutdown">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.WssStimulationCore.LoadConfigFile">
+            <summary>
+            Reloads the stimulation JSON configuration from disk into memory.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.WssStimulationCore.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.WssStimulationCore.Started">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.WssStimulationCore.Ready">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.WssStimulationCore.StimulateAnalog(System.Int32,System.Int32,System.Single,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.WssStimulationCore.ZeroOutStim(WSSInterfacing.WssTarget)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.WssStimulationCore.StartStim(WSSInterfacing.WssTarget)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.WssStimulationCore.StopStim(WSSInterfacing.WssTarget)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.WssStimulationCore.IsChannelInRange(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.WssStimulationCore.UpdateIPD(System.Int32,WSSInterfacing.WssTarget)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.WssStimulationCore.UpdateIPD(System.Int32,System.Int32,WSSInterfacing.WssTarget)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.WssStimulationCore.UpdateWaveform(System.Int32[],System.Int32,WSSInterfacing.WssTarget)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.WssStimulationCore.UpdateWaveform(WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.WssStimulationCore.UpdateEventShape(System.Int32,System.Int32,System.Int32,WSSInterfacing.WssTarget)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.WssStimulationCore.LoadWaveform(System.String,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.WssStimulationCore.Save(WSSInterfacing.WssTarget)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.WssStimulationCore.Load(WSSInterfacing.WssTarget)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.WssStimulationCore.Request_Configs(System.Int32,System.Int32,WSSInterfacing.WssTarget)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.WssStimulationCore.GetCoreConfigController">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.WssStimulationCore.NormalSetup">
+            <summary>
+            Seeds the per-target setup step lists for a full initial configuration and starts
+            the setup runner. Used once after connect.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.WssStimulationCore.WaveformSetup(WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WSSInterfacing.WssStimulationCore.StartStreamingInternal">
+            <summary>Background task that pushes streaming packets to each WSS at ~12ms cadence.</summary>
+        </member>
+        <member name="M:WSSInterfacing.WssStimulationCore.StopStreamingInternal">
+            <summary>Stop the streaming background task.</summary>
+        </member>
+        <member name="M:WSSInterfacing.WssStimulationCore.SafeDisconnect">
+            <summary>Disconnect transport safely.</summary>
+        </member>
+        <member name="M:WSSInterfacing.WssStimulationCore.ScheduleSetupChangeAsync(WSSInterfacing.WssTarget,System.Func{System.Threading.Tasks.Task{System.String}}[])">
+            <summary>Append steps to a target, pause streaming if needed, and ensure the runner is active.</summary>
+        </member>
+        <member name="M:WSSInterfacing.WssStimulationCore.EnsureSetupRunner">
+            <summary>Start the background runner if needed.</summary>
+        </member>
+        <member name="M:WSSInterfacing.WssStimulationCore.SetupWorkerAsync">
+            <summary>Run a pass over all targets, advancing each cursor. Resume streaming when empty.</summary>
+        </member>
+        <member name="M:WSSInterfacing.WssStimulationCore.SetupQueueEmpty">
+            <summary>True when all target cursors have consumed their lists.</summary>
+        </member>
+        <member name="M:WSSInterfacing.WssStimulationCore.Targets(System.Int32)">
+            <summary>Which targets to include (clamped to transport capability).</summary>
+        </member>
+        <member name="M:WSSInterfacing.WssStimulationCore.StepLogger(System.Threading.Tasks.Task{System.String},System.String)">
+            <summary>Log per-step result; throw on device "Error:" or timeout. (Non-blocking.)</summary>
+        </member>
+        <member name="M:WSSInterfacing.WssStimulationCore.InitStimArrays">
+            <summary> Initializes arrays to hold values neccessary for streaming</summary>
+        </member>
+        <member name="M:WSSInterfacing.WssStimulationCore.AmpTo255Convention(System.Single)">
+            <summary> hanndles the  non-linear conversion of an amplitude in mA to bytes depending on WSS capabilities </summary>
+        </member>
+        <member name="M:WSSInterfacing.WssStimulationCore.IntToWssTarget(System.Int32)">
+            <summary> Helper to use int instead of targets in for loops </summary>
+        </member>
+        <member name="T:WSSInterfacing.WssTarget">
+            <summary>
+            Addresses for targeting individual WSS units or broadcasting to all.
+            Values are on-wire destination IDs used by commands.
+            </summary>
+        </member>
+        <member name="F:WSSInterfacing.WssTarget.Broadcast">
+            <summary>Broadcast to all connected WSS devices.</summary>
+        </member>
+        <member name="F:WSSInterfacing.WssTarget.Wss1">
+            <summary>First WSS device.</summary>
+        </member>
+        <member name="F:WSSInterfacing.WssTarget.Wss2">
+            <summary>Second WSS device.</summary>
+        </member>
+        <member name="F:WSSInterfacing.WssTarget.Wss3">
+            <summary>Third WSS device.</summary>
+        </member>
+        <member name="T:WSSInterfacing.WSSVersionHandler">
+            <summary>
+            Handles WSS firmware version parsing and feature availability based on supported firmware versions.
+            </summary>
+        </member>
+        <member name="T:WSSInterfacing.WSSVersionHandler.SupportedVersions">
+            <summary>
+            Enum representing known supported WSS firmware versions.
+            Integer values correspond to internal numeric codes.
+            </summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSVersionHandler.version">
+            <summary>
+            Currently active firmware version for this handler.
+            </summary>
+        </member>
+        <member name="F:WSSInterfacing.WSSVersionHandler.FeatureMinimumVersions">
+            <summary>
+            Defines the minimum firmware version required for each feature.
+            </summary>
+        </member>
+        <member name="M:WSSInterfacing.WSSVersionHandler.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WSSInterfacing.WSSVersionHandler"/> class using a string version.
+            Defaults to <see cref="F:WSSInterfacing.WSSVersionHandler.SupportedVersions.H03"/> if an unknown version string is provided.
+            </summary>
+            <param name="strVersion">Firmware version string (e.g., "H03", "J03").</param>
+        </member>
+        <member name="M:WSSInterfacing.WSSVersionHandler.isVersionSupported(System.String)">
+            <summary>
+            Determines whether the specified firmware version string is supported by this application.
+            </summary>
+            <param name="strVersion">
+            Firmware version identifier to check (for example, <c>"H03"</c> or <c>"J03"</c>).
+            </param>
+            <returns>
+            <see langword="true"/> if the supplied version is recognized and supported; 
+            otherwise, <see langword="false"/>.
+            </returns>
+        </member>
+        <member name="M:WSSInterfacing.WSSVersionHandler.GetVersion">
+            <summary>
+            Gets the current firmware version as a named enum.
+            </summary>
+            <returns>The current <see cref="T:WSSInterfacing.WSSVersionHandler.SupportedVersions"/> enum value.</returns>
+        </member>
+        <member name="M:WSSInterfacing.WSSVersionHandler.IsFeatureAvailable(System.String)">
+            <summary>
+            Checks if the specified feature is supported by the current firmware version.
+            </summary>
+            <param name="feature">The name of the feature to check (e.g., "AmplitudeCheck").</param>
+            <returns><c>true</c> if the feature is available in this firmware version; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:WSSInterfacing.WSSVersionHandler.IsAmplitudeCheckAvailable">
+            <summary>
+            Indicates whether amplitude check support is available in the current firmware version.
+            </summary>
+            <returns><c>true</c> if amplitude check is supported; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:WSSInterfacing.WSSVersionHandler.IsLEDSettingsAvailable">
+            <summary>
+            Indicates whether LED settings are available in the current firmware version.
+            </summary>
+            <returns><c>true</c> if LED settings are supported; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:WSSInterfacing.WSSVersionHandler.ToString">
+            <summary>
+            Returns the string representation of the current firmware version (e.g., "H03").
+            </summary>
+            <returns>The string name of the current firmware version.</returns>
+        </member>
+    </members>
+</doc>

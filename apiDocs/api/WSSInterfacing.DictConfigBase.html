@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class DictConfigBase | WSS Interfacing Documentation </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class DictConfigBase | WSS Interfacing Documentation ">
+    
+    <meta name="description" content="Base class for JSON-backed configuration objects that expose dotted-key access. Wraps a  and provides thread-safe getters/setters and save.">
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="WSSInterfacing.DictConfigBase">
+
+
+
+  <h1 id="WSSInterfacing_DictConfigBase" data-uid="WSSInterfacing.DictConfigBase" class="text-break">Class DictConfigBase</h1>
+  <div class="markdown level0 summary"><p>Base class for JSON-backed configuration objects that expose dotted-key access.
+Wraps a <span class="xref">Newtonsoft.Json.Linq.JObject</span> and provides thread-safe getters/setters and save.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">object</span></div>
+    <div class="level1"><span class="xref">DictConfigBase</span></div>
+      <div class="level2"><a class="xref" href="WSSInterfacing.ModelConfig.html">ModelConfig</a></div>
+      <div class="level2"><a class="xref" href="WSSInterfacing.StimParamsConfig.html">StimParamsConfig</a></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="WSSInterfacing.html">WSSInterfacing</a></h6>
+  <h6><strong>Assembly</strong>: ApiProject.dll</h6>
+  <h5 id="WSSInterfacing_DictConfigBase_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class DictConfigBase</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+
+
+  <a id="WSSInterfacing_DictConfigBase__ctor_" data-uid="WSSInterfacing.DictConfigBase.#ctor*"></a>
+  <h4 id="WSSInterfacing_DictConfigBase__ctor_System_String_Newtonsoft_Json_Linq_JObject_" data-uid="WSSInterfacing.DictConfigBase.#ctor(System.String,Newtonsoft.Json.Linq.JObject)">DictConfigBase(string, JObject)</h4>
+  <div class="markdown level1 summary"><p>Initializes the configuration by loading a JSON file (or writing defaults when missing).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected DictConfigBase(string path, JObject defaults)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">path</span></td>
+        <td><p>Destination file path. Parent directory is created when needed.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">JObject</span></td>
+        <td><span class="parametername">defaults</span></td>
+        <td><p>Default JSON content to save and use when the file does not exist.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+</h3>
+
+
+  <h4 id="WSSInterfacing_DictConfigBase__root" data-uid="WSSInterfacing.DictConfigBase._root">_root</h4>
+  <div class="markdown level1 summary"><p>Root JSON object for this configuration.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected JObject _root</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">JObject</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <h4 id="WSSInterfacing_DictConfigBase__sync" data-uid="WSSInterfacing.DictConfigBase._sync">_sync</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected readonly object _sync</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">object</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+</h3>
+
+
+  <a id="WSSInterfacing_DictConfigBase_Path_" data-uid="WSSInterfacing.DictConfigBase.Path*"></a>
+  <h4 id="WSSInterfacing_DictConfigBase_Path" data-uid="WSSInterfacing.DictConfigBase.Path">Path</h4>
+  <div class="markdown level1 summary"><p>Resolved file path used for persistence.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Path { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+
+
+  <a id="WSSInterfacing_DictConfigBase_GetFloat_" data-uid="WSSInterfacing.DictConfigBase.GetFloat*"></a>
+  <h4 id="WSSInterfacing_DictConfigBase_GetFloat_System_String_System_Single_" data-uid="WSSInterfacing.DictConfigBase.GetFloat(System.String,System.Single)">GetFloat(string, float)</h4>
+  <div class="markdown level1 summary"><p>Gets a float or returns a default when missing.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float GetFloat(string key, float dflt = 0)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">float</span></td>
+        <td><span class="parametername">dflt</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">float</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_DictConfigBase_GetInt_" data-uid="WSSInterfacing.DictConfigBase.GetInt*"></a>
+  <h4 id="WSSInterfacing_DictConfigBase_GetInt_System_String_System_Int32_" data-uid="WSSInterfacing.DictConfigBase.GetInt(System.String,System.Int32)">GetInt(string, int)</h4>
+  <div class="markdown level1 summary"><p>Gets an int or returns a default when missing.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetInt(string key, int dflt = 0)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">dflt</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_DictConfigBase_GetString_" data-uid="WSSInterfacing.DictConfigBase.GetString*"></a>
+  <h4 id="WSSInterfacing_DictConfigBase_GetString_System_String_System_String_" data-uid="WSSInterfacing.DictConfigBase.GetString(System.String,System.String)">GetString(string, string)</h4>
+  <div class="markdown level1 summary"><p>Gets a string or returns a default when missing.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetString(string key, string dflt = &quot;&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">dflt</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_DictConfigBase_Save_" data-uid="WSSInterfacing.DictConfigBase.Save*"></a>
+  <h4 id="WSSInterfacing_DictConfigBase_Save" data-uid="WSSInterfacing.DictConfigBase.Save">Save()</h4>
+  <div class="markdown level1 summary"><p>Persists the current JSON content to <a class="xref" href="WSSInterfacing.DictConfigBase.html#WSSInterfacing_DictConfigBase_Path">Path</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Save()</code></pre>
+  </div>
+
+
+  <a id="WSSInterfacing_DictConfigBase_Set_" data-uid="WSSInterfacing.DictConfigBase.Set*"></a>
+  <h4 id="WSSInterfacing_DictConfigBase_Set_System_String_Newtonsoft_Json_Linq_JToken_" data-uid="WSSInterfacing.DictConfigBase.Set(System.String,Newtonsoft.Json.Linq.JToken)">Set(string, JToken)</h4>
+  <div class="markdown level1 summary"><p>Writes <code class="paramref">value</code> at <code class="paramref">dottedKey</code>, creating intermediate objects as needed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Set(string dottedKey, JToken value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">dottedKey</span></td>
+        <td><p>Dotted key, e.g., &quot;constants.PModeProportional&quot;.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">JToken</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>JSON token to assign.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_DictConfigBase_TryGetFloat_" data-uid="WSSInterfacing.DictConfigBase.TryGetFloat*"></a>
+  <h4 id="WSSInterfacing_DictConfigBase_TryGetFloat_System_String_System_Single__" data-uid="WSSInterfacing.DictConfigBase.TryGetFloat(System.String,System.Single@)">TryGetFloat(string, out float)</h4>
+  <div class="markdown level1 summary"><p>Try to read a float from a dotted key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryGetFloat(string key, out float v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">float</span></td>
+        <td><span class="parametername">v</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_DictConfigBase_TryGetFloatArray_" data-uid="WSSInterfacing.DictConfigBase.TryGetFloatArray*"></a>
+  <h4 id="WSSInterfacing_DictConfigBase_TryGetFloatArray_System_String_System_Single____" data-uid="WSSInterfacing.DictConfigBase.TryGetFloatArray(System.String,System.Single[]@)">TryGetFloatArray(string, out float[])</h4>
+  <div class="markdown level1 summary"><p>Try to read a float array from a dotted key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryGetFloatArray(string key, out float[] arr)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">float</span>[]</td>
+        <td><span class="parametername">arr</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_DictConfigBase_TryGetInt_" data-uid="WSSInterfacing.DictConfigBase.TryGetInt*"></a>
+  <h4 id="WSSInterfacing_DictConfigBase_TryGetInt_System_String_System_Int32__" data-uid="WSSInterfacing.DictConfigBase.TryGetInt(System.String,System.Int32@)">TryGetInt(string, out int)</h4>
+  <div class="markdown level1 summary"><p>Try to read an int from a dotted key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryGetInt(string key, out int v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">v</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_DictConfigBase_TryGetString_" data-uid="WSSInterfacing.DictConfigBase.TryGetString*"></a>
+  <h4 id="WSSInterfacing_DictConfigBase_TryGetString_System_String_System_String__" data-uid="WSSInterfacing.DictConfigBase.TryGetString(System.String,System.String@)">TryGetString(string, out string)</h4>
+  <div class="markdown level1 summary"><p>Try to read a string from a dotted key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryGetString(string key, out string s)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">s</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

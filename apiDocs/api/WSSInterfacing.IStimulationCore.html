@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Interface IStimulationCore | WSS Interfacing Documentation </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Interface IStimulationCore | WSS Interfacing Documentation ">
+    
+    <meta name="description" content="Unity-agnostic stimulation core lifecycle and control surface. Implementations manage connection, setup, and a background streaming loop. Public mutators should enqueue edits and return immediately.">
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="WSSInterfacing.IStimulationCore">
+
+
+
+  <h1 id="WSSInterfacing_IStimulationCore" data-uid="WSSInterfacing.IStimulationCore" class="text-break">Interface IStimulationCore</h1>
+  <div class="markdown level0 summary"><p>Unity-agnostic stimulation core lifecycle and control surface.
+Implementations manage connection, setup, and a background streaming loop.
+Public mutators should enqueue edits and return immediately.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="WSSInterfacing.html">WSSInterfacing</a></h6>
+  <h6><strong>Assembly</strong>: ApiProject.dll</h6>
+  <h5 id="WSSInterfacing_IStimulationCore_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IStimulationCore</code></pre>
+  </div>
+  <h3 id="methods">Methods
+</h3>
+
+
+  <a id="WSSInterfacing_IStimulationCore_GetCoreConfigController_" data-uid="WSSInterfacing.IStimulationCore.GetCoreConfigController*"></a>
+  <h4 id="WSSInterfacing_IStimulationCore_GetCoreConfigController" data-uid="WSSInterfacing.IStimulationCore.GetCoreConfigController">GetCoreConfigController()</h4>
+  <div class="markdown level1 summary"><p>Gets the JSON-backed stimulation configuration controller currently used by this core.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">CoreConfigController GetCoreConfigController()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.CoreConfigController.html">CoreConfigController</a></td>
+        <td><p>The active <a class="xref" href="WSSInterfacing.CoreConfigController.html">CoreConfigController</a> instance that provides read/write access
+to stimulation parameters and constants loaded from the configuration file.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="WSSInterfacing_IStimulationCore_GetCoreConfigController_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Returned reference is live, not a copy and thread safe.</p>
+</div>
+
+
+  <a id="WSSInterfacing_IStimulationCore_Initialize_" data-uid="WSSInterfacing.IStimulationCore.Initialize*"></a>
+  <h4 id="WSSInterfacing_IStimulationCore_Initialize" data-uid="WSSInterfacing.IStimulationCore.Initialize">Initialize()</h4>
+  <div class="markdown level1 summary"><p>Initializes the core: loads JSON config, prepares buffers, and begins connecting
+to the transport. Non-blocking; call <a class="xref" href="WSSInterfacing.IStimulationCore.html#WSSInterfacing_IStimulationCore_Tick">Tick()</a> to advance state.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Initialize()</code></pre>
+  </div>
+
+
+  <a id="WSSInterfacing_IStimulationCore_IsChannelInRange_" data-uid="WSSInterfacing.IStimulationCore.IsChannelInRange*"></a>
+  <h4 id="WSSInterfacing_IStimulationCore_IsChannelInRange_System_Int32_" data-uid="WSSInterfacing.IStimulationCore.IsChannelInRange(System.Int32)">IsChannelInRange(int)</h4>
+  <div class="markdown level1 summary"><p>Returns true if <code class="paramref">ch</code> is within the valid channel range.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsChannelInRange(int ch)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">ch</span></td>
+        <td><p>1-based channel to check.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_IStimulationCore_LoadConfigFile_" data-uid="WSSInterfacing.IStimulationCore.LoadConfigFile*"></a>
+  <h4 id="WSSInterfacing_IStimulationCore_LoadConfigFile" data-uid="WSSInterfacing.IStimulationCore.LoadConfigFile">LoadConfigFile()</h4>
+  <div class="markdown level1 summary"><p>Reloads the stimulation JSON configuration from disk into memory.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void LoadConfigFile()</code></pre>
+  </div>
+
+
+  <a id="WSSInterfacing_IStimulationCore_Ready_" data-uid="WSSInterfacing.IStimulationCore.Ready*"></a>
+  <h4 id="WSSInterfacing_IStimulationCore_Ready" data-uid="WSSInterfacing.IStimulationCore.Ready">Ready()</h4>
+  <div class="markdown level1 summary"><p>True when the core is ready to accept start stimulation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool Ready()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_IStimulationCore_Shutdown_" data-uid="WSSInterfacing.IStimulationCore.Shutdown*"></a>
+  <h4 id="WSSInterfacing_IStimulationCore_Shutdown" data-uid="WSSInterfacing.IStimulationCore.Shutdown">Shutdown()</h4>
+  <div class="markdown level1 summary"><p>Stops streaming, attempts to zero outputs, disconnects transport, and releases resources.
+Safe to call multiple times.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Shutdown()</code></pre>
+  </div>
+
+
+  <a id="WSSInterfacing_IStimulationCore_StartStim_" data-uid="WSSInterfacing.IStimulationCore.StartStim*"></a>
+  <h4 id="WSSInterfacing_IStimulationCore_StartStim_WSSInterfacing_WssTarget_" data-uid="WSSInterfacing.IStimulationCore.StartStim(WSSInterfacing.WssTarget)">StartStim(WssTarget)</h4>
+  <div class="markdown level1 summary"><p>Starts stimulation on the target and launches streaming when ready.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void StartStim(WssTarget wssTarget)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">wssTarget</span></td>
+        <td><p>Target device or broadcast.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_IStimulationCore_Started_" data-uid="WSSInterfacing.IStimulationCore.Started*"></a>
+  <h4 id="WSSInterfacing_IStimulationCore_Started" data-uid="WSSInterfacing.IStimulationCore.Started">Started()</h4>
+  <div class="markdown level1 summary"><p>True when device transport is started or streaming.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool Started()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_IStimulationCore_StimulateAnalog_" data-uid="WSSInterfacing.IStimulationCore.StimulateAnalog*"></a>
+  <h4 id="WSSInterfacing_IStimulationCore_StimulateAnalog_System_Int32_System_Int32_System_Single_System_Int32_" data-uid="WSSInterfacing.IStimulationCore.StimulateAnalog(System.Int32,System.Int32,System.Single,System.Int32)">StimulateAnalog(int, int, float, int)</h4>
+  <div class="markdown level1 summary"><p>Caches per-channel amplitude, pulse width, and IPI. No I/O here;
+the streaming loop pushes cached values to the device.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void StimulateAnalog(int channel, int PW, float amp, int IPI)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">channel</span></td>
+        <td><p>1-based logical channel.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">PW</span></td>
+        <td><p>Pulse width (Âµs).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">float</span></td>
+        <td><span class="parametername">amp</span></td>
+        <td><p>Amplitude (mA domain; mapped to device scale during streaming).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">IPI</span></td>
+        <td><p>Inter-pulse interval (ms).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_IStimulationCore_StopStim_" data-uid="WSSInterfacing.IStimulationCore.StopStim*"></a>
+  <h4 id="WSSInterfacing_IStimulationCore_StopStim_WSSInterfacing_WssTarget_" data-uid="WSSInterfacing.IStimulationCore.StopStim(WSSInterfacing.WssTarget)">StopStim(WssTarget)</h4>
+  <div class="markdown level1 summary"><p>Stops stimulation on the target and, if streaming, stops the background loop.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void StopStim(WssTarget wssTarget)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">wssTarget</span></td>
+        <td><p>Target device or broadcast.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_IStimulationCore_Tick_" data-uid="WSSInterfacing.IStimulationCore.Tick*"></a>
+  <h4 id="WSSInterfacing_IStimulationCore_Tick" data-uid="WSSInterfacing.IStimulationCore.Tick">Tick()</h4>
+  <div class="markdown level1 summary"><p>Advances the internal state machine (e.g., Connecting â†’ SettingUp â†’ Ready â†’ Streaming).
+Call regularly from the main loop.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Tick()</code></pre>
+  </div>
+
+
+  <a id="WSSInterfacing_IStimulationCore_ZeroOutStim_" data-uid="WSSInterfacing.IStimulationCore.ZeroOutStim*"></a>
+  <h4 id="WSSInterfacing_IStimulationCore_ZeroOutStim_WSSInterfacing_WssTarget_" data-uid="WSSInterfacing.IStimulationCore.ZeroOutStim(WSSInterfacing.WssTarget)">ZeroOutStim(WssTarget)</h4>
+  <div class="markdown level1 summary"><p>Sends a zero-out command. Does not alter cached values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ZeroOutStim(WssTarget wssTarget)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">wssTarget</span></td>
+        <td><p>Target device or broadcast.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

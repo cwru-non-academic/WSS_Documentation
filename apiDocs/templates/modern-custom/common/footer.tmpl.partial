@@ -1,0 +1,29 @@
+<script>
+  (function(){
+    try {
+      var showExternal = ({{{_global.showExternalInherited}}}!==undefined)? ({{{_global.showExternalInherited}}}): false;
+      if (showExternal) return;
+      document.addEventListener('DOMContentLoaded', function() {
+        var sections = Array.from(document.querySelectorAll('section'));
+        sections.forEach(function(sec){
+          var h2 = sec.querySelector('h2, h3');
+          if (!h2) return;
+          var title = h2.textContent || '';
+          if (title.toLowerCase().indexOf('inherited') === -1) return;
+          var list = sec.querySelector('ul, ol, table');
+          if (!list) return;
+          var items = list.querySelectorAll('li, tr');
+          var removed = 0, kept = 0;
+          items.forEach(function(it){
+            var a = it.querySelector('[data-uid], a[href^="api/"]');
+            var uid = a && (a.getAttribute('data-uid') || a.textContent || '');
+            if (uid && uid.indexOf('WSSInterfacing') === 0) { kept++; }
+            else { it.remove(); removed++; }
+          });
+          if (kept === 0) { sec.style.display = 'none'; }
+        });
+      });
+    } catch (e) { /* no-op */ }
+  })();
+</script>
+

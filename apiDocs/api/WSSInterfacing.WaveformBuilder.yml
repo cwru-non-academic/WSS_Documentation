@@ -1,0 +1,274 @@
+### YamlMime:ManagedReference
+items:
+- uid: WSSInterfacing.WaveformBuilder
+  commentId: T:WSSInterfacing.WaveformBuilder
+  id: WaveformBuilder
+  parent: WSSInterfacing
+  children:
+  - WSSInterfacing.WaveformBuilder.#ctor(System.Int32[])
+  - WSSInterfacing.WaveformBuilder.#ctor(WSSInterfacing.Waveform)
+  - WSSInterfacing.WaveformBuilder.getAnodicShapeArray
+  - WSSInterfacing.WaveformBuilder.getArea
+  - WSSInterfacing.WaveformBuilder.getCatShapeArray
+  - WSSInterfacing.WaveformBuilder.getWave
+  langs:
+  - csharp
+  - vb
+  name: WaveformBuilder
+  nameWithType: WaveformBuilder
+  fullName: WSSInterfacing.WaveformBuilder
+  type: Class
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: >-
+    Utility for constructing charge-balanced stimulation waveforms.
+
+    Given a cathodic shape, it computes a matching anodic recharge segment and
+
+    exposes helpers to retrieve shapes and total area.
+  example: []
+  syntax:
+    content: public class WaveformBuilder
+    content.vb: Public Class WaveformBuilder
+  inheritance:
+  - System.Object
+- uid: WSSInterfacing.WaveformBuilder.#ctor(System.Int32[])
+  commentId: M:WSSInterfacing.WaveformBuilder.#ctor(System.Int32[])
+  id: '#ctor(System.Int32[])'
+  parent: WSSInterfacing.WaveformBuilder
+  langs:
+  - csharp
+  - vb
+  name: WaveformBuilder(int[])
+  nameWithType: WaveformBuilder.WaveformBuilder(int[])
+  fullName: WSSInterfacing.WaveformBuilder.WaveformBuilder(int[])
+  type: Constructor
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: >-
+    Initializes a builder from a cathodic waveform and computes a recharge segment
+
+    with equal area.
+  example: []
+  syntax:
+    content: public WaveformBuilder(int[] catWaveform)
+    parameters:
+    - id: catWaveform
+      type: System.Int32[]
+      description: Cathodic samples (length 32).
+    content.vb: Public Sub New(catWaveform As Integer())
+  overload: WSSInterfacing.WaveformBuilder.#ctor*
+  nameWithType.vb: WaveformBuilder.New(Integer())
+  fullName.vb: WSSInterfacing.WaveformBuilder.New(Integer())
+  name.vb: New(Integer())
+- uid: WSSInterfacing.WaveformBuilder.#ctor(WSSInterfacing.Waveform)
+  commentId: M:WSSInterfacing.WaveformBuilder.#ctor(WSSInterfacing.Waveform)
+  id: '#ctor(WSSInterfacing.Waveform)'
+  parent: WSSInterfacing.WaveformBuilder
+  langs:
+  - csharp
+  - vb
+  name: WaveformBuilder(Waveform)
+  nameWithType: WaveformBuilder.WaveformBuilder(Waveform)
+  fullName: WSSInterfacing.WaveformBuilder.WaveformBuilder(WSSInterfacing.Waveform)
+  type: Constructor
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Initializes a builder from an existing <xref href="WSSInterfacing.Waveform" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public WaveformBuilder(Waveform wave)
+    parameters:
+    - id: wave
+      type: WSSInterfacing.Waveform
+      description: Existing waveform instance.
+    content.vb: Public Sub New(wave As Waveform)
+  overload: WSSInterfacing.WaveformBuilder.#ctor*
+  nameWithType.vb: WaveformBuilder.New(Waveform)
+  fullName.vb: WSSInterfacing.WaveformBuilder.New(WSSInterfacing.Waveform)
+  name.vb: New(Waveform)
+- uid: WSSInterfacing.WaveformBuilder.getAnodicShapeArray
+  commentId: M:WSSInterfacing.WaveformBuilder.getAnodicShapeArray
+  id: getAnodicShapeArray
+  parent: WSSInterfacing.WaveformBuilder
+  langs:
+  - csharp
+  - vb
+  name: getAnodicShapeArray()
+  nameWithType: WaveformBuilder.getAnodicShapeArray()
+  fullName: WSSInterfacing.WaveformBuilder.getAnodicShapeArray()
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Returns the computed anodic (recharge) shape array.
+  example: []
+  syntax:
+    content: public int[] getAnodicShapeArray()
+    return:
+      type: System.Int32[]
+    content.vb: Public Function getAnodicShapeArray() As Integer()
+  overload: WSSInterfacing.WaveformBuilder.getAnodicShapeArray*
+- uid: WSSInterfacing.WaveformBuilder.getCatShapeArray
+  commentId: M:WSSInterfacing.WaveformBuilder.getCatShapeArray
+  id: getCatShapeArray
+  parent: WSSInterfacing.WaveformBuilder
+  langs:
+  - csharp
+  - vb
+  name: getCatShapeArray()
+  nameWithType: WaveformBuilder.getCatShapeArray()
+  fullName: WSSInterfacing.WaveformBuilder.getCatShapeArray()
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Returns the cathodic (primary) shape array.
+  example: []
+  syntax:
+    content: public int[] getCatShapeArray()
+    return:
+      type: System.Int32[]
+    content.vb: Public Function getCatShapeArray() As Integer()
+  overload: WSSInterfacing.WaveformBuilder.getCatShapeArray*
+- uid: WSSInterfacing.WaveformBuilder.getArea
+  commentId: M:WSSInterfacing.WaveformBuilder.getArea
+  id: getArea
+  parent: WSSInterfacing.WaveformBuilder
+  langs:
+  - csharp
+  - vb
+  name: getArea()
+  nameWithType: WaveformBuilder.getArea()
+  fullName: WSSInterfacing.WaveformBuilder.getArea()
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Returns the total area computed for the cathodic waveform.
+  example: []
+  syntax:
+    content: public float getArea()
+    return:
+      type: System.Single
+    content.vb: Public Function getArea() As Single
+  overload: WSSInterfacing.WaveformBuilder.getArea*
+- uid: WSSInterfacing.WaveformBuilder.getWave
+  commentId: M:WSSInterfacing.WaveformBuilder.getWave
+  id: getWave
+  parent: WSSInterfacing.WaveformBuilder
+  langs:
+  - csharp
+  - vb
+  name: getWave()
+  nameWithType: WaveformBuilder.getWave()
+  fullName: WSSInterfacing.WaveformBuilder.getWave()
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Builds the immutable <xref href="WSSInterfacing.Waveform" data-throw-if-not-resolved="false"></xref> instance with current shapes and area.
+  example: []
+  syntax:
+    content: public Waveform getWave()
+    return:
+      type: WSSInterfacing.Waveform
+    content.vb: Public Function getWave() As Waveform
+  overload: WSSInterfacing.WaveformBuilder.getWave*
+references:
+- uid: WSSInterfacing
+  commentId: N:WSSInterfacing
+  href: WSSInterfacing.html
+  name: WSSInterfacing
+  nameWithType: WSSInterfacing
+  fullName: WSSInterfacing
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: WSSInterfacing.WaveformBuilder.#ctor*
+  commentId: Overload:WSSInterfacing.WaveformBuilder.#ctor
+  href: WSSInterfacing.WaveformBuilder.html#WSSInterfacing_WaveformBuilder__ctor_System_Int32___
+  name: WaveformBuilder
+  nameWithType: WaveformBuilder.WaveformBuilder
+  fullName: WSSInterfacing.WaveformBuilder.WaveformBuilder
+  nameWithType.vb: WaveformBuilder.New
+  fullName.vb: WSSInterfacing.WaveformBuilder.New
+  name.vb: New
+- uid: System.Int32[]
+  isExternal: true
+  name: int[]
+  nameWithType: int[]
+  fullName: int[]
+  nameWithType.vb: Integer()
+  fullName.vb: Integer()
+  name.vb: Integer()
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: (
+  - name: )
+- uid: WSSInterfacing.Waveform
+  commentId: T:WSSInterfacing.Waveform
+  parent: WSSInterfacing
+  href: WSSInterfacing.Waveform.html
+  name: Waveform
+  nameWithType: Waveform
+  fullName: WSSInterfacing.Waveform
+- uid: WSSInterfacing.WaveformBuilder.getAnodicShapeArray*
+  commentId: Overload:WSSInterfacing.WaveformBuilder.getAnodicShapeArray
+  href: WSSInterfacing.WaveformBuilder.html#WSSInterfacing_WaveformBuilder_getAnodicShapeArray
+  name: getAnodicShapeArray
+  nameWithType: WaveformBuilder.getAnodicShapeArray
+  fullName: WSSInterfacing.WaveformBuilder.getAnodicShapeArray
+- uid: WSSInterfacing.WaveformBuilder.getCatShapeArray*
+  commentId: Overload:WSSInterfacing.WaveformBuilder.getCatShapeArray
+  href: WSSInterfacing.WaveformBuilder.html#WSSInterfacing_WaveformBuilder_getCatShapeArray
+  name: getCatShapeArray
+  nameWithType: WaveformBuilder.getCatShapeArray
+  fullName: WSSInterfacing.WaveformBuilder.getCatShapeArray
+- uid: WSSInterfacing.WaveformBuilder.getArea*
+  commentId: Overload:WSSInterfacing.WaveformBuilder.getArea
+  href: WSSInterfacing.WaveformBuilder.html#WSSInterfacing_WaveformBuilder_getArea
+  name: getArea
+  nameWithType: WaveformBuilder.getArea
+  fullName: WSSInterfacing.WaveformBuilder.getArea
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: WSSInterfacing.WaveformBuilder.getWave*
+  commentId: Overload:WSSInterfacing.WaveformBuilder.getWave
+  href: WSSInterfacing.WaveformBuilder.html#WSSInterfacing_WaveformBuilder_getWave
+  name: getWave
+  nameWithType: WaveformBuilder.getWave
+  fullName: WSSInterfacing.WaveformBuilder.getWave

@@ -1,0 +1,473 @@
+### YamlMime:ManagedReference
+items:
+- uid: WSSInterfacing.StimParamsBasicExtensions
+  commentId: T:WSSInterfacing.StimParamsBasicExtensions
+  id: StimParamsBasicExtensions
+  parent: WSSInterfacing
+  children:
+  - WSSInterfacing.StimParamsBasicExtensions.LoadBoard(WSSInterfacing.IStimParamsCore,WSSInterfacing.WssTarget)
+  - WSSInterfacing.StimParamsBasicExtensions.LoadWaveform(WSSInterfacing.IStimParamsCore,System.String,System.Int32)
+  - WSSInterfacing.StimParamsBasicExtensions.RequestConfigs(WSSInterfacing.IStimParamsCore,System.Int32,System.Int32,WSSInterfacing.WssTarget)
+  - WSSInterfacing.StimParamsBasicExtensions.SaveBoard(WSSInterfacing.IStimParamsCore,WSSInterfacing.WssTarget)
+  - WSSInterfacing.StimParamsBasicExtensions.TryUpdateWaveform(WSSInterfacing.IStimParamsCore,WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+  - WSSInterfacing.StimParamsBasicExtensions.UpdateEventShape(WSSInterfacing.IStimParamsCore,System.Int32,System.Int32,System.Int32,WSSInterfacing.WssTarget)
+  - WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform(WSSInterfacing.IStimParamsCore,System.Int32[],System.Int32,WSSInterfacing.WssTarget)
+  - WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform(WSSInterfacing.IStimParamsCore,WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+  - WSSInterfacing.StimParamsBasicExtensions.WaveformSetup(WSSInterfacing.IStimParamsCore,WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+  langs:
+  - csharp
+  - vb
+  name: StimParamsBasicExtensions
+  nameWithType: StimParamsBasicExtensions
+  fullName: WSSInterfacing.StimParamsBasicExtensions
+  type: Class
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: >-
+    Convenience extension methods over <xref href="WSSInterfacing.IStimParamsCore" data-throw-if-not-resolved="false"></xref> that forward
+
+    to the optional BASIC layer (<xref href="WSSInterfacing.IBasicStimulation" data-throw-if-not-resolved="false"></xref>). These helpers
+
+    make common operations (waveform upload, shape selection, save/load, requests)
+
+    concise while preserving the core API surface.
+  example: []
+  syntax:
+    content: public static class StimParamsBasicExtensions
+    content.vb: Public Module StimParamsBasicExtensions
+  inheritance:
+  - System.Object
+- uid: WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform(WSSInterfacing.IStimParamsCore,WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+  commentId: M:WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform(WSSInterfacing.IStimParamsCore,WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+  id: UpdateWaveform(WSSInterfacing.IStimParamsCore,WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+  isExtensionMethod: true
+  parent: WSSInterfacing.StimParamsBasicExtensions
+  langs:
+  - csharp
+  - vb
+  name: UpdateWaveform(IStimParamsCore, WaveformBuilder, int, WssTarget)
+  nameWithType: StimParamsBasicExtensions.UpdateWaveform(IStimParamsCore, WaveformBuilder, int, WssTarget)
+  fullName: WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform(WSSInterfacing.IStimParamsCore, WSSInterfacing.WaveformBuilder, int, WSSInterfacing.WssTarget)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Forward to BASIC.UpdateWaveform(WaveformBuilder,...).
+  example: []
+  syntax:
+    content: public static void UpdateWaveform(this IStimParamsCore s, WaveformBuilder wf, int eventId, WssTarget t)
+    parameters:
+    - id: s
+      type: WSSInterfacing.IStimParamsCore
+    - id: wf
+      type: WSSInterfacing.WaveformBuilder
+    - id: eventId
+      type: System.Int32
+    - id: t
+      type: WSSInterfacing.WssTarget
+    content.vb: Public Shared Sub UpdateWaveform(s As IStimParamsCore, wf As WaveformBuilder, eventId As Integer, t As WssTarget)
+  overload: WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform*
+  nameWithType.vb: StimParamsBasicExtensions.UpdateWaveform(IStimParamsCore, WaveformBuilder, Integer, WssTarget)
+  fullName.vb: WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform(WSSInterfacing.IStimParamsCore, WSSInterfacing.WaveformBuilder, Integer, WSSInterfacing.WssTarget)
+  name.vb: UpdateWaveform(IStimParamsCore, WaveformBuilder, Integer, WssTarget)
+- uid: WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform(WSSInterfacing.IStimParamsCore,System.Int32[],System.Int32,WSSInterfacing.WssTarget)
+  commentId: M:WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform(WSSInterfacing.IStimParamsCore,System.Int32[],System.Int32,WSSInterfacing.WssTarget)
+  id: UpdateWaveform(WSSInterfacing.IStimParamsCore,System.Int32[],System.Int32,WSSInterfacing.WssTarget)
+  isExtensionMethod: true
+  parent: WSSInterfacing.StimParamsBasicExtensions
+  langs:
+  - csharp
+  - vb
+  name: UpdateWaveform(IStimParamsCore, int[], int, WssTarget)
+  nameWithType: StimParamsBasicExtensions.UpdateWaveform(IStimParamsCore, int[], int, WssTarget)
+  fullName: WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform(WSSInterfacing.IStimParamsCore, int[], int, WSSInterfacing.WssTarget)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Forward to BASIC.UpdateWaveform(int[],...).
+  example: []
+  syntax:
+    content: public static void UpdateWaveform(this IStimParamsCore s, int[] waveform, int eventId, WssTarget t)
+    parameters:
+    - id: s
+      type: WSSInterfacing.IStimParamsCore
+    - id: waveform
+      type: System.Int32[]
+    - id: eventId
+      type: System.Int32
+    - id: t
+      type: WSSInterfacing.WssTarget
+    content.vb: Public Shared Sub UpdateWaveform(s As IStimParamsCore, waveform As Integer(), eventId As Integer, t As WssTarget)
+  overload: WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform*
+  nameWithType.vb: StimParamsBasicExtensions.UpdateWaveform(IStimParamsCore, Integer(), Integer, WssTarget)
+  fullName.vb: WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform(WSSInterfacing.IStimParamsCore, Integer(), Integer, WSSInterfacing.WssTarget)
+  name.vb: UpdateWaveform(IStimParamsCore, Integer(), Integer, WssTarget)
+- uid: WSSInterfacing.StimParamsBasicExtensions.UpdateEventShape(WSSInterfacing.IStimParamsCore,System.Int32,System.Int32,System.Int32,WSSInterfacing.WssTarget)
+  commentId: M:WSSInterfacing.StimParamsBasicExtensions.UpdateEventShape(WSSInterfacing.IStimParamsCore,System.Int32,System.Int32,System.Int32,WSSInterfacing.WssTarget)
+  id: UpdateEventShape(WSSInterfacing.IStimParamsCore,System.Int32,System.Int32,System.Int32,WSSInterfacing.WssTarget)
+  isExtensionMethod: true
+  parent: WSSInterfacing.StimParamsBasicExtensions
+  langs:
+  - csharp
+  - vb
+  name: UpdateEventShape(IStimParamsCore, int, int, int, WssTarget)
+  nameWithType: StimParamsBasicExtensions.UpdateEventShape(IStimParamsCore, int, int, int, WssTarget)
+  fullName: WSSInterfacing.StimParamsBasicExtensions.UpdateEventShape(WSSInterfacing.IStimParamsCore, int, int, int, WSSInterfacing.WssTarget)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Forward to BASIC.UpdateEventShape(...).
+  example: []
+  syntax:
+    content: public static void UpdateEventShape(this IStimParamsCore s, int cathodicWaveform, int anodicWaveform, int eventId, WssTarget t)
+    parameters:
+    - id: s
+      type: WSSInterfacing.IStimParamsCore
+    - id: cathodicWaveform
+      type: System.Int32
+    - id: anodicWaveform
+      type: System.Int32
+    - id: eventId
+      type: System.Int32
+    - id: t
+      type: WSSInterfacing.WssTarget
+    content.vb: Public Shared Sub UpdateEventShape(s As IStimParamsCore, cathodicWaveform As Integer, anodicWaveform As Integer, eventId As Integer, t As WssTarget)
+  overload: WSSInterfacing.StimParamsBasicExtensions.UpdateEventShape*
+  nameWithType.vb: StimParamsBasicExtensions.UpdateEventShape(IStimParamsCore, Integer, Integer, Integer, WssTarget)
+  fullName.vb: WSSInterfacing.StimParamsBasicExtensions.UpdateEventShape(WSSInterfacing.IStimParamsCore, Integer, Integer, Integer, WSSInterfacing.WssTarget)
+  name.vb: UpdateEventShape(IStimParamsCore, Integer, Integer, Integer, WssTarget)
+- uid: WSSInterfacing.StimParamsBasicExtensions.LoadWaveform(WSSInterfacing.IStimParamsCore,System.String,System.Int32)
+  commentId: M:WSSInterfacing.StimParamsBasicExtensions.LoadWaveform(WSSInterfacing.IStimParamsCore,System.String,System.Int32)
+  id: LoadWaveform(WSSInterfacing.IStimParamsCore,System.String,System.Int32)
+  isExtensionMethod: true
+  parent: WSSInterfacing.StimParamsBasicExtensions
+  langs:
+  - csharp
+  - vb
+  name: LoadWaveform(IStimParamsCore, string, int)
+  nameWithType: StimParamsBasicExtensions.LoadWaveform(IStimParamsCore, string, int)
+  fullName: WSSInterfacing.StimParamsBasicExtensions.LoadWaveform(WSSInterfacing.IStimParamsCore, string, int)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Forward to BASIC.LoadWaveform(...).
+  example: []
+  syntax:
+    content: public static void LoadWaveform(this IStimParamsCore s, string fileName, int eventId)
+    parameters:
+    - id: s
+      type: WSSInterfacing.IStimParamsCore
+    - id: fileName
+      type: System.String
+    - id: eventId
+      type: System.Int32
+    content.vb: Public Shared Sub LoadWaveform(s As IStimParamsCore, fileName As String, eventId As Integer)
+  overload: WSSInterfacing.StimParamsBasicExtensions.LoadWaveform*
+  nameWithType.vb: StimParamsBasicExtensions.LoadWaveform(IStimParamsCore, String, Integer)
+  fullName.vb: WSSInterfacing.StimParamsBasicExtensions.LoadWaveform(WSSInterfacing.IStimParamsCore, String, Integer)
+  name.vb: LoadWaveform(IStimParamsCore, String, Integer)
+- uid: WSSInterfacing.StimParamsBasicExtensions.WaveformSetup(WSSInterfacing.IStimParamsCore,WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+  commentId: M:WSSInterfacing.StimParamsBasicExtensions.WaveformSetup(WSSInterfacing.IStimParamsCore,WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+  id: WaveformSetup(WSSInterfacing.IStimParamsCore,WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+  isExtensionMethod: true
+  parent: WSSInterfacing.StimParamsBasicExtensions
+  langs:
+  - csharp
+  - vb
+  name: WaveformSetup(IStimParamsCore, WaveformBuilder, int, WssTarget)
+  nameWithType: StimParamsBasicExtensions.WaveformSetup(IStimParamsCore, WaveformBuilder, int, WssTarget)
+  fullName: WSSInterfacing.StimParamsBasicExtensions.WaveformSetup(WSSInterfacing.IStimParamsCore, WSSInterfacing.WaveformBuilder, int, WSSInterfacing.WssTarget)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Forward to BASIC.WaveformSetup(...).
+  example: []
+  syntax:
+    content: public static void WaveformSetup(this IStimParamsCore s, WaveformBuilder wf, int eventId, WssTarget t)
+    parameters:
+    - id: s
+      type: WSSInterfacing.IStimParamsCore
+    - id: wf
+      type: WSSInterfacing.WaveformBuilder
+    - id: eventId
+      type: System.Int32
+    - id: t
+      type: WSSInterfacing.WssTarget
+    content.vb: Public Shared Sub WaveformSetup(s As IStimParamsCore, wf As WaveformBuilder, eventId As Integer, t As WssTarget)
+  overload: WSSInterfacing.StimParamsBasicExtensions.WaveformSetup*
+  nameWithType.vb: StimParamsBasicExtensions.WaveformSetup(IStimParamsCore, WaveformBuilder, Integer, WssTarget)
+  fullName.vb: WSSInterfacing.StimParamsBasicExtensions.WaveformSetup(WSSInterfacing.IStimParamsCore, WSSInterfacing.WaveformBuilder, Integer, WSSInterfacing.WssTarget)
+  name.vb: WaveformSetup(IStimParamsCore, WaveformBuilder, Integer, WssTarget)
+- uid: WSSInterfacing.StimParamsBasicExtensions.SaveBoard(WSSInterfacing.IStimParamsCore,WSSInterfacing.WssTarget)
+  commentId: M:WSSInterfacing.StimParamsBasicExtensions.SaveBoard(WSSInterfacing.IStimParamsCore,WSSInterfacing.WssTarget)
+  id: SaveBoard(WSSInterfacing.IStimParamsCore,WSSInterfacing.WssTarget)
+  isExtensionMethod: true
+  parent: WSSInterfacing.StimParamsBasicExtensions
+  langs:
+  - csharp
+  - vb
+  name: SaveBoard(IStimParamsCore, WssTarget)
+  nameWithType: StimParamsBasicExtensions.SaveBoard(IStimParamsCore, WssTarget)
+  fullName: WSSInterfacing.StimParamsBasicExtensions.SaveBoard(WSSInterfacing.IStimParamsCore, WSSInterfacing.WssTarget)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Forward to BASIC.Save(...).
+  example: []
+  syntax:
+    content: public static void SaveBoard(this IStimParamsCore s, WssTarget t)
+    parameters:
+    - id: s
+      type: WSSInterfacing.IStimParamsCore
+    - id: t
+      type: WSSInterfacing.WssTarget
+    content.vb: Public Shared Sub SaveBoard(s As IStimParamsCore, t As WssTarget)
+  overload: WSSInterfacing.StimParamsBasicExtensions.SaveBoard*
+- uid: WSSInterfacing.StimParamsBasicExtensions.LoadBoard(WSSInterfacing.IStimParamsCore,WSSInterfacing.WssTarget)
+  commentId: M:WSSInterfacing.StimParamsBasicExtensions.LoadBoard(WSSInterfacing.IStimParamsCore,WSSInterfacing.WssTarget)
+  id: LoadBoard(WSSInterfacing.IStimParamsCore,WSSInterfacing.WssTarget)
+  isExtensionMethod: true
+  parent: WSSInterfacing.StimParamsBasicExtensions
+  langs:
+  - csharp
+  - vb
+  name: LoadBoard(IStimParamsCore, WssTarget)
+  nameWithType: StimParamsBasicExtensions.LoadBoard(IStimParamsCore, WssTarget)
+  fullName: WSSInterfacing.StimParamsBasicExtensions.LoadBoard(WSSInterfacing.IStimParamsCore, WSSInterfacing.WssTarget)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Forward to BASIC.Load(...).
+  example: []
+  syntax:
+    content: public static void LoadBoard(this IStimParamsCore s, WssTarget t)
+    parameters:
+    - id: s
+      type: WSSInterfacing.IStimParamsCore
+    - id: t
+      type: WSSInterfacing.WssTarget
+    content.vb: Public Shared Sub LoadBoard(s As IStimParamsCore, t As WssTarget)
+  overload: WSSInterfacing.StimParamsBasicExtensions.LoadBoard*
+- uid: WSSInterfacing.StimParamsBasicExtensions.RequestConfigs(WSSInterfacing.IStimParamsCore,System.Int32,System.Int32,WSSInterfacing.WssTarget)
+  commentId: M:WSSInterfacing.StimParamsBasicExtensions.RequestConfigs(WSSInterfacing.IStimParamsCore,System.Int32,System.Int32,WSSInterfacing.WssTarget)
+  id: RequestConfigs(WSSInterfacing.IStimParamsCore,System.Int32,System.Int32,WSSInterfacing.WssTarget)
+  isExtensionMethod: true
+  parent: WSSInterfacing.StimParamsBasicExtensions
+  langs:
+  - csharp
+  - vb
+  name: RequestConfigs(IStimParamsCore, int, int, WssTarget)
+  nameWithType: StimParamsBasicExtensions.RequestConfigs(IStimParamsCore, int, int, WssTarget)
+  fullName: WSSInterfacing.StimParamsBasicExtensions.RequestConfigs(WSSInterfacing.IStimParamsCore, int, int, WSSInterfacing.WssTarget)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Forward to BASIC.Request_Configs(...).
+  example: []
+  syntax:
+    content: public static void RequestConfigs(this IStimParamsCore s, int command, int id, WssTarget t)
+    parameters:
+    - id: s
+      type: WSSInterfacing.IStimParamsCore
+    - id: command
+      type: System.Int32
+    - id: id
+      type: System.Int32
+    - id: t
+      type: WSSInterfacing.WssTarget
+    content.vb: Public Shared Sub RequestConfigs(s As IStimParamsCore, command As Integer, id As Integer, t As WssTarget)
+  overload: WSSInterfacing.StimParamsBasicExtensions.RequestConfigs*
+  nameWithType.vb: StimParamsBasicExtensions.RequestConfigs(IStimParamsCore, Integer, Integer, WssTarget)
+  fullName.vb: WSSInterfacing.StimParamsBasicExtensions.RequestConfigs(WSSInterfacing.IStimParamsCore, Integer, Integer, WSSInterfacing.WssTarget)
+  name.vb: RequestConfigs(IStimParamsCore, Integer, Integer, WssTarget)
+- uid: WSSInterfacing.StimParamsBasicExtensions.TryUpdateWaveform(WSSInterfacing.IStimParamsCore,WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+  commentId: M:WSSInterfacing.StimParamsBasicExtensions.TryUpdateWaveform(WSSInterfacing.IStimParamsCore,WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+  id: TryUpdateWaveform(WSSInterfacing.IStimParamsCore,WSSInterfacing.WaveformBuilder,System.Int32,WSSInterfacing.WssTarget)
+  isExtensionMethod: true
+  parent: WSSInterfacing.StimParamsBasicExtensions
+  langs:
+  - csharp
+  - vb
+  name: TryUpdateWaveform(IStimParamsCore, WaveformBuilder, int, WssTarget)
+  nameWithType: StimParamsBasicExtensions.TryUpdateWaveform(IStimParamsCore, WaveformBuilder, int, WssTarget)
+  fullName: WSSInterfacing.StimParamsBasicExtensions.TryUpdateWaveform(WSSInterfacing.IStimParamsCore, WSSInterfacing.WaveformBuilder, int, WSSInterfacing.WssTarget)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  syntax:
+    content: public static bool TryUpdateWaveform(this IStimParamsCore s, WaveformBuilder wf, int eventId, WssTarget t)
+    parameters:
+    - id: s
+      type: WSSInterfacing.IStimParamsCore
+    - id: wf
+      type: WSSInterfacing.WaveformBuilder
+    - id: eventId
+      type: System.Int32
+    - id: t
+      type: WSSInterfacing.WssTarget
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function TryUpdateWaveform(s As IStimParamsCore, wf As WaveformBuilder, eventId As Integer, t As WssTarget) As Boolean
+  overload: WSSInterfacing.StimParamsBasicExtensions.TryUpdateWaveform*
+  nameWithType.vb: StimParamsBasicExtensions.TryUpdateWaveform(IStimParamsCore, WaveformBuilder, Integer, WssTarget)
+  fullName.vb: WSSInterfacing.StimParamsBasicExtensions.TryUpdateWaveform(WSSInterfacing.IStimParamsCore, WSSInterfacing.WaveformBuilder, Integer, WSSInterfacing.WssTarget)
+  name.vb: TryUpdateWaveform(IStimParamsCore, WaveformBuilder, Integer, WssTarget)
+references:
+- uid: WSSInterfacing.IStimParamsCore
+  commentId: T:WSSInterfacing.IStimParamsCore
+  parent: WSSInterfacing
+  href: WSSInterfacing.IStimParamsCore.html
+  name: IStimParamsCore
+  nameWithType: IStimParamsCore
+  fullName: WSSInterfacing.IStimParamsCore
+- uid: WSSInterfacing.IBasicStimulation
+  commentId: T:WSSInterfacing.IBasicStimulation
+  parent: WSSInterfacing
+  href: WSSInterfacing.IBasicStimulation.html
+  name: IBasicStimulation
+  nameWithType: IBasicStimulation
+  fullName: WSSInterfacing.IBasicStimulation
+- uid: WSSInterfacing
+  commentId: N:WSSInterfacing
+  href: WSSInterfacing.html
+  name: WSSInterfacing
+  nameWithType: WSSInterfacing
+  fullName: WSSInterfacing
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform*
+  commentId: Overload:WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform
+  href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_UpdateWaveform_WSSInterfacing_IStimParamsCore_WSSInterfacing_WaveformBuilder_System_Int32_WSSInterfacing_WssTarget_
+  name: UpdateWaveform
+  nameWithType: StimParamsBasicExtensions.UpdateWaveform
+  fullName: WSSInterfacing.StimParamsBasicExtensions.UpdateWaveform
+- uid: WSSInterfacing.WaveformBuilder
+  commentId: T:WSSInterfacing.WaveformBuilder
+  parent: WSSInterfacing
+  href: WSSInterfacing.WaveformBuilder.html
+  name: WaveformBuilder
+  nameWithType: WaveformBuilder
+  fullName: WSSInterfacing.WaveformBuilder
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: WSSInterfacing.WssTarget
+  commentId: T:WSSInterfacing.WssTarget
+  parent: WSSInterfacing
+  href: WSSInterfacing.WssTarget.html
+  name: WssTarget
+  nameWithType: WssTarget
+  fullName: WSSInterfacing.WssTarget
+- uid: System.Int32[]
+  isExternal: true
+  name: int[]
+  nameWithType: int[]
+  fullName: int[]
+  nameWithType.vb: Integer()
+  fullName.vb: Integer()
+  name.vb: Integer()
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: (
+  - name: )
+- uid: WSSInterfacing.StimParamsBasicExtensions.UpdateEventShape*
+  commentId: Overload:WSSInterfacing.StimParamsBasicExtensions.UpdateEventShape
+  href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_UpdateEventShape_WSSInterfacing_IStimParamsCore_System_Int32_System_Int32_System_Int32_WSSInterfacing_WssTarget_
+  name: UpdateEventShape
+  nameWithType: StimParamsBasicExtensions.UpdateEventShape
+  fullName: WSSInterfacing.StimParamsBasicExtensions.UpdateEventShape
+- uid: WSSInterfacing.StimParamsBasicExtensions.LoadWaveform*
+  commentId: Overload:WSSInterfacing.StimParamsBasicExtensions.LoadWaveform
+  href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_LoadWaveform_WSSInterfacing_IStimParamsCore_System_String_System_Int32_
+  name: LoadWaveform
+  nameWithType: StimParamsBasicExtensions.LoadWaveform
+  fullName: WSSInterfacing.StimParamsBasicExtensions.LoadWaveform
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: WSSInterfacing.StimParamsBasicExtensions.WaveformSetup*
+  commentId: Overload:WSSInterfacing.StimParamsBasicExtensions.WaveformSetup
+  href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_WaveformSetup_WSSInterfacing_IStimParamsCore_WSSInterfacing_WaveformBuilder_System_Int32_WSSInterfacing_WssTarget_
+  name: WaveformSetup
+  nameWithType: StimParamsBasicExtensions.WaveformSetup
+  fullName: WSSInterfacing.StimParamsBasicExtensions.WaveformSetup
+- uid: WSSInterfacing.StimParamsBasicExtensions.SaveBoard*
+  commentId: Overload:WSSInterfacing.StimParamsBasicExtensions.SaveBoard
+  href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_SaveBoard_WSSInterfacing_IStimParamsCore_WSSInterfacing_WssTarget_
+  name: SaveBoard
+  nameWithType: StimParamsBasicExtensions.SaveBoard
+  fullName: WSSInterfacing.StimParamsBasicExtensions.SaveBoard
+- uid: WSSInterfacing.StimParamsBasicExtensions.LoadBoard*
+  commentId: Overload:WSSInterfacing.StimParamsBasicExtensions.LoadBoard
+  href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_LoadBoard_WSSInterfacing_IStimParamsCore_WSSInterfacing_WssTarget_
+  name: LoadBoard
+  nameWithType: StimParamsBasicExtensions.LoadBoard
+  fullName: WSSInterfacing.StimParamsBasicExtensions.LoadBoard
+- uid: WSSInterfacing.StimParamsBasicExtensions.RequestConfigs*
+  commentId: Overload:WSSInterfacing.StimParamsBasicExtensions.RequestConfigs
+  href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_RequestConfigs_WSSInterfacing_IStimParamsCore_System_Int32_System_Int32_WSSInterfacing_WssTarget_
+  name: RequestConfigs
+  nameWithType: StimParamsBasicExtensions.RequestConfigs
+  fullName: WSSInterfacing.StimParamsBasicExtensions.RequestConfigs
+- uid: WSSInterfacing.StimParamsBasicExtensions.TryUpdateWaveform*
+  commentId: Overload:WSSInterfacing.StimParamsBasicExtensions.TryUpdateWaveform
+  href: WSSInterfacing.StimParamsBasicExtensions.html#WSSInterfacing_StimParamsBasicExtensions_TryUpdateWaveform_WSSInterfacing_IStimParamsCore_WSSInterfacing_WaveformBuilder_System_Int32_WSSInterfacing_WssTarget_
+  name: TryUpdateWaveform
+  nameWithType: StimParamsBasicExtensions.TryUpdateWaveform
+  fullName: WSSInterfacing.StimParamsBasicExtensions.TryUpdateWaveform
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

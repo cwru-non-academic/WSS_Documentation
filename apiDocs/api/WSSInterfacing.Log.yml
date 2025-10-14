@@ -1,0 +1,171 @@
+### YamlMime:ManagedReference
+items:
+- uid: WSSInterfacing.Log
+  commentId: T:WSSInterfacing.Log
+  id: Log
+  parent: WSSInterfacing
+  children:
+  - WSSInterfacing.Log.Error(System.String,System.Exception)
+  - WSSInterfacing.Log.Info(System.String)
+  - WSSInterfacing.Log.Warn(System.String)
+  langs:
+  - csharp
+  - vb
+  name: Log
+  nameWithType: Log
+  fullName: WSSInterfacing.Log
+  type: Class
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: >-
+    Minimal logging facade that writes to Unity's console when running inside
+
+    Unity, and falls back to System.Console on nonâ€‘Unity environments.
+  example: []
+  syntax:
+    content: public static class Log
+    content.vb: Public Module Log
+  inheritance:
+  - System.Object
+- uid: WSSInterfacing.Log.Info(System.String)
+  commentId: M:WSSInterfacing.Log.Info(System.String)
+  id: Info(System.String)
+  parent: WSSInterfacing.Log
+  langs:
+  - csharp
+  - vb
+  name: Info(string)
+  nameWithType: Log.Info(string)
+  fullName: WSSInterfacing.Log.Info(string)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Logs an informational message.
+  example: []
+  syntax:
+    content: public static void Info(string msg)
+    parameters:
+    - id: msg
+      type: System.String
+    content.vb: Public Shared Sub Info(msg As String)
+  overload: WSSInterfacing.Log.Info*
+  nameWithType.vb: Log.Info(String)
+  fullName.vb: WSSInterfacing.Log.Info(String)
+  name.vb: Info(String)
+- uid: WSSInterfacing.Log.Warn(System.String)
+  commentId: M:WSSInterfacing.Log.Warn(System.String)
+  id: Warn(System.String)
+  parent: WSSInterfacing.Log
+  langs:
+  - csharp
+  - vb
+  name: Warn(string)
+  nameWithType: Log.Warn(string)
+  fullName: WSSInterfacing.Log.Warn(string)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Logs a warning message.
+  example: []
+  syntax:
+    content: public static void Warn(string msg)
+    parameters:
+    - id: msg
+      type: System.String
+    content.vb: Public Shared Sub Warn(msg As String)
+  overload: WSSInterfacing.Log.Warn*
+  nameWithType.vb: Log.Warn(String)
+  fullName.vb: WSSInterfacing.Log.Warn(String)
+  name.vb: Warn(String)
+- uid: WSSInterfacing.Log.Error(System.String,System.Exception)
+  commentId: M:WSSInterfacing.Log.Error(System.String,System.Exception)
+  id: Error(System.String,System.Exception)
+  parent: WSSInterfacing.Log
+  langs:
+  - csharp
+  - vb
+  name: Error(string, Exception)
+  nameWithType: Log.Error(string, Exception)
+  fullName: WSSInterfacing.Log.Error(string, System.Exception)
+  type: Method
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Logs an error message, optionally including an exception's details.
+  example: []
+  syntax:
+    content: public static void Error(string msg, Exception ex = null)
+    parameters:
+    - id: msg
+      type: System.String
+      description: Message to log.
+    - id: ex
+      type: System.Exception
+      description: Optional exception to append.
+    content.vb: Public Shared Sub [Error](msg As String, ex As Exception = Nothing)
+  overload: WSSInterfacing.Log.Error*
+  nameWithType.vb: Log.Error(String, Exception)
+  fullName.vb: WSSInterfacing.Log.Error(String, System.Exception)
+  name.vb: Error(String, Exception)
+references:
+- uid: WSSInterfacing
+  commentId: N:WSSInterfacing
+  href: WSSInterfacing.html
+  name: WSSInterfacing
+  nameWithType: WSSInterfacing
+  fullName: WSSInterfacing
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: WSSInterfacing.Log.Info*
+  commentId: Overload:WSSInterfacing.Log.Info
+  href: WSSInterfacing.Log.html#WSSInterfacing_Log_Info_System_String_
+  name: Info
+  nameWithType: Log.Info
+  fullName: WSSInterfacing.Log.Info
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: WSSInterfacing.Log.Warn*
+  commentId: Overload:WSSInterfacing.Log.Warn
+  href: WSSInterfacing.Log.html#WSSInterfacing_Log_Warn_System_String_
+  name: Warn
+  nameWithType: Log.Warn
+  fullName: WSSInterfacing.Log.Warn
+- uid: WSSInterfacing.Log.Error*
+  commentId: Overload:WSSInterfacing.Log.Error
+  href: WSSInterfacing.Log.html#WSSInterfacing_Log_Error_System_String_System_Exception_
+  name: Error
+  nameWithType: Log.Error
+  fullName: WSSInterfacing.Log.Error
+- uid: System.Exception
+  commentId: T:System.Exception
+  parent: System
+  isExternal: true
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception

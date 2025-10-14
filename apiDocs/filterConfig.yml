@@ -1,0 +1,6 @@
+apiRules:
+  - include:
+      uidRegex: '^WSSInterfacing(\.|$).*'
+    type: Namespace|Class|Struct|Interface|Enum|Delegate|Member
+  - exclude:
+      uidRegex: '^(System|Microsoft|UnityEngine|Newtonsoft)\..*'

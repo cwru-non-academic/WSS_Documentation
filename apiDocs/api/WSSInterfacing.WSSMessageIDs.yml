@@ -1,0 +1,627 @@
+### YamlMime:ManagedReference
+items:
+- uid: WSSInterfacing.WSSMessageIDs
+  commentId: T:WSSInterfacing.WSSMessageIDs
+  id: WSSMessageIDs
+  parent: WSSInterfacing
+  children:
+  - WSSInterfacing.WSSMessageIDs.AddEventToSchedule
+  - WSSInterfacing.WSSMessageIDs.BoardCommands
+  - WSSInterfacing.WSSMessageIDs.ChangeGroupState
+  - WSSInterfacing.WSSMessageIDs.ChangeScheduleConfig
+  - WSSInterfacing.WSSMessageIDs.Clear
+  - WSSInterfacing.WSSMessageIDs.CreateContactConfig
+  - WSSInterfacing.WSSMessageIDs.CreateEvent
+  - WSSInterfacing.WSSMessageIDs.CreateSchedule
+  - WSSInterfacing.WSSMessageIDs.CustomWaveform
+  - WSSInterfacing.WSSMessageIDs.DeleteContactConfig
+  - WSSInterfacing.WSSMessageIDs.DeleteEvent
+  - WSSInterfacing.WSSMessageIDs.DeleteSchedule
+  - WSSInterfacing.WSSMessageIDs.Echo
+  - WSSInterfacing.WSSMessageIDs.EditEventConfig
+  - WSSInterfacing.WSSMessageIDs.Error
+  - WSSInterfacing.WSSMessageIDs.ModuleQuery
+  - WSSInterfacing.WSSMessageIDs.MoveEventToSchedule
+  - WSSInterfacing.WSSMessageIDs.RemoveEventFromSchedule
+  - WSSInterfacing.WSSMessageIDs.RequestAnalog
+  - WSSInterfacing.WSSMessageIDs.RequestConfig
+  - WSSInterfacing.WSSMessageIDs.Reset
+  - WSSInterfacing.WSSMessageIDs.ResetSchedule
+  - WSSInterfacing.WSSMessageIDs.StimulationSwitch
+  - WSSInterfacing.WSSMessageIDs.StreamChangeAll
+  - WSSInterfacing.WSSMessageIDs.StreamChangeNoIPI
+  - WSSInterfacing.WSSMessageIDs.StreamChangeNoPA
+  - WSSInterfacing.WSSMessageIDs.StreamChangeNoPW
+  - WSSInterfacing.WSSMessageIDs.SyncGroup
+  langs:
+  - csharp
+  - vb
+  name: WSSMessageIDs
+  nameWithType: WSSMessageIDs
+  fullName: WSSInterfacing.WSSMessageIDs
+  type: Enum
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: >-
+    Protocol message identifiers used by the WSS firmware.
+
+    Values correspond to on-wire command codes.
+  example: []
+  syntax:
+    content: 'public enum WSSMessageIDs : byte'
+    content.vb: Public Enum WSSMessageIDs As Byte
+- uid: WSSInterfacing.WSSMessageIDs.Error
+  commentId: F:WSSInterfacing.WSSMessageIDs.Error
+  id: Error
+  parent: WSSInterfacing.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: Error
+  nameWithType: WSSMessageIDs.Error
+  fullName: WSSInterfacing.WSSMessageIDs.Error
+  type: Field
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Error reply or status.
+  example: []
+  syntax:
+    content: Error = 5
+    return:
+      type: WSSInterfacing.WSSMessageIDs
+- uid: WSSInterfacing.WSSMessageIDs.ModuleQuery
+  commentId: F:WSSInterfacing.WSSMessageIDs.ModuleQuery
+  id: ModuleQuery
+  parent: WSSInterfacing.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: ModuleQuery
+  nameWithType: WSSMessageIDs.ModuleQuery
+  fullName: WSSInterfacing.WSSMessageIDs.ModuleQuery
+  type: Field
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Queries module identity and capabilities.
+  example: []
+  syntax:
+    content: ModuleQuery = 1
+    return:
+      type: WSSInterfacing.WSSMessageIDs
+- uid: WSSInterfacing.WSSMessageIDs.Reset
+  commentId: F:WSSInterfacing.WSSMessageIDs.Reset
+  id: Reset
+  parent: WSSInterfacing.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: Reset
+  nameWithType: WSSMessageIDs.Reset
+  fullName: WSSInterfacing.WSSMessageIDs.Reset
+  type: Field
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Device reset command.
+  example: []
+  syntax:
+    content: Reset = 4
+    return:
+      type: WSSInterfacing.WSSMessageIDs
+- uid: WSSInterfacing.WSSMessageIDs.Echo
+  commentId: F:WSSInterfacing.WSSMessageIDs.Echo
+  id: Echo
+  parent: WSSInterfacing.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: Echo
+  nameWithType: WSSMessageIDs.Echo
+  fullName: WSSInterfacing.WSSMessageIDs.Echo
+  type: Field
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Ping/pong transport echo.
+  example: []
+  syntax:
+    content: Echo = 7
+    return:
+      type: WSSInterfacing.WSSMessageIDs
+- uid: WSSInterfacing.WSSMessageIDs.RequestAnalog
+  commentId: F:WSSInterfacing.WSSMessageIDs.RequestAnalog
+  id: RequestAnalog
+  parent: WSSInterfacing.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: RequestAnalog
+  nameWithType: WSSMessageIDs.RequestAnalog
+  fullName: WSSInterfacing.WSSMessageIDs.RequestAnalog
+  type: Field
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Requests analog value(s).
+  example: []
+  syntax:
+    content: RequestAnalog = 2
+    return:
+      type: WSSInterfacing.WSSMessageIDs
+- uid: WSSInterfacing.WSSMessageIDs.Clear
+  commentId: F:WSSInterfacing.WSSMessageIDs.Clear
+  id: Clear
+  parent: WSSInterfacing.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: Clear
+  nameWithType: WSSMessageIDs.Clear
+  fullName: WSSInterfacing.WSSMessageIDs.Clear
+  type: Field
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Clears device state or buffers.
+  example: []
+  syntax:
+    content: Clear = 64
+    return:
+      type: WSSInterfacing.WSSMessageIDs
+- uid: WSSInterfacing.WSSMessageIDs.RequestConfig
+  commentId: F:WSSInterfacing.WSSMessageIDs.RequestConfig
+  id: RequestConfig
+  parent: WSSInterfacing.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: RequestConfig
+  nameWithType: WSSMessageIDs.RequestConfig
+  fullName: WSSInterfacing.WSSMessageIDs.RequestConfig
+  type: Field
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Requests configuration block.
+  example: []
+  syntax:
+    content: RequestConfig = 65
+    return:
+      type: WSSInterfacing.WSSMessageIDs
+- uid: WSSInterfacing.WSSMessageIDs.CreateContactConfig
+  commentId: F:WSSInterfacing.WSSMessageIDs.CreateContactConfig
+  id: CreateContactConfig
+  parent: WSSInterfacing.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: CreateContactConfig
+  nameWithType: WSSMessageIDs.CreateContactConfig
+  fullName: WSSInterfacing.WSSMessageIDs.CreateContactConfig
+  type: Field
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Creates a contact configuration.
+  example: []
+  syntax:
+    content: CreateContactConfig = 66
+    return:
+      type: WSSInterfacing.WSSMessageIDs
+- uid: WSSInterfacing.WSSMessageIDs.DeleteContactConfig
+  commentId: F:WSSInterfacing.WSSMessageIDs.DeleteContactConfig
+  id: DeleteContactConfig
+  parent: WSSInterfacing.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: DeleteContactConfig
+  nameWithType: WSSMessageIDs.DeleteContactConfig
+  fullName: WSSInterfacing.WSSMessageIDs.DeleteContactConfig
+  type: Field
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Deletes a contact configuration.
+  example: []
+  syntax:
+    content: DeleteContactConfig = 67
+    return:
+      type: WSSInterfacing.WSSMessageIDs
+- uid: WSSInterfacing.WSSMessageIDs.CreateEvent
+  commentId: F:WSSInterfacing.WSSMessageIDs.CreateEvent
+  id: CreateEvent
+  parent: WSSInterfacing.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: CreateEvent
+  nameWithType: WSSMessageIDs.CreateEvent
+  fullName: WSSInterfacing.WSSMessageIDs.CreateEvent
+  type: Field
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Creates a stimulation event.
+  example: []
+  syntax:
+    content: CreateEvent = 68
+    return:
+      type: WSSInterfacing.WSSMessageIDs
+- uid: WSSInterfacing.WSSMessageIDs.DeleteEvent
+  commentId: F:WSSInterfacing.WSSMessageIDs.DeleteEvent
+  id: DeleteEvent
+  parent: WSSInterfacing.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: DeleteEvent
+  nameWithType: WSSMessageIDs.DeleteEvent
+  fullName: WSSInterfacing.WSSMessageIDs.DeleteEvent
+  type: Field
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Deletes a stimulation event.
+  example: []
+  syntax:
+    content: DeleteEvent = 69
+    return:
+      type: WSSInterfacing.WSSMessageIDs
+- uid: WSSInterfacing.WSSMessageIDs.AddEventToSchedule
+  commentId: F:WSSInterfacing.WSSMessageIDs.AddEventToSchedule
+  id: AddEventToSchedule
+  parent: WSSInterfacing.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: AddEventToSchedule
+  nameWithType: WSSMessageIDs.AddEventToSchedule
+  fullName: WSSInterfacing.WSSMessageIDs.AddEventToSchedule
+  type: Field
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Adds an event to a schedule.
+  example: []
+  syntax:
+    content: AddEventToSchedule = 70
+    return:
+      type: WSSInterfacing.WSSMessageIDs
+- uid: WSSInterfacing.WSSMessageIDs.RemoveEventFromSchedule
+  commentId: F:WSSInterfacing.WSSMessageIDs.RemoveEventFromSchedule
+  id: RemoveEventFromSchedule
+  parent: WSSInterfacing.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: RemoveEventFromSchedule
+  nameWithType: WSSMessageIDs.RemoveEventFromSchedule
+  fullName: WSSInterfacing.WSSMessageIDs.RemoveEventFromSchedule
+  type: Field
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Removes an event from a schedule.
+  example: []
+  syntax:
+    content: RemoveEventFromSchedule = 71
+    return:
+      type: WSSInterfacing.WSSMessageIDs
+- uid: WSSInterfacing.WSSMessageIDs.MoveEventToSchedule
+  commentId: F:WSSInterfacing.WSSMessageIDs.MoveEventToSchedule
+  id: MoveEventToSchedule
+  parent: WSSInterfacing.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: MoveEventToSchedule
+  nameWithType: WSSMessageIDs.MoveEventToSchedule
+  fullName: WSSInterfacing.WSSMessageIDs.MoveEventToSchedule
+  type: Field
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Moves an event within a schedule.
+  example: []
+  syntax:
+    content: MoveEventToSchedule = 72
+    return:
+      type: WSSInterfacing.WSSMessageIDs
+- uid: WSSInterfacing.WSSMessageIDs.EditEventConfig
+  commentId: F:WSSInterfacing.WSSMessageIDs.EditEventConfig
+  id: EditEventConfig
+  parent: WSSInterfacing.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: EditEventConfig
+  nameWithType: WSSMessageIDs.EditEventConfig
+  fullName: WSSInterfacing.WSSMessageIDs.EditEventConfig
+  type: Field
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Edits an existing event configuration.
+  example: []
+  syntax:
+    content: EditEventConfig = 73
+    return:
+      type: WSSInterfacing.WSSMessageIDs
+- uid: WSSInterfacing.WSSMessageIDs.CreateSchedule
+  commentId: F:WSSInterfacing.WSSMessageIDs.CreateSchedule
+  id: CreateSchedule
+  parent: WSSInterfacing.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: CreateSchedule
+  nameWithType: WSSMessageIDs.CreateSchedule
+  fullName: WSSInterfacing.WSSMessageIDs.CreateSchedule
+  type: Field
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Creates a stimulation schedule.
+  example: []
+  syntax:
+    content: CreateSchedule = 74
+    return:
+      type: WSSInterfacing.WSSMessageIDs
+- uid: WSSInterfacing.WSSMessageIDs.DeleteSchedule
+  commentId: F:WSSInterfacing.WSSMessageIDs.DeleteSchedule
+  id: DeleteSchedule
+  parent: WSSInterfacing.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: DeleteSchedule
+  nameWithType: WSSMessageIDs.DeleteSchedule
+  fullName: WSSInterfacing.WSSMessageIDs.DeleteSchedule
+  type: Field
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Deletes a stimulation schedule.
+  example: []
+  syntax:
+    content: DeleteSchedule = 75
+    return:
+      type: WSSInterfacing.WSSMessageIDs
+- uid: WSSInterfacing.WSSMessageIDs.SyncGroup
+  commentId: F:WSSInterfacing.WSSMessageIDs.SyncGroup
+  id: SyncGroup
+  parent: WSSInterfacing.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: SyncGroup
+  nameWithType: WSSMessageIDs.SyncGroup
+  fullName: WSSInterfacing.WSSMessageIDs.SyncGroup
+  type: Field
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Synchronizes a group of devices.
+  example: []
+  syntax:
+    content: SyncGroup = 76
+    return:
+      type: WSSInterfacing.WSSMessageIDs
+- uid: WSSInterfacing.WSSMessageIDs.ChangeGroupState
+  commentId: F:WSSInterfacing.WSSMessageIDs.ChangeGroupState
+  id: ChangeGroupState
+  parent: WSSInterfacing.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: ChangeGroupState
+  nameWithType: WSSMessageIDs.ChangeGroupState
+  fullName: WSSInterfacing.WSSMessageIDs.ChangeGroupState
+  type: Field
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Changes a group state.
+  example: []
+  syntax:
+    content: ChangeGroupState = 77
+    return:
+      type: WSSInterfacing.WSSMessageIDs
+- uid: WSSInterfacing.WSSMessageIDs.ChangeScheduleConfig
+  commentId: F:WSSInterfacing.WSSMessageIDs.ChangeScheduleConfig
+  id: ChangeScheduleConfig
+  parent: WSSInterfacing.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: ChangeScheduleConfig
+  nameWithType: WSSMessageIDs.ChangeScheduleConfig
+  fullName: WSSInterfacing.WSSMessageIDs.ChangeScheduleConfig
+  type: Field
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Changes schedule configuration.
+  example: []
+  syntax:
+    content: ChangeScheduleConfig = 78
+    return:
+      type: WSSInterfacing.WSSMessageIDs
+- uid: WSSInterfacing.WSSMessageIDs.ResetSchedule
+  commentId: F:WSSInterfacing.WSSMessageIDs.ResetSchedule
+  id: ResetSchedule
+  parent: WSSInterfacing.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: ResetSchedule
+  nameWithType: WSSMessageIDs.ResetSchedule
+  fullName: WSSInterfacing.WSSMessageIDs.ResetSchedule
+  type: Field
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Resets schedule to defaults.
+  example: []
+  syntax:
+    content: ResetSchedule = 79
+    return:
+      type: WSSInterfacing.WSSMessageIDs
+- uid: WSSInterfacing.WSSMessageIDs.CustomWaveform
+  commentId: F:WSSInterfacing.WSSMessageIDs.CustomWaveform
+  id: CustomWaveform
+  parent: WSSInterfacing.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: CustomWaveform
+  nameWithType: WSSMessageIDs.CustomWaveform
+  fullName: WSSInterfacing.WSSMessageIDs.CustomWaveform
+  type: Field
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Uploads or selects a custom waveform.
+  example: []
+  syntax:
+    content: CustomWaveform = 157
+    return:
+      type: WSSInterfacing.WSSMessageIDs
+- uid: WSSInterfacing.WSSMessageIDs.StimulationSwitch
+  commentId: F:WSSInterfacing.WSSMessageIDs.StimulationSwitch
+  id: StimulationSwitch
+  parent: WSSInterfacing.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: StimulationSwitch
+  nameWithType: WSSMessageIDs.StimulationSwitch
+  fullName: WSSInterfacing.WSSMessageIDs.StimulationSwitch
+  type: Field
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Global stimulation on/off switch.
+  example: []
+  syntax:
+    content: StimulationSwitch = 11
+    return:
+      type: WSSInterfacing.WSSMessageIDs
+- uid: WSSInterfacing.WSSMessageIDs.BoardCommands
+  commentId: F:WSSInterfacing.WSSMessageIDs.BoardCommands
+  id: BoardCommands
+  parent: WSSInterfacing.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: BoardCommands
+  nameWithType: WSSMessageIDs.BoardCommands
+  fullName: WSSInterfacing.WSSMessageIDs.BoardCommands
+  type: Field
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Generic board control and diagnostics.
+  example: []
+  syntax:
+    content: BoardCommands = 9
+    return:
+      type: WSSInterfacing.WSSMessageIDs
+- uid: WSSInterfacing.WSSMessageIDs.StreamChangeAll
+  commentId: F:WSSInterfacing.WSSMessageIDs.StreamChangeAll
+  id: StreamChangeAll
+  parent: WSSInterfacing.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: StreamChangeAll
+  nameWithType: WSSMessageIDs.StreamChangeAll
+  fullName: WSSInterfacing.WSSMessageIDs.StreamChangeAll
+  type: Field
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: 'Streaming update: all fields.'
+  example: []
+  syntax:
+    content: StreamChangeAll = 48
+    return:
+      type: WSSInterfacing.WSSMessageIDs
+- uid: WSSInterfacing.WSSMessageIDs.StreamChangeNoIPI
+  commentId: F:WSSInterfacing.WSSMessageIDs.StreamChangeNoIPI
+  id: StreamChangeNoIPI
+  parent: WSSInterfacing.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: StreamChangeNoIPI
+  nameWithType: WSSMessageIDs.StreamChangeNoIPI
+  fullName: WSSInterfacing.WSSMessageIDs.StreamChangeNoIPI
+  type: Field
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: 'Streaming update: no IPI field.'
+  example: []
+  syntax:
+    content: StreamChangeNoIPI = 49
+    return:
+      type: WSSInterfacing.WSSMessageIDs
+- uid: WSSInterfacing.WSSMessageIDs.StreamChangeNoPA
+  commentId: F:WSSInterfacing.WSSMessageIDs.StreamChangeNoPA
+  id: StreamChangeNoPA
+  parent: WSSInterfacing.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: StreamChangeNoPA
+  nameWithType: WSSMessageIDs.StreamChangeNoPA
+  fullName: WSSInterfacing.WSSMessageIDs.StreamChangeNoPA
+  type: Field
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: 'Streaming update: no pulse amplitude.'
+  example: []
+  syntax:
+    content: StreamChangeNoPA = 51
+    return:
+      type: WSSInterfacing.WSSMessageIDs
+- uid: WSSInterfacing.WSSMessageIDs.StreamChangeNoPW
+  commentId: F:WSSInterfacing.WSSMessageIDs.StreamChangeNoPW
+  id: StreamChangeNoPW
+  parent: WSSInterfacing.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: StreamChangeNoPW
+  nameWithType: WSSMessageIDs.StreamChangeNoPW
+  fullName: WSSInterfacing.WSSMessageIDs.StreamChangeNoPW
+  type: Field
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: 'Streaming update: no pulse width.'
+  example: []
+  syntax:
+    content: StreamChangeNoPW = 50
+    return:
+      type: WSSInterfacing.WSSMessageIDs
+references:
+- uid: WSSInterfacing
+  commentId: N:WSSInterfacing
+  href: WSSInterfacing.html
+  name: WSSInterfacing
+  nameWithType: WSSInterfacing
+  fullName: WSSInterfacing
+- uid: WSSInterfacing.WSSMessageIDs
+  commentId: T:WSSInterfacing.WSSMessageIDs
+  parent: WSSInterfacing
+  href: WSSInterfacing.WSSMessageIDs.html
+  name: WSSMessageIDs
+  nameWithType: WSSMessageIDs
+  fullName: WSSInterfacing.WSSMessageIDs

@@ -1,0 +1,111 @@
+﻿---
+output:
+  html_document: default
+  pdf_document: default
+---
+# Building Software API Docs (DocFX)
+
+This guide explains how to generate the WSS software documentation site (DocFX) while keeping the code in its original repository.
+
+The documentation project lives in this repo under `apiDocs/` and reads C# sources from your code repo via an environment variable or command-line argument.
+
+## Prerequisites
+
+- .NET SDK 7.x or later (for building the small ApiProject)
+- DocFX CLI in your PATH (https://dotnet.github.io/docfx/)
+- PowerShell (Windows) or Bash (macOS/Linux/Git Bash on Windows)
+
+> If DocFX isn’t installed, the build script will remind you to run `docfx metadata` and `docfx build` once you add it to PATH.
+
+## Locate the code
+
+Point the docs project at the WSS code root (the `WSSInterfacingModule` folder). Example path on Windows:
+
+```
+A:\Documents\GIT Projects\SimpleWSSStimConsole\Assets\SubModules\WSSInterfacingModule
+```
+
+You can pass this path as an argument or set an environment variable.
+
+## Windows (PowerShell)
+
+Option A — set env var then run:
+
+```powershell
+$env:WSS_CODE_ROOT = 'A:\Documents\GIT Projects\SimpleWSSStimConsole\Assets\SubModules\WSSInterfacingModule'
+A:\\Documents\\GIT Projects\\WSS-documentation\\apiDocs\build-docs.ps1
+```
+
+Option B — pass the path each time:
+
+```powershell
+A:\\Documents\\GIT Projects\\WSS-documentation\\apiDocs\build-docs.ps1 -CodeRoot 'A:\Documents\GIT Projects\SimpleWSSStimConsole\Assets\SubModules\WSSInterfacingModule'
+```
+
+Serve locally after build (auto-hosts the site):
+
+```powershell
+A:\\Documents\\GIT Projects\\WSS-documentation\\apiDocs\build-docs.ps1 -CodeRoot '...\WSSInterfacingModule' -Serve
+```
+
+Execution policy
+
+If scripts are blocked:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File "A:\\Documents\\GIT Projects\\WSS-documentation\\docs\\build-docs.ps1" -CodeRoot "...\\WSSInterfacingModule"
+```
+
+## macOS/Linux or Git Bash (Windows)
+
+Option A — set env var then run:
+
+```bash
+export CODE_ROOT="/path/to/SimpleWSSStimConsole/Assets/SubModules/WSSInterfacingModule"
+"/path/to/WSS-documentation/apiDocs/build-docs.sh"
+```
+
+Option B — pass the path each time:
+
+```bash
+"/path/to/WSS-documentation/apiDocs/build-docs.sh" \
+  "/path/to/SimpleWSSStimConsole/Assets/SubModules/WSSInterfacingModule"
+```
+
+## What the scripts do
+
+- Clean build: removes `apiDocs/_site`, `apiDocs/api`, and `apiDocs/ApiProject/Transformed`
+- Transforms/copies C# source into `apiDocs/ApiProject/Transformed`
+  - Uses `apiDocs/tools/WrapForDocs.ps1` on Windows (adds a namespace wrapper if missing)
+- Builds the ApiProject to produce XML docs
+- Runs `docfx metadata` then `docfx build`
+
+## Output
+
+- The static site is generated at: `apiDocs/_site`
+- Open `apiDocs/_site/index.html` in a browser (or use `-Serve` in PowerShell)
+
+## Troubleshooting
+
+- DocFX not found
+  - Install DocFX and ensure `docfx` is on PATH, then run:
+    ```
+    cd \"A:\\Documents\\GIT Projects\\WSS-documentation\\apiDocs\"
+    docfx metadata && docfx build
+    ```
+- Wrong code path
+  - Verify the `WSSInterfacingModule` path and that it contains the expected `.cs` files.
+- Namespace/compile warnings
+  - The docs build uses a small ApiProject; we suppress common nullability warnings that don’t affect documentation output.
+- Permissions
+  - On Windows, run PowerShell as admin if you hit policy/permission issues.
+
+## Repository layout
+
+- `apiDocs/` — DocFX project (docfx.json, templates, tools)
+- `apiDocs/build-docs.ps1` — PowerShell build script (Windows)
+- `apiDocs/build-docs.sh` — Bash build script (macOS/Linux/Git Bash)
+- `apiDocs/_site/` — Generated website (output)
+
+
+

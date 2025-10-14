@@ -1,0 +1,2929 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class WssClient | WSS Interfacing Documentation </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class WssClient | WSS Interfacing Documentation ">
+    
+    <meta name="description" content="Low-level WSS protocol client. Frames commands using an , sends them over an , and correlates responses by (target,msgId). Provides async connect/disconnect and a request/response pipeline used by higher-level cores and layers.">
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="WSSInterfacing.WssClient">
+
+
+
+  <h1 id="WSSInterfacing_WssClient" data-uid="WSSInterfacing.WssClient" class="text-break">Class WssClient</h1>
+  <div class="markdown level0 summary"><p>Low-level WSS protocol client. Frames commands using an <a class="xref" href="WSSInterfacing.IFrameCodec.html">IFrameCodec</a>,
+sends them over an <a class="xref" href="WSSInterfacing.ITransport.html">ITransport</a>, and correlates responses by
+<code>(target,msgId)</code>. Provides async connect/disconnect and a request/response
+pipeline used by higher-level cores and layers.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">object</span></div>
+    <div class="level1"><span class="xref">WssClient</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="WSSInterfacing.html">WSSInterfacing</a></h6>
+  <h6><strong>Assembly</strong>: ApiProject.dll</h6>
+  <h5 id="WSSInterfacing_WssClient_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class WssClient</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+
+
+  <a id="WSSInterfacing_WssClient__ctor_" data-uid="WSSInterfacing.WssClient.#ctor*"></a>
+  <h4 id="WSSInterfacing_WssClient__ctor_WSSInterfacing_ITransport_WSSInterfacing_IFrameCodec_WSSInterfacing_WSSVersionHandler_System_Byte_" data-uid="WSSInterfacing.WssClient.#ctor(WSSInterfacing.ITransport,WSSInterfacing.IFrameCodec,WSSInterfacing.WSSVersionHandler,System.Byte)">WssClient(ITransport, IFrameCodec, WSSVersionHandler, byte)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new client over the provided transport and frame codec.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public WssClient(ITransport transport, IFrameCodec codec, WSSVersionHandler versionHandler, byte sender = 0)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.ITransport.html">ITransport</a></td>
+        <td><span class="parametername">transport</span></td>
+        <td><p>Underlying byte transport (e.g., serial, BLE).</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.IFrameCodec.html">IFrameCodec</a></td>
+        <td><span class="parametername">codec</span></td>
+        <td><p>Frame codec (escape/unescape + checksum).</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WSSVersionHandler.html">WSSVersionHandler</a></td>
+        <td><span class="parametername">versionHandler</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">byte</span></td>
+        <td><span class="parametername">sender</span></td>
+        <td><p>Sender address byte (defaults to 0x00).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+</h3>
+
+
+  <a id="WSSInterfacing_WssClient_Started_" data-uid="WSSInterfacing.WssClient.Started*"></a>
+  <h4 id="WSSInterfacing_WssClient_Started" data-uid="WSSInterfacing.WssClient.Started">Started</h4>
+  <div class="markdown level1 summary"><p>Indicates whether the WSS client connection has been started.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Started { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+
+
+  <a id="WSSInterfacing_WssClient_AddEventToSchedule_" data-uid="WSSInterfacing.WssClient.AddEventToSchedule*"></a>
+  <h4 id="WSSInterfacing_WssClient_AddEventToSchedule_System_Int32_System_Int32_WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.AddEventToSchedule(System.Int32,System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">AddEventToSchedule(int, int, WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Adds an event to a schedule.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; AddEventToSchedule(int eventId, int scheduleId, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventId</span></td>
+        <td><p>Event ID (0â€“255).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">scheduleId</span></td>
+        <td><p>Schedule ID (0â€“255).</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td><p>Target WSS device (default: Wss1).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Cancellation token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_ChangeGroupState_" data-uid="WSSInterfacing.WssClient.ChangeGroupState*"></a>
+  <h4 id="WSSInterfacing_WssClient_ChangeGroupState_System_Int32_System_Int32_WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.ChangeGroupState(System.Int32,System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">ChangeGroupState(int, int, WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Changes a sync group's state: READY=1, ACTIVE=0, SUSPEND=2.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; ChangeGroupState(int syncSignal, int state, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">syncSignal</span></td>
+        <td><p>Sync group ID (0â€“255).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">state</span></td>
+        <td><p>State (0=ACTIVE, 1=READY, 2=SUSPEND).</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td><p>Target WSS device.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Cancellation token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_ChangeScheduleDuration_" data-uid="WSSInterfacing.WssClient.ChangeScheduleDuration*"></a>
+  <h4 id="WSSInterfacing_WssClient_ChangeScheduleDuration_System_Int32_System_Int32_WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.ChangeScheduleDuration(System.Int32,System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">ChangeScheduleDuration(int, int, WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Changes a schedule's duration (8-bit variant). For 16-bit, prefer recreating the schedule.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; ChangeScheduleDuration(int scheduleId, int durationMs, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">scheduleId</span></td>
+        <td><p>Schedule ID (0â€“255).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">durationMs</span></td>
+        <td><p>Duration in milliseconds (0â€“255 in this subcommand TODO expand this command to the full range od=f 0 to 1000).</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td><p>Target WSS device.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Cancellation token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_ChangeScheduleGroup_" data-uid="WSSInterfacing.WssClient.ChangeScheduleGroup*"></a>
+  <h4 id="WSSInterfacing_WssClient_ChangeScheduleGroup_System_Int32_System_Int32_WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.ChangeScheduleGroup(System.Int32,System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">ChangeScheduleGroup(int, int, WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Changes a schedule's sync group.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; ChangeScheduleGroup(int scheduleId, int syncSignal, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">scheduleId</span></td>
+        <td><p>Schedule ID (0â€“255).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">syncSignal</span></td>
+        <td><p>Sync group ID (0â€“255).</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td><p>Target WSS device.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Cancellation token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_ChangeScheduleState_" data-uid="WSSInterfacing.WssClient.ChangeScheduleState*"></a>
+  <h4 id="WSSInterfacing_WssClient_ChangeScheduleState_System_Int32_System_Int32_WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.ChangeScheduleState(System.Int32,System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">ChangeScheduleState(int, int, WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Changes a schedule's state.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; ChangeScheduleState(int scheduleId, int state, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">scheduleId</span></td>
+        <td><p>Schedule ID (0â€“255).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">state</span></td>
+        <td><p>State (0=ACTIVE, 1=READY, 2=SUSPEND).</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td><p>Target WSS device.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Cancellation token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_Clear_" data-uid="WSSInterfacing.WssClient.Clear*"></a>
+  <h4 id="WSSInterfacing_WssClient_Clear_System_Int32_WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.Clear(System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">Clear(int, WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Clears groups of resources (0x40): 0=All, 1=Events, 2=Schedules, 3=Contacts.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; Clear(int configIndex, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">configIndex</span></td>
+        <td><p>Clear events(1), schedules(2), contacts(3), all(0).</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_ConnectAsync_" data-uid="WSSInterfacing.WssClient.ConnectAsync*"></a>
+  <h4 id="WSSInterfacing_WssClient_ConnectAsync_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.ConnectAsync(System.Threading.CancellationToken)">ConnectAsync(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Establishes a connection to the specified WSS device.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task ConnectAsync(CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>The cancellation token to observe.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span></td>
+        <td><p>A task representing the asynchronous connection operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">InvalidOperationException</span></td>
+        <td><p>Thrown if already connected to the target.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">OperationCanceledException</span></td>
+        <td><p>Thrown if the operation is canceled.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_CreateContactConfig_" data-uid="WSSInterfacing.WssClient.CreateContactConfig*"></a>
+  <h4 id="WSSInterfacing_WssClient_CreateContactConfig_System_Int32_System_Int32___System_Int32___System_Int32_WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.CreateContactConfig(System.Int32,System.Int32[],System.Int32[],System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">CreateContactConfig(int, int[], int[], int, WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Creates a contact configuration for the stimulator.
+Defines the sources and sinks for stimulation and recharge phases.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; CreateContactConfig(int contactId, int[] stimSetup, int[] rechargeSetup, int LEDs, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">contactId</span></td>
+        <td><p>ID for the contact configuration (0â€“255).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span>[]</td>
+        <td><span class="parametername">stimSetup</span></td>
+        <td><p>Array of 4 integers (0 = not used, 1 = source, 2 = sink) representing
+the stimulation phase for each output on the stimulator.<br>
+Index 0 = closest to switch, index 3 = farthest from switch.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span>[]</td>
+        <td><span class="parametername">rechargeSetup</span></td>
+        <td><p>Array of 4 integers (0 = not used, 1 = source, 2 = sink) representing
+the recharge phase for each output on the stimulator.<br>
+Index 0 = closest to switch, index 3 = farthest from switch.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">LEDs</span></td>
+        <td><p>Optional int representing LED locations to light during stimulation
+Index int read as binary so 0011 or 3 is both the first and second LEDs (first is clossest to the switch).
+1 in binary is on and 0 is off. The trigering of the event will trigger the on LEDs
+Ignored if not supported by firmware.
+Pass -1 to indicate no LED configuration.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td><p>The WSS target device to send the configuration to.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Optional cancellation token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
+        <td><p>Processed response string from the WSS target.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_CreateEvent_" data-uid="WSSInterfacing.WssClient.CreateEvent*"></a>
+  <h4 id="WSSInterfacing_WssClient_CreateEvent_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32___System_Int32___System_Int32___WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.CreateEvent(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32[],System.Int32[],System.Int32[],WSSInterfacing.WssTarget,System.Threading.CancellationToken)">CreateEvent(int, int, int, int, int, int[], int[], int[], WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Creates an event with explicit shape IDs, amplitude arrays for standard/recharge phases, and pulse width settings.
+PW fields are sent as 8-bit if all â‰¤ oneByte; otherwise all three (std, IPD, rech) are encoded as 16-bit big-endian.
+Wire order for PW matches your original: [stdPW, IPD, rechPW].</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; CreateEvent(int eventId, int delayMs, int contactConfigId, int standardShapeId, int rechargeShapeId, int[] standardAmp, int[] rechargeAmp, int[] pw, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventId</span></td>
+        <td><p>Event ID (0â€“255 or your chosen cap).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">delayMs</span></td>
+        <td><p>Delay from schedule start in milliseconds (0â€“255 in this variant).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">contactConfigId</span></td>
+        <td><p>Contact configuration ID (0â€“255).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">standardShapeId</span></td>
+        <td><p>Shape ID used during the standard (stim) phase:
+0=Rectangular (default), 1=Rectangular (DAC), 2=Sine, 3=Gaussian,
+4=Exponential Increase, 5=Exponential Decrease,
+6=Linear Increase, 7=Linear Decrease,
+10=Trapezoid (setup required),
+11=User Program 1 (setup required),
+12=User Program 2 (setup required),
+13=User Program 3 (setup required).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">rechargeShapeId</span></td>
+        <td><p>Shape ID used during the recharge phase (same mapping as <code class="paramref">standardShapeId</code>).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span>[]</td>
+        <td><span class="parametername">standardAmp</span></td>
+        <td><p>Four amplitudes for the standard (stim) phase (0â€“255 each).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span>[]</td>
+        <td><span class="parametername">rechargeAmp</span></td>
+        <td><p>Four amplitudes for the recharge phase (0â€“255 each).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span>[]</td>
+        <td><span class="parametername">pw</span></td>
+        <td><p>Three PW parameters: [standardPW, rechargePW, IPD] in microseconds.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td><p>Target WSS device.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Cancellation token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_CreateEvent_" data-uid="WSSInterfacing.WssClient.CreateEvent*"></a>
+  <h4 id="WSSInterfacing_WssClient_CreateEvent_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.CreateEvent(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">CreateEvent(int, int, int, int, int, WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Creates an event with explicit shape IDs for the standard and recharge phases.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; CreateEvent(int eventId, int delayMs, int contactConfigId, int standardShapeId, int rechargeShapeId, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventId</span></td>
+        <td><p>Event ID (0â€“255).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">delayMs</span></td>
+        <td><p>Delay from schedule start in milliseconds (0â€“255 in this command variant).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">contactConfigId</span></td>
+        <td><p>Contact configuration ID (0â€“255).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">standardShapeId</span></td>
+        <td><p>Shape ID used during the standard (stim) phase:
+0=Rectangular (default), 1=Rectangular (DAC), 2=Sine, 3=Gaussian,
+4=Exponential Increase, 5=Exponential Decrease,
+6=Linear Increase, 7=Linear Decrease,
+10=Trapezoid (setup required),
+11=User Program 1 (setup required),
+12=User Program 2 (setup required),
+13=User Program 3 (setup required).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">rechargeShapeId</span></td>
+        <td><p>Shape ID used during the recharge phase (same mapping as <code class="paramref">standardShapeId</code>).</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td><p>Target WSS device (default: Wss1).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Optional cancellation token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
+        <td><p>Processed response string from the WSS target.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_CreateEvent_" data-uid="WSSInterfacing.WssClient.CreateEvent*"></a>
+  <h4 id="WSSInterfacing_WssClient_CreateEvent_System_Int32_System_Int32_System_Int32_System_Int32___System_Int32___System_Int32___WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.CreateEvent(System.Int32,System.Int32,System.Int32,System.Int32[],System.Int32[],System.Int32[],WSSInterfacing.WssTarget,System.Threading.CancellationToken)">CreateEvent(int, int, int, int[], int[], int[], WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Creates an event with amplitude arrays for standard/recharge phases plus pulse width settings.
+PW fields are sent as 8-bit if all â‰¤ oneByte; otherwise all three (std, IPD, rech) are encoded as 16-bit big-endian.
+Wire order for PW matches your original: [stdPW, IPD, rechPW].</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; CreateEvent(int eventId, int delayMs, int contactConfigId, int[] standardAmp, int[] rechargeAmp, int[] pw, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventId</span></td>
+        <td><p>Event ID (0â€“255 or your chosen cap).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">delayMs</span></td>
+        <td><p>Delay from schedule start in milliseconds (0â€“255 in this variant).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">contactConfigId</span></td>
+        <td><p>Contact configuration ID (0â€“255).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span>[]</td>
+        <td><span class="parametername">standardAmp</span></td>
+        <td><p>Four amplitudes for the standard (stim) phase (0â€“255 each).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span>[]</td>
+        <td><span class="parametername">rechargeAmp</span></td>
+        <td><p>Four amplitudes for the recharge phase (0â€“255 each).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span>[]</td>
+        <td><span class="parametername">pw</span></td>
+        <td><p>Three PW parameters: [standardPW, rechargePW, IPD] in microseconds.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td><p>Target WSS device.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Cancellation token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_CreateEvent_" data-uid="WSSInterfacing.WssClient.CreateEvent*"></a>
+  <h4 id="WSSInterfacing_WssClient_CreateEvent_System_Int32_System_Int32_System_Int32_WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.CreateEvent(System.Int32,System.Int32,System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">CreateEvent(int, int, int, WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Creates a basic event on the WSS device.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; CreateEvent(int eventId, int delayMs, int contactConfigId, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventId</span></td>
+        <td><p>Event ID (0â€“255).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">delayMs</span></td>
+        <td><p>Delay from schedule start in milliseconds (0â€“255 in this command variant).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">contactConfigId</span></td>
+        <td><p>Contact configuration ID (0â€“255).</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td><p>Target WSS device (default: Wss1).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Optional cancellation token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
+        <td><p>Processed response string from the WSS target.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_CreateSchedule_" data-uid="WSSInterfacing.WssClient.CreateSchedule*"></a>
+  <h4 id="WSSInterfacing_WssClient_CreateSchedule_System_Int32_System_Int32_System_Int32_WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.CreateSchedule(System.Int32,System.Int32,System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">CreateSchedule(int, int, int, WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Creates a schedule.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; CreateSchedule(int scheduleId, int durationMs, int syncSignal, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">scheduleId</span></td>
+        <td><p>Schedule ID (0â€“255).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">durationMs</span></td>
+        <td><p>Duration in milliseconds (16-bit, big-endian on wire).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">syncSignal</span></td>
+        <td><p>Sync group ID (0â€“255).</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td><p>Target WSS device.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Cancellation token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_DeleteContactConfig_" data-uid="WSSInterfacing.WssClient.DeleteContactConfig*"></a>
+  <h4 id="WSSInterfacing_WssClient_DeleteContactConfig_System_Int32_WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.DeleteContactConfig(System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">DeleteContactConfig(int, WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Deletes an existing contact configuration on the WSS device by its ID.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; DeleteContactConfig(int contactId, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">contactId</span></td>
+        <td><p>The contact configuration ID to delete (0â€“255).</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td><p>The WSS target device to send the request to (default: Wss1).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Optional cancellation token to cancel the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
+        <td><p>Processed response string from the WSS target.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_DeleteEvent_" data-uid="WSSInterfacing.WssClient.DeleteEvent*"></a>
+  <h4 id="WSSInterfacing_WssClient_DeleteEvent_System_Int32_WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.DeleteEvent(System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">DeleteEvent(int, WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Deletes an existing event on the WSS device by its ID.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; DeleteEvent(int eventId, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventId</span></td>
+        <td><p>Event ID (0â€“255).</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td><p>Target WSS device (default: Wss1).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Cancellation token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_DeleteEventFromSchedule_" data-uid="WSSInterfacing.WssClient.DeleteEventFromSchedule*"></a>
+  <h4 id="WSSInterfacing_WssClient_DeleteEventFromSchedule_System_Int32_WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.DeleteEventFromSchedule(System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">DeleteEventFromSchedule(int, WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Removes an event from its assigned schedule.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; DeleteEventFromSchedule(int eventId, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventId</span></td>
+        <td><p>Event ID (0â€“255).</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td><p>Target WSS device (default: Wss1).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Cancellation token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_DeleteSchedule_" data-uid="WSSInterfacing.WssClient.DeleteSchedule*"></a>
+  <h4 id="WSSInterfacing_WssClient_DeleteSchedule_System_Int32_WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.DeleteSchedule(System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">DeleteSchedule(int, WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Deletes a schedule by ID.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; DeleteSchedule(int scheduleId, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">scheduleId</span></td>
+        <td><p>Schedule ID (0â€“255).</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td><p>Target WSS device.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Cancellation token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_DisconnectAsync_" data-uid="WSSInterfacing.WssClient.DisconnectAsync*"></a>
+  <h4 id="WSSInterfacing_WssClient_DisconnectAsync_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.DisconnectAsync(System.Threading.CancellationToken)">DisconnectAsync(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Closes the active connection to the specified WSS device.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task DisconnectAsync(CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>The cancellation token to observe.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span></td>
+        <td><p>A task representing the asynchronous disconnection operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">InvalidOperationException</span></td>
+        <td><p>Thrown if not connected to the target.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">OperationCanceledException</span></td>
+        <td><p>Thrown if the operation is canceled.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_Dispose_" data-uid="WSSInterfacing.WssClient.Dispose*"></a>
+  <h4 id="WSSInterfacing_WssClient_Dispose" data-uid="WSSInterfacing.WssClient.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"><p>Releases all resources used by the <a class="xref" href="WSSInterfacing.WssClient.html">WssClient</a>.
+Closes the connection and cleans up internal state.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+
+
+  <a id="WSSInterfacing_WssClient_Echo_" data-uid="WSSInterfacing.WssClient.Echo*"></a>
+  <h4 id="WSSInterfacing_WssClient_Echo_System_Int32_System_Int32_WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.Echo(System.Int32,System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">Echo(int, int, WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Echo round-trip (0x07). Two opaque data bytes are echoed back.
+Untested, and reading from WSS devices is not yet implemented.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; Echo(int echoData1, int echoData2, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">echoData1</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">echoData2</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_EditEventAmp_" data-uid="WSSInterfacing.WssClient.EditEventAmp*"></a>
+  <h4 id="WSSInterfacing_WssClient_EditEventAmp_System_Int32_System_Int32___System_Int32___WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.EditEventAmp(System.Int32,System.Int32[],System.Int32[],WSSInterfacing.WssTarget,System.Threading.CancellationToken)">EditEventAmp(int, int[], int[], WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Changes an event's amplitude configuration for standard and recharge phases.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; EditEventAmp(int eventId, int[] standardAmp, int[] rechargeAmp, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventId</span></td>
+        <td><p>Event ID (0â€“255).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span>[]</td>
+        <td><span class="parametername">standardAmp</span></td>
+        <td><p>Four amplitudes for the standard (stim) phase, 0â€“255 each.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span>[]</td>
+        <td><span class="parametername">rechargeAmp</span></td>
+        <td><p>Four amplitudes for the recharge phase, 0â€“255 each.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td><p>Target WSS device (default: Wss1).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Cancellation token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_EditEventContactConfig_" data-uid="WSSInterfacing.WssClient.EditEventContactConfig*"></a>
+  <h4 id="WSSInterfacing_WssClient_EditEventContactConfig_System_Int32_System_Int32_WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.EditEventContactConfig(System.Int32,System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">EditEventContactConfig(int, int, WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Changes an event's output/contact configuration by ID.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; EditEventContactConfig(int eventId, int contactConfigId, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventId</span></td>
+        <td><p>Event ID (0â€“255).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">contactConfigId</span></td>
+        <td><p>Output/contact configuration ID (0â€“255).</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td><p>Target WSS device (default: Wss1).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Cancellation token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_EditEventDelay_" data-uid="WSSInterfacing.WssClient.EditEventDelay*"></a>
+  <h4 id="WSSInterfacing_WssClient_EditEventDelay_System_Int32_System_Int32_WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.EditEventDelay(System.Int32,System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">EditEventDelay(int, int, WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Changes an event's delay (ms from schedule start).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; EditEventDelay(int eventId, int delayMs, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventId</span></td>
+        <td><p>Event ID (0â€“255).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">delayMs</span></td>
+        <td><p>Delay in milliseconds (0â€“255 in this variant).</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td><p>Target WSS device.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Cancellation token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_EditEventEnableBit_" data-uid="WSSInterfacing.WssClient.EditEventEnableBit*"></a>
+  <h4 id="WSSInterfacing_WssClient_EditEventEnableBit_System_Int32_System_Int32_WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.EditEventEnableBit(System.Int32,System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">EditEventEnableBit(int, int, WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Changes an event's ratio (allowed: 1, 2, 4, 8).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; EditEventEnableBit(int eventId, int enable, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventId</span></td>
+        <td><p>Event ID (0â€“255).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">enable</span></td>
+        <td><p>enable bit (0 or 1).</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td><p>Target WSS device.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Cancellation token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_EditEventPw_" data-uid="WSSInterfacing.WssClient.EditEventPw*"></a>
+  <h4 id="WSSInterfacing_WssClient_EditEventPw_System_Int32_System_Int32___WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.EditEventPw(System.Int32,System.Int32[],WSSInterfacing.WssTarget,System.Threading.CancellationToken)">EditEventPw(int, int[], WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Changes an event's pulse widths: [standardPW, rechargePW, IPD] (Î¼s).
+Uses 8-bit fields if all â‰¤ oneByte; otherwise encodes all three as 16-bit big-endian.
+Wire order matches firmware: [stdPW, IPD, rechPW].</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; EditEventPw(int eventId, int[] pw, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventId</span></td>
+        <td><p>Event ID (0â€“255).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span>[]</td>
+        <td><span class="parametername">pw</span></td>
+        <td><p>Three PW values: [standardPW, rechargePW, IPD] in microseconds.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td><p>Target WSS device (default: Wss1).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Cancellation token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_EditEventRatio_" data-uid="WSSInterfacing.WssClient.EditEventRatio*"></a>
+  <h4 id="WSSInterfacing_WssClient_EditEventRatio_System_Int32_System_Int32_WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.EditEventRatio(System.Int32,System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">EditEventRatio(int, int, WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Changes an event's ratio (allowed: 1, 2, 4, 8).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; EditEventRatio(int eventId, int ratio, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventId</span></td>
+        <td><p>Event ID (0â€“255).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">ratio</span></td>
+        <td><p>Ratio value (must be one of 1, 2, 4, 8).</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td><p>Target WSS device.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Cancellation token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_EditEventShape_" data-uid="WSSInterfacing.WssClient.EditEventShape*"></a>
+  <h4 id="WSSInterfacing_WssClient_EditEventShape_System_Int32_System_Int32_System_Int32_WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.EditEventShape(System.Int32,System.Int32,System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">EditEventShape(int, int, int, WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Changes an event's shape configuration.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; EditEventShape(int eventId, int standardShapeId, int rechargeShapeId, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventId</span></td>
+        <td><p>Event ID (0â€“255).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">standardShapeId</span></td>
+        <td><p>Shape ID used during the standard (stim) phase:
+0=Rectangular (default), 1=Rectangular (DAC), 2=Sine, 3=Gaussian,
+4=Exponential Increase, 5=Exponential Decrease,
+6=Linear Increase, 7=Linear Decrease,
+10=Trapezoid (setup required),
+11=User Program 1 (setup required),
+12=User Program 2 (setup required),
+13=User Program 3 (setup required).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">rechargeShapeId</span></td>
+        <td><p>Shape ID used during the recharge phase (same mapping as <code class="paramref">standardShapeId</code>).</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td><p>Target WSS device.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Cancellation token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_EditSettings_" data-uid="WSSInterfacing.WssClient.EditSettings*"></a>
+  <h4 id="WSSInterfacing_WssClient_EditSettings_System_Int32_System_Int32_WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.EditSettings(System.Int32,System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">EditSettings(int, int, WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Writes a single settings byte at <code class="paramref">address</code> to <code class="paramref">value</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; EditSettings(int address, int value, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">address</span></td>
+        <td><p>Settings address (0â€“255).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>Value to write (0â€“255).</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td><p>Target WSS device.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Cancellation token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_EraseLog_" data-uid="WSSInterfacing.WssClient.EraseLog*"></a>
+  <h4 id="WSSInterfacing_WssClient_EraseLog_WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.EraseLog(WSSInterfacing.WssTarget,System.Threading.CancellationToken)">EraseLog(WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Erases device log data.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; EraseLog(WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td><p>Target WSS device.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Cancellation token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_GetLog_" data-uid="WSSInterfacing.WssClient.GetLog*"></a>
+  <h4 id="WSSInterfacing_WssClient_GetLog_WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.GetLog(WSSInterfacing.WssTarget,System.Threading.CancellationToken)">GetLog(WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Requests device log data (raw read mode on device side)
+Untested TODO.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; GetLog(WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td><p>Target WSS device.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Cancellation token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_ModuleQuery_" data-uid="WSSInterfacing.WssClient.ModuleQuery*"></a>
+  <h4 id="WSSInterfacing_WssClient_ModuleQuery_System_Int32_WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.ModuleQuery(System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">ModuleQuery(int, WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Gets settings or information for that target WSS (0x01): 0=serial number, 1=settings array.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; ModuleQuery(int moduleIndex, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">moduleIndex</span></td>
+        <td><p>serial number(0), settings array(1).</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_MoveEventToSchedule_" data-uid="WSSInterfacing.WssClient.MoveEventToSchedule*"></a>
+  <h4 id="WSSInterfacing_WssClient_MoveEventToSchedule_System_Int32_System_Int32_System_Int32_WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.MoveEventToSchedule(System.Int32,System.Int32,System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">MoveEventToSchedule(int, int, int, WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Moves an event to a different schedule with a new delay offset.
+Fails on-device if <code class="paramref">delayMs</code> exceeds the schedule period.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; MoveEventToSchedule(int eventId, int scheduleId, int delayMs, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventId</span></td>
+        <td><p>Event ID (0â€“255).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">scheduleId</span></td>
+        <td><p>Destination schedule ID (0â€“255).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">delayMs</span></td>
+        <td><p>Delay from schedule start in milliseconds (0â€“255 in this variant).</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td><p>Target WSS device (default: Wss1).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Cancellation token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_PopulateBoardSettings_" data-uid="WSSInterfacing.WssClient.PopulateBoardSettings*"></a>
+  <h4 id="WSSInterfacing_WssClient_PopulateBoardSettings_WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.PopulateBoardSettings(WSSInterfacing.WssTarget,System.Threading.CancellationToken)">PopulateBoardSettings(WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Loads settings from FRAM into the active board settings.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; PopulateBoardSettings(WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td><p>Target WSS device.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Cancellation token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_PopulateFramSettings_" data-uid="WSSInterfacing.WssClient.PopulateFramSettings*"></a>
+  <h4 id="WSSInterfacing_WssClient_PopulateFramSettings_WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.PopulateFramSettings(WSSInterfacing.WssTarget,System.Threading.CancellationToken)">PopulateFramSettings(WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Saves current board settings into FRAM.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; PopulateFramSettings(WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td><p>Target WSS device.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Cancellation token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_RequestAnalog_" data-uid="WSSInterfacing.WssClient.RequestAnalog*"></a>
+  <h4 id="WSSInterfacing_WssClient_RequestAnalog_WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.RequestAnalog(WSSInterfacing.WssTarget,System.Threading.CancellationToken)">RequestAnalog(WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Requests specific battery and impedance data from the WSS device.
+TODO Not implemented in firmware, and reading from WSS devices is not yet implemented.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; RequestAnalog(WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_RequestConfigs_" data-uid="WSSInterfacing.WssClient.RequestConfigs*"></a>
+  <h4 id="WSSInterfacing_WssClient_RequestConfigs_System_Int32_System_Int32_WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.RequestConfigs(System.Int32,System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">RequestConfigs(int, int, WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Sends a request to the WSS target for a specific configuration type.
+This is a general-purpose request that can target output configs, events,
+schedules, and their various sub-configurations.
+Untested, and reading from WSS devices is not yet implemented.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; RequestConfigs(int command, int id, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">command</span></td>
+        <td><p>Integer code that selects which configuration to request:
+0 = Output Configuration List
+1 = Output Configuration details
+2 = Event List
+3 = Basic Event configuration
+4 = Event output configuration
+5 = Event stimulation configuration
+6 = Event shape configuration
+7 = Event burst configuration
+8 = Schedule basic configuration
+9 = Schedule listing</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>ID associated with the requested configuration (0â€“255).</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td><p>Target WSS device to query (default: Wss1).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Optional cancellation token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
+        <td><p>Processed response string from the WSS target.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_Reset_" data-uid="WSSInterfacing.WssClient.Reset*"></a>
+  <h4 id="WSSInterfacing_WssClient_Reset_WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.Reset(WSSInterfacing.WssTarget,System.Threading.CancellationToken)">Reset(WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Resets the microcontroller (0x04).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; Reset(WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_ResetSchedules_" data-uid="WSSInterfacing.WssClient.ResetSchedules*"></a>
+  <h4 id="WSSInterfacing_WssClient_ResetSchedules_WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.ResetSchedules(WSSInterfacing.WssTarget,System.Threading.CancellationToken)">ResetSchedules(WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Resets all schedules.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; ResetSchedules(WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td><p>Target WSS device.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Cancellation token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_SetCustomWaveform_" data-uid="WSSInterfacing.WssClient.SetCustomWaveform*"></a>
+  <h4 id="WSSInterfacing_WssClient_SetCustomWaveform_System_Int32_System_Int32___System_Int32_WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.SetCustomWaveform(System.Int32,System.Int32[],System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">SetCustomWaveform(int, int[], int, WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Uploads a custom waveform chunk (8 samples) into a slot.
+Call this 4 times (msgNumber 0..3) to send all 32 samples.
+Each sample is encoded as 16-bit big-endian.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; SetCustomWaveform(int slot, int[] waveformChunk8, int msgNumber, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">slot</span></td>
+        <td><p>Waveform slot (0â€“255).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span>[]</td>
+        <td><span class="parametername">waveformChunk8</span></td>
+        <td><p>Exactly 8 sample values for this chunk (0..2000 each).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">msgNumber</span></td>
+        <td><p>Chunk index (0..3) â€” send four chunks to fill 32 samples.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td><p>Target WSS device.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Cancellation token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_StartStim_" data-uid="WSSInterfacing.WssClient.StartStim*"></a>
+  <h4 id="WSSInterfacing_WssClient_StartStim_WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.StartStim(WSSInterfacing.WssTarget,System.Threading.CancellationToken)">StartStim(WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Sends the &quot;start stimulation&quot;.
+0x01 = Start Ack expected.
+Broadcast is acceptable for a system-wide switch.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; StartStim(WssTarget target = WssTarget.Broadcast, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td><p>Target device (often Broadcast).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Cancellation token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_StopStim_" data-uid="WSSInterfacing.WssClient.StopStim*"></a>
+  <h4 id="WSSInterfacing_WssClient_StopStim_WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.StopStim(WSSInterfacing.WssTarget,System.Threading.CancellationToken)">StopStim(WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Sends the &quot;stop stimulation&quot; switch (opcode 0x0B).
+0x00 = Stop Ack expected.
+Broadcast is acceptable for a system-wide switch.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; StopStim(WssTarget target = WssTarget.Broadcast, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td><p>Target device (often Broadcast).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Cancellation token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_StreamChange_" data-uid="WSSInterfacing.WssClient.StreamChange*"></a>
+  <h4 id="WSSInterfacing_WssClient_StreamChange_System_Int32___System_Int32___System_Int32___WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.StreamChange(System.Int32[],System.Int32[],System.Int32[],WSSInterfacing.WssTarget,System.Threading.CancellationToken)">StreamChange(int[], int[], int[], WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Streams changes to PA (amplitude), PW (pulse width), and IPI (period) for up to three schedules in one shot.
+Pass exactly one of the arrays as <code>null</code> to omit that group (protocol supports omitting at most one group).
+Uses opcodes:
+0x30 = PA+PW+IPI,  0x31 = PA+PW (no IPI),  0x32 = PA+IPI (no PW),  0x33 = PW+IPI (no PA).
+All elements are 0..255 in this streaming variant (one byte each).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task StreamChange(int[] pa, int[] pw, int[] ipi, WssTarget target = WssTarget.Broadcast, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span>[]</td>
+        <td><span class="parametername">pa</span></td>
+        <td><p>Three amplitudes (0..255) or null to keep PA unchanged.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span>[]</td>
+        <td><span class="parametername">pw</span></td>
+        <td><p>Three pulse widths (0..255) or null to keep PW unchanged.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span>[]</td>
+        <td><span class="parametername">ipi</span></td>
+        <td><p>Three periods in ms (0..255) or null to keep IPI unchanged.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td><p>Target WSS; streaming commonly uses Broadcast.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Cancellation token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_SyncGroup_" data-uid="WSSInterfacing.WssClient.SyncGroup*"></a>
+  <h4 id="WSSInterfacing_WssClient_SyncGroup_System_Int32_WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.SyncGroup(System.Int32,WSSInterfacing.WssTarget,System.Threading.CancellationToken)">SyncGroup(int, WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Sends a sync signal; starts schedules in the group from READY to ACTIVE.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; SyncGroup(int syncSignal, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">syncSignal</span></td>
+        <td><p>Sync group ID (0â€“255).</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td><p>Target WSS device.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Cancellation token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSSInterfacing_WssClient_ZeroOutStim_" data-uid="WSSInterfacing.WssClient.ZeroOutStim*"></a>
+  <h4 id="WSSInterfacing_WssClient_ZeroOutStim_WSSInterfacing_WssTarget_System_Threading_CancellationToken_" data-uid="WSSInterfacing.WssClient.ZeroOutStim(WSSInterfacing.WssTarget,System.Threading.CancellationToken)">ZeroOutStim(WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Convenience: streams zeros to PA, PW, and IPI (effectively stopping stimulation).
+Uses opcode 0x31 (PA+PW, no IPI) with trailing zeros to match the original layout.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task ZeroOutStim(WssTarget target = WssTarget.Broadcast, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="WSSInterfacing.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td><p>Target WSS (default Broadcast).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Cancellation token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

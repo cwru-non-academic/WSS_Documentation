@@ -1,0 +1,123 @@
+### YamlMime:ManagedReference
+items:
+- uid: WSSInterfacing.WssTarget
+  commentId: T:WSSInterfacing.WssTarget
+  id: WssTarget
+  parent: WSSInterfacing
+  children:
+  - WSSInterfacing.WssTarget.Broadcast
+  - WSSInterfacing.WssTarget.Wss1
+  - WSSInterfacing.WssTarget.Wss2
+  - WSSInterfacing.WssTarget.Wss3
+  langs:
+  - csharp
+  - vb
+  name: WssTarget
+  nameWithType: WssTarget
+  fullName: WSSInterfacing.WssTarget
+  type: Enum
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: >-
+    Addresses for targeting individual WSS units or broadcasting to all.
+
+    Values are on-wire destination IDs used by commands.
+  example: []
+  syntax:
+    content: 'public enum WssTarget : byte'
+    content.vb: Public Enum WssTarget As Byte
+- uid: WSSInterfacing.WssTarget.Broadcast
+  commentId: F:WSSInterfacing.WssTarget.Broadcast
+  id: Broadcast
+  parent: WSSInterfacing.WssTarget
+  langs:
+  - csharp
+  - vb
+  name: Broadcast
+  nameWithType: WssTarget.Broadcast
+  fullName: WSSInterfacing.WssTarget.Broadcast
+  type: Field
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Broadcast to all connected WSS devices.
+  example: []
+  syntax:
+    content: Broadcast = 143
+    return:
+      type: WSSInterfacing.WssTarget
+- uid: WSSInterfacing.WssTarget.Wss1
+  commentId: F:WSSInterfacing.WssTarget.Wss1
+  id: Wss1
+  parent: WSSInterfacing.WssTarget
+  langs:
+  - csharp
+  - vb
+  name: Wss1
+  nameWithType: WssTarget.Wss1
+  fullName: WSSInterfacing.WssTarget.Wss1
+  type: Field
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: First WSS device.
+  example: []
+  syntax:
+    content: Wss1 = 129
+    return:
+      type: WSSInterfacing.WssTarget
+- uid: WSSInterfacing.WssTarget.Wss2
+  commentId: F:WSSInterfacing.WssTarget.Wss2
+  id: Wss2
+  parent: WSSInterfacing.WssTarget
+  langs:
+  - csharp
+  - vb
+  name: Wss2
+  nameWithType: WssTarget.Wss2
+  fullName: WSSInterfacing.WssTarget.Wss2
+  type: Field
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Second WSS device.
+  example: []
+  syntax:
+    content: Wss2 = 130
+    return:
+      type: WSSInterfacing.WssTarget
+- uid: WSSInterfacing.WssTarget.Wss3
+  commentId: F:WSSInterfacing.WssTarget.Wss3
+  id: Wss3
+  parent: WSSInterfacing.WssTarget
+  langs:
+  - csharp
+  - vb
+  name: Wss3
+  nameWithType: WssTarget.Wss3
+  fullName: WSSInterfacing.WssTarget.Wss3
+  type: Field
+  assemblies:
+  - ApiProject
+  namespace: WSSInterfacing
+  summary: Third WSS device.
+  example: []
+  syntax:
+    content: Wss3 = 131
+    return:
+      type: WSSInterfacing.WssTarget
+references:
+- uid: WSSInterfacing
+  commentId: N:WSSInterfacing
+  href: WSSInterfacing.html
+  name: WSSInterfacing
+  nameWithType: WSSInterfacing
+  fullName: WSSInterfacing
+- uid: WSSInterfacing.WssTarget
+  commentId: T:WSSInterfacing.WssTarget
+  parent: WSSInterfacing
+  href: WSSInterfacing.WssTarget.html
+  name: WssTarget
+  nameWithType: WssTarget
+  fullName: WSSInterfacing.WssTarget
