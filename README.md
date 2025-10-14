@@ -21,11 +21,11 @@ This repository contains end‑to‑end documentation for the Wearable Stimulati
   - What: How to list ports, configure, and send/receive Echo frames on each platform.
 
 - Build Software Docs (DocFX)
-  - HTML: [howtoCompileAPIDocs/BuildSoftwareDocs.html](.howtoCompileAPIDocs/BuildSoftwareDocs.html)
+  - HTML: [howtoCompileAPIDocs/BuildSoftwareDocs.html](./howtoCompileAPIDocs/BuildSoftwareDocs.html)
   - What: How to generate the API website from the external codebase using the scripts in `apiDocs/`.
 
 - Software API Website
-  - HTML: [apiDocs/api/WSSInterfacing.html](.apiDocs/api/WSSInterfacing.html)
+  - HTML: [apiDocs/api/WSSInterfacing.html](./apiDocs/api/WSSInterfacing.html)
   - What: Generated API documentation for core code (interfaces, classes, methods) via DocFX.
 
 ## Building the API site
@@ -34,4 +34,4 @@ Scripts live under `apiDocs/`:
 - PowerShell (Windows): `apiDocs/build-docs.ps1`
 - Bash (macOS/Linux/Git Bash): `apiDocs/build-docs.sh`
 
-See [howtoCompileAPIDocs/BuildSoftwareDocs.html](.howtoCompileAPIDocs/BuildSoftwareDocs.html) for step‑by‑step instructions, prerequisites, and troubleshooting.
+See [howtoCompileAPIDocs/BuildSoftwareDocs.html](./howtoCompileAPIDocs/BuildSoftwareDocs.html) for step‑by‑step instructions, prerequisites, and troubleshooting.
