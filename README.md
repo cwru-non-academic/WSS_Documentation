@@ -18,7 +18,7 @@ This repository contains end‑to‑end documentation for the Wearable Stimulati
 - [Simple Serial Guide](./simpleSerialPortDocs/SimpleSerial.html) (Windows, macOS, MATLAB)
   - What: How to list ports, configure, and send/receive Echo frames on each platform.
 
-- [Software API Website}(./apiDocs/api/WSSInterfacing.html)
+- [Software API Website](./apiDocs/api/WSSInterfacing.html)
   - What: Generated API documentation for core code (interfaces, classes, methods) via DocFX.
 
 ## Building the API site
