@@ -1,0 +1,2001 @@
+### YamlMime:ManagedReference
+items:
+- uid: WSS.Unity.Stimulation
+  commentId: T:WSS.Unity.Stimulation
+  id: Stimulation
+  parent: WSS.Unity
+  children:
+  - WSS.Unity.Stimulation.AddOrUpdateStimParam(System.String,System.Single)
+  - WSS.Unity.Stimulation.Awake
+  - WSS.Unity.Stimulation.GetAllStimParams
+  - WSS.Unity.Stimulation.GetChannelAmp(System.String)
+  - WSS.Unity.Stimulation.GetChannelIPI(System.String)
+  - WSS.Unity.Stimulation.GetChannelPWMax(System.String)
+  - WSS.Unity.Stimulation.GetChannelPWMin(System.String)
+  - WSS.Unity.Stimulation.GetCoreConfigCTRL
+  - WSS.Unity.Stimulation.GetModelConfigCTRL
+  - WSS.Unity.Stimulation.GetStimIntensity(System.String)
+  - WSS.Unity.Stimulation.GetStimParam(System.String)
+  - WSS.Unity.Stimulation.IsFingerValid(System.String)
+  - WSS.Unity.Stimulation.LoadParamsJson
+  - WSS.Unity.Stimulation.LoadParamsJson(System.String)
+  - WSS.Unity.Stimulation.Ready
+  - WSS.Unity.Stimulation.Save
+  - WSS.Unity.Stimulation.Save(System.Int32)
+  - WSS.Unity.Stimulation.SaveParamsJson
+  - WSS.Unity.Stimulation.SetChannelAmp(System.String,System.Single)
+  - WSS.Unity.Stimulation.SetChannelIPI(System.String,System.Int32)
+  - WSS.Unity.Stimulation.SetChannelPWMax(System.String,System.Int32)
+  - WSS.Unity.Stimulation.SetChannelPWMin(System.String,System.Int32)
+  - WSS.Unity.Stimulation.StartStimulation
+  - WSS.Unity.Stimulation.Started
+  - WSS.Unity.Stimulation.StimWithMode(System.String,System.Single)
+  - WSS.Unity.Stimulation.StimulateAnalog(System.String,System.Int32,System.Int32,System.Int32)
+  - WSS.Unity.Stimulation.StimulateNormalized(System.String,System.Single)
+  - WSS.Unity.Stimulation.StopStimulation
+  - WSS.Unity.Stimulation.TryGetStimParam(System.String,System.Single@)
+  - WSS.Unity.Stimulation.UpdateChannelParams(System.String,System.Int32,System.Int32,System.Int32)
+  - WSS.Unity.Stimulation.UpdateIPD(System.Int32,System.Int32)
+  - WSS.Unity.Stimulation.UpdateIPD(System.Int32,System.Int32,System.Int32)
+  - WSS.Unity.Stimulation.WaveformSetup(System.Int32,Wss.CoreModule.WaveformBuilder,System.Int32)
+  - WSS.Unity.Stimulation.WaveformSetup(Wss.CoreModule.WaveformBuilder,System.Int32)
+  - WSS.Unity.Stimulation.comPort
+  - WSS.Unity.Stimulation.forcePort
+  - WSS.Unity.Stimulation.isModeValid
+  - WSS.Unity.Stimulation.load
+  - WSS.Unity.Stimulation.load(System.Int32)
+  - WSS.Unity.Stimulation.loadWaveform(System.String,System.Int32)
+  - WSS.Unity.Stimulation.releaseRadio
+  - WSS.Unity.Stimulation.request_Configs(System.Int32,System.Int32,System.Int32)
+  - WSS.Unity.Stimulation.resetRadio
+  - WSS.Unity.Stimulation.started
+  - WSS.Unity.Stimulation.updateWaveform(System.Int32,System.Int32,System.Int32)
+  - WSS.Unity.Stimulation.updateWaveform(System.Int32,System.Int32,System.Int32,System.Int32)
+  - WSS.Unity.Stimulation.updateWaveform(System.Int32,System.Int32[],System.Int32)
+  - WSS.Unity.Stimulation.updateWaveform(System.Int32,Wss.CoreModule.WaveformBuilder,System.Int32)
+  - WSS.Unity.Stimulation.updateWaveform(System.Int32[],System.Int32)
+  - WSS.Unity.Stimulation.updateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: Stimulation
+  nameWithType: Stimulation
+  fullName: Stimulation
+  type: Class
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  summary: Provides a Unity-facing API for WSS stimulation using the full params + model stack.
+  remarks: >-
+    This component composes <code>WssStimulationCore</code> -&gt; <code>StimParamsLayer</code> -&gt; <code>ModelParamsLayer</code>
+
+    and exposes convenience methods that accept finger aliases (e.g., "index" or "ch2").
+
+
+    Lifecycle: the device is initialized in <xref href="Stimulation.OnEnable" data-throw-if-not-resolved="false"></xref>, ticked in <xref href="Stimulation.Update" data-throw-if-not-resolved="false"></xref>,
+
+    and shut down in <xref href="Stimulation.OnDisable" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: 'public class Stimulation : MonoBehaviour'
+    content.vb: Public Class Stimulation Inherits MonoBehaviour
+  inheritance:
+  - System.Object
+  - UnityEngine.Object
+  - UnityEngine.Component
+  - UnityEngine.Behaviour
+  - UnityEngine.MonoBehaviour
+- uid: WSS.Unity.Stimulation.forcePort
+  commentId: F:WSS.Unity.Stimulation.forcePort
+  id: forcePort
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: forcePort
+  nameWithType: Stimulation.forcePort
+  fullName: Stimulation.forcePort
+  type: Field
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  summary: Forces connection to a specific COM port instead of auto-detecting.
+  example: []
+  syntax:
+    content: >-
+      [SerializeField]
+
+      public bool forcePort
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <SerializeField>
+
+      Public forcePort As Boolean
+  attributes:
+  - type: UnityEngine.SerializeField
+    ctor: UnityEngine.SerializeField.#ctor
+    arguments: []
+- uid: WSS.Unity.Stimulation.comPort
+  commentId: F:WSS.Unity.Stimulation.comPort
+  id: comPort
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: comPort
+  nameWithType: Stimulation.comPort
+  fullName: Stimulation.comPort
+  type: Field
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  summary: Target COM port to use when <code>forcePort</code> is enabled.
+  example: []
+  syntax:
+    content: >-
+      [SerializeField]
+
+      public string comPort
+    return:
+      type: System.String
+    content.vb: >-
+      <SerializeField>
+
+      Public comPort As String
+  attributes:
+  - type: UnityEngine.SerializeField
+    ctor: UnityEngine.SerializeField.#ctor
+    arguments: []
+- uid: WSS.Unity.Stimulation.started
+  commentId: F:WSS.Unity.Stimulation.started
+  id: started
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: started
+  nameWithType: Stimulation.started
+  fullName: Stimulation.started
+  type: Field
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  summary: Gets or sets a user-managed flag indicating whether stimulation is considered started.
+  remarks: This wrapper does not update this field; use <code>Started()</code> to query device state.
+  example: []
+  syntax:
+    content: public bool started
+    return:
+      type: System.Boolean
+    content.vb: Public started As Boolean
+- uid: WSS.Unity.Stimulation.Awake
+  commentId: M:WSS.Unity.Stimulation.Awake
+  id: Awake
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: Awake()
+  nameWithType: Stimulation.Awake()
+  fullName: Stimulation.Awake()
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  summary: >-
+    Creates the full stimulation stack: core -&gt; params layer -&gt; model layer.
+
+    Detects hardware if <code>forcePort</code> is false.
+  example: []
+  syntax:
+    content: public void Awake()
+    content.vb: Public Sub Awake()
+  overload: WSS.Unity.Stimulation.Awake*
+- uid: WSS.Unity.Stimulation.releaseRadio
+  commentId: M:WSS.Unity.Stimulation.releaseRadio
+  id: releaseRadio
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: releaseRadio()
+  nameWithType: Stimulation.releaseRadio()
+  fullName: Stimulation.releaseRadio()
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  summary: Explicitly closes the radio connection.
+  example: []
+  syntax:
+    content: public void releaseRadio()
+    content.vb: Public Sub releaseRadio()
+  overload: WSS.Unity.Stimulation.releaseRadio*
+- uid: WSS.Unity.Stimulation.resetRadio
+  commentId: M:WSS.Unity.Stimulation.resetRadio
+  id: resetRadio
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: resetRadio()
+  nameWithType: Stimulation.resetRadio()
+  fullName: Stimulation.resetRadio()
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  summary: Resets the radio by shutting down and reinitializing the device.
+  example: []
+  syntax:
+    content: public void resetRadio()
+    content.vb: Public Sub resetRadio()
+  overload: WSS.Unity.Stimulation.resetRadio*
+- uid: WSS.Unity.Stimulation.StimulateAnalog(System.String,System.Int32,System.Int32,System.Int32)
+  commentId: M:WSS.Unity.Stimulation.StimulateAnalog(System.String,System.Int32,System.Int32,System.Int32)
+  id: StimulateAnalog(System.String,System.Int32,System.Int32,System.Int32)
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: StimulateAnalog(string, int, int, int)
+  nameWithType: Stimulation.StimulateAnalog(string, int, int, int)
+  fullName: Stimulation.StimulateAnalog(string, int, int, int)
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  summary: Sends a direct analog stimulation command using raw parameters.
+  example: []
+  syntax:
+    content: public void StimulateAnalog(string finger, int PW, int amp = 3, int IPI = 10)
+    parameters:
+    - id: finger
+      type: System.String
+      description: Finger label or alias (e.g., "index" or "ch2").
+    - id: PW
+      type: System.Int32
+      description: Pulse width in microseconds.
+    - id: amp
+      type: System.Int32
+      description: Amplitude in milliamps (default = 3).
+    - id: IPI
+      type: System.Int32
+      description: Inter-pulse interval in milliseconds (default = 10).
+    content.vb: Public Sub StimulateAnalog(finger As String, PW As Integer, amp As Integer = 3, IPI As Integer = 10)
+  overload: WSS.Unity.Stimulation.StimulateAnalog*
+  nameWithType.vb: Stimulation.StimulateAnalog(String, Integer, Integer, Integer)
+  fullName.vb: Stimulation.StimulateAnalog(String, Integer, Integer, Integer)
+  name.vb: StimulateAnalog(String, Integer, Integer, Integer)
+- uid: WSS.Unity.Stimulation.StartStimulation
+  commentId: M:WSS.Unity.Stimulation.StartStimulation
+  id: StartStimulation
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: StartStimulation()
+  nameWithType: Stimulation.StartStimulation()
+  fullName: Stimulation.StartStimulation()
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  remarks: Broadcasts to all connected WSS units.
+  example: []
+  syntax:
+    content: public void StartStimulation()
+    content.vb: Public Sub StartStimulation()
+  overload: WSS.Unity.Stimulation.StartStimulation*
+- uid: WSS.Unity.Stimulation.StopStimulation
+  commentId: M:WSS.Unity.Stimulation.StopStimulation
+  id: StopStimulation
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: StopStimulation()
+  nameWithType: Stimulation.StopStimulation()
+  fullName: Stimulation.StopStimulation()
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  remarks: Broadcasts to all connected WSS units.
+  example: []
+  syntax:
+    content: public void StopStimulation()
+    content.vb: Public Sub StopStimulation()
+  overload: WSS.Unity.Stimulation.StopStimulation*
+- uid: WSS.Unity.Stimulation.Save(System.Int32)
+  commentId: M:WSS.Unity.Stimulation.Save(System.Int32)
+  id: Save(System.Int32)
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: Save(int)
+  nameWithType: Stimulation.Save(int)
+  fullName: Stimulation.Save(int)
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  remarks: No-op (logs an error) if basic stimulation is not supported.
+  example: []
+  syntax:
+    content: public void Save(int targetWSS)
+    parameters:
+    - id: targetWSS
+      type: System.Int32
+      description: 0=broadcast, 1..3=unit index. Other values map to unit 1.
+    content.vb: Public Sub Save(targetWSS As Integer)
+  overload: WSS.Unity.Stimulation.Save*
+  nameWithType.vb: Stimulation.Save(Integer)
+  fullName.vb: Stimulation.Save(Integer)
+  name.vb: Save(Integer)
+- uid: WSS.Unity.Stimulation.Save
+  commentId: M:WSS.Unity.Stimulation.Save
+  id: Save
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: Save()
+  nameWithType: Stimulation.Save()
+  fullName: Stimulation.Save()
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  remarks: Broadcasts to all connected WSS units. No-op (logs an error) if basic stimulation is not supported.
+  example: []
+  syntax:
+    content: public void Save()
+    content.vb: Public Sub Save()
+  overload: WSS.Unity.Stimulation.Save*
+- uid: WSS.Unity.Stimulation.load(System.Int32)
+  commentId: M:WSS.Unity.Stimulation.load(System.Int32)
+  id: load(System.Int32)
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: load(int)
+  nameWithType: Stimulation.load(int)
+  fullName: Stimulation.load(int)
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  remarks: No-op (logs an error) if basic stimulation is not supported.
+  example: []
+  syntax:
+    content: public void load(int targetWSS)
+    parameters:
+    - id: targetWSS
+      type: System.Int32
+      description: 0=broadcast, 1..3=unit index. Other values map to unit 1.
+    content.vb: Public Sub load(targetWSS As Integer)
+  overload: WSS.Unity.Stimulation.load*
+  nameWithType.vb: Stimulation.load(Integer)
+  fullName.vb: Stimulation.load(Integer)
+  name.vb: load(Integer)
+- uid: WSS.Unity.Stimulation.load
+  commentId: M:WSS.Unity.Stimulation.load
+  id: load
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: load()
+  nameWithType: Stimulation.load()
+  fullName: Stimulation.load()
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  remarks: Broadcasts to all connected WSS units. No-op (logs an error) if basic stimulation is not supported.
+  example: []
+  syntax:
+    content: public void load()
+    content.vb: Public Sub load()
+  overload: WSS.Unity.Stimulation.load*
+- uid: WSS.Unity.Stimulation.request_Configs(System.Int32,System.Int32,System.Int32)
+  commentId: M:WSS.Unity.Stimulation.request_Configs(System.Int32,System.Int32,System.Int32)
+  id: request_Configs(System.Int32,System.Int32,System.Int32)
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: request_Configs(int, int, int)
+  nameWithType: Stimulation.request_Configs(int, int, int)
+  fullName: Stimulation.request_Configs(int, int, int)
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  remarks: No-op (logs an error) if basic stimulation is not supported.
+  example: []
+  syntax:
+    content: public void request_Configs(int targetWSS, int command, int id)
+    parameters:
+    - id: targetWSS
+      type: System.Int32
+      description: 0=broadcast, 1..3=unit index. Other values map to unit 1.
+    - id: command
+      type: System.Int32
+      description: Configuration block selector.
+    - id: id
+      type: System.Int32
+      description: Optional block id.
+    content.vb: Public Sub request_Configs(targetWSS As Integer, command As Integer, id As Integer)
+  overload: WSS.Unity.Stimulation.request_Configs*
+  nameWithType.vb: Stimulation.request_Configs(Integer, Integer, Integer)
+  fullName.vb: Stimulation.request_Configs(Integer, Integer, Integer)
+  name.vb: request_Configs(Integer, Integer, Integer)
+- uid: WSS.Unity.Stimulation.updateWaveform(System.Int32[],System.Int32)
+  commentId: M:WSS.Unity.Stimulation.updateWaveform(System.Int32[],System.Int32)
+  id: updateWaveform(System.Int32[],System.Int32)
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: updateWaveform(int[], int)
+  nameWithType: Stimulation.updateWaveform(int[], int)
+  fullName: Stimulation.updateWaveform(int[], int)
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  remarks: Broadcasts to all connected WSS units. No-op (logs an error) if basic stimulation is not supported.
+  example: []
+  syntax:
+    content: public void updateWaveform(int[] waveform, int eventID)
+    parameters:
+    - id: waveform
+      type: System.Int32[]
+    - id: eventID
+      type: System.Int32
+    content.vb: Public Sub updateWaveform(waveform As Integer(), eventID As Integer)
+  overload: WSS.Unity.Stimulation.updateWaveform*
+  nameWithType.vb: Stimulation.updateWaveform(Integer(), Integer)
+  fullName.vb: Stimulation.updateWaveform(Integer(), Integer)
+  name.vb: updateWaveform(Integer(), Integer)
+- uid: WSS.Unity.Stimulation.updateWaveform(System.Int32,System.Int32[],System.Int32)
+  commentId: M:WSS.Unity.Stimulation.updateWaveform(System.Int32,System.Int32[],System.Int32)
+  id: updateWaveform(System.Int32,System.Int32[],System.Int32)
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: updateWaveform(int, int[], int)
+  nameWithType: Stimulation.updateWaveform(int, int[], int)
+  fullName: Stimulation.updateWaveform(int, int[], int)
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  remarks: No-op (logs an error) if basic stimulation is not supported.
+  example: []
+  syntax:
+    content: public void updateWaveform(int targetWSS, int[] waveform, int eventID)
+    parameters:
+    - id: targetWSS
+      type: System.Int32
+      description: 0=broadcast, 1..3=unit index. Other values map to unit 1.
+    - id: waveform
+      type: System.Int32[]
+    - id: eventID
+      type: System.Int32
+    content.vb: Public Sub updateWaveform(targetWSS As Integer, waveform As Integer(), eventID As Integer)
+  overload: WSS.Unity.Stimulation.updateWaveform*
+  nameWithType.vb: Stimulation.updateWaveform(Integer, Integer(), Integer)
+  fullName.vb: Stimulation.updateWaveform(Integer, Integer(), Integer)
+  name.vb: updateWaveform(Integer, Integer(), Integer)
+- uid: WSS.Unity.Stimulation.updateWaveform(System.Int32,System.Int32,System.Int32)
+  commentId: M:WSS.Unity.Stimulation.updateWaveform(System.Int32,System.Int32,System.Int32)
+  id: updateWaveform(System.Int32,System.Int32,System.Int32)
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: updateWaveform(int, int, int)
+  nameWithType: Stimulation.updateWaveform(int, int, int)
+  fullName: Stimulation.updateWaveform(int, int, int)
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  remarks: No-op (logs an error) if basic stimulation is not supported.
+  example: []
+  syntax:
+    content: public void updateWaveform(int cathodicWaveform, int anodicWaveform, int eventID)
+    parameters:
+    - id: cathodicWaveform
+      type: System.Int32
+    - id: anodicWaveform
+      type: System.Int32
+    - id: eventID
+      type: System.Int32
+    content.vb: Public Sub updateWaveform(cathodicWaveform As Integer, anodicWaveform As Integer, eventID As Integer)
+  overload: WSS.Unity.Stimulation.updateWaveform*
+  nameWithType.vb: Stimulation.updateWaveform(Integer, Integer, Integer)
+  fullName.vb: Stimulation.updateWaveform(Integer, Integer, Integer)
+  name.vb: updateWaveform(Integer, Integer, Integer)
+- uid: WSS.Unity.Stimulation.updateWaveform(System.Int32,System.Int32,System.Int32,System.Int32)
+  commentId: M:WSS.Unity.Stimulation.updateWaveform(System.Int32,System.Int32,System.Int32,System.Int32)
+  id: updateWaveform(System.Int32,System.Int32,System.Int32,System.Int32)
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: updateWaveform(int, int, int, int)
+  nameWithType: Stimulation.updateWaveform(int, int, int, int)
+  fullName: Stimulation.updateWaveform(int, int, int, int)
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  summary: Selects predefined or custom waveform shapes for a specific WSS target.
+  remarks: No-op (logs an error) if basic stimulation is not supported.
+  example: []
+  syntax:
+    content: public void updateWaveform(int targetWSS, int cathodicWaveform, int anodicWaveform, int eventID)
+    parameters:
+    - id: targetWSS
+      type: System.Int32
+      description: 0=broadcast, 1..3=unit index. Other values map to unit 1.
+    - id: cathodicWaveform
+      type: System.Int32
+      description: Cathodic waveform slot index.
+    - id: anodicWaveform
+      type: System.Int32
+      description: Anodic waveform slot index.
+    - id: eventID
+      type: System.Int32
+      description: Target event slot.
+    content.vb: Public Sub updateWaveform(targetWSS As Integer, cathodicWaveform As Integer, anodicWaveform As Integer, eventID As Integer)
+  overload: WSS.Unity.Stimulation.updateWaveform*
+  nameWithType.vb: Stimulation.updateWaveform(Integer, Integer, Integer, Integer)
+  fullName.vb: Stimulation.updateWaveform(Integer, Integer, Integer, Integer)
+  name.vb: updateWaveform(Integer, Integer, Integer, Integer)
+- uid: WSS.Unity.Stimulation.updateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32)
+  commentId: M:WSS.Unity.Stimulation.updateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32)
+  id: updateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32)
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: updateWaveform(WaveformBuilder, int)
+  nameWithType: Stimulation.updateWaveform(WaveformBuilder, int)
+  fullName: Stimulation.updateWaveform(Wss.CoreModule.WaveformBuilder, int)
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  remarks: Broadcasts to all connected WSS units. No-op (logs an error) if basic stimulation is not supported.
+  example: []
+  syntax:
+    content: public void updateWaveform(WaveformBuilder waveform, int eventID)
+    parameters:
+    - id: waveform
+      type: Wss.CoreModule.WaveformBuilder
+    - id: eventID
+      type: System.Int32
+    content.vb: Public Sub updateWaveform(waveform As WaveformBuilder, eventID As Integer)
+  overload: WSS.Unity.Stimulation.updateWaveform*
+  nameWithType.vb: Stimulation.updateWaveform(WaveformBuilder, Integer)
+  fullName.vb: Stimulation.updateWaveform(Wss.CoreModule.WaveformBuilder, Integer)
+  name.vb: updateWaveform(WaveformBuilder, Integer)
+- uid: WSS.Unity.Stimulation.updateWaveform(System.Int32,Wss.CoreModule.WaveformBuilder,System.Int32)
+  commentId: M:WSS.Unity.Stimulation.updateWaveform(System.Int32,Wss.CoreModule.WaveformBuilder,System.Int32)
+  id: updateWaveform(System.Int32,Wss.CoreModule.WaveformBuilder,System.Int32)
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: updateWaveform(int, WaveformBuilder, int)
+  nameWithType: Stimulation.updateWaveform(int, WaveformBuilder, int)
+  fullName: Stimulation.updateWaveform(int, Wss.CoreModule.WaveformBuilder, int)
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  summary: Updates a waveform using a JSON-loaded builder definition for a target unit.
+  remarks: No-op (logs an error) if basic stimulation is not supported.
+  example: []
+  syntax:
+    content: public void updateWaveform(int targetWSS, WaveformBuilder waveform, int eventID)
+    parameters:
+    - id: targetWSS
+      type: System.Int32
+      description: 0=broadcast, 1..3=unit index. Other values map to unit 1.
+    - id: waveform
+      type: Wss.CoreModule.WaveformBuilder
+    - id: eventID
+      type: System.Int32
+    content.vb: Public Sub updateWaveform(targetWSS As Integer, waveform As WaveformBuilder, eventID As Integer)
+  overload: WSS.Unity.Stimulation.updateWaveform*
+  nameWithType.vb: Stimulation.updateWaveform(Integer, WaveformBuilder, Integer)
+  fullName.vb: Stimulation.updateWaveform(Integer, Wss.CoreModule.WaveformBuilder, Integer)
+  name.vb: updateWaveform(Integer, WaveformBuilder, Integer)
+- uid: WSS.Unity.Stimulation.loadWaveform(System.String,System.Int32)
+  commentId: M:WSS.Unity.Stimulation.loadWaveform(System.String,System.Int32)
+  id: loadWaveform(System.String,System.Int32)
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: loadWaveform(string, int)
+  nameWithType: Stimulation.loadWaveform(string, int)
+  fullName: Stimulation.loadWaveform(string, int)
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  summary: Loads a waveform definition from a file into the specified event slot.
+  remarks: No-op (logs an error) if basic stimulation is not supported.
+  example: []
+  syntax:
+    content: public void loadWaveform(string fileName, int eventID)
+    parameters:
+    - id: fileName
+      type: System.String
+      description: Waveform file name or path understood by the underlying core.
+    - id: eventID
+      type: System.Int32
+      description: Target event slot.
+    content.vb: Public Sub loadWaveform(fileName As String, eventID As Integer)
+  overload: WSS.Unity.Stimulation.loadWaveform*
+  nameWithType.vb: Stimulation.loadWaveform(String, Integer)
+  fullName.vb: Stimulation.loadWaveform(String, Integer)
+  name.vb: loadWaveform(String, Integer)
+- uid: WSS.Unity.Stimulation.WaveformSetup(Wss.CoreModule.WaveformBuilder,System.Int32)
+  commentId: M:WSS.Unity.Stimulation.WaveformSetup(Wss.CoreModule.WaveformBuilder,System.Int32)
+  id: WaveformSetup(Wss.CoreModule.WaveformBuilder,System.Int32)
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: WaveformSetup(WaveformBuilder, int)
+  nameWithType: Stimulation.WaveformSetup(WaveformBuilder, int)
+  fullName: Stimulation.WaveformSetup(Wss.CoreModule.WaveformBuilder, int)
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  summary: Defines a custom waveform for an event slot on all units.
+  remarks: No-op (logs an error) if basic stimulation is not supported.
+  example: []
+  syntax:
+    content: public void WaveformSetup(WaveformBuilder wave, int eventID)
+    parameters:
+    - id: wave
+      type: Wss.CoreModule.WaveformBuilder
+    - id: eventID
+      type: System.Int32
+    content.vb: Public Sub WaveformSetup(wave As WaveformBuilder, eventID As Integer)
+  overload: WSS.Unity.Stimulation.WaveformSetup*
+  nameWithType.vb: Stimulation.WaveformSetup(WaveformBuilder, Integer)
+  fullName.vb: Stimulation.WaveformSetup(Wss.CoreModule.WaveformBuilder, Integer)
+  name.vb: WaveformSetup(WaveformBuilder, Integer)
+- uid: WSS.Unity.Stimulation.WaveformSetup(System.Int32,Wss.CoreModule.WaveformBuilder,System.Int32)
+  commentId: M:WSS.Unity.Stimulation.WaveformSetup(System.Int32,Wss.CoreModule.WaveformBuilder,System.Int32)
+  id: WaveformSetup(System.Int32,Wss.CoreModule.WaveformBuilder,System.Int32)
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: WaveformSetup(int, WaveformBuilder, int)
+  nameWithType: Stimulation.WaveformSetup(int, WaveformBuilder, int)
+  fullName: Stimulation.WaveformSetup(int, Wss.CoreModule.WaveformBuilder, int)
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  summary: Defines a custom waveform for an event slot on a specific unit.
+  remarks: No-op (logs an error) if basic stimulation is not supported.
+  example: []
+  syntax:
+    content: public void WaveformSetup(int targetWSS, WaveformBuilder wave, int eventID)
+    parameters:
+    - id: targetWSS
+      type: System.Int32
+      description: 0=broadcast, 1..3=unit index. Other values map to unit 1.
+    - id: wave
+      type: Wss.CoreModule.WaveformBuilder
+    - id: eventID
+      type: System.Int32
+    content.vb: Public Sub WaveformSetup(targetWSS As Integer, wave As WaveformBuilder, eventID As Integer)
+  overload: WSS.Unity.Stimulation.WaveformSetup*
+  nameWithType.vb: Stimulation.WaveformSetup(Integer, WaveformBuilder, Integer)
+  fullName.vb: Stimulation.WaveformSetup(Integer, Wss.CoreModule.WaveformBuilder, Integer)
+  name.vb: WaveformSetup(Integer, WaveformBuilder, Integer)
+- uid: WSS.Unity.Stimulation.UpdateIPD(System.Int32,System.Int32)
+  commentId: M:WSS.Unity.Stimulation.UpdateIPD(System.Int32,System.Int32)
+  id: UpdateIPD(System.Int32,System.Int32)
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: UpdateIPD(int, int)
+  nameWithType: Stimulation.UpdateIPD(int, int)
+  fullName: Stimulation.UpdateIPD(int, int)
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  remarks: Broadcasts to all connected WSS units. No-op (logs an error) if basic stimulation is not supported.
+  example: []
+  syntax:
+    content: public void UpdateIPD(int ipd, int eventID)
+    parameters:
+    - id: ipd
+      type: System.Int32
+    - id: eventID
+      type: System.Int32
+    content.vb: Public Sub UpdateIPD(ipd As Integer, eventID As Integer)
+  overload: WSS.Unity.Stimulation.UpdateIPD*
+  nameWithType.vb: Stimulation.UpdateIPD(Integer, Integer)
+  fullName.vb: Stimulation.UpdateIPD(Integer, Integer)
+  name.vb: UpdateIPD(Integer, Integer)
+- uid: WSS.Unity.Stimulation.UpdateIPD(System.Int32,System.Int32,System.Int32)
+  commentId: M:WSS.Unity.Stimulation.UpdateIPD(System.Int32,System.Int32,System.Int32)
+  id: UpdateIPD(System.Int32,System.Int32,System.Int32)
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: UpdateIPD(int, int, int)
+  nameWithType: Stimulation.UpdateIPD(int, int, int)
+  fullName: Stimulation.UpdateIPD(int, int, int)
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  remarks: No-op (logs an error) if basic stimulation is not supported.
+  example: []
+  syntax:
+    content: public void UpdateIPD(int targetWSS, int ipd, int eventID)
+    parameters:
+    - id: targetWSS
+      type: System.Int32
+      description: 0=broadcast, 1..3=unit index. Other values map to unit 1.
+    - id: ipd
+      type: System.Int32
+    - id: eventID
+      type: System.Int32
+    content.vb: Public Sub UpdateIPD(targetWSS As Integer, ipd As Integer, eventID As Integer)
+  overload: WSS.Unity.Stimulation.UpdateIPD*
+  nameWithType.vb: Stimulation.UpdateIPD(Integer, Integer, Integer)
+  fullName.vb: Stimulation.UpdateIPD(Integer, Integer, Integer)
+  name.vb: UpdateIPD(Integer, Integer, Integer)
+- uid: WSS.Unity.Stimulation.StimulateNormalized(System.String,System.Single)
+  commentId: M:WSS.Unity.Stimulation.StimulateNormalized(System.String,System.Single)
+  id: StimulateNormalized(System.String,System.Single)
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: StimulateNormalized(string, float)
+  nameWithType: Stimulation.StimulateNormalized(string, float)
+  fullName: Stimulation.StimulateNormalized(string, float)
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  summary: Stimulates using a normalized drive value in the range [0, 1].
+  example: []
+  syntax:
+    content: public void StimulateNormalized(string finger, float magnitude)
+    parameters:
+    - id: finger
+      type: System.String
+      description: Finger label or alias.
+    - id: magnitude
+      type: System.Single
+      description: Normalized drive in [0, 1].
+    content.vb: Public Sub StimulateNormalized(finger As String, magnitude As Single)
+  overload: WSS.Unity.Stimulation.StimulateNormalized*
+  nameWithType.vb: Stimulation.StimulateNormalized(String, Single)
+  fullName.vb: Stimulation.StimulateNormalized(String, Single)
+  name.vb: StimulateNormalized(String, Single)
+- uid: WSS.Unity.Stimulation.GetStimIntensity(System.String)
+  commentId: M:WSS.Unity.Stimulation.GetStimIntensity(System.String)
+  id: GetStimIntensity(System.String)
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: GetStimIntensity(string)
+  nameWithType: Stimulation.GetStimIntensity(string)
+  fullName: Stimulation.GetStimIntensity(string)
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  summary: Gets the last computed stimulation intensity for a finger.
+  remarks: For PW-driven systems this value is pulse width in microseconds.
+  example: []
+  syntax:
+    content: public int GetStimIntensity(string finger)
+    parameters:
+    - id: finger
+      type: System.String
+    return:
+      type: System.Int32
+    content.vb: Public Function GetStimIntensity(finger As String) As Integer
+  overload: WSS.Unity.Stimulation.GetStimIntensity*
+  nameWithType.vb: Stimulation.GetStimIntensity(String)
+  fullName.vb: Stimulation.GetStimIntensity(String)
+  name.vb: GetStimIntensity(String)
+- uid: WSS.Unity.Stimulation.SaveParamsJson
+  commentId: M:WSS.Unity.Stimulation.SaveParamsJson
+  id: SaveParamsJson
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: SaveParamsJson()
+  nameWithType: Stimulation.SaveParamsJson()
+  fullName: Stimulation.SaveParamsJson()
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  summary: Saves model-layer parameters JSON to disk.
+  example: []
+  syntax:
+    content: public void SaveParamsJson()
+    content.vb: Public Sub SaveParamsJson()
+  overload: WSS.Unity.Stimulation.SaveParamsJson*
+- uid: WSS.Unity.Stimulation.LoadParamsJson
+  commentId: M:WSS.Unity.Stimulation.LoadParamsJson
+  id: LoadParamsJson
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: LoadParamsJson()
+  nameWithType: Stimulation.LoadParamsJson()
+  fullName: Stimulation.LoadParamsJson()
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  summary: Loads model-layer parameters JSON from default location.
+  example: []
+  syntax:
+    content: public void LoadParamsJson()
+    content.vb: Public Sub LoadParamsJson()
+  overload: WSS.Unity.Stimulation.LoadParamsJson*
+- uid: WSS.Unity.Stimulation.LoadParamsJson(System.String)
+  commentId: M:WSS.Unity.Stimulation.LoadParamsJson(System.String)
+  id: LoadParamsJson(System.String)
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: LoadParamsJson(string)
+  nameWithType: Stimulation.LoadParamsJson(string)
+  fullName: Stimulation.LoadParamsJson(string)
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  summary: Loads model-layer parameters JSON from a specified path.
+  example: []
+  syntax:
+    content: public void LoadParamsJson(string pathOrDir)
+    parameters:
+    - id: pathOrDir
+      type: System.String
+    content.vb: Public Sub LoadParamsJson(pathOrDir As String)
+  overload: WSS.Unity.Stimulation.LoadParamsJson*
+  nameWithType.vb: Stimulation.LoadParamsJson(String)
+  fullName.vb: Stimulation.LoadParamsJson(String)
+  name.vb: LoadParamsJson(String)
+- uid: WSS.Unity.Stimulation.AddOrUpdateStimParam(System.String,System.Single)
+  commentId: M:WSS.Unity.Stimulation.AddOrUpdateStimParam(System.String,System.Single)
+  id: AddOrUpdateStimParam(System.String,System.Single)
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: AddOrUpdateStimParam(string, float)
+  nameWithType: Stimulation.AddOrUpdateStimParam(string, float)
+  fullName: Stimulation.AddOrUpdateStimParam(string, float)
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  summary: Sets a parameter by dotted key (e.g., "stim.ch.1.amp").
+  example: []
+  syntax:
+    content: public void AddOrUpdateStimParam(string key, float value)
+    parameters:
+    - id: key
+      type: System.String
+    - id: value
+      type: System.Single
+    content.vb: Public Sub AddOrUpdateStimParam(key As String, value As Single)
+  overload: WSS.Unity.Stimulation.AddOrUpdateStimParam*
+  nameWithType.vb: Stimulation.AddOrUpdateStimParam(String, Single)
+  fullName.vb: Stimulation.AddOrUpdateStimParam(String, Single)
+  name.vb: AddOrUpdateStimParam(String, Single)
+- uid: WSS.Unity.Stimulation.GetStimParam(System.String)
+  commentId: M:WSS.Unity.Stimulation.GetStimParam(System.String)
+  id: GetStimParam(System.String)
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: GetStimParam(string)
+  nameWithType: Stimulation.GetStimParam(string)
+  fullName: Stimulation.GetStimParam(string)
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  summary: Gets a parameter by dotted key.
+  example: []
+  syntax:
+    content: public float GetStimParam(string key)
+    parameters:
+    - id: key
+      type: System.String
+    return:
+      type: System.Single
+    content.vb: Public Function GetStimParam(key As String) As Single
+  overload: WSS.Unity.Stimulation.GetStimParam*
+  nameWithType.vb: Stimulation.GetStimParam(String)
+  fullName.vb: Stimulation.GetStimParam(String)
+  name.vb: GetStimParam(String)
+- uid: WSS.Unity.Stimulation.TryGetStimParam(System.String,System.Single@)
+  commentId: M:WSS.Unity.Stimulation.TryGetStimParam(System.String,System.Single@)
+  id: TryGetStimParam(System.String,System.Single@)
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: TryGetStimParam(string, out float)
+  nameWithType: Stimulation.TryGetStimParam(string, out float)
+  fullName: Stimulation.TryGetStimParam(string, out float)
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  summary: Attempts to read a parameter by key, returns <code>true</code> on success.
+  example: []
+  syntax:
+    content: public bool TryGetStimParam(string key, out float v)
+    parameters:
+    - id: key
+      type: System.String
+    - id: v
+      type: System.Single
+    return:
+      type: System.Boolean
+    content.vb: Public Function TryGetStimParam(key As String, v As Single) As Boolean
+  overload: WSS.Unity.Stimulation.TryGetStimParam*
+  nameWithType.vb: Stimulation.TryGetStimParam(String, Single)
+  fullName.vb: Stimulation.TryGetStimParam(String, Single)
+  name.vb: TryGetStimParam(String, Single)
+- uid: WSS.Unity.Stimulation.GetAllStimParams
+  commentId: M:WSS.Unity.Stimulation.GetAllStimParams
+  id: GetAllStimParams
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: GetAllStimParams()
+  nameWithType: Stimulation.GetAllStimParams()
+  fullName: Stimulation.GetAllStimParams()
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  summary: Returns a dictionary copy of all current stimulation parameters.
+  example: []
+  syntax:
+    content: public Dictionary<string, float> GetAllStimParams()
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,System.Single}
+    content.vb: Public Function GetAllStimParams() As Dictionary(Of String, Single)
+  overload: WSS.Unity.Stimulation.GetAllStimParams*
+- uid: WSS.Unity.Stimulation.SetChannelAmp(System.String,System.Single)
+  commentId: M:WSS.Unity.Stimulation.SetChannelAmp(System.String,System.Single)
+  id: SetChannelAmp(System.String,System.Single)
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: SetChannelAmp(string, float)
+  nameWithType: Stimulation.SetChannelAmp(string, float)
+  fullName: Stimulation.SetChannelAmp(string, float)
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  summary: Sets per-finger amplitude in milliamps.
+  example: []
+  syntax:
+    content: public void SetChannelAmp(string finger, float mA)
+    parameters:
+    - id: finger
+      type: System.String
+    - id: mA
+      type: System.Single
+    content.vb: Public Sub SetChannelAmp(finger As String, mA As Single)
+  overload: WSS.Unity.Stimulation.SetChannelAmp*
+  nameWithType.vb: Stimulation.SetChannelAmp(String, Single)
+  fullName.vb: Stimulation.SetChannelAmp(String, Single)
+  name.vb: SetChannelAmp(String, Single)
+- uid: WSS.Unity.Stimulation.SetChannelPWMin(System.String,System.Int32)
+  commentId: M:WSS.Unity.Stimulation.SetChannelPWMin(System.String,System.Int32)
+  id: SetChannelPWMin(System.String,System.Int32)
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: SetChannelPWMin(string, int)
+  nameWithType: Stimulation.SetChannelPWMin(string, int)
+  fullName: Stimulation.SetChannelPWMin(string, int)
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  summary: Sets per-finger minimum PW in microseconds.
+  example: []
+  syntax:
+    content: public void SetChannelPWMin(string finger, int us)
+    parameters:
+    - id: finger
+      type: System.String
+    - id: us
+      type: System.Int32
+    content.vb: Public Sub SetChannelPWMin(finger As String, us As Integer)
+  overload: WSS.Unity.Stimulation.SetChannelPWMin*
+  nameWithType.vb: Stimulation.SetChannelPWMin(String, Integer)
+  fullName.vb: Stimulation.SetChannelPWMin(String, Integer)
+  name.vb: SetChannelPWMin(String, Integer)
+- uid: WSS.Unity.Stimulation.SetChannelPWMax(System.String,System.Int32)
+  commentId: M:WSS.Unity.Stimulation.SetChannelPWMax(System.String,System.Int32)
+  id: SetChannelPWMax(System.String,System.Int32)
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: SetChannelPWMax(string, int)
+  nameWithType: Stimulation.SetChannelPWMax(string, int)
+  fullName: Stimulation.SetChannelPWMax(string, int)
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  summary: Sets per-finger maximum PW in microseconds.
+  example: []
+  syntax:
+    content: public void SetChannelPWMax(string finger, int us)
+    parameters:
+    - id: finger
+      type: System.String
+    - id: us
+      type: System.Int32
+    content.vb: Public Sub SetChannelPWMax(finger As String, us As Integer)
+  overload: WSS.Unity.Stimulation.SetChannelPWMax*
+  nameWithType.vb: Stimulation.SetChannelPWMax(String, Integer)
+  fullName.vb: Stimulation.SetChannelPWMax(String, Integer)
+  name.vb: SetChannelPWMax(String, Integer)
+- uid: WSS.Unity.Stimulation.SetChannelIPI(System.String,System.Int32)
+  commentId: M:WSS.Unity.Stimulation.SetChannelIPI(System.String,System.Int32)
+  id: SetChannelIPI(System.String,System.Int32)
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: SetChannelIPI(string, int)
+  nameWithType: Stimulation.SetChannelIPI(string, int)
+  fullName: Stimulation.SetChannelIPI(string, int)
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  summary: Sets per-finger IPI in milliseconds.
+  example: []
+  syntax:
+    content: public void SetChannelIPI(string finger, int ms)
+    parameters:
+    - id: finger
+      type: System.String
+    - id: ms
+      type: System.Int32
+    content.vb: Public Sub SetChannelIPI(finger As String, ms As Integer)
+  overload: WSS.Unity.Stimulation.SetChannelIPI*
+  nameWithType.vb: Stimulation.SetChannelIPI(String, Integer)
+  fullName.vb: Stimulation.SetChannelIPI(String, Integer)
+  name.vb: SetChannelIPI(String, Integer)
+- uid: WSS.Unity.Stimulation.GetChannelAmp(System.String)
+  commentId: M:WSS.Unity.Stimulation.GetChannelAmp(System.String)
+  id: GetChannelAmp(System.String)
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: GetChannelAmp(string)
+  nameWithType: Stimulation.GetChannelAmp(string)
+  fullName: Stimulation.GetChannelAmp(string)
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  summary: Gets per-finger amplitude in milliamps.
+  example: []
+  syntax:
+    content: public float GetChannelAmp(string finger)
+    parameters:
+    - id: finger
+      type: System.String
+    return:
+      type: System.Single
+    content.vb: Public Function GetChannelAmp(finger As String) As Single
+  overload: WSS.Unity.Stimulation.GetChannelAmp*
+  nameWithType.vb: Stimulation.GetChannelAmp(String)
+  fullName.vb: Stimulation.GetChannelAmp(String)
+  name.vb: GetChannelAmp(String)
+- uid: WSS.Unity.Stimulation.GetChannelPWMin(System.String)
+  commentId: M:WSS.Unity.Stimulation.GetChannelPWMin(System.String)
+  id: GetChannelPWMin(System.String)
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: GetChannelPWMin(string)
+  nameWithType: Stimulation.GetChannelPWMin(string)
+  fullName: Stimulation.GetChannelPWMin(string)
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  summary: Gets per-finger minimum PW in microseconds.
+  example: []
+  syntax:
+    content: public int GetChannelPWMin(string finger)
+    parameters:
+    - id: finger
+      type: System.String
+    return:
+      type: System.Int32
+    content.vb: Public Function GetChannelPWMin(finger As String) As Integer
+  overload: WSS.Unity.Stimulation.GetChannelPWMin*
+  nameWithType.vb: Stimulation.GetChannelPWMin(String)
+  fullName.vb: Stimulation.GetChannelPWMin(String)
+  name.vb: GetChannelPWMin(String)
+- uid: WSS.Unity.Stimulation.GetChannelPWMax(System.String)
+  commentId: M:WSS.Unity.Stimulation.GetChannelPWMax(System.String)
+  id: GetChannelPWMax(System.String)
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: GetChannelPWMax(string)
+  nameWithType: Stimulation.GetChannelPWMax(string)
+  fullName: Stimulation.GetChannelPWMax(string)
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  summary: Gets per-finger maximum PW in microseconds.
+  example: []
+  syntax:
+    content: public int GetChannelPWMax(string finger)
+    parameters:
+    - id: finger
+      type: System.String
+    return:
+      type: System.Int32
+    content.vb: Public Function GetChannelPWMax(finger As String) As Integer
+  overload: WSS.Unity.Stimulation.GetChannelPWMax*
+  nameWithType.vb: Stimulation.GetChannelPWMax(String)
+  fullName.vb: Stimulation.GetChannelPWMax(String)
+  name.vb: GetChannelPWMax(String)
+- uid: WSS.Unity.Stimulation.GetChannelIPI(System.String)
+  commentId: M:WSS.Unity.Stimulation.GetChannelIPI(System.String)
+  id: GetChannelIPI(System.String)
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: GetChannelIPI(string)
+  nameWithType: Stimulation.GetChannelIPI(string)
+  fullName: Stimulation.GetChannelIPI(string)
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  summary: Gets per-finger IPI in milliseconds.
+  example: []
+  syntax:
+    content: public int GetChannelIPI(string finger)
+    parameters:
+    - id: finger
+      type: System.String
+    return:
+      type: System.Int32
+    content.vb: Public Function GetChannelIPI(finger As String) As Integer
+  overload: WSS.Unity.Stimulation.GetChannelIPI*
+  nameWithType.vb: Stimulation.GetChannelIPI(String)
+  fullName.vb: Stimulation.GetChannelIPI(String)
+  name.vb: GetChannelIPI(String)
+- uid: WSS.Unity.Stimulation.IsFingerValid(System.String)
+  commentId: M:WSS.Unity.Stimulation.IsFingerValid(System.String)
+  id: IsFingerValid(System.String)
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: IsFingerValid(string)
+  nameWithType: Stimulation.IsFingerValid(string)
+  fullName: Stimulation.IsFingerValid(string)
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  summary: Checks whether the specified finger maps to a valid channel index.
+  example: []
+  syntax:
+    content: public bool IsFingerValid(string finger)
+    parameters:
+    - id: finger
+      type: System.String
+    return:
+      type: System.Boolean
+    content.vb: Public Function IsFingerValid(finger As String) As Boolean
+  overload: WSS.Unity.Stimulation.IsFingerValid*
+  nameWithType.vb: Stimulation.IsFingerValid(String)
+  fullName.vb: Stimulation.IsFingerValid(String)
+  name.vb: IsFingerValid(String)
+- uid: WSS.Unity.Stimulation.StimWithMode(System.String,System.Single)
+  commentId: M:WSS.Unity.Stimulation.StimWithMode(System.String,System.Single)
+  id: StimWithMode(System.String,System.Single)
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: StimWithMode(string, float)
+  nameWithType: Stimulation.StimWithMode(string, float)
+  fullName: Stimulation.StimWithMode(string, float)
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  summary: Applies model-driven stimulation using the currently configured control mode.
+  example: []
+  syntax:
+    content: public void StimWithMode(string finger, float magnitude)
+    parameters:
+    - id: finger
+      type: System.String
+      description: Finger label or alias.
+    - id: magnitude
+      type: System.Single
+      description: Normalized or physical magnitude input expected by the current mode.
+    content.vb: Public Sub StimWithMode(finger As String, magnitude As Single)
+  overload: WSS.Unity.Stimulation.StimWithMode*
+  nameWithType.vb: Stimulation.StimWithMode(String, Single)
+  fullName.vb: Stimulation.StimWithMode(String, Single)
+  name.vb: StimWithMode(String, Single)
+- uid: WSS.Unity.Stimulation.UpdateChannelParams(System.String,System.Int32,System.Int32,System.Int32)
+  commentId: M:WSS.Unity.Stimulation.UpdateChannelParams(System.String,System.Int32,System.Int32,System.Int32)
+  id: UpdateChannelParams(System.String,System.Int32,System.Int32,System.Int32)
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: UpdateChannelParams(string, int, int, int)
+  nameWithType: Stimulation.UpdateChannelParams(string, int, int, int)
+  fullName: Stimulation.UpdateChannelParams(string, int, int, int)
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  summary: Updates per-finger calibration parameters used by the params/model layers.
+  example: []
+  syntax:
+    content: public void UpdateChannelParams(string finger, int max, int min, int amp)
+    parameters:
+    - id: finger
+      type: System.String
+      description: Finger label or alias.
+    - id: max
+      type: System.Int32
+      description: Maximum pulse width in microseconds.
+    - id: min
+      type: System.Int32
+      description: Minimum pulse width in microseconds.
+    - id: amp
+      type: System.Int32
+      description: Amplitude in milliamps.
+    content.vb: Public Sub UpdateChannelParams(finger As String, max As Integer, min As Integer, amp As Integer)
+  overload: WSS.Unity.Stimulation.UpdateChannelParams*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: Thrown when <code class="paramref">finger</code> maps to an invalid channel.
+  nameWithType.vb: Stimulation.UpdateChannelParams(String, Integer, Integer, Integer)
+  fullName.vb: Stimulation.UpdateChannelParams(String, Integer, Integer, Integer)
+  name.vb: UpdateChannelParams(String, Integer, Integer, Integer)
+- uid: WSS.Unity.Stimulation.isModeValid
+  commentId: M:WSS.Unity.Stimulation.isModeValid
+  id: isModeValid
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: isModeValid()
+  nameWithType: Stimulation.isModeValid()
+  fullName: Stimulation.isModeValid()
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  summary: Returns <code>true</code> if the model mode currently loaded is valid.
+  example: []
+  syntax:
+    content: public bool isModeValid()
+    return:
+      type: System.Boolean
+    content.vb: Public Function isModeValid() As Boolean
+  overload: WSS.Unity.Stimulation.isModeValid*
+- uid: WSS.Unity.Stimulation.Ready
+  commentId: M:WSS.Unity.Stimulation.Ready
+  id: Ready
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: Ready()
+  nameWithType: Stimulation.Ready()
+  fullName: Stimulation.Ready()
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  summary: Returns <code>true</code> if the device is initialized and ready.
+  example: []
+  syntax:
+    content: public bool Ready()
+    return:
+      type: System.Boolean
+    content.vb: Public Function Ready() As Boolean
+  overload: WSS.Unity.Stimulation.Ready*
+- uid: WSS.Unity.Stimulation.Started
+  commentId: M:WSS.Unity.Stimulation.Started
+  id: Started
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: Started()
+  nameWithType: Stimulation.Started()
+  fullName: Stimulation.Started()
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  summary: Returns <code>true</code> if stimulation is currently active.
+  example: []
+  syntax:
+    content: public bool Started()
+    return:
+      type: System.Boolean
+    content.vb: Public Function Started() As Boolean
+  overload: WSS.Unity.Stimulation.Started*
+- uid: WSS.Unity.Stimulation.GetModelConfigCTRL
+  commentId: M:WSS.Unity.Stimulation.GetModelConfigCTRL
+  id: GetModelConfigCTRL
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: GetModelConfigCTRL()
+  nameWithType: Stimulation.GetModelConfigCTRL()
+  fullName: Stimulation.GetModelConfigCTRL()
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  summary: Provides access to the model configuration controller.
+  example: []
+  syntax:
+    content: public ModelConfigController GetModelConfigCTRL()
+    return:
+      type: Wss.ModelModule.ModelConfigController
+    content.vb: Public Function GetModelConfigCTRL() As ModelConfigController
+  overload: WSS.Unity.Stimulation.GetModelConfigCTRL*
+- uid: WSS.Unity.Stimulation.GetCoreConfigCTRL
+  commentId: M:WSS.Unity.Stimulation.GetCoreConfigCTRL
+  id: GetCoreConfigCTRL
+  parent: WSS.Unity.Stimulation
+  langs:
+  - csharp
+  - vb
+  name: GetCoreConfigCTRL()
+  nameWithType: Stimulation.GetCoreConfigCTRL()
+  fullName: Stimulation.GetCoreConfigCTRL()
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  summary: Provides access to the core configuration controller.
+  example: []
+  syntax:
+    content: public CoreConfigController GetCoreConfigCTRL()
+    return:
+      type: Wss.CoreModule.CoreConfigController
+    content.vb: Public Function GetCoreConfigCTRL() As CoreConfigController
+  overload: WSS.Unity.Stimulation.GetCoreConfigCTRL*
+references:
+- uid: Stimulation.OnEnable
+  commentId: M:Stimulation.OnEnable
+  name: OnEnable()
+  nameWithType: Stimulation.OnEnable()
+  fullName: Stimulation.OnEnable()
+  spec.csharp:
+  - uid: WSS.Unity.Stimulation.OnEnable
+    name: OnEnable
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: WSS.Unity.Stimulation.OnEnable
+    name: OnEnable
+  - name: (
+  - name: )
+- uid: Stimulation.Update
+  commentId: M:Stimulation.Update
+  name: Update()
+  nameWithType: Stimulation.Update()
+  fullName: Stimulation.Update()
+  spec.csharp:
+  - uid: WSS.Unity.Stimulation.Update
+    name: Update
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: WSS.Unity.Stimulation.Update
+    name: Update
+  - name: (
+  - name: )
+- uid: Stimulation.OnDisable
+  commentId: M:Stimulation.OnDisable
+  name: OnDisable()
+  nameWithType: Stimulation.OnDisable()
+  fullName: Stimulation.OnDisable()
+  spec.csharp:
+  - uid: WSS.Unity.Stimulation.OnDisable
+    name: OnDisable
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: WSS.Unity.Stimulation.OnDisable
+    name: OnDisable
+  - name: (
+  - name: )
+- uid: WSS.Unity
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: UnityEngine.Object
+  commentId: T:UnityEngine.Object
+  parent: UnityEngine
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: UnityEngine.Object
+- uid: UnityEngine.Component
+  commentId: T:UnityEngine.Component
+  parent: UnityEngine
+  isExternal: true
+  name: Component
+  nameWithType: Component
+  fullName: UnityEngine.Component
+- uid: UnityEngine.Behaviour
+  commentId: T:UnityEngine.Behaviour
+  parent: UnityEngine
+  isExternal: true
+  name: Behaviour
+  nameWithType: Behaviour
+  fullName: UnityEngine.Behaviour
+- uid: UnityEngine.MonoBehaviour
+  commentId: T:UnityEngine.MonoBehaviour
+  parent: UnityEngine
+  isExternal: true
+  name: MonoBehaviour
+  nameWithType: MonoBehaviour
+  fullName: UnityEngine.MonoBehaviour
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: UnityEngine
+  commentId: N:UnityEngine
+  isExternal: true
+  name: UnityEngine
+  nameWithType: UnityEngine
+  fullName: UnityEngine
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: WSS.Unity.Stimulation.Awake*
+  commentId: Overload:WSS.Unity.Stimulation.Awake
+  href: WSS.Unity.Stimulation.html#Stimulation_Awake
+  name: Awake
+  nameWithType: Stimulation.Awake
+  fullName: Stimulation.Awake
+- uid: WSS.Unity.Stimulation.releaseRadio*
+  commentId: Overload:WSS.Unity.Stimulation.releaseRadio
+  href: WSS.Unity.Stimulation.html#Stimulation_releaseRadio
+  name: releaseRadio
+  nameWithType: Stimulation.releaseRadio
+  fullName: Stimulation.releaseRadio
+- uid: WSS.Unity.Stimulation.resetRadio*
+  commentId: Overload:WSS.Unity.Stimulation.resetRadio
+  href: WSS.Unity.Stimulation.html#Stimulation_resetRadio
+  name: resetRadio
+  nameWithType: Stimulation.resetRadio
+  fullName: Stimulation.resetRadio
+- uid: WSS.Unity.Stimulation.StimulateAnalog*
+  commentId: Overload:WSS.Unity.Stimulation.StimulateAnalog
+  href: WSS.Unity.Stimulation.html#Stimulation_StimulateAnalog_System_String_System_Int32_System_Int32_System_Int32_
+  name: StimulateAnalog
+  nameWithType: Stimulation.StimulateAnalog
+  fullName: Stimulation.StimulateAnalog
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: WSS.Unity.Stimulation.StartStimulation*
+  commentId: Overload:WSS.Unity.Stimulation.StartStimulation
+  href: WSS.Unity.Stimulation.html#Stimulation_StartStimulation
+  name: StartStimulation
+  nameWithType: Stimulation.StartStimulation
+  fullName: Stimulation.StartStimulation
+- uid: WSS.Unity.Stimulation.StopStimulation*
+  commentId: Overload:WSS.Unity.Stimulation.StopStimulation
+  href: WSS.Unity.Stimulation.html#Stimulation_StopStimulation
+  name: StopStimulation
+  nameWithType: Stimulation.StopStimulation
+  fullName: Stimulation.StopStimulation
+- uid: WSS.Unity.Stimulation.Save*
+  commentId: Overload:WSS.Unity.Stimulation.Save
+  href: WSS.Unity.Stimulation.html#Stimulation_Save_System_Int32_
+  name: Save
+  nameWithType: Stimulation.Save
+  fullName: Stimulation.Save
+- uid: WSS.Unity.Stimulation.load*
+  commentId: Overload:WSS.Unity.Stimulation.load
+  href: WSS.Unity.Stimulation.html#Stimulation_load_System_Int32_
+  name: load
+  nameWithType: Stimulation.load
+  fullName: Stimulation.load
+- uid: WSS.Unity.Stimulation.request_Configs*
+  commentId: Overload:WSS.Unity.Stimulation.request_Configs
+  href: WSS.Unity.Stimulation.html#Stimulation_request_Configs_System_Int32_System_Int32_System_Int32_
+  name: request_Configs
+  nameWithType: Stimulation.request_Configs
+  fullName: Stimulation.request_Configs
+- uid: WSS.Unity.Stimulation.updateWaveform*
+  commentId: Overload:WSS.Unity.Stimulation.updateWaveform
+  href: WSS.Unity.Stimulation.html#Stimulation_updateWaveform_System_Int32___System_Int32_
+  name: updateWaveform
+  nameWithType: Stimulation.updateWaveform
+  fullName: Stimulation.updateWaveform
+- uid: System.Int32[]
+  isExternal: true
+  name: int[]
+  nameWithType: int[]
+  fullName: int[]
+  nameWithType.vb: Integer()
+  fullName.vb: Integer()
+  name.vb: Integer()
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Wss.CoreModule.WaveformBuilder
+  commentId: T:Wss.CoreModule.WaveformBuilder
+  parent: Wss.CoreModule
+  isExternal: true
+  href: https://github.com/cwru-non-academic/WSSCoreInterface/blob/6d57dc93f5e1e6ab6f1a07147624443ac43a2431/CoreModule/SideFunctions/WaveformBuilder.cs
+  name: WaveformBuilder
+  nameWithType: WaveformBuilder
+  fullName: Wss.CoreModule.WaveformBuilder
+- uid: Wss.CoreModule
+  commentId: N:Wss.CoreModule
+  isExternal: true
+  name: Wss.CoreModule
+  nameWithType: Wss.CoreModule
+  fullName: Wss.CoreModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    isExternal: true
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    isExternal: true
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    isExternal: true
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    isExternal: true
+- uid: WSS.Unity.Stimulation.loadWaveform*
+  commentId: Overload:WSS.Unity.Stimulation.loadWaveform
+  href: WSS.Unity.Stimulation.html#Stimulation_loadWaveform_System_String_System_Int32_
+  name: loadWaveform
+  nameWithType: Stimulation.loadWaveform
+  fullName: Stimulation.loadWaveform
+- uid: WSS.Unity.Stimulation.WaveformSetup*
+  commentId: Overload:WSS.Unity.Stimulation.WaveformSetup
+  href: WSS.Unity.Stimulation.html#Stimulation_WaveformSetup_Wss_CoreModule_WaveformBuilder_System_Int32_
+  name: WaveformSetup
+  nameWithType: Stimulation.WaveformSetup
+  fullName: Stimulation.WaveformSetup
+- uid: WSS.Unity.Stimulation.UpdateIPD*
+  commentId: Overload:WSS.Unity.Stimulation.UpdateIPD
+  href: WSS.Unity.Stimulation.html#Stimulation_UpdateIPD_System_Int32_System_Int32_
+  name: UpdateIPD
+  nameWithType: Stimulation.UpdateIPD
+  fullName: Stimulation.UpdateIPD
+- uid: WSS.Unity.Stimulation.StimulateNormalized*
+  commentId: Overload:WSS.Unity.Stimulation.StimulateNormalized
+  href: WSS.Unity.Stimulation.html#Stimulation_StimulateNormalized_System_String_System_Single_
+  name: StimulateNormalized
+  nameWithType: Stimulation.StimulateNormalized
+  fullName: Stimulation.StimulateNormalized
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: WSS.Unity.Stimulation.GetStimIntensity*
+  commentId: Overload:WSS.Unity.Stimulation.GetStimIntensity
+  href: WSS.Unity.Stimulation.html#Stimulation_GetStimIntensity_System_String_
+  name: GetStimIntensity
+  nameWithType: Stimulation.GetStimIntensity
+  fullName: Stimulation.GetStimIntensity
+- uid: WSS.Unity.Stimulation.SaveParamsJson*
+  commentId: Overload:WSS.Unity.Stimulation.SaveParamsJson
+  href: WSS.Unity.Stimulation.html#Stimulation_SaveParamsJson
+  name: SaveParamsJson
+  nameWithType: Stimulation.SaveParamsJson
+  fullName: Stimulation.SaveParamsJson
+- uid: WSS.Unity.Stimulation.LoadParamsJson*
+  commentId: Overload:WSS.Unity.Stimulation.LoadParamsJson
+  href: WSS.Unity.Stimulation.html#Stimulation_LoadParamsJson
+  name: LoadParamsJson
+  nameWithType: Stimulation.LoadParamsJson
+  fullName: Stimulation.LoadParamsJson
+- uid: WSS.Unity.Stimulation.AddOrUpdateStimParam*
+  commentId: Overload:WSS.Unity.Stimulation.AddOrUpdateStimParam
+  href: WSS.Unity.Stimulation.html#Stimulation_AddOrUpdateStimParam_System_String_System_Single_
+  name: AddOrUpdateStimParam
+  nameWithType: Stimulation.AddOrUpdateStimParam
+  fullName: Stimulation.AddOrUpdateStimParam
+- uid: WSS.Unity.Stimulation.GetStimParam*
+  commentId: Overload:WSS.Unity.Stimulation.GetStimParam
+  href: WSS.Unity.Stimulation.html#Stimulation_GetStimParam_System_String_
+  name: GetStimParam
+  nameWithType: Stimulation.GetStimParam
+  fullName: Stimulation.GetStimParam
+- uid: WSS.Unity.Stimulation.TryGetStimParam*
+  commentId: Overload:WSS.Unity.Stimulation.TryGetStimParam
+  href: WSS.Unity.Stimulation.html#Stimulation_TryGetStimParam_System_String_System_Single__
+  name: TryGetStimParam
+  nameWithType: Stimulation.TryGetStimParam
+  fullName: Stimulation.TryGetStimParam
+- uid: WSS.Unity.Stimulation.GetAllStimParams*
+  commentId: Overload:WSS.Unity.Stimulation.GetAllStimParams
+  href: WSS.Unity.Stimulation.html#Stimulation_GetAllStimParams
+  name: GetAllStimParams
+  nameWithType: Stimulation.GetAllStimParams
+  fullName: Stimulation.GetAllStimParams
+- uid: System.Collections.Generic.Dictionary{System.String,System.Single}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,System.Single}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  name: Dictionary<string, float>
+  nameWithType: Dictionary<string, float>
+  fullName: System.Collections.Generic.Dictionary<string, float>
+  nameWithType.vb: Dictionary(Of String, Single)
+  fullName.vb: System.Collections.Generic.Dictionary(Of String, Single)
+  name.vb: Dictionary(Of String, Single)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: WSS.Unity.Stimulation.SetChannelAmp*
+  commentId: Overload:WSS.Unity.Stimulation.SetChannelAmp
+  href: WSS.Unity.Stimulation.html#Stimulation_SetChannelAmp_System_String_System_Single_
+  name: SetChannelAmp
+  nameWithType: Stimulation.SetChannelAmp
+  fullName: Stimulation.SetChannelAmp
+- uid: WSS.Unity.Stimulation.SetChannelPWMin*
+  commentId: Overload:WSS.Unity.Stimulation.SetChannelPWMin
+  href: WSS.Unity.Stimulation.html#Stimulation_SetChannelPWMin_System_String_System_Int32_
+  name: SetChannelPWMin
+  nameWithType: Stimulation.SetChannelPWMin
+  fullName: Stimulation.SetChannelPWMin
+- uid: WSS.Unity.Stimulation.SetChannelPWMax*
+  commentId: Overload:WSS.Unity.Stimulation.SetChannelPWMax
+  href: WSS.Unity.Stimulation.html#Stimulation_SetChannelPWMax_System_String_System_Int32_
+  name: SetChannelPWMax
+  nameWithType: Stimulation.SetChannelPWMax
+  fullName: Stimulation.SetChannelPWMax
+- uid: WSS.Unity.Stimulation.SetChannelIPI*
+  commentId: Overload:WSS.Unity.Stimulation.SetChannelIPI
+  href: WSS.Unity.Stimulation.html#Stimulation_SetChannelIPI_System_String_System_Int32_
+  name: SetChannelIPI
+  nameWithType: Stimulation.SetChannelIPI
+  fullName: Stimulation.SetChannelIPI
+- uid: WSS.Unity.Stimulation.GetChannelAmp*
+  commentId: Overload:WSS.Unity.Stimulation.GetChannelAmp
+  href: WSS.Unity.Stimulation.html#Stimulation_GetChannelAmp_System_String_
+  name: GetChannelAmp
+  nameWithType: Stimulation.GetChannelAmp
+  fullName: Stimulation.GetChannelAmp
+- uid: WSS.Unity.Stimulation.GetChannelPWMin*
+  commentId: Overload:WSS.Unity.Stimulation.GetChannelPWMin
+  href: WSS.Unity.Stimulation.html#Stimulation_GetChannelPWMin_System_String_
+  name: GetChannelPWMin
+  nameWithType: Stimulation.GetChannelPWMin
+  fullName: Stimulation.GetChannelPWMin
+- uid: WSS.Unity.Stimulation.GetChannelPWMax*
+  commentId: Overload:WSS.Unity.Stimulation.GetChannelPWMax
+  href: WSS.Unity.Stimulation.html#Stimulation_GetChannelPWMax_System_String_
+  name: GetChannelPWMax
+  nameWithType: Stimulation.GetChannelPWMax
+  fullName: Stimulation.GetChannelPWMax
+- uid: WSS.Unity.Stimulation.GetChannelIPI*
+  commentId: Overload:WSS.Unity.Stimulation.GetChannelIPI
+  href: WSS.Unity.Stimulation.html#Stimulation_GetChannelIPI_System_String_
+  name: GetChannelIPI
+  nameWithType: Stimulation.GetChannelIPI
+  fullName: Stimulation.GetChannelIPI
+- uid: WSS.Unity.Stimulation.IsFingerValid*
+  commentId: Overload:WSS.Unity.Stimulation.IsFingerValid
+  href: WSS.Unity.Stimulation.html#Stimulation_IsFingerValid_System_String_
+  name: IsFingerValid
+  nameWithType: Stimulation.IsFingerValid
+  fullName: Stimulation.IsFingerValid
+- uid: WSS.Unity.Stimulation.StimWithMode*
+  commentId: Overload:WSS.Unity.Stimulation.StimWithMode
+  href: WSS.Unity.Stimulation.html#Stimulation_StimWithMode_System_String_System_Single_
+  name: StimWithMode
+  nameWithType: Stimulation.StimWithMode
+  fullName: Stimulation.StimWithMode
+- uid: System.ArgumentOutOfRangeException
+  commentId: T:System.ArgumentOutOfRangeException
+  isExternal: true
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
+- uid: WSS.Unity.Stimulation.UpdateChannelParams*
+  commentId: Overload:WSS.Unity.Stimulation.UpdateChannelParams
+  href: WSS.Unity.Stimulation.html#Stimulation_UpdateChannelParams_System_String_System_Int32_System_Int32_System_Int32_
+  name: UpdateChannelParams
+  nameWithType: Stimulation.UpdateChannelParams
+  fullName: Stimulation.UpdateChannelParams
+- uid: WSS.Unity.Stimulation.isModeValid*
+  commentId: Overload:WSS.Unity.Stimulation.isModeValid
+  href: WSS.Unity.Stimulation.html#Stimulation_isModeValid
+  name: isModeValid
+  nameWithType: Stimulation.isModeValid
+  fullName: Stimulation.isModeValid
+- uid: WSS.Unity.Stimulation.Ready*
+  commentId: Overload:WSS.Unity.Stimulation.Ready
+  href: WSS.Unity.Stimulation.html#Stimulation_Ready
+  name: Ready
+  nameWithType: Stimulation.Ready
+  fullName: Stimulation.Ready
+- uid: WSS.Unity.Stimulation.Started*
+  commentId: Overload:WSS.Unity.Stimulation.Started
+  href: WSS.Unity.Stimulation.html#Stimulation_Started
+  name: Started
+  nameWithType: Stimulation.Started
+  fullName: Stimulation.Started
+- uid: WSS.Unity.Stimulation.GetModelConfigCTRL*
+  commentId: Overload:WSS.Unity.Stimulation.GetModelConfigCTRL
+  href: WSS.Unity.Stimulation.html#Stimulation_GetModelConfigCTRL
+  name: GetModelConfigCTRL
+  nameWithType: Stimulation.GetModelConfigCTRL
+  fullName: Stimulation.GetModelConfigCTRL
+- uid: Wss.ModelModule.ModelConfigController
+  commentId: T:Wss.ModelModule.ModelConfigController
+  parent: Wss.ModelModule
+  isExternal: true
+  href: https://github.com/cwru-non-academic/WSSCoreInterface/blob/6d57dc93f5e1e6ab6f1a07147624443ac43a2431/ModelModule/ModelConfigController.cs
+  name: ModelConfigController
+  nameWithType: ModelConfigController
+  fullName: Wss.ModelModule.ModelConfigController
+- uid: Wss.ModelModule
+  commentId: N:Wss.ModelModule
+  isExternal: true
+  name: Wss.ModelModule
+  nameWithType: Wss.ModelModule
+  fullName: Wss.ModelModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    isExternal: true
+  - name: .
+  - uid: Wss.ModelModule
+    name: ModelModule
+    isExternal: true
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    isExternal: true
+  - name: .
+  - uid: Wss.ModelModule
+    name: ModelModule
+    isExternal: true
+- uid: WSS.Unity.Stimulation.GetCoreConfigCTRL*
+  commentId: Overload:WSS.Unity.Stimulation.GetCoreConfigCTRL
+  href: WSS.Unity.Stimulation.html#Stimulation_GetCoreConfigCTRL
+  name: GetCoreConfigCTRL
+  nameWithType: Stimulation.GetCoreConfigCTRL
+  fullName: Stimulation.GetCoreConfigCTRL
+- uid: Wss.CoreModule.CoreConfigController
+  commentId: T:Wss.CoreModule.CoreConfigController
+  parent: Wss.CoreModule
+  isExternal: true
+  href: https://github.com/cwru-non-academic/WSSCoreInterface/blob/6d57dc93f5e1e6ab6f1a07147624443ac43a2431/CoreModule/CoreJsonConfig/CoreConfigController.cs
+  name: CoreConfigController
+  nameWithType: CoreConfigController
+  fullName: Wss.CoreModule.CoreConfigController

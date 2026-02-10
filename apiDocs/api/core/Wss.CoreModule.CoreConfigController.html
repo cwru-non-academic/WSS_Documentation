@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class CoreConfigController | WSS Documentation Hub </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class CoreConfigController | WSS Documentation Hub ">
+    
+    <meta name="description" content="Controls loading, validating, reading, and writing a configuration JSON file. Thread-safe. Ensures a valid default config exists on disk.">
+      <link rel="shortcut icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../styles/docfx.css">
+      <link rel="stylesheet" href="../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Wss.CoreModule.CoreConfigController">
+
+
+
+  <h1 id="Wss_CoreModule_CoreConfigController" data-uid="Wss.CoreModule.CoreConfigController" class="text-break">Class CoreConfigController</h1>
+  <div class="markdown level0 summary"><p>Controls loading, validating, reading, and writing a configuration JSON file.
+Thread-safe. Ensures a valid default config exists on disk.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">object</span></div>
+    <div class="level1"><span class="xref">CoreConfigController</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="Wss.CoreModule.ICoreConfig.html">ICoreConfig</a></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Wss.html">Wss</a>.<a class="xref" href="Wss.CoreModule.html">CoreModule</a></h6>
+  <h6><strong>Assembly</strong>: WSS_Core_Interface.dll</h6>
+  <h5 id="Wss_CoreModule_CoreConfigController_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class CoreConfigController : ICoreConfig</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+
+
+  <a id="Wss_CoreModule_CoreConfigController__ctor_" data-uid="Wss.CoreModule.CoreConfigController.#ctor*"></a>
+  <h4 id="Wss_CoreModule_CoreConfigController__ctor" data-uid="Wss.CoreModule.CoreConfigController.#ctor">CoreConfigController()</h4>
+  <div class="markdown level1 summary"><p>Initializes a controller that reads/writes &quot;stimConfig.json&quot; in the current directory.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CoreConfigController()</code></pre>
+  </div>
+
+
+  <a id="Wss_CoreModule_CoreConfigController__ctor_" data-uid="Wss.CoreModule.CoreConfigController.#ctor*"></a>
+  <h4 id="Wss_CoreModule_CoreConfigController__ctor_System_String_" data-uid="Wss.CoreModule.CoreConfigController.#ctor(System.String)">CoreConfigController(string)</h4>
+  <div class="markdown level1 summary"><p>Initializes a controller pointing to a custom path.
+If a directory path is provided, &quot;stimConfig.json&quot; is created inside it.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CoreConfigController(string path)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">path</span></td>
+        <td><p>Absolute or relative file path, or a directory path.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ArgumentException</span></td>
+        <td><p>Thrown when <code class="paramref">path</code> is null, empty, or whitespace.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+</h3>
+
+
+  <a id="Wss_CoreModule_CoreConfigController_AmpCurves_" data-uid="Wss.CoreModule.CoreConfigController.AmpCurves*"></a>
+  <h4 id="Wss_CoreModule_CoreConfigController_AmpCurves" data-uid="Wss.CoreModule.CoreConfigController.AmpCurves">AmpCurves</h4>
+  <div class="markdown level1 summary"><p>Returns the configured amplitude curve parameters per WSS (index 0..2 maps to Wss1..Wss3).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AmpCurveParams[] AmpCurves { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Wss.CoreModule.AmpCurveParams.html">AmpCurveParams</a>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_CoreConfigController_Firmware_" data-uid="Wss.CoreModule.CoreConfigController.Firmware*"></a>
+  <h4 id="Wss_CoreModule_CoreConfigController_Firmware" data-uid="Wss.CoreModule.CoreConfigController.Firmware">Firmware</h4>
+  <div class="markdown level1 summary"><p>Gets the firmware version saved on config.
+Thread safe get.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Firmware { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_CoreConfigController_IsLoaded_" data-uid="Wss.CoreModule.CoreConfigController.IsLoaded*"></a>
+  <h4 id="Wss_CoreModule_CoreConfigController_IsLoaded" data-uid="Wss.CoreModule.CoreConfigController.IsLoaded">IsLoaded</h4>
+  <div class="markdown level1 summary"><p>Indicates whether the JSON configuration has been loaded into memory.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsLoaded { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_CoreConfigController_MaxWss_" data-uid="Wss.CoreModule.CoreConfigController.MaxWss*"></a>
+  <h4 id="Wss_CoreModule_CoreConfigController_MaxWss" data-uid="Wss.CoreModule.CoreConfigController.MaxWss">MaxWss</h4>
+  <div class="markdown level1 summary"><p>Gets max number of WSS supported by this app.
+Thread safe get.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int MaxWss { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_CoreConfigController_UseConfigAmpCurves_" data-uid="Wss.CoreModule.CoreConfigController.UseConfigAmpCurves*"></a>
+  <h4 id="Wss_CoreModule_CoreConfigController_UseConfigAmpCurves" data-uid="Wss.CoreModule.CoreConfigController.UseConfigAmpCurves">UseConfigAmpCurves</h4>
+  <div class="markdown level1 summary"><p>When true, the core should use per-WSS amplitude curves from the config file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool UseConfigAmpCurves { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_CoreConfigController__configPath_" data-uid="Wss.CoreModule.CoreConfigController._configPath*"></a>
+  <h4 id="Wss_CoreModule_CoreConfigController__configPath" data-uid="Wss.CoreModule.CoreConfigController._configPath">_configPath</h4>
+  <div class="markdown level1 summary"><p>Resolved file path to the configuration JSON.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string _configPath { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+
+
+  <a id="Wss_CoreModule_CoreConfigController_LoadJson_" data-uid="Wss.CoreModule.CoreConfigController.LoadJson*"></a>
+  <h4 id="Wss_CoreModule_CoreConfigController_LoadJson" data-uid="Wss.CoreModule.CoreConfigController.LoadJson">LoadJson()</h4>
+  <div class="markdown level1 summary"><p>Loads the configuration from disk. Creates and saves a default config if missing or invalid.
+Safe to call multiple times.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void LoadJson()</code></pre>
+  </div>
+
+
+  <a id="Wss_CoreModule_CoreConfigController_LoadJson_" data-uid="Wss.CoreModule.CoreConfigController.LoadJson*"></a>
+  <h4 id="Wss_CoreModule_CoreConfigController_LoadJson_System_String_" data-uid="Wss.CoreModule.CoreConfigController.LoadJson(System.String)">LoadJson(string)</h4>
+  <div class="markdown level1 summary"><p>Loads the core configuration from disk at the specified <code class="paramref">path</code>.
+If <code class="paramref">path</code> is a directory, the file name <code>core.json</code> is appended.
+If the file does not exist or is invalid, a default configuration is created and saved.
+Safe to call multiple times; the operation is thread-safe.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void LoadJson(string path)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">path</span></td>
+        <td><p>Absolute or relative file path, or a directory path ending with a path separator.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_CoreConfigController_SaveJson_" data-uid="Wss.CoreModule.CoreConfigController.SaveJson*"></a>
+  <h4 id="Wss_CoreModule_CoreConfigController_SaveJson" data-uid="Wss.CoreModule.CoreConfigController.SaveJson">SaveJson()</h4>
+  <div class="markdown level1 summary"><p>Threads safe, persists the current configuration to disk.
+No-op if not loaded yet.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SaveJson()</code></pre>
+  </div>
+
+
+  <a id="Wss_CoreModule_CoreConfigController_SetFirmware_" data-uid="Wss.CoreModule.CoreConfigController.SetFirmware*"></a>
+  <h4 id="Wss_CoreModule_CoreConfigController_SetFirmware_System_String_Wss_CoreModule_WSSVersionHandler_" data-uid="Wss.CoreModule.CoreConfigController.SetFirmware(System.String,Wss.CoreModule.WSSVersionHandler)">SetFirmware(string, WSSVersionHandler)</h4>
+  <div class="markdown level1 summary"><p>Updates the firmware version recorded in the configuration and immediately saves it to disk.
+Thread safe.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetFirmware(string v, WSSVersionHandler verHandler)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">v</span></td>
+        <td><p>Firmware version string to record (for example, &quot;H03&quot;).</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Wss.CoreModule.WSSVersionHandler.html">WSSVersionHandler</a></td>
+        <td><span class="parametername">verHandler</span></td>
+        <td><p>Version handler used to validate whether the supplied firmware string is supported.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_CoreConfigController_SetMaxWss_" data-uid="Wss.CoreModule.CoreConfigController.SetMaxWss*"></a>
+  <h4 id="Wss_CoreModule_CoreConfigController_SetMaxWss_System_Int32_" data-uid="Wss.CoreModule.CoreConfigController.SetMaxWss(System.Int32)">SetMaxWss(int)</h4>
+  <div class="markdown level1 summary"><p>Updates the maximum number of supported WSS devices in the loaded configuration
+and immediately persists the change to disk. Thread safe.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetMaxWss(int v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">v</span></td>
+        <td><p>New maximum WSS count. Must be greater than zero.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Wss.CoreModule.ICoreConfig.html">ICoreConfig</a>
+  </div>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

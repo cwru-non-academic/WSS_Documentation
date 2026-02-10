@@ -1,0 +1,113 @@
+### YamlMime:ManagedReference
+items:
+- uid: Wss.CoreModule.WSSVersionHandler.SupportedVersions
+  commentId: T:Wss.CoreModule.WSSVersionHandler.SupportedVersions
+  id: WSSVersionHandler.SupportedVersions
+  parent: Wss.CoreModule
+  children:
+  - Wss.CoreModule.WSSVersionHandler.SupportedVersions.H03
+  - Wss.CoreModule.WSSVersionHandler.SupportedVersions.J03
+  langs:
+  - csharp
+  - vb
+  name: WSSVersionHandler.SupportedVersions
+  nameWithType: WSSVersionHandler.SupportedVersions
+  fullName: Wss.CoreModule.WSSVersionHandler.SupportedVersions
+  type: Enum
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Enum representing known supported WSS firmware versions.
+
+    Integer values correspond to internal numeric codes.
+  example: []
+  syntax:
+    content: public enum WSSVersionHandler.SupportedVersions
+    content.vb: Public Enum WSSVersionHandler.SupportedVersions
+- uid: Wss.CoreModule.WSSVersionHandler.SupportedVersions.H03
+  commentId: F:Wss.CoreModule.WSSVersionHandler.SupportedVersions.H03
+  id: H03
+  parent: Wss.CoreModule.WSSVersionHandler.SupportedVersions
+  langs:
+  - csharp
+  - vb
+  name: H03
+  nameWithType: WSSVersionHandler.SupportedVersions.H03
+  fullName: Wss.CoreModule.WSSVersionHandler.SupportedVersions.H03
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Firmware version H03.
+  example: []
+  syntax:
+    content: H03 = 83
+    return:
+      type: Wss.CoreModule.WSSVersionHandler.SupportedVersions
+- uid: Wss.CoreModule.WSSVersionHandler.SupportedVersions.J03
+  commentId: F:Wss.CoreModule.WSSVersionHandler.SupportedVersions.J03
+  id: J03
+  parent: Wss.CoreModule.WSSVersionHandler.SupportedVersions
+  langs:
+  - csharp
+  - vb
+  name: J03
+  nameWithType: WSSVersionHandler.SupportedVersions.J03
+  fullName: Wss.CoreModule.WSSVersionHandler.SupportedVersions.J03
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Firmware version J03.
+  example: []
+  syntax:
+    content: J03 = 93
+    return:
+      type: Wss.CoreModule.WSSVersionHandler.SupportedVersions
+references:
+- uid: Wss.CoreModule
+  commentId: N:Wss.CoreModule
+  href: Wss.html
+  name: Wss.CoreModule
+  nameWithType: Wss.CoreModule
+  fullName: Wss.CoreModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+- uid: Wss.CoreModule.WSSVersionHandler.SupportedVersions
+  commentId: T:Wss.CoreModule.WSSVersionHandler.SupportedVersions
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.WSSVersionHandler.html
+  name: WSSVersionHandler.SupportedVersions
+  nameWithType: WSSVersionHandler.SupportedVersions
+  fullName: Wss.CoreModule.WSSVersionHandler.SupportedVersions
+  spec.csharp:
+  - uid: Wss.CoreModule.WSSVersionHandler
+    name: WSSVersionHandler
+    href: Wss.CoreModule.WSSVersionHandler.html
+  - name: .
+  - uid: Wss.CoreModule.WSSVersionHandler.SupportedVersions
+    name: SupportedVersions
+    href: Wss.CoreModule.WSSVersionHandler.SupportedVersions.html
+  spec.vb:
+  - uid: Wss.CoreModule.WSSVersionHandler
+    name: WSSVersionHandler
+    href: Wss.CoreModule.WSSVersionHandler.html
+  - name: .
+  - uid: Wss.CoreModule.WSSVersionHandler.SupportedVersions
+    name: SupportedVersions
+    href: Wss.CoreModule.WSSVersionHandler.SupportedVersions.html

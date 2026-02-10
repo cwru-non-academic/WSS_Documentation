@@ -1,0 +1,132 @@
+### YamlMime:ManagedReference
+items:
+- uid: Wss.CoreModule.ICoreConfig
+  commentId: T:Wss.CoreModule.ICoreConfig
+  id: ICoreConfig
+  parent: Wss.CoreModule
+  children:
+  - Wss.CoreModule.ICoreConfig.Firmware
+  - Wss.CoreModule.ICoreConfig.MaxWss
+  langs:
+  - csharp
+  - vb
+  name: ICoreConfig
+  nameWithType: ICoreConfig
+  fullName: Wss.CoreModule.ICoreConfig
+  type: Interface
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Read-only view of core configuration values loaded from a JSON config file.
+  example: []
+  syntax:
+    content: public interface ICoreConfig
+    content.vb: Public Interface ICoreConfig
+- uid: Wss.CoreModule.ICoreConfig.MaxWss
+  commentId: P:Wss.CoreModule.ICoreConfig.MaxWss
+  id: MaxWss
+  parent: Wss.CoreModule.ICoreConfig
+  langs:
+  - csharp
+  - vb
+  name: MaxWss
+  nameWithType: ICoreConfig.MaxWss
+  fullName: Wss.CoreModule.ICoreConfig.MaxWss
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Maximum number of WSS devices supported by this configuration.
+  example: []
+  syntax:
+    content: int MaxWss { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property MaxWss As Integer
+  overload: Wss.CoreModule.ICoreConfig.MaxWss*
+- uid: Wss.CoreModule.ICoreConfig.Firmware
+  commentId: P:Wss.CoreModule.ICoreConfig.Firmware
+  id: Firmware
+  parent: Wss.CoreModule.ICoreConfig
+  langs:
+  - csharp
+  - vb
+  name: Firmware
+  nameWithType: ICoreConfig.Firmware
+  fullName: Wss.CoreModule.ICoreConfig.Firmware
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Firmware version string (e.g., "H03", "J03").
+  example: []
+  syntax:
+    content: string Firmware { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property Firmware As String
+  overload: Wss.CoreModule.ICoreConfig.Firmware*
+references:
+- uid: Wss.CoreModule
+  commentId: N:Wss.CoreModule
+  href: Wss.html
+  name: Wss.CoreModule
+  nameWithType: Wss.CoreModule
+  fullName: Wss.CoreModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+- uid: Wss.CoreModule.ICoreConfig.MaxWss*
+  commentId: Overload:Wss.CoreModule.ICoreConfig.MaxWss
+  href: Wss.CoreModule.ICoreConfig.html#Wss_CoreModule_ICoreConfig_MaxWss
+  name: MaxWss
+  nameWithType: ICoreConfig.MaxWss
+  fullName: Wss.CoreModule.ICoreConfig.MaxWss
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Wss.CoreModule.ICoreConfig.Firmware*
+  commentId: Overload:Wss.CoreModule.ICoreConfig.Firmware
+  href: Wss.CoreModule.ICoreConfig.html#Wss_CoreModule_ICoreConfig_Firmware
+  name: Firmware
+  nameWithType: ICoreConfig.Firmware
+  fullName: Wss.CoreModule.ICoreConfig.Firmware
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String

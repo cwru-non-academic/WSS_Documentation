@@ -1,0 +1,1117 @@
+### YamlMime:ManagedReference
+items:
+- uid: Wss.CoreModule.TestModeTransport
+  commentId: T:Wss.CoreModule.TestModeTransport
+  id: TestModeTransport
+  parent: Wss.CoreModule
+  children:
+  - Wss.CoreModule.TestModeTransport.#ctor(System.Nullable{System.TimeSpan},System.Int32,System.Int32,System.Double,System.Random,System.Byte[],System.Func{System.Byte[],System.Threading.Tasks.Task{System.Byte[]}})
+  - Wss.CoreModule.TestModeTransport.AutoResponderAsync
+  - Wss.CoreModule.TestModeTransport.BaseLatency
+  - Wss.CoreModule.TestModeTransport.BytesReceived
+  - Wss.CoreModule.TestModeTransport.ConnectAsync(System.Threading.CancellationToken)
+  - Wss.CoreModule.TestModeTransport.DisconnectAsync(System.Threading.CancellationToken)
+  - Wss.CoreModule.TestModeTransport.Dispose
+  - Wss.CoreModule.TestModeTransport.EnqueueIncoming(System.Byte[],System.Threading.CancellationToken)
+  - Wss.CoreModule.TestModeTransport.FallbackPayload
+  - Wss.CoreModule.TestModeTransport.InboundDropProbability
+  - Wss.CoreModule.TestModeTransport.IsConnected
+  - Wss.CoreModule.TestModeTransport.JitterMs
+  - Wss.CoreModule.TestModeTransport.MaxInboundChunkSize
+  - Wss.CoreModule.TestModeTransport.Rng
+  - Wss.CoreModule.TestModeTransport.SendAsync(System.Byte[],System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: TestModeTransport
+  nameWithType: TestModeTransport
+  fullName: Wss.CoreModule.TestModeTransport
+  type: Class
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    In-memory transport for debugging and unit tests. No real I/O.
+
+    Features: artificial latency, jitter, inbound chunking, and drop simulation.
+
+    Default auto-responder validates checksum, flips sender/target, and echoes or replaces payload.
+  example: []
+  syntax:
+    content: 'public sealed class TestModeTransport : ITransport'
+    content.vb: Public NotInheritable Class TestModeTransport Implements ITransport
+  inheritance:
+  - System.Object
+  implements:
+  - Wss.CoreModule.ITransport
+- uid: Wss.CoreModule.TestModeTransport.BaseLatency
+  commentId: P:Wss.CoreModule.TestModeTransport.BaseLatency
+  id: BaseLatency
+  parent: Wss.CoreModule.TestModeTransport
+  langs:
+  - csharp
+  - vb
+  name: BaseLatency
+  nameWithType: TestModeTransport.BaseLatency
+  fullName: Wss.CoreModule.TestModeTransport.BaseLatency
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Artificial latency applied to inbound delivery.
+  example: []
+  syntax:
+    content: public TimeSpan BaseLatency { get; set; }
+    parameters: []
+    return:
+      type: System.TimeSpan
+    content.vb: Public Property BaseLatency As TimeSpan
+  overload: Wss.CoreModule.TestModeTransport.BaseLatency*
+- uid: Wss.CoreModule.TestModeTransport.JitterMs
+  commentId: P:Wss.CoreModule.TestModeTransport.JitterMs
+  id: JitterMs
+  parent: Wss.CoreModule.TestModeTransport
+  langs:
+  - csharp
+  - vb
+  name: JitterMs
+  nameWithType: TestModeTransport.JitterMs
+  fullName: Wss.CoreModule.TestModeTransport.JitterMs
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Random jitter added to BaseLatency, in milliseconds.
+  example: []
+  syntax:
+    content: public int JitterMs { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property JitterMs As Integer
+  overload: Wss.CoreModule.TestModeTransport.JitterMs*
+- uid: Wss.CoreModule.TestModeTransport.MaxInboundChunkSize
+  commentId: P:Wss.CoreModule.TestModeTransport.MaxInboundChunkSize
+  id: MaxInboundChunkSize
+  parent: Wss.CoreModule.TestModeTransport
+  langs:
+  - csharp
+  - vb
+  name: MaxInboundChunkSize
+  nameWithType: TestModeTransport.MaxInboundChunkSize
+  fullName: Wss.CoreModule.TestModeTransport.MaxInboundChunkSize
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: If &gt;0, splits inbound payloads into chunks of up to this size.
+  example: []
+  syntax:
+    content: public int MaxInboundChunkSize { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property MaxInboundChunkSize As Integer
+  overload: Wss.CoreModule.TestModeTransport.MaxInboundChunkSize*
+- uid: Wss.CoreModule.TestModeTransport.InboundDropProbability
+  commentId: P:Wss.CoreModule.TestModeTransport.InboundDropProbability
+  id: InboundDropProbability
+  parent: Wss.CoreModule.TestModeTransport
+  langs:
+  - csharp
+  - vb
+  name: InboundDropProbability
+  nameWithType: TestModeTransport.InboundDropProbability
+  fullName: Wss.CoreModule.TestModeTransport.InboundDropProbability
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Probability [0..1] of randomly dropping an inbound chunk.
+  example: []
+  syntax:
+    content: public double InboundDropProbability { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property InboundDropProbability As Double
+  overload: Wss.CoreModule.TestModeTransport.InboundDropProbability*
+- uid: Wss.CoreModule.TestModeTransport.Rng
+  commentId: P:Wss.CoreModule.TestModeTransport.Rng
+  id: Rng
+  parent: Wss.CoreModule.TestModeTransport
+  langs:
+  - csharp
+  - vb
+  name: Rng
+  nameWithType: TestModeTransport.Rng
+  fullName: Wss.CoreModule.TestModeTransport.Rng
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Random generator used for jitter, chunk sizing, drops, and synthetic replies.
+  example: []
+  syntax:
+    content: public Random Rng { get; set; }
+    parameters: []
+    return:
+      type: System.Random
+    content.vb: Public Property Rng As Random
+  overload: Wss.CoreModule.TestModeTransport.Rng*
+- uid: Wss.CoreModule.TestModeTransport.FallbackPayload
+  commentId: P:Wss.CoreModule.TestModeTransport.FallbackPayload
+  id: FallbackPayload
+  parent: Wss.CoreModule.TestModeTransport
+  langs:
+  - csharp
+  - vb
+  name: FallbackPayload
+  nameWithType: TestModeTransport.FallbackPayload
+  fullName: Wss.CoreModule.TestModeTransport.FallbackPayload
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Payload used when incoming checksum is invalid.
+  example: []
+  syntax:
+    content: public byte[] FallbackPayload { get; set; }
+    parameters: []
+    return:
+      type: System.Byte[]
+    content.vb: Public Property FallbackPayload As Byte()
+  overload: Wss.CoreModule.TestModeTransport.FallbackPayload*
+- uid: Wss.CoreModule.TestModeTransport.AutoResponderAsync
+  commentId: P:Wss.CoreModule.TestModeTransport.AutoResponderAsync
+  id: AutoResponderAsync
+  parent: Wss.CoreModule.TestModeTransport
+  langs:
+  - csharp
+  - vb
+  name: AutoResponderAsync
+  nameWithType: TestModeTransport.AutoResponderAsync
+  fullName: Wss.CoreModule.TestModeTransport.AutoResponderAsync
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Optional override auto-responder. If null, the built-in default responder is used.
+  example: []
+  syntax:
+    content: public Func<byte[], Task<byte[]>> AutoResponderAsync { get; set; }
+    parameters: []
+    return:
+      type: System.Func{System.Byte[],System.Threading.Tasks.Task{System.Byte[]}}
+    content.vb: Public Property AutoResponderAsync As Func(Of Byte(), Task(Of Byte()))
+  overload: Wss.CoreModule.TestModeTransport.AutoResponderAsync*
+- uid: Wss.CoreModule.TestModeTransport.IsConnected
+  commentId: P:Wss.CoreModule.TestModeTransport.IsConnected
+  id: IsConnected
+  parent: Wss.CoreModule.TestModeTransport
+  langs:
+  - csharp
+  - vb
+  name: IsConnected
+  nameWithType: TestModeTransport.IsConnected
+  fullName: Wss.CoreModule.TestModeTransport.IsConnected
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Gets whether the transport is currently connected/open.
+  example: []
+  syntax:
+    content: public bool IsConnected { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsConnected As Boolean
+  overload: Wss.CoreModule.TestModeTransport.IsConnected*
+  implements:
+  - Wss.CoreModule.ITransport.IsConnected
+- uid: Wss.CoreModule.TestModeTransport.BytesReceived
+  commentId: E:Wss.CoreModule.TestModeTransport.BytesReceived
+  id: BytesReceived
+  parent: Wss.CoreModule.TestModeTransport
+  langs:
+  - csharp
+  - vb
+  name: BytesReceived
+  nameWithType: TestModeTransport.BytesReceived
+  fullName: Wss.CoreModule.TestModeTransport.BytesReceived
+  type: Event
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Raised whenever raw bytes arrive from the underlying transport.
+
+    Each invocation may represent any number of bytes (including zero, depending on implementation),
+
+    and may contain partial or multiple protocol frames.
+  remarks: >-
+    <p>
+
+    Implementations should invoke this event promptly as data becomes available.
+
+    Callers should treat the provided buffer as read-only and copy it if they need to retain it.
+
+    </p>
+
+    <p>
+
+    This event is typically raised on a background thread. Consumers should marshal to the main thread
+
+    if required by their environment.
+
+    </p>
+  example: []
+  syntax:
+    content: public event Action<byte[]> BytesReceived
+    return:
+      type: System.Action{System.Byte[]}
+    content.vb: Public Event BytesReceived As Action(Of Byte())
+  implements:
+  - Wss.CoreModule.ITransport.BytesReceived
+- uid: Wss.CoreModule.TestModeTransport.#ctor(System.Nullable{System.TimeSpan},System.Int32,System.Int32,System.Double,System.Random,System.Byte[],System.Func{System.Byte[],System.Threading.Tasks.Task{System.Byte[]}})
+  commentId: M:Wss.CoreModule.TestModeTransport.#ctor(System.Nullable{System.TimeSpan},System.Int32,System.Int32,System.Double,System.Random,System.Byte[],System.Func{System.Byte[],System.Threading.Tasks.Task{System.Byte[]}})
+  id: '#ctor(System.Nullable{System.TimeSpan},System.Int32,System.Int32,System.Double,System.Random,System.Byte[],System.Func{System.Byte[],System.Threading.Tasks.Task{System.Byte[]}})'
+  parent: Wss.CoreModule.TestModeTransport
+  langs:
+  - csharp
+  - vb
+  name: TestModeTransport(TimeSpan?, int, int, double, Random, byte[], Func<byte[], Task<byte[]>>)
+  nameWithType: TestModeTransport.TestModeTransport(TimeSpan?, int, int, double, Random, byte[], Func<byte[], Task<byte[]>>)
+  fullName: Wss.CoreModule.TestModeTransport.TestModeTransport(System.TimeSpan?, int, int, double, System.Random, byte[], System.Func<byte[], System.Threading.Tasks.Task<byte[]>>)
+  type: Constructor
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Initializes a new <xref href="Wss.CoreModule.TestModeTransport" data-throw-if-not-resolved="false"></xref> with optional configuration.
+  example: []
+  syntax:
+    content: public TestModeTransport(TimeSpan? baseLatency = null, int jitterMs = 0, int maxInboundChunkSize = 0, double inboundDropProbability = 0, Random rng = null, byte[] fallbackPayload = null, Func<byte[], Task<byte[]>> autoResponderAsync = null)
+    parameters:
+    - id: baseLatency
+      type: System.Nullable{System.TimeSpan}
+      description: Artificial latency applied to inbound delivery (default 0).
+    - id: jitterMs
+      type: System.Int32
+      description: Random jitter in milliseconds (default 0).
+    - id: maxInboundChunkSize
+      type: System.Int32
+      description: If &gt;0, splits inbound payloads (default 0).
+    - id: inboundDropProbability
+      type: System.Double
+      description: Probability [0..1] of dropping an inbound chunk (default 0.0).
+    - id: rng
+      type: System.Random
+      description: Random generator to use (default new Random(1234)).
+    - id: fallbackPayload
+      type: System.Byte[]
+      description: Payload used when checksum fails (default {0xE1,0xE2,0xE3}).
+    - id: autoResponderAsync
+      type: System.Func{System.Byte[],System.Threading.Tasks.Task{System.Byte[]}}
+      description: Optional override auto-responder (default null = built-in).
+    content.vb: Public Sub New(baseLatency As TimeSpan? = Nothing, jitterMs As Integer = 0, maxInboundChunkSize As Integer = 0, inboundDropProbability As Double = 0, rng As Random = Nothing, fallbackPayload As Byte() = Nothing, autoResponderAsync As Func(Of Byte(), Task(Of Byte())) = Nothing)
+  overload: Wss.CoreModule.TestModeTransport.#ctor*
+  nameWithType.vb: TestModeTransport.New(TimeSpan?, Integer, Integer, Double, Random, Byte(), Func(Of Byte(), Task(Of Byte())))
+  fullName.vb: Wss.CoreModule.TestModeTransport.New(System.TimeSpan?, Integer, Integer, Double, System.Random, Byte(), System.Func(Of Byte(), System.Threading.Tasks.Task(Of Byte())))
+  name.vb: New(TimeSpan?, Integer, Integer, Double, Random, Byte(), Func(Of Byte(), Task(Of Byte())))
+- uid: Wss.CoreModule.TestModeTransport.ConnectAsync(System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.TestModeTransport.ConnectAsync(System.Threading.CancellationToken)
+  id: ConnectAsync(System.Threading.CancellationToken)
+  parent: Wss.CoreModule.TestModeTransport
+  langs:
+  - csharp
+  - vb
+  name: ConnectAsync(CancellationToken)
+  nameWithType: TestModeTransport.ConnectAsync(CancellationToken)
+  fullName: Wss.CoreModule.TestModeTransport.ConnectAsync(System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Opens/initializes the transport connection (e.g., open a serial port, connect a socket, start BLE session).
+  example: []
+  syntax:
+    content: public Task ConnectAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Optional cancellation token to abort the connect attempt.
+    return:
+      type: System.Threading.Tasks.Task
+      description: A task that completes when the transport is connected.
+    content.vb: Public Function ConnectAsync(ct As CancellationToken = Nothing) As Task
+  overload: Wss.CoreModule.TestModeTransport.ConnectAsync*
+  exceptions:
+  - type: System.ObjectDisposedException
+    commentId: T:System.ObjectDisposedException
+    description: If the instance has been disposed.
+  - type: System.OperationCanceledException
+    commentId: T:System.OperationCanceledException
+    description: If <code class="paramref">ct</code> is canceled.
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: Implementations may throw transport-specific exceptions (e.g., unauthorized port access, device not found).
+  implements:
+  - Wss.CoreModule.ITransport.ConnectAsync(System.Threading.CancellationToken)
+- uid: Wss.CoreModule.TestModeTransport.DisconnectAsync(System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.TestModeTransport.DisconnectAsync(System.Threading.CancellationToken)
+  id: DisconnectAsync(System.Threading.CancellationToken)
+  parent: Wss.CoreModule.TestModeTransport
+  langs:
+  - csharp
+  - vb
+  name: DisconnectAsync(CancellationToken)
+  nameWithType: TestModeTransport.DisconnectAsync(CancellationToken)
+  fullName: Wss.CoreModule.TestModeTransport.DisconnectAsync(System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Closes the transport connection and stops any background receive loop.
+  example: []
+  syntax:
+    content: public Task DisconnectAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Optional cancellation token to abort a long-running disconnect.
+    return:
+      type: System.Threading.Tasks.Task
+      description: A task that completes when the transport is fully disconnected.
+    content.vb: Public Function DisconnectAsync(ct As CancellationToken = Nothing) As Task
+  overload: Wss.CoreModule.TestModeTransport.DisconnectAsync*
+  exceptions:
+  - type: System.ObjectDisposedException
+    commentId: T:System.ObjectDisposedException
+    description: If the instance has been disposed.
+  - type: System.OperationCanceledException
+    commentId: T:System.OperationCanceledException
+    description: If <code class="paramref">ct</code> is canceled.
+  implements:
+  - Wss.CoreModule.ITransport.DisconnectAsync(System.Threading.CancellationToken)
+- uid: Wss.CoreModule.TestModeTransport.SendAsync(System.Byte[],System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.TestModeTransport.SendAsync(System.Byte[],System.Threading.CancellationToken)
+  id: SendAsync(System.Byte[],System.Threading.CancellationToken)
+  parent: Wss.CoreModule.TestModeTransport
+  langs:
+  - csharp
+  - vb
+  name: SendAsync(byte[], CancellationToken)
+  nameWithType: TestModeTransport.SendAsync(byte[], CancellationToken)
+  fullName: Wss.CoreModule.TestModeTransport.SendAsync(byte[], System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Sends a block of bytes over the transport.
+  remarks: >-
+    The default auto-responder will generate a reply based on checksum validation and
+
+    invoke <xref href="Wss.CoreModule.TestModeTransport.BytesReceived" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public Task SendAsync(byte[] data, CancellationToken ct = default)
+    parameters:
+    - id: data
+      type: System.Byte[]
+      description: The bytes to write. Callers should provide a buffer that will not be mutated during send.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: >-
+        Optional cancellation token to cancel the send before it is written.
+
+        For some transports (e.g., synchronous serial writes), cancellation may only be observed before the write starts.
+    return:
+      type: System.Threading.Tasks.Task
+      description: A task that completes when the bytes have been handed off to the transport.
+    content.vb: Public Function SendAsync(data As Byte(), ct As CancellationToken = Nothing) As Task
+  overload: Wss.CoreModule.TestModeTransport.SendAsync*
+  exceptions:
+  - type: System.ObjectDisposedException
+    commentId: T:System.ObjectDisposedException
+    description: If the instance has been disposed.
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: If the transport is not connected.
+  - type: System.OperationCanceledException
+    commentId: T:System.OperationCanceledException
+    description: If <code class="paramref">ct</code> is canceled.
+  implements:
+  - Wss.CoreModule.ITransport.SendAsync(System.Byte[],System.Threading.CancellationToken)
+  nameWithType.vb: TestModeTransport.SendAsync(Byte(), CancellationToken)
+  fullName.vb: Wss.CoreModule.TestModeTransport.SendAsync(Byte(), System.Threading.CancellationToken)
+  name.vb: SendAsync(Byte(), CancellationToken)
+- uid: Wss.CoreModule.TestModeTransport.EnqueueIncoming(System.Byte[],System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.TestModeTransport.EnqueueIncoming(System.Byte[],System.Threading.CancellationToken)
+  id: EnqueueIncoming(System.Byte[],System.Threading.CancellationToken)
+  parent: Wss.CoreModule.TestModeTransport
+  langs:
+  - csharp
+  - vb
+  name: EnqueueIncoming(byte[], CancellationToken)
+  nameWithType: TestModeTransport.EnqueueIncoming(byte[], CancellationToken)
+  fullName: Wss.CoreModule.TestModeTransport.EnqueueIncoming(byte[], System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Injects inbound bytes as if received from a physical device. They are subject
+
+    to latency, jitter, chunking, and drop settings before being delivered.
+  example: []
+  syntax:
+    content: public Task EnqueueIncoming(byte[] payload, CancellationToken ct = default)
+    parameters:
+    - id: payload
+      type: System.Byte[]
+      description: Raw inbound payload.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Optional cancellation token.
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function EnqueueIncoming(payload As Byte(), ct As CancellationToken = Nothing) As Task
+  overload: Wss.CoreModule.TestModeTransport.EnqueueIncoming*
+  nameWithType.vb: TestModeTransport.EnqueueIncoming(Byte(), CancellationToken)
+  fullName.vb: Wss.CoreModule.TestModeTransport.EnqueueIncoming(Byte(), System.Threading.CancellationToken)
+  name.vb: EnqueueIncoming(Byte(), CancellationToken)
+- uid: Wss.CoreModule.TestModeTransport.Dispose
+  commentId: M:Wss.CoreModule.TestModeTransport.Dispose
+  id: Dispose
+  parent: Wss.CoreModule.TestModeTransport
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: TestModeTransport.Dispose()
+  fullName: Wss.CoreModule.TestModeTransport.Dispose()
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: Wss.CoreModule.TestModeTransport.Dispose*
+references:
+- uid: Wss.CoreModule
+  commentId: N:Wss.CoreModule
+  href: Wss.html
+  name: Wss.CoreModule
+  nameWithType: Wss.CoreModule
+  fullName: Wss.CoreModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Wss.CoreModule.ITransport
+  commentId: T:Wss.CoreModule.ITransport
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.ITransport.html
+  name: ITransport
+  nameWithType: ITransport
+  fullName: Wss.CoreModule.ITransport
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Wss.CoreModule.TestModeTransport.BaseLatency*
+  commentId: Overload:Wss.CoreModule.TestModeTransport.BaseLatency
+  href: Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_BaseLatency
+  name: BaseLatency
+  nameWithType: TestModeTransport.BaseLatency
+  fullName: Wss.CoreModule.TestModeTransport.BaseLatency
+- uid: System.TimeSpan
+  commentId: T:System.TimeSpan
+  parent: System
+  isExternal: true
+  name: TimeSpan
+  nameWithType: TimeSpan
+  fullName: System.TimeSpan
+- uid: Wss.CoreModule.TestModeTransport.JitterMs*
+  commentId: Overload:Wss.CoreModule.TestModeTransport.JitterMs
+  href: Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_JitterMs
+  name: JitterMs
+  nameWithType: TestModeTransport.JitterMs
+  fullName: Wss.CoreModule.TestModeTransport.JitterMs
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Wss.CoreModule.TestModeTransport.MaxInboundChunkSize*
+  commentId: Overload:Wss.CoreModule.TestModeTransport.MaxInboundChunkSize
+  href: Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_MaxInboundChunkSize
+  name: MaxInboundChunkSize
+  nameWithType: TestModeTransport.MaxInboundChunkSize
+  fullName: Wss.CoreModule.TestModeTransport.MaxInboundChunkSize
+- uid: Wss.CoreModule.TestModeTransport.InboundDropProbability*
+  commentId: Overload:Wss.CoreModule.TestModeTransport.InboundDropProbability
+  href: Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_InboundDropProbability
+  name: InboundDropProbability
+  nameWithType: TestModeTransport.InboundDropProbability
+  fullName: Wss.CoreModule.TestModeTransport.InboundDropProbability
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: Wss.CoreModule.TestModeTransport.Rng*
+  commentId: Overload:Wss.CoreModule.TestModeTransport.Rng
+  href: Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_Rng
+  name: Rng
+  nameWithType: TestModeTransport.Rng
+  fullName: Wss.CoreModule.TestModeTransport.Rng
+- uid: System.Random
+  commentId: T:System.Random
+  parent: System
+  isExternal: true
+  name: Random
+  nameWithType: Random
+  fullName: System.Random
+- uid: Wss.CoreModule.TestModeTransport.FallbackPayload*
+  commentId: Overload:Wss.CoreModule.TestModeTransport.FallbackPayload
+  href: Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_FallbackPayload
+  name: FallbackPayload
+  nameWithType: TestModeTransport.FallbackPayload
+  fullName: Wss.CoreModule.TestModeTransport.FallbackPayload
+- uid: System.Byte[]
+  isExternal: true
+  name: byte[]
+  nameWithType: byte[]
+  fullName: byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Wss.CoreModule.TestModeTransport.AutoResponderAsync*
+  commentId: Overload:Wss.CoreModule.TestModeTransport.AutoResponderAsync
+  href: Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_AutoResponderAsync
+  name: AutoResponderAsync
+  nameWithType: TestModeTransport.AutoResponderAsync
+  fullName: Wss.CoreModule.TestModeTransport.AutoResponderAsync
+- uid: System.Func{System.Byte[],System.Threading.Tasks.Task{System.Byte[]}}
+  commentId: T:System.Func{System.Byte[],System.Threading.Tasks.Task{System.Byte[]}}
+  parent: System
+  definition: System.Func`2
+  name: Func<byte[], Task<byte[]>>
+  nameWithType: Func<byte[], Task<byte[]>>
+  fullName: System.Func<byte[], System.Threading.Tasks.Task<byte[]>>
+  nameWithType.vb: Func(Of Byte(), Task(Of Byte()))
+  fullName.vb: System.Func(Of Byte(), System.Threading.Tasks.Task(Of Byte()))
+  name.vb: Func(Of Byte(), Task(Of Byte()))
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+  - name: <
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: <
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+  - name: '['
+  - name: ']'
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+  - name: (
+  - name: )
+  - name: )
+  - name: )
+- uid: System.Func`2
+  commentId: T:System.Func`2
+  isExternal: true
+  name: Func<T, TResult>
+  nameWithType: Func<T, TResult>
+  fullName: System.Func<T, TResult>
+  nameWithType.vb: Func(Of T, TResult)
+  fullName.vb: System.Func(Of T, TResult)
+  name.vb: Func(Of T, TResult)
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: Wss.CoreModule.TestModeTransport.IsConnected*
+  commentId: Overload:Wss.CoreModule.TestModeTransport.IsConnected
+  href: Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_IsConnected
+  name: IsConnected
+  nameWithType: TestModeTransport.IsConnected
+  fullName: Wss.CoreModule.TestModeTransport.IsConnected
+- uid: Wss.CoreModule.ITransport.IsConnected
+  commentId: P:Wss.CoreModule.ITransport.IsConnected
+  parent: Wss.CoreModule.ITransport
+  href: Wss.CoreModule.ITransport.html#Wss_CoreModule_ITransport_IsConnected
+  name: IsConnected
+  nameWithType: ITransport.IsConnected
+  fullName: Wss.CoreModule.ITransport.IsConnected
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Wss.CoreModule.ITransport.BytesReceived
+  commentId: E:Wss.CoreModule.ITransport.BytesReceived
+  parent: Wss.CoreModule.ITransport
+  href: Wss.CoreModule.ITransport.html#Wss_CoreModule_ITransport_BytesReceived
+  name: BytesReceived
+  nameWithType: ITransport.BytesReceived
+  fullName: Wss.CoreModule.ITransport.BytesReceived
+- uid: System.Action{System.Byte[]}
+  commentId: T:System.Action{System.Byte[]}
+  parent: System
+  definition: System.Action`1
+  name: Action<byte[]>
+  nameWithType: Action<byte[]>
+  fullName: System.Action<byte[]>
+  nameWithType.vb: Action(Of Byte())
+  fullName.vb: System.Action(Of Byte())
+  name.vb: Action(Of Byte())
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+  - name: <
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+  - name: '['
+  - name: ']'
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+  - name: (
+  - name: )
+  - name: )
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Wss.CoreModule.TestModeTransport
+  commentId: T:Wss.CoreModule.TestModeTransport
+  href: Wss.CoreModule.TestModeTransport.html
+  name: TestModeTransport
+  nameWithType: TestModeTransport
+  fullName: Wss.CoreModule.TestModeTransport
+- uid: Wss.CoreModule.TestModeTransport.#ctor*
+  commentId: Overload:Wss.CoreModule.TestModeTransport.#ctor
+  href: Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport__ctor_System_Nullable_System_TimeSpan__System_Int32_System_Int32_System_Double_System_Random_System_Byte___System_Func_System_Byte___System_Threading_Tasks_Task_System_Byte_____
+  name: TestModeTransport
+  nameWithType: TestModeTransport.TestModeTransport
+  fullName: Wss.CoreModule.TestModeTransport.TestModeTransport
+  nameWithType.vb: TestModeTransport.New
+  fullName.vb: Wss.CoreModule.TestModeTransport.New
+  name.vb: New
+- uid: System.Nullable{System.TimeSpan}
+  commentId: T:System.Nullable{System.TimeSpan}
+  parent: System
+  definition: System.Nullable`1
+  name: TimeSpan?
+  nameWithType: TimeSpan?
+  fullName: System.TimeSpan?
+  spec.csharp:
+  - uid: System.TimeSpan
+    name: TimeSpan
+    isExternal: true
+  - name: '?'
+  spec.vb:
+  - uid: System.TimeSpan
+    name: TimeSpan
+    isExternal: true
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.ObjectDisposedException
+  commentId: T:System.ObjectDisposedException
+  isExternal: true
+  name: ObjectDisposedException
+  nameWithType: ObjectDisposedException
+  fullName: System.ObjectDisposedException
+- uid: System.OperationCanceledException
+  commentId: T:System.OperationCanceledException
+  isExternal: true
+  name: OperationCanceledException
+  nameWithType: OperationCanceledException
+  fullName: System.OperationCanceledException
+- uid: System.Exception
+  commentId: T:System.Exception
+  parent: System
+  isExternal: true
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: Wss.CoreModule.TestModeTransport.ConnectAsync*
+  commentId: Overload:Wss.CoreModule.TestModeTransport.ConnectAsync
+  href: Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_ConnectAsync_System_Threading_CancellationToken_
+  name: ConnectAsync
+  nameWithType: TestModeTransport.ConnectAsync
+  fullName: Wss.CoreModule.TestModeTransport.ConnectAsync
+- uid: Wss.CoreModule.ITransport.ConnectAsync(System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.ITransport.ConnectAsync(System.Threading.CancellationToken)
+  parent: Wss.CoreModule.ITransport
+  isExternal: true
+  href: Wss.CoreModule.ITransport.html#Wss_CoreModule_ITransport_ConnectAsync_System_Threading_CancellationToken_
+  name: ConnectAsync(CancellationToken)
+  nameWithType: ITransport.ConnectAsync(CancellationToken)
+  fullName: Wss.CoreModule.ITransport.ConnectAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Wss.CoreModule.ITransport.ConnectAsync(System.Threading.CancellationToken)
+    name: ConnectAsync
+    href: Wss.CoreModule.ITransport.html#Wss_CoreModule_ITransport_ConnectAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.ITransport.ConnectAsync(System.Threading.CancellationToken)
+    name: ConnectAsync
+    href: Wss.CoreModule.ITransport.html#Wss_CoreModule_ITransport_ConnectAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+  - name: )
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Wss.CoreModule.TestModeTransport.DisconnectAsync*
+  commentId: Overload:Wss.CoreModule.TestModeTransport.DisconnectAsync
+  href: Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_DisconnectAsync_System_Threading_CancellationToken_
+  name: DisconnectAsync
+  nameWithType: TestModeTransport.DisconnectAsync
+  fullName: Wss.CoreModule.TestModeTransport.DisconnectAsync
+- uid: Wss.CoreModule.ITransport.DisconnectAsync(System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.ITransport.DisconnectAsync(System.Threading.CancellationToken)
+  parent: Wss.CoreModule.ITransport
+  isExternal: true
+  href: Wss.CoreModule.ITransport.html#Wss_CoreModule_ITransport_DisconnectAsync_System_Threading_CancellationToken_
+  name: DisconnectAsync(CancellationToken)
+  nameWithType: ITransport.DisconnectAsync(CancellationToken)
+  fullName: Wss.CoreModule.ITransport.DisconnectAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Wss.CoreModule.ITransport.DisconnectAsync(System.Threading.CancellationToken)
+    name: DisconnectAsync
+    href: Wss.CoreModule.ITransport.html#Wss_CoreModule_ITransport_DisconnectAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.ITransport.DisconnectAsync(System.Threading.CancellationToken)
+    name: DisconnectAsync
+    href: Wss.CoreModule.ITransport.html#Wss_CoreModule_ITransport_DisconnectAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+  - name: )
+- uid: Wss.CoreModule.TestModeTransport.BytesReceived
+  commentId: E:Wss.CoreModule.TestModeTransport.BytesReceived
+  href: Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_BytesReceived
+  name: BytesReceived
+  nameWithType: TestModeTransport.BytesReceived
+  fullName: Wss.CoreModule.TestModeTransport.BytesReceived
+- uid: System.InvalidOperationException
+  commentId: T:System.InvalidOperationException
+  isExternal: true
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
+- uid: Wss.CoreModule.TestModeTransport.SendAsync*
+  commentId: Overload:Wss.CoreModule.TestModeTransport.SendAsync
+  href: Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_SendAsync_System_Byte___System_Threading_CancellationToken_
+  name: SendAsync
+  nameWithType: TestModeTransport.SendAsync
+  fullName: Wss.CoreModule.TestModeTransport.SendAsync
+- uid: Wss.CoreModule.ITransport.SendAsync(System.Byte[],System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.ITransport.SendAsync(System.Byte[],System.Threading.CancellationToken)
+  parent: Wss.CoreModule.ITransport
+  isExternal: true
+  href: Wss.CoreModule.ITransport.html#Wss_CoreModule_ITransport_SendAsync_System_Byte___System_Threading_CancellationToken_
+  name: SendAsync(byte[], CancellationToken)
+  nameWithType: ITransport.SendAsync(byte[], CancellationToken)
+  fullName: Wss.CoreModule.ITransport.SendAsync(byte[], System.Threading.CancellationToken)
+  nameWithType.vb: ITransport.SendAsync(Byte(), CancellationToken)
+  fullName.vb: Wss.CoreModule.ITransport.SendAsync(Byte(), System.Threading.CancellationToken)
+  name.vb: SendAsync(Byte(), CancellationToken)
+  spec.csharp:
+  - uid: Wss.CoreModule.ITransport.SendAsync(System.Byte[],System.Threading.CancellationToken)
+    name: SendAsync
+    href: Wss.CoreModule.ITransport.html#Wss_CoreModule_ITransport_SendAsync_System_Byte___System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.ITransport.SendAsync(System.Byte[],System.Threading.CancellationToken)
+    name: SendAsync
+    href: Wss.CoreModule.ITransport.html#Wss_CoreModule_ITransport_SendAsync_System_Byte___System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+  - name: )
+- uid: Wss.CoreModule.TestModeTransport.EnqueueIncoming*
+  commentId: Overload:Wss.CoreModule.TestModeTransport.EnqueueIncoming
+  href: Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_EnqueueIncoming_System_Byte___System_Threading_CancellationToken_
+  name: EnqueueIncoming
+  nameWithType: TestModeTransport.EnqueueIncoming
+  fullName: Wss.CoreModule.TestModeTransport.EnqueueIncoming
+- uid: Wss.CoreModule.TestModeTransport.Dispose*
+  commentId: Overload:Wss.CoreModule.TestModeTransport.Dispose
+  href: Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_Dispose
+  name: Dispose
+  nameWithType: TestModeTransport.Dispose
+  fullName: Wss.CoreModule.TestModeTransport.Dispose

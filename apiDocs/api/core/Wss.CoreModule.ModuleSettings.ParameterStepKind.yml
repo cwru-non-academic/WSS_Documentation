@@ -1,0 +1,110 @@
+### YamlMime:ManagedReference
+items:
+- uid: Wss.CoreModule.ModuleSettings.ParameterStepKind
+  commentId: T:Wss.CoreModule.ModuleSettings.ParameterStepKind
+  id: ModuleSettings.ParameterStepKind
+  parent: Wss.CoreModule
+  children:
+  - Wss.CoreModule.ModuleSettings.ParameterStepKind.PA
+  - Wss.CoreModule.ModuleSettings.ParameterStepKind.PW
+  langs:
+  - csharp
+  - vb
+  name: ModuleSettings.ParameterStepKind
+  nameWithType: ModuleSettings.ParameterStepKind
+  fullName: Wss.CoreModule.ModuleSettings.ParameterStepKind
+  type: Enum
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Which parameter the front-panel step affects (PA or PW).
+  example: []
+  syntax:
+    content: 'public enum ModuleSettings.ParameterStepKind : byte'
+    content.vb: Public Enum ModuleSettings.ParameterStepKind As Byte
+- uid: Wss.CoreModule.ModuleSettings.ParameterStepKind.PA
+  commentId: F:Wss.CoreModule.ModuleSettings.ParameterStepKind.PA
+  id: PA
+  parent: Wss.CoreModule.ModuleSettings.ParameterStepKind
+  langs:
+  - csharp
+  - vb
+  name: PA
+  nameWithType: ModuleSettings.ParameterStepKind.PA
+  fullName: Wss.CoreModule.ModuleSettings.ParameterStepKind.PA
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Pulse amplitude (PA).
+  example: []
+  syntax:
+    content: PA = 0
+    return:
+      type: Wss.CoreModule.ModuleSettings.ParameterStepKind
+- uid: Wss.CoreModule.ModuleSettings.ParameterStepKind.PW
+  commentId: F:Wss.CoreModule.ModuleSettings.ParameterStepKind.PW
+  id: PW
+  parent: Wss.CoreModule.ModuleSettings.ParameterStepKind
+  langs:
+  - csharp
+  - vb
+  name: PW
+  nameWithType: ModuleSettings.ParameterStepKind.PW
+  fullName: Wss.CoreModule.ModuleSettings.ParameterStepKind.PW
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Pulse width (PW).
+  example: []
+  syntax:
+    content: PW = 1
+    return:
+      type: Wss.CoreModule.ModuleSettings.ParameterStepKind
+references:
+- uid: Wss.CoreModule
+  commentId: N:Wss.CoreModule
+  href: Wss.html
+  name: Wss.CoreModule
+  nameWithType: Wss.CoreModule
+  fullName: Wss.CoreModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+- uid: Wss.CoreModule.ModuleSettings.ParameterStepKind
+  commentId: T:Wss.CoreModule.ModuleSettings.ParameterStepKind
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.ModuleSettings.html
+  name: ModuleSettings.ParameterStepKind
+  nameWithType: ModuleSettings.ParameterStepKind
+  fullName: Wss.CoreModule.ModuleSettings.ParameterStepKind
+  spec.csharp:
+  - uid: Wss.CoreModule.ModuleSettings
+    name: ModuleSettings
+    href: Wss.CoreModule.ModuleSettings.html
+  - name: .
+  - uid: Wss.CoreModule.ModuleSettings.ParameterStepKind
+    name: ParameterStepKind
+    href: Wss.CoreModule.ModuleSettings.ParameterStepKind.html
+  spec.vb:
+  - uid: Wss.CoreModule.ModuleSettings
+    name: ModuleSettings
+    href: Wss.CoreModule.ModuleSettings.html
+  - name: .
+  - uid: Wss.CoreModule.ModuleSettings.ParameterStepKind
+    name: ParameterStepKind
+    href: Wss.CoreModule.ModuleSettings.ParameterStepKind.html

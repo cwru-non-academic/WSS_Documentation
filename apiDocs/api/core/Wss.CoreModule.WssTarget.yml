@@ -1,0 +1,139 @@
+### YamlMime:ManagedReference
+items:
+- uid: Wss.CoreModule.WssTarget
+  commentId: T:Wss.CoreModule.WssTarget
+  id: WssTarget
+  parent: Wss.CoreModule
+  children:
+  - Wss.CoreModule.WssTarget.Broadcast
+  - Wss.CoreModule.WssTarget.Wss1
+  - Wss.CoreModule.WssTarget.Wss2
+  - Wss.CoreModule.WssTarget.Wss3
+  langs:
+  - csharp
+  - vb
+  name: WssTarget
+  nameWithType: WssTarget
+  fullName: Wss.CoreModule.WssTarget
+  type: Enum
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Addresses for targeting individual units or broadcasting to all.
+
+    Values are on-wire destination IDs used by commands.
+  example: []
+  syntax:
+    content: 'public enum WssTarget : byte'
+    content.vb: Public Enum WssTarget As Byte
+- uid: Wss.CoreModule.WssTarget.Broadcast
+  commentId: F:Wss.CoreModule.WssTarget.Broadcast
+  id: Broadcast
+  parent: Wss.CoreModule.WssTarget
+  langs:
+  - csharp
+  - vb
+  name: Broadcast
+  nameWithType: WssTarget.Broadcast
+  fullName: Wss.CoreModule.WssTarget.Broadcast
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Broadcast to all connected WSS devices.
+  example: []
+  syntax:
+    content: Broadcast = 143
+    return:
+      type: Wss.CoreModule.WssTarget
+- uid: Wss.CoreModule.WssTarget.Wss1
+  commentId: F:Wss.CoreModule.WssTarget.Wss1
+  id: Wss1
+  parent: Wss.CoreModule.WssTarget
+  langs:
+  - csharp
+  - vb
+  name: Wss1
+  nameWithType: WssTarget.Wss1
+  fullName: Wss.CoreModule.WssTarget.Wss1
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: First WSS device.
+  example: []
+  syntax:
+    content: Wss1 = 129
+    return:
+      type: Wss.CoreModule.WssTarget
+- uid: Wss.CoreModule.WssTarget.Wss2
+  commentId: F:Wss.CoreModule.WssTarget.Wss2
+  id: Wss2
+  parent: Wss.CoreModule.WssTarget
+  langs:
+  - csharp
+  - vb
+  name: Wss2
+  nameWithType: WssTarget.Wss2
+  fullName: Wss.CoreModule.WssTarget.Wss2
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Second WSS device.
+  example: []
+  syntax:
+    content: Wss2 = 130
+    return:
+      type: Wss.CoreModule.WssTarget
+- uid: Wss.CoreModule.WssTarget.Wss3
+  commentId: F:Wss.CoreModule.WssTarget.Wss3
+  id: Wss3
+  parent: Wss.CoreModule.WssTarget
+  langs:
+  - csharp
+  - vb
+  name: Wss3
+  nameWithType: WssTarget.Wss3
+  fullName: Wss.CoreModule.WssTarget.Wss3
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Third WSS device.
+  example: []
+  syntax:
+    content: Wss3 = 131
+    return:
+      type: Wss.CoreModule.WssTarget
+references:
+- uid: Wss.CoreModule
+  commentId: N:Wss.CoreModule
+  href: Wss.html
+  name: Wss.CoreModule
+  nameWithType: Wss.CoreModule
+  fullName: Wss.CoreModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+- uid: Wss.CoreModule.WssTarget
+  commentId: T:Wss.CoreModule.WssTarget
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.WssTarget.html
+  name: WssTarget
+  nameWithType: WssTarget
+  fullName: Wss.CoreModule.WssTarget

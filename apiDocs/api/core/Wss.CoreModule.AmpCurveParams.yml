@@ -1,0 +1,268 @@
+### YamlMime:ManagedReference
+items:
+- uid: Wss.CoreModule.AmpCurveParams
+  commentId: T:Wss.CoreModule.AmpCurveParams
+  id: AmpCurveParams
+  parent: Wss.CoreModule
+  children:
+  - Wss.CoreModule.AmpCurveParams.Default72mA
+  - Wss.CoreModule.AmpCurveParams.ExpPower
+  - Wss.CoreModule.AmpCurveParams.LinearOffset
+  - Wss.CoreModule.AmpCurveParams.LinearSlope
+  - Wss.CoreModule.AmpCurveParams.LowConst
+  - Wss.CoreModule.AmpCurveParams.LowThreshold
+  langs:
+  - csharp
+  - vb
+  name: AmpCurveParams
+  nameWithType: AmpCurveParams
+  fullName: Wss.CoreModule.AmpCurveParams
+  type: Class
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Piecewise amplitude curve parameters used to map mA to 0..255.
+
+    mA &lt;= LowThreshold: out = pow(mA / LowConst, ExpPower) + 1
+
+    mA &gt;  LowThreshold: out = ((mA + LinearOffset) / LinearSlope) + 1
+  example: []
+  syntax:
+    content: public sealed class AmpCurveParams
+    content.vb: Public NotInheritable Class AmpCurveParams
+  inheritance:
+  - System.Object
+- uid: Wss.CoreModule.AmpCurveParams.LowThreshold
+  commentId: P:Wss.CoreModule.AmpCurveParams.LowThreshold
+  id: LowThreshold
+  parent: Wss.CoreModule.AmpCurveParams
+  langs:
+  - csharp
+  - vb
+  name: LowThreshold
+  nameWithType: AmpCurveParams.LowThreshold
+  fullName: Wss.CoreModule.AmpCurveParams.LowThreshold
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Boundary between the two segments in mA.
+  example: []
+  syntax:
+    content: public double LowThreshold { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property LowThreshold As Double
+  overload: Wss.CoreModule.AmpCurveParams.LowThreshold*
+- uid: Wss.CoreModule.AmpCurveParams.LowConst
+  commentId: P:Wss.CoreModule.AmpCurveParams.LowConst
+  id: LowConst
+  parent: Wss.CoreModule.AmpCurveParams
+  langs:
+  - csharp
+  - vb
+  name: LowConst
+  nameWithType: AmpCurveParams.LowConst
+  fullName: Wss.CoreModule.AmpCurveParams.LowConst
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Low-range divisor constant (C) for the power segment.
+  example: []
+  syntax:
+    content: public double LowConst { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property LowConst As Double
+  overload: Wss.CoreModule.AmpCurveParams.LowConst*
+- uid: Wss.CoreModule.AmpCurveParams.ExpPower
+  commentId: P:Wss.CoreModule.AmpCurveParams.ExpPower
+  id: ExpPower
+  parent: Wss.CoreModule.AmpCurveParams
+  langs:
+  - csharp
+  - vb
+  name: ExpPower
+  nameWithType: AmpCurveParams.ExpPower
+  fullName: Wss.CoreModule.AmpCurveParams.ExpPower
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Exponent used in the low-range power segment (already reciprocal, e.g., 1/1.5466).
+  example: []
+  syntax:
+    content: public double ExpPower { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property ExpPower As Double
+  overload: Wss.CoreModule.AmpCurveParams.ExpPower*
+- uid: Wss.CoreModule.AmpCurveParams.LinearOffset
+  commentId: P:Wss.CoreModule.AmpCurveParams.LinearOffset
+  id: LinearOffset
+  parent: Wss.CoreModule.AmpCurveParams
+  langs:
+  - csharp
+  - vb
+  name: LinearOffset
+  nameWithType: AmpCurveParams.LinearOffset
+  fullName: Wss.CoreModule.AmpCurveParams.LinearOffset
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Offset used in the high-range linear segment.
+  example: []
+  syntax:
+    content: public double LinearOffset { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property LinearOffset As Double
+  overload: Wss.CoreModule.AmpCurveParams.LinearOffset*
+- uid: Wss.CoreModule.AmpCurveParams.LinearSlope
+  commentId: P:Wss.CoreModule.AmpCurveParams.LinearSlope
+  id: LinearSlope
+  parent: Wss.CoreModule.AmpCurveParams
+  langs:
+  - csharp
+  - vb
+  name: LinearSlope
+  nameWithType: AmpCurveParams.LinearSlope
+  fullName: Wss.CoreModule.AmpCurveParams.LinearSlope
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Slope divisor used in the high-range linear segment.
+  example: []
+  syntax:
+    content: public double LinearSlope { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property LinearSlope As Double
+  overload: Wss.CoreModule.AmpCurveParams.LinearSlope*
+- uid: Wss.CoreModule.AmpCurveParams.Default72mA
+  commentId: M:Wss.CoreModule.AmpCurveParams.Default72mA
+  id: Default72mA
+  parent: Wss.CoreModule.AmpCurveParams
+  langs:
+  - csharp
+  - vb
+  name: Default72mA()
+  nameWithType: AmpCurveParams.Default72mA()
+  fullName: Wss.CoreModule.AmpCurveParams.Default72mA()
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Returns the built-in 72 mA piecewise curve parameters that match the historical mapping
+
+    used by the core (power segment below 4 mA and linear segment above).
+  example: []
+  syntax:
+    content: public static AmpCurveParams Default72mA()
+    return:
+      type: Wss.CoreModule.AmpCurveParams
+    content.vb: Public Shared Function Default72mA() As AmpCurveParams
+  overload: Wss.CoreModule.AmpCurveParams.Default72mA*
+references:
+- uid: Wss.CoreModule
+  commentId: N:Wss.CoreModule
+  href: Wss.html
+  name: Wss.CoreModule
+  nameWithType: Wss.CoreModule
+  fullName: Wss.CoreModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Wss.CoreModule.AmpCurveParams.LowThreshold*
+  commentId: Overload:Wss.CoreModule.AmpCurveParams.LowThreshold
+  href: Wss.CoreModule.AmpCurveParams.html#Wss_CoreModule_AmpCurveParams_LowThreshold
+  name: LowThreshold
+  nameWithType: AmpCurveParams.LowThreshold
+  fullName: Wss.CoreModule.AmpCurveParams.LowThreshold
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: Wss.CoreModule.AmpCurveParams.LowConst*
+  commentId: Overload:Wss.CoreModule.AmpCurveParams.LowConst
+  href: Wss.CoreModule.AmpCurveParams.html#Wss_CoreModule_AmpCurveParams_LowConst
+  name: LowConst
+  nameWithType: AmpCurveParams.LowConst
+  fullName: Wss.CoreModule.AmpCurveParams.LowConst
+- uid: Wss.CoreModule.AmpCurveParams.ExpPower*
+  commentId: Overload:Wss.CoreModule.AmpCurveParams.ExpPower
+  href: Wss.CoreModule.AmpCurveParams.html#Wss_CoreModule_AmpCurveParams_ExpPower
+  name: ExpPower
+  nameWithType: AmpCurveParams.ExpPower
+  fullName: Wss.CoreModule.AmpCurveParams.ExpPower
+- uid: Wss.CoreModule.AmpCurveParams.LinearOffset*
+  commentId: Overload:Wss.CoreModule.AmpCurveParams.LinearOffset
+  href: Wss.CoreModule.AmpCurveParams.html#Wss_CoreModule_AmpCurveParams_LinearOffset
+  name: LinearOffset
+  nameWithType: AmpCurveParams.LinearOffset
+  fullName: Wss.CoreModule.AmpCurveParams.LinearOffset
+- uid: Wss.CoreModule.AmpCurveParams.LinearSlope*
+  commentId: Overload:Wss.CoreModule.AmpCurveParams.LinearSlope
+  href: Wss.CoreModule.AmpCurveParams.html#Wss_CoreModule_AmpCurveParams_LinearSlope
+  name: LinearSlope
+  nameWithType: AmpCurveParams.LinearSlope
+  fullName: Wss.CoreModule.AmpCurveParams.LinearSlope
+- uid: Wss.CoreModule.AmpCurveParams.Default72mA*
+  commentId: Overload:Wss.CoreModule.AmpCurveParams.Default72mA
+  href: Wss.CoreModule.AmpCurveParams.html#Wss_CoreModule_AmpCurveParams_Default72mA
+  name: Default72mA
+  nameWithType: AmpCurveParams.Default72mA
+  fullName: Wss.CoreModule.AmpCurveParams.Default72mA
+- uid: Wss.CoreModule.AmpCurveParams
+  commentId: T:Wss.CoreModule.AmpCurveParams
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.AmpCurveParams.html
+  name: AmpCurveParams
+  nameWithType: AmpCurveParams
+  fullName: Wss.CoreModule.AmpCurveParams

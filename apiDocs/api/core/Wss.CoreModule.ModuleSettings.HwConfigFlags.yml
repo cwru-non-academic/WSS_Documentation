@@ -1,0 +1,230 @@
+### YamlMime:ManagedReference
+items:
+- uid: Wss.CoreModule.ModuleSettings.HwConfigFlags
+  commentId: T:Wss.CoreModule.ModuleSettings.HwConfigFlags
+  id: ModuleSettings.HwConfigFlags
+  parent: Wss.CoreModule
+  children:
+  - Wss.CoreModule.ModuleSettings.HwConfigFlags.Default
+  - Wss.CoreModule.ModuleSettings.HwConfigFlags.Future16
+  - Wss.CoreModule.ModuleSettings.HwConfigFlags.Future32
+  - Wss.CoreModule.ModuleSettings.HwConfigFlags.Future64
+  - Wss.CoreModule.ModuleSettings.HwConfigFlags.Future8
+  - Wss.CoreModule.ModuleSettings.HwConfigFlags.TenMilliAmpPA
+  - Wss.CoreModule.ModuleSettings.HwConfigFlags.TenMsPulseGuard
+  langs:
+  - csharp
+  - vb
+  name: ModuleSettings.HwConfigFlags
+  nameWithType: ModuleSettings.HwConfigFlags
+  fullName: Wss.CoreModule.ModuleSettings.HwConfigFlags
+  type: Enum
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Hardware configuration flags reported by the device. Each bit defines an
+
+    independent setting; the on-wire value is the sum of set bits. In particular,
+
+    bit 1 (value 2) indicates 10 mA PA mode and bit 2 (value 4) indicates 10 ms pulse guard.
+  example: []
+  syntax:
+    content: >-
+      [Flags]
+
+      public enum ModuleSettings.HwConfigFlags : byte
+    content.vb: >-
+      <Flags>
+
+      Public Enum ModuleSettings.HwConfigFlags As Byte
+  attributes:
+  - type: System.FlagsAttribute
+    ctor: System.FlagsAttribute.#ctor
+    arguments: []
+- uid: Wss.CoreModule.ModuleSettings.HwConfigFlags.Default
+  commentId: F:Wss.CoreModule.ModuleSettings.HwConfigFlags.Default
+  id: Default
+  parent: Wss.CoreModule.ModuleSettings.HwConfigFlags
+  langs:
+  - csharp
+  - vb
+  name: Default
+  nameWithType: ModuleSettings.HwConfigFlags.Default
+  fullName: Wss.CoreModule.ModuleSettings.HwConfigFlags.Default
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: No special flags.
+  example: []
+  syntax:
+    content: Default = 0
+    return:
+      type: Wss.CoreModule.ModuleSettings.HwConfigFlags
+- uid: Wss.CoreModule.ModuleSettings.HwConfigFlags.TenMilliAmpPA
+  commentId: F:Wss.CoreModule.ModuleSettings.HwConfigFlags.TenMilliAmpPA
+  id: TenMilliAmpPA
+  parent: Wss.CoreModule.ModuleSettings.HwConfigFlags
+  langs:
+  - csharp
+  - vb
+  name: TenMilliAmpPA
+  nameWithType: ModuleSettings.HwConfigFlags.TenMilliAmpPA
+  fullName: Wss.CoreModule.ModuleSettings.HwConfigFlags.TenMilliAmpPA
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Enables 10 mA PA mode (bit 1; value 2). When not set, PA mapping uses the default curve.
+  example: []
+  syntax:
+    content: TenMilliAmpPA = 2
+    return:
+      type: Wss.CoreModule.ModuleSettings.HwConfigFlags
+- uid: Wss.CoreModule.ModuleSettings.HwConfigFlags.TenMsPulseGuard
+  commentId: F:Wss.CoreModule.ModuleSettings.HwConfigFlags.TenMsPulseGuard
+  id: TenMsPulseGuard
+  parent: Wss.CoreModule.ModuleSettings.HwConfigFlags
+  langs:
+  - csharp
+  - vb
+  name: TenMsPulseGuard
+  nameWithType: ModuleSettings.HwConfigFlags.TenMsPulseGuard
+  fullName: Wss.CoreModule.ModuleSettings.HwConfigFlags.TenMsPulseGuard
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Enables 10 ms pulse guard (bit 2; value 4).
+  example: []
+  syntax:
+    content: TenMsPulseGuard = 4
+    return:
+      type: Wss.CoreModule.ModuleSettings.HwConfigFlags
+- uid: Wss.CoreModule.ModuleSettings.HwConfigFlags.Future8
+  commentId: F:Wss.CoreModule.ModuleSettings.HwConfigFlags.Future8
+  id: Future8
+  parent: Wss.CoreModule.ModuleSettings.HwConfigFlags
+  langs:
+  - csharp
+  - vb
+  name: Future8
+  nameWithType: ModuleSettings.HwConfigFlags.Future8
+  fullName: Wss.CoreModule.ModuleSettings.HwConfigFlags.Future8
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Reserved for future use (bit 3; value 8).
+  example: []
+  syntax:
+    content: Future8 = 8
+    return:
+      type: Wss.CoreModule.ModuleSettings.HwConfigFlags
+- uid: Wss.CoreModule.ModuleSettings.HwConfigFlags.Future16
+  commentId: F:Wss.CoreModule.ModuleSettings.HwConfigFlags.Future16
+  id: Future16
+  parent: Wss.CoreModule.ModuleSettings.HwConfigFlags
+  langs:
+  - csharp
+  - vb
+  name: Future16
+  nameWithType: ModuleSettings.HwConfigFlags.Future16
+  fullName: Wss.CoreModule.ModuleSettings.HwConfigFlags.Future16
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Reserved for future use (bit 4; value 16).
+  example: []
+  syntax:
+    content: Future16 = 16
+    return:
+      type: Wss.CoreModule.ModuleSettings.HwConfigFlags
+- uid: Wss.CoreModule.ModuleSettings.HwConfigFlags.Future32
+  commentId: F:Wss.CoreModule.ModuleSettings.HwConfigFlags.Future32
+  id: Future32
+  parent: Wss.CoreModule.ModuleSettings.HwConfigFlags
+  langs:
+  - csharp
+  - vb
+  name: Future32
+  nameWithType: ModuleSettings.HwConfigFlags.Future32
+  fullName: Wss.CoreModule.ModuleSettings.HwConfigFlags.Future32
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Reserved for future use (bit 5; value 32).
+  example: []
+  syntax:
+    content: Future32 = 32
+    return:
+      type: Wss.CoreModule.ModuleSettings.HwConfigFlags
+- uid: Wss.CoreModule.ModuleSettings.HwConfigFlags.Future64
+  commentId: F:Wss.CoreModule.ModuleSettings.HwConfigFlags.Future64
+  id: Future64
+  parent: Wss.CoreModule.ModuleSettings.HwConfigFlags
+  langs:
+  - csharp
+  - vb
+  name: Future64
+  nameWithType: ModuleSettings.HwConfigFlags.Future64
+  fullName: Wss.CoreModule.ModuleSettings.HwConfigFlags.Future64
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Reserved for future use (bit 6; value 64).
+  example: []
+  syntax:
+    content: Future64 = 64
+    return:
+      type: Wss.CoreModule.ModuleSettings.HwConfigFlags
+references:
+- uid: Wss.CoreModule
+  commentId: N:Wss.CoreModule
+  href: Wss.html
+  name: Wss.CoreModule
+  nameWithType: Wss.CoreModule
+  fullName: Wss.CoreModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+- uid: Wss.CoreModule.ModuleSettings.HwConfigFlags
+  commentId: T:Wss.CoreModule.ModuleSettings.HwConfigFlags
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.ModuleSettings.html
+  name: ModuleSettings.HwConfigFlags
+  nameWithType: ModuleSettings.HwConfigFlags
+  fullName: Wss.CoreModule.ModuleSettings.HwConfigFlags
+  spec.csharp:
+  - uid: Wss.CoreModule.ModuleSettings
+    name: ModuleSettings
+    href: Wss.CoreModule.ModuleSettings.html
+  - name: .
+  - uid: Wss.CoreModule.ModuleSettings.HwConfigFlags
+    name: HwConfigFlags
+    href: Wss.CoreModule.ModuleSettings.HwConfigFlags.html
+  spec.vb:
+  - uid: Wss.CoreModule.ModuleSettings
+    name: ModuleSettings
+    href: Wss.CoreModule.ModuleSettings.html
+  - name: .
+  - uid: Wss.CoreModule.ModuleSettings.HwConfigFlags
+    name: HwConfigFlags
+    href: Wss.CoreModule.ModuleSettings.HwConfigFlags.html

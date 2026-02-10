@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class WssStimulationCore | WSS Documentation Hub </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class WssStimulationCore | WSS Documentation Hub ">
+    
+    <meta name="description" content="Stimulation core that manages connection, setup (via a queued step runner), and a background streaming loop. Public mutator methods enqueue device edits and return immediately.">
+      <link rel="shortcut icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../styles/docfx.css">
+      <link rel="stylesheet" href="../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Wss.CoreModule.WssStimulationCore">
+
+
+
+  <h1 id="Wss_CoreModule_WssStimulationCore" data-uid="Wss.CoreModule.WssStimulationCore" class="text-break">Class WssStimulationCore</h1>
+  <div class="markdown level0 summary"><p>Stimulation core that manages connection, setup (via a queued step runner), and a background
+streaming loop. Public mutator methods enqueue device edits and return immediately.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">object</span></div>
+    <div class="level1"><span class="xref">WssStimulationCore</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="Wss.CoreModule.IStimulationCore.html">IStimulationCore</a></div>
+    <div><a class="xref" href="Wss.CoreModule.IBasicStimulation.html">IBasicStimulation</a></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Wss.html">Wss</a>.<a class="xref" href="Wss.CoreModule.html">CoreModule</a></h6>
+  <h6><strong>Assembly</strong>: WSS_Core_Interface.dll</h6>
+  <h5 id="Wss_CoreModule_WssStimulationCore_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class WssStimulationCore : IStimulationCore, IBasicStimulation</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+
+
+  <a id="Wss_CoreModule_WssStimulationCore__ctor_" data-uid="Wss.CoreModule.WssStimulationCore.#ctor*"></a>
+  <h4 id="Wss_CoreModule_WssStimulationCore__ctor_System_String_System_Boolean_System_Int32_" data-uid="Wss.CoreModule.WssStimulationCore.#ctor(System.String,System.Boolean,System.Int32)">WssStimulationCore(string, bool, int)</h4>
+  <div class="markdown level1 summary"><p>Construct without specifying COM port (let transport decide).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public WssStimulationCore(string JSONpath, bool testMode = false, int maxSetupTries = 5)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">JSONpath</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td><span class="parametername">testMode</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">maxSetupTries</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_WssStimulationCore__ctor_" data-uid="Wss.CoreModule.WssStimulationCore.#ctor*"></a>
+  <h4 id="Wss_CoreModule_WssStimulationCore__ctor_System_String_System_String_System_Boolean_System_Int32_" data-uid="Wss.CoreModule.WssStimulationCore.#ctor(System.String,System.String,System.Boolean,System.Int32)">WssStimulationCore(string, string, bool, int)</h4>
+  <div class="markdown level1 summary"><p>Construct with explicit COM port.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public WssStimulationCore(string comPort, string JSONpath, bool testMode = false, int maxSetupTries = 5)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">comPort</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">JSONpath</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td><span class="parametername">testMode</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">maxSetupTries</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+
+
+  <a id="Wss_CoreModule_WssStimulationCore_Dispose_" data-uid="Wss.CoreModule.WssStimulationCore.Dispose*"></a>
+  <h4 id="Wss_CoreModule_WssStimulationCore_Dispose" data-uid="Wss.CoreModule.WssStimulationCore.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+
+
+  <a id="Wss_CoreModule_WssStimulationCore_GetCoreConfigController_" data-uid="Wss.CoreModule.WssStimulationCore.GetCoreConfigController*"></a>
+  <h4 id="Wss_CoreModule_WssStimulationCore_GetCoreConfigController" data-uid="Wss.CoreModule.WssStimulationCore.GetCoreConfigController">GetCoreConfigController()</h4>
+  <div class="markdown level1 summary"><p>Gets the JSON-backed stimulation configuration controller currently used by this core.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CoreConfigController GetCoreConfigController()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Wss.CoreModule.CoreConfigController.html">CoreConfigController</a></td>
+        <td><p>The active <a class="xref" href="Wss.CoreModule.CoreConfigController.html">CoreConfigController</a> instance that provides read/write access
+to stimulation parameters and constants loaded from the configuration file.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Wss_CoreModule_WssStimulationCore_GetCoreConfigController_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Returned reference is live, not a copy and thread safe.</p>
+</div>
+
+
+  <a id="Wss_CoreModule_WssStimulationCore_Initialize_" data-uid="Wss.CoreModule.WssStimulationCore.Initialize*"></a>
+  <h4 id="Wss_CoreModule_WssStimulationCore_Initialize" data-uid="Wss.CoreModule.WssStimulationCore.Initialize">Initialize()</h4>
+  <div class="markdown level1 summary"><p>Initializes the core: loads JSON config, prepares buffers, and begins connecting
+to the transport. Non-blocking; call <a class="xref" href="Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_Tick">Tick()</a> to advance state.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Initialize()</code></pre>
+  </div>
+
+
+  <a id="Wss_CoreModule_WssStimulationCore_IsChannelInRange_" data-uid="Wss.CoreModule.WssStimulationCore.IsChannelInRange*"></a>
+  <h4 id="Wss_CoreModule_WssStimulationCore_IsChannelInRange_System_Int32_" data-uid="Wss.CoreModule.WssStimulationCore.IsChannelInRange(System.Int32)">IsChannelInRange(int)</h4>
+  <div class="markdown level1 summary"><p>Returns true if <code class="paramref">ch</code> is within the valid channel range.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsChannelInRange(int ch)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">ch</span></td>
+        <td><p>1-based channel to check.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_WssStimulationCore_Load_" data-uid="Wss.CoreModule.WssStimulationCore.Load*"></a>
+  <h4 id="Wss_CoreModule_WssStimulationCore_Load_Wss_CoreModule_WssTarget_" data-uid="Wss.CoreModule.WssStimulationCore.Load(Wss.CoreModule.WssTarget)">Load(WssTarget)</h4>
+  <div class="markdown level1 summary"><p>Loads board settings from non-volatile memory. Implementations should
+pause streaming if needed, perform the load, then resume.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Load(WssTarget targetWSS = WssTarget.Broadcast)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Wss.CoreModule.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">targetWSS</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_WssStimulationCore_LoadConfigFile_" data-uid="Wss.CoreModule.WssStimulationCore.LoadConfigFile*"></a>
+  <h4 id="Wss_CoreModule_WssStimulationCore_LoadConfigFile" data-uid="Wss.CoreModule.WssStimulationCore.LoadConfigFile">LoadConfigFile()</h4>
+  <div class="markdown level1 summary"><p>Reloads the stimulation JSON configuration from disk into memory.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void LoadConfigFile()</code></pre>
+  </div>
+
+
+  <a id="Wss_CoreModule_WssStimulationCore_LoadWaveform_" data-uid="Wss.CoreModule.WssStimulationCore.LoadWaveform*"></a>
+  <h4 id="Wss_CoreModule_WssStimulationCore_LoadWaveform_System_String_System_Int32_" data-uid="Wss.CoreModule.WssStimulationCore.LoadWaveform(System.String,System.Int32)">LoadWaveform(string, int)</h4>
+  <div class="markdown level1 summary"><p>Loads a waveform JSON file (â€¦WF.json), builds it, and enqueues an upload.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void LoadWaveform(string fileName, int eventID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">fileName</span></td>
+        <td><p>File name or path; â€œWF.jsonâ€ suffix is enforced.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventID</span></td>
+        <td><p>Event slot to target.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_WssStimulationCore_NormalSetup_" data-uid="Wss.CoreModule.WssStimulationCore.NormalSetup*"></a>
+  <h4 id="Wss_CoreModule_WssStimulationCore_NormalSetup" data-uid="Wss.CoreModule.WssStimulationCore.NormalSetup">NormalSetup()</h4>
+  <div class="markdown level1 summary"><p>Seeds the per-target setup step lists for a full initial configuration and starts
+the setup runner. Used once after connect.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void NormalSetup()</code></pre>
+  </div>
+
+
+  <a id="Wss_CoreModule_WssStimulationCore_Ready_" data-uid="Wss.CoreModule.WssStimulationCore.Ready*"></a>
+  <h4 id="Wss_CoreModule_WssStimulationCore_Ready" data-uid="Wss.CoreModule.WssStimulationCore.Ready">Ready()</h4>
+  <div class="markdown level1 summary"><p>True when the core is ready to accept start stimulation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Ready()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_WssStimulationCore_Request_Configs_" data-uid="Wss.CoreModule.WssStimulationCore.Request_Configs*"></a>
+  <h4 id="Wss_CoreModule_WssStimulationCore_Request_Configs_System_Int32_System_Int32_Wss_CoreModule_WssTarget_" data-uid="Wss.CoreModule.WssStimulationCore.Request_Configs(System.Int32,System.Int32,Wss.CoreModule.WssTarget)">Request_Configs(int, int, WssTarget)</h4>
+  <div class="markdown level1 summary"><p>Requests configuration blocks from the device.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Request_Configs(int command, int id, WssTarget targetWSS = WssTarget.Broadcast)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">command</span></td>
+        <td><p>Command group identifier.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>Sub-id / selector.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Wss.CoreModule.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">targetWSS</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_WssStimulationCore_Save_" data-uid="Wss.CoreModule.WssStimulationCore.Save*"></a>
+  <h4 id="Wss_CoreModule_WssStimulationCore_Save_Wss_CoreModule_WssTarget_" data-uid="Wss.CoreModule.WssStimulationCore.Save(Wss.CoreModule.WssTarget)">Save(WssTarget)</h4>
+  <div class="markdown level1 summary"><p>Saves board settings to non-volatile memory. Implementations should
+pause streaming if needed, perform the save, then resume.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Save(WssTarget targetWSS = WssTarget.Broadcast)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Wss.CoreModule.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">targetWSS</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_WssStimulationCore_Shutdown_" data-uid="Wss.CoreModule.WssStimulationCore.Shutdown*"></a>
+  <h4 id="Wss_CoreModule_WssStimulationCore_Shutdown" data-uid="Wss.CoreModule.WssStimulationCore.Shutdown">Shutdown()</h4>
+  <div class="markdown level1 summary"><p>Stops streaming, attempts to zero outputs, disconnects transport, and releases resources.
+Safe to call multiple times.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Shutdown()</code></pre>
+  </div>
+
+
+  <a id="Wss_CoreModule_WssStimulationCore_StartStim_" data-uid="Wss.CoreModule.WssStimulationCore.StartStim*"></a>
+  <h4 id="Wss_CoreModule_WssStimulationCore_StartStim_Wss_CoreModule_WssTarget_" data-uid="Wss.CoreModule.WssStimulationCore.StartStim(Wss.CoreModule.WssTarget)">StartStim(WssTarget)</h4>
+  <div class="markdown level1 summary"><p>Starts stimulation on the target and launches streaming when ready.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void StartStim(WssTarget targetWSS = WssTarget.Broadcast)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Wss.CoreModule.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">targetWSS</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_WssStimulationCore_Started_" data-uid="Wss.CoreModule.WssStimulationCore.Started*"></a>
+  <h4 id="Wss_CoreModule_WssStimulationCore_Started" data-uid="Wss.CoreModule.WssStimulationCore.Started">Started()</h4>
+  <div class="markdown level1 summary"><p>True when device transport is started or streaming.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Started()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_WssStimulationCore_StimulateAnalog_" data-uid="Wss.CoreModule.WssStimulationCore.StimulateAnalog*"></a>
+  <h4 id="Wss_CoreModule_WssStimulationCore_StimulateAnalog_System_Int32_System_Int32_System_Single_System_Int32_" data-uid="Wss.CoreModule.WssStimulationCore.StimulateAnalog(System.Int32,System.Int32,System.Single,System.Int32)">StimulateAnalog(int, int, float, int)</h4>
+  <div class="markdown level1 summary"><p>Caches per-channel amplitude, pulse width, and IPI. No I/O here;
+the streaming loop pushes cached values to the device.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void StimulateAnalog(int channel, int PW, float amp, int IPI)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">channel</span></td>
+        <td><p>1-based logical channel.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">PW</span></td>
+        <td><p>Pulse width (µs).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">float</span></td>
+        <td><span class="parametername">amp</span></td>
+        <td><p>Amplitude (mA domain; mapped to device scale during streaming).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">IPI</span></td>
+        <td><p>Inter-pulse interval (ms).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_WssStimulationCore_StopStim_" data-uid="Wss.CoreModule.WssStimulationCore.StopStim*"></a>
+  <h4 id="Wss_CoreModule_WssStimulationCore_StopStim_Wss_CoreModule_WssTarget_" data-uid="Wss.CoreModule.WssStimulationCore.StopStim(Wss.CoreModule.WssTarget)">StopStim(WssTarget)</h4>
+  <div class="markdown level1 summary"><p>Stops stimulation on the target and, if streaming, stops the background loop.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void StopStim(WssTarget targetWSS = WssTarget.Broadcast)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Wss.CoreModule.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">targetWSS</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_WssStimulationCore_Tick_" data-uid="Wss.CoreModule.WssStimulationCore.Tick*"></a>
+  <h4 id="Wss_CoreModule_WssStimulationCore_Tick" data-uid="Wss.CoreModule.WssStimulationCore.Tick">Tick()</h4>
+  <div class="markdown level1 summary"><p>Advances the internal state machine (e.g., Connecting → SettingUp → Ready → Streaming).
+Call regularly from the main loop.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Tick()</code></pre>
+  </div>
+
+
+  <a id="Wss_CoreModule_WssStimulationCore_TryGetModuleSettings_" data-uid="Wss.CoreModule.WssStimulationCore.TryGetModuleSettings*"></a>
+  <h4 id="Wss_CoreModule_WssStimulationCore_TryGetModuleSettings_Wss_CoreModule_WssTarget_Wss_CoreModule_ModuleSettings__" data-uid="Wss.CoreModule.WssStimulationCore.TryGetModuleSettings(Wss.CoreModule.WssTarget,Wss.CoreModule.ModuleSettings@)">TryGetModuleSettings(WssTarget, out ModuleSettings)</h4>
+  <div class="markdown level1 summary"><p>Tries to obtain the last decoded ModuleSettings for a target by reading
+the client's cached ModuleQuery data and decoding it. Returns false if
+no data is cached or the payload is incomplete; when false, 'settings'
+may still be non-null but marked as partial.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryGetModuleSettings(WssTarget target, out ModuleSettings settings)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Wss.CoreModule.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Wss.CoreModule.ModuleSettings.html">ModuleSettings</a></td>
+        <td><span class="parametername">settings</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_WssStimulationCore_UpdateEventShape_" data-uid="Wss.CoreModule.WssStimulationCore.UpdateEventShape*"></a>
+  <h4 id="Wss_CoreModule_WssStimulationCore_UpdateEventShape_System_Int32_System_Int32_System_Int32_Wss_CoreModule_WssTarget_" data-uid="Wss.CoreModule.WssStimulationCore.UpdateEventShape(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget)">UpdateEventShape(int, int, int, WssTarget)</h4>
+  <div class="markdown level1 summary"><p>Sets event shape IDs directly for the given <code class="paramref">eventID</code>.
+Implementations should send setup edits with replies.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateEventShape(int cathodicWaveform, int anodicWaveform, int eventID, WssTarget targetWSS = WssTarget.Broadcast)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">cathodicWaveform</span></td>
+        <td><p>Shape ID for the standard phase.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">anodicWaveform</span></td>
+        <td><p>Shape ID for the recharge phase.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventID</span></td>
+        <td><p>Event slot to modify.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Wss.CoreModule.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">targetWSS</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_WssStimulationCore_UpdateIPD_" data-uid="Wss.CoreModule.WssStimulationCore.UpdateIPD*"></a>
+  <h4 id="Wss_CoreModule_WssStimulationCore_UpdateIPD_System_Int32_System_Int32_Wss_CoreModule_WssTarget_" data-uid="Wss.CoreModule.WssStimulationCore.UpdateIPD(System.Int32,System.Int32,Wss.CoreModule.WssTarget)">UpdateIPD(int, int, WssTarget)</h4>
+  <div class="markdown level1 summary"><p>Updates inter-phase delay (IPD) for a specific <code class="paramref">eventID</code> via setup commands (with replies).
+If currently Streaming, the core pauses streaming, sends the edit, and resumes when done.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateIPD(int IPD, int eventID, WssTarget targetWSS = WssTarget.Broadcast)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">IPD</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventID</span></td>
+        <td><p>Event slot to target.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Wss.CoreModule.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">targetWSS</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_WssStimulationCore_UpdateIPD_" data-uid="Wss.CoreModule.WssStimulationCore.UpdateIPD*"></a>
+  <h4 id="Wss_CoreModule_WssStimulationCore_UpdateIPD_System_Int32_Wss_CoreModule_WssTarget_" data-uid="Wss.CoreModule.WssStimulationCore.UpdateIPD(System.Int32,Wss.CoreModule.WssTarget)">UpdateIPD(int, WssTarget)</h4>
+  <div class="markdown level1 summary"><p>Updates inter-phase delay (IPD) for events 1–3 via setup commands (with replies).
+If currently Streaming, the core pauses streaming, sends edits, and resumes when done.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateIPD(int IPD, WssTarget targetWSS = WssTarget.Broadcast)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">IPD</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Wss.CoreModule.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">targetWSS</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_WssStimulationCore_UpdateWaveform_" data-uid="Wss.CoreModule.WssStimulationCore.UpdateWaveform*"></a>
+  <h4 id="Wss_CoreModule_WssStimulationCore_UpdateWaveform_System_Int32___System_Int32_Wss_CoreModule_WssTarget_" data-uid="Wss.CoreModule.WssStimulationCore.UpdateWaveform(System.Int32[],System.Int32,Wss.CoreModule.WssTarget)">UpdateWaveform(int[], int, WssTarget)</h4>
+  <div class="markdown level1 summary"><p>Builds a custom waveform from raw points and schedules the upload
+for the specified <code class="paramref">eventID</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateWaveform(int[] waveform, int eventID, WssTarget targetWSS = WssTarget.Broadcast)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span>[]</td>
+        <td><span class="parametername">waveform</span></td>
+        <td><p>Concatenated waveform definition.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventID</span></td>
+        <td><p>Event slot to target.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Wss.CoreModule.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">targetWSS</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_WssStimulationCore_UpdateWaveform_" data-uid="Wss.CoreModule.WssStimulationCore.UpdateWaveform*"></a>
+  <h4 id="Wss_CoreModule_WssStimulationCore_UpdateWaveform_Wss_CoreModule_WaveformBuilder_System_Int32_Wss_CoreModule_WssTarget_" data-uid="Wss.CoreModule.WssStimulationCore.UpdateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)">UpdateWaveform(WaveformBuilder, int, WssTarget)</h4>
+  <div class="markdown level1 summary"><p>Uploads a prepared waveform and assigns shapes for <code class="paramref">eventID</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateWaveform(WaveformBuilder waveform, int eventID, WssTarget targetWSS = WssTarget.Broadcast)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Wss.CoreModule.WaveformBuilder.html">WaveformBuilder</a></td>
+        <td><span class="parametername">waveform</span></td>
+        <td><p>Prepared <a class="xref" href="Wss.CoreModule.WaveformBuilder.html">WaveformBuilder</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventID</span></td>
+        <td><p>Event slot to target.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Wss.CoreModule.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">targetWSS</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_WssStimulationCore_WaveformSetup_" data-uid="Wss.CoreModule.WssStimulationCore.WaveformSetup*"></a>
+  <h4 id="Wss_CoreModule_WssStimulationCore_WaveformSetup_Wss_CoreModule_WaveformBuilder_System_Int32_Wss_CoreModule_WssTarget_" data-uid="Wss.CoreModule.WssStimulationCore.WaveformSetup(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)">WaveformSetup(WaveformBuilder, int, WssTarget)</h4>
+  <div class="markdown level1 summary"><p>Schedules the upload of custom waveform chunks and points
+<code class="paramref">eventID</code> at the uploaded shapes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void WaveformSetup(WaveformBuilder wave, int eventID, WssTarget targetWSS = WssTarget.Broadcast)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Wss.CoreModule.WaveformBuilder.html">WaveformBuilder</a></td>
+        <td><span class="parametername">wave</span></td>
+        <td><p>Waveform builder.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventID</span></td>
+        <td><p>Event slot to target.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Wss.CoreModule.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">targetWSS</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_WssStimulationCore_ZeroOutStim_" data-uid="Wss.CoreModule.WssStimulationCore.ZeroOutStim*"></a>
+  <h4 id="Wss_CoreModule_WssStimulationCore_ZeroOutStim_Wss_CoreModule_WssTarget_" data-uid="Wss.CoreModule.WssStimulationCore.ZeroOutStim(Wss.CoreModule.WssTarget)">ZeroOutStim(WssTarget)</h4>
+  <div class="markdown level1 summary"><p>Sends a zero-out command. Does not alter cached values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ZeroOutStim(WssTarget wsstarget = WssTarget.Broadcast)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Wss.CoreModule.WssTarget.html">WssTarget</a></td>
+        <td><span class="parametername">wsstarget</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Wss.CoreModule.IStimulationCore.html">IStimulationCore</a>
+  </div>
+  <div>
+      <a class="xref" href="Wss.CoreModule.IBasicStimulation.html">IBasicStimulation</a>
+  </div>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

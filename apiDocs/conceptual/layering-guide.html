@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Layering Guide (Modules) | WSS Documentation Hub </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Layering Guide (Modules) | WSS Documentation Hub ">
+    
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="layering-guide-modules">Layering Guide (Modules)</h1>
+
+<p>This guide focuses on how functionality grows as you add modules on top of the core. It illustrates three configurations: Core only, Core + Params, and Core + Params + Model.</p>
+<h2 id="core-only">Core Only</h2>
+<pre><code class="lang-mermaid">flowchart LR
+  App[Client / App / UI] --&gt; Core[WssStimulationCore]
+  Core --&gt; Transport[ITransport]
+  Transport --&gt; Device[Device]
+  Device -. inbound .-&gt; Core
+  Core -. callbacks .-&gt; App
+</code></pre>
+<ul>
+<li>Capabilities:
+<ul>
+<li>Connect/disconnect, send/receive via <code>ITransport</code>.</li>
+<li>Frame parsing/assembly via <code>IFrameCodec</code>.</li>
+<li>Background streaming loop; queued edits; lifecycle orchestration.</li>
+</ul>
+</li>
+<li>Key code:
+<ul>
+<li>Core: <code>WSSBaseCode/WssStimulationCore.cs</code></li>
+<li>Codec: <code>WSSBaseCode/WssFrameCodec.cs</code> (<code>WSSBaseCode/Interfaces/IFrameCodec.cs</code>)</li>
+<li>Transport: <code>WSSBaseCode/SerialPortTransport.cs</code>, <code>WSSBaseCode/TestModeTransport.cs</code> (<code>WSSBaseCode/Interfaces/ITransport.cs</code>)</li>
+</ul>
+</li>
+</ul>
+<h2 id="core--params-module">Core + Params Module</h2>
+<pre><code class="lang-mermaid">flowchart LR
+  App[Client / App] --&gt; Params[Stim Params Module]
+  Params --&gt; Core[WssStimulationCore]
+  Core --&gt; Codec[IFrameCodec]
+  Codec --&gt; Transport[ITransport]
+  Transport --&gt; Device[Device]
+  Device -. inbound .-&gt; Codec -. deframe .-&gt; Core -. events .-&gt; App
+  Core &lt;--&gt; Params
+</code></pre>
+<ul>
+<li>Enhancements over Core only:
+<ul>
+<li>Centralized parameter definitions, defaults, and validation.</li>
+<li>Helpers to apply parameter sets to the device safely.</li>
+</ul>
+</li>
+<li>Key code:
+<ul>
+<li>Module: <code>CalibrationModule/StimParamsLayer.cs</code>, <code>CalibrationModule/StimParamsConfig.cs</code>, <code>CalibrationModule/StimParamsConfigController.cs</code>, <code>CalibrationModule/IStimParamsCore.cs</code></li>
+<li>Config plumbing: <code>WSSBaseCode/CoreJsonConfig/*</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="core--params--model-module">Core + Params + Model Module</h2>
+<pre><code class="lang-mermaid">flowchart LR
+  App[Client / App] --&gt; Model[Model Module]
+  Model --&gt; Params[Stim Params Module]
+  Params --&gt; Core[WssStimulationCore]
+  Core --&gt; Codec[IFrameCodec]
+  Codec --&gt; Transport[ITransport]
+  Transport --&gt; Device[Device]
+  Device -. inbound .-&gt; Codec -. deframe .-&gt; Core -. events .-&gt; App
+  Core &lt;--&gt; Params
+  Params &lt;--&gt; Model
+</code></pre>
+<ul>
+<li>Enhancements over Core + Params:
+<ul>
+<li>Model-specific configuration, constraints, and workflows layered on top of parameters.</li>
+<li>Clear separation of generic parameter management (Params) vs. model specialization (Model).</li>
+</ul>
+</li>
+<li>Key code:
+<ul>
+<li>Module: <code>ModelModule/ModelParamsLayer.cs</code>, <code>ModelModule/ModelConfig.cs</code>, <code>ModelModule/ModelConfigController.cs</code>, <code>ModelModule/IModelParamsCore.cs</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="guidance">Guidance</h2>
+<ul>
+<li>Compose the core with modules at the app boundary. Pass interfaces; avoid tight coupling.</li>
+<li>Keep protocol framing and transport mechanics outside modules; modules should express domain behaviors and constraints.</li>
+<li>See also: Core Architecture for transport/codec/core wiring and data flow.</li>
+</ul>
+<h2 id="optional-capability-basic-stimulation">Optional Capability: Basic Stimulation</h2>
+<p>The Basic Stimulation interface (<code>WSSBaseCode/Interfaces/IBasicStimulation.cs</code>) is an optional capability layer that adds higher-level stimulation operations on top of the core. It is suitable for firmware/hardware that supports waveform editing, event shaping, and config persistence.</p>
+<ul>
+<li>Purpose
+<ul>
+<li>Provide a minimal, consistent API to upload/select waveforms and to save/load/query board configuration.</li>
+<li>All calls are non-blocking; implementations enqueue setup steps and wait for device replies.</li>
+</ul>
+</li>
+<li>Key operations
+<ul>
+<li><code>UpdateEventShape</code>, <code>UpdateWaveform</code> (builder or raw), <code>WaveformSetup</code></li>
+<li><code>Save</code>, <code>Load</code>, <code>Request_Configs</code></li>
+<li><code>UpdateIPD</code> (global or per-event)</li>
+</ul>
+</li>
+<li>Relationship to modules
+<ul>
+<li>Can be used with Core only, with Params, or with Params + Model. Modules can delegate to <code>IBasicStimulation</code> for device edits.</li>
+</ul>
+</li>
+<li>Future direction
+<ul>
+<li>Split <code>IBasicStimulation</code> into smaller capability interfaces to match firmware/hardware feature sets (e.g., <code>IWaveformUpload</code>, <code>IEventEditing</code>, <code>IConfigPersistence</code>, <code>IConfigQuery</code>).</li>
+<li>Compose the final “stimulator” from supported capability interfaces at runtime.</li>
+</ul>
+</li>
+</ul>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/cwru-non-academic/WSS_Documentation/blob/main/apiDocs/conceptual/layering-guide.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class ModuleSettings | WSS Documentation Hub </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class ModuleSettings | WSS Documentation Hub ">
+    
+    <meta name="description" content="Strongly-typed snapshot of settings returned by a ModuleQuery-like payload. Includes a safe decoder for the data-only payload and helpers for selecting amplitude mapping behavior (e.g., 10 mA vs 72 mA based on HW flags).">
+      <link rel="shortcut icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../styles/docfx.css">
+      <link rel="stylesheet" href="../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Wss.CoreModule.ModuleSettings">
+
+
+
+  <h1 id="Wss_CoreModule_ModuleSettings" data-uid="Wss.CoreModule.ModuleSettings" class="text-break">Class ModuleSettings</h1>
+  <div class="markdown level0 summary"><p>Strongly-typed snapshot of settings returned by a ModuleQuery-like payload.
+Includes a safe decoder for the data-only payload and helpers for selecting
+amplitude mapping behavior (e.g., 10 mA vs 72 mA based on HW flags).</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">object</span></div>
+    <div class="level1"><span class="xref">ModuleSettings</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Wss.html">Wss</a>.<a class="xref" href="Wss.CoreModule.html">CoreModule</a></h6>
+  <h6><strong>Assembly</strong>: WSS_Core_Interface.dll</h6>
+  <h5 id="Wss_CoreModule_ModuleSettings_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class ModuleSettings</code></pre>
+  </div>
+  <h3 id="properties">Properties
+</h3>
+
+
+  <a id="Wss_CoreModule_ModuleSettings_AmpCurveKey_" data-uid="Wss.CoreModule.ModuleSettings.AmpCurveKey*"></a>
+  <h4 id="Wss_CoreModule_ModuleSettings_AmpCurveKey" data-uid="Wss.CoreModule.ModuleSettings.AmpCurveKey">AmpCurveKey</h4>
+  <div class="markdown level1 summary"><p>Convenience selector for amplitude curves. Returns &quot;10mA&quot; when the
+<a class="xref" href="Wss.CoreModule.ModuleSettings.HwConfigFlags.html#Wss_CoreModule_ModuleSettings_HwConfigFlags_TenMilliAmpPA">TenMilliAmpPA</a> bit is set; otherwise &quot;72mA&quot;.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string AmpCurveKey { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_ModuleSettings_BatteryCheckPeriod_" data-uid="Wss.CoreModule.ModuleSettings.BatteryCheckPeriod*"></a>
+  <h4 id="Wss_CoreModule_ModuleSettings_BatteryCheckPeriod" data-uid="Wss.CoreModule.ModuleSettings.BatteryCheckPeriod">BatteryCheckPeriod</h4>
+  <div class="markdown level1 summary"><p>Battery check timer period (raw units).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ushort BatteryCheckPeriod { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ushort</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_ModuleSettings_BatteryThreshold_" data-uid="Wss.CoreModule.ModuleSettings.BatteryThreshold*"></a>
+  <h4 id="Wss_CoreModule_ModuleSettings_BatteryThreshold" data-uid="Wss.CoreModule.ModuleSettings.BatteryThreshold">BatteryThreshold</h4>
+  <div class="markdown level1 summary"><p>Low-battery threshold (raw units).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ushort BatteryThreshold { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ushort</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_ModuleSettings_DataStart24_" data-uid="Wss.CoreModule.ModuleSettings.DataStart24*"></a>
+  <h4 id="Wss_CoreModule_ModuleSettings_DataStart24" data-uid="Wss.CoreModule.ModuleSettings.DataStart24">DataStart24</h4>
+  <div class="markdown level1 summary"><p>Start pointer for device log data (24-bit big-endian value).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint DataStart24 { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">uint</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_ModuleSettings_FswConfig_" data-uid="Wss.CoreModule.ModuleSettings.FswConfig*"></a>
+  <h4 id="Wss_CoreModule_ModuleSettings_FswConfig" data-uid="Wss.CoreModule.ModuleSettings.FswConfig">FswConfig</h4>
+  <div class="markdown level1 summary"><p>Fingerswitch configuration value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ModuleSettings.FingerswitchConfig FswConfig { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Wss.CoreModule.ModuleSettings.html">ModuleSettings</a>.<a class="xref" href="Wss.CoreModule.ModuleSettings.FingerswitchConfig.html">FingerswitchConfig</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_ModuleSettings_HwConfig_" data-uid="Wss.CoreModule.ModuleSettings.HwConfig*"></a>
+  <h4 id="Wss_CoreModule_ModuleSettings_HwConfig" data-uid="Wss.CoreModule.ModuleSettings.HwConfig">HwConfig</h4>
+  <div class="markdown level1 summary"><p>Hardware configuration flags (bitfield).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ModuleSettings.HwConfigFlags HwConfig { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Wss.CoreModule.ModuleSettings.html">ModuleSettings</a>.<a class="xref" href="Wss.CoreModule.ModuleSettings.HwConfigFlags.html">HwConfigFlags</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_ModuleSettings_ImpedanceThreshold_" data-uid="Wss.CoreModule.ModuleSettings.ImpedanceThreshold*"></a>
+  <h4 id="Wss_CoreModule_ModuleSettings_ImpedanceThreshold" data-uid="Wss.CoreModule.ModuleSettings.ImpedanceThreshold">ImpedanceThreshold</h4>
+  <div class="markdown level1 summary"><p>High-impedance threshold (raw units).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ushort ImpedanceThreshold { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ushort</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_ModuleSettings_IpdUs_" data-uid="Wss.CoreModule.ModuleSettings.IpdUs*"></a>
+  <h4 id="Wss_CoreModule_ModuleSettings_IpdUs" data-uid="Wss.CoreModule.ModuleSettings.IpdUs">IpdUs</h4>
+  <div class="markdown level1 summary"><p>Inter-phase delay in microseconds (one byte in this query).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int IpdUs { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_ModuleSettings_IsPartial_" data-uid="Wss.CoreModule.ModuleSettings.IsPartial*"></a>
+  <h4 id="Wss_CoreModule_ModuleSettings_IsPartial" data-uid="Wss.CoreModule.ModuleSettings.IsPartial">IsPartial</h4>
+  <div class="markdown level1 summary"><p>True when the payload was shorter than expected; some fields may be defaulted.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsPartial { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_ModuleSettings_PaLimit_" data-uid="Wss.CoreModule.ModuleSettings.PaLimit*"></a>
+  <h4 id="Wss_CoreModule_ModuleSettings_PaLimit" data-uid="Wss.CoreModule.ModuleSettings.PaLimit">PaLimit</h4>
+  <div class="markdown level1 summary"><p>PA limit (raw device units; typically correlates with max mA capability).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int PaLimit { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_ModuleSettings_ProbeSupported_" data-uid="Wss.CoreModule.ModuleSettings.ProbeSupported*"></a>
+  <h4 id="Wss_CoreModule_ModuleSettings_ProbeSupported" data-uid="Wss.CoreModule.ModuleSettings.ProbeSupported">ProbeSupported</h4>
+  <div class="markdown level1 summary"><p>True when the values originated from a real device probe, not defaults.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ProbeSupported { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_ModuleSettings_PwLimit_" data-uid="Wss.CoreModule.ModuleSettings.PwLimit*"></a>
+  <h4 id="Wss_CoreModule_ModuleSettings_PwLimit" data-uid="Wss.CoreModule.ModuleSettings.PwLimit">PwLimit</h4>
+  <div class="markdown level1 summary"><p>PW limit (raw device units).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int PwLimit { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_ModuleSettings_SerialNumber_" data-uid="Wss.CoreModule.ModuleSettings.SerialNumber*"></a>
+  <h4 id="Wss_CoreModule_ModuleSettings_SerialNumber" data-uid="Wss.CoreModule.ModuleSettings.SerialNumber">SerialNumber</h4>
+  <div class="markdown level1 summary"><p>Device serial number (one byte in this query).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte SerialNumber { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">byte</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_ModuleSettings_StepKind_" data-uid="Wss.CoreModule.ModuleSettings.StepKind*"></a>
+  <h4 id="Wss_CoreModule_ModuleSettings_StepKind" data-uid="Wss.CoreModule.ModuleSettings.StepKind">StepKind</h4>
+  <div class="markdown level1 summary"><p>Whether the step size applies to PA or PW.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ModuleSettings.ParameterStepKind StepKind { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Wss.CoreModule.ModuleSettings.html">ModuleSettings</a>.<a class="xref" href="Wss.CoreModule.ModuleSettings.ParameterStepKind.html">ParameterStepKind</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_ModuleSettings_StepSize_" data-uid="Wss.CoreModule.ModuleSettings.StepSize*"></a>
+  <h4 id="Wss_CoreModule_ModuleSettings_StepSize" data-uid="Wss.CoreModule.ModuleSettings.StepSize">StepSize</h4>
+  <div class="markdown level1 summary"><p>Step size magnitude (lower 7 bits of the Step byte).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int StepSize { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+
+
+  <a id="Wss_CoreModule_ModuleSettings_CreateDefault72mA_" data-uid="Wss.CoreModule.ModuleSettings.CreateDefault72mA*"></a>
+  <h4 id="Wss_CoreModule_ModuleSettings_CreateDefault72mA_System_Boolean_" data-uid="Wss.CoreModule.ModuleSettings.CreateDefault72mA(System.Boolean)">CreateDefault72mA(bool)</h4>
+  <div class="markdown level1 summary"><p>Creates a default (synthetic) 72 mA profile for cases where ModuleQuery is not supported or
+data is unavailable. Fields are set to conservative defaults and <a class="xref" href="Wss.CoreModule.ModuleSettings.html#Wss_CoreModule_ModuleSettings_IsPartial">IsPartial</a> is true.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ModuleSettings CreateDefault72mA(bool probeSupported)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td><span class="parametername">probeSupported</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Wss.CoreModule.ModuleSettings.html">ModuleSettings</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_ModuleSettings_ToSummaryString_" data-uid="Wss.CoreModule.ModuleSettings.ToSummaryString*"></a>
+  <h4 id="Wss_CoreModule_ModuleSettings_ToSummaryString" data-uid="Wss.CoreModule.ModuleSettings.ToSummaryString">ToSummaryString()</h4>
+  <div class="markdown level1 summary"><p>Builds a human-readable one-line summary of key fields for logs and diagnostics.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ToSummaryString()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><p>Summary string including HW flags, FSW config, IPD, limits, thresholds, and serial.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_ModuleSettings_TryDecode_" data-uid="Wss.CoreModule.ModuleSettings.TryDecode*"></a>
+  <h4 id="Wss_CoreModule_ModuleSettings_TryDecode_System_ReadOnlySpan_System_Byte__Wss_CoreModule_ModuleSettings__" data-uid="Wss.CoreModule.ModuleSettings.TryDecode(System.ReadOnlySpan{System.Byte},Wss.CoreModule.ModuleSettings@)">TryDecode(ReadOnlySpan&lt;byte&gt;, out ModuleSettings)</h4>
+  <div class="markdown level1 summary"><p>Attempts to decode a ModuleQuery settings payload (data-only slice) into a <a class="xref" href="Wss.CoreModule.ModuleSettings.html">ModuleSettings</a> instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool TryDecode(ReadOnlySpan&lt;byte&gt; data, out ModuleSettings settings)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ReadOnlySpan</span>&lt;<span class="xref">byte</span>&gt;</td>
+        <td><span class="parametername">data</span></td>
+        <td><p>Data-only bytes in the expected order (length ≥ 16 recommended).</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Wss.CoreModule.ModuleSettings.html">ModuleSettings</a></td>
+        <td><span class="parametername">settings</span></td>
+        <td><p>Decoded settings snapshot (always set; may have <a class="xref" href="Wss.CoreModule.ModuleSettings.html#Wss_CoreModule_ModuleSettings_IsPartial">IsPartial</a>=true).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td><p>True when all expected fields were present (not partial). False indicates a short payload, but a
+best-effort decode is still returned in <code class="paramref">settings</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

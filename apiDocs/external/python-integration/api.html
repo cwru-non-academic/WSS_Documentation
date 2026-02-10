@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>API &#8212; wss-py-wrapper  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=686e5160" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Usage" href="usage.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="api">
+<h1>API<a class="headerlink" href="#api" title="Link to this heading">¶</a></h1>
+<section id="module-wss_py_wrapper">
+<span id="package"></span><h2>Package<a class="headerlink" href="#module-wss_py_wrapper" title="Link to this heading">¶</a></h2>
+<p>Public exports for <a class="reference internal" href="#module-wss_py_wrapper" title="wss_py_wrapper"><code class="xref py py-mod docutils literal notranslate"><span class="pre">wss_py_wrapper</span></code></a>.</p>
+<p>This package provides a thin Python wrapper around a .NET WSS stimulation interface.
+Most runtime behavior is implemented in <a class="reference internal" href="#wss_py_wrapper.stimulation_controller.StimulationController" title="wss_py_wrapper.stimulation_controller.StimulationController"><code class="xref py py-class docutils literal notranslate"><span class="pre">wss_py_wrapper.stimulation_controller.StimulationController</span></code></a>.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="wss_py_wrapper.FileLogSink">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wss_py_wrapper.</span></span><span class="sig-name descname"><span class="pre">FileLogSink</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/log_sink.html#FileLogSink"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.FileLogSink" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wss_py_wrapper.LogSink" title="wss_py_wrapper.log_sink.LogSink"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogSink</span></code></a></p>
+<p>Thread-safe file sink.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>Path</em>) – File path to append logs to.</p>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="wss_py_wrapper.FileLogSink.path">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Path</span></em><a class="headerlink" href="#wss_py_wrapper.FileLogSink.path" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.FileLogSink.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">level</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/log_sink.html#FileLogSink.write"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.FileLogSink.write" title="Link to this definition">¶</a></dt>
+<dd><p>Write a log message.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>level</strong> (<em>str</em>) – Log level text (e.g. <code class="docutils literal notranslate"><span class="pre">INFO</span></code>).</p></li>
+<li><p><strong>message</strong> (<em>str</em>) – Log message.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wss_py_wrapper.LogSink">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wss_py_wrapper.</span></span><span class="sig-name descname"><span class="pre">LogSink</span></span><a class="reference internal" href="_modules/wss_py_wrapper/log_sink.html#LogSink"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.LogSink" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Abstract sink used by <a class="reference internal" href="#wss_py_wrapper.Logger" title="wss_py_wrapper.logger.Logger"><code class="xref py py-class docutils literal notranslate"><span class="pre">Logger</span></code></a> and the C# bridge.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.LogSink.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">level</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/log_sink.html#LogSink.write"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.LogSink.write" title="Link to this definition">¶</a></dt>
+<dd><p>Write a log message.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>level</strong> (<em>str</em>) – Log level text (e.g. <code class="docutils literal notranslate"><span class="pre">INFO</span></code>).</p></li>
+<li><p><strong>message</strong> (<em>str</em>) – Log message.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wss_py_wrapper.Logger">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wss_py_wrapper.</span></span><span class="sig-name descname"><span class="pre">Logger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sink</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/logger.html#Logger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.Logger" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Write log lines to a <a class="reference internal" href="#wss_py_wrapper.LogSink" title="wss_py_wrapper.log_sink.LogSink"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogSink</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sink</strong> (<a class="reference internal" href="#wss_py_wrapper.LogSink" title="wss_py_wrapper.log_sink.LogSink"><em>LogSink</em></a>) – Target sink.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.Logger.error">
+<span class="sig-name descname"><span class="pre">error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/logger.html#Logger.error"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.Logger.error" title="Link to this definition">¶</a></dt>
+<dd><p>Write an ERROR message.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>str</em>) – Message text.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.Logger.info">
+<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/logger.html#Logger.info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.Logger.info" title="Link to this definition">¶</a></dt>
+<dd><p>Write an INFO message.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>str</em>) – Message text.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.Logger.warning">
+<span class="sig-name descname"><span class="pre">warning</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/logger.html#Logger.warning"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.Logger.warning" title="Link to this definition">¶</a></dt>
+<dd><p>Write a WARN message.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>str</em>) – Message text.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wss_py_wrapper.</span></span><span class="sig-name descname"><span class="pre">StimulationController</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.StimulationController" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Python wrapper around the WSS .NET stimulation controller layers.</p>
+<p>Lifecycle:
+- Call <a class="reference internal" href="#wss_py_wrapper.StimulationController.Initialize" title="wss_py_wrapper.StimulationController.Initialize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Initialize()</span></code></a> before using any stimulation methods.
+- Call <a class="reference internal" href="#wss_py_wrapper.StimulationController.Shutdown" title="wss_py_wrapper.StimulationController.Shutdown"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Shutdown()</span></code></a> to stop the background tick thread and dispose .NET objects.</p>
+<p>Threading:
+- A background tick loop calls <code class="docutils literal notranslate"><span class="pre">Tick()</span></code> at <code class="docutils literal notranslate"><span class="pre">config.tick_interval_ms</span></code>.
+- Methods are guarded by an internal lock at key lifecycle transitions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="#wss_py_wrapper.WssConfig" title="wss_py_wrapper.WssConfig"><em>WssConfig</em></a>) – Wrapper configuration.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController.AddOrUpdateStimParam">
+<span class="sig-name descname"><span class="pre">AddOrUpdateStimParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.AddOrUpdateStimParam"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.StimulationController.AddOrUpdateStimParam" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>)</p></li>
+<li><p><strong>value</strong> (<em>float</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController.BasicSupported">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">BasicSupported</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#wss_py_wrapper.StimulationController.BasicSupported" title="Link to this definition">¶</a></dt>
+<dd><p>Whether the optional “Basic” .NET API is available.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController.GetAllStimParams">
+<span class="sig-name descname"><span class="pre">GetAllStimParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.GetAllStimParams"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.StimulationController.GetAllStimParams" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController.GetChannelAmp">
+<span class="sig-name descname"><span class="pre">GetChannelAmp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">finger</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.GetChannelAmp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.StimulationController.GetChannelAmp" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>finger</strong> (<em>str</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController.GetChannelIPI">
+<span class="sig-name descname"><span class="pre">GetChannelIPI</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">finger</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.GetChannelIPI"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.StimulationController.GetChannelIPI" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>finger</strong> (<em>str</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController.GetChannelPWMax">
+<span class="sig-name descname"><span class="pre">GetChannelPWMax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">finger</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.GetChannelPWMax"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.StimulationController.GetChannelPWMax" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>finger</strong> (<em>str</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController.GetChannelPWMin">
+<span class="sig-name descname"><span class="pre">GetChannelPWMin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">finger</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.GetChannelPWMin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.StimulationController.GetChannelPWMin" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>finger</strong> (<em>str</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController.GetCoreConfigCTRL">
+<span class="sig-name descname"><span class="pre">GetCoreConfigCTRL</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.GetCoreConfigCTRL"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.StimulationController.GetCoreConfigCTRL" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController.GetModelConfigCTRL">
+<span class="sig-name descname"><span class="pre">GetModelConfigCTRL</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.GetModelConfigCTRL"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.StimulationController.GetModelConfigCTRL" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController.GetStimIntensity">
+<span class="sig-name descname"><span class="pre">GetStimIntensity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">finger</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.GetStimIntensity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.StimulationController.GetStimIntensity" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>finger</strong> (<em>str</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController.GetStimParam">
+<span class="sig-name descname"><span class="pre">GetStimParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.GetStimParam"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.StimulationController.GetStimParam" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>key</strong> (<em>str</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController.Initialize">
+<span class="sig-name descname"><span class="pre">Initialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.Initialize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.StimulationController.Initialize" title="Link to this definition">¶</a></dt>
+<dd><p>Load .NET DLLs, initialize layers, and start the tick loop.</p>
+<p>This method is safe to call multiple times; subsequent calls are no-ops
+once initialized.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>FileNotFoundError</strong> – If required DLLs cannot be found.</p></li>
+<li><p><strong>RuntimeError</strong> – If required .NET types cannot be imported.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController.IsFingerValid">
+<span class="sig-name descname"><span class="pre">IsFingerValid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">finger</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.IsFingerValid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.StimulationController.IsFingerValid" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>finger</strong> (<em>str</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController.LoadCoreConfigFile">
+<span class="sig-name descname"><span class="pre">LoadCoreConfigFile</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.LoadCoreConfigFile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.StimulationController.LoadCoreConfigFile" title="Link to this definition">¶</a></dt>
+<dd><p>Reload the core configuration file via the .NET layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController.LoadParamsJson">
+<span class="sig-name descname"><span class="pre">LoadParamsJson</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pathOrDir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.LoadParamsJson"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.StimulationController.LoadParamsJson" title="Link to this definition">¶</a></dt>
+<dd><p>Load stimulation parameters JSON via the .NET layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pathOrDir</strong> (<em>str</em><em> | </em><em>None</em>) – Optional file/directory path interpreted by the .NET layer.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController.Ready">
+<span class="sig-name descname"><span class="pre">Ready</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.Ready"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.StimulationController.Ready" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController.Save">
+<span class="sig-name descname"><span class="pre">Save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">targetWSS</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.Save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.StimulationController.Save" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>targetWSS</strong> (<em>int</em><em> | </em><em>None</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController.SaveParamsJson">
+<span class="sig-name descname"><span class="pre">SaveParamsJson</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.SaveParamsJson"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.StimulationController.SaveParamsJson" title="Link to this definition">¶</a></dt>
+<dd><p>Persist stimulation parameters JSON via the .NET layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController.SetChannelAmp">
+<span class="sig-name descname"><span class="pre">SetChannelAmp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">finger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mA</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.SetChannelAmp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.StimulationController.SetChannelAmp" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>finger</strong> (<em>str</em>)</p></li>
+<li><p><strong>mA</strong> (<em>float</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController.SetChannelIPI">
+<span class="sig-name descname"><span class="pre">SetChannelIPI</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">finger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ms</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.SetChannelIPI"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.StimulationController.SetChannelIPI" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>finger</strong> (<em>str</em>)</p></li>
+<li><p><strong>ms</strong> (<em>int</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController.SetChannelPWMax">
+<span class="sig-name descname"><span class="pre">SetChannelPWMax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">finger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">us</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.SetChannelPWMax"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.StimulationController.SetChannelPWMax" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>finger</strong> (<em>str</em>)</p></li>
+<li><p><strong>us</strong> (<em>int</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController.SetChannelPWMin">
+<span class="sig-name descname"><span class="pre">SetChannelPWMin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">finger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">us</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.SetChannelPWMin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.StimulationController.SetChannelPWMin" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>finger</strong> (<em>str</em>)</p></li>
+<li><p><strong>us</strong> (<em>int</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController.Shutdown">
+<span class="sig-name descname"><span class="pre">Shutdown</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.Shutdown"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.StimulationController.Shutdown" title="Link to this definition">¶</a></dt>
+<dd><p>Stop stimulation, stop the tick loop, and dispose .NET objects.</p>
+<p>Exceptions during shutdown are logged (when possible) but do not prevent
+the remainder of cleanup.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController.StartStimulation">
+<span class="sig-name descname"><span class="pre">StartStimulation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.StartStimulation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.StimulationController.StartStimulation" title="Link to this definition">¶</a></dt>
+<dd><p>Broadcast a start stimulation command.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>RuntimeError</strong> – If called before <a class="reference internal" href="#wss_py_wrapper.StimulationController.Initialize" title="wss_py_wrapper.StimulationController.Initialize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Initialize()</span></code></a>.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController.Started">
+<span class="sig-name descname"><span class="pre">Started</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.Started"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.StimulationController.Started" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController.StimWithMode">
+<span class="sig-name descname"><span class="pre">StimWithMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">finger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">magnitude</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.StimWithMode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.StimulationController.StimWithMode" title="Link to this definition">¶</a></dt>
+<dd><p>Stimulate using the active mode/model parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>finger</strong> (<em>str</em>) – Finger name (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;index&quot;</span></code>) or channel alias (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;ch2&quot;</span></code>).</p></li>
+<li><p><strong>magnitude</strong> (<em>float</em>) – Normalized magnitude.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController.StimulateAnalog">
+<span class="sig-name descname"><span class="pre">StimulateAnalog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">finger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PW</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">IPI</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.StimulateAnalog"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.StimulationController.StimulateAnalog" title="Link to this definition">¶</a></dt>
+<dd><p>Send a direct analog stimulation request.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>finger</strong> (<em>str</em>) – Finger name (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;index&quot;</span></code>) or channel alias (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;ch2&quot;</span></code>).</p></li>
+<li><p><strong>PW</strong> (<em>int</em>) – Pulse width (units defined by the .NET interface).</p></li>
+<li><p><strong>amp</strong> (<em>int</em>) – Amplitude (units defined by the .NET interface).</p></li>
+<li><p><strong>IPI</strong> (<em>int</em>) – Inter-pulse interval (units defined by the .NET interface).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>RuntimeError</strong> – If called before <a class="reference internal" href="#wss_py_wrapper.StimulationController.Initialize" title="wss_py_wrapper.StimulationController.Initialize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Initialize()</span></code></a>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController.StimulateNormalized">
+<span class="sig-name descname"><span class="pre">StimulateNormalized</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">finger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">magnitude</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.StimulateNormalized"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.StimulationController.StimulateNormalized" title="Link to this definition">¶</a></dt>
+<dd><p>Stimulate a channel with a normalized magnitude.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>finger</strong> (<em>str</em>) – Finger name (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;thumb&quot;</span></code>) or channel alias (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;ch1&quot;</span></code>).</p></li>
+<li><p><strong>magnitude</strong> (<em>float</em>) – Normalized magnitude as defined by the .NET interface.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>RuntimeError</strong> – If called before <a class="reference internal" href="#wss_py_wrapper.StimulationController.Initialize" title="wss_py_wrapper.StimulationController.Initialize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Initialize()</span></code></a>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController.StopStimulation">
+<span class="sig-name descname"><span class="pre">StopStimulation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.StopStimulation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.StimulationController.StopStimulation" title="Link to this definition">¶</a></dt>
+<dd><p>Broadcast a stop stimulation command.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>RuntimeError</strong> – If called before <a class="reference internal" href="#wss_py_wrapper.StimulationController.Initialize" title="wss_py_wrapper.StimulationController.Initialize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Initialize()</span></code></a>.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController.TryGetStimParam">
+<span class="sig-name descname"><span class="pre">TryGetStimParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.TryGetStimParam"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.StimulationController.TryGetStimParam" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>key</strong> (<em>str</em>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController.UpdateChannelParams">
+<span class="sig-name descname"><span class="pre">UpdateChannelParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">finger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amp</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.UpdateChannelParams"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.StimulationController.UpdateChannelParams" title="Link to this definition">¶</a></dt>
+<dd><p>Update per-channel stimulation parameters.</p>
+<p>This writes values under keys like <code class="docutils literal notranslate"><span class="pre">stim.ch.&lt;ch&gt;.maxPW</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>finger</strong> (<em>str</em>) – Finger name or channel alias.</p></li>
+<li><p><strong>max_val</strong> (<em>int</em>) – Maximum pulse width.</p></li>
+<li><p><strong>min_val</strong> (<em>int</em>) – Minimum pulse width.</p></li>
+<li><p><strong>amp</strong> (<em>int</em>) – Channel amplitude.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the channel is invalid for the current configuration.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController.UpdateIPD">
+<span class="sig-name descname"><span class="pre">UpdateIPD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ipd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eventID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targetWSS</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.UpdateIPD"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.StimulationController.UpdateIPD" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ipd</strong> (<em>int</em>)</p></li>
+<li><p><strong>eventID</strong> (<em>int</em>)</p></li>
+<li><p><strong>targetWSS</strong> (<em>int</em><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController.WaveformSetup">
+<span class="sig-name descname"><span class="pre">WaveformSetup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wave</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eventID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targetWSS</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.WaveformSetup"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.StimulationController.WaveformSetup" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>eventID</strong> (<em>int</em>)</p></li>
+<li><p><strong>targetWSS</strong> (<em>int</em><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController.isModeValid">
+<span class="sig-name descname"><span class="pre">isModeValid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.isModeValid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.StimulationController.isModeValid" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController.load">
+<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">targetWSS</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.load"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.StimulationController.load" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>targetWSS</strong> (<em>int</em><em> | </em><em>None</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController.loadWaveform">
+<span class="sig-name descname"><span class="pre">loadWaveform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eventID</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.loadWaveform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.StimulationController.loadWaveform" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fileName</strong> (<em>str</em>)</p></li>
+<li><p><strong>eventID</strong> (<em>int</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController.releaseRadio">
+<span class="sig-name descname"><span class="pre">releaseRadio</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.releaseRadio"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.StimulationController.releaseRadio" title="Link to this definition">¶</a></dt>
+<dd><p>Backward-compatible alias for <a class="reference internal" href="#wss_py_wrapper.StimulationController.Shutdown" title="wss_py_wrapper.StimulationController.Shutdown"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Shutdown()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController.request_Configs">
+<span class="sig-name descname"><span class="pre">request_Configs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">targetWSS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.request_Configs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.StimulationController.request_Configs" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>targetWSS</strong> (<em>int</em>)</p></li>
+<li><p><strong>command</strong> (<em>int</em>)</p></li>
+<li><p><strong>id</strong> (<em>int</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController.resetRadio">
+<span class="sig-name descname"><span class="pre">resetRadio</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.resetRadio"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.StimulationController.resetRadio" title="Link to this definition">¶</a></dt>
+<dd><p>Restart the .NET core without reloading DLLs.</p>
+<p>This shuts down and re-initializes the underlying .NET object and
+restarts the tick loop.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.StimulationController.updateWaveform">
+<span class="sig-name descname"><span class="pre">updateWaveform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.updateWaveform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.StimulationController.updateWaveform" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wss_py_wrapper.WssConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wss_py_wrapper.</span></span><span class="sig-name descname"><span class="pre">WssConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cs_lib_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">serial_port</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_setup_tries</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tick_interval_ms</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/config.html#WssConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.WssConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Configuration for <a class="reference internal" href="#wss_py_wrapper.stimulation_controller.StimulationController" title="wss_py_wrapper.stimulation_controller.StimulationController"><code class="xref py py-class docutils literal notranslate"><span class="pre">StimulationController</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config_path</strong> (<em>Path</em>) – Directory containing JSON configuration files consumed by the .NET layers.</p></li>
+<li><p><strong>log_path</strong> (<em>Path</em>) – Path for the C# log sink output.</p></li>
+<li><p><strong>cs_lib_dir</strong> (<em>Path</em>) – Directory containing WSS <code class="docutils literal notranslate"><span class="pre">.dll</span></code> files.</p></li>
+<li><p><strong>serial_port</strong> (<em>str</em><em> | </em><em>None</em>) – Optional fully-qualified serial device name; <code class="docutils literal notranslate"><span class="pre">None</span></code> enables auto-detect.</p></li>
+<li><p><strong>test_mode</strong> (<em>bool</em>) – Whether to enable simulated transport.</p></li>
+<li><p><strong>max_setup_tries</strong> (<em>int</em>) – Maximum number of setup retries used by the .NET core.</p></li>
+<li><p><strong>tick_interval_ms</strong> (<em>int</em>) – Background tick interval in milliseconds.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="wss_py_wrapper.WssConfig.config_path">
+<span class="sig-name descname"><span class="pre">config_path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Path</span></em><a class="headerlink" href="#wss_py_wrapper.WssConfig.config_path" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="wss_py_wrapper.WssConfig.cs_lib_dir">
+<span class="sig-name descname"><span class="pre">cs_lib_dir</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Path</span></em><a class="headerlink" href="#wss_py_wrapper.WssConfig.cs_lib_dir" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.WssConfig.default">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">default</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">main_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/config.html#WssConfig.default"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.WssConfig.default" title="Link to this definition">¶</a></dt>
+<dd><p>Create a default config using the current working directory.</p>
+<p>The returned config uses <code class="docutils literal notranslate"><span class="pre">Path.cwd()</span> <span class="pre">/</span> <span class="pre">'Config'</span></code> for <code class="docutils literal notranslate"><span class="pre">config_path</span></code> and
+discovers <code class="docutils literal notranslate"><span class="pre">cs_lib_dir</span></code> by searching upward for <code class="docutils literal notranslate"><span class="pre">Cs_Libraries/</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>main_file</strong> (<em>Path</em>) – File used to anchor log naming and initial DLL search.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A default configuration instance.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#wss_py_wrapper.WssConfig" title="wss_py_wrapper.config.WssConfig"><em>WssConfig</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="wss_py_wrapper.WssConfig.log_path">
+<span class="sig-name descname"><span class="pre">log_path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Path</span></em><a class="headerlink" href="#wss_py_wrapper.WssConfig.log_path" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="wss_py_wrapper.WssConfig.max_setup_tries">
+<span class="sig-name descname"><span class="pre">max_setup_tries</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#wss_py_wrapper.WssConfig.max_setup_tries" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="wss_py_wrapper.WssConfig.serial_port">
+<span class="sig-name descname"><span class="pre">serial_port</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#wss_py_wrapper.WssConfig.serial_port" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="wss_py_wrapper.WssConfig.test_mode">
+<span class="sig-name descname"><span class="pre">test_mode</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#wss_py_wrapper.WssConfig.test_mode" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="wss_py_wrapper.WssConfig.tick_interval_ms">
+<span class="sig-name descname"><span class="pre">tick_interval_ms</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10</span></em><a class="headerlink" href="#wss_py_wrapper.WssConfig.tick_interval_ms" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wss_py_wrapper.WssLoader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wss_py_wrapper.</span></span><span class="sig-name descname"><span class="pre">WssLoader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dll_paths</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/wss_loader.html#WssLoader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.WssLoader" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Load .NET DLL references via pythonnet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dll_paths</strong> (<em>Iterable</em><em>[</em><em>Path</em><em>]</em>) – Iterable of DLL paths to add via <code class="docutils literal notranslate"><span class="pre">clr.AddReference</span></code>.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.WssLoader.load">
+<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/wss_loader.html#WssLoader.load"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.WssLoader.load" title="Link to this definition">¶</a></dt>
+<dd><p>Load the WSS interface DLLs via pythonnet.</p>
+<p>This attempts to load a pythonnet runtime and then adds references for each
+path passed to the loader.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-wss_py_wrapper.stimulation_controller">
+<span id="controller"></span><h2>Controller<a class="headerlink" href="#module-wss_py_wrapper.stimulation_controller" title="Link to this heading">¶</a></h2>
+<p>High-level controller wrapping the .NET stimulation stack.</p>
+<p>This module contains the interop-heavy runtime core. The main entry point is
+<a class="reference internal" href="#wss_py_wrapper.stimulation_controller.StimulationController" title="wss_py_wrapper.stimulation_controller.StimulationController"><code class="xref py py-class docutils literal notranslate"><span class="pre">StimulationController</span></code></a>.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wss_py_wrapper.stimulation_controller.</span></span><span class="sig-name descname"><span class="pre">StimulationController</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Python wrapper around the WSS .NET stimulation controller layers.</p>
+<p>Lifecycle:
+- Call <a class="reference internal" href="#wss_py_wrapper.stimulation_controller.StimulationController.Initialize" title="wss_py_wrapper.stimulation_controller.StimulationController.Initialize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Initialize()</span></code></a> before using any stimulation methods.
+- Call <a class="reference internal" href="#wss_py_wrapper.stimulation_controller.StimulationController.Shutdown" title="wss_py_wrapper.stimulation_controller.StimulationController.Shutdown"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Shutdown()</span></code></a> to stop the background tick thread and dispose .NET objects.</p>
+<p>Threading:
+- A background tick loop calls <code class="docutils literal notranslate"><span class="pre">Tick()</span></code> at <code class="docutils literal notranslate"><span class="pre">config.tick_interval_ms</span></code>.
+- Methods are guarded by an internal lock at key lifecycle transitions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="#wss_py_wrapper.WssConfig" title="wss_py_wrapper.WssConfig"><em>WssConfig</em></a>) – Wrapper configuration.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController.AddOrUpdateStimParam">
+<span class="sig-name descname"><span class="pre">AddOrUpdateStimParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.AddOrUpdateStimParam"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController.AddOrUpdateStimParam" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>)</p></li>
+<li><p><strong>value</strong> (<em>float</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController.BasicSupported">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">BasicSupported</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController.BasicSupported" title="Link to this definition">¶</a></dt>
+<dd><p>Whether the optional “Basic” .NET API is available.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController.GetAllStimParams">
+<span class="sig-name descname"><span class="pre">GetAllStimParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.GetAllStimParams"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController.GetAllStimParams" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController.GetChannelAmp">
+<span class="sig-name descname"><span class="pre">GetChannelAmp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">finger</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.GetChannelAmp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController.GetChannelAmp" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>finger</strong> (<em>str</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController.GetChannelIPI">
+<span class="sig-name descname"><span class="pre">GetChannelIPI</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">finger</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.GetChannelIPI"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController.GetChannelIPI" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>finger</strong> (<em>str</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController.GetChannelPWMax">
+<span class="sig-name descname"><span class="pre">GetChannelPWMax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">finger</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.GetChannelPWMax"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController.GetChannelPWMax" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>finger</strong> (<em>str</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController.GetChannelPWMin">
+<span class="sig-name descname"><span class="pre">GetChannelPWMin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">finger</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.GetChannelPWMin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController.GetChannelPWMin" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>finger</strong> (<em>str</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController.GetCoreConfigCTRL">
+<span class="sig-name descname"><span class="pre">GetCoreConfigCTRL</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.GetCoreConfigCTRL"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController.GetCoreConfigCTRL" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController.GetModelConfigCTRL">
+<span class="sig-name descname"><span class="pre">GetModelConfigCTRL</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.GetModelConfigCTRL"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController.GetModelConfigCTRL" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController.GetStimIntensity">
+<span class="sig-name descname"><span class="pre">GetStimIntensity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">finger</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.GetStimIntensity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController.GetStimIntensity" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>finger</strong> (<em>str</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController.GetStimParam">
+<span class="sig-name descname"><span class="pre">GetStimParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.GetStimParam"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController.GetStimParam" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>key</strong> (<em>str</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController.Initialize">
+<span class="sig-name descname"><span class="pre">Initialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.Initialize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController.Initialize" title="Link to this definition">¶</a></dt>
+<dd><p>Load .NET DLLs, initialize layers, and start the tick loop.</p>
+<p>This method is safe to call multiple times; subsequent calls are no-ops
+once initialized.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>FileNotFoundError</strong> – If required DLLs cannot be found.</p></li>
+<li><p><strong>RuntimeError</strong> – If required .NET types cannot be imported.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController.IsFingerValid">
+<span class="sig-name descname"><span class="pre">IsFingerValid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">finger</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.IsFingerValid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController.IsFingerValid" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>finger</strong> (<em>str</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController.LoadCoreConfigFile">
+<span class="sig-name descname"><span class="pre">LoadCoreConfigFile</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.LoadCoreConfigFile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController.LoadCoreConfigFile" title="Link to this definition">¶</a></dt>
+<dd><p>Reload the core configuration file via the .NET layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController.LoadParamsJson">
+<span class="sig-name descname"><span class="pre">LoadParamsJson</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pathOrDir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.LoadParamsJson"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController.LoadParamsJson" title="Link to this definition">¶</a></dt>
+<dd><p>Load stimulation parameters JSON via the .NET layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pathOrDir</strong> (<em>str</em><em> | </em><em>None</em>) – Optional file/directory path interpreted by the .NET layer.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController.Ready">
+<span class="sig-name descname"><span class="pre">Ready</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.Ready"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController.Ready" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController.Save">
+<span class="sig-name descname"><span class="pre">Save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">targetWSS</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.Save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController.Save" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>targetWSS</strong> (<em>int</em><em> | </em><em>None</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController.SaveParamsJson">
+<span class="sig-name descname"><span class="pre">SaveParamsJson</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.SaveParamsJson"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController.SaveParamsJson" title="Link to this definition">¶</a></dt>
+<dd><p>Persist stimulation parameters JSON via the .NET layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController.SetChannelAmp">
+<span class="sig-name descname"><span class="pre">SetChannelAmp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">finger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mA</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.SetChannelAmp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController.SetChannelAmp" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>finger</strong> (<em>str</em>)</p></li>
+<li><p><strong>mA</strong> (<em>float</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController.SetChannelIPI">
+<span class="sig-name descname"><span class="pre">SetChannelIPI</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">finger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ms</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.SetChannelIPI"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController.SetChannelIPI" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>finger</strong> (<em>str</em>)</p></li>
+<li><p><strong>ms</strong> (<em>int</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController.SetChannelPWMax">
+<span class="sig-name descname"><span class="pre">SetChannelPWMax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">finger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">us</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.SetChannelPWMax"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController.SetChannelPWMax" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>finger</strong> (<em>str</em>)</p></li>
+<li><p><strong>us</strong> (<em>int</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController.SetChannelPWMin">
+<span class="sig-name descname"><span class="pre">SetChannelPWMin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">finger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">us</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.SetChannelPWMin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController.SetChannelPWMin" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>finger</strong> (<em>str</em>)</p></li>
+<li><p><strong>us</strong> (<em>int</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController.Shutdown">
+<span class="sig-name descname"><span class="pre">Shutdown</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.Shutdown"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController.Shutdown" title="Link to this definition">¶</a></dt>
+<dd><p>Stop stimulation, stop the tick loop, and dispose .NET objects.</p>
+<p>Exceptions during shutdown are logged (when possible) but do not prevent
+the remainder of cleanup.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController.StartStimulation">
+<span class="sig-name descname"><span class="pre">StartStimulation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.StartStimulation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController.StartStimulation" title="Link to this definition">¶</a></dt>
+<dd><p>Broadcast a start stimulation command.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>RuntimeError</strong> – If called before <a class="reference internal" href="#wss_py_wrapper.stimulation_controller.StimulationController.Initialize" title="wss_py_wrapper.stimulation_controller.StimulationController.Initialize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Initialize()</span></code></a>.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController.Started">
+<span class="sig-name descname"><span class="pre">Started</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.Started"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController.Started" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController.StimWithMode">
+<span class="sig-name descname"><span class="pre">StimWithMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">finger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">magnitude</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.StimWithMode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController.StimWithMode" title="Link to this definition">¶</a></dt>
+<dd><p>Stimulate using the active mode/model parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>finger</strong> (<em>str</em>) – Finger name (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;index&quot;</span></code>) or channel alias (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;ch2&quot;</span></code>).</p></li>
+<li><p><strong>magnitude</strong> (<em>float</em>) – Normalized magnitude.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController.StimulateAnalog">
+<span class="sig-name descname"><span class="pre">StimulateAnalog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">finger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PW</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">IPI</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.StimulateAnalog"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController.StimulateAnalog" title="Link to this definition">¶</a></dt>
+<dd><p>Send a direct analog stimulation request.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>finger</strong> (<em>str</em>) – Finger name (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;index&quot;</span></code>) or channel alias (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;ch2&quot;</span></code>).</p></li>
+<li><p><strong>PW</strong> (<em>int</em>) – Pulse width (units defined by the .NET interface).</p></li>
+<li><p><strong>amp</strong> (<em>int</em>) – Amplitude (units defined by the .NET interface).</p></li>
+<li><p><strong>IPI</strong> (<em>int</em>) – Inter-pulse interval (units defined by the .NET interface).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>RuntimeError</strong> – If called before <a class="reference internal" href="#wss_py_wrapper.stimulation_controller.StimulationController.Initialize" title="wss_py_wrapper.stimulation_controller.StimulationController.Initialize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Initialize()</span></code></a>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController.StimulateNormalized">
+<span class="sig-name descname"><span class="pre">StimulateNormalized</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">finger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">magnitude</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.StimulateNormalized"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController.StimulateNormalized" title="Link to this definition">¶</a></dt>
+<dd><p>Stimulate a channel with a normalized magnitude.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>finger</strong> (<em>str</em>) – Finger name (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;thumb&quot;</span></code>) or channel alias (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;ch1&quot;</span></code>).</p></li>
+<li><p><strong>magnitude</strong> (<em>float</em>) – Normalized magnitude as defined by the .NET interface.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>RuntimeError</strong> – If called before <a class="reference internal" href="#wss_py_wrapper.stimulation_controller.StimulationController.Initialize" title="wss_py_wrapper.stimulation_controller.StimulationController.Initialize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Initialize()</span></code></a>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController.StopStimulation">
+<span class="sig-name descname"><span class="pre">StopStimulation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.StopStimulation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController.StopStimulation" title="Link to this definition">¶</a></dt>
+<dd><p>Broadcast a stop stimulation command.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>RuntimeError</strong> – If called before <a class="reference internal" href="#wss_py_wrapper.stimulation_controller.StimulationController.Initialize" title="wss_py_wrapper.stimulation_controller.StimulationController.Initialize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Initialize()</span></code></a>.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController.TryGetStimParam">
+<span class="sig-name descname"><span class="pre">TryGetStimParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.TryGetStimParam"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController.TryGetStimParam" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>key</strong> (<em>str</em>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController.UpdateChannelParams">
+<span class="sig-name descname"><span class="pre">UpdateChannelParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">finger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amp</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.UpdateChannelParams"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController.UpdateChannelParams" title="Link to this definition">¶</a></dt>
+<dd><p>Update per-channel stimulation parameters.</p>
+<p>This writes values under keys like <code class="docutils literal notranslate"><span class="pre">stim.ch.&lt;ch&gt;.maxPW</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>finger</strong> (<em>str</em>) – Finger name or channel alias.</p></li>
+<li><p><strong>max_val</strong> (<em>int</em>) – Maximum pulse width.</p></li>
+<li><p><strong>min_val</strong> (<em>int</em>) – Minimum pulse width.</p></li>
+<li><p><strong>amp</strong> (<em>int</em>) – Channel amplitude.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the channel is invalid for the current configuration.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController.UpdateIPD">
+<span class="sig-name descname"><span class="pre">UpdateIPD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ipd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eventID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targetWSS</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.UpdateIPD"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController.UpdateIPD" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ipd</strong> (<em>int</em>)</p></li>
+<li><p><strong>eventID</strong> (<em>int</em>)</p></li>
+<li><p><strong>targetWSS</strong> (<em>int</em><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController.WaveformSetup">
+<span class="sig-name descname"><span class="pre">WaveformSetup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wave</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eventID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targetWSS</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.WaveformSetup"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController.WaveformSetup" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>eventID</strong> (<em>int</em>)</p></li>
+<li><p><strong>targetWSS</strong> (<em>int</em><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController.isModeValid">
+<span class="sig-name descname"><span class="pre">isModeValid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.isModeValid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController.isModeValid" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController.load">
+<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">targetWSS</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.load"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController.load" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>targetWSS</strong> (<em>int</em><em> | </em><em>None</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController.loadWaveform">
+<span class="sig-name descname"><span class="pre">loadWaveform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eventID</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.loadWaveform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController.loadWaveform" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fileName</strong> (<em>str</em>)</p></li>
+<li><p><strong>eventID</strong> (<em>int</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController.releaseRadio">
+<span class="sig-name descname"><span class="pre">releaseRadio</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.releaseRadio"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController.releaseRadio" title="Link to this definition">¶</a></dt>
+<dd><p>Backward-compatible alias for <a class="reference internal" href="#wss_py_wrapper.stimulation_controller.StimulationController.Shutdown" title="wss_py_wrapper.stimulation_controller.StimulationController.Shutdown"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Shutdown()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController.request_Configs">
+<span class="sig-name descname"><span class="pre">request_Configs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">targetWSS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.request_Configs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController.request_Configs" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>targetWSS</strong> (<em>int</em>)</p></li>
+<li><p><strong>command</strong> (<em>int</em>)</p></li>
+<li><p><strong>id</strong> (<em>int</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController.resetRadio">
+<span class="sig-name descname"><span class="pre">resetRadio</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.resetRadio"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController.resetRadio" title="Link to this definition">¶</a></dt>
+<dd><p>Restart the .NET core without reloading DLLs.</p>
+<p>This shuts down and re-initializes the underlying .NET object and
+restarts the tick loop.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wss_py_wrapper.stimulation_controller.StimulationController.updateWaveform">
+<span class="sig-name descname"><span class="pre">updateWaveform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wss_py_wrapper/stimulation_controller.html#StimulationController.updateWaveform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wss_py_wrapper.stimulation_controller.StimulationController.updateWaveform" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">wss-py-wrapper</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-wss_py_wrapper">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-wss_py_wrapper.stimulation_controller">Controller</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="usage.html" title="previous chapter">Usage</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.1.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/api.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

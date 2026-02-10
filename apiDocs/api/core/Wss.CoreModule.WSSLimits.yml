@@ -1,0 +1,307 @@
+### YamlMime:ManagedReference
+items:
+- uid: Wss.CoreModule.WSSLimits
+  commentId: T:Wss.CoreModule.WSSLimits
+  id: WSSLimits
+  parent: Wss.CoreModule
+  children:
+  - Wss.CoreModule.WSSLimits.Frequency
+  - Wss.CoreModule.WSSLimits.IPD
+  - Wss.CoreModule.WSSLimits.LEDs
+  - Wss.CoreModule.WSSLimits.clearIndex
+  - Wss.CoreModule.WSSLimits.customWaveformChunks
+  - Wss.CoreModule.WSSLimits.customWaveformMaxAmp
+  - Wss.CoreModule.WSSLimits.enable
+  - Wss.CoreModule.WSSLimits.moduleIndex
+  - Wss.CoreModule.WSSLimits.oneByte
+  - Wss.CoreModule.WSSLimits.pulseWidthLong
+  - Wss.CoreModule.WSSLimits.shape
+  - Wss.CoreModule.WSSLimits.state
+  langs:
+  - csharp
+  - vb
+  name: WSSLimits
+  nameWithType: WSSLimits
+  fullName: Wss.CoreModule.WSSLimits
+  type: Enum
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Device- and protocol-level numeric limits and sizes used by the WSS stack.
+
+    Values reflect firmware constraints such as maximum pulse width and buffer sizes.
+  example: []
+  syntax:
+    content: public enum WSSLimits
+    content.vb: Public Enum WSSLimits
+- uid: Wss.CoreModule.WSSLimits.oneByte
+  commentId: F:Wss.CoreModule.WSSLimits.oneByte
+  id: oneByte
+  parent: Wss.CoreModule.WSSLimits
+  langs:
+  - csharp
+  - vb
+  name: oneByte
+  nameWithType: WSSLimits.oneByte
+  fullName: Wss.CoreModule.WSSLimits.oneByte
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Max value that fits in one byte.
+  example: []
+  syntax:
+    content: oneByte = 255
+    return:
+      type: Wss.CoreModule.WSSLimits
+- uid: Wss.CoreModule.WSSLimits.shape
+  commentId: F:Wss.CoreModule.WSSLimits.shape
+  id: shape
+  parent: Wss.CoreModule.WSSLimits
+  langs:
+  - csharp
+  - vb
+  name: shape
+  nameWithType: WSSLimits.shape
+  fullName: Wss.CoreModule.WSSLimits.shape
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Number of custom waveform slots.
+  example: []
+  syntax:
+    content: shape = 13
+    return:
+      type: Wss.CoreModule.WSSLimits
+- uid: Wss.CoreModule.WSSLimits.moduleIndex
+  commentId: F:Wss.CoreModule.WSSLimits.moduleIndex
+  id: moduleIndex
+  parent: Wss.CoreModule.WSSLimits
+  langs:
+  - csharp
+  - vb
+  name: moduleIndex
+  nameWithType: WSSLimits.moduleIndex
+  fullName: Wss.CoreModule.WSSLimits.moduleIndex
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Index of the module ID field in replies.
+  example: []
+  syntax:
+    content: moduleIndex = 1
+    return:
+      type: Wss.CoreModule.WSSLimits
+- uid: Wss.CoreModule.WSSLimits.clearIndex
+  commentId: F:Wss.CoreModule.WSSLimits.clearIndex
+  id: clearIndex
+  parent: Wss.CoreModule.WSSLimits
+  langs:
+  - csharp
+  - vb
+  name: clearIndex
+  nameWithType: WSSLimits.clearIndex
+  fullName: Wss.CoreModule.WSSLimits.clearIndex
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Index used by Clear command payload.
+  example: []
+  syntax:
+    content: clearIndex = 3
+    return:
+      type: Wss.CoreModule.WSSLimits
+- uid: Wss.CoreModule.WSSLimits.pulseWidthLong
+  commentId: F:Wss.CoreModule.WSSLimits.pulseWidthLong
+  id: pulseWidthLong
+  parent: Wss.CoreModule.WSSLimits
+  langs:
+  - csharp
+  - vb
+  name: pulseWidthLong
+  nameWithType: WSSLimits.pulseWidthLong
+  fullName: Wss.CoreModule.WSSLimits.pulseWidthLong
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Maximum long-form pulse width (us) supported by firmware.
+  example: []
+  syntax:
+    content: pulseWidthLong = 5400
+    return:
+      type: Wss.CoreModule.WSSLimits
+- uid: Wss.CoreModule.WSSLimits.state
+  commentId: F:Wss.CoreModule.WSSLimits.state
+  id: state
+  parent: Wss.CoreModule.WSSLimits
+  langs:
+  - csharp
+  - vb
+  name: state
+  nameWithType: WSSLimits.state
+  fullName: Wss.CoreModule.WSSLimits.state
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: State field size (bytes).
+  example: []
+  syntax:
+    content: state = 2
+    return:
+      type: Wss.CoreModule.WSSLimits
+- uid: Wss.CoreModule.WSSLimits.customWaveformChunks
+  commentId: F:Wss.CoreModule.WSSLimits.customWaveformChunks
+  id: customWaveformChunks
+  parent: Wss.CoreModule.WSSLimits
+  langs:
+  - csharp
+  - vb
+  name: customWaveformChunks
+  nameWithType: WSSLimits.customWaveformChunks
+  fullName: Wss.CoreModule.WSSLimits.customWaveformChunks
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Number of chunks used to upload a custom waveform.
+  example: []
+  syntax:
+    content: customWaveformChunks = 3
+    return:
+      type: Wss.CoreModule.WSSLimits
+- uid: Wss.CoreModule.WSSLimits.Frequency
+  commentId: F:Wss.CoreModule.WSSLimits.Frequency
+  id: Frequency
+  parent: Wss.CoreModule.WSSLimits
+  langs:
+  - csharp
+  - vb
+  name: Frequency
+  nameWithType: WSSLimits.Frequency
+  fullName: Wss.CoreModule.WSSLimits.Frequency
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Timer base frequency used by device (Hz).
+  example: []
+  syntax:
+    content: Frequency = 10000
+    return:
+      type: Wss.CoreModule.WSSLimits
+- uid: Wss.CoreModule.WSSLimits.customWaveformMaxAmp
+  commentId: F:Wss.CoreModule.WSSLimits.customWaveformMaxAmp
+  id: customWaveformMaxAmp
+  parent: Wss.CoreModule.WSSLimits
+  langs:
+  - csharp
+  - vb
+  name: customWaveformMaxAmp
+  nameWithType: WSSLimits.customWaveformMaxAmp
+  fullName: Wss.CoreModule.WSSLimits.customWaveformMaxAmp
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Maximum allowed custom waveform amplitude (device units).
+  example: []
+  syntax:
+    content: customWaveformMaxAmp = 2000
+    return:
+      type: Wss.CoreModule.WSSLimits
+- uid: Wss.CoreModule.WSSLimits.IPD
+  commentId: F:Wss.CoreModule.WSSLimits.IPD
+  id: IPD
+  parent: Wss.CoreModule.WSSLimits
+  langs:
+  - csharp
+  - vb
+  name: IPD
+  nameWithType: WSSLimits.IPD
+  fullName: Wss.CoreModule.WSSLimits.IPD
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Maximum inter-pulse delay (ms).
+  example: []
+  syntax:
+    content: IPD = 1000
+    return:
+      type: Wss.CoreModule.WSSLimits
+- uid: Wss.CoreModule.WSSLimits.LEDs
+  commentId: F:Wss.CoreModule.WSSLimits.LEDs
+  id: LEDs
+  parent: Wss.CoreModule.WSSLimits
+  langs:
+  - csharp
+  - vb
+  name: LEDs
+  nameWithType: WSSLimits.LEDs
+  fullName: Wss.CoreModule.WSSLimits.LEDs
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Number of addressable LEDs.
+  example: []
+  syntax:
+    content: LEDs = 8
+    return:
+      type: Wss.CoreModule.WSSLimits
+- uid: Wss.CoreModule.WSSLimits.enable
+  commentId: F:Wss.CoreModule.WSSLimits.enable
+  id: enable
+  parent: Wss.CoreModule.WSSLimits
+  langs:
+  - csharp
+  - vb
+  name: enable
+  nameWithType: WSSLimits.enable
+  fullName: Wss.CoreModule.WSSLimits.enable
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Value used to represent an enabled state.
+  example: []
+  syntax:
+    content: enable = 1
+    return:
+      type: Wss.CoreModule.WSSLimits
+references:
+- uid: Wss.CoreModule
+  commentId: N:Wss.CoreModule
+  href: Wss.html
+  name: Wss.CoreModule
+  nameWithType: Wss.CoreModule
+  fullName: Wss.CoreModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+- uid: Wss.CoreModule.WSSLimits
+  commentId: T:Wss.CoreModule.WSSLimits
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.WSSLimits.html
+  name: WSSLimits
+  nameWithType: WSSLimits
+  fullName: Wss.CoreModule.WSSLimits

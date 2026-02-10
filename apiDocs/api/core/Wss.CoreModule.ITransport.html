@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Interface ITransport | WSS Documentation Hub </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Interface ITransport | WSS Documentation Hub ">
+    
+    <meta name="description" content="Abstraction over a byte-stream transport (e.g., Serial, Bluetooth, TCP). Implementations surface incoming bytes via  and provide async connect/disconnect/send operations.">
+      <link rel="shortcut icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../styles/docfx.css">
+      <link rel="stylesheet" href="../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Wss.CoreModule.ITransport">
+
+
+
+  <h1 id="Wss_CoreModule_ITransport" data-uid="Wss.CoreModule.ITransport" class="text-break">Interface ITransport</h1>
+  <div class="markdown level0 summary"><p>Abstraction over a byte-stream transport (e.g., Serial, Bluetooth, TCP).
+Implementations surface incoming bytes via <a class="xref" href="Wss.CoreModule.ITransport.html#Wss_CoreModule_ITransport_BytesReceived">BytesReceived</a> and provide
+async connect/disconnect/send operations.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Wss.html">Wss</a>.<a class="xref" href="Wss.CoreModule.html">CoreModule</a></h6>
+  <h6><strong>Assembly</strong>: WSS_Core_Interface.dll</h6>
+  <h5 id="Wss_CoreModule_ITransport_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface ITransport</code></pre>
+  </div>
+  <h5 id="Wss_CoreModule_ITransport_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>
+This interface is intentionally minimal and transport-agnostic so higher-level code
+can be reused with different physical links (UART/COM, RFCOMM, BLE GATT, sockets).
+</p>
+<p>
+<b>Threading:</b> Implementations typically raise <a class="xref" href="Wss.CoreModule.ITransport.html#Wss_CoreModule_ITransport_BytesReceived">BytesReceived</a> from a background thread.
+If your application requires main-thread access, marshal the callback to the main thread.
+</p>
+<p>
+<b>Chunking:</b> Incoming chunks may contain partial frames, multiple frames, or arbitrary boundaries.
+Always pass chunks to a frame codec/deframer instead of assuming message boundaries align with reads.
+</p>
+</div>
+  <h3 id="properties">Properties
+</h3>
+
+
+  <a id="Wss_CoreModule_ITransport_IsConnected_" data-uid="Wss.CoreModule.ITransport.IsConnected*"></a>
+  <h4 id="Wss_CoreModule_ITransport_IsConnected" data-uid="Wss.CoreModule.ITransport.IsConnected">IsConnected</h4>
+  <div class="markdown level1 summary"><p>Gets whether the transport is currently connected/open.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsConnected { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+
+
+  <a id="Wss_CoreModule_ITransport_ConnectAsync_" data-uid="Wss.CoreModule.ITransport.ConnectAsync*"></a>
+  <h4 id="Wss_CoreModule_ITransport_ConnectAsync_System_Threading_CancellationToken_" data-uid="Wss.CoreModule.ITransport.ConnectAsync(System.Threading.CancellationToken)">ConnectAsync(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Opens/initializes the transport connection (e.g., open a serial port, connect a socket, start BLE session).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task ConnectAsync(CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Optional cancellation token to abort the connect attempt.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span></td>
+        <td><p>A task that completes when the transport is connected.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ObjectDisposedException</span></td>
+        <td><p>If the instance has been disposed.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">OperationCanceledException</span></td>
+        <td><p>If <code class="paramref">ct</code> is canceled.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Exception</span></td>
+        <td><p>Implementations may throw transport-specific exceptions (e.g., unauthorized port access, device not found).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_ITransport_DisconnectAsync_" data-uid="Wss.CoreModule.ITransport.DisconnectAsync*"></a>
+  <h4 id="Wss_CoreModule_ITransport_DisconnectAsync_System_Threading_CancellationToken_" data-uid="Wss.CoreModule.ITransport.DisconnectAsync(System.Threading.CancellationToken)">DisconnectAsync(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Closes the transport connection and stops any background receive loop.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task DisconnectAsync(CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Optional cancellation token to abort a long-running disconnect.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span></td>
+        <td><p>A task that completes when the transport is fully disconnected.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ObjectDisposedException</span></td>
+        <td><p>If the instance has been disposed.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">OperationCanceledException</span></td>
+        <td><p>If <code class="paramref">ct</code> is canceled.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_ITransport_SendAsync_" data-uid="Wss.CoreModule.ITransport.SendAsync*"></a>
+  <h4 id="Wss_CoreModule_ITransport_SendAsync_System_Byte___System_Threading_CancellationToken_" data-uid="Wss.CoreModule.ITransport.SendAsync(System.Byte[],System.Threading.CancellationToken)">SendAsync(byte[], CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Sends a block of bytes over the transport.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task SendAsync(byte[] data, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">byte</span>[]</td>
+        <td><span class="parametername">data</span></td>
+        <td><p>The bytes to write. Callers should provide a buffer that will not be mutated during send.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Optional cancellation token to cancel the send before it is written.
+For some transports (e.g., synchronous serial writes), cancellation may only be observed before the write starts.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span></td>
+        <td><p>A task that completes when the bytes have been handed off to the transport.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ObjectDisposedException</span></td>
+        <td><p>If the instance has been disposed.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">InvalidOperationException</span></td>
+        <td><p>If the transport is not connected.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">OperationCanceledException</span></td>
+        <td><p>If <code class="paramref">ct</code> is canceled.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="events">Events
+</h3>
+
+
+  <h4 id="Wss_CoreModule_ITransport_BytesReceived" data-uid="Wss.CoreModule.ITransport.BytesReceived">BytesReceived</h4>
+  <div class="markdown level1 summary"><p>Raised whenever raw bytes arrive from the underlying transport.
+Each invocation may represent any number of bytes (including zero, depending on implementation),
+and may contain partial or multiple protocol frames.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event Action&lt;byte[]&gt; BytesReceived</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Action</span>&lt;<span class="xref">byte</span>[]&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Wss_CoreModule_ITransport_BytesReceived_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+Implementations should invoke this event promptly as data becomes available.
+Callers should treat the provided buffer as read-only and copy it if they need to retain it.
+</p>
+<p>
+This event is typically raised on a background thread. Consumers should marshal to the main thread
+if required by their environment.
+</p>
+</div>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

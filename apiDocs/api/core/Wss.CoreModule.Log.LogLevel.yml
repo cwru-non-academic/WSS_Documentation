@@ -1,0 +1,131 @@
+### YamlMime:ManagedReference
+items:
+- uid: Wss.CoreModule.Log.LogLevel
+  commentId: T:Wss.CoreModule.Log.LogLevel
+  id: Log.LogLevel
+  parent: Wss.CoreModule
+  children:
+  - Wss.CoreModule.Log.LogLevel.Error
+  - Wss.CoreModule.Log.LogLevel.Info
+  - Wss.CoreModule.Log.LogLevel.Warn
+  langs:
+  - csharp
+  - vb
+  name: Log.LogLevel
+  nameWithType: Log.LogLevel
+  fullName: Wss.CoreModule.Log.LogLevel
+  type: Enum
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Log severity.
+  example: []
+  syntax:
+    content: public enum Log.LogLevel
+    content.vb: Public Enum Log.LogLevel
+- uid: Wss.CoreModule.Log.LogLevel.Info
+  commentId: F:Wss.CoreModule.Log.LogLevel.Info
+  id: Info
+  parent: Wss.CoreModule.Log.LogLevel
+  langs:
+  - csharp
+  - vb
+  name: Info
+  nameWithType: Log.LogLevel.Info
+  fullName: Wss.CoreModule.Log.LogLevel.Info
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Informational message.
+  example: []
+  syntax:
+    content: Info = 0
+    return:
+      type: Wss.CoreModule.Log.LogLevel
+- uid: Wss.CoreModule.Log.LogLevel.Warn
+  commentId: F:Wss.CoreModule.Log.LogLevel.Warn
+  id: Warn
+  parent: Wss.CoreModule.Log.LogLevel
+  langs:
+  - csharp
+  - vb
+  name: Warn
+  nameWithType: Log.LogLevel.Warn
+  fullName: Wss.CoreModule.Log.LogLevel.Warn
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Warning message.
+  example: []
+  syntax:
+    content: Warn = 1
+    return:
+      type: Wss.CoreModule.Log.LogLevel
+- uid: Wss.CoreModule.Log.LogLevel.Error
+  commentId: F:Wss.CoreModule.Log.LogLevel.Error
+  id: Error
+  parent: Wss.CoreModule.Log.LogLevel
+  langs:
+  - csharp
+  - vb
+  name: Error
+  nameWithType: Log.LogLevel.Error
+  fullName: Wss.CoreModule.Log.LogLevel.Error
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Error message.
+  example: []
+  syntax:
+    content: Error = 2
+    return:
+      type: Wss.CoreModule.Log.LogLevel
+references:
+- uid: Wss.CoreModule
+  commentId: N:Wss.CoreModule
+  href: Wss.html
+  name: Wss.CoreModule
+  nameWithType: Wss.CoreModule
+  fullName: Wss.CoreModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+- uid: Wss.CoreModule.Log.LogLevel
+  commentId: T:Wss.CoreModule.Log.LogLevel
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.Log.html
+  name: Log.LogLevel
+  nameWithType: Log.LogLevel
+  fullName: Wss.CoreModule.Log.LogLevel
+  spec.csharp:
+  - uid: Wss.CoreModule.Log
+    name: Log
+    href: Wss.CoreModule.Log.html
+  - name: .
+  - uid: Wss.CoreModule.Log.LogLevel
+    name: LogLevel
+    href: Wss.CoreModule.Log.LogLevel.html
+  spec.vb:
+  - uid: Wss.CoreModule.Log
+    name: Log
+    href: Wss.CoreModule.Log.html
+  - name: .
+  - uid: Wss.CoreModule.Log.LogLevel
+    name: LogLevel
+    href: Wss.CoreModule.Log.LogLevel.html

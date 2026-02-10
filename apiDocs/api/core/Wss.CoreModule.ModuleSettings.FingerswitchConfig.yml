@@ -1,0 +1,152 @@
+### YamlMime:ManagedReference
+items:
+- uid: Wss.CoreModule.ModuleSettings.FingerswitchConfig
+  commentId: T:Wss.CoreModule.ModuleSettings.FingerswitchConfig
+  id: ModuleSettings.FingerswitchConfig
+  parent: Wss.CoreModule
+  children:
+  - Wss.CoreModule.ModuleSettings.FingerswitchConfig.Burst
+  - Wss.CoreModule.ModuleSettings.FingerswitchConfig.FSw
+  - Wss.CoreModule.ModuleSettings.FingerswitchConfig.Future
+  - Wss.CoreModule.ModuleSettings.FingerswitchConfig.None
+  langs:
+  - csharp
+  - vb
+  name: ModuleSettings.FingerswitchConfig
+  nameWithType: ModuleSettings.FingerswitchConfig
+  fullName: Wss.CoreModule.ModuleSettings.FingerswitchConfig
+  type: Enum
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Fingerswitch operating mode, when present.
+  example: []
+  syntax:
+    content: 'public enum ModuleSettings.FingerswitchConfig : byte'
+    content.vb: Public Enum ModuleSettings.FingerswitchConfig As Byte
+- uid: Wss.CoreModule.ModuleSettings.FingerswitchConfig.None
+  commentId: F:Wss.CoreModule.ModuleSettings.FingerswitchConfig.None
+  id: None
+  parent: Wss.CoreModule.ModuleSettings.FingerswitchConfig
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: ModuleSettings.FingerswitchConfig.None
+  fullName: Wss.CoreModule.ModuleSettings.FingerswitchConfig.None
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: No fingerswitch.
+  example: []
+  syntax:
+    content: None = 0
+    return:
+      type: Wss.CoreModule.ModuleSettings.FingerswitchConfig
+- uid: Wss.CoreModule.ModuleSettings.FingerswitchConfig.FSw
+  commentId: F:Wss.CoreModule.ModuleSettings.FingerswitchConfig.FSw
+  id: FSw
+  parent: Wss.CoreModule.ModuleSettings.FingerswitchConfig
+  langs:
+  - csharp
+  - vb
+  name: FSw
+  nameWithType: ModuleSettings.FingerswitchConfig.FSw
+  fullName: Wss.CoreModule.ModuleSettings.FingerswitchConfig.FSw
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Fingerswitch mode.
+  example: []
+  syntax:
+    content: FSw = 1
+    return:
+      type: Wss.CoreModule.ModuleSettings.FingerswitchConfig
+- uid: Wss.CoreModule.ModuleSettings.FingerswitchConfig.Burst
+  commentId: F:Wss.CoreModule.ModuleSettings.FingerswitchConfig.Burst
+  id: Burst
+  parent: Wss.CoreModule.ModuleSettings.FingerswitchConfig
+  langs:
+  - csharp
+  - vb
+  name: Burst
+  nameWithType: ModuleSettings.FingerswitchConfig.Burst
+  fullName: Wss.CoreModule.ModuleSettings.FingerswitchConfig.Burst
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Burst mode.
+  example: []
+  syntax:
+    content: Burst = 2
+    return:
+      type: Wss.CoreModule.ModuleSettings.FingerswitchConfig
+- uid: Wss.CoreModule.ModuleSettings.FingerswitchConfig.Future
+  commentId: F:Wss.CoreModule.ModuleSettings.FingerswitchConfig.Future
+  id: Future
+  parent: Wss.CoreModule.ModuleSettings.FingerswitchConfig
+  langs:
+  - csharp
+  - vb
+  name: Future
+  nameWithType: ModuleSettings.FingerswitchConfig.Future
+  fullName: Wss.CoreModule.ModuleSettings.FingerswitchConfig.Future
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Reserved for future use (3..255).
+  example: []
+  syntax:
+    content: Future = 3
+    return:
+      type: Wss.CoreModule.ModuleSettings.FingerswitchConfig
+references:
+- uid: Wss.CoreModule
+  commentId: N:Wss.CoreModule
+  href: Wss.html
+  name: Wss.CoreModule
+  nameWithType: Wss.CoreModule
+  fullName: Wss.CoreModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+- uid: Wss.CoreModule.ModuleSettings.FingerswitchConfig
+  commentId: T:Wss.CoreModule.ModuleSettings.FingerswitchConfig
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.ModuleSettings.html
+  name: ModuleSettings.FingerswitchConfig
+  nameWithType: ModuleSettings.FingerswitchConfig
+  fullName: Wss.CoreModule.ModuleSettings.FingerswitchConfig
+  spec.csharp:
+  - uid: Wss.CoreModule.ModuleSettings
+    name: ModuleSettings
+    href: Wss.CoreModule.ModuleSettings.html
+  - name: .
+  - uid: Wss.CoreModule.ModuleSettings.FingerswitchConfig
+    name: FingerswitchConfig
+    href: Wss.CoreModule.ModuleSettings.FingerswitchConfig.html
+  spec.vb:
+  - uid: Wss.CoreModule.ModuleSettings
+    name: ModuleSettings
+    href: Wss.CoreModule.ModuleSettings.html
+  - name: .
+  - uid: Wss.CoreModule.ModuleSettings.FingerswitchConfig
+    name: FingerswitchConfig
+    href: Wss.CoreModule.ModuleSettings.FingerswitchConfig.html

@@ -1,0 +1,56 @@
+{
+  "repositories": [
+    {
+      "id": "core",
+      "title": "API: Core (C#)",
+      "kind": "csharp",
+      "enabled": true,
+      "root": "${WSS_CORE_REPO_ROOT}",
+      "csproj": "/home/lemf/Documents/GitHub/WSSCoreInterface/WSS_Core_Interface.csproj",
+      "docfxDest": "api/core",
+      "entryUid": "Wss.CoreModule",
+      "msbuildProperties": {
+        "Configuration": "Debug"
+      }
+    },
+    {
+      "id": "csharp",
+      "title": "API: C# Integration (C#)",
+      "kind": "csharp",
+      "enabled": true,
+      "root": "${WSS_CSHARP_REPO_ROOT}",
+      "csproj": "/home/lemf/Documents/GitHub/HFI_WSS_Csharp_Implementation/src/HFI_WSS_Csharp_Implementation.csproj",
+      "docfxDest": "api/csharp",
+      "entryUid": "HFI.Wss",
+      "msbuildProperties": {
+        "Configuration": "Debug"
+      }
+    },
+    {
+      "id": "unity",
+      "title": "API: Unity Integration (C#)",
+      "kind": "csharp",
+      "enabled": true,
+      "root": "${WSS_UNITY_REPO_ROOT}",
+      "csprojBase": "hub",
+      "csproj": "apiDocs/shims/UnitySubmodule/UnitySubmodule.Docs.csproj",
+      "docfxDest": "api/unity",
+      "globalNamespaceId": "WSS.Unity",
+      "entryUid": "WSS.Unity",
+      "msbuildProperties": {
+        "DocsSourceRoot": "${WSS_UNITY_INTEGRATION_SRC}",
+        "DocsInclude": "${WSS_UNITY_INTEGRATION_SRC}/UnityImplementation/**/*.cs",
+        "DefineConstants": "UNITY_2021_3_OR_NEWER;UNITY_EDITOR"
+      }
+    },
+    {
+      "id": "python-integration",
+      "title": "API: Python Integration (Python)",
+      "kind": "python",
+      "enabled": true,
+      "root": "${WSS_PYTHON_REPO_ROOT}",
+      "sphinxSource": "docs",
+      "publishDir": "external/python-integration"
+    }
+  ]
+}

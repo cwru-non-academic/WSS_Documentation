@@ -1,5 +1,5 @@
 {
-  "source_base_path": "A:/Documents/GIT Projects/WSS-documentation/docs",
+  "source_base_path": "/home/lemf/Documents/GitHub/WSS_Documentation/apiDocs",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -12,517 +12,711 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/WSSInterfacing.CoreConfig.yml",
+      "source_relative_path": "api/core/Wss.CalibrationModule.IStimParamsCore.yml",
       "output": {
         ".html": {
-          "relative_path": "api/WSSInterfacing.CoreConfig.html"
+          "relative_path": "api/core/Wss.CalibrationModule.IStimParamsCore.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "WSSInterfacing.CoreConfig",
-      "Summary": "<p sourcefile=\"api/WSSInterfacing.CoreConfig.yml\" sourcestartlinenumber=\"1\">Strongly-typed core configuration model persisted in JSON.\nExposes the maximum number of WSS devices and the firmware version string.</p>\n"
+      "Title": "Wss.CalibrationModule.IStimParamsCore",
+      "Summary": "<p sourcefile=\"api/core/Wss.CalibrationModule.IStimParamsCore.yml\" sourcestartlinenumber=\"1\">Core + parameters surface layered over <xref href=\"Wss.CoreModule.IStimulationCore\" data-throw-if-not-resolved=\"false\"></xref>.\nProvides normalized-drive stimulation, per-channel parameter access,\nand JSON persistence for stimulation parameters. BASIC is optional and\ncan be exposed via <xref href=\"Wss.CalibrationModule.IStimParamsCore.TryGetBasic(Wss.CoreModule.IBasicStimulation%40)\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/WSSInterfacing.CoreConfigController.yml",
+      "source_relative_path": "api/core/Wss.CalibrationModule.StimParamsConfig.yml",
       "output": {
         ".html": {
-          "relative_path": "api/WSSInterfacing.CoreConfigController.html"
+          "relative_path": "api/core/Wss.CalibrationModule.StimParamsConfig.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "WSSInterfacing.CoreConfigController",
-      "Summary": "<p sourcefile=\"api/WSSInterfacing.CoreConfigController.yml\" sourcestartlinenumber=\"1\">Controls loading, validating, reading, and writing a stimulation configuration JSON file.\nThread-safe. Ensures a valid default config exists on disk.</p>\n"
+      "Title": "Wss.CalibrationModule.StimParamsConfig",
+      "Summary": "<p sourcefile=\"api/core/Wss.CalibrationModule.StimParamsConfig.yml\" sourcestartlinenumber=\"1\">JSON-backed stimulation-parameters configuration. Inherits common JSON\nhandling from <xref href=\"Wss.CoreModule.DictConfigBase\" data-throw-if-not-resolved=\"false\"></xref> and seeds default per-channel\nvalues under the <code>stim.ch</code> hierarchy.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/WSSInterfacing.DictConfigBase.yml",
+      "source_relative_path": "api/core/Wss.CalibrationModule.StimParamsConfigController.yml",
       "output": {
         ".html": {
-          "relative_path": "api/WSSInterfacing.DictConfigBase.html"
+          "relative_path": "api/core/Wss.CalibrationModule.StimParamsConfigController.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "WSSInterfacing.DictConfigBase",
-      "Summary": "<p sourcefile=\"api/WSSInterfacing.DictConfigBase.yml\" sourcestartlinenumber=\"1\">Base class for JSON-backed configuration objects that expose dotted-key access.\nWraps a <xref href=\"Newtonsoft.Json.Linq.JObject\" data-throw-if-not-resolved=\"false\"></xref> and provides thread-safe getters/setters and save.</p>\n"
+      "Title": "Wss.CalibrationModule.StimParamsConfigController",
+      "Summary": "<p sourcefile=\"api/core/Wss.CalibrationModule.StimParamsConfigController.yml\" sourcestartlinenumber=\"1\">Provides high-level access to stimulation parameter configuration.\nAutomatically seeds channel entries based on max device count and ensures safe access.\nSupports dotted keys of form &quot;stim.ch.{N}.{leaf}&quot;.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/WSSInterfacing.IBasicStimulation.yml",
+      "source_relative_path": "api/core/Wss.CalibrationModule.StimParamsLayer.yml",
       "output": {
         ".html": {
-          "relative_path": "api/WSSInterfacing.IBasicStimulation.html"
+          "relative_path": "api/core/Wss.CalibrationModule.StimParamsLayer.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "WSSInterfacing.IBasicStimulation",
-      "Summary": "<p sourcefile=\"api/WSSInterfacing.IBasicStimulation.yml\" sourcestartlinenumber=\"1\">Basic stimulation operations that upload or select waveforms and manage\nboard configuration. Calls are non-blocking; implementations may enqueue\nsetup steps and return immediately.</p>\n"
+      "Title": "Wss.CalibrationModule.StimParamsLayer",
+      "Summary": "<p sourcefile=\"api/core/Wss.CalibrationModule.StimParamsLayer.yml\" sourcestartlinenumber=\"1\">Layer that wraps an <xref href=\"Wss.CoreModule.IStimulationCore\" data-throw-if-not-resolved=\"false\"></xref> and a <xref href=\"Wss.CalibrationModule.StimParamsConfigController\" data-throw-if-not-resolved=\"false\"></xref>.\nComputes pulse widths from normalized inputs and forwards stimulation to the core.\nAlso exposes dotted-key parameter access and an optional BASIC capability.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/WSSInterfacing.ICoreConfig.yml",
+      "source_relative_path": "api/core/Wss.CalibrationModule.yml",
       "output": {
         ".html": {
-          "relative_path": "api/WSSInterfacing.ICoreConfig.html"
+          "relative_path": "api/core/Wss.CalibrationModule.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "WSSInterfacing.ICoreConfig",
-      "Summary": "<p sourcefile=\"api/WSSInterfacing.ICoreConfig.yml\" sourcestartlinenumber=\"1\">Read-only view of core configuration values loaded from the JSON config file.\nImplementations expose firmware information and global limits.</p>\n"
+      "Title": "Wss.CalibrationModule",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/WSSInterfacing.IFrameCodec.yml",
+      "source_relative_path": "api/core/Wss.CoreModule.AmpCurveParams.yml",
       "output": {
         ".html": {
-          "relative_path": "api/WSSInterfacing.IFrameCodec.html"
+          "relative_path": "api/core/Wss.CoreModule.AmpCurveParams.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "WSSInterfacing.IFrameCodec",
-      "Summary": "<p sourcefile=\"api/WSSInterfacing.IFrameCodec.yml\" sourcestartlinenumber=\"1\">Contract for framing and deframing WSS messages over byte-stream transports (Serial, BLE, TCP).</p>\n"
+      "Title": "Wss.CoreModule.AmpCurveParams",
+      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.AmpCurveParams.yml\" sourcestartlinenumber=\"1\">Piecewise amplitude curve parameters used to map mA to 0..255.\nmA &lt;= LowThreshold: out = pow(mA / LowConst, ExpPower) + 1\nmA &gt;  LowThreshold: out = ((mA + LinearOffset) / LinearSlope) + 1</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/WSSInterfacing.IModelParamsCore.yml",
+      "source_relative_path": "api/core/Wss.CoreModule.CoreConfig.yml",
       "output": {
         ".html": {
-          "relative_path": "api/WSSInterfacing.IModelParamsCore.html"
+          "relative_path": "api/core/Wss.CoreModule.CoreConfig.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "WSSInterfacing.IModelParamsCore",
-      "Summary": "<p sourcefile=\"api/WSSInterfacing.IModelParamsCore.yml\" sourcestartlinenumber=\"1\">Model-driven stimulation surface layered over params + core.\nExtends params API and adds controller-mode stimulation (P/PD).</p>\n"
+      "Title": "Wss.CoreModule.CoreConfig",
+      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.CoreConfig.yml\" sourcestartlinenumber=\"1\">Strongly-typed core configuration model persisted in JSON.\nExposes the maximum number of devices and the firmware version string.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/WSSInterfacing.IStimParamsCore.yml",
+      "source_relative_path": "api/core/Wss.CoreModule.CoreConfigController.yml",
       "output": {
         ".html": {
-          "relative_path": "api/WSSInterfacing.IStimParamsCore.html"
+          "relative_path": "api/core/Wss.CoreModule.CoreConfigController.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "WSSInterfacing.IStimParamsCore",
-      "Summary": "<p sourcefile=\"api/WSSInterfacing.IStimParamsCore.yml\" sourcestartlinenumber=\"1\">Core + parameters surface layered over <xref href=\"WSSInterfacing.IStimulationCore\" data-throw-if-not-resolved=\"false\"></xref>.\nProvides normalized-drive stimulation, per-channel parameter access,\nand JSON persistence for stimulation parameters. BASIC is optional and\ncan be exposed via <xref href=\"WSSInterfacing.IStimParamsCore.TryGetBasic(WSSInterfacing.IBasicStimulation%40)\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+      "Title": "Wss.CoreModule.CoreConfigController",
+      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.CoreConfigController.yml\" sourcestartlinenumber=\"1\">Controls loading, validating, reading, and writing a configuration JSON file.\nThread-safe. Ensures a valid default config exists on disk.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/WSSInterfacing.IStimulationCore.yml",
+      "source_relative_path": "api/core/Wss.CoreModule.DictConfigBase.yml",
       "output": {
         ".html": {
-          "relative_path": "api/WSSInterfacing.IStimulationCore.html"
+          "relative_path": "api/core/Wss.CoreModule.DictConfigBase.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "WSSInterfacing.IStimulationCore",
-      "Summary": "<p sourcefile=\"api/WSSInterfacing.IStimulationCore.yml\" sourcestartlinenumber=\"1\">Unity-agnostic stimulation core lifecycle and control surface.\nImplementations manage connection, setup, and a background streaming loop.\nPublic mutators should enqueue edits and return immediately.</p>\n"
+      "Title": "Wss.CoreModule.DictConfigBase",
+      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.DictConfigBase.yml\" sourcestartlinenumber=\"1\">Base class for JSON-backed configuration objects that expose dotted-key access.\nWraps a <xref href=\"Newtonsoft.Json.Linq.JObject\" data-throw-if-not-resolved=\"false\"></xref> and provides thread-safe getters/setters and persistence.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/WSSInterfacing.ITransport.yml",
+      "source_relative_path": "api/core/Wss.CoreModule.IBasicStimulation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/WSSInterfacing.ITransport.html"
+          "relative_path": "api/core/Wss.CoreModule.IBasicStimulation.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "WSSInterfacing.ITransport",
-      "Summary": "<p sourcefile=\"api/WSSInterfacing.ITransport.yml\" sourcestartlinenumber=\"1\">Abstraction over a byte-stream transport (e.g., Serial, Bluetooth, TCP) used by the WSS client.\nImplementations should surface incoming bytes via <xref href=\"WSSInterfacing.ITransport.BytesReceived\" data-throw-if-not-resolved=\"false\"></xref> and provide\nasync connect/disconnect/send operations.</p>\n"
+      "Title": "Wss.CoreModule.IBasicStimulation",
+      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.IBasicStimulation.yml\" sourcestartlinenumber=\"1\">Basic stimulation operations that upload or select waveforms and manage\nboard configuration. Calls are non-blocking; implementations may enqueue\nsetup steps and return immediately.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/WSSInterfacing.JsonReader.yml",
+      "source_relative_path": "api/core/Wss.CoreModule.ICoreConfig.yml",
       "output": {
         ".html": {
-          "relative_path": "api/WSSInterfacing.JsonReader.html"
+          "relative_path": "api/core/Wss.CoreModule.ICoreConfig.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "WSSInterfacing.JsonReader",
-      "Summary": "<p sourcefile=\"api/WSSInterfacing.JsonReader.yml\" sourcestartlinenumber=\"1\">Lightweight helpers for loading and saving JSON configuration files.\nProvides typed object and <xref href=\"Newtonsoft.Json.Linq.JObject\" data-throw-if-not-resolved=\"false\"></xref> utilities and\nensures parent directories exist before writes.</p>\n"
+      "Title": "Wss.CoreModule.ICoreConfig",
+      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.ICoreConfig.yml\" sourcestartlinenumber=\"1\">Read-only view of core configuration values loaded from a JSON config file.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/WSSInterfacing.Log.yml",
+      "source_relative_path": "api/core/Wss.CoreModule.IFrameCodec.yml",
       "output": {
         ".html": {
-          "relative_path": "api/WSSInterfacing.Log.html"
+          "relative_path": "api/core/Wss.CoreModule.IFrameCodec.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "WSSInterfacing.Log",
-      "Summary": "<p sourcefile=\"api/WSSInterfacing.Log.yml\" sourcestartlinenumber=\"1\">Minimal logging facade that writes to Unity's console when running inside\nUnity, and falls back to System.Console on nonâ€‘Unity environments.</p>\n"
+      "Title": "Wss.CoreModule.IFrameCodec",
+      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.IFrameCodec.yml\" sourcestartlinenumber=\"1\">Contract for framing and deframing messages over byte-stream transports (Serial, BLE, TCP).</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/WSSInterfacing.ModelConfig.yml",
+      "source_relative_path": "api/core/Wss.CoreModule.IStimulationCore.yml",
       "output": {
         ".html": {
-          "relative_path": "api/WSSInterfacing.ModelConfig.html"
+          "relative_path": "api/core/Wss.CoreModule.IStimulationCore.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "WSSInterfacing.ModelConfig",
-      "Summary": "<p sourcefile=\"api/WSSInterfacing.ModelConfig.yml\" sourcestartlinenumber=\"1\">JSON-backed model configuration that stores controller mode and constants\nunder a dotted-key hierarchy (e.g., &quot;calib.mode&quot;, &quot;constants.PModeProportional&quot;).\nProvides typed access helpers via <xref href=\"WSSInterfacing.DictConfigBase\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+      "Title": "Wss.CoreModule.IStimulationCore",
+      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.IStimulationCore.yml\" sourcestartlinenumber=\"1\">Stimulation core lifecycle and control surface.\nImplementations manage connection, setup, and a background streaming loop.\nPublic mutators should enqueue edits and return immediately.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/WSSInterfacing.ModelConfigController.yml",
+      "source_relative_path": "api/core/Wss.CoreModule.ITransport.yml",
       "output": {
         ".html": {
-          "relative_path": "api/WSSInterfacing.ModelConfigController.html"
+          "relative_path": "api/core/Wss.CoreModule.ITransport.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "WSSInterfacing.ModelConfigController",
-      "Summary": "<p sourcefile=\"api/WSSInterfacing.ModelConfigController.yml\" sourcestartlinenumber=\"1\">High-level controller for <xref href=\"WSSInterfacing.ModelConfig\" data-throw-if-not-resolved=\"false\"></xref> persistence and keyed access.\nPaths may be file or directory; if a directory is given, the file name <code>modelConfig.json</code> is used.\nDotted keys address JSON nodes, e.g. <code>&quot;calib.mode&quot;</code>, <code>&quot;calib.targets.index.threshold&quot;</code>.</p>\n"
+      "Title": "Wss.CoreModule.ITransport",
+      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.ITransport.yml\" sourcestartlinenumber=\"1\">Abstraction over a byte-stream transport (e.g., Serial, Bluetooth, TCP).\nImplementations surface incoming bytes via <xref href=\"Wss.CoreModule.ITransport.BytesReceived\" data-throw-if-not-resolved=\"false\"></xref> and provide\nasync connect/disconnect/send operations.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/WSSInterfacing.ModelParamsLayer.yml",
+      "source_relative_path": "api/core/Wss.CoreModule.JsonReader.yml",
       "output": {
         ".html": {
-          "relative_path": "api/WSSInterfacing.ModelParamsLayer.html"
+          "relative_path": "api/core/Wss.CoreModule.JsonReader.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "WSSInterfacing.ModelParamsLayer",
-      "Summary": "<p sourcefile=\"api/WSSInterfacing.ModelParamsLayer.yml\" sourcestartlinenumber=\"1\">Model-driven layer (P/PD) that sits on top of an existing params layer.\nComputes PW from normalized magnitudes and stimulates via the wrapped core.</p>\n"
+      "Title": "Wss.CoreModule.JsonReader",
+      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.JsonReader.yml\" sourcestartlinenumber=\"1\">Lightweight helpers for loading and saving JSON configuration files.\nProvides typed object and <xref href=\"Newtonsoft.Json.Linq.JObject\" data-throw-if-not-resolved=\"false\"></xref> utilities and\nensures parent directories exist before writes.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/WSSInterfacing.SerialPortTransport.yml",
+      "source_relative_path": "api/core/Wss.CoreModule.Log.LogLevel.yml",
       "output": {
         ".html": {
-          "relative_path": "api/WSSInterfacing.SerialPortTransport.html"
+          "relative_path": "api/core/Wss.CoreModule.Log.LogLevel.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "WSSInterfacing.SerialPortTransport",
-      "Summary": "<p sourcefile=\"api/WSSInterfacing.SerialPortTransport.yml\" sourcestartlinenumber=\"1\">Serial-port implementation of <xref href=\"WSSInterfacing.ITransport\" data-throw-if-not-resolved=\"false\"></xref> for WSS communications.\nWraps <xref href=\"System.IO.Ports.SerialPort\" data-throw-if-not-resolved=\"false\"></xref> and exposes an event-driven receive API that works well in Unity/.NET Standard 2.0.</p>\n"
+      "Title": "Wss.CoreModule.Log.LogLevel",
+      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.Log.LogLevel.yml\" sourcestartlinenumber=\"1\">Log severity.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/WSSInterfacing.StimParamsBasicExtensions.yml",
+      "source_relative_path": "api/core/Wss.CoreModule.Log.yml",
       "output": {
         ".html": {
-          "relative_path": "api/WSSInterfacing.StimParamsBasicExtensions.html"
+          "relative_path": "api/core/Wss.CoreModule.Log.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "WSSInterfacing.StimParamsBasicExtensions",
-      "Summary": "<p sourcefile=\"api/WSSInterfacing.StimParamsBasicExtensions.yml\" sourcestartlinenumber=\"1\">Convenience extension methods over <xref href=\"WSSInterfacing.IStimParamsCore\" data-throw-if-not-resolved=\"false\"></xref> that forward\nto the optional BASIC layer (<xref href=\"WSSInterfacing.IBasicStimulation\" data-throw-if-not-resolved=\"false\"></xref>). These helpers\nmake common operations (waveform upload, shape selection, save/load, requests)\nconcise while preserving the core API surface.</p>\n"
+      "Title": "Wss.CoreModule.Log",
+      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.Log.yml\" sourcestartlinenumber=\"1\">Lightweight, host-agnostic logger.</p>\n<ul sourcefile=\"api/core/Wss.CoreModule.Log.yml\" sourcestartlinenumber=\"2\">\n<li sourcefile=\"api/core/Wss.CoreModule.Log.yml\" sourcestartlinenumber=\"2\">Works in plain .NET via Console/Debug.</li>\n<li sourcefile=\"api/core/Wss.CoreModule.Log.yml\" sourcestartlinenumber=\"3\">Detects Unity at runtime via reflection and forwards to UnityEngine.Debug.</li>\n<li sourcefile=\"api/core/Wss.CoreModule.Log.yml\" sourcestartlinenumber=\"4\">Exposes a pluggable sink/event so hosts can capture logs.</li>\n</ul>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/WSSInterfacing.StimParamsConfig.yml",
+      "source_relative_path": "api/core/Wss.CoreModule.ModuleSettings.FingerswitchConfig.yml",
       "output": {
         ".html": {
-          "relative_path": "api/WSSInterfacing.StimParamsConfig.html"
+          "relative_path": "api/core/Wss.CoreModule.ModuleSettings.FingerswitchConfig.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "WSSInterfacing.StimParamsConfig",
-      "Summary": "<p sourcefile=\"api/WSSInterfacing.StimParamsConfig.yml\" sourcestartlinenumber=\"1\">JSON-backed stimulation-parameters configuration. Inherits common JSON\nhandling from <xref href=\"WSSInterfacing.DictConfigBase\" data-throw-if-not-resolved=\"false\"></xref> and seeds default per-channel\nvalues under the <code>stim.ch</code> hierarchy.</p>\n"
+      "Title": "Wss.CoreModule.ModuleSettings.FingerswitchConfig",
+      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.ModuleSettings.FingerswitchConfig.yml\" sourcestartlinenumber=\"1\">Fingerswitch operating mode, when present.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/WSSInterfacing.StimParamsConfigController.yml",
+      "source_relative_path": "api/core/Wss.CoreModule.ModuleSettings.HwConfigFlags.yml",
       "output": {
         ".html": {
-          "relative_path": "api/WSSInterfacing.StimParamsConfigController.html"
+          "relative_path": "api/core/Wss.CoreModule.ModuleSettings.HwConfigFlags.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "WSSInterfacing.StimParamsConfigController",
-      "Summary": "<p sourcefile=\"api/WSSInterfacing.StimParamsConfigController.yml\" sourcestartlinenumber=\"1\">Provides high-level access to stimulation parameter configuration.\nAutomatically seeds channel entries based on max WSS count and ensures safe access.\nSupports only dotted keys of form &quot;stim.ch.{N}.{leaf}&quot;.</p>\n"
+      "Title": "Wss.CoreModule.ModuleSettings.HwConfigFlags",
+      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.ModuleSettings.HwConfigFlags.yml\" sourcestartlinenumber=\"1\">Hardware configuration flags reported by the device. Each bit defines an\nindependent setting; the on-wire value is the sum of set bits. In particular,\nbit 1 (value 2) indicates 10 mA PA mode and bit 2 (value 4) indicates 10 ms pulse guard.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/WSSInterfacing.StimParamsLayer.yml",
+      "source_relative_path": "api/core/Wss.CoreModule.ModuleSettings.ParameterStepKind.yml",
       "output": {
         ".html": {
-          "relative_path": "api/WSSInterfacing.StimParamsLayer.html"
+          "relative_path": "api/core/Wss.CoreModule.ModuleSettings.ParameterStepKind.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "WSSInterfacing.StimParamsLayer",
-      "Summary": "<p sourcefile=\"api/WSSInterfacing.StimParamsLayer.yml\" sourcestartlinenumber=\"1\">Layer that wraps an <xref href=\"WSSInterfacing.IStimulationCore\" data-throw-if-not-resolved=\"false\"></xref> and a <xref href=\"WSSInterfacing.StimParamsConfigController\" data-throw-if-not-resolved=\"false\"></xref>.\nComputes pulse widths from normalized inputs and forwards stimulation to the core.\nAlso exposes dotted-key parameter access and an optional BASIC capability.</p>\n"
+      "Title": "Wss.CoreModule.ModuleSettings.ParameterStepKind",
+      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.ModuleSettings.ParameterStepKind.yml\" sourcestartlinenumber=\"1\">Which parameter the front-panel step affects (PA or PW).</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/WSSInterfacing.Stimulation.yml",
+      "source_relative_path": "api/core/Wss.CoreModule.ModuleSettings.yml",
       "output": {
         ".html": {
-          "relative_path": "api/WSSInterfacing.Stimulation.html"
+          "relative_path": "api/core/Wss.CoreModule.ModuleSettings.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "WSSInterfacing.Stimulation",
-      "Summary": "<p sourcefile=\"api/WSSInterfacing.Stimulation.yml\" sourcestartlinenumber=\"1\">High-level Unity wrapper for the full stimulation model layer.\nExtends <code>StimParamsLayer</code> with proportional and derivative control modes,\ncalibration constants, and model-based drive computation.\nThis is the top-level interface that user code should normally interact with.</p>\n"
+      "Title": "Wss.CoreModule.ModuleSettings",
+      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.ModuleSettings.yml\" sourcestartlinenumber=\"1\">Strongly-typed snapshot of settings returned by a ModuleQuery-like payload.\nIncludes a safe decoder for the data-only payload and helpers for selecting\namplitude mapping behavior (e.g., 10 mA vs 72 mA based on HW flags).</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/WSSInterfacing.StimulationParams.yml",
+      "source_relative_path": "api/core/Wss.CoreModule.SerialPortTransport.yml",
       "output": {
         ".html": {
-          "relative_path": "api/WSSInterfacing.StimulationParams.html"
+          "relative_path": "api/core/Wss.CoreModule.SerialPortTransport.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "WSSInterfacing.StimulationParams",
-      "Summary": "<p sourcefile=\"api/WSSInterfacing.StimulationParams.yml\" sourcestartlinenumber=\"1\">Unity wrapper that composes a params layer (<code>StimParamsLayer</code>) over a core WSS implementation.\nExtends the basic interface with per-finger calibration parameters, normalized drive, and JSON persistence.\nAll public stimulation APIs accept a finger string and map to a channel via <xref href=\"WSSInterfacing.StimulationParams.FingerToChannel(System.String)\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+      "Title": "Wss.CoreModule.SerialPortTransport",
+      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.SerialPortTransport.yml\" sourcestartlinenumber=\"1\">Serial-port implementation of <xref href=\"Wss.CoreModule.ITransport\" data-throw-if-not-resolved=\"false\"></xref> for WSS communications.\nWraps <xref href=\"System.IO.Ports.SerialPort\" data-throw-if-not-resolved=\"false\"></xref> and exposes an event-driven receive API that works well in Unity/.NET Standard 2.0.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/WSSInterfacing.Stimulationbasic.yml",
+      "source_relative_path": "api/core/Wss.CoreModule.StimParamsBasicExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/WSSInterfacing.Stimulationbasic.html"
+          "relative_path": "api/core/Wss.CoreModule.StimParamsBasicExtensions.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "WSSInterfacing.Stimulationbasic",
-      "Summary": "<p sourcefile=\"api/WSSInterfacing.Stimulationbasic.yml\" sourcestartlinenumber=\"1\">Basic Unity MonoBehaviour wrapper for the WSS stimulation core.\nHandles initialization, configuration, and waveform control for connected WSS stimulators.\nDesigned as the simplest interface layer exposing low-level stimulation functionality.</p>\n"
+      "Title": "Wss.CoreModule.StimParamsBasicExtensions",
+      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.StimParamsBasicExtensions.yml\" sourcestartlinenumber=\"1\">Convenience extension methods over <xref href=\"Wss.CalibrationModule.IStimParamsCore\" data-throw-if-not-resolved=\"false\"></xref> that forward\nto the optional BASIC layer (<xref href=\"Wss.CoreModule.IBasicStimulation\" data-throw-if-not-resolved=\"false\"></xref>).</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/WSSInterfacing.TestModeTransport.yml",
+      "source_relative_path": "api/core/Wss.CoreModule.TestModeTransport.yml",
       "output": {
         ".html": {
-          "relative_path": "api/WSSInterfacing.TestModeTransport.html"
+          "relative_path": "api/core/Wss.CoreModule.TestModeTransport.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "WSSInterfacing.TestModeTransport",
-      "Summary": "<p sourcefile=\"api/WSSInterfacing.TestModeTransport.yml\" sourcestartlinenumber=\"1\">In-memory transport for debugging and unit tests. No real I/O.\nFeatures: artificial latency, jitter, inbound chunking, and drop simulation.\nDefault auto-responder validates checksum, flips sender/target, and echoes or replaces payload.</p>\n"
+      "Title": "Wss.CoreModule.TestModeTransport",
+      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.TestModeTransport.yml\" sourcestartlinenumber=\"1\">In-memory transport for debugging and unit tests. No real I/O.\nFeatures: artificial latency, jitter, inbound chunking, and drop simulation.\nDefault auto-responder validates checksum, flips sender/target, and echoes or replaces payload.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/WSSInterfacing.WSSLimits.yml",
+      "source_relative_path": "api/core/Wss.CoreModule.WSSLimits.yml",
       "output": {
         ".html": {
-          "relative_path": "api/WSSInterfacing.WSSLimits.html"
+          "relative_path": "api/core/Wss.CoreModule.WSSLimits.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "WSSInterfacing.WSSLimits",
-      "Summary": "<p sourcefile=\"api/WSSInterfacing.WSSLimits.yml\" sourcestartlinenumber=\"1\">Device- and protocol-level numeric limits and sizes used by the WSS stack.\nValues reflect firmware constraints such as maximum pulse width and buffer sizes.</p>\n"
+      "Title": "Wss.CoreModule.WSSLimits",
+      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.WSSLimits.yml\" sourcestartlinenumber=\"1\">Device- and protocol-level numeric limits and sizes used by the WSS stack.\nValues reflect firmware constraints such as maximum pulse width and buffer sizes.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/WSSInterfacing.WSSMessageIDs.yml",
+      "source_relative_path": "api/core/Wss.CoreModule.WSSMessageIDs.yml",
       "output": {
         ".html": {
-          "relative_path": "api/WSSInterfacing.WSSMessageIDs.html"
+          "relative_path": "api/core/Wss.CoreModule.WSSMessageIDs.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "WSSInterfacing.WSSMessageIDs",
-      "Summary": "<p sourcefile=\"api/WSSInterfacing.WSSMessageIDs.yml\" sourcestartlinenumber=\"1\">Protocol message identifiers used by the WSS firmware.\nValues correspond to on-wire command codes.</p>\n"
+      "Title": "Wss.CoreModule.WSSMessageIDs",
+      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.WSSMessageIDs.yml\" sourcestartlinenumber=\"1\">Protocol message identifiers used by the firmware.\nValues correspond to on-wire command codes.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/WSSInterfacing.WSSVersionHandler.SupportedVersions.yml",
+      "source_relative_path": "api/core/Wss.CoreModule.WSSVersionHandler.SupportedVersions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/WSSInterfacing.WSSVersionHandler.SupportedVersions.html"
+          "relative_path": "api/core/Wss.CoreModule.WSSVersionHandler.SupportedVersions.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "WSSInterfacing.WSSVersionHandler.SupportedVersions",
-      "Summary": "<p sourcefile=\"api/WSSInterfacing.WSSVersionHandler.SupportedVersions.yml\" sourcestartlinenumber=\"1\">Enum representing known supported WSS firmware versions.\nInteger values correspond to internal numeric codes.</p>\n"
+      "Title": "Wss.CoreModule.WSSVersionHandler.SupportedVersions",
+      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.WSSVersionHandler.SupportedVersions.yml\" sourcestartlinenumber=\"1\">Enum representing known supported WSS firmware versions.\nInteger values correspond to internal numeric codes.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/WSSInterfacing.WSSVersionHandler.yml",
+      "source_relative_path": "api/core/Wss.CoreModule.WSSVersionHandler.yml",
       "output": {
         ".html": {
-          "relative_path": "api/WSSInterfacing.WSSVersionHandler.html"
+          "relative_path": "api/core/Wss.CoreModule.WSSVersionHandler.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "WSSInterfacing.WSSVersionHandler",
-      "Summary": "<p sourcefile=\"api/WSSInterfacing.WSSVersionHandler.yml\" sourcestartlinenumber=\"1\">Handles WSS firmware version parsing and feature availability based on supported firmware versions.</p>\n"
+      "Title": "Wss.CoreModule.WSSVersionHandler",
+      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.WSSVersionHandler.yml\" sourcestartlinenumber=\"1\">Handles firmware version parsing and feature availability based on known supported versions.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/WSSInterfacing.Waveform.yml",
+      "source_relative_path": "api/core/Wss.CoreModule.Waveform.yml",
       "output": {
         ".html": {
-          "relative_path": "api/WSSInterfacing.Waveform.html"
+          "relative_path": "api/core/Wss.CoreModule.Waveform.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "WSSInterfacing.Waveform",
-      "Summary": "<p sourcefile=\"api/WSSInterfacing.Waveform.yml\" sourcestartlinenumber=\"1\">Immutable waveform container holding cathodic and anodic shape arrays and\nthe computed total area used for balanced charge calculations.</p>\n"
+      "Title": "Wss.CoreModule.Waveform",
+      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.Waveform.yml\" sourcestartlinenumber=\"1\">Waveform container holding cathodic and anodic shape arrays and a computed total area.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/WSSInterfacing.WaveformBuilder.yml",
+      "source_relative_path": "api/core/Wss.CoreModule.WaveformBuilder.yml",
       "output": {
         ".html": {
-          "relative_path": "api/WSSInterfacing.WaveformBuilder.html"
+          "relative_path": "api/core/Wss.CoreModule.WaveformBuilder.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "WSSInterfacing.WaveformBuilder",
-      "Summary": "<p sourcefile=\"api/WSSInterfacing.WaveformBuilder.yml\" sourcestartlinenumber=\"1\">Utility for constructing charge-balanced stimulation waveforms.\nGiven a cathodic shape, it computes a matching anodic recharge segment and\nexposes helpers to retrieve shapes and total area.</p>\n"
+      "Title": "Wss.CoreModule.WaveformBuilder",
+      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.WaveformBuilder.yml\" sourcestartlinenumber=\"1\">Utility for constructing charge-balanced stimulation waveforms.\nGiven a cathodic shape, it computes a matching anodic recharge segment and\nexposes helpers to retrieve shapes and total area.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/WSSInterfacing.WssClient.yml",
+      "source_relative_path": "api/core/Wss.CoreModule.WssClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/WSSInterfacing.WssClient.html"
+          "relative_path": "api/core/Wss.CoreModule.WssClient.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "WSSInterfacing.WssClient",
-      "Summary": "<p sourcefile=\"api/WSSInterfacing.WssClient.yml\" sourcestartlinenumber=\"1\">Low-level WSS protocol client. Frames commands using an <xref href=\"WSSInterfacing.IFrameCodec\" data-throw-if-not-resolved=\"false\"></xref>,\nsends them over an <xref href=\"WSSInterfacing.ITransport\" data-throw-if-not-resolved=\"false\"></xref>, and correlates responses by\n<code>(target,msgId)</code>. Provides async connect/disconnect and a request/response\npipeline used by higher-level cores and layers.</p>\n"
+      "Title": "Wss.CoreModule.WssClient",
+      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.WssClient.yml\" sourcestartlinenumber=\"1\">Low-level protocol client. Frames commands using an <xref href=\"Wss.CoreModule.IFrameCodec\" data-throw-if-not-resolved=\"false\"></xref>,\nsends them over an <xref href=\"Wss.CoreModule.ITransport\" data-throw-if-not-resolved=\"false\"></xref>, and correlates responses by\n<code>(target,msgId)</code>.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/WSSInterfacing.WssFrameCodec.yml",
+      "source_relative_path": "api/core/Wss.CoreModule.WssFrameCodec.yml",
       "output": {
         ".html": {
-          "relative_path": "api/WSSInterfacing.WssFrameCodec.html"
+          "relative_path": "api/core/Wss.CoreModule.WssFrameCodec.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "WSSInterfacing.WssFrameCodec",
-      "Summary": "<p sourcefile=\"api/WSSInterfacing.WssFrameCodec.yml\" sourcestartlinenumber=\"1\">WSS frame codec implementing a SLIP-like protocol:</p>\n<ul><li><b>END</b> (<code>0xC0</code>) terminates a frame.</li><li><b>ESC</b> (<code>0xDB</code>) escapes special bytes inside the frame.</li><li><b>END_SUB</b> (<code>0xDC</code>) represents END when escaped.</li><li><b>ESC_SUB</b> (<code>0xDD</code>) represents ESC when escaped.</li></ul>\nFrames on the wire are <code>[sender][target][payload...][checksum][END]</code>.\nThe checksum is computed over all bytes except the last two (checksum + END).\n"
+      "Title": "Wss.CoreModule.WssFrameCodec",
+      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.WssFrameCodec.yml\" sourcestartlinenumber=\"1\">Frame codec implementing a SLIP-like protocol:</p>\n<ul><li><b>END</b> (<code>0xC0</code>) terminates a frame.</li><li><b>ESC</b> (<code>0xDB</code>) escapes special bytes inside the frame.</li><li><b>END_SUB</b> (<code>0xDC</code>) represents END when escaped.</li><li><b>ESC_SUB</b> (<code>0xDD</code>) represents ESC when escaped.</li></ul>\nFrames on the wire are <code>[sender][target][payload...][checksum][END]</code>.\nThe checksum is computed over all bytes except the last two (checksum + END).\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/WSSInterfacing.WssStimulationCore.yml",
+      "source_relative_path": "api/core/Wss.CoreModule.WssStimulationCore.yml",
       "output": {
         ".html": {
-          "relative_path": "api/WSSInterfacing.WssStimulationCore.html"
+          "relative_path": "api/core/Wss.CoreModule.WssStimulationCore.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "WSSInterfacing.WssStimulationCore",
-      "Summary": "<p sourcefile=\"api/WSSInterfacing.WssStimulationCore.yml\" sourcestartlinenumber=\"1\">Unity-agnostic WSS stimulation core that manages connection, setup (via a queued step runner),\nand a background streaming loop. Public mutator methods enqueue device edits and return immediately.</p>\n"
+      "Title": "Wss.CoreModule.WssStimulationCore",
+      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.WssStimulationCore.yml\" sourcestartlinenumber=\"1\">Stimulation core that manages connection, setup (via a queued step runner), and a background\nstreaming loop. Public mutator methods enqueue device edits and return immediately.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/WSSInterfacing.WssTarget.yml",
+      "source_relative_path": "api/core/Wss.CoreModule.WssTarget.yml",
       "output": {
         ".html": {
-          "relative_path": "api/WSSInterfacing.WssTarget.html"
+          "relative_path": "api/core/Wss.CoreModule.WssTarget.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "WSSInterfacing.WssTarget",
-      "Summary": "<p sourcefile=\"api/WSSInterfacing.WssTarget.yml\" sourcestartlinenumber=\"1\">Addresses for targeting individual WSS units or broadcasting to all.\nValues are on-wire destination IDs used by commands.</p>\n"
+      "Title": "Wss.CoreModule.WssTarget",
+      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.WssTarget.yml\" sourcestartlinenumber=\"1\">Addresses for targeting individual units or broadcasting to all.\nValues are on-wire destination IDs used by commands.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/WSSInterfacing.portScanner.yml",
+      "source_relative_path": "api/core/Wss.CoreModule.yml",
       "output": {
         ".html": {
-          "relative_path": "api/WSSInterfacing.portScanner.html"
+          "relative_path": "api/core/Wss.CoreModule.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "WSSInterfacing.portScanner",
-      "Summary": "<p sourcefile=\"api/WSSInterfacing.portScanner.yml\" sourcestartlinenumber=\"1\">Simple Unity helper that scans available serial ports and allows selecting\none from a UI dropdown to force the COM port used by the stimulation script.\nAttach this to a separate GameObject and wire the <xref href=\"WSSInterfacing.portScanner.selectPort\" data-throw-if-not-resolved=\"false\"></xref>\nmethod to a UI event (e.g., button click) to apply the chosen port.</p>\n"
+      "Title": "Wss.CoreModule",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/WSSInterfacing.yml",
+      "source_relative_path": "api/core/Wss.ModelModule.IModelParamsCore.yml",
       "output": {
         ".html": {
-          "relative_path": "api/WSSInterfacing.html"
+          "relative_path": "api/core/Wss.ModelModule.IModelParamsCore.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "WSSInterfacing",
+      "Title": "Wss.ModelModule.IModelParamsCore",
+      "Summary": "<p sourcefile=\"api/core/Wss.ModelModule.IModelParamsCore.yml\" sourcestartlinenumber=\"1\">Model-driven stimulation surface layered over params + core.\nExtends the params API and adds controller-mode stimulation (P/PD).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/core/Wss.ModelModule.ModelConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/core/Wss.ModelModule.ModelConfig.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Wss.ModelModule.ModelConfig",
+      "Summary": "<p sourcefile=\"api/core/Wss.ModelModule.ModelConfig.yml\" sourcestartlinenumber=\"1\">JSON-backed model configuration that stores controller mode and constants\nunder a dotted-key hierarchy (e.g., &quot;calib.mode&quot;, &quot;constants.PModeProportional&quot;).\nProvides typed access helpers via <xref href=\"Wss.CoreModule.DictConfigBase\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/core/Wss.ModelModule.ModelConfigController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/core/Wss.ModelModule.ModelConfigController.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Wss.ModelModule.ModelConfigController",
+      "Summary": "<p sourcefile=\"api/core/Wss.ModelModule.ModelConfigController.yml\" sourcestartlinenumber=\"1\">High-level controller for <xref href=\"Wss.ModelModule.ModelConfig\" data-throw-if-not-resolved=\"false\"></xref> persistence and keyed access.\nPaths may be file or directory; if a directory is given, the file name <code>modelConfig.json</code> is used.\nDotted keys address JSON nodes, e.g. <code>&quot;calib.mode&quot;</code>, <code>&quot;calib.targets.index.threshold&quot;</code>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/core/Wss.ModelModule.ModelParamsLayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/core/Wss.ModelModule.ModelParamsLayer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Wss.ModelModule.ModelParamsLayer",
+      "Summary": "<p sourcefile=\"api/core/Wss.ModelModule.ModelParamsLayer.yml\" sourcestartlinenumber=\"1\">Model-driven layer (P/PD) that sits on top of an existing params layer.\nComputes controller output from magnitudes and stimulates via the wrapped core.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/core/Wss.ModelModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/core/Wss.ModelModule.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Wss.ModelModule",
       "Summary": null
     },
     {
       "type": "Toc",
-      "source_relative_path": "api/toc.yml",
+      "source_relative_path": "api/core/toc.yml",
+      "output": {
+        ".json": {
+          "relative_path": "api/core/toc.json"
+        },
+        ".html": {
+          "relative_path": "api/core/toc.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/csharp/HFI.Wss.StimulationController.yml",
       "output": {
         ".html": {
-          "relative_path": "api/toc.html"
-        },
+          "relative_path": "api/csharp/HFI.Wss.StimulationController.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "HFI.Wss.StimulationController",
+      "Summary": "<p sourcefile=\"api/csharp/HFI.Wss.StimulationController.yml\" sourcestartlinenumber=\"1\">Host-agnostic wrapper around the full stimulation stack (core → params → model).\nProvides the same API surface as the Unity <code>Stimulation</code> MonoBehaviour but manages\ninitialization, ticking, and shutdown inside a plain .NET application.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/csharp/HFI.Wss.StimulationOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/csharp/HFI.Wss.StimulationOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "HFI.Wss.StimulationOptions",
+      "Summary": "<p sourcefile=\"api/csharp/HFI.Wss.StimulationOptions.yml\" sourcestartlinenumber=\"1\">Configuration record for <xref href=\"HFI.Wss.StimulationController\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/csharp/HFI.Wss.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/csharp/HFI.Wss.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "HFI.Wss",
+      "Summary": null
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/csharp/toc.yml",
+      "output": {
         ".json": {
-          "relative_path": "api/toc.json"
+          "relative_path": "api/csharp/toc.json"
+        },
+        ".html": {
+          "relative_path": "api/csharp/toc.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/unity/WSS.Unity.Stimulation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/unity/WSS.Unity.Stimulation.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Stimulation",
+      "Summary": "<p sourcefile=\"api/unity/WSS.Unity.Stimulation.yml\" sourcestartlinenumber=\"1\">Provides a Unity-facing API for WSS stimulation using the full params + model stack.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/unity/WSS.Unity.StimulationParams.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/unity/WSS.Unity.StimulationParams.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "StimulationParams",
+      "Summary": "<p sourcefile=\"api/unity/WSS.Unity.StimulationParams.yml\" sourcestartlinenumber=\"1\">Provides a Unity-facing API for WSS stimulation using the core + params layer.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/unity/WSS.Unity.Stimulationbasic.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/unity/WSS.Unity.Stimulationbasic.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Stimulationbasic",
+      "Summary": "<p sourcefile=\"api/unity/WSS.Unity.Stimulationbasic.yml\" sourcestartlinenumber=\"1\">Provides a Unity-facing API for the basic WSS stimulation core.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/unity/WSS.Unity.portScanner.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/unity/WSS.Unity.portScanner.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "portScanner",
+      "Summary": "<p sourcefile=\"api/unity/WSS.Unity.portScanner.yml\" sourcestartlinenumber=\"1\">Simple Unity helper that scans available serial ports and allows selecting\none from a UI dropdown to force the COM port used by the stimulation script.\nAttach this to a separate GameObject and wire the <code>selectPort()</code>\nmethod to a UI event (e.g., button click) to apply the chosen port.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/unity/WSS.Unity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/unity/WSS.Unity.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "",
+      "Summary": null
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/unity/toc.yml",
+      "output": {
+        ".json": {
+          "relative_path": "api/unity/toc.json"
+        },
+        ".html": {
+          "relative_path": "api/unity/toc.html"
         }
       },
       "version": ""
@@ -533,6 +727,346 @@
       "output": {
         ".html": {
           "relative_path": "classes/WssStimulationCore.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "conceptual/core-architecture.md",
+      "output": {
+        ".html": {
+          "relative_path": "conceptual/core-architecture.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "conceptual/layering-guide.md",
+      "output": {
+        ".html": {
+          "relative_path": "conceptual/layering-guide.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "external/python-integration/_modules/index.html",
+      "output": {
+        "resource": {
+          "relative_path": "external/python-integration/_modules/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "external/python-integration/_modules/wss_py_wrapper/config.html",
+      "output": {
+        "resource": {
+          "relative_path": "external/python-integration/_modules/wss_py_wrapper/config.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "external/python-integration/_modules/wss_py_wrapper/log_sink.html",
+      "output": {
+        "resource": {
+          "relative_path": "external/python-integration/_modules/wss_py_wrapper/log_sink.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "external/python-integration/_modules/wss_py_wrapper/logger.html",
+      "output": {
+        "resource": {
+          "relative_path": "external/python-integration/_modules/wss_py_wrapper/logger.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "external/python-integration/_modules/wss_py_wrapper/stimulation_controller.html",
+      "output": {
+        "resource": {
+          "relative_path": "external/python-integration/_modules/wss_py_wrapper/stimulation_controller.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "external/python-integration/_modules/wss_py_wrapper/wss_loader.html",
+      "output": {
+        "resource": {
+          "relative_path": "external/python-integration/_modules/wss_py_wrapper/wss_loader.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "external/python-integration/_sources/api.rst.txt",
+      "output": {
+        "resource": {
+          "relative_path": "external/python-integration/_sources/api.rst.txt"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "external/python-integration/_sources/index.rst.txt",
+      "output": {
+        "resource": {
+          "relative_path": "external/python-integration/_sources/index.rst.txt"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "external/python-integration/_sources/usage.rst.txt",
+      "output": {
+        "resource": {
+          "relative_path": "external/python-integration/_sources/usage.rst.txt"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "external/python-integration/_static/alabaster.css",
+      "output": {
+        "resource": {
+          "relative_path": "external/python-integration/_static/alabaster.css"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "external/python-integration/_static/basic.css",
+      "output": {
+        "resource": {
+          "relative_path": "external/python-integration/_static/basic.css"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "external/python-integration/_static/custom.css",
+      "output": {
+        "resource": {
+          "relative_path": "external/python-integration/_static/custom.css"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "external/python-integration/_static/doctools.js",
+      "output": {
+        "resource": {
+          "relative_path": "external/python-integration/_static/doctools.js"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "external/python-integration/_static/documentation_options.js",
+      "output": {
+        "resource": {
+          "relative_path": "external/python-integration/_static/documentation_options.js"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "external/python-integration/_static/file.png",
+      "output": {
+        "resource": {
+          "relative_path": "external/python-integration/_static/file.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "external/python-integration/_static/github-banner.svg",
+      "output": {
+        "resource": {
+          "relative_path": "external/python-integration/_static/github-banner.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "external/python-integration/_static/language_data.js",
+      "output": {
+        "resource": {
+          "relative_path": "external/python-integration/_static/language_data.js"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "external/python-integration/_static/minus.png",
+      "output": {
+        "resource": {
+          "relative_path": "external/python-integration/_static/minus.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "external/python-integration/_static/plus.png",
+      "output": {
+        "resource": {
+          "relative_path": "external/python-integration/_static/plus.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "external/python-integration/_static/pygments.css",
+      "output": {
+        "resource": {
+          "relative_path": "external/python-integration/_static/pygments.css"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "external/python-integration/_static/searchtools.js",
+      "output": {
+        "resource": {
+          "relative_path": "external/python-integration/_static/searchtools.js"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "external/python-integration/_static/sphinx_highlight.js",
+      "output": {
+        "resource": {
+          "relative_path": "external/python-integration/_static/sphinx_highlight.js"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "external/python-integration/api.html",
+      "output": {
+        "resource": {
+          "relative_path": "external/python-integration/api.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "external/python-integration/genindex.html",
+      "output": {
+        "resource": {
+          "relative_path": "external/python-integration/genindex.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "external/python-integration/index.html",
+      "output": {
+        "resource": {
+          "relative_path": "external/python-integration/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "external/python-integration/objects.inv",
+      "output": {
+        "resource": {
+          "relative_path": "external/python-integration/objects.inv"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "external/python-integration/py-modindex.html",
+      "output": {
+        "resource": {
+          "relative_path": "external/python-integration/py-modindex.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "external/python-integration/search.html",
+      "output": {
+        "resource": {
+          "relative_path": "external/python-integration/search.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "external/python-integration/searchindex.js",
+      "output": {
+        "resource": {
+          "relative_path": "external/python-integration/searchindex.js"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "external/python-integration/usage.html",
+      "output": {
+        "resource": {
+          "relative_path": "external/python-integration/usage.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "shims/UnitySubmodule/README.md",
+      "output": {
+        ".html": {
+          "relative_path": "shims/UnitySubmodule/README.html"
         }
       },
       "version": ""

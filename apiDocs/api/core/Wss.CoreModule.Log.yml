@@ -1,0 +1,380 @@
+### YamlMime:ManagedReference
+items:
+- uid: Wss.CoreModule.Log
+  commentId: T:Wss.CoreModule.Log
+  id: Log
+  parent: Wss.CoreModule
+  children:
+  - Wss.CoreModule.Log.Error(System.Exception,System.String)
+  - Wss.CoreModule.Log.Error(System.String)
+  - Wss.CoreModule.Log.Info(System.String)
+  - Wss.CoreModule.Log.Message
+  - Wss.CoreModule.Log.ResetSink
+  - Wss.CoreModule.Log.SetSink(System.Action{Wss.CoreModule.Log.LogLevel,System.String})
+  - Wss.CoreModule.Log.Warn(System.String)
+  langs:
+  - csharp
+  - vb
+  name: Log
+  nameWithType: Log
+  fullName: Wss.CoreModule.Log
+  type: Class
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Lightweight, host-agnostic logger.
+
+    - Works in plain .NET via Console/Debug.
+
+    - Detects Unity at runtime via reflection and forwards to UnityEngine.Debug.
+
+    - Exposes a pluggable sink/event so hosts can capture logs.
+  example: []
+  syntax:
+    content: public static class Log
+    content.vb: Public Module Log
+  inheritance:
+  - System.Object
+- uid: Wss.CoreModule.Log.Message
+  commentId: E:Wss.CoreModule.Log.Message
+  id: Message
+  parent: Wss.CoreModule.Log
+  langs:
+  - csharp
+  - vb
+  name: Message
+  nameWithType: Log.Message
+  fullName: Wss.CoreModule.Log.Message
+  type: Event
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Raised for each message written via this logger, after the sink is invoked.
+  example: []
+  syntax:
+    content: public static event Action<Log.LogLevel, string> Message
+    return:
+      type: System.Action{Wss.CoreModule.Log.LogLevel,System.String}
+    content.vb: Public Shared Event Message As Action(Of Log.LogLevel, String)
+- uid: Wss.CoreModule.Log.SetSink(System.Action{Wss.CoreModule.Log.LogLevel,System.String})
+  commentId: M:Wss.CoreModule.Log.SetSink(System.Action{Wss.CoreModule.Log.LogLevel,System.String})
+  id: SetSink(System.Action{Wss.CoreModule.Log.LogLevel,System.String})
+  parent: Wss.CoreModule.Log
+  langs:
+  - csharp
+  - vb
+  name: SetSink(Action<LogLevel, string>)
+  nameWithType: Log.SetSink(Action<Log.LogLevel, string>)
+  fullName: Wss.CoreModule.Log.SetSink(System.Action<Wss.CoreModule.Log.LogLevel, string>)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Replace the log sink with a custom receiver (e.g., Unity adapter or Python callback).
+  example: []
+  syntax:
+    content: public static void SetSink(Action<Log.LogLevel, string> sink)
+    parameters:
+    - id: sink
+      type: System.Action{Wss.CoreModule.Log.LogLevel,System.String}
+    content.vb: Public Shared Sub SetSink(sink As Action(Of Log.LogLevel, String))
+  overload: Wss.CoreModule.Log.SetSink*
+  nameWithType.vb: Log.SetSink(Action(Of Log.LogLevel, String))
+  fullName.vb: Wss.CoreModule.Log.SetSink(System.Action(Of Wss.CoreModule.Log.LogLevel, String))
+  name.vb: SetSink(Action(Of LogLevel, String))
+- uid: Wss.CoreModule.Log.ResetSink
+  commentId: M:Wss.CoreModule.Log.ResetSink
+  id: ResetSink
+  parent: Wss.CoreModule.Log
+  langs:
+  - csharp
+  - vb
+  name: ResetSink()
+  nameWithType: Log.ResetSink()
+  fullName: Wss.CoreModule.Log.ResetSink()
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Reset to the default behavior (Unity if present, otherwise Console/Debug).
+  example: []
+  syntax:
+    content: public static void ResetSink()
+    content.vb: Public Shared Sub ResetSink()
+  overload: Wss.CoreModule.Log.ResetSink*
+- uid: Wss.CoreModule.Log.Info(System.String)
+  commentId: M:Wss.CoreModule.Log.Info(System.String)
+  id: Info(System.String)
+  parent: Wss.CoreModule.Log
+  langs:
+  - csharp
+  - vb
+  name: Info(string)
+  nameWithType: Log.Info(string)
+  fullName: Wss.CoreModule.Log.Info(string)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Writes an informational message.
+  example: []
+  syntax:
+    content: public static void Info(string message)
+    parameters:
+    - id: message
+      type: System.String
+    content.vb: Public Shared Sub Info(message As String)
+  overload: Wss.CoreModule.Log.Info*
+  nameWithType.vb: Log.Info(String)
+  fullName.vb: Wss.CoreModule.Log.Info(String)
+  name.vb: Info(String)
+- uid: Wss.CoreModule.Log.Warn(System.String)
+  commentId: M:Wss.CoreModule.Log.Warn(System.String)
+  id: Warn(System.String)
+  parent: Wss.CoreModule.Log
+  langs:
+  - csharp
+  - vb
+  name: Warn(string)
+  nameWithType: Log.Warn(string)
+  fullName: Wss.CoreModule.Log.Warn(string)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Writes a warning message.
+  example: []
+  syntax:
+    content: public static void Warn(string message)
+    parameters:
+    - id: message
+      type: System.String
+    content.vb: Public Shared Sub Warn(message As String)
+  overload: Wss.CoreModule.Log.Warn*
+  nameWithType.vb: Log.Warn(String)
+  fullName.vb: Wss.CoreModule.Log.Warn(String)
+  name.vb: Warn(String)
+- uid: Wss.CoreModule.Log.Error(System.String)
+  commentId: M:Wss.CoreModule.Log.Error(System.String)
+  id: Error(System.String)
+  parent: Wss.CoreModule.Log
+  langs:
+  - csharp
+  - vb
+  name: Error(string)
+  nameWithType: Log.Error(string)
+  fullName: Wss.CoreModule.Log.Error(string)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Writes an error message.
+  example: []
+  syntax:
+    content: public static void Error(string message)
+    parameters:
+    - id: message
+      type: System.String
+    content.vb: Public Shared Sub [Error](message As String)
+  overload: Wss.CoreModule.Log.Error*
+  nameWithType.vb: Log.Error(String)
+  fullName.vb: Wss.CoreModule.Log.Error(String)
+  name.vb: Error(String)
+- uid: Wss.CoreModule.Log.Error(System.Exception,System.String)
+  commentId: M:Wss.CoreModule.Log.Error(System.Exception,System.String)
+  id: Error(System.Exception,System.String)
+  parent: Wss.CoreModule.Log
+  langs:
+  - csharp
+  - vb
+  name: Error(Exception, string)
+  nameWithType: Log.Error(Exception, string)
+  fullName: Wss.CoreModule.Log.Error(System.Exception, string)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Writes an exception as an error message.
+  example: []
+  syntax:
+    content: public static void Error(Exception ex, string prefix = null)
+    parameters:
+    - id: ex
+      type: System.Exception
+      description: Exception to log.
+    - id: prefix
+      type: System.String
+      description: Optional prefix to prepend to the exception string.
+    content.vb: Public Shared Sub [Error](ex As Exception, prefix As String = Nothing)
+  overload: Wss.CoreModule.Log.Error*
+  nameWithType.vb: Log.Error(Exception, String)
+  fullName.vb: Wss.CoreModule.Log.Error(System.Exception, String)
+  name.vb: Error(Exception, String)
+references:
+- uid: Wss.CoreModule
+  commentId: N:Wss.CoreModule
+  href: Wss.html
+  name: Wss.CoreModule
+  nameWithType: Wss.CoreModule
+  fullName: Wss.CoreModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Action{Wss.CoreModule.Log.LogLevel,System.String}
+  commentId: T:System.Action{Wss.CoreModule.Log.LogLevel,System.String}
+  parent: System
+  definition: System.Action`2
+  href: Wss.CoreModule.Log.html
+  name: Action<Log.LogLevel, string>
+  nameWithType: Action<Log.LogLevel, string>
+  fullName: System.Action<Wss.CoreModule.Log.LogLevel, string>
+  nameWithType.vb: Action(Of Log.LogLevel, String)
+  fullName.vb: System.Action(Of Wss.CoreModule.Log.LogLevel, String)
+  name.vb: Action(Of Log.LogLevel, String)
+  spec.csharp:
+  - uid: System.Action`2
+    name: Action
+    isExternal: true
+  - name: <
+  - uid: Wss.CoreModule.Log
+    name: Log
+    href: Wss.CoreModule.Log.html
+  - name: .
+  - uid: Wss.CoreModule.Log.LogLevel
+    name: LogLevel
+    href: Wss.CoreModule.Log.LogLevel.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`2
+    name: Action
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Wss.CoreModule.Log
+    name: Log
+    href: Wss.CoreModule.Log.html
+  - name: .
+  - uid: Wss.CoreModule.Log.LogLevel
+    name: LogLevel
+    href: Wss.CoreModule.Log.LogLevel.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: )
+- uid: System.Action`2
+  commentId: T:System.Action`2
+  isExternal: true
+  name: Action<T1, T2>
+  nameWithType: Action<T1, T2>
+  fullName: System.Action<T1, T2>
+  nameWithType.vb: Action(Of T1, T2)
+  fullName.vb: System.Action(Of T1, T2)
+  name.vb: Action(Of T1, T2)
+  spec.csharp:
+  - uid: System.Action`2
+    name: Action
+    isExternal: true
+  - name: <
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`2
+    name: Action
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: )
+- uid: Wss.CoreModule.Log.SetSink*
+  commentId: Overload:Wss.CoreModule.Log.SetSink
+  href: Wss.CoreModule.Log.html#Wss_CoreModule_Log_SetSink_System_Action_Wss_CoreModule_Log_LogLevel_System_String__
+  name: SetSink
+  nameWithType: Log.SetSink
+  fullName: Wss.CoreModule.Log.SetSink
+- uid: Wss.CoreModule.Log.ResetSink*
+  commentId: Overload:Wss.CoreModule.Log.ResetSink
+  href: Wss.CoreModule.Log.html#Wss_CoreModule_Log_ResetSink
+  name: ResetSink
+  nameWithType: Log.ResetSink
+  fullName: Wss.CoreModule.Log.ResetSink
+- uid: Wss.CoreModule.Log.Info*
+  commentId: Overload:Wss.CoreModule.Log.Info
+  href: Wss.CoreModule.Log.html#Wss_CoreModule_Log_Info_System_String_
+  name: Info
+  nameWithType: Log.Info
+  fullName: Wss.CoreModule.Log.Info
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Wss.CoreModule.Log.Warn*
+  commentId: Overload:Wss.CoreModule.Log.Warn
+  href: Wss.CoreModule.Log.html#Wss_CoreModule_Log_Warn_System_String_
+  name: Warn
+  nameWithType: Log.Warn
+  fullName: Wss.CoreModule.Log.Warn
+- uid: Wss.CoreModule.Log.Error*
+  commentId: Overload:Wss.CoreModule.Log.Error
+  href: Wss.CoreModule.Log.html#Wss_CoreModule_Log_Error_System_String_
+  name: Error
+  nameWithType: Log.Error
+  fullName: Wss.CoreModule.Log.Error
+- uid: System.Exception
+  commentId: T:System.Exception
+  parent: System
+  isExternal: true
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception

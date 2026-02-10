@@ -1,0 +1,1880 @@
+### YamlMime:ManagedReference
+items:
+- uid: Wss.CoreModule.WssStimulationCore
+  commentId: T:Wss.CoreModule.WssStimulationCore
+  id: WssStimulationCore
+  parent: Wss.CoreModule
+  children:
+  - Wss.CoreModule.WssStimulationCore.#ctor(System.String,System.Boolean,System.Int32)
+  - Wss.CoreModule.WssStimulationCore.#ctor(System.String,System.String,System.Boolean,System.Int32)
+  - Wss.CoreModule.WssStimulationCore.Dispose
+  - Wss.CoreModule.WssStimulationCore.GetCoreConfigController
+  - Wss.CoreModule.WssStimulationCore.Initialize
+  - Wss.CoreModule.WssStimulationCore.IsChannelInRange(System.Int32)
+  - Wss.CoreModule.WssStimulationCore.Load(Wss.CoreModule.WssTarget)
+  - Wss.CoreModule.WssStimulationCore.LoadConfigFile
+  - Wss.CoreModule.WssStimulationCore.LoadWaveform(System.String,System.Int32)
+  - Wss.CoreModule.WssStimulationCore.NormalSetup
+  - Wss.CoreModule.WssStimulationCore.Ready
+  - Wss.CoreModule.WssStimulationCore.Request_Configs(System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  - Wss.CoreModule.WssStimulationCore.Save(Wss.CoreModule.WssTarget)
+  - Wss.CoreModule.WssStimulationCore.Shutdown
+  - Wss.CoreModule.WssStimulationCore.StartStim(Wss.CoreModule.WssTarget)
+  - Wss.CoreModule.WssStimulationCore.Started
+  - Wss.CoreModule.WssStimulationCore.StimulateAnalog(System.Int32,System.Int32,System.Single,System.Int32)
+  - Wss.CoreModule.WssStimulationCore.StopStim(Wss.CoreModule.WssTarget)
+  - Wss.CoreModule.WssStimulationCore.Tick
+  - Wss.CoreModule.WssStimulationCore.TryGetModuleSettings(Wss.CoreModule.WssTarget,Wss.CoreModule.ModuleSettings@)
+  - Wss.CoreModule.WssStimulationCore.UpdateEventShape(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  - Wss.CoreModule.WssStimulationCore.UpdateIPD(System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  - Wss.CoreModule.WssStimulationCore.UpdateIPD(System.Int32,Wss.CoreModule.WssTarget)
+  - Wss.CoreModule.WssStimulationCore.UpdateWaveform(System.Int32[],System.Int32,Wss.CoreModule.WssTarget)
+  - Wss.CoreModule.WssStimulationCore.UpdateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  - Wss.CoreModule.WssStimulationCore.WaveformSetup(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  - Wss.CoreModule.WssStimulationCore.ZeroOutStim(Wss.CoreModule.WssTarget)
+  langs:
+  - csharp
+  - vb
+  name: WssStimulationCore
+  nameWithType: WssStimulationCore
+  fullName: Wss.CoreModule.WssStimulationCore
+  type: Class
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Stimulation core that manages connection, setup (via a queued step runner), and a background
+
+    streaming loop. Public mutator methods enqueue device edits and return immediately.
+  example: []
+  syntax:
+    content: 'public sealed class WssStimulationCore : IStimulationCore, IBasicStimulation'
+    content.vb: Public NotInheritable Class WssStimulationCore Implements IStimulationCore, IBasicStimulation
+  inheritance:
+  - System.Object
+  implements:
+  - Wss.CoreModule.IStimulationCore
+  - Wss.CoreModule.IBasicStimulation
+- uid: Wss.CoreModule.WssStimulationCore.#ctor(System.String,System.String,System.Boolean,System.Int32)
+  commentId: M:Wss.CoreModule.WssStimulationCore.#ctor(System.String,System.String,System.Boolean,System.Int32)
+  id: '#ctor(System.String,System.String,System.Boolean,System.Int32)'
+  parent: Wss.CoreModule.WssStimulationCore
+  langs:
+  - csharp
+  - vb
+  name: WssStimulationCore(string, string, bool, int)
+  nameWithType: WssStimulationCore.WssStimulationCore(string, string, bool, int)
+  fullName: Wss.CoreModule.WssStimulationCore.WssStimulationCore(string, string, bool, int)
+  type: Constructor
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Construct with explicit COM port.
+  example: []
+  syntax:
+    content: public WssStimulationCore(string comPort, string JSONpath, bool testMode = false, int maxSetupTries = 5)
+    parameters:
+    - id: comPort
+      type: System.String
+    - id: JSONpath
+      type: System.String
+    - id: testMode
+      type: System.Boolean
+    - id: maxSetupTries
+      type: System.Int32
+    content.vb: Public Sub New(comPort As String, JSONpath As String, testMode As Boolean = False, maxSetupTries As Integer = 5)
+  overload: Wss.CoreModule.WssStimulationCore.#ctor*
+  nameWithType.vb: WssStimulationCore.New(String, String, Boolean, Integer)
+  fullName.vb: Wss.CoreModule.WssStimulationCore.New(String, String, Boolean, Integer)
+  name.vb: New(String, String, Boolean, Integer)
+- uid: Wss.CoreModule.WssStimulationCore.#ctor(System.String,System.Boolean,System.Int32)
+  commentId: M:Wss.CoreModule.WssStimulationCore.#ctor(System.String,System.Boolean,System.Int32)
+  id: '#ctor(System.String,System.Boolean,System.Int32)'
+  parent: Wss.CoreModule.WssStimulationCore
+  langs:
+  - csharp
+  - vb
+  name: WssStimulationCore(string, bool, int)
+  nameWithType: WssStimulationCore.WssStimulationCore(string, bool, int)
+  fullName: Wss.CoreModule.WssStimulationCore.WssStimulationCore(string, bool, int)
+  type: Constructor
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Construct without specifying COM port (let transport decide).
+  example: []
+  syntax:
+    content: public WssStimulationCore(string JSONpath, bool testMode = false, int maxSetupTries = 5)
+    parameters:
+    - id: JSONpath
+      type: System.String
+    - id: testMode
+      type: System.Boolean
+    - id: maxSetupTries
+      type: System.Int32
+    content.vb: Public Sub New(JSONpath As String, testMode As Boolean = False, maxSetupTries As Integer = 5)
+  overload: Wss.CoreModule.WssStimulationCore.#ctor*
+  nameWithType.vb: WssStimulationCore.New(String, Boolean, Integer)
+  fullName.vb: Wss.CoreModule.WssStimulationCore.New(String, Boolean, Integer)
+  name.vb: New(String, Boolean, Integer)
+- uid: Wss.CoreModule.WssStimulationCore.Initialize
+  commentId: M:Wss.CoreModule.WssStimulationCore.Initialize
+  id: Initialize
+  parent: Wss.CoreModule.WssStimulationCore
+  langs:
+  - csharp
+  - vb
+  name: Initialize()
+  nameWithType: WssStimulationCore.Initialize()
+  fullName: Wss.CoreModule.WssStimulationCore.Initialize()
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Initializes the core: loads JSON config, prepares buffers, and begins connecting
+
+    to the transport. Non-blocking; call <xref href="Wss.CoreModule.IStimulationCore.Tick" data-throw-if-not-resolved="false"></xref> to advance state.
+  example: []
+  syntax:
+    content: public void Initialize()
+    content.vb: Public Sub Initialize()
+  overload: Wss.CoreModule.WssStimulationCore.Initialize*
+  implements:
+  - Wss.CoreModule.IStimulationCore.Initialize
+- uid: Wss.CoreModule.WssStimulationCore.Tick
+  commentId: M:Wss.CoreModule.WssStimulationCore.Tick
+  id: Tick
+  parent: Wss.CoreModule.WssStimulationCore
+  langs:
+  - csharp
+  - vb
+  name: Tick()
+  nameWithType: WssStimulationCore.Tick()
+  fullName: Wss.CoreModule.WssStimulationCore.Tick()
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Advances the internal state machine (e.g., Connecting → SettingUp → Ready → Streaming).
+
+    Call regularly from the main loop.
+  example: []
+  syntax:
+    content: public void Tick()
+    content.vb: Public Sub Tick()
+  overload: Wss.CoreModule.WssStimulationCore.Tick*
+  implements:
+  - Wss.CoreModule.IStimulationCore.Tick
+- uid: Wss.CoreModule.WssStimulationCore.Shutdown
+  commentId: M:Wss.CoreModule.WssStimulationCore.Shutdown
+  id: Shutdown
+  parent: Wss.CoreModule.WssStimulationCore
+  langs:
+  - csharp
+  - vb
+  name: Shutdown()
+  nameWithType: WssStimulationCore.Shutdown()
+  fullName: Wss.CoreModule.WssStimulationCore.Shutdown()
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Stops streaming, attempts to zero outputs, disconnects transport, and releases resources.
+
+    Safe to call multiple times.
+  example: []
+  syntax:
+    content: public void Shutdown()
+    content.vb: Public Sub Shutdown()
+  overload: Wss.CoreModule.WssStimulationCore.Shutdown*
+  implements:
+  - Wss.CoreModule.IStimulationCore.Shutdown
+- uid: Wss.CoreModule.WssStimulationCore.LoadConfigFile
+  commentId: M:Wss.CoreModule.WssStimulationCore.LoadConfigFile
+  id: LoadConfigFile
+  parent: Wss.CoreModule.WssStimulationCore
+  langs:
+  - csharp
+  - vb
+  name: LoadConfigFile()
+  nameWithType: WssStimulationCore.LoadConfigFile()
+  fullName: Wss.CoreModule.WssStimulationCore.LoadConfigFile()
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Reloads the stimulation JSON configuration from disk into memory.
+  example: []
+  syntax:
+    content: public void LoadConfigFile()
+    content.vb: Public Sub LoadConfigFile()
+  overload: Wss.CoreModule.WssStimulationCore.LoadConfigFile*
+  implements:
+  - Wss.CoreModule.IStimulationCore.LoadConfigFile
+- uid: Wss.CoreModule.WssStimulationCore.Dispose
+  commentId: M:Wss.CoreModule.WssStimulationCore.Dispose
+  id: Dispose
+  parent: Wss.CoreModule.WssStimulationCore
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: WssStimulationCore.Dispose()
+  fullName: Wss.CoreModule.WssStimulationCore.Dispose()
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: Wss.CoreModule.WssStimulationCore.Dispose*
+- uid: Wss.CoreModule.WssStimulationCore.Started
+  commentId: M:Wss.CoreModule.WssStimulationCore.Started
+  id: Started
+  parent: Wss.CoreModule.WssStimulationCore
+  langs:
+  - csharp
+  - vb
+  name: Started()
+  nameWithType: WssStimulationCore.Started()
+  fullName: Wss.CoreModule.WssStimulationCore.Started()
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: True when device transport is started or streaming.
+  example: []
+  syntax:
+    content: public bool Started()
+    return:
+      type: System.Boolean
+    content.vb: Public Function Started() As Boolean
+  overload: Wss.CoreModule.WssStimulationCore.Started*
+  implements:
+  - Wss.CoreModule.IStimulationCore.Started
+- uid: Wss.CoreModule.WssStimulationCore.Ready
+  commentId: M:Wss.CoreModule.WssStimulationCore.Ready
+  id: Ready
+  parent: Wss.CoreModule.WssStimulationCore
+  langs:
+  - csharp
+  - vb
+  name: Ready()
+  nameWithType: WssStimulationCore.Ready()
+  fullName: Wss.CoreModule.WssStimulationCore.Ready()
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: True when the core is ready to accept start stimulation.
+  example: []
+  syntax:
+    content: public bool Ready()
+    return:
+      type: System.Boolean
+    content.vb: Public Function Ready() As Boolean
+  overload: Wss.CoreModule.WssStimulationCore.Ready*
+  implements:
+  - Wss.CoreModule.IStimulationCore.Ready
+- uid: Wss.CoreModule.WssStimulationCore.StimulateAnalog(System.Int32,System.Int32,System.Single,System.Int32)
+  commentId: M:Wss.CoreModule.WssStimulationCore.StimulateAnalog(System.Int32,System.Int32,System.Single,System.Int32)
+  id: StimulateAnalog(System.Int32,System.Int32,System.Single,System.Int32)
+  parent: Wss.CoreModule.WssStimulationCore
+  langs:
+  - csharp
+  - vb
+  name: StimulateAnalog(int, int, float, int)
+  nameWithType: WssStimulationCore.StimulateAnalog(int, int, float, int)
+  fullName: Wss.CoreModule.WssStimulationCore.StimulateAnalog(int, int, float, int)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Caches per-channel amplitude, pulse width, and IPI. No I/O here;
+
+    the streaming loop pushes cached values to the device.
+  example: []
+  syntax:
+    content: public void StimulateAnalog(int channel, int PW, float amp, int IPI)
+    parameters:
+    - id: channel
+      type: System.Int32
+      description: 1-based logical channel.
+    - id: PW
+      type: System.Int32
+      description: Pulse width (µs).
+    - id: amp
+      type: System.Single
+      description: Amplitude (mA domain; mapped to device scale during streaming).
+    - id: IPI
+      type: System.Int32
+      description: Inter-pulse interval (ms).
+    content.vb: Public Sub StimulateAnalog(channel As Integer, PW As Integer, amp As Single, IPI As Integer)
+  overload: Wss.CoreModule.WssStimulationCore.StimulateAnalog*
+  implements:
+  - Wss.CoreModule.IStimulationCore.StimulateAnalog(System.Int32,System.Int32,System.Single,System.Int32)
+  nameWithType.vb: WssStimulationCore.StimulateAnalog(Integer, Integer, Single, Integer)
+  fullName.vb: Wss.CoreModule.WssStimulationCore.StimulateAnalog(Integer, Integer, Single, Integer)
+  name.vb: StimulateAnalog(Integer, Integer, Single, Integer)
+- uid: Wss.CoreModule.WssStimulationCore.ZeroOutStim(Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.WssStimulationCore.ZeroOutStim(Wss.CoreModule.WssTarget)
+  id: ZeroOutStim(Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.WssStimulationCore
+  langs:
+  - csharp
+  - vb
+  name: ZeroOutStim(WssTarget)
+  nameWithType: WssStimulationCore.ZeroOutStim(WssTarget)
+  fullName: Wss.CoreModule.WssStimulationCore.ZeroOutStim(Wss.CoreModule.WssTarget)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Sends a zero-out command. Does not alter cached values.
+  example: []
+  syntax:
+    content: public void ZeroOutStim(WssTarget wsstarget = WssTarget.Broadcast)
+    parameters:
+    - id: wsstarget
+      type: Wss.CoreModule.WssTarget
+    content.vb: Public Sub ZeroOutStim(wsstarget As WssTarget = WssTarget.Broadcast)
+  overload: Wss.CoreModule.WssStimulationCore.ZeroOutStim*
+  implements:
+  - Wss.CoreModule.IStimulationCore.ZeroOutStim(Wss.CoreModule.WssTarget)
+- uid: Wss.CoreModule.WssStimulationCore.StartStim(Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.WssStimulationCore.StartStim(Wss.CoreModule.WssTarget)
+  id: StartStim(Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.WssStimulationCore
+  langs:
+  - csharp
+  - vb
+  name: StartStim(WssTarget)
+  nameWithType: WssStimulationCore.StartStim(WssTarget)
+  fullName: Wss.CoreModule.WssStimulationCore.StartStim(Wss.CoreModule.WssTarget)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Starts stimulation on the target and launches streaming when ready.
+  example: []
+  syntax:
+    content: public void StartStim(WssTarget targetWSS = WssTarget.Broadcast)
+    parameters:
+    - id: targetWSS
+      type: Wss.CoreModule.WssTarget
+    content.vb: Public Sub StartStim(targetWSS As WssTarget = WssTarget.Broadcast)
+  overload: Wss.CoreModule.WssStimulationCore.StartStim*
+  implements:
+  - Wss.CoreModule.IStimulationCore.StartStim(Wss.CoreModule.WssTarget)
+- uid: Wss.CoreModule.WssStimulationCore.StopStim(Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.WssStimulationCore.StopStim(Wss.CoreModule.WssTarget)
+  id: StopStim(Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.WssStimulationCore
+  langs:
+  - csharp
+  - vb
+  name: StopStim(WssTarget)
+  nameWithType: WssStimulationCore.StopStim(WssTarget)
+  fullName: Wss.CoreModule.WssStimulationCore.StopStim(Wss.CoreModule.WssTarget)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Stops stimulation on the target and, if streaming, stops the background loop.
+  example: []
+  syntax:
+    content: public void StopStim(WssTarget targetWSS = WssTarget.Broadcast)
+    parameters:
+    - id: targetWSS
+      type: Wss.CoreModule.WssTarget
+    content.vb: Public Sub StopStim(targetWSS As WssTarget = WssTarget.Broadcast)
+  overload: Wss.CoreModule.WssStimulationCore.StopStim*
+  implements:
+  - Wss.CoreModule.IStimulationCore.StopStim(Wss.CoreModule.WssTarget)
+- uid: Wss.CoreModule.WssStimulationCore.IsChannelInRange(System.Int32)
+  commentId: M:Wss.CoreModule.WssStimulationCore.IsChannelInRange(System.Int32)
+  id: IsChannelInRange(System.Int32)
+  parent: Wss.CoreModule.WssStimulationCore
+  langs:
+  - csharp
+  - vb
+  name: IsChannelInRange(int)
+  nameWithType: WssStimulationCore.IsChannelInRange(int)
+  fullName: Wss.CoreModule.WssStimulationCore.IsChannelInRange(int)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Returns true if <code class="paramref">ch</code> is within the valid channel range.
+  example: []
+  syntax:
+    content: public bool IsChannelInRange(int ch)
+    parameters:
+    - id: ch
+      type: System.Int32
+      description: 1-based channel to check.
+    return:
+      type: System.Boolean
+    content.vb: Public Function IsChannelInRange(ch As Integer) As Boolean
+  overload: Wss.CoreModule.WssStimulationCore.IsChannelInRange*
+  implements:
+  - Wss.CoreModule.IStimulationCore.IsChannelInRange(System.Int32)
+  nameWithType.vb: WssStimulationCore.IsChannelInRange(Integer)
+  fullName.vb: Wss.CoreModule.WssStimulationCore.IsChannelInRange(Integer)
+  name.vb: IsChannelInRange(Integer)
+- uid: Wss.CoreModule.WssStimulationCore.UpdateIPD(System.Int32,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.WssStimulationCore.UpdateIPD(System.Int32,Wss.CoreModule.WssTarget)
+  id: UpdateIPD(System.Int32,Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.WssStimulationCore
+  langs:
+  - csharp
+  - vb
+  name: UpdateIPD(int, WssTarget)
+  nameWithType: WssStimulationCore.UpdateIPD(int, WssTarget)
+  fullName: Wss.CoreModule.WssStimulationCore.UpdateIPD(int, Wss.CoreModule.WssTarget)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Updates inter-phase delay (IPD) for events 1–3 via setup commands (with replies).
+
+    If currently Streaming, the core pauses streaming, sends edits, and resumes when done.
+  example: []
+  syntax:
+    content: public void UpdateIPD(int IPD, WssTarget targetWSS = WssTarget.Broadcast)
+    parameters:
+    - id: IPD
+      type: System.Int32
+    - id: targetWSS
+      type: Wss.CoreModule.WssTarget
+    content.vb: Public Sub UpdateIPD(IPD As Integer, targetWSS As WssTarget = WssTarget.Broadcast)
+  overload: Wss.CoreModule.WssStimulationCore.UpdateIPD*
+  implements:
+  - Wss.CoreModule.IBasicStimulation.UpdateIPD(System.Int32,Wss.CoreModule.WssTarget)
+  nameWithType.vb: WssStimulationCore.UpdateIPD(Integer, WssTarget)
+  fullName.vb: Wss.CoreModule.WssStimulationCore.UpdateIPD(Integer, Wss.CoreModule.WssTarget)
+  name.vb: UpdateIPD(Integer, WssTarget)
+- uid: Wss.CoreModule.WssStimulationCore.UpdateIPD(System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.WssStimulationCore.UpdateIPD(System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  id: UpdateIPD(System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.WssStimulationCore
+  langs:
+  - csharp
+  - vb
+  name: UpdateIPD(int, int, WssTarget)
+  nameWithType: WssStimulationCore.UpdateIPD(int, int, WssTarget)
+  fullName: Wss.CoreModule.WssStimulationCore.UpdateIPD(int, int, Wss.CoreModule.WssTarget)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Updates inter-phase delay (IPD) for a specific <code class="paramref">eventID</code> via setup commands (with replies).
+
+    If currently Streaming, the core pauses streaming, sends the edit, and resumes when done.
+  example: []
+  syntax:
+    content: public void UpdateIPD(int IPD, int eventID, WssTarget targetWSS = WssTarget.Broadcast)
+    parameters:
+    - id: IPD
+      type: System.Int32
+    - id: eventID
+      type: System.Int32
+      description: Event slot to target.
+    - id: targetWSS
+      type: Wss.CoreModule.WssTarget
+    content.vb: Public Sub UpdateIPD(IPD As Integer, eventID As Integer, targetWSS As WssTarget = WssTarget.Broadcast)
+  overload: Wss.CoreModule.WssStimulationCore.UpdateIPD*
+  implements:
+  - Wss.CoreModule.IBasicStimulation.UpdateIPD(System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  nameWithType.vb: WssStimulationCore.UpdateIPD(Integer, Integer, WssTarget)
+  fullName.vb: Wss.CoreModule.WssStimulationCore.UpdateIPD(Integer, Integer, Wss.CoreModule.WssTarget)
+  name.vb: UpdateIPD(Integer, Integer, WssTarget)
+- uid: Wss.CoreModule.WssStimulationCore.UpdateWaveform(System.Int32[],System.Int32,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.WssStimulationCore.UpdateWaveform(System.Int32[],System.Int32,Wss.CoreModule.WssTarget)
+  id: UpdateWaveform(System.Int32[],System.Int32,Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.WssStimulationCore
+  langs:
+  - csharp
+  - vb
+  name: UpdateWaveform(int[], int, WssTarget)
+  nameWithType: WssStimulationCore.UpdateWaveform(int[], int, WssTarget)
+  fullName: Wss.CoreModule.WssStimulationCore.UpdateWaveform(int[], int, Wss.CoreModule.WssTarget)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Builds a custom waveform from raw points and schedules the upload
+
+    for the specified <code class="paramref">eventID</code>.
+  example: []
+  syntax:
+    content: public void UpdateWaveform(int[] waveform, int eventID, WssTarget targetWSS = WssTarget.Broadcast)
+    parameters:
+    - id: waveform
+      type: System.Int32[]
+      description: Concatenated waveform definition.
+    - id: eventID
+      type: System.Int32
+      description: Event slot to target.
+    - id: targetWSS
+      type: Wss.CoreModule.WssTarget
+    content.vb: Public Sub UpdateWaveform(waveform As Integer(), eventID As Integer, targetWSS As WssTarget = WssTarget.Broadcast)
+  overload: Wss.CoreModule.WssStimulationCore.UpdateWaveform*
+  implements:
+  - Wss.CoreModule.IBasicStimulation.UpdateWaveform(System.Int32[],System.Int32,Wss.CoreModule.WssTarget)
+  nameWithType.vb: WssStimulationCore.UpdateWaveform(Integer(), Integer, WssTarget)
+  fullName.vb: Wss.CoreModule.WssStimulationCore.UpdateWaveform(Integer(), Integer, Wss.CoreModule.WssTarget)
+  name.vb: UpdateWaveform(Integer(), Integer, WssTarget)
+- uid: Wss.CoreModule.WssStimulationCore.UpdateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.WssStimulationCore.UpdateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  id: UpdateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.WssStimulationCore
+  langs:
+  - csharp
+  - vb
+  name: UpdateWaveform(WaveformBuilder, int, WssTarget)
+  nameWithType: WssStimulationCore.UpdateWaveform(WaveformBuilder, int, WssTarget)
+  fullName: Wss.CoreModule.WssStimulationCore.UpdateWaveform(Wss.CoreModule.WaveformBuilder, int, Wss.CoreModule.WssTarget)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Uploads a prepared waveform and assigns shapes for <code class="paramref">eventID</code>.
+  example: []
+  syntax:
+    content: public void UpdateWaveform(WaveformBuilder waveform, int eventID, WssTarget targetWSS = WssTarget.Broadcast)
+    parameters:
+    - id: waveform
+      type: Wss.CoreModule.WaveformBuilder
+      description: Prepared <xref href="Wss.CoreModule.WaveformBuilder" data-throw-if-not-resolved="false"></xref>.
+    - id: eventID
+      type: System.Int32
+      description: Event slot to target.
+    - id: targetWSS
+      type: Wss.CoreModule.WssTarget
+    content.vb: Public Sub UpdateWaveform(waveform As WaveformBuilder, eventID As Integer, targetWSS As WssTarget = WssTarget.Broadcast)
+  overload: Wss.CoreModule.WssStimulationCore.UpdateWaveform*
+  implements:
+  - Wss.CoreModule.IBasicStimulation.UpdateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  nameWithType.vb: WssStimulationCore.UpdateWaveform(WaveformBuilder, Integer, WssTarget)
+  fullName.vb: Wss.CoreModule.WssStimulationCore.UpdateWaveform(Wss.CoreModule.WaveformBuilder, Integer, Wss.CoreModule.WssTarget)
+  name.vb: UpdateWaveform(WaveformBuilder, Integer, WssTarget)
+- uid: Wss.CoreModule.WssStimulationCore.UpdateEventShape(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.WssStimulationCore.UpdateEventShape(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  id: UpdateEventShape(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.WssStimulationCore
+  langs:
+  - csharp
+  - vb
+  name: UpdateEventShape(int, int, int, WssTarget)
+  nameWithType: WssStimulationCore.UpdateEventShape(int, int, int, WssTarget)
+  fullName: Wss.CoreModule.WssStimulationCore.UpdateEventShape(int, int, int, Wss.CoreModule.WssTarget)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Sets event shape IDs directly for the given <code class="paramref">eventID</code>.
+
+    Implementations should send setup edits with replies.
+  example: []
+  syntax:
+    content: public void UpdateEventShape(int cathodicWaveform, int anodicWaveform, int eventID, WssTarget targetWSS = WssTarget.Broadcast)
+    parameters:
+    - id: cathodicWaveform
+      type: System.Int32
+      description: Shape ID for the standard phase.
+    - id: anodicWaveform
+      type: System.Int32
+      description: Shape ID for the recharge phase.
+    - id: eventID
+      type: System.Int32
+      description: Event slot to modify.
+    - id: targetWSS
+      type: Wss.CoreModule.WssTarget
+    content.vb: Public Sub UpdateEventShape(cathodicWaveform As Integer, anodicWaveform As Integer, eventID As Integer, targetWSS As WssTarget = WssTarget.Broadcast)
+  overload: Wss.CoreModule.WssStimulationCore.UpdateEventShape*
+  implements:
+  - Wss.CoreModule.IBasicStimulation.UpdateEventShape(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  nameWithType.vb: WssStimulationCore.UpdateEventShape(Integer, Integer, Integer, WssTarget)
+  fullName.vb: Wss.CoreModule.WssStimulationCore.UpdateEventShape(Integer, Integer, Integer, Wss.CoreModule.WssTarget)
+  name.vb: UpdateEventShape(Integer, Integer, Integer, WssTarget)
+- uid: Wss.CoreModule.WssStimulationCore.LoadWaveform(System.String,System.Int32)
+  commentId: M:Wss.CoreModule.WssStimulationCore.LoadWaveform(System.String,System.Int32)
+  id: LoadWaveform(System.String,System.Int32)
+  parent: Wss.CoreModule.WssStimulationCore
+  langs:
+  - csharp
+  - vb
+  name: LoadWaveform(string, int)
+  nameWithType: WssStimulationCore.LoadWaveform(string, int)
+  fullName: Wss.CoreModule.WssStimulationCore.LoadWaveform(string, int)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Loads a waveform JSON file (â€¦WF.json), builds it, and enqueues an upload.
+  example: []
+  syntax:
+    content: public void LoadWaveform(string fileName, int eventID)
+    parameters:
+    - id: fileName
+      type: System.String
+      description: "File name or path; â€œWF.jsonâ€\x9D suffix is enforced."
+    - id: eventID
+      type: System.Int32
+      description: Event slot to target.
+    content.vb: Public Sub LoadWaveform(fileName As String, eventID As Integer)
+  overload: Wss.CoreModule.WssStimulationCore.LoadWaveform*
+  implements:
+  - Wss.CoreModule.IBasicStimulation.LoadWaveform(System.String,System.Int32)
+  nameWithType.vb: WssStimulationCore.LoadWaveform(String, Integer)
+  fullName.vb: Wss.CoreModule.WssStimulationCore.LoadWaveform(String, Integer)
+  name.vb: LoadWaveform(String, Integer)
+- uid: Wss.CoreModule.WssStimulationCore.Save(Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.WssStimulationCore.Save(Wss.CoreModule.WssTarget)
+  id: Save(Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.WssStimulationCore
+  langs:
+  - csharp
+  - vb
+  name: Save(WssTarget)
+  nameWithType: WssStimulationCore.Save(WssTarget)
+  fullName: Wss.CoreModule.WssStimulationCore.Save(Wss.CoreModule.WssTarget)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Saves board settings to non-volatile memory. Implementations should
+
+    pause streaming if needed, perform the save, then resume.
+  example: []
+  syntax:
+    content: public void Save(WssTarget targetWSS = WssTarget.Broadcast)
+    parameters:
+    - id: targetWSS
+      type: Wss.CoreModule.WssTarget
+    content.vb: Public Sub Save(targetWSS As WssTarget = WssTarget.Broadcast)
+  overload: Wss.CoreModule.WssStimulationCore.Save*
+  implements:
+  - Wss.CoreModule.IBasicStimulation.Save(Wss.CoreModule.WssTarget)
+- uid: Wss.CoreModule.WssStimulationCore.Load(Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.WssStimulationCore.Load(Wss.CoreModule.WssTarget)
+  id: Load(Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.WssStimulationCore
+  langs:
+  - csharp
+  - vb
+  name: Load(WssTarget)
+  nameWithType: WssStimulationCore.Load(WssTarget)
+  fullName: Wss.CoreModule.WssStimulationCore.Load(Wss.CoreModule.WssTarget)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Loads board settings from non-volatile memory. Implementations should
+
+    pause streaming if needed, perform the load, then resume.
+  example: []
+  syntax:
+    content: public void Load(WssTarget targetWSS = WssTarget.Broadcast)
+    parameters:
+    - id: targetWSS
+      type: Wss.CoreModule.WssTarget
+    content.vb: Public Sub Load(targetWSS As WssTarget = WssTarget.Broadcast)
+  overload: Wss.CoreModule.WssStimulationCore.Load*
+  implements:
+  - Wss.CoreModule.IBasicStimulation.Load(Wss.CoreModule.WssTarget)
+- uid: Wss.CoreModule.WssStimulationCore.Request_Configs(System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.WssStimulationCore.Request_Configs(System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  id: Request_Configs(System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.WssStimulationCore
+  langs:
+  - csharp
+  - vb
+  name: Request_Configs(int, int, WssTarget)
+  nameWithType: WssStimulationCore.Request_Configs(int, int, WssTarget)
+  fullName: Wss.CoreModule.WssStimulationCore.Request_Configs(int, int, Wss.CoreModule.WssTarget)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Requests configuration blocks from the device.
+  example: []
+  syntax:
+    content: public void Request_Configs(int command, int id, WssTarget targetWSS = WssTarget.Broadcast)
+    parameters:
+    - id: command
+      type: System.Int32
+      description: Command group identifier.
+    - id: id
+      type: System.Int32
+      description: Sub-id / selector.
+    - id: targetWSS
+      type: Wss.CoreModule.WssTarget
+    content.vb: Public Sub Request_Configs(command As Integer, id As Integer, targetWSS As WssTarget = WssTarget.Broadcast)
+  overload: Wss.CoreModule.WssStimulationCore.Request_Configs*
+  implements:
+  - Wss.CoreModule.IBasicStimulation.Request_Configs(System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  nameWithType.vb: WssStimulationCore.Request_Configs(Integer, Integer, WssTarget)
+  fullName.vb: Wss.CoreModule.WssStimulationCore.Request_Configs(Integer, Integer, Wss.CoreModule.WssTarget)
+  name.vb: Request_Configs(Integer, Integer, WssTarget)
+- uid: Wss.CoreModule.WssStimulationCore.GetCoreConfigController
+  commentId: M:Wss.CoreModule.WssStimulationCore.GetCoreConfigController
+  id: GetCoreConfigController
+  parent: Wss.CoreModule.WssStimulationCore
+  langs:
+  - csharp
+  - vb
+  name: GetCoreConfigController()
+  nameWithType: WssStimulationCore.GetCoreConfigController()
+  fullName: Wss.CoreModule.WssStimulationCore.GetCoreConfigController()
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Gets the JSON-backed stimulation configuration controller currently used by this core.
+  remarks: Returned reference is live, not a copy and thread safe.
+  example: []
+  syntax:
+    content: public CoreConfigController GetCoreConfigController()
+    return:
+      type: Wss.CoreModule.CoreConfigController
+      description: >-
+        The active <xref href="Wss.CoreModule.CoreConfigController" data-throw-if-not-resolved="false"></xref> instance that provides read/write access
+
+        to stimulation parameters and constants loaded from the configuration file.
+    content.vb: Public Function GetCoreConfigController() As CoreConfigController
+  overload: Wss.CoreModule.WssStimulationCore.GetCoreConfigController*
+  implements:
+  - Wss.CoreModule.IStimulationCore.GetCoreConfigController
+- uid: Wss.CoreModule.WssStimulationCore.NormalSetup
+  commentId: M:Wss.CoreModule.WssStimulationCore.NormalSetup
+  id: NormalSetup
+  parent: Wss.CoreModule.WssStimulationCore
+  langs:
+  - csharp
+  - vb
+  name: NormalSetup()
+  nameWithType: WssStimulationCore.NormalSetup()
+  fullName: Wss.CoreModule.WssStimulationCore.NormalSetup()
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Seeds the per-target setup step lists for a full initial configuration and starts
+
+    the setup runner. Used once after connect.
+  example: []
+  syntax:
+    content: public void NormalSetup()
+    content.vb: Public Sub NormalSetup()
+  overload: Wss.CoreModule.WssStimulationCore.NormalSetup*
+- uid: Wss.CoreModule.WssStimulationCore.WaveformSetup(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.WssStimulationCore.WaveformSetup(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  id: WaveformSetup(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.WssStimulationCore
+  langs:
+  - csharp
+  - vb
+  name: WaveformSetup(WaveformBuilder, int, WssTarget)
+  nameWithType: WssStimulationCore.WaveformSetup(WaveformBuilder, int, WssTarget)
+  fullName: Wss.CoreModule.WssStimulationCore.WaveformSetup(Wss.CoreModule.WaveformBuilder, int, Wss.CoreModule.WssTarget)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Schedules the upload of custom waveform chunks and points
+
+    <code class="paramref">eventID</code> at the uploaded shapes.
+  example: []
+  syntax:
+    content: public void WaveformSetup(WaveformBuilder wave, int eventID, WssTarget targetWSS = WssTarget.Broadcast)
+    parameters:
+    - id: wave
+      type: Wss.CoreModule.WaveformBuilder
+      description: Waveform builder.
+    - id: eventID
+      type: System.Int32
+      description: Event slot to target.
+    - id: targetWSS
+      type: Wss.CoreModule.WssTarget
+    content.vb: Public Sub WaveformSetup(wave As WaveformBuilder, eventID As Integer, targetWSS As WssTarget = WssTarget.Broadcast)
+  overload: Wss.CoreModule.WssStimulationCore.WaveformSetup*
+  implements:
+  - Wss.CoreModule.IBasicStimulation.WaveformSetup(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  nameWithType.vb: WssStimulationCore.WaveformSetup(WaveformBuilder, Integer, WssTarget)
+  fullName.vb: Wss.CoreModule.WssStimulationCore.WaveformSetup(Wss.CoreModule.WaveformBuilder, Integer, Wss.CoreModule.WssTarget)
+  name.vb: WaveformSetup(WaveformBuilder, Integer, WssTarget)
+- uid: Wss.CoreModule.WssStimulationCore.TryGetModuleSettings(Wss.CoreModule.WssTarget,Wss.CoreModule.ModuleSettings@)
+  commentId: M:Wss.CoreModule.WssStimulationCore.TryGetModuleSettings(Wss.CoreModule.WssTarget,Wss.CoreModule.ModuleSettings@)
+  id: TryGetModuleSettings(Wss.CoreModule.WssTarget,Wss.CoreModule.ModuleSettings@)
+  parent: Wss.CoreModule.WssStimulationCore
+  langs:
+  - csharp
+  - vb
+  name: TryGetModuleSettings(WssTarget, out ModuleSettings)
+  nameWithType: WssStimulationCore.TryGetModuleSettings(WssTarget, out ModuleSettings)
+  fullName: Wss.CoreModule.WssStimulationCore.TryGetModuleSettings(Wss.CoreModule.WssTarget, out Wss.CoreModule.ModuleSettings)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Tries to obtain the last decoded ModuleSettings for a target by reading
+
+    the client's cached ModuleQuery data and decoding it. Returns false if
+
+    no data is cached or the payload is incomplete; when false, 'settings'
+
+    may still be non-null but marked as partial.
+  example: []
+  syntax:
+    content: public bool TryGetModuleSettings(WssTarget target, out ModuleSettings settings)
+    parameters:
+    - id: target
+      type: Wss.CoreModule.WssTarget
+    - id: settings
+      type: Wss.CoreModule.ModuleSettings
+    return:
+      type: System.Boolean
+    content.vb: Public Function TryGetModuleSettings(target As WssTarget, settings As ModuleSettings) As Boolean
+  overload: Wss.CoreModule.WssStimulationCore.TryGetModuleSettings*
+  nameWithType.vb: WssStimulationCore.TryGetModuleSettings(WssTarget, ModuleSettings)
+  fullName.vb: Wss.CoreModule.WssStimulationCore.TryGetModuleSettings(Wss.CoreModule.WssTarget, Wss.CoreModule.ModuleSettings)
+  name.vb: TryGetModuleSettings(WssTarget, ModuleSettings)
+references:
+- uid: Wss.CoreModule
+  commentId: N:Wss.CoreModule
+  href: Wss.html
+  name: Wss.CoreModule
+  nameWithType: Wss.CoreModule
+  fullName: Wss.CoreModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Wss.CoreModule.IStimulationCore
+  commentId: T:Wss.CoreModule.IStimulationCore
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.IStimulationCore.html
+  name: IStimulationCore
+  nameWithType: IStimulationCore
+  fullName: Wss.CoreModule.IStimulationCore
+- uid: Wss.CoreModule.IBasicStimulation
+  commentId: T:Wss.CoreModule.IBasicStimulation
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.IBasicStimulation.html
+  name: IBasicStimulation
+  nameWithType: IBasicStimulation
+  fullName: Wss.CoreModule.IBasicStimulation
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Wss.CoreModule.WssStimulationCore.#ctor*
+  commentId: Overload:Wss.CoreModule.WssStimulationCore.#ctor
+  href: Wss.CoreModule.WssStimulationCore.html#Wss_CoreModule_WssStimulationCore__ctor_System_String_System_String_System_Boolean_System_Int32_
+  name: WssStimulationCore
+  nameWithType: WssStimulationCore.WssStimulationCore
+  fullName: Wss.CoreModule.WssStimulationCore.WssStimulationCore
+  nameWithType.vb: WssStimulationCore.New
+  fullName.vb: Wss.CoreModule.WssStimulationCore.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Wss.CoreModule.IStimulationCore.Tick
+  commentId: M:Wss.CoreModule.IStimulationCore.Tick
+  parent: Wss.CoreModule.IStimulationCore
+  href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_Tick
+  name: Tick()
+  nameWithType: IStimulationCore.Tick()
+  fullName: Wss.CoreModule.IStimulationCore.Tick()
+  spec.csharp:
+  - uid: Wss.CoreModule.IStimulationCore.Tick
+    name: Tick
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_Tick
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.IStimulationCore.Tick
+    name: Tick
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_Tick
+  - name: (
+  - name: )
+- uid: Wss.CoreModule.WssStimulationCore.Initialize*
+  commentId: Overload:Wss.CoreModule.WssStimulationCore.Initialize
+  href: Wss.CoreModule.WssStimulationCore.html#Wss_CoreModule_WssStimulationCore_Initialize
+  name: Initialize
+  nameWithType: WssStimulationCore.Initialize
+  fullName: Wss.CoreModule.WssStimulationCore.Initialize
+- uid: Wss.CoreModule.IStimulationCore.Initialize
+  commentId: M:Wss.CoreModule.IStimulationCore.Initialize
+  parent: Wss.CoreModule.IStimulationCore
+  href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_Initialize
+  name: Initialize()
+  nameWithType: IStimulationCore.Initialize()
+  fullName: Wss.CoreModule.IStimulationCore.Initialize()
+  spec.csharp:
+  - uid: Wss.CoreModule.IStimulationCore.Initialize
+    name: Initialize
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_Initialize
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.IStimulationCore.Initialize
+    name: Initialize
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_Initialize
+  - name: (
+  - name: )
+- uid: Wss.CoreModule.WssStimulationCore.Tick*
+  commentId: Overload:Wss.CoreModule.WssStimulationCore.Tick
+  href: Wss.CoreModule.WssStimulationCore.html#Wss_CoreModule_WssStimulationCore_Tick
+  name: Tick
+  nameWithType: WssStimulationCore.Tick
+  fullName: Wss.CoreModule.WssStimulationCore.Tick
+- uid: Wss.CoreModule.WssStimulationCore.Shutdown*
+  commentId: Overload:Wss.CoreModule.WssStimulationCore.Shutdown
+  href: Wss.CoreModule.WssStimulationCore.html#Wss_CoreModule_WssStimulationCore_Shutdown
+  name: Shutdown
+  nameWithType: WssStimulationCore.Shutdown
+  fullName: Wss.CoreModule.WssStimulationCore.Shutdown
+- uid: Wss.CoreModule.IStimulationCore.Shutdown
+  commentId: M:Wss.CoreModule.IStimulationCore.Shutdown
+  parent: Wss.CoreModule.IStimulationCore
+  href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_Shutdown
+  name: Shutdown()
+  nameWithType: IStimulationCore.Shutdown()
+  fullName: Wss.CoreModule.IStimulationCore.Shutdown()
+  spec.csharp:
+  - uid: Wss.CoreModule.IStimulationCore.Shutdown
+    name: Shutdown
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_Shutdown
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.IStimulationCore.Shutdown
+    name: Shutdown
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_Shutdown
+  - name: (
+  - name: )
+- uid: Wss.CoreModule.WssStimulationCore.LoadConfigFile*
+  commentId: Overload:Wss.CoreModule.WssStimulationCore.LoadConfigFile
+  href: Wss.CoreModule.WssStimulationCore.html#Wss_CoreModule_WssStimulationCore_LoadConfigFile
+  name: LoadConfigFile
+  nameWithType: WssStimulationCore.LoadConfigFile
+  fullName: Wss.CoreModule.WssStimulationCore.LoadConfigFile
+- uid: Wss.CoreModule.IStimulationCore.LoadConfigFile
+  commentId: M:Wss.CoreModule.IStimulationCore.LoadConfigFile
+  parent: Wss.CoreModule.IStimulationCore
+  href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_LoadConfigFile
+  name: LoadConfigFile()
+  nameWithType: IStimulationCore.LoadConfigFile()
+  fullName: Wss.CoreModule.IStimulationCore.LoadConfigFile()
+  spec.csharp:
+  - uid: Wss.CoreModule.IStimulationCore.LoadConfigFile
+    name: LoadConfigFile
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_LoadConfigFile
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.IStimulationCore.LoadConfigFile
+    name: LoadConfigFile
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_LoadConfigFile
+  - name: (
+  - name: )
+- uid: Wss.CoreModule.WssStimulationCore.Dispose*
+  commentId: Overload:Wss.CoreModule.WssStimulationCore.Dispose
+  href: Wss.CoreModule.WssStimulationCore.html#Wss_CoreModule_WssStimulationCore_Dispose
+  name: Dispose
+  nameWithType: WssStimulationCore.Dispose
+  fullName: Wss.CoreModule.WssStimulationCore.Dispose
+- uid: Wss.CoreModule.WssStimulationCore.Started*
+  commentId: Overload:Wss.CoreModule.WssStimulationCore.Started
+  href: Wss.CoreModule.WssStimulationCore.html#Wss_CoreModule_WssStimulationCore_Started
+  name: Started
+  nameWithType: WssStimulationCore.Started
+  fullName: Wss.CoreModule.WssStimulationCore.Started
+- uid: Wss.CoreModule.IStimulationCore.Started
+  commentId: M:Wss.CoreModule.IStimulationCore.Started
+  parent: Wss.CoreModule.IStimulationCore
+  href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_Started
+  name: Started()
+  nameWithType: IStimulationCore.Started()
+  fullName: Wss.CoreModule.IStimulationCore.Started()
+  spec.csharp:
+  - uid: Wss.CoreModule.IStimulationCore.Started
+    name: Started
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_Started
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.IStimulationCore.Started
+    name: Started
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_Started
+  - name: (
+  - name: )
+- uid: Wss.CoreModule.WssStimulationCore.Ready*
+  commentId: Overload:Wss.CoreModule.WssStimulationCore.Ready
+  href: Wss.CoreModule.WssStimulationCore.html#Wss_CoreModule_WssStimulationCore_Ready
+  name: Ready
+  nameWithType: WssStimulationCore.Ready
+  fullName: Wss.CoreModule.WssStimulationCore.Ready
+- uid: Wss.CoreModule.IStimulationCore.Ready
+  commentId: M:Wss.CoreModule.IStimulationCore.Ready
+  parent: Wss.CoreModule.IStimulationCore
+  href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_Ready
+  name: Ready()
+  nameWithType: IStimulationCore.Ready()
+  fullName: Wss.CoreModule.IStimulationCore.Ready()
+  spec.csharp:
+  - uid: Wss.CoreModule.IStimulationCore.Ready
+    name: Ready
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_Ready
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.IStimulationCore.Ready
+    name: Ready
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_Ready
+  - name: (
+  - name: )
+- uid: Wss.CoreModule.WssStimulationCore.StimulateAnalog*
+  commentId: Overload:Wss.CoreModule.WssStimulationCore.StimulateAnalog
+  href: Wss.CoreModule.WssStimulationCore.html#Wss_CoreModule_WssStimulationCore_StimulateAnalog_System_Int32_System_Int32_System_Single_System_Int32_
+  name: StimulateAnalog
+  nameWithType: WssStimulationCore.StimulateAnalog
+  fullName: Wss.CoreModule.WssStimulationCore.StimulateAnalog
+- uid: Wss.CoreModule.IStimulationCore.StimulateAnalog(System.Int32,System.Int32,System.Single,System.Int32)
+  commentId: M:Wss.CoreModule.IStimulationCore.StimulateAnalog(System.Int32,System.Int32,System.Single,System.Int32)
+  parent: Wss.CoreModule.IStimulationCore
+  isExternal: true
+  href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_StimulateAnalog_System_Int32_System_Int32_System_Single_System_Int32_
+  name: StimulateAnalog(int, int, float, int)
+  nameWithType: IStimulationCore.StimulateAnalog(int, int, float, int)
+  fullName: Wss.CoreModule.IStimulationCore.StimulateAnalog(int, int, float, int)
+  nameWithType.vb: IStimulationCore.StimulateAnalog(Integer, Integer, Single, Integer)
+  fullName.vb: Wss.CoreModule.IStimulationCore.StimulateAnalog(Integer, Integer, Single, Integer)
+  name.vb: StimulateAnalog(Integer, Integer, Single, Integer)
+  spec.csharp:
+  - uid: Wss.CoreModule.IStimulationCore.StimulateAnalog(System.Int32,System.Int32,System.Single,System.Int32)
+    name: StimulateAnalog
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_StimulateAnalog_System_Int32_System_Int32_System_Single_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.IStimulationCore.StimulateAnalog(System.Int32,System.Int32,System.Single,System.Int32)
+    name: StimulateAnalog
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_StimulateAnalog_System_Int32_System_Int32_System_Single_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Wss.CoreModule.WssStimulationCore.ZeroOutStim*
+  commentId: Overload:Wss.CoreModule.WssStimulationCore.ZeroOutStim
+  href: Wss.CoreModule.WssStimulationCore.html#Wss_CoreModule_WssStimulationCore_ZeroOutStim_Wss_CoreModule_WssTarget_
+  name: ZeroOutStim
+  nameWithType: WssStimulationCore.ZeroOutStim
+  fullName: Wss.CoreModule.WssStimulationCore.ZeroOutStim
+- uid: Wss.CoreModule.IStimulationCore.ZeroOutStim(Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.IStimulationCore.ZeroOutStim(Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.IStimulationCore
+  href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_ZeroOutStim_Wss_CoreModule_WssTarget_
+  name: ZeroOutStim(WssTarget)
+  nameWithType: IStimulationCore.ZeroOutStim(WssTarget)
+  fullName: Wss.CoreModule.IStimulationCore.ZeroOutStim(Wss.CoreModule.WssTarget)
+  spec.csharp:
+  - uid: Wss.CoreModule.IStimulationCore.ZeroOutStim(Wss.CoreModule.WssTarget)
+    name: ZeroOutStim
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_ZeroOutStim_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.IStimulationCore.ZeroOutStim(Wss.CoreModule.WssTarget)
+    name: ZeroOutStim
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_ZeroOutStim_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+- uid: Wss.CoreModule.WssTarget
+  commentId: T:Wss.CoreModule.WssTarget
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.WssTarget.html
+  name: WssTarget
+  nameWithType: WssTarget
+  fullName: Wss.CoreModule.WssTarget
+- uid: Wss.CoreModule.WssStimulationCore.StartStim*
+  commentId: Overload:Wss.CoreModule.WssStimulationCore.StartStim
+  href: Wss.CoreModule.WssStimulationCore.html#Wss_CoreModule_WssStimulationCore_StartStim_Wss_CoreModule_WssTarget_
+  name: StartStim
+  nameWithType: WssStimulationCore.StartStim
+  fullName: Wss.CoreModule.WssStimulationCore.StartStim
+- uid: Wss.CoreModule.IStimulationCore.StartStim(Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.IStimulationCore.StartStim(Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.IStimulationCore
+  href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_StartStim_Wss_CoreModule_WssTarget_
+  name: StartStim(WssTarget)
+  nameWithType: IStimulationCore.StartStim(WssTarget)
+  fullName: Wss.CoreModule.IStimulationCore.StartStim(Wss.CoreModule.WssTarget)
+  spec.csharp:
+  - uid: Wss.CoreModule.IStimulationCore.StartStim(Wss.CoreModule.WssTarget)
+    name: StartStim
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_StartStim_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.IStimulationCore.StartStim(Wss.CoreModule.WssTarget)
+    name: StartStim
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_StartStim_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+- uid: Wss.CoreModule.WssStimulationCore.StopStim*
+  commentId: Overload:Wss.CoreModule.WssStimulationCore.StopStim
+  href: Wss.CoreModule.WssStimulationCore.html#Wss_CoreModule_WssStimulationCore_StopStim_Wss_CoreModule_WssTarget_
+  name: StopStim
+  nameWithType: WssStimulationCore.StopStim
+  fullName: Wss.CoreModule.WssStimulationCore.StopStim
+- uid: Wss.CoreModule.IStimulationCore.StopStim(Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.IStimulationCore.StopStim(Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.IStimulationCore
+  href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_StopStim_Wss_CoreModule_WssTarget_
+  name: StopStim(WssTarget)
+  nameWithType: IStimulationCore.StopStim(WssTarget)
+  fullName: Wss.CoreModule.IStimulationCore.StopStim(Wss.CoreModule.WssTarget)
+  spec.csharp:
+  - uid: Wss.CoreModule.IStimulationCore.StopStim(Wss.CoreModule.WssTarget)
+    name: StopStim
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_StopStim_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.IStimulationCore.StopStim(Wss.CoreModule.WssTarget)
+    name: StopStim
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_StopStim_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+- uid: Wss.CoreModule.WssStimulationCore.IsChannelInRange*
+  commentId: Overload:Wss.CoreModule.WssStimulationCore.IsChannelInRange
+  href: Wss.CoreModule.WssStimulationCore.html#Wss_CoreModule_WssStimulationCore_IsChannelInRange_System_Int32_
+  name: IsChannelInRange
+  nameWithType: WssStimulationCore.IsChannelInRange
+  fullName: Wss.CoreModule.WssStimulationCore.IsChannelInRange
+- uid: Wss.CoreModule.IStimulationCore.IsChannelInRange(System.Int32)
+  commentId: M:Wss.CoreModule.IStimulationCore.IsChannelInRange(System.Int32)
+  parent: Wss.CoreModule.IStimulationCore
+  isExternal: true
+  href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_IsChannelInRange_System_Int32_
+  name: IsChannelInRange(int)
+  nameWithType: IStimulationCore.IsChannelInRange(int)
+  fullName: Wss.CoreModule.IStimulationCore.IsChannelInRange(int)
+  nameWithType.vb: IStimulationCore.IsChannelInRange(Integer)
+  fullName.vb: Wss.CoreModule.IStimulationCore.IsChannelInRange(Integer)
+  name.vb: IsChannelInRange(Integer)
+  spec.csharp:
+  - uid: Wss.CoreModule.IStimulationCore.IsChannelInRange(System.Int32)
+    name: IsChannelInRange
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_IsChannelInRange_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.IStimulationCore.IsChannelInRange(System.Int32)
+    name: IsChannelInRange
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_IsChannelInRange_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: Wss.CoreModule.WssStimulationCore.UpdateIPD*
+  commentId: Overload:Wss.CoreModule.WssStimulationCore.UpdateIPD
+  href: Wss.CoreModule.WssStimulationCore.html#Wss_CoreModule_WssStimulationCore_UpdateIPD_System_Int32_Wss_CoreModule_WssTarget_
+  name: UpdateIPD
+  nameWithType: WssStimulationCore.UpdateIPD
+  fullName: Wss.CoreModule.WssStimulationCore.UpdateIPD
+- uid: Wss.CoreModule.IBasicStimulation.UpdateIPD(System.Int32,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.IBasicStimulation.UpdateIPD(System.Int32,Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.IBasicStimulation
+  isExternal: true
+  href: Wss.CoreModule.IBasicStimulation.html#Wss_CoreModule_IBasicStimulation_UpdateIPD_System_Int32_Wss_CoreModule_WssTarget_
+  name: UpdateIPD(int, WssTarget)
+  nameWithType: IBasicStimulation.UpdateIPD(int, WssTarget)
+  fullName: Wss.CoreModule.IBasicStimulation.UpdateIPD(int, Wss.CoreModule.WssTarget)
+  nameWithType.vb: IBasicStimulation.UpdateIPD(Integer, WssTarget)
+  fullName.vb: Wss.CoreModule.IBasicStimulation.UpdateIPD(Integer, Wss.CoreModule.WssTarget)
+  name.vb: UpdateIPD(Integer, WssTarget)
+  spec.csharp:
+  - uid: Wss.CoreModule.IBasicStimulation.UpdateIPD(System.Int32,Wss.CoreModule.WssTarget)
+    name: UpdateIPD
+    href: Wss.CoreModule.IBasicStimulation.html#Wss_CoreModule_IBasicStimulation_UpdateIPD_System_Int32_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.IBasicStimulation.UpdateIPD(System.Int32,Wss.CoreModule.WssTarget)
+    name: UpdateIPD
+    href: Wss.CoreModule.IBasicStimulation.html#Wss_CoreModule_IBasicStimulation_UpdateIPD_System_Int32_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+- uid: Wss.CoreModule.IBasicStimulation.UpdateIPD(System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.IBasicStimulation.UpdateIPD(System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.IBasicStimulation
+  isExternal: true
+  href: Wss.CoreModule.IBasicStimulation.html#Wss_CoreModule_IBasicStimulation_UpdateIPD_System_Int32_System_Int32_Wss_CoreModule_WssTarget_
+  name: UpdateIPD(int, int, WssTarget)
+  nameWithType: IBasicStimulation.UpdateIPD(int, int, WssTarget)
+  fullName: Wss.CoreModule.IBasicStimulation.UpdateIPD(int, int, Wss.CoreModule.WssTarget)
+  nameWithType.vb: IBasicStimulation.UpdateIPD(Integer, Integer, WssTarget)
+  fullName.vb: Wss.CoreModule.IBasicStimulation.UpdateIPD(Integer, Integer, Wss.CoreModule.WssTarget)
+  name.vb: UpdateIPD(Integer, Integer, WssTarget)
+  spec.csharp:
+  - uid: Wss.CoreModule.IBasicStimulation.UpdateIPD(System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+    name: UpdateIPD
+    href: Wss.CoreModule.IBasicStimulation.html#Wss_CoreModule_IBasicStimulation_UpdateIPD_System_Int32_System_Int32_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.IBasicStimulation.UpdateIPD(System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+    name: UpdateIPD
+    href: Wss.CoreModule.IBasicStimulation.html#Wss_CoreModule_IBasicStimulation_UpdateIPD_System_Int32_System_Int32_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+- uid: Wss.CoreModule.WssStimulationCore.UpdateWaveform*
+  commentId: Overload:Wss.CoreModule.WssStimulationCore.UpdateWaveform
+  href: Wss.CoreModule.WssStimulationCore.html#Wss_CoreModule_WssStimulationCore_UpdateWaveform_System_Int32___System_Int32_Wss_CoreModule_WssTarget_
+  name: UpdateWaveform
+  nameWithType: WssStimulationCore.UpdateWaveform
+  fullName: Wss.CoreModule.WssStimulationCore.UpdateWaveform
+- uid: Wss.CoreModule.IBasicStimulation.UpdateWaveform(System.Int32[],System.Int32,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.IBasicStimulation.UpdateWaveform(System.Int32[],System.Int32,Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.IBasicStimulation
+  isExternal: true
+  href: Wss.CoreModule.IBasicStimulation.html#Wss_CoreModule_IBasicStimulation_UpdateWaveform_System_Int32___System_Int32_Wss_CoreModule_WssTarget_
+  name: UpdateWaveform(int[], int, WssTarget)
+  nameWithType: IBasicStimulation.UpdateWaveform(int[], int, WssTarget)
+  fullName: Wss.CoreModule.IBasicStimulation.UpdateWaveform(int[], int, Wss.CoreModule.WssTarget)
+  nameWithType.vb: IBasicStimulation.UpdateWaveform(Integer(), Integer, WssTarget)
+  fullName.vb: Wss.CoreModule.IBasicStimulation.UpdateWaveform(Integer(), Integer, Wss.CoreModule.WssTarget)
+  name.vb: UpdateWaveform(Integer(), Integer, WssTarget)
+  spec.csharp:
+  - uid: Wss.CoreModule.IBasicStimulation.UpdateWaveform(System.Int32[],System.Int32,Wss.CoreModule.WssTarget)
+    name: UpdateWaveform
+    href: Wss.CoreModule.IBasicStimulation.html#Wss_CoreModule_IBasicStimulation_UpdateWaveform_System_Int32___System_Int32_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.IBasicStimulation.UpdateWaveform(System.Int32[],System.Int32,Wss.CoreModule.WssTarget)
+    name: UpdateWaveform
+    href: Wss.CoreModule.IBasicStimulation.html#Wss_CoreModule_IBasicStimulation_UpdateWaveform_System_Int32___System_Int32_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+- uid: System.Int32[]
+  isExternal: true
+  name: int[]
+  nameWithType: int[]
+  fullName: int[]
+  nameWithType.vb: Integer()
+  fullName.vb: Integer()
+  name.vb: Integer()
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Wss.CoreModule.WaveformBuilder
+  commentId: T:Wss.CoreModule.WaveformBuilder
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.WaveformBuilder.html
+  name: WaveformBuilder
+  nameWithType: WaveformBuilder
+  fullName: Wss.CoreModule.WaveformBuilder
+- uid: Wss.CoreModule.IBasicStimulation.UpdateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.IBasicStimulation.UpdateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.IBasicStimulation
+  isExternal: true
+  href: Wss.CoreModule.IBasicStimulation.html#Wss_CoreModule_IBasicStimulation_UpdateWaveform_Wss_CoreModule_WaveformBuilder_System_Int32_Wss_CoreModule_WssTarget_
+  name: UpdateWaveform(WaveformBuilder, int, WssTarget)
+  nameWithType: IBasicStimulation.UpdateWaveform(WaveformBuilder, int, WssTarget)
+  fullName: Wss.CoreModule.IBasicStimulation.UpdateWaveform(Wss.CoreModule.WaveformBuilder, int, Wss.CoreModule.WssTarget)
+  nameWithType.vb: IBasicStimulation.UpdateWaveform(WaveformBuilder, Integer, WssTarget)
+  fullName.vb: Wss.CoreModule.IBasicStimulation.UpdateWaveform(Wss.CoreModule.WaveformBuilder, Integer, Wss.CoreModule.WssTarget)
+  name.vb: UpdateWaveform(WaveformBuilder, Integer, WssTarget)
+  spec.csharp:
+  - uid: Wss.CoreModule.IBasicStimulation.UpdateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+    name: UpdateWaveform
+    href: Wss.CoreModule.IBasicStimulation.html#Wss_CoreModule_IBasicStimulation_UpdateWaveform_Wss_CoreModule_WaveformBuilder_System_Int32_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CoreModule.WaveformBuilder
+    name: WaveformBuilder
+    href: Wss.CoreModule.WaveformBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.IBasicStimulation.UpdateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+    name: UpdateWaveform
+    href: Wss.CoreModule.IBasicStimulation.html#Wss_CoreModule_IBasicStimulation_UpdateWaveform_Wss_CoreModule_WaveformBuilder_System_Int32_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CoreModule.WaveformBuilder
+    name: WaveformBuilder
+    href: Wss.CoreModule.WaveformBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+- uid: Wss.CoreModule.WssStimulationCore.UpdateEventShape*
+  commentId: Overload:Wss.CoreModule.WssStimulationCore.UpdateEventShape
+  href: Wss.CoreModule.WssStimulationCore.html#Wss_CoreModule_WssStimulationCore_UpdateEventShape_System_Int32_System_Int32_System_Int32_Wss_CoreModule_WssTarget_
+  name: UpdateEventShape
+  nameWithType: WssStimulationCore.UpdateEventShape
+  fullName: Wss.CoreModule.WssStimulationCore.UpdateEventShape
+- uid: Wss.CoreModule.IBasicStimulation.UpdateEventShape(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.IBasicStimulation.UpdateEventShape(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.IBasicStimulation
+  isExternal: true
+  href: Wss.CoreModule.IBasicStimulation.html#Wss_CoreModule_IBasicStimulation_UpdateEventShape_System_Int32_System_Int32_System_Int32_Wss_CoreModule_WssTarget_
+  name: UpdateEventShape(int, int, int, WssTarget)
+  nameWithType: IBasicStimulation.UpdateEventShape(int, int, int, WssTarget)
+  fullName: Wss.CoreModule.IBasicStimulation.UpdateEventShape(int, int, int, Wss.CoreModule.WssTarget)
+  nameWithType.vb: IBasicStimulation.UpdateEventShape(Integer, Integer, Integer, WssTarget)
+  fullName.vb: Wss.CoreModule.IBasicStimulation.UpdateEventShape(Integer, Integer, Integer, Wss.CoreModule.WssTarget)
+  name.vb: UpdateEventShape(Integer, Integer, Integer, WssTarget)
+  spec.csharp:
+  - uid: Wss.CoreModule.IBasicStimulation.UpdateEventShape(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+    name: UpdateEventShape
+    href: Wss.CoreModule.IBasicStimulation.html#Wss_CoreModule_IBasicStimulation_UpdateEventShape_System_Int32_System_Int32_System_Int32_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.IBasicStimulation.UpdateEventShape(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+    name: UpdateEventShape
+    href: Wss.CoreModule.IBasicStimulation.html#Wss_CoreModule_IBasicStimulation_UpdateEventShape_System_Int32_System_Int32_System_Int32_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+- uid: Wss.CoreModule.WssStimulationCore.LoadWaveform*
+  commentId: Overload:Wss.CoreModule.WssStimulationCore.LoadWaveform
+  href: Wss.CoreModule.WssStimulationCore.html#Wss_CoreModule_WssStimulationCore_LoadWaveform_System_String_System_Int32_
+  name: LoadWaveform
+  nameWithType: WssStimulationCore.LoadWaveform
+  fullName: Wss.CoreModule.WssStimulationCore.LoadWaveform
+- uid: Wss.CoreModule.IBasicStimulation.LoadWaveform(System.String,System.Int32)
+  commentId: M:Wss.CoreModule.IBasicStimulation.LoadWaveform(System.String,System.Int32)
+  parent: Wss.CoreModule.IBasicStimulation
+  isExternal: true
+  href: Wss.CoreModule.IBasicStimulation.html#Wss_CoreModule_IBasicStimulation_LoadWaveform_System_String_System_Int32_
+  name: LoadWaveform(string, int)
+  nameWithType: IBasicStimulation.LoadWaveform(string, int)
+  fullName: Wss.CoreModule.IBasicStimulation.LoadWaveform(string, int)
+  nameWithType.vb: IBasicStimulation.LoadWaveform(String, Integer)
+  fullName.vb: Wss.CoreModule.IBasicStimulation.LoadWaveform(String, Integer)
+  name.vb: LoadWaveform(String, Integer)
+  spec.csharp:
+  - uid: Wss.CoreModule.IBasicStimulation.LoadWaveform(System.String,System.Int32)
+    name: LoadWaveform
+    href: Wss.CoreModule.IBasicStimulation.html#Wss_CoreModule_IBasicStimulation_LoadWaveform_System_String_System_Int32_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.IBasicStimulation.LoadWaveform(System.String,System.Int32)
+    name: LoadWaveform
+    href: Wss.CoreModule.IBasicStimulation.html#Wss_CoreModule_IBasicStimulation_LoadWaveform_System_String_System_Int32_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: Wss.CoreModule.WssStimulationCore.Save*
+  commentId: Overload:Wss.CoreModule.WssStimulationCore.Save
+  href: Wss.CoreModule.WssStimulationCore.html#Wss_CoreModule_WssStimulationCore_Save_Wss_CoreModule_WssTarget_
+  name: Save
+  nameWithType: WssStimulationCore.Save
+  fullName: Wss.CoreModule.WssStimulationCore.Save
+- uid: Wss.CoreModule.IBasicStimulation.Save(Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.IBasicStimulation.Save(Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.IBasicStimulation
+  href: Wss.CoreModule.IBasicStimulation.html#Wss_CoreModule_IBasicStimulation_Save_Wss_CoreModule_WssTarget_
+  name: Save(WssTarget)
+  nameWithType: IBasicStimulation.Save(WssTarget)
+  fullName: Wss.CoreModule.IBasicStimulation.Save(Wss.CoreModule.WssTarget)
+  spec.csharp:
+  - uid: Wss.CoreModule.IBasicStimulation.Save(Wss.CoreModule.WssTarget)
+    name: Save
+    href: Wss.CoreModule.IBasicStimulation.html#Wss_CoreModule_IBasicStimulation_Save_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.IBasicStimulation.Save(Wss.CoreModule.WssTarget)
+    name: Save
+    href: Wss.CoreModule.IBasicStimulation.html#Wss_CoreModule_IBasicStimulation_Save_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+- uid: Wss.CoreModule.WssStimulationCore.Load*
+  commentId: Overload:Wss.CoreModule.WssStimulationCore.Load
+  href: Wss.CoreModule.WssStimulationCore.html#Wss_CoreModule_WssStimulationCore_Load_Wss_CoreModule_WssTarget_
+  name: Load
+  nameWithType: WssStimulationCore.Load
+  fullName: Wss.CoreModule.WssStimulationCore.Load
+- uid: Wss.CoreModule.IBasicStimulation.Load(Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.IBasicStimulation.Load(Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.IBasicStimulation
+  href: Wss.CoreModule.IBasicStimulation.html#Wss_CoreModule_IBasicStimulation_Load_Wss_CoreModule_WssTarget_
+  name: Load(WssTarget)
+  nameWithType: IBasicStimulation.Load(WssTarget)
+  fullName: Wss.CoreModule.IBasicStimulation.Load(Wss.CoreModule.WssTarget)
+  spec.csharp:
+  - uid: Wss.CoreModule.IBasicStimulation.Load(Wss.CoreModule.WssTarget)
+    name: Load
+    href: Wss.CoreModule.IBasicStimulation.html#Wss_CoreModule_IBasicStimulation_Load_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.IBasicStimulation.Load(Wss.CoreModule.WssTarget)
+    name: Load
+    href: Wss.CoreModule.IBasicStimulation.html#Wss_CoreModule_IBasicStimulation_Load_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+- uid: Wss.CoreModule.WssStimulationCore.Request_Configs*
+  commentId: Overload:Wss.CoreModule.WssStimulationCore.Request_Configs
+  href: Wss.CoreModule.WssStimulationCore.html#Wss_CoreModule_WssStimulationCore_Request_Configs_System_Int32_System_Int32_Wss_CoreModule_WssTarget_
+  name: Request_Configs
+  nameWithType: WssStimulationCore.Request_Configs
+  fullName: Wss.CoreModule.WssStimulationCore.Request_Configs
+- uid: Wss.CoreModule.IBasicStimulation.Request_Configs(System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.IBasicStimulation.Request_Configs(System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.IBasicStimulation
+  isExternal: true
+  href: Wss.CoreModule.IBasicStimulation.html#Wss_CoreModule_IBasicStimulation_Request_Configs_System_Int32_System_Int32_Wss_CoreModule_WssTarget_
+  name: Request_Configs(int, int, WssTarget)
+  nameWithType: IBasicStimulation.Request_Configs(int, int, WssTarget)
+  fullName: Wss.CoreModule.IBasicStimulation.Request_Configs(int, int, Wss.CoreModule.WssTarget)
+  nameWithType.vb: IBasicStimulation.Request_Configs(Integer, Integer, WssTarget)
+  fullName.vb: Wss.CoreModule.IBasicStimulation.Request_Configs(Integer, Integer, Wss.CoreModule.WssTarget)
+  name.vb: Request_Configs(Integer, Integer, WssTarget)
+  spec.csharp:
+  - uid: Wss.CoreModule.IBasicStimulation.Request_Configs(System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+    name: Request_Configs
+    href: Wss.CoreModule.IBasicStimulation.html#Wss_CoreModule_IBasicStimulation_Request_Configs_System_Int32_System_Int32_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.IBasicStimulation.Request_Configs(System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+    name: Request_Configs
+    href: Wss.CoreModule.IBasicStimulation.html#Wss_CoreModule_IBasicStimulation_Request_Configs_System_Int32_System_Int32_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+- uid: Wss.CoreModule.CoreConfigController
+  commentId: T:Wss.CoreModule.CoreConfigController
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.CoreConfigController.html
+  name: CoreConfigController
+  nameWithType: CoreConfigController
+  fullName: Wss.CoreModule.CoreConfigController
+- uid: Wss.CoreModule.WssStimulationCore.GetCoreConfigController*
+  commentId: Overload:Wss.CoreModule.WssStimulationCore.GetCoreConfigController
+  href: Wss.CoreModule.WssStimulationCore.html#Wss_CoreModule_WssStimulationCore_GetCoreConfigController
+  name: GetCoreConfigController
+  nameWithType: WssStimulationCore.GetCoreConfigController
+  fullName: Wss.CoreModule.WssStimulationCore.GetCoreConfigController
+- uid: Wss.CoreModule.IStimulationCore.GetCoreConfigController
+  commentId: M:Wss.CoreModule.IStimulationCore.GetCoreConfigController
+  parent: Wss.CoreModule.IStimulationCore
+  href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_GetCoreConfigController
+  name: GetCoreConfigController()
+  nameWithType: IStimulationCore.GetCoreConfigController()
+  fullName: Wss.CoreModule.IStimulationCore.GetCoreConfigController()
+  spec.csharp:
+  - uid: Wss.CoreModule.IStimulationCore.GetCoreConfigController
+    name: GetCoreConfigController
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_GetCoreConfigController
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.IStimulationCore.GetCoreConfigController
+    name: GetCoreConfigController
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_GetCoreConfigController
+  - name: (
+  - name: )
+- uid: Wss.CoreModule.WssStimulationCore.NormalSetup*
+  commentId: Overload:Wss.CoreModule.WssStimulationCore.NormalSetup
+  href: Wss.CoreModule.WssStimulationCore.html#Wss_CoreModule_WssStimulationCore_NormalSetup
+  name: NormalSetup
+  nameWithType: WssStimulationCore.NormalSetup
+  fullName: Wss.CoreModule.WssStimulationCore.NormalSetup
+- uid: Wss.CoreModule.WssStimulationCore.WaveformSetup*
+  commentId: Overload:Wss.CoreModule.WssStimulationCore.WaveformSetup
+  href: Wss.CoreModule.WssStimulationCore.html#Wss_CoreModule_WssStimulationCore_WaveformSetup_Wss_CoreModule_WaveformBuilder_System_Int32_Wss_CoreModule_WssTarget_
+  name: WaveformSetup
+  nameWithType: WssStimulationCore.WaveformSetup
+  fullName: Wss.CoreModule.WssStimulationCore.WaveformSetup
+- uid: Wss.CoreModule.IBasicStimulation.WaveformSetup(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.IBasicStimulation.WaveformSetup(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.IBasicStimulation
+  isExternal: true
+  href: Wss.CoreModule.IBasicStimulation.html#Wss_CoreModule_IBasicStimulation_WaveformSetup_Wss_CoreModule_WaveformBuilder_System_Int32_Wss_CoreModule_WssTarget_
+  name: WaveformSetup(WaveformBuilder, int, WssTarget)
+  nameWithType: IBasicStimulation.WaveformSetup(WaveformBuilder, int, WssTarget)
+  fullName: Wss.CoreModule.IBasicStimulation.WaveformSetup(Wss.CoreModule.WaveformBuilder, int, Wss.CoreModule.WssTarget)
+  nameWithType.vb: IBasicStimulation.WaveformSetup(WaveformBuilder, Integer, WssTarget)
+  fullName.vb: Wss.CoreModule.IBasicStimulation.WaveformSetup(Wss.CoreModule.WaveformBuilder, Integer, Wss.CoreModule.WssTarget)
+  name.vb: WaveformSetup(WaveformBuilder, Integer, WssTarget)
+  spec.csharp:
+  - uid: Wss.CoreModule.IBasicStimulation.WaveformSetup(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+    name: WaveformSetup
+    href: Wss.CoreModule.IBasicStimulation.html#Wss_CoreModule_IBasicStimulation_WaveformSetup_Wss_CoreModule_WaveformBuilder_System_Int32_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CoreModule.WaveformBuilder
+    name: WaveformBuilder
+    href: Wss.CoreModule.WaveformBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.IBasicStimulation.WaveformSetup(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+    name: WaveformSetup
+    href: Wss.CoreModule.IBasicStimulation.html#Wss_CoreModule_IBasicStimulation_WaveformSetup_Wss_CoreModule_WaveformBuilder_System_Int32_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CoreModule.WaveformBuilder
+    name: WaveformBuilder
+    href: Wss.CoreModule.WaveformBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+- uid: Wss.CoreModule.WssStimulationCore.TryGetModuleSettings*
+  commentId: Overload:Wss.CoreModule.WssStimulationCore.TryGetModuleSettings
+  href: Wss.CoreModule.WssStimulationCore.html#Wss_CoreModule_WssStimulationCore_TryGetModuleSettings_Wss_CoreModule_WssTarget_Wss_CoreModule_ModuleSettings__
+  name: TryGetModuleSettings
+  nameWithType: WssStimulationCore.TryGetModuleSettings
+  fullName: Wss.CoreModule.WssStimulationCore.TryGetModuleSettings
+- uid: Wss.CoreModule.ModuleSettings
+  commentId: T:Wss.CoreModule.ModuleSettings
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.ModuleSettings.html
+  name: ModuleSettings
+  nameWithType: ModuleSettings
+  fullName: Wss.CoreModule.ModuleSettings

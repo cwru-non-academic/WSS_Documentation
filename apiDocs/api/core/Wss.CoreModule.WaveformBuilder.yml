@@ -1,0 +1,290 @@
+### YamlMime:ManagedReference
+items:
+- uid: Wss.CoreModule.WaveformBuilder
+  commentId: T:Wss.CoreModule.WaveformBuilder
+  id: WaveformBuilder
+  parent: Wss.CoreModule
+  children:
+  - Wss.CoreModule.WaveformBuilder.#ctor(System.Int32[])
+  - Wss.CoreModule.WaveformBuilder.#ctor(Wss.CoreModule.Waveform)
+  - Wss.CoreModule.WaveformBuilder.getAnodicShapeArray
+  - Wss.CoreModule.WaveformBuilder.getArea
+  - Wss.CoreModule.WaveformBuilder.getCatShapeArray
+  - Wss.CoreModule.WaveformBuilder.getWave
+  langs:
+  - csharp
+  - vb
+  name: WaveformBuilder
+  nameWithType: WaveformBuilder
+  fullName: Wss.CoreModule.WaveformBuilder
+  type: Class
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Utility for constructing charge-balanced stimulation waveforms.
+
+    Given a cathodic shape, it computes a matching anodic recharge segment and
+
+    exposes helpers to retrieve shapes and total area.
+  example: []
+  syntax:
+    content: public class WaveformBuilder
+    content.vb: Public Class WaveformBuilder
+  inheritance:
+  - System.Object
+- uid: Wss.CoreModule.WaveformBuilder.#ctor(System.Int32[])
+  commentId: M:Wss.CoreModule.WaveformBuilder.#ctor(System.Int32[])
+  id: '#ctor(System.Int32[])'
+  parent: Wss.CoreModule.WaveformBuilder
+  langs:
+  - csharp
+  - vb
+  name: WaveformBuilder(int[])
+  nameWithType: WaveformBuilder.WaveformBuilder(int[])
+  fullName: Wss.CoreModule.WaveformBuilder.WaveformBuilder(int[])
+  type: Constructor
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Initializes a builder from a cathodic waveform and computes a recharge segment
+
+    with equal area.
+  example: []
+  syntax:
+    content: public WaveformBuilder(int[] catWaveform)
+    parameters:
+    - id: catWaveform
+      type: System.Int32[]
+      description: Cathodic samples (length 32).
+    content.vb: Public Sub New(catWaveform As Integer())
+  overload: Wss.CoreModule.WaveformBuilder.#ctor*
+  nameWithType.vb: WaveformBuilder.New(Integer())
+  fullName.vb: Wss.CoreModule.WaveformBuilder.New(Integer())
+  name.vb: New(Integer())
+- uid: Wss.CoreModule.WaveformBuilder.#ctor(Wss.CoreModule.Waveform)
+  commentId: M:Wss.CoreModule.WaveformBuilder.#ctor(Wss.CoreModule.Waveform)
+  id: '#ctor(Wss.CoreModule.Waveform)'
+  parent: Wss.CoreModule.WaveformBuilder
+  langs:
+  - csharp
+  - vb
+  name: WaveformBuilder(Waveform)
+  nameWithType: WaveformBuilder.WaveformBuilder(Waveform)
+  fullName: Wss.CoreModule.WaveformBuilder.WaveformBuilder(Wss.CoreModule.Waveform)
+  type: Constructor
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Initializes a builder from an existing <xref href="Wss.CoreModule.Waveform" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public WaveformBuilder(Waveform wave)
+    parameters:
+    - id: wave
+      type: Wss.CoreModule.Waveform
+      description: Existing waveform instance.
+    content.vb: Public Sub New(wave As Waveform)
+  overload: Wss.CoreModule.WaveformBuilder.#ctor*
+  nameWithType.vb: WaveformBuilder.New(Waveform)
+  fullName.vb: Wss.CoreModule.WaveformBuilder.New(Wss.CoreModule.Waveform)
+  name.vb: New(Waveform)
+- uid: Wss.CoreModule.WaveformBuilder.getAnodicShapeArray
+  commentId: M:Wss.CoreModule.WaveformBuilder.getAnodicShapeArray
+  id: getAnodicShapeArray
+  parent: Wss.CoreModule.WaveformBuilder
+  langs:
+  - csharp
+  - vb
+  name: getAnodicShapeArray()
+  nameWithType: WaveformBuilder.getAnodicShapeArray()
+  fullName: Wss.CoreModule.WaveformBuilder.getAnodicShapeArray()
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Returns the computed anodic (recharge) shape array.
+  example: []
+  syntax:
+    content: public int[] getAnodicShapeArray()
+    return:
+      type: System.Int32[]
+    content.vb: Public Function getAnodicShapeArray() As Integer()
+  overload: Wss.CoreModule.WaveformBuilder.getAnodicShapeArray*
+- uid: Wss.CoreModule.WaveformBuilder.getCatShapeArray
+  commentId: M:Wss.CoreModule.WaveformBuilder.getCatShapeArray
+  id: getCatShapeArray
+  parent: Wss.CoreModule.WaveformBuilder
+  langs:
+  - csharp
+  - vb
+  name: getCatShapeArray()
+  nameWithType: WaveformBuilder.getCatShapeArray()
+  fullName: Wss.CoreModule.WaveformBuilder.getCatShapeArray()
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Returns the cathodic (primary) shape array.
+  example: []
+  syntax:
+    content: public int[] getCatShapeArray()
+    return:
+      type: System.Int32[]
+    content.vb: Public Function getCatShapeArray() As Integer()
+  overload: Wss.CoreModule.WaveformBuilder.getCatShapeArray*
+- uid: Wss.CoreModule.WaveformBuilder.getArea
+  commentId: M:Wss.CoreModule.WaveformBuilder.getArea
+  id: getArea
+  parent: Wss.CoreModule.WaveformBuilder
+  langs:
+  - csharp
+  - vb
+  name: getArea()
+  nameWithType: WaveformBuilder.getArea()
+  fullName: Wss.CoreModule.WaveformBuilder.getArea()
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Returns the total area computed for the cathodic waveform.
+  example: []
+  syntax:
+    content: public float getArea()
+    return:
+      type: System.Single
+    content.vb: Public Function getArea() As Single
+  overload: Wss.CoreModule.WaveformBuilder.getArea*
+- uid: Wss.CoreModule.WaveformBuilder.getWave
+  commentId: M:Wss.CoreModule.WaveformBuilder.getWave
+  id: getWave
+  parent: Wss.CoreModule.WaveformBuilder
+  langs:
+  - csharp
+  - vb
+  name: getWave()
+  nameWithType: WaveformBuilder.getWave()
+  fullName: Wss.CoreModule.WaveformBuilder.getWave()
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Builds the immutable <xref href="Wss.CoreModule.Waveform" data-throw-if-not-resolved="false"></xref> instance with current shapes and area.
+  example: []
+  syntax:
+    content: public Waveform getWave()
+    return:
+      type: Wss.CoreModule.Waveform
+    content.vb: Public Function getWave() As Waveform
+  overload: Wss.CoreModule.WaveformBuilder.getWave*
+references:
+- uid: Wss.CoreModule
+  commentId: N:Wss.CoreModule
+  href: Wss.html
+  name: Wss.CoreModule
+  nameWithType: Wss.CoreModule
+  fullName: Wss.CoreModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Wss.CoreModule.WaveformBuilder.#ctor*
+  commentId: Overload:Wss.CoreModule.WaveformBuilder.#ctor
+  href: Wss.CoreModule.WaveformBuilder.html#Wss_CoreModule_WaveformBuilder__ctor_System_Int32___
+  name: WaveformBuilder
+  nameWithType: WaveformBuilder.WaveformBuilder
+  fullName: Wss.CoreModule.WaveformBuilder.WaveformBuilder
+  nameWithType.vb: WaveformBuilder.New
+  fullName.vb: Wss.CoreModule.WaveformBuilder.New
+  name.vb: New
+- uid: System.Int32[]
+  isExternal: true
+  name: int[]
+  nameWithType: int[]
+  fullName: int[]
+  nameWithType.vb: Integer()
+  fullName.vb: Integer()
+  name.vb: Integer()
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Wss.CoreModule.Waveform
+  commentId: T:Wss.CoreModule.Waveform
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.Waveform.html
+  name: Waveform
+  nameWithType: Waveform
+  fullName: Wss.CoreModule.Waveform
+- uid: Wss.CoreModule.WaveformBuilder.getAnodicShapeArray*
+  commentId: Overload:Wss.CoreModule.WaveformBuilder.getAnodicShapeArray
+  href: Wss.CoreModule.WaveformBuilder.html#Wss_CoreModule_WaveformBuilder_getAnodicShapeArray
+  name: getAnodicShapeArray
+  nameWithType: WaveformBuilder.getAnodicShapeArray
+  fullName: Wss.CoreModule.WaveformBuilder.getAnodicShapeArray
+- uid: Wss.CoreModule.WaveformBuilder.getCatShapeArray*
+  commentId: Overload:Wss.CoreModule.WaveformBuilder.getCatShapeArray
+  href: Wss.CoreModule.WaveformBuilder.html#Wss_CoreModule_WaveformBuilder_getCatShapeArray
+  name: getCatShapeArray
+  nameWithType: WaveformBuilder.getCatShapeArray
+  fullName: Wss.CoreModule.WaveformBuilder.getCatShapeArray
+- uid: Wss.CoreModule.WaveformBuilder.getArea*
+  commentId: Overload:Wss.CoreModule.WaveformBuilder.getArea
+  href: Wss.CoreModule.WaveformBuilder.html#Wss_CoreModule_WaveformBuilder_getArea
+  name: getArea
+  nameWithType: WaveformBuilder.getArea
+  fullName: Wss.CoreModule.WaveformBuilder.getArea
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Wss.CoreModule.WaveformBuilder.getWave*
+  commentId: Overload:Wss.CoreModule.WaveformBuilder.getWave
+  href: Wss.CoreModule.WaveformBuilder.html#Wss_CoreModule_WaveformBuilder_getWave
+  name: getWave
+  nameWithType: WaveformBuilder.getWave
+  fullName: Wss.CoreModule.WaveformBuilder.getWave

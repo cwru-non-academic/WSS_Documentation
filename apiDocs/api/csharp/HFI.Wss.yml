@@ -1,0 +1,53 @@
+### YamlMime:ManagedReference
+items:
+- uid: HFI.Wss
+  commentId: N:HFI.Wss
+  id: HFI.Wss
+  children:
+  - HFI.Wss.StimulationController
+  - HFI.Wss.StimulationOptions
+  langs:
+  - csharp
+  - vb
+  name: HFI.Wss
+  nameWithType: HFI.Wss
+  fullName: HFI.Wss
+  type: Namespace
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+references:
+- uid: HFI.Wss.StimulationController
+  commentId: T:HFI.Wss.StimulationController
+  href: HFI.Wss.StimulationController.html
+  name: StimulationController
+  nameWithType: StimulationController
+  fullName: HFI.Wss.StimulationController
+- uid: HFI.Wss.StimulationOptions
+  commentId: T:HFI.Wss.StimulationOptions
+  parent: HFI.Wss
+  href: HFI.Wss.StimulationOptions.html
+  name: StimulationOptions
+  nameWithType: StimulationOptions
+  fullName: HFI.Wss.StimulationOptions
+- uid: HFI.Wss
+  commentId: N:HFI.Wss
+  href: HFI.html
+  name: HFI.Wss
+  nameWithType: HFI.Wss
+  fullName: HFI.Wss
+  spec.csharp:
+  - uid: HFI
+    name: HFI
+    href: HFI.html
+  - name: .
+  - uid: HFI.Wss
+    name: Wss
+    href: HFI.Wss.html
+  spec.vb:
+  - uid: HFI
+    name: HFI
+    href: HFI.html
+  - name: .
+  - uid: HFI.Wss
+    name: Wss
+    href: HFI.Wss.html

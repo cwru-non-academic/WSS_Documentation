@@ -1,0 +1,379 @@
+### YamlMime:ManagedReference
+items:
+- uid: Wss.CoreModule.WSSVersionHandler
+  commentId: T:Wss.CoreModule.WSSVersionHandler
+  id: WSSVersionHandler
+  parent: Wss.CoreModule
+  children:
+  - Wss.CoreModule.WSSVersionHandler.#ctor(System.String)
+  - Wss.CoreModule.WSSVersionHandler.GetVersion
+  - Wss.CoreModule.WSSVersionHandler.IsFeatureAvailable(System.String)
+  - Wss.CoreModule.WSSVersionHandler.IsLEDSettingsAvailable
+  - Wss.CoreModule.WSSVersionHandler.IsModuleQueryAvailable
+  - Wss.CoreModule.WSSVersionHandler.ToString
+  - Wss.CoreModule.WSSVersionHandler.isVersionSupported(System.String)
+  langs:
+  - csharp
+  - vb
+  name: WSSVersionHandler
+  nameWithType: WSSVersionHandler
+  fullName: Wss.CoreModule.WSSVersionHandler
+  type: Class
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Handles firmware version parsing and feature availability based on known supported versions.
+  example: []
+  syntax:
+    content: public class WSSVersionHandler
+    content.vb: Public Class WSSVersionHandler
+  inheritance:
+  - System.Object
+- uid: Wss.CoreModule.WSSVersionHandler.#ctor(System.String)
+  commentId: M:Wss.CoreModule.WSSVersionHandler.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: Wss.CoreModule.WSSVersionHandler
+  langs:
+  - csharp
+  - vb
+  name: WSSVersionHandler(string)
+  nameWithType: WSSVersionHandler.WSSVersionHandler(string)
+  fullName: Wss.CoreModule.WSSVersionHandler.WSSVersionHandler(string)
+  type: Constructor
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Initializes a new instance of the <xref href="Wss.CoreModule.WSSVersionHandler" data-throw-if-not-resolved="false"></xref> class using a string version.
+
+    Defaults to <xref href="Wss.CoreModule.WSSVersionHandler.SupportedVersions.H03" data-throw-if-not-resolved="false"></xref> if an unknown version string is provided.
+  example: []
+  syntax:
+    content: public WSSVersionHandler(string strVersion)
+    parameters:
+    - id: strVersion
+      type: System.String
+      description: Firmware version string (e.g., "H03", "J03").
+    content.vb: Public Sub New(strVersion As String)
+  overload: Wss.CoreModule.WSSVersionHandler.#ctor*
+  nameWithType.vb: WSSVersionHandler.New(String)
+  fullName.vb: Wss.CoreModule.WSSVersionHandler.New(String)
+  name.vb: New(String)
+- uid: Wss.CoreModule.WSSVersionHandler.isVersionSupported(System.String)
+  commentId: M:Wss.CoreModule.WSSVersionHandler.isVersionSupported(System.String)
+  id: isVersionSupported(System.String)
+  parent: Wss.CoreModule.WSSVersionHandler
+  langs:
+  - csharp
+  - vb
+  name: isVersionSupported(string)
+  nameWithType: WSSVersionHandler.isVersionSupported(string)
+  fullName: Wss.CoreModule.WSSVersionHandler.isVersionSupported(string)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Determines whether the specified firmware version string is supported by this application.
+  example: []
+  syntax:
+    content: public bool isVersionSupported(string strVersion)
+    parameters:
+    - id: strVersion
+      type: System.String
+      description: Firmware version identifier to check (for example, <code>"H03"</code> or <code>"J03"</code>).
+    return:
+      type: System.Boolean
+      description: >-
+        <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the supplied version is recognized and supported; 
+
+        otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+    content.vb: Public Function isVersionSupported(strVersion As String) As Boolean
+  overload: Wss.CoreModule.WSSVersionHandler.isVersionSupported*
+  nameWithType.vb: WSSVersionHandler.isVersionSupported(String)
+  fullName.vb: Wss.CoreModule.WSSVersionHandler.isVersionSupported(String)
+  name.vb: isVersionSupported(String)
+- uid: Wss.CoreModule.WSSVersionHandler.GetVersion
+  commentId: M:Wss.CoreModule.WSSVersionHandler.GetVersion
+  id: GetVersion
+  parent: Wss.CoreModule.WSSVersionHandler
+  langs:
+  - csharp
+  - vb
+  name: GetVersion()
+  nameWithType: WSSVersionHandler.GetVersion()
+  fullName: Wss.CoreModule.WSSVersionHandler.GetVersion()
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Gets the current firmware version as a named enum.
+  example: []
+  syntax:
+    content: public WSSVersionHandler.SupportedVersions GetVersion()
+    return:
+      type: Wss.CoreModule.WSSVersionHandler.SupportedVersions
+      description: The current <xref href="Wss.CoreModule.WSSVersionHandler.SupportedVersions" data-throw-if-not-resolved="false"></xref> enum value.
+    content.vb: Public Function GetVersion() As WSSVersionHandler.SupportedVersions
+  overload: Wss.CoreModule.WSSVersionHandler.GetVersion*
+- uid: Wss.CoreModule.WSSVersionHandler.IsFeatureAvailable(System.String)
+  commentId: M:Wss.CoreModule.WSSVersionHandler.IsFeatureAvailable(System.String)
+  id: IsFeatureAvailable(System.String)
+  parent: Wss.CoreModule.WSSVersionHandler
+  langs:
+  - csharp
+  - vb
+  name: IsFeatureAvailable(string)
+  nameWithType: WSSVersionHandler.IsFeatureAvailable(string)
+  fullName: Wss.CoreModule.WSSVersionHandler.IsFeatureAvailable(string)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Checks if the specified feature is supported by the current firmware version.
+  example: []
+  syntax:
+    content: public bool IsFeatureAvailable(string feature)
+    parameters:
+    - id: feature
+      type: System.String
+      description: The name of the feature to check (e.g., "AmplitudeCheck").
+    return:
+      type: System.Boolean
+      description: <code>true</code> if the feature is available in this firmware version; otherwise, <code>false</code>.
+    content.vb: Public Function IsFeatureAvailable(feature As String) As Boolean
+  overload: Wss.CoreModule.WSSVersionHandler.IsFeatureAvailable*
+  nameWithType.vb: WSSVersionHandler.IsFeatureAvailable(String)
+  fullName.vb: Wss.CoreModule.WSSVersionHandler.IsFeatureAvailable(String)
+  name.vb: IsFeatureAvailable(String)
+- uid: Wss.CoreModule.WSSVersionHandler.IsLEDSettingsAvailable
+  commentId: M:Wss.CoreModule.WSSVersionHandler.IsLEDSettingsAvailable
+  id: IsLEDSettingsAvailable
+  parent: Wss.CoreModule.WSSVersionHandler
+  langs:
+  - csharp
+  - vb
+  name: IsLEDSettingsAvailable()
+  nameWithType: WSSVersionHandler.IsLEDSettingsAvailable()
+  fullName: Wss.CoreModule.WSSVersionHandler.IsLEDSettingsAvailable()
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Indicates whether LED settings are available in the current firmware version.
+  example: []
+  syntax:
+    content: public bool IsLEDSettingsAvailable()
+    return:
+      type: System.Boolean
+      description: <code>true</code> if LED settings are supported; otherwise, <code>false</code>.
+    content.vb: Public Function IsLEDSettingsAvailable() As Boolean
+  overload: Wss.CoreModule.WSSVersionHandler.IsLEDSettingsAvailable*
+- uid: Wss.CoreModule.WSSVersionHandler.IsModuleQueryAvailable
+  commentId: M:Wss.CoreModule.WSSVersionHandler.IsModuleQueryAvailable
+  id: IsModuleQueryAvailable
+  parent: Wss.CoreModule.WSSVersionHandler
+  langs:
+  - csharp
+  - vb
+  name: IsModuleQueryAvailable()
+  nameWithType: WSSVersionHandler.IsModuleQueryAvailable()
+  fullName: Wss.CoreModule.WSSVersionHandler.IsModuleQueryAvailable()
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Indicates whether ModuleQuery (unit settings probe) is available in the current firmware version.
+  example: []
+  syntax:
+    content: public bool IsModuleQueryAvailable()
+    return:
+      type: System.Boolean
+      description: <code>true</code> if module query is supported; otherwise, <code>false</code>.
+    content.vb: Public Function IsModuleQueryAvailable() As Boolean
+  overload: Wss.CoreModule.WSSVersionHandler.IsModuleQueryAvailable*
+- uid: Wss.CoreModule.WSSVersionHandler.ToString
+  commentId: M:Wss.CoreModule.WSSVersionHandler.ToString
+  id: ToString
+  parent: Wss.CoreModule.WSSVersionHandler
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: WSSVersionHandler.ToString()
+  fullName: Wss.CoreModule.WSSVersionHandler.ToString()
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Returns the string representation of the current firmware version (e.g., "H03").
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+      description: The string name of the current firmware version.
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.Object.ToString
+  overload: Wss.CoreModule.WSSVersionHandler.ToString*
+references:
+- uid: Wss.CoreModule
+  commentId: N:Wss.CoreModule
+  href: Wss.html
+  name: Wss.CoreModule
+  nameWithType: Wss.CoreModule
+  fullName: Wss.CoreModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Wss.CoreModule.WSSVersionHandler
+  commentId: T:Wss.CoreModule.WSSVersionHandler
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.WSSVersionHandler.html
+  name: WSSVersionHandler
+  nameWithType: WSSVersionHandler
+  fullName: Wss.CoreModule.WSSVersionHandler
+- uid: Wss.CoreModule.WSSVersionHandler.SupportedVersions.H03
+  commentId: F:Wss.CoreModule.WSSVersionHandler.SupportedVersions.H03
+  href: Wss.CoreModule.WSSVersionHandler.SupportedVersions.html#Wss_CoreModule_WSSVersionHandler_SupportedVersions_H03
+  name: H03
+  nameWithType: WSSVersionHandler.SupportedVersions.H03
+  fullName: Wss.CoreModule.WSSVersionHandler.SupportedVersions.H03
+- uid: Wss.CoreModule.WSSVersionHandler.#ctor*
+  commentId: Overload:Wss.CoreModule.WSSVersionHandler.#ctor
+  href: Wss.CoreModule.WSSVersionHandler.html#Wss_CoreModule_WSSVersionHandler__ctor_System_String_
+  name: WSSVersionHandler
+  nameWithType: WSSVersionHandler.WSSVersionHandler
+  fullName: Wss.CoreModule.WSSVersionHandler.WSSVersionHandler
+  nameWithType.vb: WSSVersionHandler.New
+  fullName.vb: Wss.CoreModule.WSSVersionHandler.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Wss.CoreModule.WSSVersionHandler.isVersionSupported*
+  commentId: Overload:Wss.CoreModule.WSSVersionHandler.isVersionSupported
+  href: Wss.CoreModule.WSSVersionHandler.html#Wss_CoreModule_WSSVersionHandler_isVersionSupported_System_String_
+  name: isVersionSupported
+  nameWithType: WSSVersionHandler.isVersionSupported
+  fullName: Wss.CoreModule.WSSVersionHandler.isVersionSupported
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Wss.CoreModule.WSSVersionHandler.SupportedVersions
+  commentId: T:Wss.CoreModule.WSSVersionHandler.SupportedVersions
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.WSSVersionHandler.html
+  name: WSSVersionHandler.SupportedVersions
+  nameWithType: WSSVersionHandler.SupportedVersions
+  fullName: Wss.CoreModule.WSSVersionHandler.SupportedVersions
+  spec.csharp:
+  - uid: Wss.CoreModule.WSSVersionHandler
+    name: WSSVersionHandler
+    href: Wss.CoreModule.WSSVersionHandler.html
+  - name: .
+  - uid: Wss.CoreModule.WSSVersionHandler.SupportedVersions
+    name: SupportedVersions
+    href: Wss.CoreModule.WSSVersionHandler.SupportedVersions.html
+  spec.vb:
+  - uid: Wss.CoreModule.WSSVersionHandler
+    name: WSSVersionHandler
+    href: Wss.CoreModule.WSSVersionHandler.html
+  - name: .
+  - uid: Wss.CoreModule.WSSVersionHandler.SupportedVersions
+    name: SupportedVersions
+    href: Wss.CoreModule.WSSVersionHandler.SupportedVersions.html
+- uid: Wss.CoreModule.WSSVersionHandler.GetVersion*
+  commentId: Overload:Wss.CoreModule.WSSVersionHandler.GetVersion
+  href: Wss.CoreModule.WSSVersionHandler.html#Wss_CoreModule_WSSVersionHandler_GetVersion
+  name: GetVersion
+  nameWithType: WSSVersionHandler.GetVersion
+  fullName: Wss.CoreModule.WSSVersionHandler.GetVersion
+- uid: Wss.CoreModule.WSSVersionHandler.IsFeatureAvailable*
+  commentId: Overload:Wss.CoreModule.WSSVersionHandler.IsFeatureAvailable
+  href: Wss.CoreModule.WSSVersionHandler.html#Wss_CoreModule_WSSVersionHandler_IsFeatureAvailable_System_String_
+  name: IsFeatureAvailable
+  nameWithType: WSSVersionHandler.IsFeatureAvailable
+  fullName: Wss.CoreModule.WSSVersionHandler.IsFeatureAvailable
+- uid: Wss.CoreModule.WSSVersionHandler.IsLEDSettingsAvailable*
+  commentId: Overload:Wss.CoreModule.WSSVersionHandler.IsLEDSettingsAvailable
+  href: Wss.CoreModule.WSSVersionHandler.html#Wss_CoreModule_WSSVersionHandler_IsLEDSettingsAvailable
+  name: IsLEDSettingsAvailable
+  nameWithType: WSSVersionHandler.IsLEDSettingsAvailable
+  fullName: Wss.CoreModule.WSSVersionHandler.IsLEDSettingsAvailable
+- uid: Wss.CoreModule.WSSVersionHandler.IsModuleQueryAvailable*
+  commentId: Overload:Wss.CoreModule.WSSVersionHandler.IsModuleQueryAvailable
+  href: Wss.CoreModule.WSSVersionHandler.html#Wss_CoreModule_WSSVersionHandler_IsModuleQueryAvailable
+  name: IsModuleQueryAvailable
+  nameWithType: WSSVersionHandler.IsModuleQueryAvailable
+  fullName: Wss.CoreModule.WSSVersionHandler.IsModuleQueryAvailable
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Wss.CoreModule.WSSVersionHandler.ToString*
+  commentId: Overload:Wss.CoreModule.WSSVersionHandler.ToString
+  href: Wss.CoreModule.WSSVersionHandler.html#Wss_CoreModule_WSSVersionHandler_ToString
+  name: ToString
+  nameWithType: WSSVersionHandler.ToString
+  fullName: Wss.CoreModule.WSSVersionHandler.ToString

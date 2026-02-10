@@ -1,0 +1,1222 @@
+### YamlMime:ManagedReference
+items:
+- uid: Wss.CalibrationModule.StimParamsConfigController
+  commentId: T:Wss.CalibrationModule.StimParamsConfigController
+  id: StimParamsConfigController
+  parent: Wss.CalibrationModule
+  children:
+  - Wss.CalibrationModule.StimParamsConfigController.#ctor(System.String,System.Int32)
+  - Wss.CalibrationModule.StimParamsConfigController.AddOrUpdateStimParam(System.String,System.Single)
+  - Wss.CalibrationModule.StimParamsConfigController.GetAllStimParams
+  - Wss.CalibrationModule.StimParamsConfigController.GetChannelAmp(System.Int32)
+  - Wss.CalibrationModule.StimParamsConfigController.GetChannelAmpMode(System.Int32)
+  - Wss.CalibrationModule.StimParamsConfigController.GetChannelDefaultPW(System.Int32)
+  - Wss.CalibrationModule.StimParamsConfigController.GetChannelIPI(System.Int32)
+  - Wss.CalibrationModule.StimParamsConfigController.GetChannelPAMax(System.Int32)
+  - Wss.CalibrationModule.StimParamsConfigController.GetChannelPAMin(System.Int32)
+  - Wss.CalibrationModule.StimParamsConfigController.GetChannelPWMax(System.Int32)
+  - Wss.CalibrationModule.StimParamsConfigController.GetChannelPWMin(System.Int32)
+  - Wss.CalibrationModule.StimParamsConfigController.GetStimParam(System.String)
+  - Wss.CalibrationModule.StimParamsConfigController.IsChannelInRange(System.Int32)
+  - Wss.CalibrationModule.StimParamsConfigController.LoadParamsJson
+  - Wss.CalibrationModule.StimParamsConfigController.LoadParamsJson(System.String)
+  - Wss.CalibrationModule.StimParamsConfigController.MaxWss
+  - Wss.CalibrationModule.StimParamsConfigController.PerWss
+  - Wss.CalibrationModule.StimParamsConfigController.SaveParamsJson
+  - Wss.CalibrationModule.StimParamsConfigController.SetAllChannelsAmpMode(System.String)
+  - Wss.CalibrationModule.StimParamsConfigController.SetChannelAmp(System.Int32,System.Single)
+  - Wss.CalibrationModule.StimParamsConfigController.SetChannelAmpMode(System.Int32,System.String)
+  - Wss.CalibrationModule.StimParamsConfigController.SetChannelDefaultPW(System.Int32,System.Int32)
+  - Wss.CalibrationModule.StimParamsConfigController.SetChannelIPI(System.Int32,System.Int32)
+  - Wss.CalibrationModule.StimParamsConfigController.SetChannelPAMax(System.Int32,System.Single)
+  - Wss.CalibrationModule.StimParamsConfigController.SetChannelPAMin(System.Int32,System.Single)
+  - Wss.CalibrationModule.StimParamsConfigController.SetChannelPWMax(System.Int32,System.Int32)
+  - Wss.CalibrationModule.StimParamsConfigController.SetChannelPWMin(System.Int32,System.Int32)
+  - Wss.CalibrationModule.StimParamsConfigController.TotalChannels
+  - Wss.CalibrationModule.StimParamsConfigController.TryGetStimParam(System.String,System.Single@)
+  langs:
+  - csharp
+  - vb
+  name: StimParamsConfigController
+  nameWithType: StimParamsConfigController
+  fullName: Wss.CalibrationModule.StimParamsConfigController
+  type: Class
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: >-
+    Provides high-level access to stimulation parameter configuration.
+
+    Automatically seeds channel entries based on max device count and ensures safe access.
+
+    Supports dotted keys of form "stim.ch.{N}.{leaf}".
+  example: []
+  syntax:
+    content: public sealed class StimParamsConfigController
+    content.vb: Public NotInheritable Class StimParamsConfigController
+  inheritance:
+  - System.Object
+- uid: Wss.CalibrationModule.StimParamsConfigController.MaxWss
+  commentId: P:Wss.CalibrationModule.StimParamsConfigController.MaxWss
+  id: MaxWss
+  parent: Wss.CalibrationModule.StimParamsConfigController
+  langs:
+  - csharp
+  - vb
+  name: MaxWss
+  nameWithType: StimParamsConfigController.MaxWss
+  fullName: Wss.CalibrationModule.StimParamsConfigController.MaxWss
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Number of WSS units allowed by configuration.
+  example: []
+  syntax:
+    content: public int MaxWss { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property MaxWss As Integer
+  overload: Wss.CalibrationModule.StimParamsConfigController.MaxWss*
+- uid: Wss.CalibrationModule.StimParamsConfigController.TotalChannels
+  commentId: P:Wss.CalibrationModule.StimParamsConfigController.TotalChannels
+  id: TotalChannels
+  parent: Wss.CalibrationModule.StimParamsConfigController
+  langs:
+  - csharp
+  - vb
+  name: TotalChannels
+  nameWithType: StimParamsConfigController.TotalChannels
+  fullName: Wss.CalibrationModule.StimParamsConfigController.TotalChannels
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Total number of channels (ChannelsPerWss × MaxWss).
+  example: []
+  syntax:
+    content: public int TotalChannels { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property TotalChannels As Integer
+  overload: Wss.CalibrationModule.StimParamsConfigController.TotalChannels*
+- uid: Wss.CalibrationModule.StimParamsConfigController.PerWss
+  commentId: P:Wss.CalibrationModule.StimParamsConfigController.PerWss
+  id: PerWss
+  parent: Wss.CalibrationModule.StimParamsConfigController
+  langs:
+  - csharp
+  - vb
+  name: PerWss
+  nameWithType: StimParamsConfigController.PerWss
+  fullName: Wss.CalibrationModule.StimParamsConfigController.PerWss
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: 'Hardware constant: channels per WSS.'
+  example: []
+  syntax:
+    content: public int PerWss { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property PerWss As Integer
+  overload: Wss.CalibrationModule.StimParamsConfigController.PerWss*
+- uid: Wss.CalibrationModule.StimParamsConfigController.#ctor(System.String,System.Int32)
+  commentId: M:Wss.CalibrationModule.StimParamsConfigController.#ctor(System.String,System.Int32)
+  id: '#ctor(System.String,System.Int32)'
+  parent: Wss.CalibrationModule.StimParamsConfigController
+  langs:
+  - csharp
+  - vb
+  name: StimParamsConfigController(string, int)
+  nameWithType: StimParamsConfigController.StimParamsConfigController(string, int)
+  fullName: Wss.CalibrationModule.StimParamsConfigController.StimParamsConfigController(string, int)
+  type: Constructor
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: >-
+    Constructs a new stimulation parameter controller using the provided JSON path and max WSS value.
+
+    Automatically creates default channel entries if missing.
+  example: []
+  syntax:
+    content: public StimParamsConfigController(string path, int maxWss)
+    parameters:
+    - id: path
+      type: System.String
+      description: Path to the JSON configuration file.
+    - id: maxWss
+      type: System.Int32
+      description: Maximum number of WSS devices supported by this instance.
+    content.vb: Public Sub New(path As String, maxWss As Integer)
+  overload: Wss.CalibrationModule.StimParamsConfigController.#ctor*
+  nameWithType.vb: StimParamsConfigController.New(String, Integer)
+  fullName.vb: Wss.CalibrationModule.StimParamsConfigController.New(String, Integer)
+  name.vb: New(String, Integer)
+- uid: Wss.CalibrationModule.StimParamsConfigController.SaveParamsJson
+  commentId: M:Wss.CalibrationModule.StimParamsConfigController.SaveParamsJson
+  id: SaveParamsJson
+  parent: Wss.CalibrationModule.StimParamsConfigController
+  langs:
+  - csharp
+  - vb
+  name: SaveParamsJson()
+  nameWithType: StimParamsConfigController.SaveParamsJson()
+  fullName: Wss.CalibrationModule.StimParamsConfigController.SaveParamsJson()
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: >-
+    Persists the current stimulation params to disk using the underlying config's Save().
+
+    Thread-safe via the config layer.
+  example: []
+  syntax:
+    content: public void SaveParamsJson()
+    content.vb: Public Sub SaveParamsJson()
+  overload: Wss.CalibrationModule.StimParamsConfigController.SaveParamsJson*
+- uid: Wss.CalibrationModule.StimParamsConfigController.LoadParamsJson
+  commentId: M:Wss.CalibrationModule.StimParamsConfigController.LoadParamsJson
+  id: LoadParamsJson
+  parent: Wss.CalibrationModule.StimParamsConfigController
+  langs:
+  - csharp
+  - vb
+  name: LoadParamsJson()
+  nameWithType: StimParamsConfigController.LoadParamsJson()
+  fullName: Wss.CalibrationModule.StimParamsConfigController.LoadParamsJson()
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: >-
+    Reloads the current context file (same path used at construction or the last Load(path)).
+
+    Reinstantiates the config to re-read JSON from disk, then ensures channel template exists.
+  example: []
+  syntax:
+    content: public void LoadParamsJson()
+    content.vb: Public Sub LoadParamsJson()
+  overload: Wss.CalibrationModule.StimParamsConfigController.LoadParamsJson*
+- uid: Wss.CalibrationModule.StimParamsConfigController.LoadParamsJson(System.String)
+  commentId: M:Wss.CalibrationModule.StimParamsConfigController.LoadParamsJson(System.String)
+  id: LoadParamsJson(System.String)
+  parent: Wss.CalibrationModule.StimParamsConfigController
+  langs:
+  - csharp
+  - vb
+  name: LoadParamsJson(string)
+  nameWithType: StimParamsConfigController.LoadParamsJson(string)
+  fullName: Wss.CalibrationModule.StimParamsConfigController.LoadParamsJson(string)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: >-
+    Loads a new context file. If <code class="paramref">path</code> is a directory,
+
+    uses "stimParams.json" within it. Replaces the active config and backfills the template.
+  example: []
+  syntax:
+    content: public void LoadParamsJson(string path)
+    parameters:
+    - id: path
+      type: System.String
+      description: Absolute/relative file path or directory.
+    content.vb: Public Sub LoadParamsJson(path As String)
+  overload: Wss.CalibrationModule.StimParamsConfigController.LoadParamsJson*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: If the path is null or whitespace.
+  nameWithType.vb: StimParamsConfigController.LoadParamsJson(String)
+  fullName.vb: Wss.CalibrationModule.StimParamsConfigController.LoadParamsJson(String)
+  name.vb: LoadParamsJson(String)
+- uid: Wss.CalibrationModule.StimParamsConfigController.AddOrUpdateStimParam(System.String,System.Single)
+  commentId: M:Wss.CalibrationModule.StimParamsConfigController.AddOrUpdateStimParam(System.String,System.Single)
+  id: AddOrUpdateStimParam(System.String,System.Single)
+  parent: Wss.CalibrationModule.StimParamsConfigController
+  langs:
+  - csharp
+  - vb
+  name: AddOrUpdateStimParam(string, float)
+  nameWithType: StimParamsConfigController.AddOrUpdateStimParam(string, float)
+  fullName: Wss.CalibrationModule.StimParamsConfigController.AddOrUpdateStimParam(string, float)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Adds or updates a stimulation parameter at the specified dotted key.
+  example: []
+  syntax:
+    content: public void AddOrUpdateStimParam(string key, float value)
+    parameters:
+    - id: key
+      type: System.String
+      description: Parameter key (e.g., "stim.ch.1.defaultPA").
+    - id: value
+      type: System.Single
+      description: Value to assign.
+    content.vb: Public Sub AddOrUpdateStimParam(key As String, value As Single)
+  overload: Wss.CalibrationModule.StimParamsConfigController.AddOrUpdateStimParam*
+  nameWithType.vb: StimParamsConfigController.AddOrUpdateStimParam(String, Single)
+  fullName.vb: Wss.CalibrationModule.StimParamsConfigController.AddOrUpdateStimParam(String, Single)
+  name.vb: AddOrUpdateStimParam(String, Single)
+- uid: Wss.CalibrationModule.StimParamsConfigController.GetStimParam(System.String)
+  commentId: M:Wss.CalibrationModule.StimParamsConfigController.GetStimParam(System.String)
+  id: GetStimParam(System.String)
+  parent: Wss.CalibrationModule.StimParamsConfigController
+  langs:
+  - csharp
+  - vb
+  name: GetStimParam(string)
+  nameWithType: StimParamsConfigController.GetStimParam(string)
+  fullName: Wss.CalibrationModule.StimParamsConfigController.GetStimParam(string)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Retrieves a stimulation parameter value.
+  example: []
+  syntax:
+    content: public float GetStimParam(string key)
+    parameters:
+    - id: key
+      type: System.String
+      description: Parameter key (e.g., "stim.ch.1.maxPW").
+    return:
+      type: System.Single
+      description: Parameter value as float.
+    content.vb: Public Function GetStimParam(key As String) As Single
+  overload: Wss.CalibrationModule.StimParamsConfigController.GetStimParam*
+  nameWithType.vb: StimParamsConfigController.GetStimParam(String)
+  fullName.vb: Wss.CalibrationModule.StimParamsConfigController.GetStimParam(String)
+  name.vb: GetStimParam(String)
+- uid: Wss.CalibrationModule.StimParamsConfigController.TryGetStimParam(System.String,System.Single@)
+  commentId: M:Wss.CalibrationModule.StimParamsConfigController.TryGetStimParam(System.String,System.Single@)
+  id: TryGetStimParam(System.String,System.Single@)
+  parent: Wss.CalibrationModule.StimParamsConfigController
+  langs:
+  - csharp
+  - vb
+  name: TryGetStimParam(string, out float)
+  nameWithType: StimParamsConfigController.TryGetStimParam(string, out float)
+  fullName: Wss.CalibrationModule.StimParamsConfigController.TryGetStimParam(string, out float)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Attempts to retrieve a stimulation parameter value without throwing.
+  example: []
+  syntax:
+    content: public bool TryGetStimParam(string key, out float value)
+    parameters:
+    - id: key
+      type: System.String
+      description: Parameter key.
+    - id: value
+      type: System.Single
+      description: Output value if found.
+    return:
+      type: System.Boolean
+      description: True if the parameter exists.
+    content.vb: Public Function TryGetStimParam(key As String, value As Single) As Boolean
+  overload: Wss.CalibrationModule.StimParamsConfigController.TryGetStimParam*
+  nameWithType.vb: StimParamsConfigController.TryGetStimParam(String, Single)
+  fullName.vb: Wss.CalibrationModule.StimParamsConfigController.TryGetStimParam(String, Single)
+  name.vb: TryGetStimParam(String, Single)
+- uid: Wss.CalibrationModule.StimParamsConfigController.GetAllStimParams
+  commentId: M:Wss.CalibrationModule.StimParamsConfigController.GetAllStimParams
+  id: GetAllStimParams
+  parent: Wss.CalibrationModule.StimParamsConfigController
+  langs:
+  - csharp
+  - vb
+  name: GetAllStimParams()
+  nameWithType: StimParamsConfigController.GetAllStimParams()
+  fullName: Wss.CalibrationModule.StimParamsConfigController.GetAllStimParams()
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Returns all numeric stimulation parameters as a flat dictionary of dotted keys and float values.
+  example: []
+  syntax:
+    content: public Dictionary<string, float> GetAllStimParams()
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,System.Single}
+    content.vb: Public Function GetAllStimParams() As Dictionary(Of String, Single)
+  overload: Wss.CalibrationModule.StimParamsConfigController.GetAllStimParams*
+- uid: Wss.CalibrationModule.StimParamsConfigController.SetChannelAmp(System.Int32,System.Single)
+  commentId: M:Wss.CalibrationModule.StimParamsConfigController.SetChannelAmp(System.Int32,System.Single)
+  id: SetChannelAmp(System.Int32,System.Single)
+  parent: Wss.CalibrationModule.StimParamsConfigController
+  langs:
+  - csharp
+  - vb
+  name: SetChannelAmp(int, float)
+  nameWithType: StimParamsConfigController.SetChannelAmp(int, float)
+  fullName: Wss.CalibrationModule.StimParamsConfigController.SetChannelAmp(int, float)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Sets the default amplitude (PA) for a channel. Used when PW is the controlled axis.
+  example: []
+  syntax:
+    content: public void SetChannelAmp(int ch, float mA)
+    parameters:
+    - id: ch
+      type: System.Int32
+    - id: mA
+      type: System.Single
+    content.vb: Public Sub SetChannelAmp(ch As Integer, mA As Single)
+  overload: Wss.CalibrationModule.StimParamsConfigController.SetChannelAmp*
+  nameWithType.vb: StimParamsConfigController.SetChannelAmp(Integer, Single)
+  fullName.vb: Wss.CalibrationModule.StimParamsConfigController.SetChannelAmp(Integer, Single)
+  name.vb: SetChannelAmp(Integer, Single)
+- uid: Wss.CalibrationModule.StimParamsConfigController.SetChannelPWMin(System.Int32,System.Int32)
+  commentId: M:Wss.CalibrationModule.StimParamsConfigController.SetChannelPWMin(System.Int32,System.Int32)
+  id: SetChannelPWMin(System.Int32,System.Int32)
+  parent: Wss.CalibrationModule.StimParamsConfigController
+  langs:
+  - csharp
+  - vb
+  name: SetChannelPWMin(int, int)
+  nameWithType: StimParamsConfigController.SetChannelPWMin(int, int)
+  fullName: Wss.CalibrationModule.StimParamsConfigController.SetChannelPWMin(int, int)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Sets minimum pulse width for the specified channel in micro seconds.
+  example: []
+  syntax:
+    content: public void SetChannelPWMin(int ch, int us)
+    parameters:
+    - id: ch
+      type: System.Int32
+    - id: us
+      type: System.Int32
+    content.vb: Public Sub SetChannelPWMin(ch As Integer, us As Integer)
+  overload: Wss.CalibrationModule.StimParamsConfigController.SetChannelPWMin*
+  nameWithType.vb: StimParamsConfigController.SetChannelPWMin(Integer, Integer)
+  fullName.vb: Wss.CalibrationModule.StimParamsConfigController.SetChannelPWMin(Integer, Integer)
+  name.vb: SetChannelPWMin(Integer, Integer)
+- uid: Wss.CalibrationModule.StimParamsConfigController.SetChannelPAMin(System.Int32,System.Single)
+  commentId: M:Wss.CalibrationModule.StimParamsConfigController.SetChannelPAMin(System.Int32,System.Single)
+  id: SetChannelPAMin(System.Int32,System.Single)
+  parent: Wss.CalibrationModule.StimParamsConfigController
+  langs:
+  - csharp
+  - vb
+  name: SetChannelPAMin(int, float)
+  nameWithType: StimParamsConfigController.SetChannelPAMin(int, float)
+  fullName: Wss.CalibrationModule.StimParamsConfigController.SetChannelPAMin(int, float)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Sets minimum PA (mA) for the specified channel.
+  example: []
+  syntax:
+    content: public void SetChannelPAMin(int ch, float mA)
+    parameters:
+    - id: ch
+      type: System.Int32
+    - id: mA
+      type: System.Single
+    content.vb: Public Sub SetChannelPAMin(ch As Integer, mA As Single)
+  overload: Wss.CalibrationModule.StimParamsConfigController.SetChannelPAMin*
+  nameWithType.vb: StimParamsConfigController.SetChannelPAMin(Integer, Single)
+  fullName.vb: Wss.CalibrationModule.StimParamsConfigController.SetChannelPAMin(Integer, Single)
+  name.vb: SetChannelPAMin(Integer, Single)
+- uid: Wss.CalibrationModule.StimParamsConfigController.SetChannelPAMax(System.Int32,System.Single)
+  commentId: M:Wss.CalibrationModule.StimParamsConfigController.SetChannelPAMax(System.Int32,System.Single)
+  id: SetChannelPAMax(System.Int32,System.Single)
+  parent: Wss.CalibrationModule.StimParamsConfigController
+  langs:
+  - csharp
+  - vb
+  name: SetChannelPAMax(int, float)
+  nameWithType: StimParamsConfigController.SetChannelPAMax(int, float)
+  fullName: Wss.CalibrationModule.StimParamsConfigController.SetChannelPAMax(int, float)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Sets maximum PA (mA) for the specified channel.
+  example: []
+  syntax:
+    content: public void SetChannelPAMax(int ch, float mA)
+    parameters:
+    - id: ch
+      type: System.Int32
+    - id: mA
+      type: System.Single
+    content.vb: Public Sub SetChannelPAMax(ch As Integer, mA As Single)
+  overload: Wss.CalibrationModule.StimParamsConfigController.SetChannelPAMax*
+  nameWithType.vb: StimParamsConfigController.SetChannelPAMax(Integer, Single)
+  fullName.vb: Wss.CalibrationModule.StimParamsConfigController.SetChannelPAMax(Integer, Single)
+  name.vb: SetChannelPAMax(Integer, Single)
+- uid: Wss.CalibrationModule.StimParamsConfigController.SetChannelPWMax(System.Int32,System.Int32)
+  commentId: M:Wss.CalibrationModule.StimParamsConfigController.SetChannelPWMax(System.Int32,System.Int32)
+  id: SetChannelPWMax(System.Int32,System.Int32)
+  parent: Wss.CalibrationModule.StimParamsConfigController
+  langs:
+  - csharp
+  - vb
+  name: SetChannelPWMax(int, int)
+  nameWithType: StimParamsConfigController.SetChannelPWMax(int, int)
+  fullName: Wss.CalibrationModule.StimParamsConfigController.SetChannelPWMax(int, int)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Sets maximum pulse width for the specified channel in micro seconds.
+  example: []
+  syntax:
+    content: public void SetChannelPWMax(int ch, int us)
+    parameters:
+    - id: ch
+      type: System.Int32
+    - id: us
+      type: System.Int32
+    content.vb: Public Sub SetChannelPWMax(ch As Integer, us As Integer)
+  overload: Wss.CalibrationModule.StimParamsConfigController.SetChannelPWMax*
+  nameWithType.vb: StimParamsConfigController.SetChannelPWMax(Integer, Integer)
+  fullName.vb: Wss.CalibrationModule.StimParamsConfigController.SetChannelPWMax(Integer, Integer)
+  name.vb: SetChannelPWMax(Integer, Integer)
+- uid: Wss.CalibrationModule.StimParamsConfigController.SetChannelDefaultPW(System.Int32,System.Int32)
+  commentId: M:Wss.CalibrationModule.StimParamsConfigController.SetChannelDefaultPW(System.Int32,System.Int32)
+  id: SetChannelDefaultPW(System.Int32,System.Int32)
+  parent: Wss.CalibrationModule.StimParamsConfigController
+  langs:
+  - csharp
+  - vb
+  name: SetChannelDefaultPW(int, int)
+  nameWithType: StimParamsConfigController.SetChannelDefaultPW(int, int)
+  fullName: Wss.CalibrationModule.StimParamsConfigController.SetChannelDefaultPW(int, int)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Sets the default pulse width used when PA is the controlled axis.
+  example: []
+  syntax:
+    content: public void SetChannelDefaultPW(int ch, int us)
+    parameters:
+    - id: ch
+      type: System.Int32
+    - id: us
+      type: System.Int32
+    content.vb: Public Sub SetChannelDefaultPW(ch As Integer, us As Integer)
+  overload: Wss.CalibrationModule.StimParamsConfigController.SetChannelDefaultPW*
+  nameWithType.vb: StimParamsConfigController.SetChannelDefaultPW(Integer, Integer)
+  fullName.vb: Wss.CalibrationModule.StimParamsConfigController.SetChannelDefaultPW(Integer, Integer)
+  name.vb: SetChannelDefaultPW(Integer, Integer)
+- uid: Wss.CalibrationModule.StimParamsConfigController.SetChannelIPI(System.Int32,System.Int32)
+  commentId: M:Wss.CalibrationModule.StimParamsConfigController.SetChannelIPI(System.Int32,System.Int32)
+  id: SetChannelIPI(System.Int32,System.Int32)
+  parent: Wss.CalibrationModule.StimParamsConfigController
+  langs:
+  - csharp
+  - vb
+  name: SetChannelIPI(int, int)
+  nameWithType: StimParamsConfigController.SetChannelIPI(int, int)
+  fullName: Wss.CalibrationModule.StimParamsConfigController.SetChannelIPI(int, int)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Sets inter-pulse interval (IPI) for the specified channel in mili seconds.
+  example: []
+  syntax:
+    content: public void SetChannelIPI(int ch, int ms)
+    parameters:
+    - id: ch
+      type: System.Int32
+    - id: ms
+      type: System.Int32
+    content.vb: Public Sub SetChannelIPI(ch As Integer, ms As Integer)
+  overload: Wss.CalibrationModule.StimParamsConfigController.SetChannelIPI*
+  nameWithType.vb: StimParamsConfigController.SetChannelIPI(Integer, Integer)
+  fullName.vb: Wss.CalibrationModule.StimParamsConfigController.SetChannelIPI(Integer, Integer)
+  name.vb: SetChannelIPI(Integer, Integer)
+- uid: Wss.CalibrationModule.StimParamsConfigController.SetChannelAmpMode(System.Int32,System.String)
+  commentId: M:Wss.CalibrationModule.StimParamsConfigController.SetChannelAmpMode(System.Int32,System.String)
+  id: SetChannelAmpMode(System.Int32,System.String)
+  parent: Wss.CalibrationModule.StimParamsConfigController
+  langs:
+  - csharp
+  - vb
+  name: SetChannelAmpMode(int, string)
+  nameWithType: StimParamsConfigController.SetChannelAmpMode(int, string)
+  fullName: Wss.CalibrationModule.StimParamsConfigController.SetChannelAmpMode(int, string)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Sets the amplitude-control mode (\"PW\" or \"PA\") for the specified channel.
+  example: []
+  syntax:
+    content: public void SetChannelAmpMode(int ch, string mode)
+    parameters:
+    - id: ch
+      type: System.Int32
+    - id: mode
+      type: System.String
+    content.vb: Public Sub SetChannelAmpMode(ch As Integer, mode As String)
+  overload: Wss.CalibrationModule.StimParamsConfigController.SetChannelAmpMode*
+  nameWithType.vb: StimParamsConfigController.SetChannelAmpMode(Integer, String)
+  fullName.vb: Wss.CalibrationModule.StimParamsConfigController.SetChannelAmpMode(Integer, String)
+  name.vb: SetChannelAmpMode(Integer, String)
+- uid: Wss.CalibrationModule.StimParamsConfigController.SetAllChannelsAmpMode(System.String)
+  commentId: M:Wss.CalibrationModule.StimParamsConfigController.SetAllChannelsAmpMode(System.String)
+  id: SetAllChannelsAmpMode(System.String)
+  parent: Wss.CalibrationModule.StimParamsConfigController
+  langs:
+  - csharp
+  - vb
+  name: SetAllChannelsAmpMode(string)
+  nameWithType: StimParamsConfigController.SetAllChannelsAmpMode(string)
+  fullName: Wss.CalibrationModule.StimParamsConfigController.SetAllChannelsAmpMode(string)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Sets the amplitude-control mode for every channel in one call.
+  example: []
+  syntax:
+    content: public void SetAllChannelsAmpMode(string mode)
+    parameters:
+    - id: mode
+      type: System.String
+    content.vb: Public Sub SetAllChannelsAmpMode(mode As String)
+  overload: Wss.CalibrationModule.StimParamsConfigController.SetAllChannelsAmpMode*
+  nameWithType.vb: StimParamsConfigController.SetAllChannelsAmpMode(String)
+  fullName.vb: Wss.CalibrationModule.StimParamsConfigController.SetAllChannelsAmpMode(String)
+  name.vb: SetAllChannelsAmpMode(String)
+- uid: Wss.CalibrationModule.StimParamsConfigController.GetChannelAmp(System.Int32)
+  commentId: M:Wss.CalibrationModule.StimParamsConfigController.GetChannelAmp(System.Int32)
+  id: GetChannelAmp(System.Int32)
+  parent: Wss.CalibrationModule.StimParamsConfigController
+  langs:
+  - csharp
+  - vb
+  name: GetChannelAmp(int)
+  nameWithType: StimParamsConfigController.GetChannelAmp(int)
+  fullName: Wss.CalibrationModule.StimParamsConfigController.GetChannelAmp(int)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Gets the default amplitude (PA) stored for the channel.
+  example: []
+  syntax:
+    content: public float GetChannelAmp(int ch)
+    parameters:
+    - id: ch
+      type: System.Int32
+    return:
+      type: System.Single
+    content.vb: Public Function GetChannelAmp(ch As Integer) As Single
+  overload: Wss.CalibrationModule.StimParamsConfigController.GetChannelAmp*
+  nameWithType.vb: StimParamsConfigController.GetChannelAmp(Integer)
+  fullName.vb: Wss.CalibrationModule.StimParamsConfigController.GetChannelAmp(Integer)
+  name.vb: GetChannelAmp(Integer)
+- uid: Wss.CalibrationModule.StimParamsConfigController.GetChannelPWMin(System.Int32)
+  commentId: M:Wss.CalibrationModule.StimParamsConfigController.GetChannelPWMin(System.Int32)
+  id: GetChannelPWMin(System.Int32)
+  parent: Wss.CalibrationModule.StimParamsConfigController
+  langs:
+  - csharp
+  - vb
+  name: GetChannelPWMin(int)
+  nameWithType: StimParamsConfigController.GetChannelPWMin(int)
+  fullName: Wss.CalibrationModule.StimParamsConfigController.GetChannelPWMin(int)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Gets minimum pulse width for a channel in micro seconds.
+  example: []
+  syntax:
+    content: public int GetChannelPWMin(int ch)
+    parameters:
+    - id: ch
+      type: System.Int32
+    return:
+      type: System.Int32
+    content.vb: Public Function GetChannelPWMin(ch As Integer) As Integer
+  overload: Wss.CalibrationModule.StimParamsConfigController.GetChannelPWMin*
+  nameWithType.vb: StimParamsConfigController.GetChannelPWMin(Integer)
+  fullName.vb: Wss.CalibrationModule.StimParamsConfigController.GetChannelPWMin(Integer)
+  name.vb: GetChannelPWMin(Integer)
+- uid: Wss.CalibrationModule.StimParamsConfigController.GetChannelPAMin(System.Int32)
+  commentId: M:Wss.CalibrationModule.StimParamsConfigController.GetChannelPAMin(System.Int32)
+  id: GetChannelPAMin(System.Int32)
+  parent: Wss.CalibrationModule.StimParamsConfigController
+  langs:
+  - csharp
+  - vb
+  name: GetChannelPAMin(int)
+  nameWithType: StimParamsConfigController.GetChannelPAMin(int)
+  fullName: Wss.CalibrationModule.StimParamsConfigController.GetChannelPAMin(int)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Gets minimum PA (mA) for the channel.
+  example: []
+  syntax:
+    content: public float GetChannelPAMin(int ch)
+    parameters:
+    - id: ch
+      type: System.Int32
+    return:
+      type: System.Single
+    content.vb: Public Function GetChannelPAMin(ch As Integer) As Single
+  overload: Wss.CalibrationModule.StimParamsConfigController.GetChannelPAMin*
+  nameWithType.vb: StimParamsConfigController.GetChannelPAMin(Integer)
+  fullName.vb: Wss.CalibrationModule.StimParamsConfigController.GetChannelPAMin(Integer)
+  name.vb: GetChannelPAMin(Integer)
+- uid: Wss.CalibrationModule.StimParamsConfigController.GetChannelPAMax(System.Int32)
+  commentId: M:Wss.CalibrationModule.StimParamsConfigController.GetChannelPAMax(System.Int32)
+  id: GetChannelPAMax(System.Int32)
+  parent: Wss.CalibrationModule.StimParamsConfigController
+  langs:
+  - csharp
+  - vb
+  name: GetChannelPAMax(int)
+  nameWithType: StimParamsConfigController.GetChannelPAMax(int)
+  fullName: Wss.CalibrationModule.StimParamsConfigController.GetChannelPAMax(int)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Gets maximum PA (mA) for the channel.
+  example: []
+  syntax:
+    content: public float GetChannelPAMax(int ch)
+    parameters:
+    - id: ch
+      type: System.Int32
+    return:
+      type: System.Single
+    content.vb: Public Function GetChannelPAMax(ch As Integer) As Single
+  overload: Wss.CalibrationModule.StimParamsConfigController.GetChannelPAMax*
+  nameWithType.vb: StimParamsConfigController.GetChannelPAMax(Integer)
+  fullName.vb: Wss.CalibrationModule.StimParamsConfigController.GetChannelPAMax(Integer)
+  name.vb: GetChannelPAMax(Integer)
+- uid: Wss.CalibrationModule.StimParamsConfigController.GetChannelPWMax(System.Int32)
+  commentId: M:Wss.CalibrationModule.StimParamsConfigController.GetChannelPWMax(System.Int32)
+  id: GetChannelPWMax(System.Int32)
+  parent: Wss.CalibrationModule.StimParamsConfigController
+  langs:
+  - csharp
+  - vb
+  name: GetChannelPWMax(int)
+  nameWithType: StimParamsConfigController.GetChannelPWMax(int)
+  fullName: Wss.CalibrationModule.StimParamsConfigController.GetChannelPWMax(int)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Gets maximum pulse width for a channel in micro seconds.
+  example: []
+  syntax:
+    content: public int GetChannelPWMax(int ch)
+    parameters:
+    - id: ch
+      type: System.Int32
+    return:
+      type: System.Int32
+    content.vb: Public Function GetChannelPWMax(ch As Integer) As Integer
+  overload: Wss.CalibrationModule.StimParamsConfigController.GetChannelPWMax*
+  nameWithType.vb: StimParamsConfigController.GetChannelPWMax(Integer)
+  fullName.vb: Wss.CalibrationModule.StimParamsConfigController.GetChannelPWMax(Integer)
+  name.vb: GetChannelPWMax(Integer)
+- uid: Wss.CalibrationModule.StimParamsConfigController.GetChannelDefaultPW(System.Int32)
+  commentId: M:Wss.CalibrationModule.StimParamsConfigController.GetChannelDefaultPW(System.Int32)
+  id: GetChannelDefaultPW(System.Int32)
+  parent: Wss.CalibrationModule.StimParamsConfigController
+  langs:
+  - csharp
+  - vb
+  name: GetChannelDefaultPW(int)
+  nameWithType: StimParamsConfigController.GetChannelDefaultPW(int)
+  fullName: Wss.CalibrationModule.StimParamsConfigController.GetChannelDefaultPW(int)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Gets the default pulse width used when PA mode is active.
+  example: []
+  syntax:
+    content: public int GetChannelDefaultPW(int ch)
+    parameters:
+    - id: ch
+      type: System.Int32
+    return:
+      type: System.Int32
+    content.vb: Public Function GetChannelDefaultPW(ch As Integer) As Integer
+  overload: Wss.CalibrationModule.StimParamsConfigController.GetChannelDefaultPW*
+  nameWithType.vb: StimParamsConfigController.GetChannelDefaultPW(Integer)
+  fullName.vb: Wss.CalibrationModule.StimParamsConfigController.GetChannelDefaultPW(Integer)
+  name.vb: GetChannelDefaultPW(Integer)
+- uid: Wss.CalibrationModule.StimParamsConfigController.GetChannelIPI(System.Int32)
+  commentId: M:Wss.CalibrationModule.StimParamsConfigController.GetChannelIPI(System.Int32)
+  id: GetChannelIPI(System.Int32)
+  parent: Wss.CalibrationModule.StimParamsConfigController
+  langs:
+  - csharp
+  - vb
+  name: GetChannelIPI(int)
+  nameWithType: StimParamsConfigController.GetChannelIPI(int)
+  fullName: Wss.CalibrationModule.StimParamsConfigController.GetChannelIPI(int)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Gets inter-pulse interval (IPI) for a channel in mili seconds.
+  example: []
+  syntax:
+    content: public int GetChannelIPI(int ch)
+    parameters:
+    - id: ch
+      type: System.Int32
+    return:
+      type: System.Int32
+    content.vb: Public Function GetChannelIPI(ch As Integer) As Integer
+  overload: Wss.CalibrationModule.StimParamsConfigController.GetChannelIPI*
+  nameWithType.vb: StimParamsConfigController.GetChannelIPI(Integer)
+  fullName.vb: Wss.CalibrationModule.StimParamsConfigController.GetChannelIPI(Integer)
+  name.vb: GetChannelIPI(Integer)
+- uid: Wss.CalibrationModule.StimParamsConfigController.GetChannelAmpMode(System.Int32)
+  commentId: M:Wss.CalibrationModule.StimParamsConfigController.GetChannelAmpMode(System.Int32)
+  id: GetChannelAmpMode(System.Int32)
+  parent: Wss.CalibrationModule.StimParamsConfigController
+  langs:
+  - csharp
+  - vb
+  name: GetChannelAmpMode(int)
+  nameWithType: StimParamsConfigController.GetChannelAmpMode(int)
+  fullName: Wss.CalibrationModule.StimParamsConfigController.GetChannelAmpMode(int)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Gets the configured amplitude-control mode, warning and falling back to PW when invalid.
+  example: []
+  syntax:
+    content: public string GetChannelAmpMode(int ch)
+    parameters:
+    - id: ch
+      type: System.Int32
+    return:
+      type: System.String
+    content.vb: Public Function GetChannelAmpMode(ch As Integer) As String
+  overload: Wss.CalibrationModule.StimParamsConfigController.GetChannelAmpMode*
+  nameWithType.vb: StimParamsConfigController.GetChannelAmpMode(Integer)
+  fullName.vb: Wss.CalibrationModule.StimParamsConfigController.GetChannelAmpMode(Integer)
+  name.vb: GetChannelAmpMode(Integer)
+- uid: Wss.CalibrationModule.StimParamsConfigController.IsChannelInRange(System.Int32)
+  commentId: M:Wss.CalibrationModule.StimParamsConfigController.IsChannelInRange(System.Int32)
+  id: IsChannelInRange(System.Int32)
+  parent: Wss.CalibrationModule.StimParamsConfigController
+  langs:
+  - csharp
+  - vb
+  name: IsChannelInRange(int)
+  nameWithType: StimParamsConfigController.IsChannelInRange(int)
+  fullName: Wss.CalibrationModule.StimParamsConfigController.IsChannelInRange(int)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Checks whether a channel index is within the valid range.
+  example: []
+  syntax:
+    content: public bool IsChannelInRange(int ch)
+    parameters:
+    - id: ch
+      type: System.Int32
+    return:
+      type: System.Boolean
+    content.vb: Public Function IsChannelInRange(ch As Integer) As Boolean
+  overload: Wss.CalibrationModule.StimParamsConfigController.IsChannelInRange*
+  nameWithType.vb: StimParamsConfigController.IsChannelInRange(Integer)
+  fullName.vb: Wss.CalibrationModule.StimParamsConfigController.IsChannelInRange(Integer)
+  name.vb: IsChannelInRange(Integer)
+references:
+- uid: Wss.CalibrationModule
+  commentId: N:Wss.CalibrationModule
+  href: Wss.html
+  name: Wss.CalibrationModule
+  nameWithType: Wss.CalibrationModule
+  fullName: Wss.CalibrationModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CalibrationModule
+    name: CalibrationModule
+    href: Wss.CalibrationModule.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CalibrationModule
+    name: CalibrationModule
+    href: Wss.CalibrationModule.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Wss.CalibrationModule.StimParamsConfigController.MaxWss*
+  commentId: Overload:Wss.CalibrationModule.StimParamsConfigController.MaxWss
+  href: Wss.CalibrationModule.StimParamsConfigController.html#Wss_CalibrationModule_StimParamsConfigController_MaxWss
+  name: MaxWss
+  nameWithType: StimParamsConfigController.MaxWss
+  fullName: Wss.CalibrationModule.StimParamsConfigController.MaxWss
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Wss.CalibrationModule.StimParamsConfigController.TotalChannels*
+  commentId: Overload:Wss.CalibrationModule.StimParamsConfigController.TotalChannels
+  href: Wss.CalibrationModule.StimParamsConfigController.html#Wss_CalibrationModule_StimParamsConfigController_TotalChannels
+  name: TotalChannels
+  nameWithType: StimParamsConfigController.TotalChannels
+  fullName: Wss.CalibrationModule.StimParamsConfigController.TotalChannels
+- uid: Wss.CalibrationModule.StimParamsConfigController.PerWss*
+  commentId: Overload:Wss.CalibrationModule.StimParamsConfigController.PerWss
+  href: Wss.CalibrationModule.StimParamsConfigController.html#Wss_CalibrationModule_StimParamsConfigController_PerWss
+  name: PerWss
+  nameWithType: StimParamsConfigController.PerWss
+  fullName: Wss.CalibrationModule.StimParamsConfigController.PerWss
+- uid: Wss.CalibrationModule.StimParamsConfigController.#ctor*
+  commentId: Overload:Wss.CalibrationModule.StimParamsConfigController.#ctor
+  href: Wss.CalibrationModule.StimParamsConfigController.html#Wss_CalibrationModule_StimParamsConfigController__ctor_System_String_System_Int32_
+  name: StimParamsConfigController
+  nameWithType: StimParamsConfigController.StimParamsConfigController
+  fullName: Wss.CalibrationModule.StimParamsConfigController.StimParamsConfigController
+  nameWithType.vb: StimParamsConfigController.New
+  fullName.vb: Wss.CalibrationModule.StimParamsConfigController.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Wss.CalibrationModule.StimParamsConfigController.SaveParamsJson*
+  commentId: Overload:Wss.CalibrationModule.StimParamsConfigController.SaveParamsJson
+  href: Wss.CalibrationModule.StimParamsConfigController.html#Wss_CalibrationModule_StimParamsConfigController_SaveParamsJson
+  name: SaveParamsJson
+  nameWithType: StimParamsConfigController.SaveParamsJson
+  fullName: Wss.CalibrationModule.StimParamsConfigController.SaveParamsJson
+- uid: Wss.CalibrationModule.StimParamsConfigController.LoadParamsJson*
+  commentId: Overload:Wss.CalibrationModule.StimParamsConfigController.LoadParamsJson
+  href: Wss.CalibrationModule.StimParamsConfigController.html#Wss_CalibrationModule_StimParamsConfigController_LoadParamsJson
+  name: LoadParamsJson
+  nameWithType: StimParamsConfigController.LoadParamsJson
+  fullName: Wss.CalibrationModule.StimParamsConfigController.LoadParamsJson
+- uid: System.ArgumentException
+  commentId: T:System.ArgumentException
+  isExternal: true
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: Wss.CalibrationModule.StimParamsConfigController.AddOrUpdateStimParam*
+  commentId: Overload:Wss.CalibrationModule.StimParamsConfigController.AddOrUpdateStimParam
+  href: Wss.CalibrationModule.StimParamsConfigController.html#Wss_CalibrationModule_StimParamsConfigController_AddOrUpdateStimParam_System_String_System_Single_
+  name: AddOrUpdateStimParam
+  nameWithType: StimParamsConfigController.AddOrUpdateStimParam
+  fullName: Wss.CalibrationModule.StimParamsConfigController.AddOrUpdateStimParam
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Wss.CalibrationModule.StimParamsConfigController.GetStimParam*
+  commentId: Overload:Wss.CalibrationModule.StimParamsConfigController.GetStimParam
+  href: Wss.CalibrationModule.StimParamsConfigController.html#Wss_CalibrationModule_StimParamsConfigController_GetStimParam_System_String_
+  name: GetStimParam
+  nameWithType: StimParamsConfigController.GetStimParam
+  fullName: Wss.CalibrationModule.StimParamsConfigController.GetStimParam
+- uid: Wss.CalibrationModule.StimParamsConfigController.TryGetStimParam*
+  commentId: Overload:Wss.CalibrationModule.StimParamsConfigController.TryGetStimParam
+  href: Wss.CalibrationModule.StimParamsConfigController.html#Wss_CalibrationModule_StimParamsConfigController_TryGetStimParam_System_String_System_Single__
+  name: TryGetStimParam
+  nameWithType: StimParamsConfigController.TryGetStimParam
+  fullName: Wss.CalibrationModule.StimParamsConfigController.TryGetStimParam
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Wss.CalibrationModule.StimParamsConfigController.GetAllStimParams*
+  commentId: Overload:Wss.CalibrationModule.StimParamsConfigController.GetAllStimParams
+  href: Wss.CalibrationModule.StimParamsConfigController.html#Wss_CalibrationModule_StimParamsConfigController_GetAllStimParams
+  name: GetAllStimParams
+  nameWithType: StimParamsConfigController.GetAllStimParams
+  fullName: Wss.CalibrationModule.StimParamsConfigController.GetAllStimParams
+- uid: System.Collections.Generic.Dictionary{System.String,System.Single}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,System.Single}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  name: Dictionary<string, float>
+  nameWithType: Dictionary<string, float>
+  fullName: System.Collections.Generic.Dictionary<string, float>
+  nameWithType.vb: Dictionary(Of String, Single)
+  fullName.vb: System.Collections.Generic.Dictionary(Of String, Single)
+  name.vb: Dictionary(Of String, Single)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Wss.CalibrationModule.StimParamsConfigController.SetChannelAmp*
+  commentId: Overload:Wss.CalibrationModule.StimParamsConfigController.SetChannelAmp
+  href: Wss.CalibrationModule.StimParamsConfigController.html#Wss_CalibrationModule_StimParamsConfigController_SetChannelAmp_System_Int32_System_Single_
+  name: SetChannelAmp
+  nameWithType: StimParamsConfigController.SetChannelAmp
+  fullName: Wss.CalibrationModule.StimParamsConfigController.SetChannelAmp
+- uid: Wss.CalibrationModule.StimParamsConfigController.SetChannelPWMin*
+  commentId: Overload:Wss.CalibrationModule.StimParamsConfigController.SetChannelPWMin
+  href: Wss.CalibrationModule.StimParamsConfigController.html#Wss_CalibrationModule_StimParamsConfigController_SetChannelPWMin_System_Int32_System_Int32_
+  name: SetChannelPWMin
+  nameWithType: StimParamsConfigController.SetChannelPWMin
+  fullName: Wss.CalibrationModule.StimParamsConfigController.SetChannelPWMin
+- uid: Wss.CalibrationModule.StimParamsConfigController.SetChannelPAMin*
+  commentId: Overload:Wss.CalibrationModule.StimParamsConfigController.SetChannelPAMin
+  href: Wss.CalibrationModule.StimParamsConfigController.html#Wss_CalibrationModule_StimParamsConfigController_SetChannelPAMin_System_Int32_System_Single_
+  name: SetChannelPAMin
+  nameWithType: StimParamsConfigController.SetChannelPAMin
+  fullName: Wss.CalibrationModule.StimParamsConfigController.SetChannelPAMin
+- uid: Wss.CalibrationModule.StimParamsConfigController.SetChannelPAMax*
+  commentId: Overload:Wss.CalibrationModule.StimParamsConfigController.SetChannelPAMax
+  href: Wss.CalibrationModule.StimParamsConfigController.html#Wss_CalibrationModule_StimParamsConfigController_SetChannelPAMax_System_Int32_System_Single_
+  name: SetChannelPAMax
+  nameWithType: StimParamsConfigController.SetChannelPAMax
+  fullName: Wss.CalibrationModule.StimParamsConfigController.SetChannelPAMax
+- uid: Wss.CalibrationModule.StimParamsConfigController.SetChannelPWMax*
+  commentId: Overload:Wss.CalibrationModule.StimParamsConfigController.SetChannelPWMax
+  href: Wss.CalibrationModule.StimParamsConfigController.html#Wss_CalibrationModule_StimParamsConfigController_SetChannelPWMax_System_Int32_System_Int32_
+  name: SetChannelPWMax
+  nameWithType: StimParamsConfigController.SetChannelPWMax
+  fullName: Wss.CalibrationModule.StimParamsConfigController.SetChannelPWMax
+- uid: Wss.CalibrationModule.StimParamsConfigController.SetChannelDefaultPW*
+  commentId: Overload:Wss.CalibrationModule.StimParamsConfigController.SetChannelDefaultPW
+  href: Wss.CalibrationModule.StimParamsConfigController.html#Wss_CalibrationModule_StimParamsConfigController_SetChannelDefaultPW_System_Int32_System_Int32_
+  name: SetChannelDefaultPW
+  nameWithType: StimParamsConfigController.SetChannelDefaultPW
+  fullName: Wss.CalibrationModule.StimParamsConfigController.SetChannelDefaultPW
+- uid: Wss.CalibrationModule.StimParamsConfigController.SetChannelIPI*
+  commentId: Overload:Wss.CalibrationModule.StimParamsConfigController.SetChannelIPI
+  href: Wss.CalibrationModule.StimParamsConfigController.html#Wss_CalibrationModule_StimParamsConfigController_SetChannelIPI_System_Int32_System_Int32_
+  name: SetChannelIPI
+  nameWithType: StimParamsConfigController.SetChannelIPI
+  fullName: Wss.CalibrationModule.StimParamsConfigController.SetChannelIPI
+- uid: Wss.CalibrationModule.StimParamsConfigController.SetChannelAmpMode*
+  commentId: Overload:Wss.CalibrationModule.StimParamsConfigController.SetChannelAmpMode
+  href: Wss.CalibrationModule.StimParamsConfigController.html#Wss_CalibrationModule_StimParamsConfigController_SetChannelAmpMode_System_Int32_System_String_
+  name: SetChannelAmpMode
+  nameWithType: StimParamsConfigController.SetChannelAmpMode
+  fullName: Wss.CalibrationModule.StimParamsConfigController.SetChannelAmpMode
+- uid: Wss.CalibrationModule.StimParamsConfigController.SetAllChannelsAmpMode*
+  commentId: Overload:Wss.CalibrationModule.StimParamsConfigController.SetAllChannelsAmpMode
+  href: Wss.CalibrationModule.StimParamsConfigController.html#Wss_CalibrationModule_StimParamsConfigController_SetAllChannelsAmpMode_System_String_
+  name: SetAllChannelsAmpMode
+  nameWithType: StimParamsConfigController.SetAllChannelsAmpMode
+  fullName: Wss.CalibrationModule.StimParamsConfigController.SetAllChannelsAmpMode
+- uid: Wss.CalibrationModule.StimParamsConfigController.GetChannelAmp*
+  commentId: Overload:Wss.CalibrationModule.StimParamsConfigController.GetChannelAmp
+  href: Wss.CalibrationModule.StimParamsConfigController.html#Wss_CalibrationModule_StimParamsConfigController_GetChannelAmp_System_Int32_
+  name: GetChannelAmp
+  nameWithType: StimParamsConfigController.GetChannelAmp
+  fullName: Wss.CalibrationModule.StimParamsConfigController.GetChannelAmp
+- uid: Wss.CalibrationModule.StimParamsConfigController.GetChannelPWMin*
+  commentId: Overload:Wss.CalibrationModule.StimParamsConfigController.GetChannelPWMin
+  href: Wss.CalibrationModule.StimParamsConfigController.html#Wss_CalibrationModule_StimParamsConfigController_GetChannelPWMin_System_Int32_
+  name: GetChannelPWMin
+  nameWithType: StimParamsConfigController.GetChannelPWMin
+  fullName: Wss.CalibrationModule.StimParamsConfigController.GetChannelPWMin
+- uid: Wss.CalibrationModule.StimParamsConfigController.GetChannelPAMin*
+  commentId: Overload:Wss.CalibrationModule.StimParamsConfigController.GetChannelPAMin
+  href: Wss.CalibrationModule.StimParamsConfigController.html#Wss_CalibrationModule_StimParamsConfigController_GetChannelPAMin_System_Int32_
+  name: GetChannelPAMin
+  nameWithType: StimParamsConfigController.GetChannelPAMin
+  fullName: Wss.CalibrationModule.StimParamsConfigController.GetChannelPAMin
+- uid: Wss.CalibrationModule.StimParamsConfigController.GetChannelPAMax*
+  commentId: Overload:Wss.CalibrationModule.StimParamsConfigController.GetChannelPAMax
+  href: Wss.CalibrationModule.StimParamsConfigController.html#Wss_CalibrationModule_StimParamsConfigController_GetChannelPAMax_System_Int32_
+  name: GetChannelPAMax
+  nameWithType: StimParamsConfigController.GetChannelPAMax
+  fullName: Wss.CalibrationModule.StimParamsConfigController.GetChannelPAMax
+- uid: Wss.CalibrationModule.StimParamsConfigController.GetChannelPWMax*
+  commentId: Overload:Wss.CalibrationModule.StimParamsConfigController.GetChannelPWMax
+  href: Wss.CalibrationModule.StimParamsConfigController.html#Wss_CalibrationModule_StimParamsConfigController_GetChannelPWMax_System_Int32_
+  name: GetChannelPWMax
+  nameWithType: StimParamsConfigController.GetChannelPWMax
+  fullName: Wss.CalibrationModule.StimParamsConfigController.GetChannelPWMax
+- uid: Wss.CalibrationModule.StimParamsConfigController.GetChannelDefaultPW*
+  commentId: Overload:Wss.CalibrationModule.StimParamsConfigController.GetChannelDefaultPW
+  href: Wss.CalibrationModule.StimParamsConfigController.html#Wss_CalibrationModule_StimParamsConfigController_GetChannelDefaultPW_System_Int32_
+  name: GetChannelDefaultPW
+  nameWithType: StimParamsConfigController.GetChannelDefaultPW
+  fullName: Wss.CalibrationModule.StimParamsConfigController.GetChannelDefaultPW
+- uid: Wss.CalibrationModule.StimParamsConfigController.GetChannelIPI*
+  commentId: Overload:Wss.CalibrationModule.StimParamsConfigController.GetChannelIPI
+  href: Wss.CalibrationModule.StimParamsConfigController.html#Wss_CalibrationModule_StimParamsConfigController_GetChannelIPI_System_Int32_
+  name: GetChannelIPI
+  nameWithType: StimParamsConfigController.GetChannelIPI
+  fullName: Wss.CalibrationModule.StimParamsConfigController.GetChannelIPI
+- uid: Wss.CalibrationModule.StimParamsConfigController.GetChannelAmpMode*
+  commentId: Overload:Wss.CalibrationModule.StimParamsConfigController.GetChannelAmpMode
+  href: Wss.CalibrationModule.StimParamsConfigController.html#Wss_CalibrationModule_StimParamsConfigController_GetChannelAmpMode_System_Int32_
+  name: GetChannelAmpMode
+  nameWithType: StimParamsConfigController.GetChannelAmpMode
+  fullName: Wss.CalibrationModule.StimParamsConfigController.GetChannelAmpMode
+- uid: Wss.CalibrationModule.StimParamsConfigController.IsChannelInRange*
+  commentId: Overload:Wss.CalibrationModule.StimParamsConfigController.IsChannelInRange
+  href: Wss.CalibrationModule.StimParamsConfigController.html#Wss_CalibrationModule_StimParamsConfigController_IsChannelInRange_System_Int32_
+  name: IsChannelInRange
+  nameWithType: StimParamsConfigController.IsChannelInRange
+  fullName: Wss.CalibrationModule.StimParamsConfigController.IsChannelInRange

@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "A:\\Documents\\GIT Projects\\WSS-documentation\\docs\\ApiProject\\ApiProject.csproj": {}
+    "/home/lemf/Documents/GitHub/WSS_Documentation/apiDocs/ApiProject/ApiProject.csproj": {}
   },
   "projects": {
-    "A:\\Documents\\GIT Projects\\WSS-documentation\\docs\\ApiProject\\ApiProject.csproj": {
+    "/home/lemf/Documents/GitHub/WSS_Documentation/apiDocs/ApiProject/ApiProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "A:\\Documents\\GIT Projects\\WSS-documentation\\docs\\ApiProject\\ApiProject.csproj",
+        "projectUniqueName": "/home/lemf/Documents/GitHub/WSS_Documentation/apiDocs/ApiProject/ApiProject.csproj",
         "projectName": "ApiProject",
-        "projectPath": "A:\\Documents\\GIT Projects\\WSS-documentation\\docs\\ApiProject\\ApiProject.csproj",
-        "packagesPath": "C:\\Users\\Luis.DESKTOP-B151VCV\\.nuget\\packages\\",
-        "outputPath": "A:\\Documents\\GIT Projects\\WSS-documentation\\docs\\ApiProject\\obj\\",
+        "projectPath": "/home/lemf/Documents/GitHub/WSS_Documentation/apiDocs/ApiProject/ApiProject.csproj",
+        "packagesPath": "/home/lemf/.nuget/packages/",
+        "outputPath": "/home/lemf/Documents/GitHub/WSS_Documentation/apiDocs/ApiProject/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Luis.DESKTOP-B151VCV\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/lemf/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -34,6 +32,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -53,15 +56,11 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[7.0.15, 7.0.15]"
+              "version": "[7.0.20, 7.0.20]"
             },
             {
               "name": "Microsoft.NETCore.App.Ref",
-              "version": "[7.0.15, 7.0.15]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[7.0.15, 7.0.15]"
+              "version": "[7.0.20, 7.0.20]"
             }
           ],
           "frameworkReferences": {
@@ -69,7 +68,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.417/RuntimeIdentifierGraph.json"
         }
       }
     }

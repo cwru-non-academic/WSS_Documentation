@@ -1,0 +1,836 @@
+### YamlMime:ManagedReference
+items:
+- uid: Wss.CoreModule.ModuleSettings
+  commentId: T:Wss.CoreModule.ModuleSettings
+  id: ModuleSettings
+  parent: Wss.CoreModule
+  children:
+  - Wss.CoreModule.ModuleSettings.AmpCurveKey
+  - Wss.CoreModule.ModuleSettings.BatteryCheckPeriod
+  - Wss.CoreModule.ModuleSettings.BatteryThreshold
+  - Wss.CoreModule.ModuleSettings.CreateDefault72mA(System.Boolean)
+  - Wss.CoreModule.ModuleSettings.DataStart24
+  - Wss.CoreModule.ModuleSettings.FswConfig
+  - Wss.CoreModule.ModuleSettings.HwConfig
+  - Wss.CoreModule.ModuleSettings.ImpedanceThreshold
+  - Wss.CoreModule.ModuleSettings.IpdUs
+  - Wss.CoreModule.ModuleSettings.IsPartial
+  - Wss.CoreModule.ModuleSettings.PaLimit
+  - Wss.CoreModule.ModuleSettings.ProbeSupported
+  - Wss.CoreModule.ModuleSettings.PwLimit
+  - Wss.CoreModule.ModuleSettings.SerialNumber
+  - Wss.CoreModule.ModuleSettings.StepKind
+  - Wss.CoreModule.ModuleSettings.StepSize
+  - Wss.CoreModule.ModuleSettings.ToSummaryString
+  - Wss.CoreModule.ModuleSettings.TryDecode(System.ReadOnlySpan{System.Byte},Wss.CoreModule.ModuleSettings@)
+  langs:
+  - csharp
+  - vb
+  name: ModuleSettings
+  nameWithType: ModuleSettings
+  fullName: Wss.CoreModule.ModuleSettings
+  type: Class
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Strongly-typed snapshot of settings returned by a ModuleQuery-like payload.
+
+    Includes a safe decoder for the data-only payload and helpers for selecting
+
+    amplitude mapping behavior (e.g., 10 mA vs 72 mA based on HW flags).
+  example: []
+  syntax:
+    content: public sealed class ModuleSettings
+    content.vb: Public NotInheritable Class ModuleSettings
+  inheritance:
+  - System.Object
+- uid: Wss.CoreModule.ModuleSettings.SerialNumber
+  commentId: P:Wss.CoreModule.ModuleSettings.SerialNumber
+  id: SerialNumber
+  parent: Wss.CoreModule.ModuleSettings
+  langs:
+  - csharp
+  - vb
+  name: SerialNumber
+  nameWithType: ModuleSettings.SerialNumber
+  fullName: Wss.CoreModule.ModuleSettings.SerialNumber
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Device serial number (one byte in this query).
+  example: []
+  syntax:
+    content: public byte SerialNumber { get; }
+    parameters: []
+    return:
+      type: System.Byte
+    content.vb: Public Property SerialNumber As Byte
+  overload: Wss.CoreModule.ModuleSettings.SerialNumber*
+- uid: Wss.CoreModule.ModuleSettings.DataStart24
+  commentId: P:Wss.CoreModule.ModuleSettings.DataStart24
+  id: DataStart24
+  parent: Wss.CoreModule.ModuleSettings
+  langs:
+  - csharp
+  - vb
+  name: DataStart24
+  nameWithType: ModuleSettings.DataStart24
+  fullName: Wss.CoreModule.ModuleSettings.DataStart24
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Start pointer for device log data (24-bit big-endian value).
+  example: []
+  syntax:
+    content: public uint DataStart24 { get; }
+    parameters: []
+    return:
+      type: System.UInt32
+    content.vb: Public Property DataStart24 As UInteger
+  overload: Wss.CoreModule.ModuleSettings.DataStart24*
+- uid: Wss.CoreModule.ModuleSettings.BatteryThreshold
+  commentId: P:Wss.CoreModule.ModuleSettings.BatteryThreshold
+  id: BatteryThreshold
+  parent: Wss.CoreModule.ModuleSettings
+  langs:
+  - csharp
+  - vb
+  name: BatteryThreshold
+  nameWithType: ModuleSettings.BatteryThreshold
+  fullName: Wss.CoreModule.ModuleSettings.BatteryThreshold
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Low-battery threshold (raw units).
+  example: []
+  syntax:
+    content: public ushort BatteryThreshold { get; }
+    parameters: []
+    return:
+      type: System.UInt16
+    content.vb: Public Property BatteryThreshold As UShort
+  overload: Wss.CoreModule.ModuleSettings.BatteryThreshold*
+- uid: Wss.CoreModule.ModuleSettings.BatteryCheckPeriod
+  commentId: P:Wss.CoreModule.ModuleSettings.BatteryCheckPeriod
+  id: BatteryCheckPeriod
+  parent: Wss.CoreModule.ModuleSettings
+  langs:
+  - csharp
+  - vb
+  name: BatteryCheckPeriod
+  nameWithType: ModuleSettings.BatteryCheckPeriod
+  fullName: Wss.CoreModule.ModuleSettings.BatteryCheckPeriod
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Battery check timer period (raw units).
+  example: []
+  syntax:
+    content: public ushort BatteryCheckPeriod { get; }
+    parameters: []
+    return:
+      type: System.UInt16
+    content.vb: Public Property BatteryCheckPeriod As UShort
+  overload: Wss.CoreModule.ModuleSettings.BatteryCheckPeriod*
+- uid: Wss.CoreModule.ModuleSettings.ImpedanceThreshold
+  commentId: P:Wss.CoreModule.ModuleSettings.ImpedanceThreshold
+  id: ImpedanceThreshold
+  parent: Wss.CoreModule.ModuleSettings
+  langs:
+  - csharp
+  - vb
+  name: ImpedanceThreshold
+  nameWithType: ModuleSettings.ImpedanceThreshold
+  fullName: Wss.CoreModule.ModuleSettings.ImpedanceThreshold
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: High-impedance threshold (raw units).
+  example: []
+  syntax:
+    content: public ushort ImpedanceThreshold { get; }
+    parameters: []
+    return:
+      type: System.UInt16
+    content.vb: Public Property ImpedanceThreshold As UShort
+  overload: Wss.CoreModule.ModuleSettings.ImpedanceThreshold*
+- uid: Wss.CoreModule.ModuleSettings.HwConfig
+  commentId: P:Wss.CoreModule.ModuleSettings.HwConfig
+  id: HwConfig
+  parent: Wss.CoreModule.ModuleSettings
+  langs:
+  - csharp
+  - vb
+  name: HwConfig
+  nameWithType: ModuleSettings.HwConfig
+  fullName: Wss.CoreModule.ModuleSettings.HwConfig
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Hardware configuration flags (bitfield).
+  example: []
+  syntax:
+    content: public ModuleSettings.HwConfigFlags HwConfig { get; }
+    parameters: []
+    return:
+      type: Wss.CoreModule.ModuleSettings.HwConfigFlags
+    content.vb: Public Property HwConfig As ModuleSettings.HwConfigFlags
+  overload: Wss.CoreModule.ModuleSettings.HwConfig*
+- uid: Wss.CoreModule.ModuleSettings.FswConfig
+  commentId: P:Wss.CoreModule.ModuleSettings.FswConfig
+  id: FswConfig
+  parent: Wss.CoreModule.ModuleSettings
+  langs:
+  - csharp
+  - vb
+  name: FswConfig
+  nameWithType: ModuleSettings.FswConfig
+  fullName: Wss.CoreModule.ModuleSettings.FswConfig
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Fingerswitch configuration value.
+  example: []
+  syntax:
+    content: public ModuleSettings.FingerswitchConfig FswConfig { get; }
+    parameters: []
+    return:
+      type: Wss.CoreModule.ModuleSettings.FingerswitchConfig
+    content.vb: Public Property FswConfig As ModuleSettings.FingerswitchConfig
+  overload: Wss.CoreModule.ModuleSettings.FswConfig*
+- uid: Wss.CoreModule.ModuleSettings.IpdUs
+  commentId: P:Wss.CoreModule.ModuleSettings.IpdUs
+  id: IpdUs
+  parent: Wss.CoreModule.ModuleSettings
+  langs:
+  - csharp
+  - vb
+  name: IpdUs
+  nameWithType: ModuleSettings.IpdUs
+  fullName: Wss.CoreModule.ModuleSettings.IpdUs
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Inter-phase delay in microseconds (one byte in this query).
+  example: []
+  syntax:
+    content: public int IpdUs { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property IpdUs As Integer
+  overload: Wss.CoreModule.ModuleSettings.IpdUs*
+- uid: Wss.CoreModule.ModuleSettings.StepKind
+  commentId: P:Wss.CoreModule.ModuleSettings.StepKind
+  id: StepKind
+  parent: Wss.CoreModule.ModuleSettings
+  langs:
+  - csharp
+  - vb
+  name: StepKind
+  nameWithType: ModuleSettings.StepKind
+  fullName: Wss.CoreModule.ModuleSettings.StepKind
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Whether the step size applies to PA or PW.
+  example: []
+  syntax:
+    content: public ModuleSettings.ParameterStepKind StepKind { get; }
+    parameters: []
+    return:
+      type: Wss.CoreModule.ModuleSettings.ParameterStepKind
+    content.vb: Public Property StepKind As ModuleSettings.ParameterStepKind
+  overload: Wss.CoreModule.ModuleSettings.StepKind*
+- uid: Wss.CoreModule.ModuleSettings.StepSize
+  commentId: P:Wss.CoreModule.ModuleSettings.StepSize
+  id: StepSize
+  parent: Wss.CoreModule.ModuleSettings
+  langs:
+  - csharp
+  - vb
+  name: StepSize
+  nameWithType: ModuleSettings.StepSize
+  fullName: Wss.CoreModule.ModuleSettings.StepSize
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Step size magnitude (lower 7 bits of the Step byte).
+  example: []
+  syntax:
+    content: public int StepSize { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property StepSize As Integer
+  overload: Wss.CoreModule.ModuleSettings.StepSize*
+- uid: Wss.CoreModule.ModuleSettings.PaLimit
+  commentId: P:Wss.CoreModule.ModuleSettings.PaLimit
+  id: PaLimit
+  parent: Wss.CoreModule.ModuleSettings
+  langs:
+  - csharp
+  - vb
+  name: PaLimit
+  nameWithType: ModuleSettings.PaLimit
+  fullName: Wss.CoreModule.ModuleSettings.PaLimit
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: PA limit (raw device units; typically correlates with max mA capability).
+  example: []
+  syntax:
+    content: public int PaLimit { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property PaLimit As Integer
+  overload: Wss.CoreModule.ModuleSettings.PaLimit*
+- uid: Wss.CoreModule.ModuleSettings.PwLimit
+  commentId: P:Wss.CoreModule.ModuleSettings.PwLimit
+  id: PwLimit
+  parent: Wss.CoreModule.ModuleSettings
+  langs:
+  - csharp
+  - vb
+  name: PwLimit
+  nameWithType: ModuleSettings.PwLimit
+  fullName: Wss.CoreModule.ModuleSettings.PwLimit
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: PW limit (raw device units).
+  example: []
+  syntax:
+    content: public int PwLimit { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property PwLimit As Integer
+  overload: Wss.CoreModule.ModuleSettings.PwLimit*
+- uid: Wss.CoreModule.ModuleSettings.IsPartial
+  commentId: P:Wss.CoreModule.ModuleSettings.IsPartial
+  id: IsPartial
+  parent: Wss.CoreModule.ModuleSettings
+  langs:
+  - csharp
+  - vb
+  name: IsPartial
+  nameWithType: ModuleSettings.IsPartial
+  fullName: Wss.CoreModule.ModuleSettings.IsPartial
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: True when the payload was shorter than expected; some fields may be defaulted.
+  example: []
+  syntax:
+    content: public bool IsPartial { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsPartial As Boolean
+  overload: Wss.CoreModule.ModuleSettings.IsPartial*
+- uid: Wss.CoreModule.ModuleSettings.ProbeSupported
+  commentId: P:Wss.CoreModule.ModuleSettings.ProbeSupported
+  id: ProbeSupported
+  parent: Wss.CoreModule.ModuleSettings
+  langs:
+  - csharp
+  - vb
+  name: ProbeSupported
+  nameWithType: ModuleSettings.ProbeSupported
+  fullName: Wss.CoreModule.ModuleSettings.ProbeSupported
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: True when the values originated from a real device probe, not defaults.
+  example: []
+  syntax:
+    content: public bool ProbeSupported { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property ProbeSupported As Boolean
+  overload: Wss.CoreModule.ModuleSettings.ProbeSupported*
+- uid: Wss.CoreModule.ModuleSettings.AmpCurveKey
+  commentId: P:Wss.CoreModule.ModuleSettings.AmpCurveKey
+  id: AmpCurveKey
+  parent: Wss.CoreModule.ModuleSettings
+  langs:
+  - csharp
+  - vb
+  name: AmpCurveKey
+  nameWithType: ModuleSettings.AmpCurveKey
+  fullName: Wss.CoreModule.ModuleSettings.AmpCurveKey
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Convenience selector for amplitude curves. Returns "10mA" when the
+
+    <xref href="Wss.CoreModule.ModuleSettings.HwConfigFlags.TenMilliAmpPA" data-throw-if-not-resolved="false"></xref> bit is set; otherwise "72mA".
+  example: []
+  syntax:
+    content: public string AmpCurveKey { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property AmpCurveKey As String
+  overload: Wss.CoreModule.ModuleSettings.AmpCurveKey*
+- uid: Wss.CoreModule.ModuleSettings.ToSummaryString
+  commentId: M:Wss.CoreModule.ModuleSettings.ToSummaryString
+  id: ToSummaryString
+  parent: Wss.CoreModule.ModuleSettings
+  langs:
+  - csharp
+  - vb
+  name: ToSummaryString()
+  nameWithType: ModuleSettings.ToSummaryString()
+  fullName: Wss.CoreModule.ModuleSettings.ToSummaryString()
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Builds a human-readable one-line summary of key fields for logs and diagnostics.
+  example: []
+  syntax:
+    content: public string ToSummaryString()
+    return:
+      type: System.String
+      description: Summary string including HW flags, FSW config, IPD, limits, thresholds, and serial.
+    content.vb: Public Function ToSummaryString() As String
+  overload: Wss.CoreModule.ModuleSettings.ToSummaryString*
+- uid: Wss.CoreModule.ModuleSettings.TryDecode(System.ReadOnlySpan{System.Byte},Wss.CoreModule.ModuleSettings@)
+  commentId: M:Wss.CoreModule.ModuleSettings.TryDecode(System.ReadOnlySpan{System.Byte},Wss.CoreModule.ModuleSettings@)
+  id: TryDecode(System.ReadOnlySpan{System.Byte},Wss.CoreModule.ModuleSettings@)
+  parent: Wss.CoreModule.ModuleSettings
+  langs:
+  - csharp
+  - vb
+  name: TryDecode(ReadOnlySpan<byte>, out ModuleSettings)
+  nameWithType: ModuleSettings.TryDecode(ReadOnlySpan<byte>, out ModuleSettings)
+  fullName: Wss.CoreModule.ModuleSettings.TryDecode(System.ReadOnlySpan<byte>, out Wss.CoreModule.ModuleSettings)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Attempts to decode a ModuleQuery settings payload (data-only slice) into a <xref href="Wss.CoreModule.ModuleSettings" data-throw-if-not-resolved="false"></xref> instance.
+  example: []
+  syntax:
+    content: public static bool TryDecode(ReadOnlySpan<byte> data, out ModuleSettings settings)
+    parameters:
+    - id: data
+      type: System.ReadOnlySpan{System.Byte}
+      description: Data-only bytes in the expected order (length ≥ 16 recommended).
+    - id: settings
+      type: Wss.CoreModule.ModuleSettings
+      description: Decoded settings snapshot (always set; may have <xref href="Wss.CoreModule.ModuleSettings.IsPartial" data-throw-if-not-resolved="false"></xref>=true).
+    return:
+      type: System.Boolean
+      description: >-
+        True when all expected fields were present (not partial). False indicates a short payload, but a
+
+        best-effort decode is still returned in <code class="paramref">settings</code>.
+    content.vb: Public Shared Function TryDecode(data As ReadOnlySpan(Of Byte), settings As ModuleSettings) As Boolean
+  overload: Wss.CoreModule.ModuleSettings.TryDecode*
+  nameWithType.vb: ModuleSettings.TryDecode(ReadOnlySpan(Of Byte), ModuleSettings)
+  fullName.vb: Wss.CoreModule.ModuleSettings.TryDecode(System.ReadOnlySpan(Of Byte), Wss.CoreModule.ModuleSettings)
+  name.vb: TryDecode(ReadOnlySpan(Of Byte), ModuleSettings)
+- uid: Wss.CoreModule.ModuleSettings.CreateDefault72mA(System.Boolean)
+  commentId: M:Wss.CoreModule.ModuleSettings.CreateDefault72mA(System.Boolean)
+  id: CreateDefault72mA(System.Boolean)
+  parent: Wss.CoreModule.ModuleSettings
+  langs:
+  - csharp
+  - vb
+  name: CreateDefault72mA(bool)
+  nameWithType: ModuleSettings.CreateDefault72mA(bool)
+  fullName: Wss.CoreModule.ModuleSettings.CreateDefault72mA(bool)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Creates a default (synthetic) 72 mA profile for cases where ModuleQuery is not supported or
+
+    data is unavailable. Fields are set to conservative defaults and <xref href="Wss.CoreModule.ModuleSettings.IsPartial" data-throw-if-not-resolved="false"></xref> is true.
+  example: []
+  syntax:
+    content: public static ModuleSettings CreateDefault72mA(bool probeSupported)
+    parameters:
+    - id: probeSupported
+      type: System.Boolean
+    return:
+      type: Wss.CoreModule.ModuleSettings
+    content.vb: Public Shared Function CreateDefault72mA(probeSupported As Boolean) As ModuleSettings
+  overload: Wss.CoreModule.ModuleSettings.CreateDefault72mA*
+  nameWithType.vb: ModuleSettings.CreateDefault72mA(Boolean)
+  fullName.vb: Wss.CoreModule.ModuleSettings.CreateDefault72mA(Boolean)
+  name.vb: CreateDefault72mA(Boolean)
+references:
+- uid: Wss.CoreModule
+  commentId: N:Wss.CoreModule
+  href: Wss.html
+  name: Wss.CoreModule
+  nameWithType: Wss.CoreModule
+  fullName: Wss.CoreModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Wss.CoreModule.ModuleSettings.SerialNumber*
+  commentId: Overload:Wss.CoreModule.ModuleSettings.SerialNumber
+  href: Wss.CoreModule.ModuleSettings.html#Wss_CoreModule_ModuleSettings_SerialNumber
+  name: SerialNumber
+  nameWithType: ModuleSettings.SerialNumber
+  fullName: Wss.CoreModule.ModuleSettings.SerialNumber
+- uid: System.Byte
+  commentId: T:System.Byte
+  parent: System
+  isExternal: true
+  name: byte
+  nameWithType: byte
+  fullName: byte
+  nameWithType.vb: Byte
+  fullName.vb: Byte
+  name.vb: Byte
+- uid: Wss.CoreModule.ModuleSettings.DataStart24*
+  commentId: Overload:Wss.CoreModule.ModuleSettings.DataStart24
+  href: Wss.CoreModule.ModuleSettings.html#Wss_CoreModule_ModuleSettings_DataStart24
+  name: DataStart24
+  nameWithType: ModuleSettings.DataStart24
+  fullName: Wss.CoreModule.ModuleSettings.DataStart24
+- uid: System.UInt32
+  commentId: T:System.UInt32
+  parent: System
+  isExternal: true
+  name: uint
+  nameWithType: uint
+  fullName: uint
+  nameWithType.vb: UInteger
+  fullName.vb: UInteger
+  name.vb: UInteger
+- uid: Wss.CoreModule.ModuleSettings.BatteryThreshold*
+  commentId: Overload:Wss.CoreModule.ModuleSettings.BatteryThreshold
+  href: Wss.CoreModule.ModuleSettings.html#Wss_CoreModule_ModuleSettings_BatteryThreshold
+  name: BatteryThreshold
+  nameWithType: ModuleSettings.BatteryThreshold
+  fullName: Wss.CoreModule.ModuleSettings.BatteryThreshold
+- uid: System.UInt16
+  commentId: T:System.UInt16
+  parent: System
+  isExternal: true
+  name: ushort
+  nameWithType: ushort
+  fullName: ushort
+  nameWithType.vb: UShort
+  fullName.vb: UShort
+  name.vb: UShort
+- uid: Wss.CoreModule.ModuleSettings.BatteryCheckPeriod*
+  commentId: Overload:Wss.CoreModule.ModuleSettings.BatteryCheckPeriod
+  href: Wss.CoreModule.ModuleSettings.html#Wss_CoreModule_ModuleSettings_BatteryCheckPeriod
+  name: BatteryCheckPeriod
+  nameWithType: ModuleSettings.BatteryCheckPeriod
+  fullName: Wss.CoreModule.ModuleSettings.BatteryCheckPeriod
+- uid: Wss.CoreModule.ModuleSettings.ImpedanceThreshold*
+  commentId: Overload:Wss.CoreModule.ModuleSettings.ImpedanceThreshold
+  href: Wss.CoreModule.ModuleSettings.html#Wss_CoreModule_ModuleSettings_ImpedanceThreshold
+  name: ImpedanceThreshold
+  nameWithType: ModuleSettings.ImpedanceThreshold
+  fullName: Wss.CoreModule.ModuleSettings.ImpedanceThreshold
+- uid: Wss.CoreModule.ModuleSettings.HwConfig*
+  commentId: Overload:Wss.CoreModule.ModuleSettings.HwConfig
+  href: Wss.CoreModule.ModuleSettings.html#Wss_CoreModule_ModuleSettings_HwConfig
+  name: HwConfig
+  nameWithType: ModuleSettings.HwConfig
+  fullName: Wss.CoreModule.ModuleSettings.HwConfig
+- uid: Wss.CoreModule.ModuleSettings.HwConfigFlags
+  commentId: T:Wss.CoreModule.ModuleSettings.HwConfigFlags
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.ModuleSettings.html
+  name: ModuleSettings.HwConfigFlags
+  nameWithType: ModuleSettings.HwConfigFlags
+  fullName: Wss.CoreModule.ModuleSettings.HwConfigFlags
+  spec.csharp:
+  - uid: Wss.CoreModule.ModuleSettings
+    name: ModuleSettings
+    href: Wss.CoreModule.ModuleSettings.html
+  - name: .
+  - uid: Wss.CoreModule.ModuleSettings.HwConfigFlags
+    name: HwConfigFlags
+    href: Wss.CoreModule.ModuleSettings.HwConfigFlags.html
+  spec.vb:
+  - uid: Wss.CoreModule.ModuleSettings
+    name: ModuleSettings
+    href: Wss.CoreModule.ModuleSettings.html
+  - name: .
+  - uid: Wss.CoreModule.ModuleSettings.HwConfigFlags
+    name: HwConfigFlags
+    href: Wss.CoreModule.ModuleSettings.HwConfigFlags.html
+- uid: Wss.CoreModule.ModuleSettings.FswConfig*
+  commentId: Overload:Wss.CoreModule.ModuleSettings.FswConfig
+  href: Wss.CoreModule.ModuleSettings.html#Wss_CoreModule_ModuleSettings_FswConfig
+  name: FswConfig
+  nameWithType: ModuleSettings.FswConfig
+  fullName: Wss.CoreModule.ModuleSettings.FswConfig
+- uid: Wss.CoreModule.ModuleSettings.FingerswitchConfig
+  commentId: T:Wss.CoreModule.ModuleSettings.FingerswitchConfig
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.ModuleSettings.html
+  name: ModuleSettings.FingerswitchConfig
+  nameWithType: ModuleSettings.FingerswitchConfig
+  fullName: Wss.CoreModule.ModuleSettings.FingerswitchConfig
+  spec.csharp:
+  - uid: Wss.CoreModule.ModuleSettings
+    name: ModuleSettings
+    href: Wss.CoreModule.ModuleSettings.html
+  - name: .
+  - uid: Wss.CoreModule.ModuleSettings.FingerswitchConfig
+    name: FingerswitchConfig
+    href: Wss.CoreModule.ModuleSettings.FingerswitchConfig.html
+  spec.vb:
+  - uid: Wss.CoreModule.ModuleSettings
+    name: ModuleSettings
+    href: Wss.CoreModule.ModuleSettings.html
+  - name: .
+  - uid: Wss.CoreModule.ModuleSettings.FingerswitchConfig
+    name: FingerswitchConfig
+    href: Wss.CoreModule.ModuleSettings.FingerswitchConfig.html
+- uid: Wss.CoreModule.ModuleSettings.IpdUs*
+  commentId: Overload:Wss.CoreModule.ModuleSettings.IpdUs
+  href: Wss.CoreModule.ModuleSettings.html#Wss_CoreModule_ModuleSettings_IpdUs
+  name: IpdUs
+  nameWithType: ModuleSettings.IpdUs
+  fullName: Wss.CoreModule.ModuleSettings.IpdUs
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Wss.CoreModule.ModuleSettings.StepKind*
+  commentId: Overload:Wss.CoreModule.ModuleSettings.StepKind
+  href: Wss.CoreModule.ModuleSettings.html#Wss_CoreModule_ModuleSettings_StepKind
+  name: StepKind
+  nameWithType: ModuleSettings.StepKind
+  fullName: Wss.CoreModule.ModuleSettings.StepKind
+- uid: Wss.CoreModule.ModuleSettings.ParameterStepKind
+  commentId: T:Wss.CoreModule.ModuleSettings.ParameterStepKind
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.ModuleSettings.html
+  name: ModuleSettings.ParameterStepKind
+  nameWithType: ModuleSettings.ParameterStepKind
+  fullName: Wss.CoreModule.ModuleSettings.ParameterStepKind
+  spec.csharp:
+  - uid: Wss.CoreModule.ModuleSettings
+    name: ModuleSettings
+    href: Wss.CoreModule.ModuleSettings.html
+  - name: .
+  - uid: Wss.CoreModule.ModuleSettings.ParameterStepKind
+    name: ParameterStepKind
+    href: Wss.CoreModule.ModuleSettings.ParameterStepKind.html
+  spec.vb:
+  - uid: Wss.CoreModule.ModuleSettings
+    name: ModuleSettings
+    href: Wss.CoreModule.ModuleSettings.html
+  - name: .
+  - uid: Wss.CoreModule.ModuleSettings.ParameterStepKind
+    name: ParameterStepKind
+    href: Wss.CoreModule.ModuleSettings.ParameterStepKind.html
+- uid: Wss.CoreModule.ModuleSettings.StepSize*
+  commentId: Overload:Wss.CoreModule.ModuleSettings.StepSize
+  href: Wss.CoreModule.ModuleSettings.html#Wss_CoreModule_ModuleSettings_StepSize
+  name: StepSize
+  nameWithType: ModuleSettings.StepSize
+  fullName: Wss.CoreModule.ModuleSettings.StepSize
+- uid: Wss.CoreModule.ModuleSettings.PaLimit*
+  commentId: Overload:Wss.CoreModule.ModuleSettings.PaLimit
+  href: Wss.CoreModule.ModuleSettings.html#Wss_CoreModule_ModuleSettings_PaLimit
+  name: PaLimit
+  nameWithType: ModuleSettings.PaLimit
+  fullName: Wss.CoreModule.ModuleSettings.PaLimit
+- uid: Wss.CoreModule.ModuleSettings.PwLimit*
+  commentId: Overload:Wss.CoreModule.ModuleSettings.PwLimit
+  href: Wss.CoreModule.ModuleSettings.html#Wss_CoreModule_ModuleSettings_PwLimit
+  name: PwLimit
+  nameWithType: ModuleSettings.PwLimit
+  fullName: Wss.CoreModule.ModuleSettings.PwLimit
+- uid: Wss.CoreModule.ModuleSettings.IsPartial*
+  commentId: Overload:Wss.CoreModule.ModuleSettings.IsPartial
+  href: Wss.CoreModule.ModuleSettings.html#Wss_CoreModule_ModuleSettings_IsPartial
+  name: IsPartial
+  nameWithType: ModuleSettings.IsPartial
+  fullName: Wss.CoreModule.ModuleSettings.IsPartial
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Wss.CoreModule.ModuleSettings.ProbeSupported*
+  commentId: Overload:Wss.CoreModule.ModuleSettings.ProbeSupported
+  href: Wss.CoreModule.ModuleSettings.html#Wss_CoreModule_ModuleSettings_ProbeSupported
+  name: ProbeSupported
+  nameWithType: ModuleSettings.ProbeSupported
+  fullName: Wss.CoreModule.ModuleSettings.ProbeSupported
+- uid: Wss.CoreModule.ModuleSettings.HwConfigFlags.TenMilliAmpPA
+  commentId: F:Wss.CoreModule.ModuleSettings.HwConfigFlags.TenMilliAmpPA
+  href: Wss.CoreModule.ModuleSettings.HwConfigFlags.html#Wss_CoreModule_ModuleSettings_HwConfigFlags_TenMilliAmpPA
+  name: TenMilliAmpPA
+  nameWithType: ModuleSettings.HwConfigFlags.TenMilliAmpPA
+  fullName: Wss.CoreModule.ModuleSettings.HwConfigFlags.TenMilliAmpPA
+- uid: Wss.CoreModule.ModuleSettings.AmpCurveKey*
+  commentId: Overload:Wss.CoreModule.ModuleSettings.AmpCurveKey
+  href: Wss.CoreModule.ModuleSettings.html#Wss_CoreModule_ModuleSettings_AmpCurveKey
+  name: AmpCurveKey
+  nameWithType: ModuleSettings.AmpCurveKey
+  fullName: Wss.CoreModule.ModuleSettings.AmpCurveKey
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Wss.CoreModule.ModuleSettings.ToSummaryString*
+  commentId: Overload:Wss.CoreModule.ModuleSettings.ToSummaryString
+  href: Wss.CoreModule.ModuleSettings.html#Wss_CoreModule_ModuleSettings_ToSummaryString
+  name: ToSummaryString
+  nameWithType: ModuleSettings.ToSummaryString
+  fullName: Wss.CoreModule.ModuleSettings.ToSummaryString
+- uid: Wss.CoreModule.ModuleSettings
+  commentId: T:Wss.CoreModule.ModuleSettings
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.ModuleSettings.html
+  name: ModuleSettings
+  nameWithType: ModuleSettings
+  fullName: Wss.CoreModule.ModuleSettings
+- uid: Wss.CoreModule.ModuleSettings.IsPartial
+  commentId: P:Wss.CoreModule.ModuleSettings.IsPartial
+  href: Wss.CoreModule.ModuleSettings.html#Wss_CoreModule_ModuleSettings_IsPartial
+  name: IsPartial
+  nameWithType: ModuleSettings.IsPartial
+  fullName: Wss.CoreModule.ModuleSettings.IsPartial
+- uid: Wss.CoreModule.ModuleSettings.TryDecode*
+  commentId: Overload:Wss.CoreModule.ModuleSettings.TryDecode
+  href: Wss.CoreModule.ModuleSettings.html#Wss_CoreModule_ModuleSettings_TryDecode_System_ReadOnlySpan_System_Byte__Wss_CoreModule_ModuleSettings__
+  name: TryDecode
+  nameWithType: ModuleSettings.TryDecode
+  fullName: Wss.CoreModule.ModuleSettings.TryDecode
+- uid: System.ReadOnlySpan{System.Byte}
+  commentId: T:System.ReadOnlySpan{System.Byte}
+  parent: System
+  definition: System.ReadOnlySpan`1
+  name: ReadOnlySpan<byte>
+  nameWithType: ReadOnlySpan<byte>
+  fullName: System.ReadOnlySpan<byte>
+  nameWithType.vb: ReadOnlySpan(Of Byte)
+  fullName.vb: System.ReadOnlySpan(Of Byte)
+  name.vb: ReadOnlySpan(Of Byte)
+  spec.csharp:
+  - uid: System.ReadOnlySpan`1
+    name: ReadOnlySpan
+    isExternal: true
+  - name: <
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.ReadOnlySpan`1
+    name: ReadOnlySpan
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+  - name: )
+- uid: System.ReadOnlySpan`1
+  commentId: T:System.ReadOnlySpan`1
+  isExternal: true
+  name: ReadOnlySpan<T>
+  nameWithType: ReadOnlySpan<T>
+  fullName: System.ReadOnlySpan<T>
+  nameWithType.vb: ReadOnlySpan(Of T)
+  fullName.vb: System.ReadOnlySpan(Of T)
+  name.vb: ReadOnlySpan(Of T)
+  spec.csharp:
+  - uid: System.ReadOnlySpan`1
+    name: ReadOnlySpan
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.ReadOnlySpan`1
+    name: ReadOnlySpan
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Wss.CoreModule.ModuleSettings.CreateDefault72mA*
+  commentId: Overload:Wss.CoreModule.ModuleSettings.CreateDefault72mA
+  href: Wss.CoreModule.ModuleSettings.html#Wss_CoreModule_ModuleSettings_CreateDefault72mA_System_Boolean_
+  name: CreateDefault72mA
+  nameWithType: ModuleSettings.CreateDefault72mA
+  fullName: Wss.CoreModule.ModuleSettings.CreateDefault72mA

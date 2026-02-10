@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class SerialPortTransport | WSS Documentation Hub </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class SerialPortTransport | WSS Documentation Hub ">
+    
+    <meta name="description" content="Serial-port implementation of  for WSS communications. Wraps  and exposes an event-driven receive API that works well in Unity/.NET Standard 2.0.">
+      <link rel="shortcut icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../styles/docfx.css">
+      <link rel="stylesheet" href="../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Wss.CoreModule.SerialPortTransport">
+
+
+
+  <h1 id="Wss_CoreModule_SerialPortTransport" data-uid="Wss.CoreModule.SerialPortTransport" class="text-break">Class SerialPortTransport</h1>
+  <div class="markdown level0 summary"><p>Serial-port implementation of <a class="xref" href="Wss.CoreModule.ITransport.html">ITransport</a> for WSS communications.
+Wraps <span class="xref">System.IO.Ports.SerialPort</span> and exposes an event-driven receive API that works well in Unity/.NET Standard 2.0.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">object</span></div>
+    <div class="level1"><span class="xref">SerialPortTransport</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="Wss.CoreModule.ITransport.html">ITransport</a></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Wss.html">Wss</a>.<a class="xref" href="Wss.CoreModule.html">CoreModule</a></h6>
+  <h6><strong>Assembly</strong>: WSS_Core_Interface.dll</h6>
+  <h5 id="Wss_CoreModule_SerialPortTransport_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class SerialPortTransport : ITransport</code></pre>
+  </div>
+  <h5 id="Wss_CoreModule_SerialPortTransport_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p><b>Threading:</b> <a class="xref" href="Wss.CoreModule.SerialPortTransport.html#Wss_CoreModule_SerialPortTransport_BytesReceived">BytesReceived</a> is raised from a background task. If your app (e.g., Unity)
+requires main-thread processing, marshal the callback to the main thread before touching UI/GameObjects.</p>
+<p><b>Chunking:</b> Serial I/O does not preserve message boundaries. Each chunk may contain partial frames or
+multiple frames. Always pass chunks to a frame codec/deframer.</p>
+<p><b>Timeouts:</b> The read loop polls <span class="xref">System.IO.Ports.SerialPort.BytesToRead</span> and catches <span class="xref">System.TimeoutException</span>s,
+which are normal with short read timeouts.</p>
+</div>
+  <h3 id="constructors">Constructors
+</h3>
+
+
+  <a id="Wss_CoreModule_SerialPortTransport__ctor_" data-uid="Wss.CoreModule.SerialPortTransport.#ctor*"></a>
+  <h4 id="Wss_CoreModule_SerialPortTransport__ctor_System_Int32_System_IO_Ports_Parity_System_Int32_System_IO_Ports_StopBits_System_Int32_" data-uid="Wss.CoreModule.SerialPortTransport.#ctor(System.Int32,System.IO.Ports.Parity,System.Int32,System.IO.Ports.StopBits,System.Int32)">SerialPortTransport(int, Parity, int, StopBits, int)</h4>
+  <div class="markdown level1 summary"><p>Creates a serial transport bound to the given parameters. Th port name is automatically selected as the firts port in the list.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SerialPortTransport(int baud = 115200, Parity parity = Parity.None, int dataBits = 8, StopBits stopBits = StopBits.One, int readTimeoutMs = 10)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">baud</span></td>
+        <td><p>Baud rate. Default is 115200.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Parity</span></td>
+        <td><span class="parametername">parity</span></td>
+        <td><p>Parity setting. Default is <span class="xref">System.IO.Ports.Parity.None</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">dataBits</span></td>
+        <td><p>Data bits. Default is 8.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">StopBits</span></td>
+        <td><span class="parametername">stopBits</span></td>
+        <td><p>Stop bits. Default is <span class="xref">System.IO.Ports.StopBits.One</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">readTimeoutMs</span></td>
+        <td><p>Synchronous read timeout in milliseconds (used by <span class="xref">System.IO.Ports.SerialPort.Read(byte[], int, int)</span>).
+Typical value is small (e.g., 10ms). Timeouts are caught and ignored in the read loop.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_SerialPortTransport__ctor_" data-uid="Wss.CoreModule.SerialPortTransport.#ctor*"></a>
+  <h4 id="Wss_CoreModule_SerialPortTransport__ctor_System_String_System_Int32_System_IO_Ports_Parity_System_Int32_System_IO_Ports_StopBits_System_Int32_" data-uid="Wss.CoreModule.SerialPortTransport.#ctor(System.String,System.Int32,System.IO.Ports.Parity,System.Int32,System.IO.Ports.StopBits,System.Int32)">SerialPortTransport(string, int, Parity, int, StopBits, int)</h4>
+  <div class="markdown level1 summary"><p>Creates a serial transport bound to the given port name and parameters.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SerialPortTransport(string portName, int baud = 115200, Parity parity = Parity.None, int dataBits = 8, StopBits stopBits = StopBits.One, int readTimeoutMs = 10)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">portName</span></td>
+        <td><p>Port name (e.g., <code>&quot;COM5&quot;</code> on Windows, <code>&quot;/dev/ttyUSB0&quot;</code> on Linux/macOS).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">baud</span></td>
+        <td><p>Baud rate. Default is 115200.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Parity</span></td>
+        <td><span class="parametername">parity</span></td>
+        <td><p>Parity setting. Default is <span class="xref">System.IO.Ports.Parity.None</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">dataBits</span></td>
+        <td><p>Data bits. Default is 8.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">StopBits</span></td>
+        <td><span class="parametername">stopBits</span></td>
+        <td><p>Stop bits. Default is <span class="xref">System.IO.Ports.StopBits.One</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">readTimeoutMs</span></td>
+        <td><p>Synchronous read timeout in milliseconds (used by <span class="xref">System.IO.Ports.SerialPort.Read(byte[], int, int)</span>).
+Typical value is small (e.g., 10ms). Timeouts are caught and ignored in the read loop.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+</h3>
+
+
+  <a id="Wss_CoreModule_SerialPortTransport_IsConnected_" data-uid="Wss.CoreModule.SerialPortTransport.IsConnected*"></a>
+  <h4 id="Wss_CoreModule_SerialPortTransport_IsConnected" data-uid="Wss.CoreModule.SerialPortTransport.IsConnected">IsConnected</h4>
+  <div class="markdown level1 summary"><p>Gets whether the transport is currently connected/open.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsConnected { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+
+
+  <a id="Wss_CoreModule_SerialPortTransport_ConnectAsync_" data-uid="Wss.CoreModule.SerialPortTransport.ConnectAsync*"></a>
+  <h4 id="Wss_CoreModule_SerialPortTransport_ConnectAsync_System_Threading_CancellationToken_" data-uid="Wss.CoreModule.SerialPortTransport.ConnectAsync(System.Threading.CancellationToken)">ConnectAsync(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Opens/initializes the transport connection (e.g., open a serial port, connect a socket, start BLE session).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task ConnectAsync(CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Optional cancellation token to abort the connect attempt.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span></td>
+        <td><p>A task that completes when the transport is connected.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Wss_CoreModule_SerialPortTransport_ConnectAsync_System_Threading_CancellationToken__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Opens the serial port and starts a background read loop that forwards incoming data to <a class="xref" href="Wss.CoreModule.SerialPortTransport.html#Wss_CoreModule_SerialPortTransport_BytesReceived">BytesReceived</a>.</p>
+</div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ObjectDisposedException</span></td>
+        <td><p>If the instance has been disposed.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">OperationCanceledException</span></td>
+        <td><p>If <code class="paramref">ct</code> is canceled.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Exception</span></td>
+        <td><p>Implementations may throw transport-specific exceptions (e.g., unauthorized port access, device not found).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_SerialPortTransport_DisconnectAsync_" data-uid="Wss.CoreModule.SerialPortTransport.DisconnectAsync*"></a>
+  <h4 id="Wss_CoreModule_SerialPortTransport_DisconnectAsync_System_Threading_CancellationToken_" data-uid="Wss.CoreModule.SerialPortTransport.DisconnectAsync(System.Threading.CancellationToken)">DisconnectAsync(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Closes the transport connection and stops any background receive loop.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task DisconnectAsync(CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Optional cancellation token to abort a long-running disconnect.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span></td>
+        <td><p>A task that completes when the transport is fully disconnected.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Wss_CoreModule_SerialPortTransport_DisconnectAsync_System_Threading_CancellationToken__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Stops the background read loop and closes the serial port.</p>
+</div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ObjectDisposedException</span></td>
+        <td><p>If the instance has been disposed.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">OperationCanceledException</span></td>
+        <td><p>If <code class="paramref">ct</code> is canceled.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_SerialPortTransport_Dispose_" data-uid="Wss.CoreModule.SerialPortTransport.Dispose*"></a>
+  <h4 id="Wss_CoreModule_SerialPortTransport_Dispose" data-uid="Wss.CoreModule.SerialPortTransport.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"><p>Disposes the serial port and stops the read loop.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+
+
+  <a id="Wss_CoreModule_SerialPortTransport_SendAsync_" data-uid="Wss.CoreModule.SerialPortTransport.SendAsync*"></a>
+  <h4 id="Wss_CoreModule_SerialPortTransport_SendAsync_System_Byte___System_Threading_CancellationToken_" data-uid="Wss.CoreModule.SerialPortTransport.SendAsync(System.Byte[],System.Threading.CancellationToken)">SendAsync(byte[], CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Sends a block of bytes over the transport.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task SendAsync(byte[] data, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">byte</span>[]</td>
+        <td><span class="parametername">data</span></td>
+        <td><p>The bytes to write. Callers should provide a buffer that will not be mutated during send.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Optional cancellation token to cancel the send before it is written.
+For some transports (e.g., synchronous serial writes), cancellation may only be observed before the write starts.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span></td>
+        <td><p>A task that completes when the bytes have been handed off to the transport.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Wss_CoreModule_SerialPortTransport_SendAsync_System_Byte___System_Threading_CancellationToken__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Writes the buffer synchronously to the underlying <span class="xref">System.IO.Ports.SerialPort</span> and flushes the base stream.</p>
+</div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ObjectDisposedException</span></td>
+        <td><p>If the instance has been disposed.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">InvalidOperationException</span></td>
+        <td><p>If the transport is not connected.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">OperationCanceledException</span></td>
+        <td><p>If <code class="paramref">ct</code> is canceled.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="events">Events
+</h3>
+
+
+  <h4 id="Wss_CoreModule_SerialPortTransport_BytesReceived" data-uid="Wss.CoreModule.SerialPortTransport.BytesReceived">BytesReceived</h4>
+  <div class="markdown level1 summary"><p>Raised whenever raw bytes arrive from the underlying transport.
+Each invocation may represent any number of bytes (including zero, depending on implementation),
+and may contain partial or multiple protocol frames.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event Action&lt;byte[]&gt; BytesReceived</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Action</span>&lt;<span class="xref">byte</span>[]&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Wss_CoreModule_SerialPortTransport_BytesReceived_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+Implementations should invoke this event promptly as data becomes available.
+Callers should treat the provided buffer as read-only and copy it if they need to retain it.
+</p>
+<p>
+This event is typically raised on a background thread. Consumers should marshal to the main thread
+if required by their environment.
+</p>
+</div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Wss.CoreModule.ITransport.html">ITransport</a>
+  </div>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

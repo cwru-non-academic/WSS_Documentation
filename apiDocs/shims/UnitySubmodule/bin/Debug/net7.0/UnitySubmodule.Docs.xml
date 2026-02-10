@@ -1,0 +1,673 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>UnitySubmodule.Docs</name>
+    </assembly>
+    <members>
+        <member name="T:portScanner">
+            <summary>
+            Simple Unity helper that scans available serial ports and allows selecting
+            one from a UI dropdown to force the COM port used by the stimulation script.
+            Attach this to a separate GameObject and wire the <see cref="M:portScanner.selectPort"/>
+            method to a UI event (e.g., button click) to apply the chosen port.
+            </summary>
+        </member>
+        <member name="F:portScanner.stim">
+            <summary>
+            Reference to the <see cref="T:Stimulation"/> component whose <c>comPort</c>
+            will be set based on dropdown selection.
+            </summary>
+        </member>
+        <member name="F:portScanner.serialList">
+            <summary>
+            Dropdown populated with detected serial port names.
+            </summary>
+        </member>
+        <member name="M:portScanner.Start">
+            <summary>
+            Unity Start hook. No-op; port list is generated on enable.
+            </summary>
+        </member>
+        <member name="M:portScanner.OnEnable">
+            <summary>
+            Disables the stimulation component temporarily and populates the dropdown
+            with available serial ports.
+            </summary>
+        </member>
+        <member name="M:portScanner.Update">
+            <summary>
+            Unity Update hook. No-op; present for completeness.
+            </summary>
+        </member>
+        <member name="M:portScanner.generatePortList">
+            <summary>
+            Queries the system for serial ports and updates the dropdown options.
+            Adds an "empty" placeholder when no ports are found.
+            </summary>
+        </member>
+        <member name="M:portScanner.OnDisable">
+            <summary>
+            Unity OnDisable hook. No-op.
+            </summary>
+        </member>
+        <member name="M:portScanner.selectPort">
+            <summary>
+            Applies the selected COM port to the stimulation script and re-enables it.
+            </summary>
+        </member>
+        <member name="T:StimulationParams">
+            <summary>
+            Unity wrapper that composes a params layer (<c>StimParamsLayer</c>) over a core WSS implementation.
+            Extends the basic interface with per-finger calibration parameters, normalized drive, and JSON persistence.
+            All public stimulation APIs accept a finger string and map to a channel via <see cref="M:StimulationParams.FingerToChannel(System.String)"/>.
+            </summary>
+        </member>
+        <member name="F:StimulationParams.forcePort">
+            <summary>
+            Forces connection to a specific COM port instead of auto-detecting.
+            </summary>
+        </member>
+        <member name="F:StimulationParams.testMode">
+            <summary>
+            Enables simulated test mode without real hardware communication.
+            </summary>
+        </member>
+        <member name="F:StimulationParams.maxSetupTries">
+            <summary>
+            Maximum number of setup retries before failing initialization.
+            </summary>
+        </member>
+        <member name="F:StimulationParams.comPort">
+            <summary>
+            Target COM port to use when <see cref="F:StimulationParams.forcePort"/> is enabled.
+            </summary>
+        </member>
+        <member name="F:StimulationParams.started">
+            <summary>True after <see cref="M:StimulationParams.StartStimulation"/> succeeds.</summary>
+        </member>
+        <member name="F:StimulationParams.basicSupported">
+            <summary>True if the underlying core exposes basic-stimulation APIs.</summary>
+        </member>
+        <member name="M:StimulationParams.Awake">
+            <summary>
+            Builds the core WSS and wraps it with <c>StimParamsLayer</c>.
+            Tries to expose <see cref="T:Wss.CoreModule.IBasicStimulation"/> if available.
+            </summary>
+        </member>
+        <member name="M:StimulationParams.OnEnable">
+            <summary>
+            Initializes the WSS device connection when the component becomes active.
+            </summary>
+        </member>
+        <member name="M:StimulationParams.Update">
+            <summary>
+            Performs periodic updates and tick cycles for communication and task execution.
+            Press <c>A</c> to manually reload the core configuration file for testing.
+            </summary>
+        </member>
+        <member name="M:StimulationParams.OnDisable">
+            <summary>
+            Ensures proper device shutdown when the component is disabled.
+            </summary>
+        </member>
+        <member name="M:StimulationParams.releaseRadio">
+            <summary>
+            Explicitly releases the radio connection.
+            </summary>
+        </member>
+        <member name="M:StimulationParams.resetRadio">
+            <summary>
+            Performs a radio reset by shutting down and re-initializing the connection.
+            </summary>
+        </member>
+        <member name="M:StimulationParams.StimulateAnalog(System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Direct analog stimulation using raw parameters.
+            Prefer <see cref="M:StimulationParams.StimulateNormalized(System.String,System.Single)"/> for analog sensors.
+            </summary>
+            <param name="finger">Finger name or channel alias (e.g., "index" or "ch2").</param>
+            <param name="PW">Pulse width in microseconds.</param>
+            <param name="amp">Amplitude in milliamps (default = 3).</param>
+            <param name="IPI">Inter-pulse interval in milliseconds (default = 10).</param>
+        </member>
+        <member name="M:StimulationParams.StartStimulation">
+            <inheritdoc cref="M:Wss.CoreModule.IStimulationCore.StartStim(Wss.CoreModule.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:StimulationParams.StopStimulation">
+            <inheritdoc cref="M:Wss.CoreModule.IStimulationCore.StopStim(Wss.CoreModule.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:StimulationParams.Save(System.Int32)">
+            <inheritdoc cref="M:Wss.CoreModule.IBasicStimulation.Save(Wss.CoreModule.WssTarget)"/>
+            <param name="targetWSS">0=broadcast, 1..3=unit index.</param>
+        </member>
+        <member name="M:StimulationParams.Save">
+            <inheritdoc cref="M:Wss.CoreModule.IBasicStimulation.Save(Wss.CoreModule.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:StimulationParams.load(System.Int32)">
+            <inheritdoc cref="M:Wss.CoreModule.IBasicStimulation.Load(Wss.CoreModule.WssTarget)"/>
+        </member>
+        <member name="M:StimulationParams.load">
+            <inheritdoc cref="M:Wss.CoreModule.IBasicStimulation.Load(Wss.CoreModule.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:StimulationParams.request_Configs(System.Int32,System.Int32,System.Int32)">
+            <inheritdoc cref="M:Wss.CoreModule.IBasicStimulation.Request_Configs(System.Int32,System.Int32,Wss.CoreModule.WssTarget)"/>
+            <param name="targetWSS">0=broadcast, 1..3=unit index.</param>
+            <param name="command">Configuration block selector.</param>
+            <param name="id">Optional block id.</param>
+        </member>
+        <member name="M:StimulationParams.updateWaveform(System.Int32[],System.Int32)">
+            <inheritdoc cref="M:Wss.CoreModule.IBasicStimulation.UpdateWaveform(System.Int32[],System.Int32,Wss.CoreModule.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+            <param name="waveform">Serialized device waveform.</param>
+            <param name="eventID">Target event slot.</param>
+        </member>
+        <member name="M:StimulationParams.updateWaveform(System.Int32,System.Int32[],System.Int32)">
+            <summary>
+            Updates the waveform parameters for a specific event on a target unit.
+            </summary>
+            <inheritdoc cref="M:Wss.CoreModule.IBasicStimulation.UpdateWaveform(System.Int32[],System.Int32,Wss.CoreModule.WssTarget)"/>
+        </member>
+        <member name="M:StimulationParams.updateWaveform(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Selects a predefined or custom waveform shape from device memory.
+            Slots 0â€“10 are predefined. Slots 11â€“13 are custom.
+            </summary>
+            <inheritdoc cref="M:Wss.CoreModule.IBasicStimulation.UpdateEventShape(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget)"/>
+        </member>
+        <member name="M:StimulationParams.updateWaveform(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Shape selection on a target unit.
+            </summary>
+            <inheritdoc cref="M:Wss.CoreModule.IBasicStimulation.UpdateEventShape(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget)"/>
+        </member>
+        <member name="M:StimulationParams.updateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32)">
+            <summary>
+            Updates waveform using JSON-loaded builder definition for all units.
+            </summary>
+            <inheritdoc cref="M:Wss.CoreModule.IBasicStimulation.UpdateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:StimulationParams.updateWaveform(System.Int32,Wss.CoreModule.WaveformBuilder,System.Int32)">
+            <summary>
+            Updates waveform using JSON-loaded builder definition for a target unit.
+            </summary>
+            <inheritdoc cref="M:Wss.CoreModule.IBasicStimulation.UpdateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)"/>
+        </member>
+        <member name="M:StimulationParams.loadWaveform(System.String,System.Int32)">
+            <summary>Loads a waveform definition from external file.</summary>
+            <inheritdoc cref="M:Wss.CoreModule.IBasicStimulation.LoadWaveform(System.String,System.Int32)"/>
+        </member>
+        <member name="M:StimulationParams.WaveformSetup(Wss.CoreModule.WaveformBuilder,System.Int32)">
+            <summary>Defines a custom waveform for the specified event slot on all units.</summary>
+            <inheritdoc cref="M:Wss.CoreModule.IBasicStimulation.WaveformSetup(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)"/>
+        </member>
+        <member name="M:StimulationParams.WaveformSetup(System.Int32,Wss.CoreModule.WaveformBuilder,System.Int32)">
+            <summary>Defines a custom waveform for the specified event slot on a target unit.</summary>
+            <inheritdoc cref="M:Wss.CoreModule.IBasicStimulation.WaveformSetup(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)"/>
+        </member>
+        <member name="M:StimulationParams.UpdateIPD(System.Int32,System.Int32)">
+            <inheritdoc cref="M:Wss.CoreModule.IBasicStimulation.UpdateIPD(System.Int32,System.Int32,Wss.CoreModule.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:StimulationParams.UpdateIPD(System.Int32,System.Int32,System.Int32)">
+            <inheritdoc cref="M:Wss.CoreModule.IBasicStimulation.UpdateIPD(System.Int32,System.Int32,Wss.CoreModule.WssTarget)"/>
+        </member>
+        <member name="M:StimulationParams.StimulateNormalized(System.String,System.Single)">
+            <summary>
+            Normalized drive [0..1]. Computes PW via per-finger min/max and stimulates.
+            </summary>
+            <param name="finger">Finger label or alias (e.g., "index", "ring", "ch2").</param>
+            <param name="value01">Normalized drive in [0,1]. Values are clamped.</param>
+        </member>
+        <member name="M:StimulationParams.GetLastPulseWidth(System.String)">
+            <summary>
+            Returns the last computed intensity for a finger. For PW-driven systems this is PW (Âµs).
+            </summary>
+            <param name="finger">Finger label or alias.</param>
+        </member>
+        <member name="M:StimulationParams.SetChannelAmp(System.String,System.Single)">
+            <summary>Sets per-finger amplitude in mA.</summary>
+            <inheritdoc cref="M:Wss.CalibrationModule.IStimParamsCore.SetChannelAmp(System.Int32,System.Single)"/>
+        </member>
+        <member name="M:StimulationParams.SetChannelPWMin(System.String,System.Int32)">
+            <summary>Sets per-finger minimum PW in Âµs.</summary>
+            <inheritdoc cref="M:Wss.CalibrationModule.IStimParamsCore.SetChannelPWMin(System.Int32,System.Int32)"/>
+        </member>
+        <member name="M:StimulationParams.SetChannelPWMax(System.String,System.Int32)">
+            <summary>Sets per-finger maximum PW in Âµs.</summary>
+            <inheritdoc cref="M:Wss.CalibrationModule.IStimParamsCore.SetChannelPWMax(System.Int32,System.Int32)"/>
+        </member>
+        <member name="M:StimulationParams.SetChannelIPI(System.String,System.Int32)">
+            <summary>Sets per-finger IPI in ms.</summary>
+            <inheritdoc cref="M:Wss.CalibrationModule.IStimParamsCore.SetChannelIPI(System.Int32,System.Int32)"/>
+        </member>
+        <member name="M:StimulationParams.GetChannelAmp(System.String)">
+            <summary>Gets per-finger amplitude in mA.</summary>
+            <inheritdoc cref="M:Wss.CalibrationModule.IStimParamsCore.GetChannelAmp(System.Int32)"/>
+        </member>
+        <member name="M:StimulationParams.GetChannelPWMin(System.String)">
+            <summary>Gets per-finger minimum PW in Âµs.</summary>
+            <inheritdoc cref="M:Wss.CalibrationModule.IStimParamsCore.GetChannelPWMin(System.Int32)"/>
+        </member>
+        <member name="M:StimulationParams.GetChannelPWMax(System.String)">
+            <summary>Gets per-finger maximum PW in Âµs.</summary>
+            <inheritdoc cref="M:Wss.CalibrationModule.IStimParamsCore.GetChannelPWMax(System.Int32)"/>
+        </member>
+        <member name="M:StimulationParams.GetChannelIPI(System.String)">
+            <summary>Gets per-finger IPI in ms.</summary>
+            <inheritdoc cref="M:Wss.CalibrationModule.IStimParamsCore.GetChannelIPI(System.Int32)"/>
+        </member>
+        <member name="M:StimulationParams.IsFingerValid(System.String)">
+            <summary>Returns true if the finger maps to a valid channel for the current configuration.</summary>
+        </member>
+        <member name="M:StimulationParams.SaveParamsJson">
+            <summary>Saves current params JSON to disk.</summary>
+            <inheritdoc cref="M:Wss.CalibrationModule.IStimParamsCore.SaveParamsJson"/>
+        </member>
+        <member name="M:StimulationParams.LoadParamsJson">
+            <summary>Loads params JSON from default location.</summary>
+            <inheritdoc cref="M:Wss.CalibrationModule.IStimParamsCore.LoadParamsJson"/>
+        </member>
+        <member name="M:StimulationParams.LoadParamsJson(System.String)">
+            <summary>Loads params JSON from a given file or directory.</summary>
+            <param name="pathOrDir">File path or directory with default name.</param>
+            <inheritdoc cref="M:Wss.CalibrationModule.IStimParamsCore.LoadParamsJson(System.String)"/>
+        </member>
+        <member name="M:StimulationParams.AddOrUpdateStimParam(System.String,System.Single)">
+            <summary>
+            Sets a parameter by dotted key. Examples: "stim.ch.0.amp", "stim.ch.1.minPW".
+            </summary>
+            <inheritdoc cref="M:Wss.CalibrationModule.IStimParamsCore.AddOrUpdateStimParam(System.String,System.Single)"/>
+        </member>
+        <member name="M:StimulationParams.GetStimParam(System.String)">
+            <summary>Gets a parameter by dotted key.</summary>
+            <inheritdoc cref="M:Wss.CalibrationModule.IStimParamsCore.GetStimParam(System.String)"/>
+        </member>
+        <member name="M:StimulationParams.TryGetStimParam(System.String,System.Single@)">
+            <summary>Tries to read a parameter by dotted key.</summary>
+            <inheritdoc cref="!:WSSInterfacing.IStimParamsCore.TryGetStimParam(string, out float)"/>
+        </member>
+        <member name="M:StimulationParams.GetAllStimParams">
+            <summary>Returns a copy of all current params as dotted-key map.</summary>
+            <inheritdoc cref="M:Wss.CalibrationModule.IStimParamsCore.GetAllStimParams"/>
+        </member>
+        <member name="M:StimulationParams.UpdateChannelParams(System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Updates per-finger calibration params.
+            </summary>
+            <param name="finger">e.g., "index", "ring", or "ch2".</param>
+            <param name="max">Max PW (Âµs).</param>
+            <param name="min">Min PW (Âµs).</param>
+            <param name="amp">Amplitude (mA).</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">If finger maps to an invalid channel.</exception>
+        </member>
+        <member name="M:StimulationParams.Ready">
+            <inheritdoc cref="M:Wss.CoreModule.IStimulationCore.Ready"/>
+        </member>
+        <member name="M:StimulationParams.Started">
+            <inheritdoc cref="M:Wss.CoreModule.IStimulationCore.Started"/>
+        </member>
+        <member name="M:StimulationParams.GetCoreConfigCTRL">
+            <summary>Provides access to the core configuration controller.</summary>
+        </member>
+        <member name="M:StimulationParams.FingerToChannel(System.String)">
+            <summary>
+            Maps a finger label or alias to a device channel.
+            Supports "thumb/index/middle/ring/pinky" and "chN" aliases.
+            Returns 0 on invalid or empty input.
+            </summary>
+        </member>
+        <member name="T:Stimulation">
+            <summary>
+            High-level Unity wrapper for the full stimulation model layer.
+            Extends <c>StimParamsLayer</c> with proportional and derivative control modes,
+            calibration constants, and model-based drive computation.
+            This is the top-level interface that user code should normally interact with.
+            </summary>
+        </member>
+        <member name="F:Stimulation.forcePort">
+            <summary>
+            Forces connection to a specific COM port instead of auto-detecting.
+            </summary>
+        </member>
+        <member name="F:Stimulation.testMode">
+            <summary>
+            Enables simulated test mode without real hardware communication.
+            </summary>
+        </member>
+        <member name="F:Stimulation.maxSetupTries">
+            <summary>
+            Maximum number of setup retries before failing initialization.
+            </summary>
+        </member>
+        <member name="F:Stimulation.comPort">
+            <summary>
+            Target COM port to use when <see cref="F:Stimulation.forcePort"/> is enabled.
+            </summary>
+        </member>
+        <member name="F:Stimulation.started">
+            <summary>True after <see cref="M:Stimulation.StartStimulation"/> succeeds.</summary>
+        </member>
+        <member name="F:Stimulation.basicSupported">
+            <summary>True if the underlying core exposes basic-stimulation APIs.</summary>
+        </member>
+        <member name="M:Stimulation.Awake">
+            <summary>
+            Creates the full stimulation stack: core → params layer → model layer.
+            Detects hardware if <see cref="F:Stimulation.forcePort"/> is false.
+            </summary>
+        </member>
+        <member name="M:Stimulation.OnEnable">
+            <summary>Initializes the WSS device connection when the component becomes active.</summary>
+        </member>
+        <member name="M:Stimulation.Update">
+            <summary>
+            Advances communication tick and listens for debug input.
+            Press <c>A</c> to reload configuration file manually.
+            </summary>
+        </member>
+        <member name="M:Stimulation.OnDisable">
+            <summary>Ensures clean shutdown when the component is disabled.</summary>
+        </member>
+        <member name="M:Stimulation.releaseRadio">
+            <summary>Explicitly closes the radio connection.</summary>
+        </member>
+        <member name="M:Stimulation.resetRadio">
+            <summary>Resets the radio by shutting down and reinitializing the device.</summary>
+        </member>
+        <member name="M:Stimulation.StimulateAnalog(System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Direct analog stimulation using raw parameters.
+            Recommended only for discrete-sensor triggers.
+            </summary>
+            <param name="finger">Finger label or alias (e.g., "index" or "ch2").</param>
+            <param name="PW">Pulse width in microseconds.</param>
+            <param name="amp">Amplitude in milliamps (default = 3).</param>
+            <param name="IPI">Inter-pulse interval in milliseconds (default = 10).</param>
+        </member>
+        <member name="M:Stimulation.StartStimulation">
+            <inheritdoc cref="M:Wss.CoreModule.IStimulationCore.StartStim(Wss.CoreModule.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:Stimulation.StopStimulation">
+            <inheritdoc cref="M:Wss.CoreModule.IStimulationCore.StopStim(Wss.CoreModule.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:Stimulation.Save(System.Int32)">
+            <inheritdoc cref="M:Wss.CoreModule.IBasicStimulation.Save(Wss.CoreModule.WssTarget)"/>
+        </member>
+        <member name="M:Stimulation.Save">
+            <inheritdoc cref="M:Wss.CoreModule.IBasicStimulation.Save(Wss.CoreModule.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:Stimulation.load(System.Int32)">
+            <inheritdoc cref="M:Wss.CoreModule.IBasicStimulation.Load(Wss.CoreModule.WssTarget)"/>
+        </member>
+        <member name="M:Stimulation.load">
+            <inheritdoc cref="M:Wss.CoreModule.IBasicStimulation.Load(Wss.CoreModule.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:Stimulation.request_Configs(System.Int32,System.Int32,System.Int32)">
+            <inheritdoc cref="M:Wss.CoreModule.IBasicStimulation.Request_Configs(System.Int32,System.Int32,Wss.CoreModule.WssTarget)"/>
+        </member>
+        <member name="M:Stimulation.updateWaveform(System.Int32[],System.Int32)">
+            <inheritdoc cref="M:Wss.CoreModule.IBasicStimulation.UpdateWaveform(System.Int32[],System.Int32,Wss.CoreModule.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:Stimulation.updateWaveform(System.Int32,System.Int32[],System.Int32)">
+            <inheritdoc cref="M:Wss.CoreModule.IBasicStimulation.UpdateWaveform(System.Int32[],System.Int32,Wss.CoreModule.WssTarget)"/>
+        </member>
+        <member name="M:Stimulation.updateWaveform(System.Int32,System.Int32,System.Int32)">
+            <inheritdoc cref="M:Wss.CoreModule.IBasicStimulation.UpdateEventShape(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget)"/>
+        </member>
+        <member name="M:Stimulation.updateWaveform(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Selects predefined or custom waveform shapes for a specific WSS target.
+            </summary>
+        </member>
+        <member name="M:Stimulation.updateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32)">
+            <inheritdoc cref="M:Wss.CoreModule.IBasicStimulation.UpdateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:Stimulation.updateWaveform(System.Int32,Wss.CoreModule.WaveformBuilder,System.Int32)">
+            <summary>Loads a waveform definition from JSON for a target unit.</summary>
+        </member>
+        <member name="M:Stimulation.loadWaveform(System.String,System.Int32)">
+            <summary>Loads a waveform file into memory.</summary>
+        </member>
+        <member name="M:Stimulation.WaveformSetup(Wss.CoreModule.WaveformBuilder,System.Int32)">
+            <summary>Defines a custom waveform for an event slot on all units.</summary>
+        </member>
+        <member name="M:Stimulation.WaveformSetup(System.Int32,Wss.CoreModule.WaveformBuilder,System.Int32)">
+            <summary>Defines a custom waveform for an event slot on a specific unit.</summary>
+        </member>
+        <member name="M:Stimulation.UpdateIPD(System.Int32,System.Int32)">
+            <inheritdoc cref="M:Wss.CoreModule.IBasicStimulation.UpdateIPD(System.Int32,System.Int32,Wss.CoreModule.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:Stimulation.UpdateIPD(System.Int32,System.Int32,System.Int32)">
+            <inheritdoc cref="M:Wss.CoreModule.IBasicStimulation.UpdateIPD(System.Int32,System.Int32,Wss.CoreModule.WssTarget)"/>
+        </member>
+        <member name="M:Stimulation.StimulateNormalized(System.String,System.Single)">
+            <summary>
+            Normalized drive [0..1]. Computes PW via per-finger calibration and model constants, then stimulates.
+            </summary>
+        </member>
+        <member name="M:Stimulation.GetStimIntensity(System.String)">
+            <summary>Returns last computed pulse width for the specified finger.</summary>
+        </member>
+        <member name="M:Stimulation.SaveParamsJson">
+            <summary>Saves model-layer parameters JSON to disk.</summary>
+        </member>
+        <member name="M:Stimulation.LoadParamsJson">
+            <summary>Loads model-layer parameters JSON from default location.</summary>
+        </member>
+        <member name="M:Stimulation.LoadParamsJson(System.String)">
+            <summary>Loads model-layer parameters JSON from a specified path.</summary>
+        </member>
+        <member name="M:Stimulation.AddOrUpdateStimParam(System.String,System.Single)">
+            <summary>Sets a parameter by dotted key (e.g., "stim.ch.1.amp").</summary>
+        </member>
+        <member name="M:Stimulation.GetStimParam(System.String)">
+            <summary>Gets a parameter by dotted key.</summary>
+        </member>
+        <member name="M:Stimulation.TryGetStimParam(System.String,System.Single@)">
+            <summary>Attempts to read a parameter by key, returns <c>true</c> on success.</summary>
+        </member>
+        <member name="M:Stimulation.GetAllStimParams">
+            <summary>Returns a dictionary copy of all current stimulation parameters.</summary>
+        </member>
+        <member name="M:Stimulation.SetChannelAmp(System.String,System.Single)">
+            <summary>Sets per-finger amplitude in milliamps.</summary>
+        </member>
+        <member name="M:Stimulation.SetChannelPWMin(System.String,System.Int32)">
+            <summary>Sets per-finger minimum PW in microseconds.</summary>
+        </member>
+        <member name="M:Stimulation.SetChannelPWMax(System.String,System.Int32)">
+            <summary>Sets per-finger maximum PW in microseconds.</summary>
+        </member>
+        <member name="M:Stimulation.SetChannelIPI(System.String,System.Int32)">
+            <summary>Sets per-finger IPI in milliseconds.</summary>
+        </member>
+        <member name="M:Stimulation.GetChannelAmp(System.String)">
+            <summary>Gets per-finger amplitude in milliamps.</summary>
+        </member>
+        <member name="M:Stimulation.GetChannelPWMin(System.String)">
+            <summary>Gets per-finger minimum PW in microseconds.</summary>
+        </member>
+        <member name="M:Stimulation.GetChannelPWMax(System.String)">
+            <summary>Gets per-finger maximum PW in microseconds.</summary>
+        </member>
+        <member name="M:Stimulation.GetChannelIPI(System.String)">
+            <summary>Gets per-finger IPI in milliseconds.</summary>
+        </member>
+        <member name="M:Stimulation.IsFingerValid(System.String)">
+            <summary>Checks whether the specified finger maps to a valid channel index.</summary>
+        </member>
+        <member name="M:Stimulation.StimWithMode(System.String,System.Single)">
+            <summary>
+            Applies model-driven stimulation using proportional or PD mode.
+            </summary>
+            <param name="finger">Finger label or alias.</param>
+            <param name="magnitude">Normalized or physical magnitude input to the model.</param>
+        </member>
+        <member name="M:Stimulation.UpdateChannelParams(System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Updates calibration parameters for a specific finger.
+            </summary>
+        </member>
+        <member name="M:Stimulation.isModeValid">
+            <summary>Returns <c>true</c> if the model mode currently loaded is valid.</summary>
+        </member>
+        <member name="M:Stimulation.Ready">
+            <summary>Returns <c>true</c> if the device is initialized and ready.</summary>
+        </member>
+        <member name="M:Stimulation.Started">
+            <summary>Returns <c>true</c> if stimulation is currently active.</summary>
+        </member>
+        <member name="M:Stimulation.GetModelConfigCTRL">
+            <summary>Provides access to the model configuration controller.</summary>
+        </member>
+        <member name="M:Stimulation.GetCoreConfigCTRL">
+            <summary>Provides access to the core configuration controller.</summary>
+        </member>
+        <member name="M:Stimulation.FingerToChannel(System.String)">
+            <summary>
+            Maps a finger label or alias to its numeric channel.
+            Supports "thumb", "index", "middle", "ring", "pinky" or "little",
+            and generic "chN" notation. Returns 0 if invalid.
+            </summary>
+        </member>
+        <member name="T:Stimulationbasic">
+            <summary>
+            Basic Unity MonoBehaviour wrapper for the WSS stimulation core.
+            Handles initialization, configuration, and waveform control for connected WSS stimulators.
+            Designed as the simplest interface layer exposing low-level stimulation functionality.
+            </summary>
+        </member>
+        <member name="F:Stimulationbasic.forcePort">
+            <summary>
+            Forces connection to a specific COM port instead of auto-detecting.
+            </summary>
+        </member>
+        <member name="F:Stimulationbasic.testMode">
+            <summary>
+            Enables simulated test mode without real hardware communication.
+            </summary>
+        </member>
+        <member name="F:Stimulationbasic.maxSetupTries">
+            <summary>
+            Maximum number of setup retries before failing initialization.
+            </summary>
+        </member>
+        <member name="F:Stimulationbasic.comPort">
+            <summary>
+            Target COM port to use when <see cref="F:Stimulationbasic.forcePort"/> is enabled.
+            </summary>
+        </member>
+        <member name="M:Stimulationbasic.Awake">
+            <summary>
+            Creates and configures the stimulation core controller.
+            Uses either a forced COM port or default auto-detected connection.
+            </summary>
+        </member>
+        <member name="M:Stimulationbasic.OnEnable">
+            <summary>
+            Initializes the WSS device connection when the component becomes active.
+            </summary>
+        </member>
+        <member name="M:Stimulationbasic.Update">
+            <summary>
+            Performs periodic updates and tick cycles for communication and task execution.
+            Press <c>A</c> key to manually reload the configuration file for testing.
+            </summary>
+        </member>
+        <member name="M:Stimulationbasic.OnDisable">
+            <summary>
+            Ensures proper device shutdown when the component is disabled.
+            </summary>
+        </member>
+        <member name="M:Stimulationbasic.releaseRadio">
+            <summary>
+            Explicitly releases the radio connection.
+            </summary>
+        </member>
+        <member name="M:Stimulationbasic.resetRadio">
+            <summary>
+            Performs a radio reset by shutting down and re-initializing the connection.
+            </summary>
+        </member>
+        <member name="M:Stimulationbasic.StimulateAnalog(System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Sends an analog stimulation command to a mapped channel.
+            </summary>
+            <param name="finger">Finger name or channel alias (e.g., "index" or "ch2").</param>
+            <param name="PW">Pulse width in microseconds.</param>
+            <param name="amp">Amplitude in milliamps (default = 3).</param>
+            <param name="IPI">Inter-pulse interval in milliseconds (default = 10).</param>
+        </member>
+        <member name="M:Stimulationbasic.StartStimulation">
+            <inheritdoc cref="M:Wss.CoreModule.IStimulationCore.StartStim(Wss.CoreModule.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:Stimulationbasic.StopStimulation">
+            <inheritdoc cref="M:Wss.CoreModule.IStimulationCore.StopStim(Wss.CoreModule.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:Stimulationbasic.Save(System.Int32)">
+            <inheritdoc cref="M:Wss.CoreModule.IBasicStimulation.Save(Wss.CoreModule.WssTarget)"/>
+        </member>
+        <member name="M:Stimulationbasic.Save">
+            <inheritdoc cref="M:Wss.CoreModule.IBasicStimulation.Save(Wss.CoreModule.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:Stimulationbasic.load(System.Int32)">
+            <inheritdoc cref="M:Wss.CoreModule.IBasicStimulation.Load(Wss.CoreModule.WssTarget)"/>
+        </member>
+        <member name="M:Stimulationbasic.load">
+            <inheritdoc cref="M:Wss.CoreModule.IBasicStimulation.Load(Wss.CoreModule.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:Stimulationbasic.request_Configs(System.Int32,System.Int32,System.Int32)">
+            <inheritdoc cref="M:Wss.CoreModule.IBasicStimulation.Request_Configs(System.Int32,System.Int32,Wss.CoreModule.WssTarget)"/>
+        </member>
+        <member name="M:Stimulationbasic.updateWaveform(System.Int32[],System.Int32)">
+            <inheritdoc cref="M:Wss.CoreModule.IBasicStimulation.UpdateWaveform(System.Int32[],System.Int32,Wss.CoreModule.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:Stimulationbasic.updateWaveform(System.Int32,System.Int32,System.Int32)">
+            <inheritdoc cref="M:Wss.CoreModule.IBasicStimulation.UpdateEventShape(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget)"/>
+        </member>
+        <member name="M:Stimulationbasic.updateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32)">
+            <inheritdoc cref="M:Wss.CoreModule.IBasicStimulation.UpdateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:Stimulationbasic.loadWaveform(System.String,System.Int32)">
+            <inheritdoc cref="M:Wss.CoreModule.IBasicStimulation.LoadWaveform(System.String,System.Int32)"/>
+        </member>
+        <member name="M:Stimulationbasic.WaveformSetup(Wss.CoreModule.WaveformBuilder,System.Int32)">
+            <inheritdoc cref="M:Wss.CoreModule.IBasicStimulation.WaveformSetup(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:Stimulationbasic.UpdateIPD(System.Int32,System.Int32)">
+            <inheritdoc cref="M:Wss.CoreModule.IBasicStimulation.UpdateIPD(System.Int32,System.Int32,Wss.CoreModule.WssTarget)"/>
+            <remarks>Broadcasts to all connected WSS units.</remarks>
+        </member>
+        <member name="M:Stimulationbasic.UpdateIPD(System.Int32,System.Int32,System.Int32)">
+            <inheritdoc cref="M:Wss.CoreModule.IBasicStimulation.UpdateIPD(System.Int32,System.Int32,Wss.CoreModule.WssTarget)"/>
+        </member>
+        <member name="M:Stimulationbasic.Ready">
+            <summary>Returns <c>true</c> if the device has completed setup and is ready.</summary>
+        </member>
+        <member name="M:Stimulationbasic.Started">
+            <summary>Returns <c>true</c> if stimulation is currently active.</summary>
+        </member>
+        <member name="M:Stimulationbasic.GetCoreConfigCTRL">
+            <summary>Provides access to the core configuration controller.</summary>
+        </member>
+    </members>
+</doc>

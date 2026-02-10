@@ -5,47 +5,75 @@ output:
 ---
 # Building Software API Docs (DocFX)
 
-This guide explains how to generate the WSS software documentation site (DocFX) while keeping the code in its original repository.
+This guide explains how to generate the WSS documentation hub while keeping code in external repositories.
 
-The documentation project lives in this repo under `apiDocs/` and reads C# sources from your code repo via an environment variable or command-line argument.
+The docs project lives under `apiDocs/` and uses `apiDocs/repos.manifest.json` to map each linked repo to a documentation tool:
+
+- `kind: csharp` -> DocFX metadata/API section
+- `kind: python` -> Sphinx HTML hosted by DocFX
 
 ## Prerequisites
 
-- .NET SDK 7.x or later (for building the small ApiProject)
+- .NET SDK 7.x or later (for C# API projects)
 - DocFX CLI in your PATH (https://dotnet.github.io/docfx/)
+- Python + Sphinx (`sphinx-build`) for Python API repos
 - PowerShell (Windows) or Bash (macOS/Linux/Git Bash on Windows)
 
 > If DocFX isn’t installed, the build script will remind you to run `docfx metadata` and `docfx build` once you add it to PATH.
 
-## Locate the code
+## Configure linked repositories
 
-Point the docs project at the WSS code root (the `WSSInterfacingModule` folder). Example path on Windows:
+Edit `apiDocs/repos.manifest.json` and add one entry per linked repo.
 
-```
-A:\Documents\GIT Projects\SimpleWSSStimConsole\Assets\SubModules\WSSInterfacingModule
-```
+For C# repos provide:
+- `root`: repo root path
+- `csproj`: path to project file relative to `root`
+- `docfxDest`: unique output section (example: `api/core`)
 
-You can pass this path as an argument or set an environment variable.
+Optional (C#): `entryUid`
+
+The hub auto-generates `apiDocs/index.md` links for each enabled C# repo. If you set `entryUid`, the
+index link will use `xref:<entryUid>` (a stable link to a namespace/type) instead of linking to a
+generated TOC file.
+
+How to pick `entryUid`:
+
+1) Build once.
+2) Open `apiDocs/api/<docfxDest>/toc.yml`.
+3) Use the first namespace UID listed there.
+
+Example:
+
+- If `apiDocs/api/csharp/toc.yml` starts with `- uid: HFI.Wss`, set `entryUid` to `HFI.Wss`.
+
+For Python repos provide:
+- `root`: repo root path
+- `sphinxSource`: source docs folder (usually `docs`)
+- `publishDir`: destination under this docs repo (example: `external/python-tools`)
+
+Selecting the correct Python `root` + `sphinxSource`
+
+- `root` should be the Python project root (the folder with `pyproject.toml`/`setup.cfg` and the
+  Sphinx docs tree).
+- `sphinxSource` should point to the directory that contains `conf.py`.
+
+Example (WSS_Python_Wrapper):
+
+- `root`: `/home/lemf/Documents/GitHub/WSS_Python_Wrapper/WSS_Py_Wrapper`
+- `sphinxSource`: `docs` (because `docs/conf.py` exists under that root)
 
 ## Windows (PowerShell)
 
-Option A — set env var then run:
+Build with manifest:
 
 ```powershell
-$env:WSS_CODE_ROOT = 'A:\Documents\GIT Projects\SimpleWSSStimConsole\Assets\SubModules\WSSInterfacingModule'
-A:\\Documents\\GIT Projects\\WSS-documentation\\apiDocs\build-docs.ps1
+./apiDocs/build-docs.ps1 -ManifestPath ./apiDocs/repos.manifest.json
 ```
 
-Option B — pass the path each time:
+Serve locally after build:
 
 ```powershell
-A:\\Documents\\GIT Projects\\WSS-documentation\\apiDocs\build-docs.ps1 -CodeRoot 'A:\Documents\GIT Projects\SimpleWSSStimConsole\Assets\SubModules\WSSInterfacingModule'
-```
-
-Serve locally after build (auto-hosts the site):
-
-```powershell
-A:\\Documents\\GIT Projects\\WSS-documentation\\apiDocs\build-docs.ps1 -CodeRoot '...\WSSInterfacingModule' -Serve
+./apiDocs/build-docs.ps1 -ManifestPath ./apiDocs/repos.manifest.json -Serve
 ```
 
 Execution policy
@@ -58,27 +86,65 @@ powershell -NoProfile -ExecutionPolicy Bypass -File "A:\\Documents\\GIT Projects
 
 ## macOS/Linux or Git Bash (Windows)
 
-Option A — set env var then run:
+Build with manifest:
 
 ```bash
-export CODE_ROOT="/path/to/SimpleWSSStimConsole/Assets/SubModules/WSSInterfacingModule"
-"/path/to/WSS-documentation/apiDocs/build-docs.sh"
+./apiDocs/build-docs.sh --manifest ./apiDocs/repos.manifest.json
 ```
 
-Option B — pass the path each time:
+Permission denied
+
+If `./apiDocs/build-docs.sh` returns `Permission denied`:
 
 ```bash
-"/path/to/WSS-documentation/apiDocs/build-docs.sh" \
-  "/path/to/SimpleWSSStimConsole/Assets/SubModules/WSSInterfacingModule"
+chmod +x ./apiDocs/build-docs.sh
+./apiDocs/build-docs.sh --manifest ./apiDocs/repos.manifest.json
+```
+
+If execute permission cannot be changed (for example, restricted mount/ACL), run through Bash directly:
+
+```bash
+bash ./apiDocs/build-docs.sh --manifest ./apiDocs/repos.manifest.json
 ```
 
 ## What the scripts do
 
-- Clean build: removes `apiDocs/_site`, `apiDocs/api`, and `apiDocs/ApiProject/Transformed`
-- Transforms/copies C# source into `apiDocs/ApiProject/Transformed`
-  - Uses `apiDocs/tools/WrapForDocs.ps1` on Windows (adds a namespace wrapper if missing)
-- Builds the ApiProject to produce XML docs
+- Reads enabled entries from `apiDocs/repos.manifest.json`
+- Builds Python docs with Sphinx into `apiDocs/external/<repo-id>`
+- Generates a DocFX config file (`apiDocs/docfx.generated.json`) with one metadata section per C# repo
+- Regenerates `apiDocs/index.md` and `apiDocs/toc.yml` so all sections are accessible from the main page
 - Runs `docfx metadata` then `docfx build`
+
+## Unity submodule repos (using a shim .csproj)
+
+If a Unity repository contains a UI/app `.csproj` but the integration code you want to document is a
+submodule folder (not a standalone project), use the provided shim project:
+
+- `apiDocs/shims/UnitySubmodule/UnitySubmodule.Docs.csproj`
+
+Add a C# repo entry pointing to the shim and pass the integration folder via MSBuild properties:
+
+```json
+{
+  "id": "unity-integration",
+  "title": "API: Unity Integration (C#)",
+  "kind": "csharp",
+  "enabled": true,
+  "root": "${WSS_UNITY_REPO_ROOT}",
+  "csprojBase": "hub",
+  "csproj": "apiDocs/shims/UnitySubmodule/UnitySubmodule.Docs.csproj",
+  "docfxDest": "api/unity",
+  "msbuildProperties": {
+    "DocsSourceRoot": "${WSS_UNITY_INTEGRATION_SRC}",
+    "DefineConstants": "UNITY_2021_3_OR_NEWER;UNITY_EDITOR"
+  }
+}
+```
+
+Where:
+
+- `WSS_UNITY_REPO_ROOT` points at the Unity app repo.
+- `WSS_UNITY_INTEGRATION_SRC` points at the submodule folder you want documented.
 
 ## Output
 
@@ -93,8 +159,16 @@ Option B — pass the path each time:
     cd \"A:\\Documents\\GIT Projects\\WSS-documentation\\apiDocs\"
     docfx metadata && docfx build
     ```
-- Wrong code path
-  - Verify the `WSSInterfacingModule` path and that it contains the expected `.cs` files.
+- Wrong repo path
+  - Verify each `root` in `repos.manifest.json` exists.
+- Missing C# project path
+  - Verify `csproj` is correct relative to `root`.
+- Missing Sphinx docs
+  - Verify `sphinxSource` exists and Sphinx is installed.
+- Sphinx autodoc import errors
+  - Ensure the Python repo's docs dependencies are installed (common patterns:
+    `python -m pip install -e '.[docs]'` or install `docs/requirements.txt`).
+  - If `conf.py` modifies `sys.path`, confirm it points at the correct `src/` directory.
 - Namespace/compile warnings
   - The docs build uses a small ApiProject; we suppress common nullability warnings that don’t affect documentation output.
 - Permissions
@@ -106,6 +180,3 @@ Option B — pass the path each time:
 - `apiDocs/build-docs.ps1` — PowerShell build script (Windows)
 - `apiDocs/build-docs.sh` — Bash build script (macOS/Linux/Git Bash)
 - `apiDocs/_site/` — Generated website (output)
-
-
-

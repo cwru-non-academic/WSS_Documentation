@@ -1,0 +1,2370 @@
+### YamlMime:ManagedReference
+items:
+- uid: HFI.Wss.StimulationController
+  commentId: T:HFI.Wss.StimulationController
+  id: StimulationController
+  parent: HFI.Wss
+  children:
+  - HFI.Wss.StimulationController.#ctor(HFI.Wss.StimulationOptions)
+  - HFI.Wss.StimulationController.AddOrUpdateStimParam(System.String,System.Single)
+  - HFI.Wss.StimulationController.BasicSupported
+  - HFI.Wss.StimulationController.Dispose
+  - HFI.Wss.StimulationController.DisposeAsync
+  - HFI.Wss.StimulationController.GetAllStimParams
+  - HFI.Wss.StimulationController.GetChannelAmp(System.String)
+  - HFI.Wss.StimulationController.GetChannelIPI(System.String)
+  - HFI.Wss.StimulationController.GetChannelPWMax(System.String)
+  - HFI.Wss.StimulationController.GetChannelPWMin(System.String)
+  - HFI.Wss.StimulationController.GetCoreConfigCTRL
+  - HFI.Wss.StimulationController.GetModelConfigCTRL
+  - HFI.Wss.StimulationController.GetStimIntensity(System.String)
+  - HFI.Wss.StimulationController.GetStimParam(System.String)
+  - HFI.Wss.StimulationController.Initialize
+  - HFI.Wss.StimulationController.IsFingerValid(System.String)
+  - HFI.Wss.StimulationController.LoadCoreConfigFile
+  - HFI.Wss.StimulationController.LoadParamsJson
+  - HFI.Wss.StimulationController.LoadParamsJson(System.String)
+  - HFI.Wss.StimulationController.Ready
+  - HFI.Wss.StimulationController.Save
+  - HFI.Wss.StimulationController.Save(System.Int32)
+  - HFI.Wss.StimulationController.SaveParamsJson
+  - HFI.Wss.StimulationController.SetChannelAmp(System.String,System.Single)
+  - HFI.Wss.StimulationController.SetChannelIPI(System.String,System.Int32)
+  - HFI.Wss.StimulationController.SetChannelPWMax(System.String,System.Int32)
+  - HFI.Wss.StimulationController.SetChannelPWMin(System.String,System.Int32)
+  - HFI.Wss.StimulationController.Shutdown
+  - HFI.Wss.StimulationController.StartStimulation
+  - HFI.Wss.StimulationController.Started
+  - HFI.Wss.StimulationController.StimWithMode(System.String,System.Single)
+  - HFI.Wss.StimulationController.StimulateAnalog(System.String,System.Int32,System.Int32,System.Int32)
+  - HFI.Wss.StimulationController.StimulateNormalized(System.String,System.Single)
+  - HFI.Wss.StimulationController.StopStimulation
+  - HFI.Wss.StimulationController.TryGetStimParam(System.String,System.Single@)
+  - HFI.Wss.StimulationController.UpdateChannelParams(System.String,System.Int32,System.Int32,System.Int32)
+  - HFI.Wss.StimulationController.UpdateIPD(System.Int32,System.Int32)
+  - HFI.Wss.StimulationController.UpdateIPD(System.Int32,System.Int32,System.Int32)
+  - HFI.Wss.StimulationController.WaveformSetup(System.Int32,Wss.CoreModule.WaveformBuilder,System.Int32)
+  - HFI.Wss.StimulationController.WaveformSetup(Wss.CoreModule.WaveformBuilder,System.Int32)
+  - HFI.Wss.StimulationController.isModeValid
+  - HFI.Wss.StimulationController.load
+  - HFI.Wss.StimulationController.load(System.Int32)
+  - HFI.Wss.StimulationController.loadWaveform(System.String,System.Int32)
+  - HFI.Wss.StimulationController.releaseRadio
+  - HFI.Wss.StimulationController.request_Configs(System.Int32,System.Int32,System.Int32)
+  - HFI.Wss.StimulationController.resetRadio
+  - HFI.Wss.StimulationController.started
+  - HFI.Wss.StimulationController.updateWaveform(System.Int32,System.Int32,System.Int32)
+  - HFI.Wss.StimulationController.updateWaveform(System.Int32,System.Int32,System.Int32,System.Int32)
+  - HFI.Wss.StimulationController.updateWaveform(System.Int32,System.Int32[],System.Int32)
+  - HFI.Wss.StimulationController.updateWaveform(System.Int32,Wss.CoreModule.WaveformBuilder,System.Int32)
+  - HFI.Wss.StimulationController.updateWaveform(System.Int32[],System.Int32)
+  - HFI.Wss.StimulationController.updateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: StimulationController
+  nameWithType: StimulationController
+  fullName: HFI.Wss.StimulationController
+  type: Class
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: >-
+    Host-agnostic wrapper around the full stimulation stack (core → params → model).
+
+    Provides the same API surface as the Unity <code>Stimulation</code> MonoBehaviour but manages
+
+    initialization, ticking, and shutdown inside a plain .NET application.
+  remarks: >-
+    This type starts a background tick loop when <xref href="HFI.Wss.StimulationController.Initialize" data-throw-if-not-resolved="false"></xref> completes.
+
+    The public API is primarily intended for single-threaded use; avoid calling stimulation methods
+
+    concurrently with <xref href="HFI.Wss.StimulationController.Shutdown" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public sealed class StimulationController
+    content.vb: Public NotInheritable Class StimulationController
+  inheritance:
+  - System.Object
+- uid: HFI.Wss.StimulationController.started
+  commentId: P:HFI.Wss.StimulationController.started
+  id: started
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: started
+  nameWithType: StimulationController.started
+  fullName: HFI.Wss.StimulationController.started
+  type: Property
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: True after <xref href="HFI.Wss.StimulationController.StartStimulation" data-throw-if-not-resolved="false"></xref> succeeds.
+  example: []
+  syntax:
+    content: public bool started { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property started As Boolean
+  overload: HFI.Wss.StimulationController.started*
+- uid: HFI.Wss.StimulationController.BasicSupported
+  commentId: P:HFI.Wss.StimulationController.BasicSupported
+  id: BasicSupported
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: BasicSupported
+  nameWithType: StimulationController.BasicSupported
+  fullName: HFI.Wss.StimulationController.BasicSupported
+  type: Property
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: True if the underlying core exposes basic-stimulation APIs.
+  example: []
+  syntax:
+    content: public bool BasicSupported { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property BasicSupported As Boolean
+  overload: HFI.Wss.StimulationController.BasicSupported*
+- uid: HFI.Wss.StimulationController.#ctor(HFI.Wss.StimulationOptions)
+  commentId: M:HFI.Wss.StimulationController.#ctor(HFI.Wss.StimulationOptions)
+  id: '#ctor(HFI.Wss.StimulationOptions)'
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: StimulationController(StimulationOptions)
+  nameWithType: StimulationController.StimulationController(StimulationOptions)
+  fullName: HFI.Wss.StimulationController.StimulationController(HFI.Wss.StimulationOptions)
+  type: Constructor
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Creates a controller instance with the provided connection and configuration options.
+  example: []
+  syntax:
+    content: public StimulationController(StimulationOptions options)
+    parameters:
+    - id: options
+      type: HFI.Wss.StimulationOptions
+      description: Options that control transport, config paths, and tick behavior.
+    content.vb: Public Sub New(options As StimulationOptions)
+  overload: HFI.Wss.StimulationController.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when <code class="paramref">options</code> is null.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when an option value is invalid.
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: Thrown when an option value is out of range.
+  nameWithType.vb: StimulationController.New(StimulationOptions)
+  fullName.vb: HFI.Wss.StimulationController.New(HFI.Wss.StimulationOptions)
+  name.vb: New(StimulationOptions)
+- uid: HFI.Wss.StimulationController.Initialize
+  commentId: M:HFI.Wss.StimulationController.Initialize
+  id: Initialize
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: Initialize()
+  nameWithType: StimulationController.Initialize()
+  fullName: HFI.Wss.StimulationController.Initialize()
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: >-
+    Builds the full stimulation stack and initializes the hardware connection.
+
+    Automatically starts the background tick loop.
+  example: []
+  syntax:
+    content: public void Initialize()
+    content.vb: Public Sub Initialize()
+  overload: HFI.Wss.StimulationController.Initialize*
+- uid: HFI.Wss.StimulationController.Shutdown
+  commentId: M:HFI.Wss.StimulationController.Shutdown
+  id: Shutdown
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: Shutdown()
+  nameWithType: StimulationController.Shutdown()
+  fullName: HFI.Wss.StimulationController.Shutdown()
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Stops ticking and tears down the connection.
+  example: []
+  syntax:
+    content: public void Shutdown()
+    content.vb: Public Sub Shutdown()
+  overload: HFI.Wss.StimulationController.Shutdown*
+- uid: HFI.Wss.StimulationController.releaseRadio
+  commentId: M:HFI.Wss.StimulationController.releaseRadio
+  id: releaseRadio
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: releaseRadio()
+  nameWithType: StimulationController.releaseRadio()
+  fullName: HFI.Wss.StimulationController.releaseRadio()
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Explicitly releases the radio connection.
+  example: []
+  syntax:
+    content: public void releaseRadio()
+    content.vb: Public Sub releaseRadio()
+  overload: HFI.Wss.StimulationController.releaseRadio*
+- uid: HFI.Wss.StimulationController.resetRadio
+  commentId: M:HFI.Wss.StimulationController.resetRadio
+  id: resetRadio
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: resetRadio()
+  nameWithType: StimulationController.resetRadio()
+  fullName: HFI.Wss.StimulationController.resetRadio()
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Performs a radio reset by shutting down and re-initializing the connection.
+  example: []
+  syntax:
+    content: public void resetRadio()
+    content.vb: Public Sub resetRadio()
+  overload: HFI.Wss.StimulationController.resetRadio*
+- uid: HFI.Wss.StimulationController.StimulateAnalog(System.String,System.Int32,System.Int32,System.Int32)
+  commentId: M:HFI.Wss.StimulationController.StimulateAnalog(System.String,System.Int32,System.Int32,System.Int32)
+  id: StimulateAnalog(System.String,System.Int32,System.Int32,System.Int32)
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: StimulateAnalog(string, int, int, int)
+  nameWithType: StimulationController.StimulateAnalog(string, int, int, int)
+  fullName: HFI.Wss.StimulationController.StimulateAnalog(string, int, int, int)
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Sends a direct (basic) analog stimulation request for a channel.
+  example: []
+  syntax:
+    content: public void StimulateAnalog(string finger, int PW, int amp = 3, int IPI = 10)
+    parameters:
+    - id: finger
+      type: System.String
+      description: Finger name (e.g., "thumb", "index") or channel alias (e.g., "ch1").
+    - id: PW
+      type: System.Int32
+      description: Pulse width (device-specific; commonly microseconds).
+    - id: amp
+      type: System.Int32
+      description: Amplitude setting (device-specific).
+    - id: IPI
+      type: System.Int32
+      description: Inter-pulse interval (device-specific; commonly milliseconds).
+    content.vb: Public Sub StimulateAnalog(finger As String, PW As Integer, amp As Integer = 3, IPI As Integer = 10)
+  overload: HFI.Wss.StimulationController.StimulateAnalog*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when <xref href="HFI.Wss.StimulationController.Initialize" data-throw-if-not-resolved="false"></xref> has not been called.
+  nameWithType.vb: StimulationController.StimulateAnalog(String, Integer, Integer, Integer)
+  fullName.vb: HFI.Wss.StimulationController.StimulateAnalog(String, Integer, Integer, Integer)
+  name.vb: StimulateAnalog(String, Integer, Integer, Integer)
+- uid: HFI.Wss.StimulationController.StartStimulation
+  commentId: M:HFI.Wss.StimulationController.StartStimulation
+  id: StartStimulation
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: StartStimulation()
+  nameWithType: StimulationController.StartStimulation()
+  fullName: HFI.Wss.StimulationController.StartStimulation()
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Broadcasts a start-stimulation command and marks <xref href="HFI.Wss.StimulationController.started" data-throw-if-not-resolved="false"></xref> as true.
+  example: []
+  syntax:
+    content: public void StartStimulation()
+    content.vb: Public Sub StartStimulation()
+  overload: HFI.Wss.StimulationController.StartStimulation*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when <xref href="HFI.Wss.StimulationController.Initialize" data-throw-if-not-resolved="false"></xref> has not been called.
+- uid: HFI.Wss.StimulationController.StopStimulation
+  commentId: M:HFI.Wss.StimulationController.StopStimulation
+  id: StopStimulation
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: StopStimulation()
+  nameWithType: StimulationController.StopStimulation()
+  fullName: HFI.Wss.StimulationController.StopStimulation()
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Broadcasts a stop-stimulation command and marks <xref href="HFI.Wss.StimulationController.started" data-throw-if-not-resolved="false"></xref> as false.
+  example: []
+  syntax:
+    content: public void StopStimulation()
+    content.vb: Public Sub StopStimulation()
+  overload: HFI.Wss.StimulationController.StopStimulation*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when <xref href="HFI.Wss.StimulationController.Initialize" data-throw-if-not-resolved="false"></xref> has not been called.
+- uid: HFI.Wss.StimulationController.Save(System.Int32)
+  commentId: M:HFI.Wss.StimulationController.Save(System.Int32)
+  id: Save(System.Int32)
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: Save(int)
+  nameWithType: StimulationController.Save(int)
+  fullName: HFI.Wss.StimulationController.Save(int)
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Persists basic-stimulation configuration to the target device.
+  remarks: If basic stimulation is not supported, this method logs an error and returns without throwing.
+  example: []
+  syntax:
+    content: public void Save(int targetWSS)
+    parameters:
+    - id: targetWSS
+      type: System.Int32
+      description: 0 = broadcast; 1-3 = specific device. Other values map to device 1.
+    content.vb: Public Sub Save(targetWSS As Integer)
+  overload: HFI.Wss.StimulationController.Save*
+  nameWithType.vb: StimulationController.Save(Integer)
+  fullName.vb: HFI.Wss.StimulationController.Save(Integer)
+  name.vb: Save(Integer)
+- uid: HFI.Wss.StimulationController.Save
+  commentId: M:HFI.Wss.StimulationController.Save
+  id: Save
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: Save()
+  nameWithType: StimulationController.Save()
+  fullName: HFI.Wss.StimulationController.Save()
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Persists basic-stimulation configuration to all devices.
+  remarks: If basic stimulation is not supported, this method logs an error and returns without throwing.
+  example: []
+  syntax:
+    content: public void Save()
+    content.vb: Public Sub Save()
+  overload: HFI.Wss.StimulationController.Save*
+- uid: HFI.Wss.StimulationController.load(System.Int32)
+  commentId: M:HFI.Wss.StimulationController.load(System.Int32)
+  id: load(System.Int32)
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: load(int)
+  nameWithType: StimulationController.load(int)
+  fullName: HFI.Wss.StimulationController.load(int)
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Loads basic-stimulation configuration from the target device.
+  remarks: If basic stimulation is not supported, this method logs an error and returns without throwing.
+  example: []
+  syntax:
+    content: public void load(int targetWSS)
+    parameters:
+    - id: targetWSS
+      type: System.Int32
+      description: 0 = broadcast; 1-3 = specific device. Other values map to device 1.
+    content.vb: Public Sub load(targetWSS As Integer)
+  overload: HFI.Wss.StimulationController.load*
+  nameWithType.vb: StimulationController.load(Integer)
+  fullName.vb: HFI.Wss.StimulationController.load(Integer)
+  name.vb: load(Integer)
+- uid: HFI.Wss.StimulationController.load
+  commentId: M:HFI.Wss.StimulationController.load
+  id: load
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: load()
+  nameWithType: StimulationController.load()
+  fullName: HFI.Wss.StimulationController.load()
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Loads basic-stimulation configuration from all devices.
+  remarks: If basic stimulation is not supported, this method logs an error and returns without throwing.
+  example: []
+  syntax:
+    content: public void load()
+    content.vb: Public Sub load()
+  overload: HFI.Wss.StimulationController.load*
+- uid: HFI.Wss.StimulationController.request_Configs(System.Int32,System.Int32,System.Int32)
+  commentId: M:HFI.Wss.StimulationController.request_Configs(System.Int32,System.Int32,System.Int32)
+  id: request_Configs(System.Int32,System.Int32,System.Int32)
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: request_Configs(int, int, int)
+  nameWithType: StimulationController.request_Configs(int, int, int)
+  fullName: HFI.Wss.StimulationController.request_Configs(int, int, int)
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Requests a configuration payload from the target device.
+  remarks: If basic stimulation is not supported, this method logs an error and returns without throwing.
+  example: []
+  syntax:
+    content: public void request_Configs(int targetWSS, int command, int id)
+    parameters:
+    - id: targetWSS
+      type: System.Int32
+      description: 0 = broadcast; 1-3 = specific device. Other values map to device 1.
+    - id: command
+      type: System.Int32
+      description: Command identifier (device-specific).
+    - id: id
+      type: System.Int32
+      description: Config identifier (device-specific).
+    content.vb: Public Sub request_Configs(targetWSS As Integer, command As Integer, id As Integer)
+  overload: HFI.Wss.StimulationController.request_Configs*
+  nameWithType.vb: StimulationController.request_Configs(Integer, Integer, Integer)
+  fullName.vb: HFI.Wss.StimulationController.request_Configs(Integer, Integer, Integer)
+  name.vb: request_Configs(Integer, Integer, Integer)
+- uid: HFI.Wss.StimulationController.updateWaveform(System.Int32[],System.Int32)
+  commentId: M:HFI.Wss.StimulationController.updateWaveform(System.Int32[],System.Int32)
+  id: updateWaveform(System.Int32[],System.Int32)
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: updateWaveform(int[], int)
+  nameWithType: StimulationController.updateWaveform(int[], int)
+  fullName: HFI.Wss.StimulationController.updateWaveform(int[], int)
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Updates a waveform definition on all devices.
+  remarks: If basic stimulation is not supported, this method logs an error and returns without throwing.
+  example: []
+  syntax:
+    content: public void updateWaveform(int[] waveform, int eventID)
+    parameters:
+    - id: waveform
+      type: System.Int32[]
+      description: Waveform samples (device-specific representation).
+    - id: eventID
+      type: System.Int32
+      description: Event identifier to update.
+    content.vb: Public Sub updateWaveform(waveform As Integer(), eventID As Integer)
+  overload: HFI.Wss.StimulationController.updateWaveform*
+  nameWithType.vb: StimulationController.updateWaveform(Integer(), Integer)
+  fullName.vb: HFI.Wss.StimulationController.updateWaveform(Integer(), Integer)
+  name.vb: updateWaveform(Integer(), Integer)
+- uid: HFI.Wss.StimulationController.updateWaveform(System.Int32,System.Int32[],System.Int32)
+  commentId: M:HFI.Wss.StimulationController.updateWaveform(System.Int32,System.Int32[],System.Int32)
+  id: updateWaveform(System.Int32,System.Int32[],System.Int32)
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: updateWaveform(int, int[], int)
+  nameWithType: StimulationController.updateWaveform(int, int[], int)
+  fullName: HFI.Wss.StimulationController.updateWaveform(int, int[], int)
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Updates a waveform definition on the target device.
+  remarks: If basic stimulation is not supported, this method logs an error and returns without throwing.
+  example: []
+  syntax:
+    content: public void updateWaveform(int targetWSS, int[] waveform, int eventID)
+    parameters:
+    - id: targetWSS
+      type: System.Int32
+      description: 0 = broadcast; 1-3 = specific device. Other values map to device 1.
+    - id: waveform
+      type: System.Int32[]
+      description: Waveform samples (device-specific representation).
+    - id: eventID
+      type: System.Int32
+      description: Event identifier to update.
+    content.vb: Public Sub updateWaveform(targetWSS As Integer, waveform As Integer(), eventID As Integer)
+  overload: HFI.Wss.StimulationController.updateWaveform*
+  nameWithType.vb: StimulationController.updateWaveform(Integer, Integer(), Integer)
+  fullName.vb: HFI.Wss.StimulationController.updateWaveform(Integer, Integer(), Integer)
+  name.vb: updateWaveform(Integer, Integer(), Integer)
+- uid: HFI.Wss.StimulationController.updateWaveform(System.Int32,System.Int32,System.Int32)
+  commentId: M:HFI.Wss.StimulationController.updateWaveform(System.Int32,System.Int32,System.Int32)
+  id: updateWaveform(System.Int32,System.Int32,System.Int32)
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: updateWaveform(int, int, int)
+  nameWithType: StimulationController.updateWaveform(int, int, int)
+  fullName: HFI.Wss.StimulationController.updateWaveform(int, int, int)
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Updates an event shape using cathodic/anodic waveform identifiers on all devices.
+  remarks: If basic stimulation is not supported, this method logs an error and returns without throwing.
+  example: []
+  syntax:
+    content: public void updateWaveform(int cathodicWaveform, int anodicWaveform, int eventID)
+    parameters:
+    - id: cathodicWaveform
+      type: System.Int32
+      description: Cathodic waveform identifier.
+    - id: anodicWaveform
+      type: System.Int32
+      description: Anodic waveform identifier.
+    - id: eventID
+      type: System.Int32
+      description: Event identifier to update.
+    content.vb: Public Sub updateWaveform(cathodicWaveform As Integer, anodicWaveform As Integer, eventID As Integer)
+  overload: HFI.Wss.StimulationController.updateWaveform*
+  nameWithType.vb: StimulationController.updateWaveform(Integer, Integer, Integer)
+  fullName.vb: HFI.Wss.StimulationController.updateWaveform(Integer, Integer, Integer)
+  name.vb: updateWaveform(Integer, Integer, Integer)
+- uid: HFI.Wss.StimulationController.updateWaveform(System.Int32,System.Int32,System.Int32,System.Int32)
+  commentId: M:HFI.Wss.StimulationController.updateWaveform(System.Int32,System.Int32,System.Int32,System.Int32)
+  id: updateWaveform(System.Int32,System.Int32,System.Int32,System.Int32)
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: updateWaveform(int, int, int, int)
+  nameWithType: StimulationController.updateWaveform(int, int, int, int)
+  fullName: HFI.Wss.StimulationController.updateWaveform(int, int, int, int)
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Updates an event shape using cathodic/anodic waveform identifiers on the target device.
+  remarks: If basic stimulation is not supported, this method logs an error and returns without throwing.
+  example: []
+  syntax:
+    content: public void updateWaveform(int targetWSS, int cathodicWaveform, int anodicWaveform, int eventID)
+    parameters:
+    - id: targetWSS
+      type: System.Int32
+      description: 0 = broadcast; 1-3 = specific device. Other values map to device 1.
+    - id: cathodicWaveform
+      type: System.Int32
+      description: Cathodic waveform identifier.
+    - id: anodicWaveform
+      type: System.Int32
+      description: Anodic waveform identifier.
+    - id: eventID
+      type: System.Int32
+      description: Event identifier to update.
+    content.vb: Public Sub updateWaveform(targetWSS As Integer, cathodicWaveform As Integer, anodicWaveform As Integer, eventID As Integer)
+  overload: HFI.Wss.StimulationController.updateWaveform*
+  nameWithType.vb: StimulationController.updateWaveform(Integer, Integer, Integer, Integer)
+  fullName.vb: HFI.Wss.StimulationController.updateWaveform(Integer, Integer, Integer, Integer)
+  name.vb: updateWaveform(Integer, Integer, Integer, Integer)
+- uid: HFI.Wss.StimulationController.updateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32)
+  commentId: M:HFI.Wss.StimulationController.updateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32)
+  id: updateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32)
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: updateWaveform(WaveformBuilder, int)
+  nameWithType: StimulationController.updateWaveform(WaveformBuilder, int)
+  fullName: HFI.Wss.StimulationController.updateWaveform(Wss.CoreModule.WaveformBuilder, int)
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Updates a waveform definition on all devices.
+  remarks: If basic stimulation is not supported, this method logs an error and returns without throwing.
+  example: []
+  syntax:
+    content: public void updateWaveform(WaveformBuilder waveform, int eventID)
+    parameters:
+    - id: waveform
+      type: Wss.CoreModule.WaveformBuilder
+      description: Waveform builder instance.
+    - id: eventID
+      type: System.Int32
+      description: Event identifier to update.
+    content.vb: Public Sub updateWaveform(waveform As WaveformBuilder, eventID As Integer)
+  overload: HFI.Wss.StimulationController.updateWaveform*
+  nameWithType.vb: StimulationController.updateWaveform(WaveformBuilder, Integer)
+  fullName.vb: HFI.Wss.StimulationController.updateWaveform(Wss.CoreModule.WaveformBuilder, Integer)
+  name.vb: updateWaveform(WaveformBuilder, Integer)
+- uid: HFI.Wss.StimulationController.updateWaveform(System.Int32,Wss.CoreModule.WaveformBuilder,System.Int32)
+  commentId: M:HFI.Wss.StimulationController.updateWaveform(System.Int32,Wss.CoreModule.WaveformBuilder,System.Int32)
+  id: updateWaveform(System.Int32,Wss.CoreModule.WaveformBuilder,System.Int32)
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: updateWaveform(int, WaveformBuilder, int)
+  nameWithType: StimulationController.updateWaveform(int, WaveformBuilder, int)
+  fullName: HFI.Wss.StimulationController.updateWaveform(int, Wss.CoreModule.WaveformBuilder, int)
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Updates a waveform definition on the target device.
+  remarks: If basic stimulation is not supported, this method logs an error and returns without throwing.
+  example: []
+  syntax:
+    content: public void updateWaveform(int targetWSS, WaveformBuilder waveform, int eventID)
+    parameters:
+    - id: targetWSS
+      type: System.Int32
+      description: 0 = broadcast; 1-3 = specific device. Other values map to device 1.
+    - id: waveform
+      type: Wss.CoreModule.WaveformBuilder
+      description: Waveform builder instance.
+    - id: eventID
+      type: System.Int32
+      description: Event identifier to update.
+    content.vb: Public Sub updateWaveform(targetWSS As Integer, waveform As WaveformBuilder, eventID As Integer)
+  overload: HFI.Wss.StimulationController.updateWaveform*
+  nameWithType.vb: StimulationController.updateWaveform(Integer, WaveformBuilder, Integer)
+  fullName.vb: HFI.Wss.StimulationController.updateWaveform(Integer, Wss.CoreModule.WaveformBuilder, Integer)
+  name.vb: updateWaveform(Integer, WaveformBuilder, Integer)
+- uid: HFI.Wss.StimulationController.loadWaveform(System.String,System.Int32)
+  commentId: M:HFI.Wss.StimulationController.loadWaveform(System.String,System.Int32)
+  id: loadWaveform(System.String,System.Int32)
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: loadWaveform(string, int)
+  nameWithType: StimulationController.loadWaveform(string, int)
+  fullName: HFI.Wss.StimulationController.loadWaveform(string, int)
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Loads a waveform file into the specified event slot.
+  remarks: If basic stimulation is not supported, this method logs an error and returns without throwing.
+  example: []
+  syntax:
+    content: public void loadWaveform(string fileName, int eventID)
+    parameters:
+    - id: fileName
+      type: System.String
+      description: Waveform file path (as expected by the underlying WSS library).
+    - id: eventID
+      type: System.Int32
+      description: Event identifier to update.
+    content.vb: Public Sub loadWaveform(fileName As String, eventID As Integer)
+  overload: HFI.Wss.StimulationController.loadWaveform*
+  nameWithType.vb: StimulationController.loadWaveform(String, Integer)
+  fullName.vb: HFI.Wss.StimulationController.loadWaveform(String, Integer)
+  name.vb: loadWaveform(String, Integer)
+- uid: HFI.Wss.StimulationController.WaveformSetup(Wss.CoreModule.WaveformBuilder,System.Int32)
+  commentId: M:HFI.Wss.StimulationController.WaveformSetup(Wss.CoreModule.WaveformBuilder,System.Int32)
+  id: WaveformSetup(Wss.CoreModule.WaveformBuilder,System.Int32)
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: WaveformSetup(WaveformBuilder, int)
+  nameWithType: StimulationController.WaveformSetup(WaveformBuilder, int)
+  fullName: HFI.Wss.StimulationController.WaveformSetup(Wss.CoreModule.WaveformBuilder, int)
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Performs waveform setup for an event on all devices.
+  remarks: If basic stimulation is not supported, this method logs an error and returns without throwing.
+  example: []
+  syntax:
+    content: public void WaveformSetup(WaveformBuilder wave, int eventID)
+    parameters:
+    - id: wave
+      type: Wss.CoreModule.WaveformBuilder
+      description: Waveform builder instance.
+    - id: eventID
+      type: System.Int32
+      description: Event identifier to configure.
+    content.vb: Public Sub WaveformSetup(wave As WaveformBuilder, eventID As Integer)
+  overload: HFI.Wss.StimulationController.WaveformSetup*
+  nameWithType.vb: StimulationController.WaveformSetup(WaveformBuilder, Integer)
+  fullName.vb: HFI.Wss.StimulationController.WaveformSetup(Wss.CoreModule.WaveformBuilder, Integer)
+  name.vb: WaveformSetup(WaveformBuilder, Integer)
+- uid: HFI.Wss.StimulationController.WaveformSetup(System.Int32,Wss.CoreModule.WaveformBuilder,System.Int32)
+  commentId: M:HFI.Wss.StimulationController.WaveformSetup(System.Int32,Wss.CoreModule.WaveformBuilder,System.Int32)
+  id: WaveformSetup(System.Int32,Wss.CoreModule.WaveformBuilder,System.Int32)
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: WaveformSetup(int, WaveformBuilder, int)
+  nameWithType: StimulationController.WaveformSetup(int, WaveformBuilder, int)
+  fullName: HFI.Wss.StimulationController.WaveformSetup(int, Wss.CoreModule.WaveformBuilder, int)
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Performs waveform setup for an event on the target device.
+  remarks: If basic stimulation is not supported, this method logs an error and returns without throwing.
+  example: []
+  syntax:
+    content: public void WaveformSetup(int targetWSS, WaveformBuilder wave, int eventID)
+    parameters:
+    - id: targetWSS
+      type: System.Int32
+      description: 0 = broadcast; 1-3 = specific device. Other values map to device 1.
+    - id: wave
+      type: Wss.CoreModule.WaveformBuilder
+      description: Waveform builder instance.
+    - id: eventID
+      type: System.Int32
+      description: Event identifier to configure.
+    content.vb: Public Sub WaveformSetup(targetWSS As Integer, wave As WaveformBuilder, eventID As Integer)
+  overload: HFI.Wss.StimulationController.WaveformSetup*
+  nameWithType.vb: StimulationController.WaveformSetup(Integer, WaveformBuilder, Integer)
+  fullName.vb: HFI.Wss.StimulationController.WaveformSetup(Integer, Wss.CoreModule.WaveformBuilder, Integer)
+  name.vb: WaveformSetup(Integer, WaveformBuilder, Integer)
+- uid: HFI.Wss.StimulationController.UpdateIPD(System.Int32,System.Int32)
+  commentId: M:HFI.Wss.StimulationController.UpdateIPD(System.Int32,System.Int32)
+  id: UpdateIPD(System.Int32,System.Int32)
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: UpdateIPD(int, int)
+  nameWithType: StimulationController.UpdateIPD(int, int)
+  fullName: HFI.Wss.StimulationController.UpdateIPD(int, int)
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Updates the inter-phase delay for an event on all devices.
+  remarks: If basic stimulation is not supported, this method logs an error and returns without throwing.
+  example: []
+  syntax:
+    content: public void UpdateIPD(int ipd, int eventID)
+    parameters:
+    - id: ipd
+      type: System.Int32
+      description: Inter-phase delay (device-specific; commonly microseconds).
+    - id: eventID
+      type: System.Int32
+      description: Event identifier to update.
+    content.vb: Public Sub UpdateIPD(ipd As Integer, eventID As Integer)
+  overload: HFI.Wss.StimulationController.UpdateIPD*
+  nameWithType.vb: StimulationController.UpdateIPD(Integer, Integer)
+  fullName.vb: HFI.Wss.StimulationController.UpdateIPD(Integer, Integer)
+  name.vb: UpdateIPD(Integer, Integer)
+- uid: HFI.Wss.StimulationController.UpdateIPD(System.Int32,System.Int32,System.Int32)
+  commentId: M:HFI.Wss.StimulationController.UpdateIPD(System.Int32,System.Int32,System.Int32)
+  id: UpdateIPD(System.Int32,System.Int32,System.Int32)
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: UpdateIPD(int, int, int)
+  nameWithType: StimulationController.UpdateIPD(int, int, int)
+  fullName: HFI.Wss.StimulationController.UpdateIPD(int, int, int)
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Updates the inter-phase delay for an event on the target device.
+  remarks: If basic stimulation is not supported, this method logs an error and returns without throwing.
+  example: []
+  syntax:
+    content: public void UpdateIPD(int targetWSS, int ipd, int eventID)
+    parameters:
+    - id: targetWSS
+      type: System.Int32
+      description: 0 = broadcast; 1-3 = specific device. Other values map to device 1.
+    - id: ipd
+      type: System.Int32
+      description: Inter-phase delay (device-specific; commonly microseconds).
+    - id: eventID
+      type: System.Int32
+      description: Event identifier to update.
+    content.vb: Public Sub UpdateIPD(targetWSS As Integer, ipd As Integer, eventID As Integer)
+  overload: HFI.Wss.StimulationController.UpdateIPD*
+  nameWithType.vb: StimulationController.UpdateIPD(Integer, Integer, Integer)
+  fullName.vb: HFI.Wss.StimulationController.UpdateIPD(Integer, Integer, Integer)
+  name.vb: UpdateIPD(Integer, Integer, Integer)
+- uid: HFI.Wss.StimulationController.StimulateNormalized(System.String,System.Single)
+  commentId: M:HFI.Wss.StimulationController.StimulateNormalized(System.String,System.Single)
+  id: StimulateNormalized(System.String,System.Single)
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: StimulateNormalized(string, float)
+  nameWithType: StimulationController.StimulateNormalized(string, float)
+  fullName: HFI.Wss.StimulationController.StimulateNormalized(string, float)
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Sends a normalized stimulation magnitude for the specified channel.
+  example: []
+  syntax:
+    content: public void StimulateNormalized(string finger, float magnitude)
+    parameters:
+    - id: finger
+      type: System.String
+      description: Finger name (e.g., "thumb", "index") or channel alias (e.g., "ch1").
+    - id: magnitude
+      type: System.Single
+      description: Normalized magnitude (device/model-specific convention).
+    content.vb: Public Sub StimulateNormalized(finger As String, magnitude As Single)
+  overload: HFI.Wss.StimulationController.StimulateNormalized*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when <xref href="HFI.Wss.StimulationController.Initialize" data-throw-if-not-resolved="false"></xref> has not been called.
+  nameWithType.vb: StimulationController.StimulateNormalized(String, Single)
+  fullName.vb: HFI.Wss.StimulationController.StimulateNormalized(String, Single)
+  name.vb: StimulateNormalized(String, Single)
+- uid: HFI.Wss.StimulationController.GetStimIntensity(System.String)
+  commentId: M:HFI.Wss.StimulationController.GetStimIntensity(System.String)
+  id: GetStimIntensity(System.String)
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: GetStimIntensity(string)
+  nameWithType: StimulationController.GetStimIntensity(string)
+  fullName: HFI.Wss.StimulationController.GetStimIntensity(string)
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Gets the current stimulation intensity for the specified channel.
+  example: []
+  syntax:
+    content: public int GetStimIntensity(string finger)
+    parameters:
+    - id: finger
+      type: System.String
+      description: Finger name (e.g., "thumb", "index") or channel alias (e.g., "ch1").
+    return:
+      type: System.Int32
+      description: The current intensity value (device/model-specific units).
+    content.vb: Public Function GetStimIntensity(finger As String) As Integer
+  overload: HFI.Wss.StimulationController.GetStimIntensity*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when <xref href="HFI.Wss.StimulationController.Initialize" data-throw-if-not-resolved="false"></xref> has not been called.
+  nameWithType.vb: StimulationController.GetStimIntensity(String)
+  fullName.vb: HFI.Wss.StimulationController.GetStimIntensity(String)
+  name.vb: GetStimIntensity(String)
+- uid: HFI.Wss.StimulationController.SaveParamsJson
+  commentId: M:HFI.Wss.StimulationController.SaveParamsJson
+  id: SaveParamsJson
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: SaveParamsJson()
+  nameWithType: StimulationController.SaveParamsJson()
+  fullName: HFI.Wss.StimulationController.SaveParamsJson()
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Persists stimulation parameters to the default JSON path.
+  example: []
+  syntax:
+    content: public void SaveParamsJson()
+    content.vb: Public Sub SaveParamsJson()
+  overload: HFI.Wss.StimulationController.SaveParamsJson*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when <xref href="HFI.Wss.StimulationController.Initialize" data-throw-if-not-resolved="false"></xref> has not been called.
+- uid: HFI.Wss.StimulationController.LoadParamsJson
+  commentId: M:HFI.Wss.StimulationController.LoadParamsJson
+  id: LoadParamsJson
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: LoadParamsJson()
+  nameWithType: StimulationController.LoadParamsJson()
+  fullName: HFI.Wss.StimulationController.LoadParamsJson()
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Loads stimulation parameters from the default JSON path.
+  example: []
+  syntax:
+    content: public void LoadParamsJson()
+    content.vb: Public Sub LoadParamsJson()
+  overload: HFI.Wss.StimulationController.LoadParamsJson*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when <xref href="HFI.Wss.StimulationController.Initialize" data-throw-if-not-resolved="false"></xref> has not been called.
+- uid: HFI.Wss.StimulationController.LoadParamsJson(System.String)
+  commentId: M:HFI.Wss.StimulationController.LoadParamsJson(System.String)
+  id: LoadParamsJson(System.String)
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: LoadParamsJson(string)
+  nameWithType: StimulationController.LoadParamsJson(string)
+  fullName: HFI.Wss.StimulationController.LoadParamsJson(string)
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Loads stimulation parameters from a JSON file or directory.
+  example: []
+  syntax:
+    content: public void LoadParamsJson(string pathOrDir)
+    parameters:
+    - id: pathOrDir
+      type: System.String
+      description: File path or directory path; directory inputs use the library default filename.
+    content.vb: Public Sub LoadParamsJson(pathOrDir As String)
+  overload: HFI.Wss.StimulationController.LoadParamsJson*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when <xref href="HFI.Wss.StimulationController.Initialize" data-throw-if-not-resolved="false"></xref> has not been called.
+  nameWithType.vb: StimulationController.LoadParamsJson(String)
+  fullName.vb: HFI.Wss.StimulationController.LoadParamsJson(String)
+  name.vb: LoadParamsJson(String)
+- uid: HFI.Wss.StimulationController.AddOrUpdateStimParam(System.String,System.Single)
+  commentId: M:HFI.Wss.StimulationController.AddOrUpdateStimParam(System.String,System.Single)
+  id: AddOrUpdateStimParam(System.String,System.Single)
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: AddOrUpdateStimParam(string, float)
+  nameWithType: StimulationController.AddOrUpdateStimParam(string, float)
+  fullName: HFI.Wss.StimulationController.AddOrUpdateStimParam(string, float)
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Adds or updates a stimulation parameter value.
+  example: []
+  syntax:
+    content: public void AddOrUpdateStimParam(string key, float value)
+    parameters:
+    - id: key
+      type: System.String
+      description: Parameter key (e.g., "stim.ch.1.amp").
+    - id: value
+      type: System.Single
+      description: Parameter value (units depend on the key).
+    content.vb: Public Sub AddOrUpdateStimParam(key As String, value As Single)
+  overload: HFI.Wss.StimulationController.AddOrUpdateStimParam*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when <xref href="HFI.Wss.StimulationController.Initialize" data-throw-if-not-resolved="false"></xref> has not been called.
+  nameWithType.vb: StimulationController.AddOrUpdateStimParam(String, Single)
+  fullName.vb: HFI.Wss.StimulationController.AddOrUpdateStimParam(String, Single)
+  name.vb: AddOrUpdateStimParam(String, Single)
+- uid: HFI.Wss.StimulationController.GetStimParam(System.String)
+  commentId: M:HFI.Wss.StimulationController.GetStimParam(System.String)
+  id: GetStimParam(System.String)
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: GetStimParam(string)
+  nameWithType: StimulationController.GetStimParam(string)
+  fullName: HFI.Wss.StimulationController.GetStimParam(string)
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Gets a stimulation parameter value.
+  example: []
+  syntax:
+    content: public float GetStimParam(string key)
+    parameters:
+    - id: key
+      type: System.String
+      description: Parameter key.
+    return:
+      type: System.Single
+      description: The parameter value.
+    content.vb: Public Function GetStimParam(key As String) As Single
+  overload: HFI.Wss.StimulationController.GetStimParam*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when <xref href="HFI.Wss.StimulationController.Initialize" data-throw-if-not-resolved="false"></xref> has not been called.
+  nameWithType.vb: StimulationController.GetStimParam(String)
+  fullName.vb: HFI.Wss.StimulationController.GetStimParam(String)
+  name.vb: GetStimParam(String)
+- uid: HFI.Wss.StimulationController.TryGetStimParam(System.String,System.Single@)
+  commentId: M:HFI.Wss.StimulationController.TryGetStimParam(System.String,System.Single@)
+  id: TryGetStimParam(System.String,System.Single@)
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: TryGetStimParam(string, out float)
+  nameWithType: StimulationController.TryGetStimParam(string, out float)
+  fullName: HFI.Wss.StimulationController.TryGetStimParam(string, out float)
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Attempts to get a stimulation parameter value.
+  example: []
+  syntax:
+    content: public bool TryGetStimParam(string key, out float v)
+    parameters:
+    - id: key
+      type: System.String
+      description: Parameter key.
+    - id: v
+      type: System.Single
+      description: Receives the parameter value when present.
+    return:
+      type: System.Boolean
+      description: <code>true</code> when the parameter exists; otherwise <code>false</code>.
+    content.vb: Public Function TryGetStimParam(key As String, v As Single) As Boolean
+  overload: HFI.Wss.StimulationController.TryGetStimParam*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when <xref href="HFI.Wss.StimulationController.Initialize" data-throw-if-not-resolved="false"></xref> has not been called.
+  nameWithType.vb: StimulationController.TryGetStimParam(String, Single)
+  fullName.vb: HFI.Wss.StimulationController.TryGetStimParam(String, Single)
+  name.vb: TryGetStimParam(String, Single)
+- uid: HFI.Wss.StimulationController.GetAllStimParams
+  commentId: M:HFI.Wss.StimulationController.GetAllStimParams
+  id: GetAllStimParams
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: GetAllStimParams()
+  nameWithType: StimulationController.GetAllStimParams()
+  fullName: HFI.Wss.StimulationController.GetAllStimParams()
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Gets a copy of all known stimulation parameters.
+  example: []
+  syntax:
+    content: public Dictionary<string, float> GetAllStimParams()
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,System.Single}
+      description: A dictionary mapping parameter keys to their values.
+    content.vb: Public Function GetAllStimParams() As Dictionary(Of String, Single)
+  overload: HFI.Wss.StimulationController.GetAllStimParams*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when <xref href="HFI.Wss.StimulationController.Initialize" data-throw-if-not-resolved="false"></xref> has not been called.
+- uid: HFI.Wss.StimulationController.SetChannelAmp(System.String,System.Single)
+  commentId: M:HFI.Wss.StimulationController.SetChannelAmp(System.String,System.Single)
+  id: SetChannelAmp(System.String,System.Single)
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: SetChannelAmp(string, float)
+  nameWithType: StimulationController.SetChannelAmp(string, float)
+  fullName: HFI.Wss.StimulationController.SetChannelAmp(string, float)
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Sets the channel amplitude.
+  example: []
+  syntax:
+    content: public void SetChannelAmp(string finger, float mA)
+    parameters:
+    - id: finger
+      type: System.String
+      description: Finger name (e.g., "thumb", "index") or channel alias (e.g., "ch1").
+    - id: mA
+      type: System.Single
+      description: Amplitude in milliamps.
+    content.vb: Public Sub SetChannelAmp(finger As String, mA As Single)
+  overload: HFI.Wss.StimulationController.SetChannelAmp*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when <xref href="HFI.Wss.StimulationController.Initialize" data-throw-if-not-resolved="false"></xref> has not been called.
+  nameWithType.vb: StimulationController.SetChannelAmp(String, Single)
+  fullName.vb: HFI.Wss.StimulationController.SetChannelAmp(String, Single)
+  name.vb: SetChannelAmp(String, Single)
+- uid: HFI.Wss.StimulationController.SetChannelPWMin(System.String,System.Int32)
+  commentId: M:HFI.Wss.StimulationController.SetChannelPWMin(System.String,System.Int32)
+  id: SetChannelPWMin(System.String,System.Int32)
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: SetChannelPWMin(string, int)
+  nameWithType: StimulationController.SetChannelPWMin(string, int)
+  fullName: HFI.Wss.StimulationController.SetChannelPWMin(string, int)
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Sets the minimum pulse width for a channel.
+  example: []
+  syntax:
+    content: public void SetChannelPWMin(string finger, int us)
+    parameters:
+    - id: finger
+      type: System.String
+      description: Finger name (e.g., "thumb", "index") or channel alias (e.g., "ch1").
+    - id: us
+      type: System.Int32
+      description: Pulse width in microseconds.
+    content.vb: Public Sub SetChannelPWMin(finger As String, us As Integer)
+  overload: HFI.Wss.StimulationController.SetChannelPWMin*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when <xref href="HFI.Wss.StimulationController.Initialize" data-throw-if-not-resolved="false"></xref> has not been called.
+  nameWithType.vb: StimulationController.SetChannelPWMin(String, Integer)
+  fullName.vb: HFI.Wss.StimulationController.SetChannelPWMin(String, Integer)
+  name.vb: SetChannelPWMin(String, Integer)
+- uid: HFI.Wss.StimulationController.SetChannelPWMax(System.String,System.Int32)
+  commentId: M:HFI.Wss.StimulationController.SetChannelPWMax(System.String,System.Int32)
+  id: SetChannelPWMax(System.String,System.Int32)
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: SetChannelPWMax(string, int)
+  nameWithType: StimulationController.SetChannelPWMax(string, int)
+  fullName: HFI.Wss.StimulationController.SetChannelPWMax(string, int)
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Sets the maximum pulse width for a channel.
+  example: []
+  syntax:
+    content: public void SetChannelPWMax(string finger, int us)
+    parameters:
+    - id: finger
+      type: System.String
+      description: Finger name (e.g., "thumb", "index") or channel alias (e.g., "ch1").
+    - id: us
+      type: System.Int32
+      description: Pulse width in microseconds.
+    content.vb: Public Sub SetChannelPWMax(finger As String, us As Integer)
+  overload: HFI.Wss.StimulationController.SetChannelPWMax*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when <xref href="HFI.Wss.StimulationController.Initialize" data-throw-if-not-resolved="false"></xref> has not been called.
+  nameWithType.vb: StimulationController.SetChannelPWMax(String, Integer)
+  fullName.vb: HFI.Wss.StimulationController.SetChannelPWMax(String, Integer)
+  name.vb: SetChannelPWMax(String, Integer)
+- uid: HFI.Wss.StimulationController.SetChannelIPI(System.String,System.Int32)
+  commentId: M:HFI.Wss.StimulationController.SetChannelIPI(System.String,System.Int32)
+  id: SetChannelIPI(System.String,System.Int32)
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: SetChannelIPI(string, int)
+  nameWithType: StimulationController.SetChannelIPI(string, int)
+  fullName: HFI.Wss.StimulationController.SetChannelIPI(string, int)
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Sets the inter-pulse interval for a channel.
+  example: []
+  syntax:
+    content: public void SetChannelIPI(string finger, int ms)
+    parameters:
+    - id: finger
+      type: System.String
+      description: Finger name (e.g., "thumb", "index") or channel alias (e.g., "ch1").
+    - id: ms
+      type: System.Int32
+      description: Inter-pulse interval in milliseconds.
+    content.vb: Public Sub SetChannelIPI(finger As String, ms As Integer)
+  overload: HFI.Wss.StimulationController.SetChannelIPI*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when <xref href="HFI.Wss.StimulationController.Initialize" data-throw-if-not-resolved="false"></xref> has not been called.
+  nameWithType.vb: StimulationController.SetChannelIPI(String, Integer)
+  fullName.vb: HFI.Wss.StimulationController.SetChannelIPI(String, Integer)
+  name.vb: SetChannelIPI(String, Integer)
+- uid: HFI.Wss.StimulationController.GetChannelAmp(System.String)
+  commentId: M:HFI.Wss.StimulationController.GetChannelAmp(System.String)
+  id: GetChannelAmp(System.String)
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: GetChannelAmp(string)
+  nameWithType: StimulationController.GetChannelAmp(string)
+  fullName: HFI.Wss.StimulationController.GetChannelAmp(string)
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Gets the channel amplitude.
+  example: []
+  syntax:
+    content: public float GetChannelAmp(string finger)
+    parameters:
+    - id: finger
+      type: System.String
+      description: Finger name (e.g., "thumb", "index") or channel alias (e.g., "ch1").
+    return:
+      type: System.Single
+      description: Amplitude in milliamps.
+    content.vb: Public Function GetChannelAmp(finger As String) As Single
+  overload: HFI.Wss.StimulationController.GetChannelAmp*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when <xref href="HFI.Wss.StimulationController.Initialize" data-throw-if-not-resolved="false"></xref> has not been called.
+  nameWithType.vb: StimulationController.GetChannelAmp(String)
+  fullName.vb: HFI.Wss.StimulationController.GetChannelAmp(String)
+  name.vb: GetChannelAmp(String)
+- uid: HFI.Wss.StimulationController.GetChannelPWMin(System.String)
+  commentId: M:HFI.Wss.StimulationController.GetChannelPWMin(System.String)
+  id: GetChannelPWMin(System.String)
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: GetChannelPWMin(string)
+  nameWithType: StimulationController.GetChannelPWMin(string)
+  fullName: HFI.Wss.StimulationController.GetChannelPWMin(string)
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Gets the minimum pulse width for a channel.
+  example: []
+  syntax:
+    content: public int GetChannelPWMin(string finger)
+    parameters:
+    - id: finger
+      type: System.String
+      description: Finger name (e.g., "thumb", "index") or channel alias (e.g., "ch1").
+    return:
+      type: System.Int32
+      description: Pulse width in microseconds.
+    content.vb: Public Function GetChannelPWMin(finger As String) As Integer
+  overload: HFI.Wss.StimulationController.GetChannelPWMin*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when <xref href="HFI.Wss.StimulationController.Initialize" data-throw-if-not-resolved="false"></xref> has not been called.
+  nameWithType.vb: StimulationController.GetChannelPWMin(String)
+  fullName.vb: HFI.Wss.StimulationController.GetChannelPWMin(String)
+  name.vb: GetChannelPWMin(String)
+- uid: HFI.Wss.StimulationController.GetChannelPWMax(System.String)
+  commentId: M:HFI.Wss.StimulationController.GetChannelPWMax(System.String)
+  id: GetChannelPWMax(System.String)
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: GetChannelPWMax(string)
+  nameWithType: StimulationController.GetChannelPWMax(string)
+  fullName: HFI.Wss.StimulationController.GetChannelPWMax(string)
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Gets the maximum pulse width for a channel.
+  example: []
+  syntax:
+    content: public int GetChannelPWMax(string finger)
+    parameters:
+    - id: finger
+      type: System.String
+      description: Finger name (e.g., "thumb", "index") or channel alias (e.g., "ch1").
+    return:
+      type: System.Int32
+      description: Pulse width in microseconds.
+    content.vb: Public Function GetChannelPWMax(finger As String) As Integer
+  overload: HFI.Wss.StimulationController.GetChannelPWMax*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when <xref href="HFI.Wss.StimulationController.Initialize" data-throw-if-not-resolved="false"></xref> has not been called.
+  nameWithType.vb: StimulationController.GetChannelPWMax(String)
+  fullName.vb: HFI.Wss.StimulationController.GetChannelPWMax(String)
+  name.vb: GetChannelPWMax(String)
+- uid: HFI.Wss.StimulationController.GetChannelIPI(System.String)
+  commentId: M:HFI.Wss.StimulationController.GetChannelIPI(System.String)
+  id: GetChannelIPI(System.String)
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: GetChannelIPI(string)
+  nameWithType: StimulationController.GetChannelIPI(string)
+  fullName: HFI.Wss.StimulationController.GetChannelIPI(string)
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Gets the inter-pulse interval for a channel.
+  example: []
+  syntax:
+    content: public int GetChannelIPI(string finger)
+    parameters:
+    - id: finger
+      type: System.String
+      description: Finger name (e.g., "thumb", "index") or channel alias (e.g., "ch1").
+    return:
+      type: System.Int32
+      description: Inter-pulse interval in milliseconds.
+    content.vb: Public Function GetChannelIPI(finger As String) As Integer
+  overload: HFI.Wss.StimulationController.GetChannelIPI*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when <xref href="HFI.Wss.StimulationController.Initialize" data-throw-if-not-resolved="false"></xref> has not been called.
+  nameWithType.vb: StimulationController.GetChannelIPI(String)
+  fullName.vb: HFI.Wss.StimulationController.GetChannelIPI(String)
+  name.vb: GetChannelIPI(String)
+- uid: HFI.Wss.StimulationController.IsFingerValid(System.String)
+  commentId: M:HFI.Wss.StimulationController.IsFingerValid(System.String)
+  id: IsFingerValid(System.String)
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: IsFingerValid(string)
+  nameWithType: StimulationController.IsFingerValid(string)
+  fullName: HFI.Wss.StimulationController.IsFingerValid(string)
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Checks whether a finger name or channel alias resolves to a valid channel for the current configuration.
+  example: []
+  syntax:
+    content: public bool IsFingerValid(string finger)
+    parameters:
+    - id: finger
+      type: System.String
+      description: Finger name (e.g., "thumb", "index") or channel alias (e.g., "ch1").
+    return:
+      type: System.Boolean
+      description: <code>true</code> when the channel is in range; otherwise <code>false</code>.
+    content.vb: Public Function IsFingerValid(finger As String) As Boolean
+  overload: HFI.Wss.StimulationController.IsFingerValid*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when <xref href="HFI.Wss.StimulationController.Initialize" data-throw-if-not-resolved="false"></xref> has not been called.
+  nameWithType.vb: StimulationController.IsFingerValid(String)
+  fullName.vb: HFI.Wss.StimulationController.IsFingerValid(String)
+  name.vb: IsFingerValid(String)
+- uid: HFI.Wss.StimulationController.StimWithMode(System.String,System.Single)
+  commentId: M:HFI.Wss.StimulationController.StimWithMode(System.String,System.Single)
+  id: StimWithMode(System.String,System.Single)
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: StimWithMode(string, float)
+  nameWithType: StimulationController.StimWithMode(string, float)
+  fullName: HFI.Wss.StimulationController.StimWithMode(string, float)
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Sends a stimulation request interpreted by the active mode (model/params-dependent).
+  example: []
+  syntax:
+    content: public void StimWithMode(string finger, float magnitude)
+    parameters:
+    - id: finger
+      type: System.String
+      description: Finger name (e.g., "thumb", "index") or channel alias (e.g., "ch1").
+    - id: magnitude
+      type: System.Single
+      description: Magnitude value interpreted by the active mode.
+    content.vb: Public Sub StimWithMode(finger As String, magnitude As Single)
+  overload: HFI.Wss.StimulationController.StimWithMode*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when <xref href="HFI.Wss.StimulationController.Initialize" data-throw-if-not-resolved="false"></xref> has not been called.
+  nameWithType.vb: StimulationController.StimWithMode(String, Single)
+  fullName.vb: HFI.Wss.StimulationController.StimWithMode(String, Single)
+  name.vb: StimWithMode(String, Single)
+- uid: HFI.Wss.StimulationController.UpdateChannelParams(System.String,System.Int32,System.Int32,System.Int32)
+  commentId: M:HFI.Wss.StimulationController.UpdateChannelParams(System.String,System.Int32,System.Int32,System.Int32)
+  id: UpdateChannelParams(System.String,System.Int32,System.Int32,System.Int32)
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: UpdateChannelParams(string, int, int, int)
+  nameWithType: StimulationController.UpdateChannelParams(string, int, int, int)
+  fullName: HFI.Wss.StimulationController.UpdateChannelParams(string, int, int, int)
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Updates a channel's max/min pulse width and amplitude parameters using the conventional parameter keys.
+  example: []
+  syntax:
+    content: public void UpdateChannelParams(string finger, int max, int min, int amp)
+    parameters:
+    - id: finger
+      type: System.String
+      description: Finger name (e.g., "thumb", "index") or channel alias (e.g., "ch1").
+    - id: max
+      type: System.Int32
+      description: Maximum pulse width (units depend on the parameter schema; commonly microseconds).
+    - id: min
+      type: System.Int32
+      description: Minimum pulse width (units depend on the parameter schema; commonly microseconds).
+    - id: amp
+      type: System.Int32
+      description: Amplitude value (units depend on the parameter schema).
+    content.vb: Public Sub UpdateChannelParams(finger As String, max As Integer, min As Integer, amp As Integer)
+  overload: HFI.Wss.StimulationController.UpdateChannelParams*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when <xref href="HFI.Wss.StimulationController.Initialize" data-throw-if-not-resolved="false"></xref> has not been called.
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: Thrown when <code class="paramref">finger</code> resolves to an out-of-range channel.
+  nameWithType.vb: StimulationController.UpdateChannelParams(String, Integer, Integer, Integer)
+  fullName.vb: HFI.Wss.StimulationController.UpdateChannelParams(String, Integer, Integer, Integer)
+  name.vb: UpdateChannelParams(String, Integer, Integer, Integer)
+- uid: HFI.Wss.StimulationController.isModeValid
+  commentId: M:HFI.Wss.StimulationController.isModeValid
+  id: isModeValid
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: isModeValid()
+  nameWithType: StimulationController.isModeValid()
+  fullName: HFI.Wss.StimulationController.isModeValid()
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Gets whether the current stimulation mode is valid for the loaded configuration.
+  example: []
+  syntax:
+    content: public bool isModeValid()
+    return:
+      type: System.Boolean
+      description: <code>true</code> when the mode is valid; otherwise <code>false</code>.
+    content.vb: Public Function isModeValid() As Boolean
+  overload: HFI.Wss.StimulationController.isModeValid*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when <xref href="HFI.Wss.StimulationController.Initialize" data-throw-if-not-resolved="false"></xref> has not been called.
+- uid: HFI.Wss.StimulationController.Ready
+  commentId: M:HFI.Wss.StimulationController.Ready
+  id: Ready
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: Ready()
+  nameWithType: StimulationController.Ready()
+  fullName: HFI.Wss.StimulationController.Ready()
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Gets whether the underlying stack reports a ready state.
+  example: []
+  syntax:
+    content: public bool Ready()
+    return:
+      type: System.Boolean
+      description: <code>true</code> when ready; otherwise <code>false</code>. Returns <code>false</code> before initialization.
+    content.vb: Public Function Ready() As Boolean
+  overload: HFI.Wss.StimulationController.Ready*
+- uid: HFI.Wss.StimulationController.Started
+  commentId: M:HFI.Wss.StimulationController.Started
+  id: Started
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: Started()
+  nameWithType: StimulationController.Started()
+  fullName: HFI.Wss.StimulationController.Started()
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Gets whether the underlying stack reports stimulation started.
+  example: []
+  syntax:
+    content: public bool Started()
+    return:
+      type: System.Boolean
+      description: <code>true</code> when started; otherwise <code>false</code>. Returns <code>false</code> before initialization.
+    content.vb: Public Function Started() As Boolean
+  overload: HFI.Wss.StimulationController.Started*
+- uid: HFI.Wss.StimulationController.GetModelConfigCTRL
+  commentId: M:HFI.Wss.StimulationController.GetModelConfigCTRL
+  id: GetModelConfigCTRL
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: GetModelConfigCTRL()
+  nameWithType: StimulationController.GetModelConfigCTRL()
+  fullName: HFI.Wss.StimulationController.GetModelConfigCTRL()
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Gets the model configuration controller.
+  example: []
+  syntax:
+    content: public ModelConfigController GetModelConfigCTRL()
+    return:
+      type: Wss.ModelModule.ModelConfigController
+      description: The model configuration controller instance.
+    content.vb: Public Function GetModelConfigCTRL() As ModelConfigController
+  overload: HFI.Wss.StimulationController.GetModelConfigCTRL*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when <xref href="HFI.Wss.StimulationController.Initialize" data-throw-if-not-resolved="false"></xref> has not been called.
+- uid: HFI.Wss.StimulationController.GetCoreConfigCTRL
+  commentId: M:HFI.Wss.StimulationController.GetCoreConfigCTRL
+  id: GetCoreConfigCTRL
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: GetCoreConfigCTRL()
+  nameWithType: StimulationController.GetCoreConfigCTRL()
+  fullName: HFI.Wss.StimulationController.GetCoreConfigCTRL()
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Gets the core configuration controller.
+  example: []
+  syntax:
+    content: public CoreConfigController GetCoreConfigCTRL()
+    return:
+      type: Wss.CoreModule.CoreConfigController
+      description: The core configuration controller instance.
+    content.vb: Public Function GetCoreConfigCTRL() As CoreConfigController
+  overload: HFI.Wss.StimulationController.GetCoreConfigCTRL*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when <xref href="HFI.Wss.StimulationController.Initialize" data-throw-if-not-resolved="false"></xref> has not been called.
+- uid: HFI.Wss.StimulationController.LoadCoreConfigFile
+  commentId: M:HFI.Wss.StimulationController.LoadCoreConfigFile
+  id: LoadCoreConfigFile
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: LoadCoreConfigFile()
+  nameWithType: StimulationController.LoadCoreConfigFile()
+  fullName: HFI.Wss.StimulationController.LoadCoreConfigFile()
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Reloads the core configuration JSON.
+  example: []
+  syntax:
+    content: public void LoadCoreConfigFile()
+    content.vb: Public Sub LoadCoreConfigFile()
+  overload: HFI.Wss.StimulationController.LoadCoreConfigFile*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when <xref href="HFI.Wss.StimulationController.Initialize" data-throw-if-not-resolved="false"></xref> has not been called.
+- uid: HFI.Wss.StimulationController.Dispose
+  commentId: M:HFI.Wss.StimulationController.Dispose
+  id: Dispose
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: StimulationController.Dispose()
+  fullName: HFI.Wss.StimulationController.Dispose()
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Shuts down the controller and releases any underlying resources.
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: HFI.Wss.StimulationController.Dispose*
+- uid: HFI.Wss.StimulationController.DisposeAsync
+  commentId: M:HFI.Wss.StimulationController.DisposeAsync
+  id: DisposeAsync
+  parent: HFI.Wss.StimulationController
+  langs:
+  - csharp
+  - vb
+  name: DisposeAsync()
+  nameWithType: StimulationController.DisposeAsync()
+  fullName: HFI.Wss.StimulationController.DisposeAsync()
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Asynchronously shuts down the controller and releases any underlying resources.
+  example: []
+  syntax:
+    content: public ValueTask DisposeAsync()
+    return:
+      type: System.Threading.Tasks.ValueTask
+    content.vb: Public Function DisposeAsync() As ValueTask
+  overload: HFI.Wss.StimulationController.DisposeAsync*
+references:
+- uid: HFI.Wss.StimulationController.Initialize
+  commentId: M:HFI.Wss.StimulationController.Initialize
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Initialize
+  name: Initialize()
+  nameWithType: StimulationController.Initialize()
+  fullName: HFI.Wss.StimulationController.Initialize()
+  spec.csharp:
+  - uid: HFI.Wss.StimulationController.Initialize
+    name: Initialize
+    href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Initialize
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: HFI.Wss.StimulationController.Initialize
+    name: Initialize
+    href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Initialize
+  - name: (
+  - name: )
+- uid: HFI.Wss.StimulationController.Shutdown
+  commentId: M:HFI.Wss.StimulationController.Shutdown
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Shutdown
+  name: Shutdown()
+  nameWithType: StimulationController.Shutdown()
+  fullName: HFI.Wss.StimulationController.Shutdown()
+  spec.csharp:
+  - uid: HFI.Wss.StimulationController.Shutdown
+    name: Shutdown
+    href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Shutdown
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: HFI.Wss.StimulationController.Shutdown
+    name: Shutdown
+    href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Shutdown
+  - name: (
+  - name: )
+- uid: HFI.Wss
+  commentId: N:HFI.Wss
+  href: HFI.html
+  name: HFI.Wss
+  nameWithType: HFI.Wss
+  fullName: HFI.Wss
+  spec.csharp:
+  - uid: HFI
+    name: HFI
+    href: HFI.html
+  - name: .
+  - uid: HFI.Wss
+    name: Wss
+    href: HFI.Wss.html
+  spec.vb:
+  - uid: HFI
+    name: HFI
+    href: HFI.html
+  - name: .
+  - uid: HFI.Wss
+    name: Wss
+    href: HFI.Wss.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: HFI.Wss.StimulationController.StartStimulation
+  commentId: M:HFI.Wss.StimulationController.StartStimulation
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_StartStimulation
+  name: StartStimulation()
+  nameWithType: StimulationController.StartStimulation()
+  fullName: HFI.Wss.StimulationController.StartStimulation()
+  spec.csharp:
+  - uid: HFI.Wss.StimulationController.StartStimulation
+    name: StartStimulation
+    href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_StartStimulation
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: HFI.Wss.StimulationController.StartStimulation
+    name: StartStimulation
+    href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_StartStimulation
+  - name: (
+  - name: )
+- uid: HFI.Wss.StimulationController.started*
+  commentId: Overload:HFI.Wss.StimulationController.started
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_started
+  name: started
+  nameWithType: StimulationController.started
+  fullName: HFI.Wss.StimulationController.started
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: HFI.Wss.StimulationController.BasicSupported*
+  commentId: Overload:HFI.Wss.StimulationController.BasicSupported
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_BasicSupported
+  name: BasicSupported
+  nameWithType: StimulationController.BasicSupported
+  fullName: HFI.Wss.StimulationController.BasicSupported
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+  isExternal: true
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.ArgumentException
+  commentId: T:System.ArgumentException
+  isExternal: true
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: System.ArgumentOutOfRangeException
+  commentId: T:System.ArgumentOutOfRangeException
+  isExternal: true
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
+- uid: HFI.Wss.StimulationController.#ctor*
+  commentId: Overload:HFI.Wss.StimulationController.#ctor
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController__ctor_HFI_Wss_StimulationOptions_
+  name: StimulationController
+  nameWithType: StimulationController.StimulationController
+  fullName: HFI.Wss.StimulationController.StimulationController
+  nameWithType.vb: StimulationController.New
+  fullName.vb: HFI.Wss.StimulationController.New
+  name.vb: New
+- uid: HFI.Wss.StimulationOptions
+  commentId: T:HFI.Wss.StimulationOptions
+  parent: HFI.Wss
+  href: HFI.Wss.StimulationOptions.html
+  name: StimulationOptions
+  nameWithType: StimulationOptions
+  fullName: HFI.Wss.StimulationOptions
+- uid: HFI.Wss.StimulationController.Initialize*
+  commentId: Overload:HFI.Wss.StimulationController.Initialize
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Initialize
+  name: Initialize
+  nameWithType: StimulationController.Initialize
+  fullName: HFI.Wss.StimulationController.Initialize
+- uid: HFI.Wss.StimulationController.Shutdown*
+  commentId: Overload:HFI.Wss.StimulationController.Shutdown
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Shutdown
+  name: Shutdown
+  nameWithType: StimulationController.Shutdown
+  fullName: HFI.Wss.StimulationController.Shutdown
+- uid: HFI.Wss.StimulationController.releaseRadio*
+  commentId: Overload:HFI.Wss.StimulationController.releaseRadio
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_releaseRadio
+  name: releaseRadio
+  nameWithType: StimulationController.releaseRadio
+  fullName: HFI.Wss.StimulationController.releaseRadio
+- uid: HFI.Wss.StimulationController.resetRadio*
+  commentId: Overload:HFI.Wss.StimulationController.resetRadio
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_resetRadio
+  name: resetRadio
+  nameWithType: StimulationController.resetRadio
+  fullName: HFI.Wss.StimulationController.resetRadio
+- uid: System.InvalidOperationException
+  commentId: T:System.InvalidOperationException
+  isExternal: true
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
+- uid: HFI.Wss.StimulationController.StimulateAnalog*
+  commentId: Overload:HFI.Wss.StimulationController.StimulateAnalog
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_StimulateAnalog_System_String_System_Int32_System_Int32_System_Int32_
+  name: StimulateAnalog
+  nameWithType: StimulationController.StimulateAnalog
+  fullName: HFI.Wss.StimulationController.StimulateAnalog
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: HFI.Wss.StimulationController.started
+  commentId: P:HFI.Wss.StimulationController.started
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_started
+  name: started
+  nameWithType: StimulationController.started
+  fullName: HFI.Wss.StimulationController.started
+- uid: HFI.Wss.StimulationController.StartStimulation*
+  commentId: Overload:HFI.Wss.StimulationController.StartStimulation
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_StartStimulation
+  name: StartStimulation
+  nameWithType: StimulationController.StartStimulation
+  fullName: HFI.Wss.StimulationController.StartStimulation
+- uid: HFI.Wss.StimulationController.StopStimulation*
+  commentId: Overload:HFI.Wss.StimulationController.StopStimulation
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_StopStimulation
+  name: StopStimulation
+  nameWithType: StimulationController.StopStimulation
+  fullName: HFI.Wss.StimulationController.StopStimulation
+- uid: HFI.Wss.StimulationController.Save*
+  commentId: Overload:HFI.Wss.StimulationController.Save
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Save_System_Int32_
+  name: Save
+  nameWithType: StimulationController.Save
+  fullName: HFI.Wss.StimulationController.Save
+- uid: HFI.Wss.StimulationController.load*
+  commentId: Overload:HFI.Wss.StimulationController.load
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_load_System_Int32_
+  name: load
+  nameWithType: StimulationController.load
+  fullName: HFI.Wss.StimulationController.load
+- uid: HFI.Wss.StimulationController.request_Configs*
+  commentId: Overload:HFI.Wss.StimulationController.request_Configs
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_request_Configs_System_Int32_System_Int32_System_Int32_
+  name: request_Configs
+  nameWithType: StimulationController.request_Configs
+  fullName: HFI.Wss.StimulationController.request_Configs
+- uid: HFI.Wss.StimulationController.updateWaveform*
+  commentId: Overload:HFI.Wss.StimulationController.updateWaveform
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_updateWaveform_System_Int32___System_Int32_
+  name: updateWaveform
+  nameWithType: StimulationController.updateWaveform
+  fullName: HFI.Wss.StimulationController.updateWaveform
+- uid: System.Int32[]
+  isExternal: true
+  name: int[]
+  nameWithType: int[]
+  fullName: int[]
+  nameWithType.vb: Integer()
+  fullName.vb: Integer()
+  name.vb: Integer()
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Wss.CoreModule.WaveformBuilder
+  commentId: T:Wss.CoreModule.WaveformBuilder
+  parent: Wss.CoreModule
+  isExternal: true
+  href: https://github.com/cwru-non-academic/WSSCoreInterface/blob/6d57dc93f5e1e6ab6f1a07147624443ac43a2431/CoreModule/SideFunctions/WaveformBuilder.cs
+  name: WaveformBuilder
+  nameWithType: WaveformBuilder
+  fullName: Wss.CoreModule.WaveformBuilder
+- uid: Wss.CoreModule
+  commentId: N:Wss.CoreModule
+  isExternal: true
+  name: Wss.CoreModule
+  nameWithType: Wss.CoreModule
+  fullName: Wss.CoreModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    isExternal: true
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    isExternal: true
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    isExternal: true
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    isExternal: true
+- uid: HFI.Wss.StimulationController.loadWaveform*
+  commentId: Overload:HFI.Wss.StimulationController.loadWaveform
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_loadWaveform_System_String_System_Int32_
+  name: loadWaveform
+  nameWithType: StimulationController.loadWaveform
+  fullName: HFI.Wss.StimulationController.loadWaveform
+- uid: HFI.Wss.StimulationController.WaveformSetup*
+  commentId: Overload:HFI.Wss.StimulationController.WaveformSetup
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_WaveformSetup_Wss_CoreModule_WaveformBuilder_System_Int32_
+  name: WaveformSetup
+  nameWithType: StimulationController.WaveformSetup
+  fullName: HFI.Wss.StimulationController.WaveformSetup
+- uid: HFI.Wss.StimulationController.UpdateIPD*
+  commentId: Overload:HFI.Wss.StimulationController.UpdateIPD
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_UpdateIPD_System_Int32_System_Int32_
+  name: UpdateIPD
+  nameWithType: StimulationController.UpdateIPD
+  fullName: HFI.Wss.StimulationController.UpdateIPD
+- uid: HFI.Wss.StimulationController.StimulateNormalized*
+  commentId: Overload:HFI.Wss.StimulationController.StimulateNormalized
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_StimulateNormalized_System_String_System_Single_
+  name: StimulateNormalized
+  nameWithType: StimulationController.StimulateNormalized
+  fullName: HFI.Wss.StimulationController.StimulateNormalized
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: HFI.Wss.StimulationController.GetStimIntensity*
+  commentId: Overload:HFI.Wss.StimulationController.GetStimIntensity
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_GetStimIntensity_System_String_
+  name: GetStimIntensity
+  nameWithType: StimulationController.GetStimIntensity
+  fullName: HFI.Wss.StimulationController.GetStimIntensity
+- uid: HFI.Wss.StimulationController.SaveParamsJson*
+  commentId: Overload:HFI.Wss.StimulationController.SaveParamsJson
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_SaveParamsJson
+  name: SaveParamsJson
+  nameWithType: StimulationController.SaveParamsJson
+  fullName: HFI.Wss.StimulationController.SaveParamsJson
+- uid: HFI.Wss.StimulationController.LoadParamsJson*
+  commentId: Overload:HFI.Wss.StimulationController.LoadParamsJson
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_LoadParamsJson
+  name: LoadParamsJson
+  nameWithType: StimulationController.LoadParamsJson
+  fullName: HFI.Wss.StimulationController.LoadParamsJson
+- uid: HFI.Wss.StimulationController.AddOrUpdateStimParam*
+  commentId: Overload:HFI.Wss.StimulationController.AddOrUpdateStimParam
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_AddOrUpdateStimParam_System_String_System_Single_
+  name: AddOrUpdateStimParam
+  nameWithType: StimulationController.AddOrUpdateStimParam
+  fullName: HFI.Wss.StimulationController.AddOrUpdateStimParam
+- uid: HFI.Wss.StimulationController.GetStimParam*
+  commentId: Overload:HFI.Wss.StimulationController.GetStimParam
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_GetStimParam_System_String_
+  name: GetStimParam
+  nameWithType: StimulationController.GetStimParam
+  fullName: HFI.Wss.StimulationController.GetStimParam
+- uid: HFI.Wss.StimulationController.TryGetStimParam*
+  commentId: Overload:HFI.Wss.StimulationController.TryGetStimParam
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_TryGetStimParam_System_String_System_Single__
+  name: TryGetStimParam
+  nameWithType: StimulationController.TryGetStimParam
+  fullName: HFI.Wss.StimulationController.TryGetStimParam
+- uid: HFI.Wss.StimulationController.GetAllStimParams*
+  commentId: Overload:HFI.Wss.StimulationController.GetAllStimParams
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_GetAllStimParams
+  name: GetAllStimParams
+  nameWithType: StimulationController.GetAllStimParams
+  fullName: HFI.Wss.StimulationController.GetAllStimParams
+- uid: System.Collections.Generic.Dictionary{System.String,System.Single}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,System.Single}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  name: Dictionary<string, float>
+  nameWithType: Dictionary<string, float>
+  fullName: System.Collections.Generic.Dictionary<string, float>
+  nameWithType.vb: Dictionary(Of String, Single)
+  fullName.vb: System.Collections.Generic.Dictionary(Of String, Single)
+  name.vb: Dictionary(Of String, Single)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: HFI.Wss.StimulationController.SetChannelAmp*
+  commentId: Overload:HFI.Wss.StimulationController.SetChannelAmp
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_SetChannelAmp_System_String_System_Single_
+  name: SetChannelAmp
+  nameWithType: StimulationController.SetChannelAmp
+  fullName: HFI.Wss.StimulationController.SetChannelAmp
+- uid: HFI.Wss.StimulationController.SetChannelPWMin*
+  commentId: Overload:HFI.Wss.StimulationController.SetChannelPWMin
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_SetChannelPWMin_System_String_System_Int32_
+  name: SetChannelPWMin
+  nameWithType: StimulationController.SetChannelPWMin
+  fullName: HFI.Wss.StimulationController.SetChannelPWMin
+- uid: HFI.Wss.StimulationController.SetChannelPWMax*
+  commentId: Overload:HFI.Wss.StimulationController.SetChannelPWMax
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_SetChannelPWMax_System_String_System_Int32_
+  name: SetChannelPWMax
+  nameWithType: StimulationController.SetChannelPWMax
+  fullName: HFI.Wss.StimulationController.SetChannelPWMax
+- uid: HFI.Wss.StimulationController.SetChannelIPI*
+  commentId: Overload:HFI.Wss.StimulationController.SetChannelIPI
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_SetChannelIPI_System_String_System_Int32_
+  name: SetChannelIPI
+  nameWithType: StimulationController.SetChannelIPI
+  fullName: HFI.Wss.StimulationController.SetChannelIPI
+- uid: HFI.Wss.StimulationController.GetChannelAmp*
+  commentId: Overload:HFI.Wss.StimulationController.GetChannelAmp
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_GetChannelAmp_System_String_
+  name: GetChannelAmp
+  nameWithType: StimulationController.GetChannelAmp
+  fullName: HFI.Wss.StimulationController.GetChannelAmp
+- uid: HFI.Wss.StimulationController.GetChannelPWMin*
+  commentId: Overload:HFI.Wss.StimulationController.GetChannelPWMin
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_GetChannelPWMin_System_String_
+  name: GetChannelPWMin
+  nameWithType: StimulationController.GetChannelPWMin
+  fullName: HFI.Wss.StimulationController.GetChannelPWMin
+- uid: HFI.Wss.StimulationController.GetChannelPWMax*
+  commentId: Overload:HFI.Wss.StimulationController.GetChannelPWMax
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_GetChannelPWMax_System_String_
+  name: GetChannelPWMax
+  nameWithType: StimulationController.GetChannelPWMax
+  fullName: HFI.Wss.StimulationController.GetChannelPWMax
+- uid: HFI.Wss.StimulationController.GetChannelIPI*
+  commentId: Overload:HFI.Wss.StimulationController.GetChannelIPI
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_GetChannelIPI_System_String_
+  name: GetChannelIPI
+  nameWithType: StimulationController.GetChannelIPI
+  fullName: HFI.Wss.StimulationController.GetChannelIPI
+- uid: HFI.Wss.StimulationController.IsFingerValid*
+  commentId: Overload:HFI.Wss.StimulationController.IsFingerValid
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_IsFingerValid_System_String_
+  name: IsFingerValid
+  nameWithType: StimulationController.IsFingerValid
+  fullName: HFI.Wss.StimulationController.IsFingerValid
+- uid: HFI.Wss.StimulationController.StimWithMode*
+  commentId: Overload:HFI.Wss.StimulationController.StimWithMode
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_StimWithMode_System_String_System_Single_
+  name: StimWithMode
+  nameWithType: StimulationController.StimWithMode
+  fullName: HFI.Wss.StimulationController.StimWithMode
+- uid: HFI.Wss.StimulationController.UpdateChannelParams*
+  commentId: Overload:HFI.Wss.StimulationController.UpdateChannelParams
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_UpdateChannelParams_System_String_System_Int32_System_Int32_System_Int32_
+  name: UpdateChannelParams
+  nameWithType: StimulationController.UpdateChannelParams
+  fullName: HFI.Wss.StimulationController.UpdateChannelParams
+- uid: HFI.Wss.StimulationController.isModeValid*
+  commentId: Overload:HFI.Wss.StimulationController.isModeValid
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_isModeValid
+  name: isModeValid
+  nameWithType: StimulationController.isModeValid
+  fullName: HFI.Wss.StimulationController.isModeValid
+- uid: HFI.Wss.StimulationController.Ready*
+  commentId: Overload:HFI.Wss.StimulationController.Ready
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Ready
+  name: Ready
+  nameWithType: StimulationController.Ready
+  fullName: HFI.Wss.StimulationController.Ready
+- uid: HFI.Wss.StimulationController.Started*
+  commentId: Overload:HFI.Wss.StimulationController.Started
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Started
+  name: Started
+  nameWithType: StimulationController.Started
+  fullName: HFI.Wss.StimulationController.Started
+- uid: HFI.Wss.StimulationController.GetModelConfigCTRL*
+  commentId: Overload:HFI.Wss.StimulationController.GetModelConfigCTRL
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_GetModelConfigCTRL
+  name: GetModelConfigCTRL
+  nameWithType: StimulationController.GetModelConfigCTRL
+  fullName: HFI.Wss.StimulationController.GetModelConfigCTRL
+- uid: Wss.ModelModule.ModelConfigController
+  commentId: T:Wss.ModelModule.ModelConfigController
+  parent: Wss.ModelModule
+  isExternal: true
+  href: https://github.com/cwru-non-academic/WSSCoreInterface/blob/6d57dc93f5e1e6ab6f1a07147624443ac43a2431/ModelModule/ModelConfigController.cs
+  name: ModelConfigController
+  nameWithType: ModelConfigController
+  fullName: Wss.ModelModule.ModelConfigController
+- uid: Wss.ModelModule
+  commentId: N:Wss.ModelModule
+  isExternal: true
+  name: Wss.ModelModule
+  nameWithType: Wss.ModelModule
+  fullName: Wss.ModelModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    isExternal: true
+  - name: .
+  - uid: Wss.ModelModule
+    name: ModelModule
+    isExternal: true
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    isExternal: true
+  - name: .
+  - uid: Wss.ModelModule
+    name: ModelModule
+    isExternal: true
+- uid: HFI.Wss.StimulationController.GetCoreConfigCTRL*
+  commentId: Overload:HFI.Wss.StimulationController.GetCoreConfigCTRL
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_GetCoreConfigCTRL
+  name: GetCoreConfigCTRL
+  nameWithType: StimulationController.GetCoreConfigCTRL
+  fullName: HFI.Wss.StimulationController.GetCoreConfigCTRL
+- uid: Wss.CoreModule.CoreConfigController
+  commentId: T:Wss.CoreModule.CoreConfigController
+  parent: Wss.CoreModule
+  isExternal: true
+  href: https://github.com/cwru-non-academic/WSSCoreInterface/blob/6d57dc93f5e1e6ab6f1a07147624443ac43a2431/CoreModule/CoreJsonConfig/CoreConfigController.cs
+  name: CoreConfigController
+  nameWithType: CoreConfigController
+  fullName: Wss.CoreModule.CoreConfigController
+- uid: HFI.Wss.StimulationController.LoadCoreConfigFile*
+  commentId: Overload:HFI.Wss.StimulationController.LoadCoreConfigFile
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_LoadCoreConfigFile
+  name: LoadCoreConfigFile
+  nameWithType: StimulationController.LoadCoreConfigFile
+  fullName: HFI.Wss.StimulationController.LoadCoreConfigFile
+- uid: HFI.Wss.StimulationController.Dispose*
+  commentId: Overload:HFI.Wss.StimulationController.Dispose
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Dispose
+  name: Dispose
+  nameWithType: StimulationController.Dispose
+  fullName: HFI.Wss.StimulationController.Dispose
+- uid: HFI.Wss.StimulationController.DisposeAsync*
+  commentId: Overload:HFI.Wss.StimulationController.DisposeAsync
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_DisposeAsync
+  name: DisposeAsync
+  nameWithType: StimulationController.DisposeAsync
+  fullName: HFI.Wss.StimulationController.DisposeAsync
+- uid: System.Threading.Tasks.ValueTask
+  commentId: T:System.Threading.Tasks.ValueTask
+  parent: System.Threading.Tasks
+  isExternal: true
+  name: ValueTask
+  nameWithType: ValueTask
+  fullName: System.Threading.Tasks.ValueTask
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks

@@ -1,0 +1,584 @@
+### YamlMime:ManagedReference
+items:
+- uid: Wss.CoreModule.CoreConfigController
+  commentId: T:Wss.CoreModule.CoreConfigController
+  id: CoreConfigController
+  parent: Wss.CoreModule
+  children:
+  - Wss.CoreModule.CoreConfigController.#ctor
+  - Wss.CoreModule.CoreConfigController.#ctor(System.String)
+  - Wss.CoreModule.CoreConfigController.AmpCurves
+  - Wss.CoreModule.CoreConfigController.Firmware
+  - Wss.CoreModule.CoreConfigController.IsLoaded
+  - Wss.CoreModule.CoreConfigController.LoadJson
+  - Wss.CoreModule.CoreConfigController.LoadJson(System.String)
+  - Wss.CoreModule.CoreConfigController.MaxWss
+  - Wss.CoreModule.CoreConfigController.SaveJson
+  - Wss.CoreModule.CoreConfigController.SetFirmware(System.String,Wss.CoreModule.WSSVersionHandler)
+  - Wss.CoreModule.CoreConfigController.SetMaxWss(System.Int32)
+  - Wss.CoreModule.CoreConfigController.UseConfigAmpCurves
+  - Wss.CoreModule.CoreConfigController._configPath
+  langs:
+  - csharp
+  - vb
+  name: CoreConfigController
+  nameWithType: CoreConfigController
+  fullName: Wss.CoreModule.CoreConfigController
+  type: Class
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Controls loading, validating, reading, and writing a configuration JSON file.
+
+    Thread-safe. Ensures a valid default config exists on disk.
+  example: []
+  syntax:
+    content: 'public sealed class CoreConfigController : ICoreConfig'
+    content.vb: Public NotInheritable Class CoreConfigController Implements ICoreConfig
+  inheritance:
+  - System.Object
+  implements:
+  - Wss.CoreModule.ICoreConfig
+- uid: Wss.CoreModule.CoreConfigController._configPath
+  commentId: P:Wss.CoreModule.CoreConfigController._configPath
+  id: _configPath
+  parent: Wss.CoreModule.CoreConfigController
+  langs:
+  - csharp
+  - vb
+  name: _configPath
+  nameWithType: CoreConfigController._configPath
+  fullName: Wss.CoreModule.CoreConfigController._configPath
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Resolved file path to the configuration JSON.
+  example: []
+  syntax:
+    content: public string _configPath { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property _configPath As String
+  overload: Wss.CoreModule.CoreConfigController._configPath*
+- uid: Wss.CoreModule.CoreConfigController.#ctor
+  commentId: M:Wss.CoreModule.CoreConfigController.#ctor
+  id: '#ctor'
+  parent: Wss.CoreModule.CoreConfigController
+  langs:
+  - csharp
+  - vb
+  name: CoreConfigController()
+  nameWithType: CoreConfigController.CoreConfigController()
+  fullName: Wss.CoreModule.CoreConfigController.CoreConfigController()
+  type: Constructor
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Initializes a controller that reads/writes "stimConfig.json" in the current directory.
+  example: []
+  syntax:
+    content: public CoreConfigController()
+    content.vb: Public Sub New()
+  overload: Wss.CoreModule.CoreConfigController.#ctor*
+  nameWithType.vb: CoreConfigController.New()
+  fullName.vb: Wss.CoreModule.CoreConfigController.New()
+  name.vb: New()
+- uid: Wss.CoreModule.CoreConfigController.#ctor(System.String)
+  commentId: M:Wss.CoreModule.CoreConfigController.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: Wss.CoreModule.CoreConfigController
+  langs:
+  - csharp
+  - vb
+  name: CoreConfigController(string)
+  nameWithType: CoreConfigController.CoreConfigController(string)
+  fullName: Wss.CoreModule.CoreConfigController.CoreConfigController(string)
+  type: Constructor
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Initializes a controller pointing to a custom path.
+
+    If a directory path is provided, "stimConfig.json" is created inside it.
+  example: []
+  syntax:
+    content: public CoreConfigController(string path)
+    parameters:
+    - id: path
+      type: System.String
+      description: Absolute or relative file path, or a directory path.
+    content.vb: Public Sub New(path As String)
+  overload: Wss.CoreModule.CoreConfigController.#ctor*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when <code class="paramref">path</code> is null, empty, or whitespace.
+  nameWithType.vb: CoreConfigController.New(String)
+  fullName.vb: Wss.CoreModule.CoreConfigController.New(String)
+  name.vb: New(String)
+- uid: Wss.CoreModule.CoreConfigController.IsLoaded
+  commentId: P:Wss.CoreModule.CoreConfigController.IsLoaded
+  id: IsLoaded
+  parent: Wss.CoreModule.CoreConfigController
+  langs:
+  - csharp
+  - vb
+  name: IsLoaded
+  nameWithType: CoreConfigController.IsLoaded
+  fullName: Wss.CoreModule.CoreConfigController.IsLoaded
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Indicates whether the JSON configuration has been loaded into memory.
+  example: []
+  syntax:
+    content: public bool IsLoaded { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsLoaded As Boolean
+  overload: Wss.CoreModule.CoreConfigController.IsLoaded*
+- uid: Wss.CoreModule.CoreConfigController.LoadJson
+  commentId: M:Wss.CoreModule.CoreConfigController.LoadJson
+  id: LoadJson
+  parent: Wss.CoreModule.CoreConfigController
+  langs:
+  - csharp
+  - vb
+  name: LoadJson()
+  nameWithType: CoreConfigController.LoadJson()
+  fullName: Wss.CoreModule.CoreConfigController.LoadJson()
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Loads the configuration from disk. Creates and saves a default config if missing or invalid.
+
+    Safe to call multiple times.
+  example: []
+  syntax:
+    content: public void LoadJson()
+    content.vb: Public Sub LoadJson()
+  overload: Wss.CoreModule.CoreConfigController.LoadJson*
+- uid: Wss.CoreModule.CoreConfigController.LoadJson(System.String)
+  commentId: M:Wss.CoreModule.CoreConfigController.LoadJson(System.String)
+  id: LoadJson(System.String)
+  parent: Wss.CoreModule.CoreConfigController
+  langs:
+  - csharp
+  - vb
+  name: LoadJson(string)
+  nameWithType: CoreConfigController.LoadJson(string)
+  fullName: Wss.CoreModule.CoreConfigController.LoadJson(string)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Loads the core configuration from disk at the specified <code class="paramref">path</code>.
+
+    If <code class="paramref">path</code> is a directory, the file name <code>core.json</code> is appended.
+
+    If the file does not exist or is invalid, a default configuration is created and saved.
+
+    Safe to call multiple times; the operation is thread-safe.
+  example: []
+  syntax:
+    content: public void LoadJson(string path)
+    parameters:
+    - id: path
+      type: System.String
+      description: Absolute or relative file path, or a directory path ending with a path separator.
+    content.vb: Public Sub LoadJson(path As String)
+  overload: Wss.CoreModule.CoreConfigController.LoadJson*
+  nameWithType.vb: CoreConfigController.LoadJson(String)
+  fullName.vb: Wss.CoreModule.CoreConfigController.LoadJson(String)
+  name.vb: LoadJson(String)
+- uid: Wss.CoreModule.CoreConfigController.SaveJson
+  commentId: M:Wss.CoreModule.CoreConfigController.SaveJson
+  id: SaveJson
+  parent: Wss.CoreModule.CoreConfigController
+  langs:
+  - csharp
+  - vb
+  name: SaveJson()
+  nameWithType: CoreConfigController.SaveJson()
+  fullName: Wss.CoreModule.CoreConfigController.SaveJson()
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Threads safe, persists the current configuration to disk.
+
+    No-op if not loaded yet.
+  example: []
+  syntax:
+    content: public void SaveJson()
+    content.vb: Public Sub SaveJson()
+  overload: Wss.CoreModule.CoreConfigController.SaveJson*
+- uid: Wss.CoreModule.CoreConfigController.MaxWss
+  commentId: P:Wss.CoreModule.CoreConfigController.MaxWss
+  id: MaxWss
+  parent: Wss.CoreModule.CoreConfigController
+  langs:
+  - csharp
+  - vb
+  name: MaxWss
+  nameWithType: CoreConfigController.MaxWss
+  fullName: Wss.CoreModule.CoreConfigController.MaxWss
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Gets max number of WSS supported by this app.
+
+    Thread safe get.
+  example: []
+  syntax:
+    content: public int MaxWss { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property MaxWss As Integer
+  overload: Wss.CoreModule.CoreConfigController.MaxWss*
+  implements:
+  - Wss.CoreModule.ICoreConfig.MaxWss
+- uid: Wss.CoreModule.CoreConfigController.Firmware
+  commentId: P:Wss.CoreModule.CoreConfigController.Firmware
+  id: Firmware
+  parent: Wss.CoreModule.CoreConfigController
+  langs:
+  - csharp
+  - vb
+  name: Firmware
+  nameWithType: CoreConfigController.Firmware
+  fullName: Wss.CoreModule.CoreConfigController.Firmware
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Gets the firmware version saved on config.
+
+    Thread safe get.
+  example: []
+  syntax:
+    content: public string Firmware { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Firmware As String
+  overload: Wss.CoreModule.CoreConfigController.Firmware*
+  implements:
+  - Wss.CoreModule.ICoreConfig.Firmware
+- uid: Wss.CoreModule.CoreConfigController.UseConfigAmpCurves
+  commentId: P:Wss.CoreModule.CoreConfigController.UseConfigAmpCurves
+  id: UseConfigAmpCurves
+  parent: Wss.CoreModule.CoreConfigController
+  langs:
+  - csharp
+  - vb
+  name: UseConfigAmpCurves
+  nameWithType: CoreConfigController.UseConfigAmpCurves
+  fullName: Wss.CoreModule.CoreConfigController.UseConfigAmpCurves
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: When true, the core should use per-WSS amplitude curves from the config file.
+  example: []
+  syntax:
+    content: public bool UseConfigAmpCurves { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property UseConfigAmpCurves As Boolean
+  overload: Wss.CoreModule.CoreConfigController.UseConfigAmpCurves*
+- uid: Wss.CoreModule.CoreConfigController.AmpCurves
+  commentId: P:Wss.CoreModule.CoreConfigController.AmpCurves
+  id: AmpCurves
+  parent: Wss.CoreModule.CoreConfigController
+  langs:
+  - csharp
+  - vb
+  name: AmpCurves
+  nameWithType: CoreConfigController.AmpCurves
+  fullName: Wss.CoreModule.CoreConfigController.AmpCurves
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Returns the configured amplitude curve parameters per WSS (index 0..2 maps to Wss1..Wss3).
+  example: []
+  syntax:
+    content: public AmpCurveParams[] AmpCurves { get; }
+    parameters: []
+    return:
+      type: Wss.CoreModule.AmpCurveParams[]
+    content.vb: Public ReadOnly Property AmpCurves As AmpCurveParams()
+  overload: Wss.CoreModule.CoreConfigController.AmpCurves*
+- uid: Wss.CoreModule.CoreConfigController.SetMaxWss(System.Int32)
+  commentId: M:Wss.CoreModule.CoreConfigController.SetMaxWss(System.Int32)
+  id: SetMaxWss(System.Int32)
+  parent: Wss.CoreModule.CoreConfigController
+  langs:
+  - csharp
+  - vb
+  name: SetMaxWss(int)
+  nameWithType: CoreConfigController.SetMaxWss(int)
+  fullName: Wss.CoreModule.CoreConfigController.SetMaxWss(int)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Updates the maximum number of supported WSS devices in the loaded configuration
+
+    and immediately persists the change to disk. Thread safe.
+  example: []
+  syntax:
+    content: public void SetMaxWss(int v)
+    parameters:
+    - id: v
+      type: System.Int32
+      description: New maximum WSS count. Must be greater than zero.
+    content.vb: Public Sub SetMaxWss(v As Integer)
+  overload: Wss.CoreModule.CoreConfigController.SetMaxWss*
+  nameWithType.vb: CoreConfigController.SetMaxWss(Integer)
+  fullName.vb: Wss.CoreModule.CoreConfigController.SetMaxWss(Integer)
+  name.vb: SetMaxWss(Integer)
+- uid: Wss.CoreModule.CoreConfigController.SetFirmware(System.String,Wss.CoreModule.WSSVersionHandler)
+  commentId: M:Wss.CoreModule.CoreConfigController.SetFirmware(System.String,Wss.CoreModule.WSSVersionHandler)
+  id: SetFirmware(System.String,Wss.CoreModule.WSSVersionHandler)
+  parent: Wss.CoreModule.CoreConfigController
+  langs:
+  - csharp
+  - vb
+  name: SetFirmware(string, WSSVersionHandler)
+  nameWithType: CoreConfigController.SetFirmware(string, WSSVersionHandler)
+  fullName: Wss.CoreModule.CoreConfigController.SetFirmware(string, Wss.CoreModule.WSSVersionHandler)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Updates the firmware version recorded in the configuration and immediately saves it to disk.
+
+    Thread safe.
+  example: []
+  syntax:
+    content: public void SetFirmware(string v, WSSVersionHandler verHandler)
+    parameters:
+    - id: v
+      type: System.String
+      description: Firmware version string to record (for example, "H03").
+    - id: verHandler
+      type: Wss.CoreModule.WSSVersionHandler
+      description: Version handler used to validate whether the supplied firmware string is supported.
+    content.vb: Public Sub SetFirmware(v As String, verHandler As WSSVersionHandler)
+  overload: Wss.CoreModule.CoreConfigController.SetFirmware*
+  nameWithType.vb: CoreConfigController.SetFirmware(String, WSSVersionHandler)
+  fullName.vb: Wss.CoreModule.CoreConfigController.SetFirmware(String, Wss.CoreModule.WSSVersionHandler)
+  name.vb: SetFirmware(String, WSSVersionHandler)
+references:
+- uid: Wss.CoreModule
+  commentId: N:Wss.CoreModule
+  href: Wss.html
+  name: Wss.CoreModule
+  nameWithType: Wss.CoreModule
+  fullName: Wss.CoreModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Wss.CoreModule.ICoreConfig
+  commentId: T:Wss.CoreModule.ICoreConfig
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.ICoreConfig.html
+  name: ICoreConfig
+  nameWithType: ICoreConfig
+  fullName: Wss.CoreModule.ICoreConfig
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Wss.CoreModule.CoreConfigController._configPath*
+  commentId: Overload:Wss.CoreModule.CoreConfigController._configPath
+  href: Wss.CoreModule.CoreConfigController.html#Wss_CoreModule_CoreConfigController__configPath
+  name: _configPath
+  nameWithType: CoreConfigController._configPath
+  fullName: Wss.CoreModule.CoreConfigController._configPath
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Wss.CoreModule.CoreConfigController.#ctor*
+  commentId: Overload:Wss.CoreModule.CoreConfigController.#ctor
+  href: Wss.CoreModule.CoreConfigController.html#Wss_CoreModule_CoreConfigController__ctor
+  name: CoreConfigController
+  nameWithType: CoreConfigController.CoreConfigController
+  fullName: Wss.CoreModule.CoreConfigController.CoreConfigController
+  nameWithType.vb: CoreConfigController.New
+  fullName.vb: Wss.CoreModule.CoreConfigController.New
+  name.vb: New
+- uid: System.ArgumentException
+  commentId: T:System.ArgumentException
+  isExternal: true
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: Wss.CoreModule.CoreConfigController.IsLoaded*
+  commentId: Overload:Wss.CoreModule.CoreConfigController.IsLoaded
+  href: Wss.CoreModule.CoreConfigController.html#Wss_CoreModule_CoreConfigController_IsLoaded
+  name: IsLoaded
+  nameWithType: CoreConfigController.IsLoaded
+  fullName: Wss.CoreModule.CoreConfigController.IsLoaded
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Wss.CoreModule.CoreConfigController.LoadJson*
+  commentId: Overload:Wss.CoreModule.CoreConfigController.LoadJson
+  href: Wss.CoreModule.CoreConfigController.html#Wss_CoreModule_CoreConfigController_LoadJson
+  name: LoadJson
+  nameWithType: CoreConfigController.LoadJson
+  fullName: Wss.CoreModule.CoreConfigController.LoadJson
+- uid: Wss.CoreModule.CoreConfigController.SaveJson*
+  commentId: Overload:Wss.CoreModule.CoreConfigController.SaveJson
+  href: Wss.CoreModule.CoreConfigController.html#Wss_CoreModule_CoreConfigController_SaveJson
+  name: SaveJson
+  nameWithType: CoreConfigController.SaveJson
+  fullName: Wss.CoreModule.CoreConfigController.SaveJson
+- uid: Wss.CoreModule.CoreConfigController.MaxWss*
+  commentId: Overload:Wss.CoreModule.CoreConfigController.MaxWss
+  href: Wss.CoreModule.CoreConfigController.html#Wss_CoreModule_CoreConfigController_MaxWss
+  name: MaxWss
+  nameWithType: CoreConfigController.MaxWss
+  fullName: Wss.CoreModule.CoreConfigController.MaxWss
+- uid: Wss.CoreModule.ICoreConfig.MaxWss
+  commentId: P:Wss.CoreModule.ICoreConfig.MaxWss
+  parent: Wss.CoreModule.ICoreConfig
+  href: Wss.CoreModule.ICoreConfig.html#Wss_CoreModule_ICoreConfig_MaxWss
+  name: MaxWss
+  nameWithType: ICoreConfig.MaxWss
+  fullName: Wss.CoreModule.ICoreConfig.MaxWss
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Wss.CoreModule.CoreConfigController.Firmware*
+  commentId: Overload:Wss.CoreModule.CoreConfigController.Firmware
+  href: Wss.CoreModule.CoreConfigController.html#Wss_CoreModule_CoreConfigController_Firmware
+  name: Firmware
+  nameWithType: CoreConfigController.Firmware
+  fullName: Wss.CoreModule.CoreConfigController.Firmware
+- uid: Wss.CoreModule.ICoreConfig.Firmware
+  commentId: P:Wss.CoreModule.ICoreConfig.Firmware
+  parent: Wss.CoreModule.ICoreConfig
+  href: Wss.CoreModule.ICoreConfig.html#Wss_CoreModule_ICoreConfig_Firmware
+  name: Firmware
+  nameWithType: ICoreConfig.Firmware
+  fullName: Wss.CoreModule.ICoreConfig.Firmware
+- uid: Wss.CoreModule.CoreConfigController.UseConfigAmpCurves*
+  commentId: Overload:Wss.CoreModule.CoreConfigController.UseConfigAmpCurves
+  href: Wss.CoreModule.CoreConfigController.html#Wss_CoreModule_CoreConfigController_UseConfigAmpCurves
+  name: UseConfigAmpCurves
+  nameWithType: CoreConfigController.UseConfigAmpCurves
+  fullName: Wss.CoreModule.CoreConfigController.UseConfigAmpCurves
+- uid: Wss.CoreModule.CoreConfigController.AmpCurves*
+  commentId: Overload:Wss.CoreModule.CoreConfigController.AmpCurves
+  href: Wss.CoreModule.CoreConfigController.html#Wss_CoreModule_CoreConfigController_AmpCurves
+  name: AmpCurves
+  nameWithType: CoreConfigController.AmpCurves
+  fullName: Wss.CoreModule.CoreConfigController.AmpCurves
+- uid: Wss.CoreModule.AmpCurveParams[]
+  isExternal: true
+  href: Wss.CoreModule.AmpCurveParams.html
+  name: AmpCurveParams[]
+  nameWithType: AmpCurveParams[]
+  fullName: Wss.CoreModule.AmpCurveParams[]
+  nameWithType.vb: AmpCurveParams()
+  fullName.vb: Wss.CoreModule.AmpCurveParams()
+  name.vb: AmpCurveParams()
+  spec.csharp:
+  - uid: Wss.CoreModule.AmpCurveParams
+    name: AmpCurveParams
+    href: Wss.CoreModule.AmpCurveParams.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Wss.CoreModule.AmpCurveParams
+    name: AmpCurveParams
+    href: Wss.CoreModule.AmpCurveParams.html
+  - name: (
+  - name: )
+- uid: Wss.CoreModule.CoreConfigController.SetMaxWss*
+  commentId: Overload:Wss.CoreModule.CoreConfigController.SetMaxWss
+  href: Wss.CoreModule.CoreConfigController.html#Wss_CoreModule_CoreConfigController_SetMaxWss_System_Int32_
+  name: SetMaxWss
+  nameWithType: CoreConfigController.SetMaxWss
+  fullName: Wss.CoreModule.CoreConfigController.SetMaxWss
+- uid: Wss.CoreModule.CoreConfigController.SetFirmware*
+  commentId: Overload:Wss.CoreModule.CoreConfigController.SetFirmware
+  href: Wss.CoreModule.CoreConfigController.html#Wss_CoreModule_CoreConfigController_SetFirmware_System_String_Wss_CoreModule_WSSVersionHandler_
+  name: SetFirmware
+  nameWithType: CoreConfigController.SetFirmware
+  fullName: Wss.CoreModule.CoreConfigController.SetFirmware
+- uid: Wss.CoreModule.WSSVersionHandler
+  commentId: T:Wss.CoreModule.WSSVersionHandler
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.WSSVersionHandler.html
+  name: WSSVersionHandler
+  nameWithType: WSSVersionHandler
+  fullName: Wss.CoreModule.WSSVersionHandler

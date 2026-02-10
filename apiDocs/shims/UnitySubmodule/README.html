@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Unity Submodule DocFX Shim | WSS Documentation Hub </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Unity Submodule DocFX Shim | WSS Documentation Hub ">
+    
+    
+      <link rel="shortcut icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../styles/docfx.css">
+      <link rel="stylesheet" href="../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="unity-submodule-docfx-shim">Unity Submodule DocFX Shim</h1>
+
+<p>Use this shim project when the Unity repository you want to document is a full Unity app/UI project,
+but the code you actually want API docs for is a submodule folder (or a subset of the repo).</p>
+<p>DocFX requires a C# project (<code>.csproj</code>) to generate metadata. Unity projects often pull in
+UnityEditor/UI/build-time dependencies that are not needed (or not available) for API docs.
+This shim:</p>
+<ul>
+<li>Compiles only the files you select (defaults to all <code>*.cs</code> under <code>DocsSourceRoot</code>)</li>
+<li>References Unity assemblies from <code>apiDocs/ref/*.dll</code></li>
+<li>Produces XML docs so DocFX can generate API pages</li>
+</ul>
+<h2 id="how-to-use">How To Use</h2>
+<ol>
+<li>Decide what folder contains the integration code you want documented.</li>
+</ol>
+<p>Example (submodule checkout):</p>
+<ul>
+<li><code>.../MyUnityApp/Assets/SubModules/WSSUnityIntegration</code></li>
+</ul>
+<ol start="2">
+<li>Add a repo entry in <code>apiDocs/repos.manifest.json</code>.</li>
+</ol>
+<p>Example:</p>
+<pre><code class="lang-json">{
+  &quot;id&quot;: &quot;unity-integration&quot;,
+  &quot;title&quot;: &quot;API: Unity Integration (C#)&quot;,
+  &quot;kind&quot;: &quot;csharp&quot;,
+  &quot;enabled&quot;: true,
+  &quot;root&quot;: &quot;${WSS_UNITY_REPO_ROOT}&quot;,
+
+  // Use the shim .csproj stored in this docs hub
+  &quot;csprojBase&quot;: &quot;hub&quot;,
+  &quot;csproj&quot;: &quot;apiDocs/shims/UnitySubmodule/UnitySubmodule.Docs.csproj&quot;,
+
+  // Separate API section
+  &quot;docfxDest&quot;: &quot;api/unity&quot;,
+
+  // Tell the shim which source tree to include
+  &quot;msbuildProperties&quot;: {
+    &quot;DocsSourceRoot&quot;: &quot;${WSS_UNITY_INTEGRATION_SRC}&quot;,
+
+    // Optional: override includes/excludes
+    // &quot;DocsInclude&quot;: &quot;${WSS_UNITY_INTEGRATION_SRC}/UnityImplementation/**/*.cs&quot;,
+    // &quot;DocsExclude&quot;: &quot;${WSS_UNITY_INTEGRATION_SRC}/**/Tests/**&quot;,
+
+    // Optional: Unity compilation symbols (semicolon-separated)
+    &quot;DefineConstants&quot;: &quot;UNITY_2021_3_OR_NEWER;UNITY_EDITOR&quot;
+  }
+}
+</code></pre>
+<ol start="3">
+<li>Set environment variables used in the manifest.</li>
+</ol>
+<p>Example (bash):</p>
+<pre><code class="lang-bash">export WSS_UNITY_REPO_ROOT=&quot;/abs/path/to/MyUnityApp&quot;
+export WSS_UNITY_INTEGRATION_SRC=&quot;$WSS_UNITY_REPO_ROOT/Assets/SubModules/WSSUnityIntegration&quot;
+</code></pre>
+<p>Note: the shim also supports providing the source root <em>without</em> MSBuild properties by setting
+<code>WSS_UNITY_INTEGRATION_SRC</code> (or <code>DOCS_SOURCE_ROOT</code>) in the environment.</p>
+<ol start="4">
+<li>Build:</li>
+</ol>
+<pre><code class="lang-bash">./apiDocs/build-docs.sh --manifest ./apiDocs/repos.manifest.json
+</code></pre>
+<h2 id="notes">Notes</h2>
+<ul>
+<li><code>DocsSourceRoot</code> is required. If not set, the shim fails with a clear error.</li>
+<li><code>DocsSourceRoot</code> must not be <code>/</code> (or a drive root like <code>C:\\</code>), otherwise MSBuild globbing becomes extremely slow and fails.</li>
+<li>By default, <code>Assets/**/Editor/**</code> is excluded to avoid <code>UnityEditor</code>-only code.</li>
+<li>If you need Editor APIs documented, remove that exclude and add <code>UnityEditor</code> references.</li>
+<li>If Unity types are missing, ensure <code>apiDocs/ref/*.dll</code> contains the correct Unity assemblies.</li>
+<li>If the submodule includes dependency assemblies under <code>Plugins/</code>, the shim automatically references <code>Plugins/**/*.dll</code> (excluding common Unity/Newtonsoft/system DLLs that are already referenced).</li>
+</ul>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/cwru-non-academic/WSS_Documentation/blob/main/apiDocs/shims/UnitySubmodule/README.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

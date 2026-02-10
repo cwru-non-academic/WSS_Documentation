@@ -1,0 +1,68 @@
+### YamlMime:ManagedReference
+items:
+- uid: Wss.CalibrationModule
+  commentId: N:Wss.CalibrationModule
+  id: Wss.CalibrationModule
+  children:
+  - Wss.CalibrationModule.IStimParamsCore
+  - Wss.CalibrationModule.StimParamsConfig
+  - Wss.CalibrationModule.StimParamsConfigController
+  - Wss.CalibrationModule.StimParamsLayer
+  langs:
+  - csharp
+  - vb
+  name: Wss.CalibrationModule
+  nameWithType: Wss.CalibrationModule
+  fullName: Wss.CalibrationModule
+  type: Namespace
+  assemblies:
+  - WSS_Core_Interface
+references:
+- uid: Wss.CalibrationModule.IStimParamsCore
+  commentId: T:Wss.CalibrationModule.IStimParamsCore
+  parent: Wss.CalibrationModule
+  href: Wss.CalibrationModule.IStimParamsCore.html
+  name: IStimParamsCore
+  nameWithType: IStimParamsCore
+  fullName: Wss.CalibrationModule.IStimParamsCore
+- uid: Wss.CalibrationModule.StimParamsConfig
+  commentId: T:Wss.CalibrationModule.StimParamsConfig
+  href: Wss.CalibrationModule.StimParamsConfig.html
+  name: StimParamsConfig
+  nameWithType: StimParamsConfig
+  fullName: Wss.CalibrationModule.StimParamsConfig
+- uid: Wss.CalibrationModule.StimParamsConfigController
+  commentId: T:Wss.CalibrationModule.StimParamsConfigController
+  parent: Wss.CalibrationModule
+  href: Wss.CalibrationModule.StimParamsConfigController.html
+  name: StimParamsConfigController
+  nameWithType: StimParamsConfigController
+  fullName: Wss.CalibrationModule.StimParamsConfigController
+- uid: Wss.CalibrationModule.StimParamsLayer
+  commentId: T:Wss.CalibrationModule.StimParamsLayer
+  href: Wss.CalibrationModule.StimParamsLayer.html
+  name: StimParamsLayer
+  nameWithType: StimParamsLayer
+  fullName: Wss.CalibrationModule.StimParamsLayer
+- uid: Wss.CalibrationModule
+  commentId: N:Wss.CalibrationModule
+  href: Wss.html
+  name: Wss.CalibrationModule
+  nameWithType: Wss.CalibrationModule
+  fullName: Wss.CalibrationModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CalibrationModule
+    name: CalibrationModule
+    href: Wss.CalibrationModule.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CalibrationModule
+    name: CalibrationModule
+    href: Wss.CalibrationModule.html

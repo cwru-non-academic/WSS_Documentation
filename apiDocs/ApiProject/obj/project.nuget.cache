@@ -1,12 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "/dL+J+Ts/GDIva10caRrunRbXl0ZSBishcXkQkmKzFkSxWqeYCwQ42coM87oajmSGPWOosWsBdkaqbTxza6+MA==",
+  "dgSpecHash": "6tiJmH3mhZw=",
   "success": true,
-  "projectFilePath": "A:\\Documents\\GIT Projects\\WSS-documentation\\docs\\ApiProject\\ApiProject.csproj",
+  "projectFilePath": "/home/lemf/Documents/GitHub/WSS_Documentation/apiDocs/ApiProject/ApiProject.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Luis.DESKTOP-B151VCV\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.15\\microsoft.netcore.app.ref.7.0.15.nupkg.sha512",
-    "C:\\Users\\Luis.DESKTOP-B151VCV\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.15\\microsoft.windowsdesktop.app.ref.7.0.15.nupkg.sha512",
-    "C:\\Users\\Luis.DESKTOP-B151VCV\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.15\\microsoft.aspnetcore.app.ref.7.0.15.nupkg.sha512"
+    "/home/lemf/.nuget/packages/microsoft.netcore.app.ref/7.0.20/microsoft.netcore.app.ref.7.0.20.nupkg.sha512",
+    "/home/lemf/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.20/microsoft.aspnetcore.app.ref.7.0.20.nupkg.sha512"
   ],
   "logs": []
 }

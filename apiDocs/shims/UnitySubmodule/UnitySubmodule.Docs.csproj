@@ -1,0 +1,102 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <NoWarn>1591;8618;8625;8601;8604;8600;8602;8603</NoWarn>
+
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+
+    <!--
+      Required. Set via DocFX MSBuild properties (repos.manifest.json -> msbuildProperties).
+      Examples:
+        DocsSourceRoot=/abs/path/to/submodule
+        DocsSourceRoot=C:\\path\\to\\submodule
+    -->
+    <DocsSourceRoot>$(DocsSourceRoot)</DocsSourceRoot>
+
+    <!-- Fallback: allow passing the path via environment variable. -->
+    <DocsSourceRoot Condition="'$(DocsSourceRoot)' == '' And '$(WSS_UNITY_INTEGRATION_SRC)' != ''">$(WSS_UNITY_INTEGRATION_SRC)</DocsSourceRoot>
+    <DocsSourceRoot Condition="'$(DocsSourceRoot)' == '' And '$(DOCS_SOURCE_ROOT)' != ''">$(DOCS_SOURCE_ROOT)</DocsSourceRoot>
+
+    <!-- Optional. If set, overrides the default Include below (semicolon-separated globs). -->
+    <DocsInclude>$(DocsInclude)</DocsInclude>
+
+    <!-- Optional. Additional excludes (semicolon-separated globs). -->
+    <DocsExclude>$(DocsExclude)</DocsExclude>
+
+    <!-- Guard value used to avoid dangerous globbing at project evaluation time. -->
+    <IsDocsSourceRootSafe>true</IsDocsSourceRootSafe>
+    <IsDocsSourceRootSafe Condition="'$(DocsSourceRoot)' == ''">false</IsDocsSourceRootSafe>
+    <IsDocsSourceRootSafe Condition="'$(DocsSourceRoot)' == '/' Or '$(DocsSourceRoot)' == '\\'">false</IsDocsSourceRootSafe>
+    <IsDocsSourceRootSafe Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('$(DocsSourceRoot)', '^[A-Za-z]:[\\\\/]$'))">false</IsDocsSourceRootSafe>
+  </PropertyGroup>
+
+  <Target Name="ValidateDocsInputs" BeforeTargets="CoreCompile">
+    <Error
+      Condition="'$(IsDocsSourceRootSafe)' != 'true'"
+      Text="DocsSourceRoot must be set to a non-root folder (not '/' and not a drive root like 'C:\\'). Set it via DocFX metadata properties (repos.manifest.json -> msbuildProperties -> DocsSourceRoot) or by setting env var WSS_UNITY_INTEGRATION_SRC (or DOCS_SOURCE_ROOT)." />
+
+    <Message Importance="High" Text="Unity shim DocsSourceRoot=$(DocsSourceRoot)" />
+  </Target>
+
+  <ItemGroup>
+    <Compile
+      Include="$(DocsSourceRoot)/**/*.cs"
+      Condition="'$(DocsInclude)' == '' And '$(IsDocsSourceRootSafe)' == 'true'"
+      Exclude="$(DocsSourceRoot)/**/bin/**;$(DocsSourceRoot)/**/obj/**;$(DocsSourceRoot)/**/Library/**;$(DocsSourceRoot)/**/Temp/**;$(DocsSourceRoot)/**/Logs/**;$(DocsSourceRoot)/**/UserSettings/**;$(DocsSourceRoot)/**/ProjectSettings/**;$(DocsSourceRoot)/**/Packages/**;$(DocsSourceRoot)/**/Assets/**/Editor/**;$(DocsExclude)" />
+
+    <Compile
+      Include="$(DocsInclude)"
+      Condition="'$(DocsInclude)' != ''"
+      Exclude="$(DocsExclude)" />
+  </ItemGroup>
+
+  <!--
+    Optional: if the submodule ships dependency assemblies under Plugins/, reference them.
+    This helps DocFX/MSBuild compile the code without requiring the full Unity project .csproj.
+  -->
+  <ItemGroup Condition="'$(IsDocsSourceRootSafe)' == 'true'">
+    <_PluginDll
+      Include="$(DocsSourceRoot)/**/Plugins/**/*.dll"
+      Exclude="$(DocsSourceRoot)/**/Plugins/**/UnityEngine*.dll;$(DocsSourceRoot)/**/Plugins/**/Unity.TextMeshPro.dll;$(DocsSourceRoot)/**/Plugins/**/Newtonsoft.Json.dll;$(DocsSourceRoot)/**/Plugins/**/System.IO.Ports.dll;$(DocsSourceRoot)/**/Plugins/**/System.Management.dll" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'@(_PluginDll)' != ''">
+    <!-- Reference plugin assemblies by full path. -->
+    <Reference Include="@(_PluginDll)">
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\ref\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\..\ref\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>..\..\ref\UnityEngine.TextRenderingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>..\..\ref\UnityEngine.InputLegacyModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\..\ref\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>..\..\ref\Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\ref\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Ports">
+      <HintPath>..\..\ref\System.IO.Ports.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management">
+      <HintPath>..\..\ref\System.Management.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

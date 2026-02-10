@@ -1,0 +1,693 @@
+### YamlMime:ManagedReference
+items:
+- uid: Wss.ModelModule.ModelConfig
+  commentId: T:Wss.ModelModule.ModelConfig
+  id: ModelConfig
+  parent: Wss.ModelModule
+  children:
+  - Wss.ModelModule.ModelConfig.#ctor(System.String)
+  - Wss.ModelModule.ModelConfig.GetModeRequired
+  - Wss.ModelModule.ModelConfig.GetOrDefault``1(System.String,``0)
+  - Wss.ModelModule.ModelConfig.GetRequired``1(System.String)
+  - Wss.ModelModule.ModelConfig.TryGet``1(System.String,``0@)
+  langs:
+  - csharp
+  - vb
+  name: ModelConfig
+  nameWithType: ModelConfig
+  fullName: Wss.ModelModule.ModelConfig
+  type: Class
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.ModelModule
+  summary: >-
+    JSON-backed model configuration that stores controller mode and constants
+
+    under a dotted-key hierarchy (e.g., "calib.mode", "constants.PModeProportional").
+
+    Provides typed access helpers via <xref href="Wss.CoreModule.DictConfigBase" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: 'public sealed class ModelConfig : DictConfigBase'
+    content.vb: Public NotInheritable Class ModelConfig Inherits DictConfigBase
+  inheritance:
+  - System.Object
+  - Wss.CoreModule.DictConfigBase
+  inheritedMembers:
+  - Wss.CoreModule.DictConfigBase.Path
+  - Wss.CoreModule.DictConfigBase.Save
+  - Wss.CoreModule.DictConfigBase.TryGetFloat(System.String,System.Single@)
+  - Wss.CoreModule.DictConfigBase.TryGetInt(System.String,System.Int32@)
+  - Wss.CoreModule.DictConfigBase.TryGetString(System.String,System.String@)
+  - Wss.CoreModule.DictConfigBase.TryGetFloatArray(System.String,System.Single[]@)
+  - Wss.CoreModule.DictConfigBase.GetFloat(System.String,System.Single)
+  - Wss.CoreModule.DictConfigBase.GetInt(System.String,System.Int32)
+  - Wss.CoreModule.DictConfigBase.GetString(System.String,System.String)
+  - Wss.CoreModule.DictConfigBase.Set(System.String,Newtonsoft.Json.Linq.JToken)
+- uid: Wss.ModelModule.ModelConfig.#ctor(System.String)
+  commentId: M:Wss.ModelModule.ModelConfig.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: Wss.ModelModule.ModelConfig
+  langs:
+  - csharp
+  - vb
+  name: ModelConfig(string)
+  nameWithType: ModelConfig.ModelConfig(string)
+  fullName: Wss.ModelModule.ModelConfig.ModelConfig(string)
+  type: Constructor
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.ModelModule
+  summary: >-
+    Initializes a model configuration backed by the JSON file at <code class="paramref">path</code>.
+
+    Creates the file with defaults when missing.
+  example: []
+  syntax:
+    content: public ModelConfig(string path)
+    parameters:
+    - id: path
+      type: System.String
+      description: Destination file path.
+    content.vb: Public Sub New(path As String)
+  overload: Wss.ModelModule.ModelConfig.#ctor*
+  nameWithType.vb: ModelConfig.New(String)
+  fullName.vb: Wss.ModelModule.ModelConfig.New(String)
+  name.vb: New(String)
+- uid: Wss.ModelModule.ModelConfig.GetModeRequired
+  commentId: M:Wss.ModelModule.ModelConfig.GetModeRequired
+  id: GetModeRequired
+  parent: Wss.ModelModule.ModelConfig
+  langs:
+  - csharp
+  - vb
+  name: GetModeRequired()
+  nameWithType: ModelConfig.GetModeRequired()
+  fullName: Wss.ModelModule.ModelConfig.GetModeRequired()
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.ModelModule
+  summary: Gets the required calibration mode from key "calib.mode". Throws if missing.
+  example: []
+  syntax:
+    content: public string GetModeRequired()
+    return:
+      type: System.String
+    content.vb: Public Function GetModeRequired() As String
+  overload: Wss.ModelModule.ModelConfig.GetModeRequired*
+- uid: Wss.ModelModule.ModelConfig.TryGet``1(System.String,``0@)
+  commentId: M:Wss.ModelModule.ModelConfig.TryGet``1(System.String,``0@)
+  id: TryGet``1(System.String,``0@)
+  parent: Wss.ModelModule.ModelConfig
+  langs:
+  - csharp
+  - vb
+  name: TryGet<T>(string, out T)
+  nameWithType: ModelConfig.TryGet<T>(string, out T)
+  fullName: Wss.ModelModule.ModelConfig.TryGet<T>(string, out T)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.ModelModule
+  summary: Attempts to read a value at <code class="paramref">key</code> and convert it to <code class="typeparamref">T</code>.
+  example: []
+  syntax:
+    content: 'public bool TryGet<T>(string key, out T value) where T : notnull'
+    parameters:
+    - id: key
+      type: System.String
+      description: Dotted key path.
+    - id: value
+      type: '{T}'
+      description: Result when conversion succeeds.
+    typeParameters:
+    - id: T
+      description: Target type (non-nullable).
+    return:
+      type: System.Boolean
+      description: <code>true</code> if the value exists and converts; otherwise <code>false</code>.
+    content.vb: Public Function TryGet(Of T)(key As String, value As T) As Boolean
+  overload: Wss.ModelModule.ModelConfig.TryGet*
+  nameWithType.vb: ModelConfig.TryGet(Of T)(String, T)
+  fullName.vb: Wss.ModelModule.ModelConfig.TryGet(Of T)(String, T)
+  name.vb: TryGet(Of T)(String, T)
+- uid: Wss.ModelModule.ModelConfig.GetOrDefault``1(System.String,``0)
+  commentId: M:Wss.ModelModule.ModelConfig.GetOrDefault``1(System.String,``0)
+  id: GetOrDefault``1(System.String,``0)
+  parent: Wss.ModelModule.ModelConfig
+  langs:
+  - csharp
+  - vb
+  name: GetOrDefault<T>(string, T)
+  nameWithType: ModelConfig.GetOrDefault<T>(string, T)
+  fullName: Wss.ModelModule.ModelConfig.GetOrDefault<T>(string, T)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.ModelModule
+  summary: Returns the value at <code class="paramref">key</code> or a default when missing.
+  example: []
+  syntax:
+    content: public T GetOrDefault<T>(string key, T dflt = default)
+    parameters:
+    - id: key
+      type: System.String
+      description: Dotted key path.
+    - id: dflt
+      type: '{T}'
+      description: Fallback value when the key is absent.
+    typeParameters:
+    - id: T
+      description: Target type.
+    return:
+      type: '{T}'
+    content.vb: Public Function GetOrDefault(Of T)(key As String, dflt As T = Nothing) As T
+  overload: Wss.ModelModule.ModelConfig.GetOrDefault*
+  nameWithType.vb: ModelConfig.GetOrDefault(Of T)(String, T)
+  fullName.vb: Wss.ModelModule.ModelConfig.GetOrDefault(Of T)(String, T)
+  name.vb: GetOrDefault(Of T)(String, T)
+- uid: Wss.ModelModule.ModelConfig.GetRequired``1(System.String)
+  commentId: M:Wss.ModelModule.ModelConfig.GetRequired``1(System.String)
+  id: GetRequired``1(System.String)
+  parent: Wss.ModelModule.ModelConfig
+  langs:
+  - csharp
+  - vb
+  name: GetRequired<T>(string)
+  nameWithType: ModelConfig.GetRequired<T>(string)
+  fullName: Wss.ModelModule.ModelConfig.GetRequired<T>(string)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.ModelModule
+  summary: Gets a required value at <code class="paramref">key</code>. Throws if missing or invalid.
+  example: []
+  syntax:
+    content: public T GetRequired<T>(string key)
+    parameters:
+    - id: key
+      type: System.String
+      description: Dotted key path.
+    typeParameters:
+    - id: T
+      description: Target type.
+    return:
+      type: '{T}'
+    content.vb: Public Function GetRequired(Of T)(key As String) As T
+  overload: Wss.ModelModule.ModelConfig.GetRequired*
+  exceptions:
+  - type: System.Collections.Generic.KeyNotFoundException
+    commentId: T:System.Collections.Generic.KeyNotFoundException
+    description: When the key is not present.
+  nameWithType.vb: ModelConfig.GetRequired(Of T)(String)
+  fullName.vb: Wss.ModelModule.ModelConfig.GetRequired(Of T)(String)
+  name.vb: GetRequired(Of T)(String)
+references:
+- uid: Wss.CoreModule.DictConfigBase
+  commentId: T:Wss.CoreModule.DictConfigBase
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.DictConfigBase.html
+  name: DictConfigBase
+  nameWithType: DictConfigBase
+  fullName: Wss.CoreModule.DictConfigBase
+- uid: Wss.ModelModule
+  commentId: N:Wss.ModelModule
+  href: Wss.html
+  name: Wss.ModelModule
+  nameWithType: Wss.ModelModule
+  fullName: Wss.ModelModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.ModelModule
+    name: ModelModule
+    href: Wss.ModelModule.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.ModelModule
+    name: ModelModule
+    href: Wss.ModelModule.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Wss.CoreModule.DictConfigBase.Path
+  commentId: P:Wss.CoreModule.DictConfigBase.Path
+  parent: Wss.CoreModule.DictConfigBase
+  href: Wss.CoreModule.DictConfigBase.html#Wss_CoreModule_DictConfigBase_Path
+  name: Path
+  nameWithType: DictConfigBase.Path
+  fullName: Wss.CoreModule.DictConfigBase.Path
+- uid: Wss.CoreModule.DictConfigBase.Save
+  commentId: M:Wss.CoreModule.DictConfigBase.Save
+  parent: Wss.CoreModule.DictConfigBase
+  href: Wss.CoreModule.DictConfigBase.html#Wss_CoreModule_DictConfigBase_Save
+  name: Save()
+  nameWithType: DictConfigBase.Save()
+  fullName: Wss.CoreModule.DictConfigBase.Save()
+  spec.csharp:
+  - uid: Wss.CoreModule.DictConfigBase.Save
+    name: Save
+    href: Wss.CoreModule.DictConfigBase.html#Wss_CoreModule_DictConfigBase_Save
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.DictConfigBase.Save
+    name: Save
+    href: Wss.CoreModule.DictConfigBase.html#Wss_CoreModule_DictConfigBase_Save
+  - name: (
+  - name: )
+- uid: Wss.CoreModule.DictConfigBase.TryGetFloat(System.String,System.Single@)
+  commentId: M:Wss.CoreModule.DictConfigBase.TryGetFloat(System.String,System.Single@)
+  parent: Wss.CoreModule.DictConfigBase
+  isExternal: true
+  href: Wss.CoreModule.DictConfigBase.html#Wss_CoreModule_DictConfigBase_TryGetFloat_System_String_System_Single__
+  name: TryGetFloat(string, out float)
+  nameWithType: DictConfigBase.TryGetFloat(string, out float)
+  fullName: Wss.CoreModule.DictConfigBase.TryGetFloat(string, out float)
+  nameWithType.vb: DictConfigBase.TryGetFloat(String, Single)
+  fullName.vb: Wss.CoreModule.DictConfigBase.TryGetFloat(String, Single)
+  name.vb: TryGetFloat(String, Single)
+  spec.csharp:
+  - uid: Wss.CoreModule.DictConfigBase.TryGetFloat(System.String,System.Single@)
+    name: TryGetFloat
+    href: Wss.CoreModule.DictConfigBase.html#Wss_CoreModule_DictConfigBase_TryGetFloat_System_String_System_Single__
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.DictConfigBase.TryGetFloat(System.String,System.Single@)
+    name: TryGetFloat
+    href: Wss.CoreModule.DictConfigBase.html#Wss_CoreModule_DictConfigBase_TryGetFloat_System_String_System_Single__
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+  - name: )
+- uid: Wss.CoreModule.DictConfigBase.TryGetInt(System.String,System.Int32@)
+  commentId: M:Wss.CoreModule.DictConfigBase.TryGetInt(System.String,System.Int32@)
+  parent: Wss.CoreModule.DictConfigBase
+  isExternal: true
+  href: Wss.CoreModule.DictConfigBase.html#Wss_CoreModule_DictConfigBase_TryGetInt_System_String_System_Int32__
+  name: TryGetInt(string, out int)
+  nameWithType: DictConfigBase.TryGetInt(string, out int)
+  fullName: Wss.CoreModule.DictConfigBase.TryGetInt(string, out int)
+  nameWithType.vb: DictConfigBase.TryGetInt(String, Integer)
+  fullName.vb: Wss.CoreModule.DictConfigBase.TryGetInt(String, Integer)
+  name.vb: TryGetInt(String, Integer)
+  spec.csharp:
+  - uid: Wss.CoreModule.DictConfigBase.TryGetInt(System.String,System.Int32@)
+    name: TryGetInt
+    href: Wss.CoreModule.DictConfigBase.html#Wss_CoreModule_DictConfigBase_TryGetInt_System_String_System_Int32__
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.DictConfigBase.TryGetInt(System.String,System.Int32@)
+    name: TryGetInt
+    href: Wss.CoreModule.DictConfigBase.html#Wss_CoreModule_DictConfigBase_TryGetInt_System_String_System_Int32__
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: Wss.CoreModule.DictConfigBase.TryGetString(System.String,System.String@)
+  commentId: M:Wss.CoreModule.DictConfigBase.TryGetString(System.String,System.String@)
+  parent: Wss.CoreModule.DictConfigBase
+  isExternal: true
+  href: Wss.CoreModule.DictConfigBase.html#Wss_CoreModule_DictConfigBase_TryGetString_System_String_System_String__
+  name: TryGetString(string, out string)
+  nameWithType: DictConfigBase.TryGetString(string, out string)
+  fullName: Wss.CoreModule.DictConfigBase.TryGetString(string, out string)
+  nameWithType.vb: DictConfigBase.TryGetString(String, String)
+  fullName.vb: Wss.CoreModule.DictConfigBase.TryGetString(String, String)
+  name.vb: TryGetString(String, String)
+  spec.csharp:
+  - uid: Wss.CoreModule.DictConfigBase.TryGetString(System.String,System.String@)
+    name: TryGetString
+    href: Wss.CoreModule.DictConfigBase.html#Wss_CoreModule_DictConfigBase_TryGetString_System_String_System_String__
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.DictConfigBase.TryGetString(System.String,System.String@)
+    name: TryGetString
+    href: Wss.CoreModule.DictConfigBase.html#Wss_CoreModule_DictConfigBase_TryGetString_System_String_System_String__
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: )
+- uid: Wss.CoreModule.DictConfigBase.TryGetFloatArray(System.String,System.Single[]@)
+  commentId: M:Wss.CoreModule.DictConfigBase.TryGetFloatArray(System.String,System.Single[]@)
+  parent: Wss.CoreModule.DictConfigBase
+  isExternal: true
+  href: Wss.CoreModule.DictConfigBase.html#Wss_CoreModule_DictConfigBase_TryGetFloatArray_System_String_System_Single____
+  name: TryGetFloatArray(string, out float[])
+  nameWithType: DictConfigBase.TryGetFloatArray(string, out float[])
+  fullName: Wss.CoreModule.DictConfigBase.TryGetFloatArray(string, out float[])
+  nameWithType.vb: DictConfigBase.TryGetFloatArray(String, Single())
+  fullName.vb: Wss.CoreModule.DictConfigBase.TryGetFloatArray(String, Single())
+  name.vb: TryGetFloatArray(String, Single())
+  spec.csharp:
+  - uid: Wss.CoreModule.DictConfigBase.TryGetFloatArray(System.String,System.Single[]@)
+    name: TryGetFloatArray
+    href: Wss.CoreModule.DictConfigBase.html#Wss_CoreModule_DictConfigBase_TryGetFloatArray_System_String_System_Single____
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.DictConfigBase.TryGetFloatArray(System.String,System.Single[]@)
+    name: TryGetFloatArray
+    href: Wss.CoreModule.DictConfigBase.html#Wss_CoreModule_DictConfigBase_TryGetFloatArray_System_String_System_Single____
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+  - name: (
+  - name: )
+  - name: )
+- uid: Wss.CoreModule.DictConfigBase.GetFloat(System.String,System.Single)
+  commentId: M:Wss.CoreModule.DictConfigBase.GetFloat(System.String,System.Single)
+  parent: Wss.CoreModule.DictConfigBase
+  isExternal: true
+  href: Wss.CoreModule.DictConfigBase.html#Wss_CoreModule_DictConfigBase_GetFloat_System_String_System_Single_
+  name: GetFloat(string, float)
+  nameWithType: DictConfigBase.GetFloat(string, float)
+  fullName: Wss.CoreModule.DictConfigBase.GetFloat(string, float)
+  nameWithType.vb: DictConfigBase.GetFloat(String, Single)
+  fullName.vb: Wss.CoreModule.DictConfigBase.GetFloat(String, Single)
+  name.vb: GetFloat(String, Single)
+  spec.csharp:
+  - uid: Wss.CoreModule.DictConfigBase.GetFloat(System.String,System.Single)
+    name: GetFloat
+    href: Wss.CoreModule.DictConfigBase.html#Wss_CoreModule_DictConfigBase_GetFloat_System_String_System_Single_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.DictConfigBase.GetFloat(System.String,System.Single)
+    name: GetFloat
+    href: Wss.CoreModule.DictConfigBase.html#Wss_CoreModule_DictConfigBase_GetFloat_System_String_System_Single_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+  - name: )
+- uid: Wss.CoreModule.DictConfigBase.GetInt(System.String,System.Int32)
+  commentId: M:Wss.CoreModule.DictConfigBase.GetInt(System.String,System.Int32)
+  parent: Wss.CoreModule.DictConfigBase
+  isExternal: true
+  href: Wss.CoreModule.DictConfigBase.html#Wss_CoreModule_DictConfigBase_GetInt_System_String_System_Int32_
+  name: GetInt(string, int)
+  nameWithType: DictConfigBase.GetInt(string, int)
+  fullName: Wss.CoreModule.DictConfigBase.GetInt(string, int)
+  nameWithType.vb: DictConfigBase.GetInt(String, Integer)
+  fullName.vb: Wss.CoreModule.DictConfigBase.GetInt(String, Integer)
+  name.vb: GetInt(String, Integer)
+  spec.csharp:
+  - uid: Wss.CoreModule.DictConfigBase.GetInt(System.String,System.Int32)
+    name: GetInt
+    href: Wss.CoreModule.DictConfigBase.html#Wss_CoreModule_DictConfigBase_GetInt_System_String_System_Int32_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.DictConfigBase.GetInt(System.String,System.Int32)
+    name: GetInt
+    href: Wss.CoreModule.DictConfigBase.html#Wss_CoreModule_DictConfigBase_GetInt_System_String_System_Int32_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: Wss.CoreModule.DictConfigBase.GetString(System.String,System.String)
+  commentId: M:Wss.CoreModule.DictConfigBase.GetString(System.String,System.String)
+  parent: Wss.CoreModule.DictConfigBase
+  isExternal: true
+  href: Wss.CoreModule.DictConfigBase.html#Wss_CoreModule_DictConfigBase_GetString_System_String_System_String_
+  name: GetString(string, string)
+  nameWithType: DictConfigBase.GetString(string, string)
+  fullName: Wss.CoreModule.DictConfigBase.GetString(string, string)
+  nameWithType.vb: DictConfigBase.GetString(String, String)
+  fullName.vb: Wss.CoreModule.DictConfigBase.GetString(String, String)
+  name.vb: GetString(String, String)
+  spec.csharp:
+  - uid: Wss.CoreModule.DictConfigBase.GetString(System.String,System.String)
+    name: GetString
+    href: Wss.CoreModule.DictConfigBase.html#Wss_CoreModule_DictConfigBase_GetString_System_String_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.DictConfigBase.GetString(System.String,System.String)
+    name: GetString
+    href: Wss.CoreModule.DictConfigBase.html#Wss_CoreModule_DictConfigBase_GetString_System_String_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: )
+- uid: Wss.CoreModule.DictConfigBase.Set(System.String,Newtonsoft.Json.Linq.JToken)
+  commentId: M:Wss.CoreModule.DictConfigBase.Set(System.String,Newtonsoft.Json.Linq.JToken)
+  parent: Wss.CoreModule.DictConfigBase
+  isExternal: true
+  href: Wss.CoreModule.DictConfigBase.html#Wss_CoreModule_DictConfigBase_Set_System_String_Newtonsoft_Json_Linq_JToken_
+  name: Set(string, JToken)
+  nameWithType: DictConfigBase.Set(string, JToken)
+  fullName: Wss.CoreModule.DictConfigBase.Set(string, Newtonsoft.Json.Linq.JToken)
+  nameWithType.vb: DictConfigBase.Set(String, JToken)
+  fullName.vb: Wss.CoreModule.DictConfigBase.Set(String, Newtonsoft.Json.Linq.JToken)
+  name.vb: Set(String, JToken)
+  spec.csharp:
+  - uid: Wss.CoreModule.DictConfigBase.Set(System.String,Newtonsoft.Json.Linq.JToken)
+    name: Set
+    href: Wss.CoreModule.DictConfigBase.html#Wss_CoreModule_DictConfigBase_Set_System_String_Newtonsoft_Json_Linq_JToken_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Newtonsoft.Json.Linq.JToken
+    name: JToken
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.DictConfigBase.Set(System.String,Newtonsoft.Json.Linq.JToken)
+    name: Set
+    href: Wss.CoreModule.DictConfigBase.html#Wss_CoreModule_DictConfigBase_Set_System_String_Newtonsoft_Json_Linq_JToken_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Newtonsoft.Json.Linq.JToken
+    name: JToken
+    isExternal: true
+  - name: )
+- uid: Wss.CoreModule
+  commentId: N:Wss.CoreModule
+  href: Wss.html
+  name: Wss.CoreModule
+  nameWithType: Wss.CoreModule
+  fullName: Wss.CoreModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Wss.ModelModule.ModelConfig.#ctor*
+  commentId: Overload:Wss.ModelModule.ModelConfig.#ctor
+  href: Wss.ModelModule.ModelConfig.html#Wss_ModelModule_ModelConfig__ctor_System_String_
+  name: ModelConfig
+  nameWithType: ModelConfig.ModelConfig
+  fullName: Wss.ModelModule.ModelConfig.ModelConfig
+  nameWithType.vb: ModelConfig.New
+  fullName.vb: Wss.ModelModule.ModelConfig.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Wss.ModelModule.ModelConfig.GetModeRequired*
+  commentId: Overload:Wss.ModelModule.ModelConfig.GetModeRequired
+  href: Wss.ModelModule.ModelConfig.html#Wss_ModelModule_ModelConfig_GetModeRequired
+  name: GetModeRequired
+  nameWithType: ModelConfig.GetModeRequired
+  fullName: Wss.ModelModule.ModelConfig.GetModeRequired
+- uid: Wss.ModelModule.ModelConfig.TryGet*
+  commentId: Overload:Wss.ModelModule.ModelConfig.TryGet
+  href: Wss.ModelModule.ModelConfig.html#Wss_ModelModule_ModelConfig_TryGet__1_System_String___0__
+  name: TryGet
+  nameWithType: ModelConfig.TryGet
+  fullName: Wss.ModelModule.ModelConfig.TryGet
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Wss.ModelModule.ModelConfig.GetOrDefault*
+  commentId: Overload:Wss.ModelModule.ModelConfig.GetOrDefault
+  href: Wss.ModelModule.ModelConfig.html#Wss_ModelModule_ModelConfig_GetOrDefault__1_System_String___0_
+  name: GetOrDefault
+  nameWithType: ModelConfig.GetOrDefault
+  fullName: Wss.ModelModule.ModelConfig.GetOrDefault
+- uid: System.Collections.Generic.KeyNotFoundException
+  commentId: T:System.Collections.Generic.KeyNotFoundException
+  isExternal: true
+  name: KeyNotFoundException
+  nameWithType: KeyNotFoundException
+  fullName: System.Collections.Generic.KeyNotFoundException
+- uid: Wss.ModelModule.ModelConfig.GetRequired*
+  commentId: Overload:Wss.ModelModule.ModelConfig.GetRequired
+  href: Wss.ModelModule.ModelConfig.html#Wss_ModelModule_ModelConfig_GetRequired__1_System_String_
+  name: GetRequired
+  nameWithType: ModelConfig.GetRequired
+  fullName: Wss.ModelModule.ModelConfig.GetRequired

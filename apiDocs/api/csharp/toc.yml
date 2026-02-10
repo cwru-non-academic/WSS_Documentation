@@ -1,0 +1,13 @@
+### YamlMime:TableOfContent
+items:
+- uid: HFI.Wss
+  name: HFI.Wss
+  type: Namespace
+  items:
+  - uid: HFI.Wss.StimulationController
+    name: StimulationController
+    type: Class
+  - uid: HFI.Wss.StimulationOptions
+    name: StimulationOptions
+    type: Class
+memberLayout: SamePage

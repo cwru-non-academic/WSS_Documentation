@@ -1,0 +1,2574 @@
+### YamlMime:ManagedReference
+items:
+- uid: Wss.CoreModule.WssClient
+  commentId: T:Wss.CoreModule.WssClient
+  id: WssClient
+  parent: Wss.CoreModule
+  children:
+  - Wss.CoreModule.WssClient.#ctor(Wss.CoreModule.ITransport,Wss.CoreModule.IFrameCodec,Wss.CoreModule.WSSVersionHandler,System.Byte)
+  - Wss.CoreModule.WssClient.AddEventToSchedule(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.ChangeGroupState(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.ChangeScheduleDuration(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.ChangeScheduleGroup(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.ChangeScheduleState(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.Clear(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.ConnectAsync(System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.CreateContactConfig(System.Int32,System.Int32[],System.Int32[],System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.CreateEvent(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32[],System.Int32[],System.Int32[],Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.CreateEvent(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.CreateEvent(System.Int32,System.Int32,System.Int32,System.Int32[],System.Int32[],System.Int32[],Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.CreateEvent(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.CreateSchedule(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.DeleteContactConfig(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.DeleteEvent(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.DeleteEventFromSchedule(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.DeleteSchedule(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.DisconnectAsync(System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.Dispose
+  - Wss.CoreModule.WssClient.Echo(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.EditEventAmp(System.Int32,System.Int32[],System.Int32[],Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.EditEventContactConfig(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.EditEventDelay(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.EditEventEnableBit(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.EditEventPw(System.Int32,System.Int32[],Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.EditEventRatio(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.EditEventShape(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.EditSettings(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.EraseLog(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.GetLog(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.IsModuleQueryAvailable
+  - Wss.CoreModule.WssClient.ModuleQuery(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.MoveEventToSchedule(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.PopulateBoardSettings(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.PopulateFramSettings(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.RequestAnalog(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.RequestConfigs(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.Reset(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.ResetSchedules(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.SetCustomWaveform(System.Int32,System.Int32[],System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.StartStim(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.Started
+  - Wss.CoreModule.WssClient.StopStim(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.StreamChange(System.Int32[],System.Int32[],System.Int32[],Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.SyncGroup(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.TryGetModuleQueryData(Wss.CoreModule.WssTarget,System.Byte[]@)
+  - Wss.CoreModule.WssClient.ZeroOutStim(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: WssClient
+  nameWithType: WssClient
+  fullName: Wss.CoreModule.WssClient
+  type: Class
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Low-level protocol client. Frames commands using an <xref href="Wss.CoreModule.IFrameCodec" data-throw-if-not-resolved="false"></xref>,
+
+    sends them over an <xref href="Wss.CoreModule.ITransport" data-throw-if-not-resolved="false"></xref>, and correlates responses by
+
+    <code>(target,msgId)</code>.
+  example: []
+  syntax:
+    content: public sealed class WssClient
+    content.vb: Public NotInheritable Class WssClient
+  inheritance:
+  - System.Object
+- uid: Wss.CoreModule.WssClient.Started
+  commentId: P:Wss.CoreModule.WssClient.Started
+  id: Started
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: Started
+  nameWithType: WssClient.Started
+  fullName: Wss.CoreModule.WssClient.Started
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Indicates whether the WSS client connection has been started.
+  example: []
+  syntax:
+    content: public bool Started { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property Started As Boolean
+  overload: Wss.CoreModule.WssClient.Started*
+- uid: Wss.CoreModule.WssClient.#ctor(Wss.CoreModule.ITransport,Wss.CoreModule.IFrameCodec,Wss.CoreModule.WSSVersionHandler,System.Byte)
+  commentId: M:Wss.CoreModule.WssClient.#ctor(Wss.CoreModule.ITransport,Wss.CoreModule.IFrameCodec,Wss.CoreModule.WSSVersionHandler,System.Byte)
+  id: '#ctor(Wss.CoreModule.ITransport,Wss.CoreModule.IFrameCodec,Wss.CoreModule.WSSVersionHandler,System.Byte)'
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: WssClient(ITransport, IFrameCodec, WSSVersionHandler, byte)
+  nameWithType: WssClient.WssClient(ITransport, IFrameCodec, WSSVersionHandler, byte)
+  fullName: Wss.CoreModule.WssClient.WssClient(Wss.CoreModule.ITransport, Wss.CoreModule.IFrameCodec, Wss.CoreModule.WSSVersionHandler, byte)
+  type: Constructor
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Initializes a new client over the provided transport and frame codec.
+  example: []
+  syntax:
+    content: public WssClient(ITransport transport, IFrameCodec codec, WSSVersionHandler versionHandler, byte sender = 0)
+    parameters:
+    - id: transport
+      type: Wss.CoreModule.ITransport
+      description: Underlying byte transport (e.g., serial, BLE).
+    - id: codec
+      type: Wss.CoreModule.IFrameCodec
+      description: Frame codec (escape/unescape + checksum).
+    - id: versionHandler
+      type: Wss.CoreModule.WSSVersionHandler
+      description: Firmware version handler used for version-gated commands.
+    - id: sender
+      type: System.Byte
+      description: Sender address byte (defaults to 0x00).
+    content.vb: Public Sub New(transport As ITransport, codec As IFrameCodec, versionHandler As WSSVersionHandler, sender As Byte = 0)
+  overload: Wss.CoreModule.WssClient.#ctor*
+  nameWithType.vb: WssClient.New(ITransport, IFrameCodec, WSSVersionHandler, Byte)
+  fullName.vb: Wss.CoreModule.WssClient.New(Wss.CoreModule.ITransport, Wss.CoreModule.IFrameCodec, Wss.CoreModule.WSSVersionHandler, Byte)
+  name.vb: New(ITransport, IFrameCodec, WSSVersionHandler, Byte)
+- uid: Wss.CoreModule.WssClient.ConnectAsync(System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.ConnectAsync(System.Threading.CancellationToken)
+  id: ConnectAsync(System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: ConnectAsync(CancellationToken)
+  nameWithType: WssClient.ConnectAsync(CancellationToken)
+  fullName: Wss.CoreModule.WssClient.ConnectAsync(System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Establishes a connection to the specified WSS device.
+  example: []
+  syntax:
+    content: public Task ConnectAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: The cancellation token to observe.
+    return:
+      type: System.Threading.Tasks.Task
+      description: A task representing the asynchronous connection operation.
+    content.vb: Public Function ConnectAsync(ct As CancellationToken = Nothing) As Task
+  overload: Wss.CoreModule.WssClient.ConnectAsync*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown if already connected to the target.
+  - type: System.IO.IOException
+    commentId: T:System.IO.IOException
+    description: Thrown if the connection attempt fails.
+  - type: System.OperationCanceledException
+    commentId: T:System.OperationCanceledException
+    description: Thrown if the operation is canceled.
+- uid: Wss.CoreModule.WssClient.DisconnectAsync(System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.DisconnectAsync(System.Threading.CancellationToken)
+  id: DisconnectAsync(System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: DisconnectAsync(CancellationToken)
+  nameWithType: WssClient.DisconnectAsync(CancellationToken)
+  fullName: Wss.CoreModule.WssClient.DisconnectAsync(System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Closes the active connection to the specified WSS device.
+  example: []
+  syntax:
+    content: public Task DisconnectAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: The cancellation token to observe.
+    return:
+      type: System.Threading.Tasks.Task
+      description: A task representing the asynchronous disconnection operation.
+    content.vb: Public Function DisconnectAsync(ct As CancellationToken = Nothing) As Task
+  overload: Wss.CoreModule.WssClient.DisconnectAsync*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown if not connected to the target.
+  - type: System.IO.IOException
+    commentId: T:System.IO.IOException
+    description: Thrown if the disconnection fails due to a transport error.
+  - type: System.OperationCanceledException
+    commentId: T:System.OperationCanceledException
+    description: Thrown if the operation is canceled.
+- uid: Wss.CoreModule.WssClient.TryGetModuleQueryData(Wss.CoreModule.WssTarget,System.Byte[]@)
+  commentId: M:Wss.CoreModule.WssClient.TryGetModuleQueryData(Wss.CoreModule.WssTarget,System.Byte[]@)
+  id: TryGetModuleQueryData(Wss.CoreModule.WssTarget,System.Byte[]@)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: TryGetModuleQueryData(WssTarget, out byte[])
+  nameWithType: WssClient.TryGetModuleQueryData(WssTarget, out byte[])
+  fullName: Wss.CoreModule.WssClient.TryGetModuleQueryData(Wss.CoreModule.WssTarget, out byte[])
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Gets the last cached ModuleQuery data (data-only slice) for a target, if present.
+  example: []
+  syntax:
+    content: public bool TryGetModuleQueryData(WssTarget target, out byte[] data)
+    parameters:
+    - id: target
+      type: Wss.CoreModule.WssTarget
+      description: Target device that produced the ModuleQuery reply.
+    - id: data
+      type: System.Byte[]
+      description: The cached data bytes (snapshot reference).
+    return:
+      type: System.Boolean
+      description: True if cached data exists; otherwise false.
+    content.vb: Public Function TryGetModuleQueryData(target As WssTarget, data As Byte()) As Boolean
+  overload: Wss.CoreModule.WssClient.TryGetModuleQueryData*
+  nameWithType.vb: WssClient.TryGetModuleQueryData(WssTarget, Byte())
+  fullName.vb: Wss.CoreModule.WssClient.TryGetModuleQueryData(Wss.CoreModule.WssTarget, Byte())
+  name.vb: TryGetModuleQueryData(WssTarget, Byte())
+- uid: Wss.CoreModule.WssClient.IsModuleQueryAvailable
+  commentId: M:Wss.CoreModule.WssClient.IsModuleQueryAvailable
+  id: IsModuleQueryAvailable
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: IsModuleQueryAvailable()
+  nameWithType: WssClient.IsModuleQueryAvailable()
+  fullName: Wss.CoreModule.WssClient.IsModuleQueryAvailable()
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Indicates whether ModuleQuery is available in this firmware (version J or later).
+  example: []
+  syntax:
+    content: public bool IsModuleQueryAvailable()
+    return:
+      type: System.Boolean
+    content.vb: Public Function IsModuleQueryAvailable() As Boolean
+  overload: Wss.CoreModule.WssClient.IsModuleQueryAvailable*
+- uid: Wss.CoreModule.WssClient.Dispose
+  commentId: M:Wss.CoreModule.WssClient.Dispose
+  id: Dispose
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: WssClient.Dispose()
+  fullName: Wss.CoreModule.WssClient.Dispose()
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Releases all resources used by the <xref href="Wss.CoreModule.WssClient" data-throw-if-not-resolved="false"></xref>.
+
+    Closes the connection and cleans up internal state.
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: Wss.CoreModule.WssClient.Dispose*
+- uid: Wss.CoreModule.WssClient.StartStim(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.StartStim(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: StartStim(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: StartStim(WssTarget, CancellationToken)
+  nameWithType: WssClient.StartStim(WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.StartStim(Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Sends the "start stimulation".
+
+    0x01 = Start Ack expected.
+
+    Broadcast is acceptable for a system-wide switch.
+  example: []
+  syntax:
+    content: public Task<string> StartStim(WssTarget target = WssTarget.Broadcast, CancellationToken ct = default)
+    parameters:
+    - id: target
+      type: Wss.CoreModule.WssTarget
+      description: Target device (often Broadcast).
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+    content.vb: Public Function StartStim(target As WssTarget = WssTarget.Broadcast, ct As CancellationToken = Nothing) As Task(Of String)
+  overload: Wss.CoreModule.WssClient.StartStim*
+- uid: Wss.CoreModule.WssClient.StopStim(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.StopStim(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: StopStim(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: StopStim(WssTarget, CancellationToken)
+  nameWithType: WssClient.StopStim(WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.StopStim(Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Sends the "stop stimulation" switch (opcode 0x0B).
+
+    0x00 = Stop Ack expected.
+
+    Broadcast is acceptable for a system-wide switch.
+  example: []
+  syntax:
+    content: public Task<string> StopStim(WssTarget target = WssTarget.Broadcast, CancellationToken ct = default)
+    parameters:
+    - id: target
+      type: Wss.CoreModule.WssTarget
+      description: Target device (often Broadcast).
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+    content.vb: Public Function StopStim(target As WssTarget = WssTarget.Broadcast, ct As CancellationToken = Nothing) As Task(Of String)
+  overload: Wss.CoreModule.WssClient.StopStim*
+- uid: Wss.CoreModule.WssClient.Reset(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.Reset(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: Reset(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: Reset(WssTarget, CancellationToken)
+  nameWithType: WssClient.Reset(WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.Reset(Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Resets the microcontroller (0x04).
+  example: []
+  syntax:
+    content: public Task<string> Reset(WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
+    parameters:
+    - id: target
+      type: Wss.CoreModule.WssTarget
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+    content.vb: Public Function Reset(target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
+  overload: Wss.CoreModule.WssClient.Reset*
+- uid: Wss.CoreModule.WssClient.Echo(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.Echo(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: Echo(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: Echo(int, int, WssTarget, CancellationToken)
+  nameWithType: WssClient.Echo(int, int, WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.Echo(int, int, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Echo round-trip (0x07). Two opaque data bytes are echoed back.
+
+    Untested, and reading from WSS devices is not yet implemented.
+  example: []
+  syntax:
+    content: public Task<string> Echo(int echoData1, int echoData2, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
+    parameters:
+    - id: echoData1
+      type: System.Int32
+    - id: echoData2
+      type: System.Int32
+    - id: target
+      type: Wss.CoreModule.WssTarget
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+    content.vb: Public Function Echo(echoData1 As Integer, echoData2 As Integer, target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
+  overload: Wss.CoreModule.WssClient.Echo*
+  nameWithType.vb: WssClient.Echo(Integer, Integer, WssTarget, CancellationToken)
+  fullName.vb: Wss.CoreModule.WssClient.Echo(Integer, Integer, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  name.vb: Echo(Integer, Integer, WssTarget, CancellationToken)
+- uid: Wss.CoreModule.WssClient.RequestAnalog(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.RequestAnalog(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: RequestAnalog(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: RequestAnalog(WssTarget, CancellationToken)
+  nameWithType: WssClient.RequestAnalog(WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.RequestAnalog(Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Requests specific battery and impedance data from the WSS device.
+
+    TODO Not implemented in firmware, and reading from WSS devices is not yet implemented.
+  example: []
+  syntax:
+    content: public Task<string> RequestAnalog(WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
+    parameters:
+    - id: target
+      type: Wss.CoreModule.WssTarget
+    - id: ct
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+    content.vb: Public Function RequestAnalog(target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
+  overload: Wss.CoreModule.WssClient.RequestAnalog*
+- uid: Wss.CoreModule.WssClient.Clear(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.Clear(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: Clear(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: Clear(int, WssTarget, CancellationToken)
+  nameWithType: WssClient.Clear(int, WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.Clear(int, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: 'Clears groups of resources (0x40): 0=All, 1=Events, 2=Schedules, 3=Contacts.'
+  example: []
+  syntax:
+    content: public Task<string> Clear(int configIndex, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
+    parameters:
+    - id: configIndex
+      type: System.Int32
+      description: Clear events(1), schedules(2), contacts(3), all(0).
+    - id: target
+      type: Wss.CoreModule.WssTarget
+      description: Target device.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+    content.vb: Public Function Clear(configIndex As Integer, target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
+  overload: Wss.CoreModule.WssClient.Clear*
+  nameWithType.vb: WssClient.Clear(Integer, WssTarget, CancellationToken)
+  fullName.vb: Wss.CoreModule.WssClient.Clear(Integer, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  name.vb: Clear(Integer, WssTarget, CancellationToken)
+- uid: Wss.CoreModule.WssClient.ModuleQuery(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.ModuleQuery(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: ModuleQuery(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: ModuleQuery(int, WssTarget, CancellationToken)
+  nameWithType: WssClient.ModuleQuery(int, WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.ModuleQuery(int, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Gets settings or information for the target WSS (opcode 0x01).
+
+    Version-gated: on firmware that supports ModuleQuery (version J+), this sends the
+
+    command and the reply is cached as data-only bytes per target. On older firmware,
+
+    no command is sent; for index 1 (settings array) a default 16-byte payload is
+
+    seeded in the cache so higher layers can decode default unit settings.
+  remarks: >-
+    - When supported (J+): this method transmits the request and, upon reply, ProcessFrame
+      caches the data-only slice under the sender's target address. Use
+      <xref href="Wss.CoreModule.WssClient.TryGetModuleQueryData(Wss.CoreModule.WssTarget%2cSystem.Byte%5b%5d%40)" data-throw-if-not-resolved="false"></xref> to retrieve the last snapshot.
+    - When not supported: this method does not transmit. For <code>moduleIndex == 1</code>, it seeds
+      a default 16-byte zero array into the per-target cache, allowing the core to decode a
+      default profile. The returned string indicates that defaults are being used.
+  example: []
+  syntax:
+    content: public Task<string> ModuleQuery(int moduleIndex, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
+    parameters:
+    - id: moduleIndex
+      type: System.Int32
+      description: 0 = serial number, 1 = settings array.
+    - id: target
+      type: Wss.CoreModule.WssTarget
+      description: Target device.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+      description: A human-readable string summary. Cache side-effects are described above.
+    content.vb: Public Function ModuleQuery(moduleIndex As Integer, target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
+  overload: Wss.CoreModule.WssClient.ModuleQuery*
+  nameWithType.vb: WssClient.ModuleQuery(Integer, WssTarget, CancellationToken)
+  fullName.vb: Wss.CoreModule.WssClient.ModuleQuery(Integer, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  name.vb: ModuleQuery(Integer, WssTarget, CancellationToken)
+- uid: Wss.CoreModule.WssClient.RequestConfigs(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.RequestConfigs(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: RequestConfigs(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: RequestConfigs(int, int, WssTarget, CancellationToken)
+  nameWithType: WssClient.RequestConfigs(int, int, WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.RequestConfigs(int, int, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Sends a request to the WSS target for a specific configuration type.
+
+    This is a general-purpose request that can target output configs, events,
+
+    schedules, and their various sub-configurations.
+
+    Untested, and reading from WSS devices is not yet implemented.
+  example: []
+  syntax:
+    content: public Task<string> RequestConfigs(int command, int id, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
+    parameters:
+    - id: command
+      type: System.Int32
+      description: >-
+        Integer code that selects which configuration to request:
+
+        0 = Output Configuration List
+
+        1 = Output Configuration details
+
+        2 = Event List
+
+        3 = Basic Event configuration
+
+        4 = Event output configuration
+
+        5 = Event stimulation configuration
+
+        6 = Event shape configuration
+
+        7 = Event burst configuration
+
+        8 = Schedule basic configuration
+
+        9 = Schedule listing
+    - id: id
+      type: System.Int32
+      description: ID associated with the requested configuration (0–255).
+    - id: target
+      type: Wss.CoreModule.WssTarget
+      description: 'Target WSS device to query (default: Wss1).'
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Optional cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+      description: Processed response string from the WSS target.
+    content.vb: Public Function RequestConfigs(command As Integer, id As Integer, target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
+  overload: Wss.CoreModule.WssClient.RequestConfigs*
+  nameWithType.vb: WssClient.RequestConfigs(Integer, Integer, WssTarget, CancellationToken)
+  fullName.vb: Wss.CoreModule.WssClient.RequestConfigs(Integer, Integer, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  name.vb: RequestConfigs(Integer, Integer, WssTarget, CancellationToken)
+- uid: Wss.CoreModule.WssClient.CreateContactConfig(System.Int32,System.Int32[],System.Int32[],System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.CreateContactConfig(System.Int32,System.Int32[],System.Int32[],System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: CreateContactConfig(System.Int32,System.Int32[],System.Int32[],System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: CreateContactConfig(int, int[], int[], int, WssTarget, CancellationToken)
+  nameWithType: WssClient.CreateContactConfig(int, int[], int[], int, WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.CreateContactConfig(int, int[], int[], int, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Creates a contact configuration for the stimulator.
+
+    Defines the sources and sinks for stimulation and recharge phases.
+  example: []
+  syntax:
+    content: public Task<string> CreateContactConfig(int contactId, int[] stimSetup, int[] rechargeSetup, int LEDs, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
+    parameters:
+    - id: contactId
+      type: System.Int32
+      description: ID for the contact configuration (0–255).
+    - id: stimSetup
+      type: System.Int32[]
+      description: >-
+        Array of 4 integers (0 = not used, 1 = source, 2 = sink) representing
+
+        the stimulation phase for each output on the stimulator.  
+
+        Index 0 = closest to switch, index 3 = farthest from switch.
+    - id: rechargeSetup
+      type: System.Int32[]
+      description: >-
+        Array of 4 integers (0 = not used, 1 = source, 2 = sink) representing
+
+        the recharge phase for each output on the stimulator.  
+
+        Index 0 = closest to switch, index 3 = farthest from switch.
+    - id: LEDs
+      type: System.Int32
+      description: >-
+        Optional int representing LED locations to light during stimulation
+
+        Index int read as binary so 0011 or 3 is both the first and second LEDs (first is clossest to the switch).
+
+        1 in binary is on and 0 is off. The trigering of the event will trigger the on LEDs
+
+        Ignored if not supported by firmware.
+
+        Pass -1 to indicate no LED configuration.
+    - id: target
+      type: Wss.CoreModule.WssTarget
+      description: The WSS target device to send the configuration to.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Optional cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+      description: Processed response string from the WSS target.
+    content.vb: Public Function CreateContactConfig(contactId As Integer, stimSetup As Integer(), rechargeSetup As Integer(), LEDs As Integer, target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
+  overload: Wss.CoreModule.WssClient.CreateContactConfig*
+  nameWithType.vb: WssClient.CreateContactConfig(Integer, Integer(), Integer(), Integer, WssTarget, CancellationToken)
+  fullName.vb: Wss.CoreModule.WssClient.CreateContactConfig(Integer, Integer(), Integer(), Integer, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  name.vb: CreateContactConfig(Integer, Integer(), Integer(), Integer, WssTarget, CancellationToken)
+- uid: Wss.CoreModule.WssClient.DeleteContactConfig(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.DeleteContactConfig(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: DeleteContactConfig(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: DeleteContactConfig(int, WssTarget, CancellationToken)
+  nameWithType: WssClient.DeleteContactConfig(int, WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.DeleteContactConfig(int, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Deletes an existing contact configuration on the WSS device by its ID.
+  example: []
+  syntax:
+    content: public Task<string> DeleteContactConfig(int contactId, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
+    parameters:
+    - id: contactId
+      type: System.Int32
+      description: The contact configuration ID to delete (0–255).
+    - id: target
+      type: Wss.CoreModule.WssTarget
+      description: 'The WSS target device to send the request to (default: Wss1).'
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Optional cancellation token to cancel the operation.
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+      description: Processed response string from the WSS target.
+    content.vb: Public Function DeleteContactConfig(contactId As Integer, target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
+  overload: Wss.CoreModule.WssClient.DeleteContactConfig*
+  nameWithType.vb: WssClient.DeleteContactConfig(Integer, WssTarget, CancellationToken)
+  fullName.vb: Wss.CoreModule.WssClient.DeleteContactConfig(Integer, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  name.vb: DeleteContactConfig(Integer, WssTarget, CancellationToken)
+- uid: Wss.CoreModule.WssClient.CreateEvent(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.CreateEvent(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: CreateEvent(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: CreateEvent(int, int, int, WssTarget, CancellationToken)
+  nameWithType: WssClient.CreateEvent(int, int, int, WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.CreateEvent(int, int, int, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Creates a basic event on the WSS device.
+  example: []
+  syntax:
+    content: public Task<string> CreateEvent(int eventId, int delayMs, int contactConfigId, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
+    parameters:
+    - id: eventId
+      type: System.Int32
+      description: Event ID (0–255).
+    - id: delayMs
+      type: System.Int32
+      description: Delay from schedule start in milliseconds (0–255 in this command variant).
+    - id: contactConfigId
+      type: System.Int32
+      description: Contact configuration ID (0–255).
+    - id: target
+      type: Wss.CoreModule.WssTarget
+      description: 'Target WSS device (default: Wss1).'
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Optional cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+      description: Processed response string from the WSS target.
+    content.vb: Public Function CreateEvent(eventId As Integer, delayMs As Integer, contactConfigId As Integer, target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
+  overload: Wss.CoreModule.WssClient.CreateEvent*
+  nameWithType.vb: WssClient.CreateEvent(Integer, Integer, Integer, WssTarget, CancellationToken)
+  fullName.vb: Wss.CoreModule.WssClient.CreateEvent(Integer, Integer, Integer, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  name.vb: CreateEvent(Integer, Integer, Integer, WssTarget, CancellationToken)
+- uid: Wss.CoreModule.WssClient.CreateEvent(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.CreateEvent(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: CreateEvent(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: CreateEvent(int, int, int, int, int, WssTarget, CancellationToken)
+  nameWithType: WssClient.CreateEvent(int, int, int, int, int, WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.CreateEvent(int, int, int, int, int, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Creates an event with explicit shape IDs for the standard and recharge phases.
+  example: []
+  syntax:
+    content: public Task<string> CreateEvent(int eventId, int delayMs, int contactConfigId, int standardShapeId, int rechargeShapeId, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
+    parameters:
+    - id: eventId
+      type: System.Int32
+      description: Event ID (0–255).
+    - id: delayMs
+      type: System.Int32
+      description: Delay from schedule start in milliseconds (0–255 in this command variant).
+    - id: contactConfigId
+      type: System.Int32
+      description: Contact configuration ID (0–255).
+    - id: standardShapeId
+      type: System.Int32
+      description: >-
+        Shape ID used during the standard (stim) phase:
+
+        0=Rectangular (default), 1=Rectangular (DAC), 2=Sine, 3=Gaussian,
+
+        4=Exponential Increase, 5=Exponential Decrease,
+
+        6=Linear Increase, 7=Linear Decrease,
+
+        10=Trapezoid (setup required),
+
+        11=User Program 1 (setup required),
+
+        12=User Program 2 (setup required),
+
+        13=User Program 3 (setup required).
+    - id: rechargeShapeId
+      type: System.Int32
+      description: Shape ID used during the recharge phase (same mapping as <code class="paramref">standardShapeId</code>).
+    - id: target
+      type: Wss.CoreModule.WssTarget
+      description: 'Target WSS device (default: Wss1).'
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Optional cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+      description: Processed response string from the WSS target.
+    content.vb: Public Function CreateEvent(eventId As Integer, delayMs As Integer, contactConfigId As Integer, standardShapeId As Integer, rechargeShapeId As Integer, target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
+  overload: Wss.CoreModule.WssClient.CreateEvent*
+  nameWithType.vb: WssClient.CreateEvent(Integer, Integer, Integer, Integer, Integer, WssTarget, CancellationToken)
+  fullName.vb: Wss.CoreModule.WssClient.CreateEvent(Integer, Integer, Integer, Integer, Integer, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  name.vb: CreateEvent(Integer, Integer, Integer, Integer, Integer, WssTarget, CancellationToken)
+- uid: Wss.CoreModule.WssClient.CreateEvent(System.Int32,System.Int32,System.Int32,System.Int32[],System.Int32[],System.Int32[],Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.CreateEvent(System.Int32,System.Int32,System.Int32,System.Int32[],System.Int32[],System.Int32[],Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: CreateEvent(System.Int32,System.Int32,System.Int32,System.Int32[],System.Int32[],System.Int32[],Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: CreateEvent(int, int, int, int[], int[], int[], WssTarget, CancellationToken)
+  nameWithType: WssClient.CreateEvent(int, int, int, int[], int[], int[], WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.CreateEvent(int, int, int, int[], int[], int[], Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Creates an event with amplitude arrays for standard/recharge phases plus pulse width settings.
+
+    PW fields are sent as 8-bit if all ≤ oneByte; otherwise all three (std, IPD, rech) are encoded as 16-bit big-endian.
+
+    Wire order for PW matches your original: [stdPW, IPD, rechPW].
+  example: []
+  syntax:
+    content: public Task<string> CreateEvent(int eventId, int delayMs, int contactConfigId, int[] standardAmp, int[] rechargeAmp, int[] pw, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
+    parameters:
+    - id: eventId
+      type: System.Int32
+      description: Event ID (0–255 or your chosen cap).
+    - id: delayMs
+      type: System.Int32
+      description: Delay from schedule start in milliseconds (0–255 in this variant).
+    - id: contactConfigId
+      type: System.Int32
+      description: Contact configuration ID (0–255).
+    - id: standardAmp
+      type: System.Int32[]
+      description: Four amplitudes for the standard (stim) phase (0–255 each).
+    - id: rechargeAmp
+      type: System.Int32[]
+      description: Four amplitudes for the recharge phase (0–255 each).
+    - id: pw
+      type: System.Int32[]
+      description: 'Three PW parameters: [standardPW, rechargePW, IPD] in microseconds.'
+    - id: target
+      type: Wss.CoreModule.WssTarget
+      description: Target WSS device.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+    content.vb: Public Function CreateEvent(eventId As Integer, delayMs As Integer, contactConfigId As Integer, standardAmp As Integer(), rechargeAmp As Integer(), pw As Integer(), target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
+  overload: Wss.CoreModule.WssClient.CreateEvent*
+  nameWithType.vb: WssClient.CreateEvent(Integer, Integer, Integer, Integer(), Integer(), Integer(), WssTarget, CancellationToken)
+  fullName.vb: Wss.CoreModule.WssClient.CreateEvent(Integer, Integer, Integer, Integer(), Integer(), Integer(), Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  name.vb: CreateEvent(Integer, Integer, Integer, Integer(), Integer(), Integer(), WssTarget, CancellationToken)
+- uid: Wss.CoreModule.WssClient.CreateEvent(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32[],System.Int32[],System.Int32[],Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.CreateEvent(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32[],System.Int32[],System.Int32[],Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: CreateEvent(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32[],System.Int32[],System.Int32[],Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: CreateEvent(int, int, int, int, int, int[], int[], int[], WssTarget, CancellationToken)
+  nameWithType: WssClient.CreateEvent(int, int, int, int, int, int[], int[], int[], WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.CreateEvent(int, int, int, int, int, int[], int[], int[], Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Creates an event with explicit shape IDs, amplitude arrays for standard/recharge phases, and pulse width settings.
+
+    PW fields are sent as 8-bit if all ≤ oneByte; otherwise all three (std, IPD, rech) are encoded as 16-bit big-endian.
+
+    Wire order for PW matches your original: [stdPW, IPD, rechPW].
+  example: []
+  syntax:
+    content: public Task<string> CreateEvent(int eventId, int delayMs, int contactConfigId, int standardShapeId, int rechargeShapeId, int[] standardAmp, int[] rechargeAmp, int[] pw, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
+    parameters:
+    - id: eventId
+      type: System.Int32
+      description: Event ID (0–255 or your chosen cap).
+    - id: delayMs
+      type: System.Int32
+      description: Delay from schedule start in milliseconds (0–255 in this variant).
+    - id: contactConfigId
+      type: System.Int32
+      description: Contact configuration ID (0–255).
+    - id: standardShapeId
+      type: System.Int32
+      description: >-
+        Shape ID used during the standard (stim) phase:
+
+        0=Rectangular (default), 1=Rectangular (DAC), 2=Sine, 3=Gaussian,
+
+        4=Exponential Increase, 5=Exponential Decrease,
+
+        6=Linear Increase, 7=Linear Decrease,
+
+        10=Trapezoid (setup required),
+
+        11=User Program 1 (setup required),
+
+        12=User Program 2 (setup required),
+
+        13=User Program 3 (setup required).
+    - id: rechargeShapeId
+      type: System.Int32
+      description: Shape ID used during the recharge phase (same mapping as <code class="paramref">standardShapeId</code>).
+    - id: standardAmp
+      type: System.Int32[]
+      description: Four amplitudes for the standard (stim) phase (0–255 each).
+    - id: rechargeAmp
+      type: System.Int32[]
+      description: Four amplitudes for the recharge phase (0–255 each).
+    - id: pw
+      type: System.Int32[]
+      description: 'Three PW parameters: [standardPW, rechargePW, IPD] in microseconds.'
+    - id: target
+      type: Wss.CoreModule.WssTarget
+      description: Target WSS device.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+    content.vb: Public Function CreateEvent(eventId As Integer, delayMs As Integer, contactConfigId As Integer, standardShapeId As Integer, rechargeShapeId As Integer, standardAmp As Integer(), rechargeAmp As Integer(), pw As Integer(), target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
+  overload: Wss.CoreModule.WssClient.CreateEvent*
+  nameWithType.vb: WssClient.CreateEvent(Integer, Integer, Integer, Integer, Integer, Integer(), Integer(), Integer(), WssTarget, CancellationToken)
+  fullName.vb: Wss.CoreModule.WssClient.CreateEvent(Integer, Integer, Integer, Integer, Integer, Integer(), Integer(), Integer(), Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  name.vb: CreateEvent(Integer, Integer, Integer, Integer, Integer, Integer(), Integer(), Integer(), WssTarget, CancellationToken)
+- uid: Wss.CoreModule.WssClient.DeleteEvent(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.DeleteEvent(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: DeleteEvent(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: DeleteEvent(int, WssTarget, CancellationToken)
+  nameWithType: WssClient.DeleteEvent(int, WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.DeleteEvent(int, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Deletes an existing event on the WSS device by its ID.
+  example: []
+  syntax:
+    content: public Task<string> DeleteEvent(int eventId, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
+    parameters:
+    - id: eventId
+      type: System.Int32
+      description: Event ID (0–255).
+    - id: target
+      type: Wss.CoreModule.WssTarget
+      description: 'Target WSS device (default: Wss1).'
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+    content.vb: Public Function DeleteEvent(eventId As Integer, target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
+  overload: Wss.CoreModule.WssClient.DeleteEvent*
+  nameWithType.vb: WssClient.DeleteEvent(Integer, WssTarget, CancellationToken)
+  fullName.vb: Wss.CoreModule.WssClient.DeleteEvent(Integer, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  name.vb: DeleteEvent(Integer, WssTarget, CancellationToken)
+- uid: Wss.CoreModule.WssClient.AddEventToSchedule(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.AddEventToSchedule(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: AddEventToSchedule(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: AddEventToSchedule(int, int, WssTarget, CancellationToken)
+  nameWithType: WssClient.AddEventToSchedule(int, int, WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.AddEventToSchedule(int, int, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Adds an event to a schedule.
+  example: []
+  syntax:
+    content: public Task<string> AddEventToSchedule(int eventId, int scheduleId, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
+    parameters:
+    - id: eventId
+      type: System.Int32
+      description: Event ID (0–255).
+    - id: scheduleId
+      type: System.Int32
+      description: Schedule ID (0–255).
+    - id: target
+      type: Wss.CoreModule.WssTarget
+      description: 'Target WSS device (default: Wss1).'
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+    content.vb: Public Function AddEventToSchedule(eventId As Integer, scheduleId As Integer, target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
+  overload: Wss.CoreModule.WssClient.AddEventToSchedule*
+  nameWithType.vb: WssClient.AddEventToSchedule(Integer, Integer, WssTarget, CancellationToken)
+  fullName.vb: Wss.CoreModule.WssClient.AddEventToSchedule(Integer, Integer, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  name.vb: AddEventToSchedule(Integer, Integer, WssTarget, CancellationToken)
+- uid: Wss.CoreModule.WssClient.DeleteEventFromSchedule(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.DeleteEventFromSchedule(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: DeleteEventFromSchedule(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: DeleteEventFromSchedule(int, WssTarget, CancellationToken)
+  nameWithType: WssClient.DeleteEventFromSchedule(int, WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.DeleteEventFromSchedule(int, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Removes an event from its assigned schedule.
+  example: []
+  syntax:
+    content: public Task<string> DeleteEventFromSchedule(int eventId, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
+    parameters:
+    - id: eventId
+      type: System.Int32
+      description: Event ID (0–255).
+    - id: target
+      type: Wss.CoreModule.WssTarget
+      description: 'Target WSS device (default: Wss1).'
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+    content.vb: Public Function DeleteEventFromSchedule(eventId As Integer, target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
+  overload: Wss.CoreModule.WssClient.DeleteEventFromSchedule*
+  nameWithType.vb: WssClient.DeleteEventFromSchedule(Integer, WssTarget, CancellationToken)
+  fullName.vb: Wss.CoreModule.WssClient.DeleteEventFromSchedule(Integer, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  name.vb: DeleteEventFromSchedule(Integer, WssTarget, CancellationToken)
+- uid: Wss.CoreModule.WssClient.MoveEventToSchedule(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.MoveEventToSchedule(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: MoveEventToSchedule(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: MoveEventToSchedule(int, int, int, WssTarget, CancellationToken)
+  nameWithType: WssClient.MoveEventToSchedule(int, int, int, WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.MoveEventToSchedule(int, int, int, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Moves an event to a different schedule with a new delay offset.
+
+    Fails on-device if <code class="paramref">delayMs</code> exceeds the schedule period.
+  example: []
+  syntax:
+    content: public Task<string> MoveEventToSchedule(int eventId, int scheduleId, int delayMs, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
+    parameters:
+    - id: eventId
+      type: System.Int32
+      description: Event ID (0–255).
+    - id: scheduleId
+      type: System.Int32
+      description: Destination schedule ID (0–255).
+    - id: delayMs
+      type: System.Int32
+      description: Delay from schedule start in milliseconds (0–255 in this variant).
+    - id: target
+      type: Wss.CoreModule.WssTarget
+      description: 'Target WSS device (default: Wss1).'
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+    content.vb: Public Function MoveEventToSchedule(eventId As Integer, scheduleId As Integer, delayMs As Integer, target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
+  overload: Wss.CoreModule.WssClient.MoveEventToSchedule*
+  nameWithType.vb: WssClient.MoveEventToSchedule(Integer, Integer, Integer, WssTarget, CancellationToken)
+  fullName.vb: Wss.CoreModule.WssClient.MoveEventToSchedule(Integer, Integer, Integer, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  name.vb: MoveEventToSchedule(Integer, Integer, Integer, WssTarget, CancellationToken)
+- uid: Wss.CoreModule.WssClient.EditEventContactConfig(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.EditEventContactConfig(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: EditEventContactConfig(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: EditEventContactConfig(int, int, WssTarget, CancellationToken)
+  nameWithType: WssClient.EditEventContactConfig(int, int, WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.EditEventContactConfig(int, int, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Changes an event's output/contact configuration by ID.
+  example: []
+  syntax:
+    content: public Task<string> EditEventContactConfig(int eventId, int contactConfigId, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
+    parameters:
+    - id: eventId
+      type: System.Int32
+      description: Event ID (0–255).
+    - id: contactConfigId
+      type: System.Int32
+      description: Output/contact configuration ID (0–255).
+    - id: target
+      type: Wss.CoreModule.WssTarget
+      description: 'Target WSS device (default: Wss1).'
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+    content.vb: Public Function EditEventContactConfig(eventId As Integer, contactConfigId As Integer, target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
+  overload: Wss.CoreModule.WssClient.EditEventContactConfig*
+  nameWithType.vb: WssClient.EditEventContactConfig(Integer, Integer, WssTarget, CancellationToken)
+  fullName.vb: Wss.CoreModule.WssClient.EditEventContactConfig(Integer, Integer, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  name.vb: EditEventContactConfig(Integer, Integer, WssTarget, CancellationToken)
+- uid: Wss.CoreModule.WssClient.EditEventPw(System.Int32,System.Int32[],Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.EditEventPw(System.Int32,System.Int32[],Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: EditEventPw(System.Int32,System.Int32[],Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: EditEventPw(int, int[], WssTarget, CancellationToken)
+  nameWithType: WssClient.EditEventPw(int, int[], WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.EditEventPw(int, int[], Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Changes an event's pulse widths: [standardPW, rechargePW, IPD] (μs).
+
+    Uses 8-bit fields if all ≤ oneByte; otherwise encodes all three as 16-bit big-endian.
+
+    Wire order matches firmware: [stdPW, IPD, rechPW].
+  example: []
+  syntax:
+    content: public Task<string> EditEventPw(int eventId, int[] pw, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
+    parameters:
+    - id: eventId
+      type: System.Int32
+      description: Event ID (0–255).
+    - id: pw
+      type: System.Int32[]
+      description: 'Three PW values: [standardPW, rechargePW, IPD] in microseconds.'
+    - id: target
+      type: Wss.CoreModule.WssTarget
+      description: 'Target WSS device (default: Wss1).'
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+    content.vb: Public Function EditEventPw(eventId As Integer, pw As Integer(), target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
+  overload: Wss.CoreModule.WssClient.EditEventPw*
+  nameWithType.vb: WssClient.EditEventPw(Integer, Integer(), WssTarget, CancellationToken)
+  fullName.vb: Wss.CoreModule.WssClient.EditEventPw(Integer, Integer(), Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  name.vb: EditEventPw(Integer, Integer(), WssTarget, CancellationToken)
+- uid: Wss.CoreModule.WssClient.EditEventAmp(System.Int32,System.Int32[],System.Int32[],Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.EditEventAmp(System.Int32,System.Int32[],System.Int32[],Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: EditEventAmp(System.Int32,System.Int32[],System.Int32[],Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: EditEventAmp(int, int[], int[], WssTarget, CancellationToken)
+  nameWithType: WssClient.EditEventAmp(int, int[], int[], WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.EditEventAmp(int, int[], int[], Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Changes an event's amplitude configuration for standard and recharge phases.
+  example: []
+  syntax:
+    content: public Task<string> EditEventAmp(int eventId, int[] standardAmp, int[] rechargeAmp, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
+    parameters:
+    - id: eventId
+      type: System.Int32
+      description: Event ID (0–255).
+    - id: standardAmp
+      type: System.Int32[]
+      description: Four amplitudes for the standard (stim) phase, 0–255 each.
+    - id: rechargeAmp
+      type: System.Int32[]
+      description: Four amplitudes for the recharge phase, 0–255 each.
+    - id: target
+      type: Wss.CoreModule.WssTarget
+      description: 'Target WSS device (default: Wss1).'
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+    content.vb: Public Function EditEventAmp(eventId As Integer, standardAmp As Integer(), rechargeAmp As Integer(), target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
+  overload: Wss.CoreModule.WssClient.EditEventAmp*
+  nameWithType.vb: WssClient.EditEventAmp(Integer, Integer(), Integer(), WssTarget, CancellationToken)
+  fullName.vb: Wss.CoreModule.WssClient.EditEventAmp(Integer, Integer(), Integer(), Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  name.vb: EditEventAmp(Integer, Integer(), Integer(), WssTarget, CancellationToken)
+- uid: Wss.CoreModule.WssClient.EditEventShape(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.EditEventShape(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: EditEventShape(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: EditEventShape(int, int, int, WssTarget, CancellationToken)
+  nameWithType: WssClient.EditEventShape(int, int, int, WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.EditEventShape(int, int, int, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Changes an event's shape configuration.
+  example: []
+  syntax:
+    content: public Task<string> EditEventShape(int eventId, int standardShapeId, int rechargeShapeId, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
+    parameters:
+    - id: eventId
+      type: System.Int32
+      description: Event ID (0–255).
+    - id: standardShapeId
+      type: System.Int32
+      description: >-
+        Shape ID used during the standard (stim) phase:
+
+        0=Rectangular (default), 1=Rectangular (DAC), 2=Sine, 3=Gaussian,
+
+        4=Exponential Increase, 5=Exponential Decrease,
+
+        6=Linear Increase, 7=Linear Decrease,
+
+        10=Trapezoid (setup required),
+
+        11=User Program 1 (setup required),
+
+        12=User Program 2 (setup required),
+
+        13=User Program 3 (setup required).
+    - id: rechargeShapeId
+      type: System.Int32
+      description: Shape ID used during the recharge phase (same mapping as <code class="paramref">standardShapeId</code>).
+    - id: target
+      type: Wss.CoreModule.WssTarget
+      description: Target WSS device.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+    content.vb: Public Function EditEventShape(eventId As Integer, standardShapeId As Integer, rechargeShapeId As Integer, target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
+  overload: Wss.CoreModule.WssClient.EditEventShape*
+  nameWithType.vb: WssClient.EditEventShape(Integer, Integer, Integer, WssTarget, CancellationToken)
+  fullName.vb: Wss.CoreModule.WssClient.EditEventShape(Integer, Integer, Integer, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  name.vb: EditEventShape(Integer, Integer, Integer, WssTarget, CancellationToken)
+- uid: Wss.CoreModule.WssClient.EditEventDelay(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.EditEventDelay(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: EditEventDelay(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: EditEventDelay(int, int, WssTarget, CancellationToken)
+  nameWithType: WssClient.EditEventDelay(int, int, WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.EditEventDelay(int, int, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Changes an event's delay (ms from schedule start).
+  example: []
+  syntax:
+    content: public Task<string> EditEventDelay(int eventId, int delayMs, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
+    parameters:
+    - id: eventId
+      type: System.Int32
+      description: Event ID (0–255).
+    - id: delayMs
+      type: System.Int32
+      description: Delay in milliseconds (0–255 in this variant).
+    - id: target
+      type: Wss.CoreModule.WssTarget
+      description: Target WSS device.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+    content.vb: Public Function EditEventDelay(eventId As Integer, delayMs As Integer, target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
+  overload: Wss.CoreModule.WssClient.EditEventDelay*
+  nameWithType.vb: WssClient.EditEventDelay(Integer, Integer, WssTarget, CancellationToken)
+  fullName.vb: Wss.CoreModule.WssClient.EditEventDelay(Integer, Integer, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  name.vb: EditEventDelay(Integer, Integer, WssTarget, CancellationToken)
+- uid: Wss.CoreModule.WssClient.EditEventRatio(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.EditEventRatio(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: EditEventRatio(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: EditEventRatio(int, int, WssTarget, CancellationToken)
+  nameWithType: WssClient.EditEventRatio(int, int, WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.EditEventRatio(int, int, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: "Changes an event's ratio (allowed: 1, 2, 4, 8)."
+  example: []
+  syntax:
+    content: public Task<string> EditEventRatio(int eventId, int ratio, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
+    parameters:
+    - id: eventId
+      type: System.Int32
+      description: Event ID (0–255).
+    - id: ratio
+      type: System.Int32
+      description: Ratio value (must be one of 1, 2, 4, 8).
+    - id: target
+      type: Wss.CoreModule.WssTarget
+      description: Target WSS device.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+    content.vb: Public Function EditEventRatio(eventId As Integer, ratio As Integer, target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
+  overload: Wss.CoreModule.WssClient.EditEventRatio*
+  nameWithType.vb: WssClient.EditEventRatio(Integer, Integer, WssTarget, CancellationToken)
+  fullName.vb: Wss.CoreModule.WssClient.EditEventRatio(Integer, Integer, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  name.vb: EditEventRatio(Integer, Integer, WssTarget, CancellationToken)
+- uid: Wss.CoreModule.WssClient.EditEventEnableBit(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.EditEventEnableBit(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: EditEventEnableBit(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: EditEventEnableBit(int, int, WssTarget, CancellationToken)
+  nameWithType: WssClient.EditEventEnableBit(int, int, WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.EditEventEnableBit(int, int, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: "Changes an event's ratio (allowed: 1, 2, 4, 8)."
+  example: []
+  syntax:
+    content: public Task<string> EditEventEnableBit(int eventId, int enable, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
+    parameters:
+    - id: eventId
+      type: System.Int32
+      description: Event ID (0–255).
+    - id: enable
+      type: System.Int32
+      description: enable bit (0 or 1).
+    - id: target
+      type: Wss.CoreModule.WssTarget
+      description: Target WSS device.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+    content.vb: Public Function EditEventEnableBit(eventId As Integer, enable As Integer, target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
+  overload: Wss.CoreModule.WssClient.EditEventEnableBit*
+  nameWithType.vb: WssClient.EditEventEnableBit(Integer, Integer, WssTarget, CancellationToken)
+  fullName.vb: Wss.CoreModule.WssClient.EditEventEnableBit(Integer, Integer, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  name.vb: EditEventEnableBit(Integer, Integer, WssTarget, CancellationToken)
+- uid: Wss.CoreModule.WssClient.CreateSchedule(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.CreateSchedule(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: CreateSchedule(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: CreateSchedule(int, int, int, WssTarget, CancellationToken)
+  nameWithType: WssClient.CreateSchedule(int, int, int, WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.CreateSchedule(int, int, int, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Creates a schedule.
+  example: []
+  syntax:
+    content: public Task<string> CreateSchedule(int scheduleId, int durationMs, int syncSignal, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
+    parameters:
+    - id: scheduleId
+      type: System.Int32
+      description: Schedule ID (0–255).
+    - id: durationMs
+      type: System.Int32
+      description: Duration in milliseconds (16-bit, big-endian on wire).
+    - id: syncSignal
+      type: System.Int32
+      description: Sync group ID (0–255).
+    - id: target
+      type: Wss.CoreModule.WssTarget
+      description: Target WSS device.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+    content.vb: Public Function CreateSchedule(scheduleId As Integer, durationMs As Integer, syncSignal As Integer, target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
+  overload: Wss.CoreModule.WssClient.CreateSchedule*
+  nameWithType.vb: WssClient.CreateSchedule(Integer, Integer, Integer, WssTarget, CancellationToken)
+  fullName.vb: Wss.CoreModule.WssClient.CreateSchedule(Integer, Integer, Integer, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  name.vb: CreateSchedule(Integer, Integer, Integer, WssTarget, CancellationToken)
+- uid: Wss.CoreModule.WssClient.DeleteSchedule(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.DeleteSchedule(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: DeleteSchedule(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: DeleteSchedule(int, WssTarget, CancellationToken)
+  nameWithType: WssClient.DeleteSchedule(int, WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.DeleteSchedule(int, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Deletes a schedule by ID.
+  example: []
+  syntax:
+    content: public Task<string> DeleteSchedule(int scheduleId, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
+    parameters:
+    - id: scheduleId
+      type: System.Int32
+      description: Schedule ID (0–255).
+    - id: target
+      type: Wss.CoreModule.WssTarget
+      description: Target WSS device.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+    content.vb: Public Function DeleteSchedule(scheduleId As Integer, target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
+  overload: Wss.CoreModule.WssClient.DeleteSchedule*
+  nameWithType.vb: WssClient.DeleteSchedule(Integer, WssTarget, CancellationToken)
+  fullName.vb: Wss.CoreModule.WssClient.DeleteSchedule(Integer, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  name.vb: DeleteSchedule(Integer, WssTarget, CancellationToken)
+- uid: Wss.CoreModule.WssClient.SyncGroup(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.SyncGroup(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: SyncGroup(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: SyncGroup(int, WssTarget, CancellationToken)
+  nameWithType: WssClient.SyncGroup(int, WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.SyncGroup(int, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Sends a sync signal; starts schedules in the group from READY to ACTIVE.
+  example: []
+  syntax:
+    content: public Task<string> SyncGroup(int syncSignal, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
+    parameters:
+    - id: syncSignal
+      type: System.Int32
+      description: Sync group ID (0–255).
+    - id: target
+      type: Wss.CoreModule.WssTarget
+      description: Target WSS device.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+    content.vb: Public Function SyncGroup(syncSignal As Integer, target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
+  overload: Wss.CoreModule.WssClient.SyncGroup*
+  nameWithType.vb: WssClient.SyncGroup(Integer, WssTarget, CancellationToken)
+  fullName.vb: Wss.CoreModule.WssClient.SyncGroup(Integer, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  name.vb: SyncGroup(Integer, WssTarget, CancellationToken)
+- uid: Wss.CoreModule.WssClient.ChangeGroupState(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.ChangeGroupState(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: ChangeGroupState(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: ChangeGroupState(int, int, WssTarget, CancellationToken)
+  nameWithType: WssClient.ChangeGroupState(int, int, WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.ChangeGroupState(int, int, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: "Changes a sync group's state: READY=1, ACTIVE=0, SUSPEND=2."
+  example: []
+  syntax:
+    content: public Task<string> ChangeGroupState(int syncSignal, int state, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
+    parameters:
+    - id: syncSignal
+      type: System.Int32
+      description: Sync group ID (0–255).
+    - id: state
+      type: System.Int32
+      description: State (0=ACTIVE, 1=READY, 2=SUSPEND).
+    - id: target
+      type: Wss.CoreModule.WssTarget
+      description: Target WSS device.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+    content.vb: Public Function ChangeGroupState(syncSignal As Integer, state As Integer, target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
+  overload: Wss.CoreModule.WssClient.ChangeGroupState*
+  nameWithType.vb: WssClient.ChangeGroupState(Integer, Integer, WssTarget, CancellationToken)
+  fullName.vb: Wss.CoreModule.WssClient.ChangeGroupState(Integer, Integer, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  name.vb: ChangeGroupState(Integer, Integer, WssTarget, CancellationToken)
+- uid: Wss.CoreModule.WssClient.ChangeScheduleState(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.ChangeScheduleState(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: ChangeScheduleState(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: ChangeScheduleState(int, int, WssTarget, CancellationToken)
+  nameWithType: WssClient.ChangeScheduleState(int, int, WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.ChangeScheduleState(int, int, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Changes a schedule's state.
+  example: []
+  syntax:
+    content: public Task<string> ChangeScheduleState(int scheduleId, int state, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
+    parameters:
+    - id: scheduleId
+      type: System.Int32
+      description: Schedule ID (0–255).
+    - id: state
+      type: System.Int32
+      description: State (0=ACTIVE, 1=READY, 2=SUSPEND).
+    - id: target
+      type: Wss.CoreModule.WssTarget
+      description: Target WSS device.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+    content.vb: Public Function ChangeScheduleState(scheduleId As Integer, state As Integer, target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
+  overload: Wss.CoreModule.WssClient.ChangeScheduleState*
+  nameWithType.vb: WssClient.ChangeScheduleState(Integer, Integer, WssTarget, CancellationToken)
+  fullName.vb: Wss.CoreModule.WssClient.ChangeScheduleState(Integer, Integer, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  name.vb: ChangeScheduleState(Integer, Integer, WssTarget, CancellationToken)
+- uid: Wss.CoreModule.WssClient.ChangeScheduleGroup(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.ChangeScheduleGroup(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: ChangeScheduleGroup(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: ChangeScheduleGroup(int, int, WssTarget, CancellationToken)
+  nameWithType: WssClient.ChangeScheduleGroup(int, int, WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.ChangeScheduleGroup(int, int, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Changes a schedule's sync group.
+  example: []
+  syntax:
+    content: public Task<string> ChangeScheduleGroup(int scheduleId, int syncSignal, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
+    parameters:
+    - id: scheduleId
+      type: System.Int32
+      description: Schedule ID (0–255).
+    - id: syncSignal
+      type: System.Int32
+      description: Sync group ID (0–255).
+    - id: target
+      type: Wss.CoreModule.WssTarget
+      description: Target WSS device.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+    content.vb: Public Function ChangeScheduleGroup(scheduleId As Integer, syncSignal As Integer, target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
+  overload: Wss.CoreModule.WssClient.ChangeScheduleGroup*
+  nameWithType.vb: WssClient.ChangeScheduleGroup(Integer, Integer, WssTarget, CancellationToken)
+  fullName.vb: Wss.CoreModule.WssClient.ChangeScheduleGroup(Integer, Integer, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  name.vb: ChangeScheduleGroup(Integer, Integer, WssTarget, CancellationToken)
+- uid: Wss.CoreModule.WssClient.ChangeScheduleDuration(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.ChangeScheduleDuration(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: ChangeScheduleDuration(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: ChangeScheduleDuration(int, int, WssTarget, CancellationToken)
+  nameWithType: WssClient.ChangeScheduleDuration(int, int, WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.ChangeScheduleDuration(int, int, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Changes a schedule's duration (8-bit variant). For 16-bit, prefer recreating the schedule.
+  example: []
+  syntax:
+    content: public Task<string> ChangeScheduleDuration(int scheduleId, int durationMs, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
+    parameters:
+    - id: scheduleId
+      type: System.Int32
+      description: Schedule ID (0–255).
+    - id: durationMs
+      type: System.Int32
+      description: Duration in milliseconds (0–255 in this subcommand TODO expand this command to the full range od=f 0 to 1000).
+    - id: target
+      type: Wss.CoreModule.WssTarget
+      description: Target WSS device.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+    content.vb: Public Function ChangeScheduleDuration(scheduleId As Integer, durationMs As Integer, target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
+  overload: Wss.CoreModule.WssClient.ChangeScheduleDuration*
+  nameWithType.vb: WssClient.ChangeScheduleDuration(Integer, Integer, WssTarget, CancellationToken)
+  fullName.vb: Wss.CoreModule.WssClient.ChangeScheduleDuration(Integer, Integer, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  name.vb: ChangeScheduleDuration(Integer, Integer, WssTarget, CancellationToken)
+- uid: Wss.CoreModule.WssClient.ResetSchedules(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.ResetSchedules(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: ResetSchedules(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: ResetSchedules(WssTarget, CancellationToken)
+  nameWithType: WssClient.ResetSchedules(WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.ResetSchedules(Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Resets all schedules.
+  example: []
+  syntax:
+    content: public Task<string> ResetSchedules(WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
+    parameters:
+    - id: target
+      type: Wss.CoreModule.WssTarget
+      description: Target WSS device.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+    content.vb: Public Function ResetSchedules(target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
+  overload: Wss.CoreModule.WssClient.ResetSchedules*
+- uid: Wss.CoreModule.WssClient.SetCustomWaveform(System.Int32,System.Int32[],System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.SetCustomWaveform(System.Int32,System.Int32[],System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: SetCustomWaveform(System.Int32,System.Int32[],System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: SetCustomWaveform(int, int[], int, WssTarget, CancellationToken)
+  nameWithType: WssClient.SetCustomWaveform(int, int[], int, WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.SetCustomWaveform(int, int[], int, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Uploads a custom waveform chunk (8 samples) into a slot.
+
+    Call this 4 times (msgNumber 0..3) to send all 32 samples.
+
+    Each sample is encoded as 16-bit big-endian.
+  example: []
+  syntax:
+    content: public Task<string> SetCustomWaveform(int slot, int[] waveformChunk8, int msgNumber, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
+    parameters:
+    - id: slot
+      type: System.Int32
+      description: Waveform slot (0–255).
+    - id: waveformChunk8
+      type: System.Int32[]
+      description: Exactly 8 sample values for this chunk (0..2000 each).
+    - id: msgNumber
+      type: System.Int32
+      description: Chunk index (0..3) — send four chunks to fill 32 samples.
+    - id: target
+      type: Wss.CoreModule.WssTarget
+      description: Target WSS device.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+    content.vb: Public Function SetCustomWaveform(slot As Integer, waveformChunk8 As Integer(), msgNumber As Integer, target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
+  overload: Wss.CoreModule.WssClient.SetCustomWaveform*
+  nameWithType.vb: WssClient.SetCustomWaveform(Integer, Integer(), Integer, WssTarget, CancellationToken)
+  fullName.vb: Wss.CoreModule.WssClient.SetCustomWaveform(Integer, Integer(), Integer, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  name.vb: SetCustomWaveform(Integer, Integer(), Integer, WssTarget, CancellationToken)
+- uid: Wss.CoreModule.WssClient.EditSettings(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.EditSettings(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: EditSettings(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: EditSettings(int, int, WssTarget, CancellationToken)
+  nameWithType: WssClient.EditSettings(int, int, WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.EditSettings(int, int, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Writes a single settings byte at <code class="paramref">address</code> to <code class="paramref">value</code>.
+  example: []
+  syntax:
+    content: public Task<string> EditSettings(int address, int value, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
+    parameters:
+    - id: address
+      type: System.Int32
+      description: Settings address (0–255).
+    - id: value
+      type: System.Int32
+      description: Value to write (0–255).
+    - id: target
+      type: Wss.CoreModule.WssTarget
+      description: Target WSS device.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+    content.vb: Public Function EditSettings(address As Integer, value As Integer, target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
+  overload: Wss.CoreModule.WssClient.EditSettings*
+  nameWithType.vb: WssClient.EditSettings(Integer, Integer, WssTarget, CancellationToken)
+  fullName.vb: Wss.CoreModule.WssClient.EditSettings(Integer, Integer, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  name.vb: EditSettings(Integer, Integer, WssTarget, CancellationToken)
+- uid: Wss.CoreModule.WssClient.PopulateBoardSettings(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.PopulateBoardSettings(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: PopulateBoardSettings(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: PopulateBoardSettings(WssTarget, CancellationToken)
+  nameWithType: WssClient.PopulateBoardSettings(WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.PopulateBoardSettings(Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Loads settings from FRAM into the active board settings.
+  example: []
+  syntax:
+    content: public Task<string> PopulateBoardSettings(WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
+    parameters:
+    - id: target
+      type: Wss.CoreModule.WssTarget
+      description: Target WSS device.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+    content.vb: Public Function PopulateBoardSettings(target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
+  overload: Wss.CoreModule.WssClient.PopulateBoardSettings*
+- uid: Wss.CoreModule.WssClient.PopulateFramSettings(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.PopulateFramSettings(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: PopulateFramSettings(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: PopulateFramSettings(WssTarget, CancellationToken)
+  nameWithType: WssClient.PopulateFramSettings(WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.PopulateFramSettings(Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Saves current board settings into FRAM.
+  example: []
+  syntax:
+    content: public Task<string> PopulateFramSettings(WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
+    parameters:
+    - id: target
+      type: Wss.CoreModule.WssTarget
+      description: Target WSS device.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+    content.vb: Public Function PopulateFramSettings(target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
+  overload: Wss.CoreModule.WssClient.PopulateFramSettings*
+- uid: Wss.CoreModule.WssClient.EraseLog(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.EraseLog(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: EraseLog(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: EraseLog(WssTarget, CancellationToken)
+  nameWithType: WssClient.EraseLog(WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.EraseLog(Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Erases device log data.
+  example: []
+  syntax:
+    content: public Task<string> EraseLog(WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
+    parameters:
+    - id: target
+      type: Wss.CoreModule.WssTarget
+      description: Target WSS device.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+    content.vb: Public Function EraseLog(target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
+  overload: Wss.CoreModule.WssClient.EraseLog*
+- uid: Wss.CoreModule.WssClient.GetLog(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.GetLog(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: GetLog(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: GetLog(WssTarget, CancellationToken)
+  nameWithType: WssClient.GetLog(WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.GetLog(Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Requests device log data (raw read mode on device side)
+
+    Untested TODO.
+  example: []
+  syntax:
+    content: public Task<string> GetLog(WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
+    parameters:
+    - id: target
+      type: Wss.CoreModule.WssTarget
+      description: Target WSS device.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+    content.vb: Public Function GetLog(target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
+  overload: Wss.CoreModule.WssClient.GetLog*
+- uid: Wss.CoreModule.WssClient.StreamChange(System.Int32[],System.Int32[],System.Int32[],Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.StreamChange(System.Int32[],System.Int32[],System.Int32[],Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: StreamChange(System.Int32[],System.Int32[],System.Int32[],Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: StreamChange(int[], int[], int[], WssTarget, CancellationToken)
+  nameWithType: WssClient.StreamChange(int[], int[], int[], WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.StreamChange(int[], int[], int[], Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Streams changes to PA (amplitude), PW (pulse width), and IPI (period) for up to three schedules in one shot.
+
+    Pass exactly one of the arrays as <code>null</code> to omit that group (protocol supports omitting at most one group).
+
+    Uses opcodes:
+      0x30 = PA+PW+IPI,  0x31 = PA+PW (no IPI),  0x32 = PA+IPI (no PW),  0x33 = PW+IPI (no PA).
+    All elements are 0..255 in this streaming variant (one byte each).
+  example: []
+  syntax:
+    content: public Task StreamChange(int[] pa, int[] pw, int[] ipi, WssTarget target = WssTarget.Broadcast, CancellationToken ct = default)
+    parameters:
+    - id: pa
+      type: System.Int32[]
+      description: Three amplitudes (0..255) or null to keep PA unchanged.
+    - id: pw
+      type: System.Int32[]
+      description: Three pulse widths (0..255) or null to keep PW unchanged.
+    - id: ipi
+      type: System.Int32[]
+      description: Three periods in ms (0..255) or null to keep IPI unchanged.
+    - id: target
+      type: Wss.CoreModule.WssTarget
+      description: Target WSS; streaming commonly uses Broadcast.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function StreamChange(pa As Integer(), pw As Integer(), ipi As Integer(), target As WssTarget = WssTarget.Broadcast, ct As CancellationToken = Nothing) As Task
+  overload: Wss.CoreModule.WssClient.StreamChange*
+  nameWithType.vb: WssClient.StreamChange(Integer(), Integer(), Integer(), WssTarget, CancellationToken)
+  fullName.vb: Wss.CoreModule.WssClient.StreamChange(Integer(), Integer(), Integer(), Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  name.vb: StreamChange(Integer(), Integer(), Integer(), WssTarget, CancellationToken)
+- uid: Wss.CoreModule.WssClient.ZeroOutStim(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.ZeroOutStim(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: ZeroOutStim(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  parent: Wss.CoreModule.WssClient
+  langs:
+  - csharp
+  - vb
+  name: ZeroOutStim(WssTarget, CancellationToken)
+  nameWithType: WssClient.ZeroOutStim(WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.ZeroOutStim(Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Convenience: streams zeros to PA, PW, and IPI (effectively stopping stimulation).
+
+    Uses opcode 0x31 (PA+PW, no IPI) with trailing zeros to match the original layout.
+  example: []
+  syntax:
+    content: public Task ZeroOutStim(WssTarget target = WssTarget.Broadcast, CancellationToken ct = default)
+    parameters:
+    - id: target
+      type: Wss.CoreModule.WssTarget
+      description: Target WSS (default Broadcast).
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function ZeroOutStim(target As WssTarget = WssTarget.Broadcast, ct As CancellationToken = Nothing) As Task
+  overload: Wss.CoreModule.WssClient.ZeroOutStim*
+references:
+- uid: Wss.CoreModule.IFrameCodec
+  commentId: T:Wss.CoreModule.IFrameCodec
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.IFrameCodec.html
+  name: IFrameCodec
+  nameWithType: IFrameCodec
+  fullName: Wss.CoreModule.IFrameCodec
+- uid: Wss.CoreModule.ITransport
+  commentId: T:Wss.CoreModule.ITransport
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.ITransport.html
+  name: ITransport
+  nameWithType: ITransport
+  fullName: Wss.CoreModule.ITransport
+- uid: Wss.CoreModule
+  commentId: N:Wss.CoreModule
+  href: Wss.html
+  name: Wss.CoreModule
+  nameWithType: Wss.CoreModule
+  fullName: Wss.CoreModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Wss.CoreModule.WssClient.Started*
+  commentId: Overload:Wss.CoreModule.WssClient.Started
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_Started
+  name: Started
+  nameWithType: WssClient.Started
+  fullName: Wss.CoreModule.WssClient.Started
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Wss.CoreModule.WssClient.#ctor*
+  commentId: Overload:Wss.CoreModule.WssClient.#ctor
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient__ctor_Wss_CoreModule_ITransport_Wss_CoreModule_IFrameCodec_Wss_CoreModule_WSSVersionHandler_System_Byte_
+  name: WssClient
+  nameWithType: WssClient.WssClient
+  fullName: Wss.CoreModule.WssClient.WssClient
+  nameWithType.vb: WssClient.New
+  fullName.vb: Wss.CoreModule.WssClient.New
+  name.vb: New
+- uid: Wss.CoreModule.WSSVersionHandler
+  commentId: T:Wss.CoreModule.WSSVersionHandler
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.WSSVersionHandler.html
+  name: WSSVersionHandler
+  nameWithType: WSSVersionHandler
+  fullName: Wss.CoreModule.WSSVersionHandler
+- uid: System.Byte
+  commentId: T:System.Byte
+  parent: System
+  isExternal: true
+  name: byte
+  nameWithType: byte
+  fullName: byte
+  nameWithType.vb: Byte
+  fullName.vb: Byte
+  name.vb: Byte
+- uid: System.InvalidOperationException
+  commentId: T:System.InvalidOperationException
+  isExternal: true
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
+- uid: System.IO.IOException
+  commentId: T:System.IO.IOException
+  isExternal: true
+  name: IOException
+  nameWithType: IOException
+  fullName: System.IO.IOException
+- uid: System.OperationCanceledException
+  commentId: T:System.OperationCanceledException
+  isExternal: true
+  name: OperationCanceledException
+  nameWithType: OperationCanceledException
+  fullName: System.OperationCanceledException
+- uid: Wss.CoreModule.WssClient.ConnectAsync*
+  commentId: Overload:Wss.CoreModule.WssClient.ConnectAsync
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_ConnectAsync_System_Threading_CancellationToken_
+  name: ConnectAsync
+  nameWithType: WssClient.ConnectAsync
+  fullName: Wss.CoreModule.WssClient.ConnectAsync
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Wss.CoreModule.WssClient.DisconnectAsync*
+  commentId: Overload:Wss.CoreModule.WssClient.DisconnectAsync
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_DisconnectAsync_System_Threading_CancellationToken_
+  name: DisconnectAsync
+  nameWithType: WssClient.DisconnectAsync
+  fullName: Wss.CoreModule.WssClient.DisconnectAsync
+- uid: Wss.CoreModule.WssClient.TryGetModuleQueryData*
+  commentId: Overload:Wss.CoreModule.WssClient.TryGetModuleQueryData
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_TryGetModuleQueryData_Wss_CoreModule_WssTarget_System_Byte____
+  name: TryGetModuleQueryData
+  nameWithType: WssClient.TryGetModuleQueryData
+  fullName: Wss.CoreModule.WssClient.TryGetModuleQueryData
+- uid: Wss.CoreModule.WssTarget
+  commentId: T:Wss.CoreModule.WssTarget
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.WssTarget.html
+  name: WssTarget
+  nameWithType: WssTarget
+  fullName: Wss.CoreModule.WssTarget
+- uid: System.Byte[]
+  isExternal: true
+  name: byte[]
+  nameWithType: byte[]
+  fullName: byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Wss.CoreModule.WssClient.IsModuleQueryAvailable*
+  commentId: Overload:Wss.CoreModule.WssClient.IsModuleQueryAvailable
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_IsModuleQueryAvailable
+  name: IsModuleQueryAvailable
+  nameWithType: WssClient.IsModuleQueryAvailable
+  fullName: Wss.CoreModule.WssClient.IsModuleQueryAvailable
+- uid: Wss.CoreModule.WssClient
+  commentId: T:Wss.CoreModule.WssClient
+  href: Wss.CoreModule.WssClient.html
+  name: WssClient
+  nameWithType: WssClient
+  fullName: Wss.CoreModule.WssClient
+- uid: Wss.CoreModule.WssClient.Dispose*
+  commentId: Overload:Wss.CoreModule.WssClient.Dispose
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_Dispose
+  name: Dispose
+  nameWithType: WssClient.Dispose
+  fullName: Wss.CoreModule.WssClient.Dispose
+- uid: Wss.CoreModule.WssClient.StartStim*
+  commentId: Overload:Wss.CoreModule.WssClient.StartStim
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_StartStim_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  name: StartStim
+  nameWithType: WssClient.StartStim
+  fullName: Wss.CoreModule.WssClient.StartStim
+- uid: System.Threading.Tasks.Task{System.String}
+  commentId: T:System.Threading.Tasks.Task{System.String}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<string>
+  nameWithType: Task<string>
+  fullName: System.Threading.Tasks.Task<string>
+  nameWithType.vb: Task(Of String)
+  fullName.vb: System.Threading.Tasks.Task(Of String)
+  name.vb: Task(Of String)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: )
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: Wss.CoreModule.WssClient.StopStim*
+  commentId: Overload:Wss.CoreModule.WssClient.StopStim
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_StopStim_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  name: StopStim
+  nameWithType: WssClient.StopStim
+  fullName: Wss.CoreModule.WssClient.StopStim
+- uid: Wss.CoreModule.WssClient.Reset*
+  commentId: Overload:Wss.CoreModule.WssClient.Reset
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_Reset_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  name: Reset
+  nameWithType: WssClient.Reset
+  fullName: Wss.CoreModule.WssClient.Reset
+- uid: Wss.CoreModule.WssClient.Echo*
+  commentId: Overload:Wss.CoreModule.WssClient.Echo
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_Echo_System_Int32_System_Int32_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  name: Echo
+  nameWithType: WssClient.Echo
+  fullName: Wss.CoreModule.WssClient.Echo
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Wss.CoreModule.WssClient.RequestAnalog*
+  commentId: Overload:Wss.CoreModule.WssClient.RequestAnalog
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_RequestAnalog_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  name: RequestAnalog
+  nameWithType: WssClient.RequestAnalog
+  fullName: Wss.CoreModule.WssClient.RequestAnalog
+- uid: Wss.CoreModule.WssClient.Clear*
+  commentId: Overload:Wss.CoreModule.WssClient.Clear
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_Clear_System_Int32_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  name: Clear
+  nameWithType: WssClient.Clear
+  fullName: Wss.CoreModule.WssClient.Clear
+- uid: Wss.CoreModule.WssClient.TryGetModuleQueryData(Wss.CoreModule.WssTarget,System.Byte[]@)
+  commentId: M:Wss.CoreModule.WssClient.TryGetModuleQueryData(Wss.CoreModule.WssTarget,System.Byte[]@)
+  isExternal: true
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_TryGetModuleQueryData_Wss_CoreModule_WssTarget_System_Byte____
+  name: TryGetModuleQueryData(WssTarget, out byte[])
+  nameWithType: WssClient.TryGetModuleQueryData(WssTarget, out byte[])
+  fullName: Wss.CoreModule.WssClient.TryGetModuleQueryData(Wss.CoreModule.WssTarget, out byte[])
+  nameWithType.vb: WssClient.TryGetModuleQueryData(WssTarget, Byte())
+  fullName.vb: Wss.CoreModule.WssClient.TryGetModuleQueryData(Wss.CoreModule.WssTarget, Byte())
+  name.vb: TryGetModuleQueryData(WssTarget, Byte())
+  spec.csharp:
+  - uid: Wss.CoreModule.WssClient.TryGetModuleQueryData(Wss.CoreModule.WssTarget,System.Byte[]@)
+    name: TryGetModuleQueryData
+    href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_TryGetModuleQueryData_Wss_CoreModule_WssTarget_System_Byte____
+  - name: (
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.WssClient.TryGetModuleQueryData(Wss.CoreModule.WssTarget,System.Byte[]@)
+    name: TryGetModuleQueryData
+    href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_TryGetModuleQueryData_Wss_CoreModule_WssTarget_System_Byte____
+  - name: (
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: ','
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+  - name: (
+  - name: )
+  - name: )
+- uid: Wss.CoreModule.WssClient.ModuleQuery*
+  commentId: Overload:Wss.CoreModule.WssClient.ModuleQuery
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_ModuleQuery_System_Int32_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  name: ModuleQuery
+  nameWithType: WssClient.ModuleQuery
+  fullName: Wss.CoreModule.WssClient.ModuleQuery
+- uid: Wss.CoreModule.WssClient.RequestConfigs*
+  commentId: Overload:Wss.CoreModule.WssClient.RequestConfigs
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_RequestConfigs_System_Int32_System_Int32_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  name: RequestConfigs
+  nameWithType: WssClient.RequestConfigs
+  fullName: Wss.CoreModule.WssClient.RequestConfigs
+- uid: Wss.CoreModule.WssClient.CreateContactConfig*
+  commentId: Overload:Wss.CoreModule.WssClient.CreateContactConfig
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_CreateContactConfig_System_Int32_System_Int32___System_Int32___System_Int32_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  name: CreateContactConfig
+  nameWithType: WssClient.CreateContactConfig
+  fullName: Wss.CoreModule.WssClient.CreateContactConfig
+- uid: System.Int32[]
+  isExternal: true
+  name: int[]
+  nameWithType: int[]
+  fullName: int[]
+  nameWithType.vb: Integer()
+  fullName.vb: Integer()
+  name.vb: Integer()
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Wss.CoreModule.WssClient.DeleteContactConfig*
+  commentId: Overload:Wss.CoreModule.WssClient.DeleteContactConfig
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_DeleteContactConfig_System_Int32_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  name: DeleteContactConfig
+  nameWithType: WssClient.DeleteContactConfig
+  fullName: Wss.CoreModule.WssClient.DeleteContactConfig
+- uid: Wss.CoreModule.WssClient.CreateEvent*
+  commentId: Overload:Wss.CoreModule.WssClient.CreateEvent
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_CreateEvent_System_Int32_System_Int32_System_Int32_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  name: CreateEvent
+  nameWithType: WssClient.CreateEvent
+  fullName: Wss.CoreModule.WssClient.CreateEvent
+- uid: Wss.CoreModule.WssClient.DeleteEvent*
+  commentId: Overload:Wss.CoreModule.WssClient.DeleteEvent
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_DeleteEvent_System_Int32_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  name: DeleteEvent
+  nameWithType: WssClient.DeleteEvent
+  fullName: Wss.CoreModule.WssClient.DeleteEvent
+- uid: Wss.CoreModule.WssClient.AddEventToSchedule*
+  commentId: Overload:Wss.CoreModule.WssClient.AddEventToSchedule
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_AddEventToSchedule_System_Int32_System_Int32_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  name: AddEventToSchedule
+  nameWithType: WssClient.AddEventToSchedule
+  fullName: Wss.CoreModule.WssClient.AddEventToSchedule
+- uid: Wss.CoreModule.WssClient.DeleteEventFromSchedule*
+  commentId: Overload:Wss.CoreModule.WssClient.DeleteEventFromSchedule
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_DeleteEventFromSchedule_System_Int32_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  name: DeleteEventFromSchedule
+  nameWithType: WssClient.DeleteEventFromSchedule
+  fullName: Wss.CoreModule.WssClient.DeleteEventFromSchedule
+- uid: Wss.CoreModule.WssClient.MoveEventToSchedule*
+  commentId: Overload:Wss.CoreModule.WssClient.MoveEventToSchedule
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_MoveEventToSchedule_System_Int32_System_Int32_System_Int32_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  name: MoveEventToSchedule
+  nameWithType: WssClient.MoveEventToSchedule
+  fullName: Wss.CoreModule.WssClient.MoveEventToSchedule
+- uid: Wss.CoreModule.WssClient.EditEventContactConfig*
+  commentId: Overload:Wss.CoreModule.WssClient.EditEventContactConfig
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_EditEventContactConfig_System_Int32_System_Int32_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  name: EditEventContactConfig
+  nameWithType: WssClient.EditEventContactConfig
+  fullName: Wss.CoreModule.WssClient.EditEventContactConfig
+- uid: Wss.CoreModule.WssClient.EditEventPw*
+  commentId: Overload:Wss.CoreModule.WssClient.EditEventPw
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_EditEventPw_System_Int32_System_Int32___Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  name: EditEventPw
+  nameWithType: WssClient.EditEventPw
+  fullName: Wss.CoreModule.WssClient.EditEventPw
+- uid: Wss.CoreModule.WssClient.EditEventAmp*
+  commentId: Overload:Wss.CoreModule.WssClient.EditEventAmp
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_EditEventAmp_System_Int32_System_Int32___System_Int32___Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  name: EditEventAmp
+  nameWithType: WssClient.EditEventAmp
+  fullName: Wss.CoreModule.WssClient.EditEventAmp
+- uid: Wss.CoreModule.WssClient.EditEventShape*
+  commentId: Overload:Wss.CoreModule.WssClient.EditEventShape
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_EditEventShape_System_Int32_System_Int32_System_Int32_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  name: EditEventShape
+  nameWithType: WssClient.EditEventShape
+  fullName: Wss.CoreModule.WssClient.EditEventShape
+- uid: Wss.CoreModule.WssClient.EditEventDelay*
+  commentId: Overload:Wss.CoreModule.WssClient.EditEventDelay
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_EditEventDelay_System_Int32_System_Int32_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  name: EditEventDelay
+  nameWithType: WssClient.EditEventDelay
+  fullName: Wss.CoreModule.WssClient.EditEventDelay
+- uid: Wss.CoreModule.WssClient.EditEventRatio*
+  commentId: Overload:Wss.CoreModule.WssClient.EditEventRatio
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_EditEventRatio_System_Int32_System_Int32_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  name: EditEventRatio
+  nameWithType: WssClient.EditEventRatio
+  fullName: Wss.CoreModule.WssClient.EditEventRatio
+- uid: Wss.CoreModule.WssClient.EditEventEnableBit*
+  commentId: Overload:Wss.CoreModule.WssClient.EditEventEnableBit
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_EditEventEnableBit_System_Int32_System_Int32_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  name: EditEventEnableBit
+  nameWithType: WssClient.EditEventEnableBit
+  fullName: Wss.CoreModule.WssClient.EditEventEnableBit
+- uid: Wss.CoreModule.WssClient.CreateSchedule*
+  commentId: Overload:Wss.CoreModule.WssClient.CreateSchedule
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_CreateSchedule_System_Int32_System_Int32_System_Int32_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  name: CreateSchedule
+  nameWithType: WssClient.CreateSchedule
+  fullName: Wss.CoreModule.WssClient.CreateSchedule
+- uid: Wss.CoreModule.WssClient.DeleteSchedule*
+  commentId: Overload:Wss.CoreModule.WssClient.DeleteSchedule
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_DeleteSchedule_System_Int32_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  name: DeleteSchedule
+  nameWithType: WssClient.DeleteSchedule
+  fullName: Wss.CoreModule.WssClient.DeleteSchedule
+- uid: Wss.CoreModule.WssClient.SyncGroup*
+  commentId: Overload:Wss.CoreModule.WssClient.SyncGroup
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_SyncGroup_System_Int32_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  name: SyncGroup
+  nameWithType: WssClient.SyncGroup
+  fullName: Wss.CoreModule.WssClient.SyncGroup
+- uid: Wss.CoreModule.WssClient.ChangeGroupState*
+  commentId: Overload:Wss.CoreModule.WssClient.ChangeGroupState
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_ChangeGroupState_System_Int32_System_Int32_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  name: ChangeGroupState
+  nameWithType: WssClient.ChangeGroupState
+  fullName: Wss.CoreModule.WssClient.ChangeGroupState
+- uid: Wss.CoreModule.WssClient.ChangeScheduleState*
+  commentId: Overload:Wss.CoreModule.WssClient.ChangeScheduleState
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_ChangeScheduleState_System_Int32_System_Int32_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  name: ChangeScheduleState
+  nameWithType: WssClient.ChangeScheduleState
+  fullName: Wss.CoreModule.WssClient.ChangeScheduleState
+- uid: Wss.CoreModule.WssClient.ChangeScheduleGroup*
+  commentId: Overload:Wss.CoreModule.WssClient.ChangeScheduleGroup
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_ChangeScheduleGroup_System_Int32_System_Int32_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  name: ChangeScheduleGroup
+  nameWithType: WssClient.ChangeScheduleGroup
+  fullName: Wss.CoreModule.WssClient.ChangeScheduleGroup
+- uid: Wss.CoreModule.WssClient.ChangeScheduleDuration*
+  commentId: Overload:Wss.CoreModule.WssClient.ChangeScheduleDuration
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_ChangeScheduleDuration_System_Int32_System_Int32_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  name: ChangeScheduleDuration
+  nameWithType: WssClient.ChangeScheduleDuration
+  fullName: Wss.CoreModule.WssClient.ChangeScheduleDuration
+- uid: Wss.CoreModule.WssClient.ResetSchedules*
+  commentId: Overload:Wss.CoreModule.WssClient.ResetSchedules
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_ResetSchedules_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  name: ResetSchedules
+  nameWithType: WssClient.ResetSchedules
+  fullName: Wss.CoreModule.WssClient.ResetSchedules
+- uid: Wss.CoreModule.WssClient.SetCustomWaveform*
+  commentId: Overload:Wss.CoreModule.WssClient.SetCustomWaveform
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_SetCustomWaveform_System_Int32_System_Int32___System_Int32_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  name: SetCustomWaveform
+  nameWithType: WssClient.SetCustomWaveform
+  fullName: Wss.CoreModule.WssClient.SetCustomWaveform
+- uid: Wss.CoreModule.WssClient.EditSettings*
+  commentId: Overload:Wss.CoreModule.WssClient.EditSettings
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_EditSettings_System_Int32_System_Int32_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  name: EditSettings
+  nameWithType: WssClient.EditSettings
+  fullName: Wss.CoreModule.WssClient.EditSettings
+- uid: Wss.CoreModule.WssClient.PopulateBoardSettings*
+  commentId: Overload:Wss.CoreModule.WssClient.PopulateBoardSettings
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_PopulateBoardSettings_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  name: PopulateBoardSettings
+  nameWithType: WssClient.PopulateBoardSettings
+  fullName: Wss.CoreModule.WssClient.PopulateBoardSettings
+- uid: Wss.CoreModule.WssClient.PopulateFramSettings*
+  commentId: Overload:Wss.CoreModule.WssClient.PopulateFramSettings
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_PopulateFramSettings_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  name: PopulateFramSettings
+  nameWithType: WssClient.PopulateFramSettings
+  fullName: Wss.CoreModule.WssClient.PopulateFramSettings
+- uid: Wss.CoreModule.WssClient.EraseLog*
+  commentId: Overload:Wss.CoreModule.WssClient.EraseLog
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_EraseLog_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  name: EraseLog
+  nameWithType: WssClient.EraseLog
+  fullName: Wss.CoreModule.WssClient.EraseLog
+- uid: Wss.CoreModule.WssClient.GetLog*
+  commentId: Overload:Wss.CoreModule.WssClient.GetLog
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_GetLog_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  name: GetLog
+  nameWithType: WssClient.GetLog
+  fullName: Wss.CoreModule.WssClient.GetLog
+- uid: Wss.CoreModule.WssClient.StreamChange*
+  commentId: Overload:Wss.CoreModule.WssClient.StreamChange
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_StreamChange_System_Int32___System_Int32___System_Int32___Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  name: StreamChange
+  nameWithType: WssClient.StreamChange
+  fullName: Wss.CoreModule.WssClient.StreamChange
+- uid: Wss.CoreModule.WssClient.ZeroOutStim*
+  commentId: Overload:Wss.CoreModule.WssClient.ZeroOutStim
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_ZeroOutStim_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  name: ZeroOutStim
+  nameWithType: WssClient.ZeroOutStim
+  fullName: Wss.CoreModule.WssClient.ZeroOutStim

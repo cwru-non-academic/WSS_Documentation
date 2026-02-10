@@ -1,0 +1,126 @@
+### YamlMime:TableOfContent
+items:
+- uid: Wss.CalibrationModule
+  name: Wss.CalibrationModule
+  type: Namespace
+  items:
+  - uid: Wss.CalibrationModule.IStimParamsCore
+    name: IStimParamsCore
+    type: Interface
+  - uid: Wss.CalibrationModule.StimParamsConfig
+    name: StimParamsConfig
+    type: Class
+  - uid: Wss.CalibrationModule.StimParamsConfigController
+    name: StimParamsConfigController
+    type: Class
+  - uid: Wss.CalibrationModule.StimParamsLayer
+    name: StimParamsLayer
+    type: Class
+- uid: Wss.CoreModule
+  name: Wss.CoreModule
+  type: Namespace
+  items:
+  - uid: Wss.CoreModule.AmpCurveParams
+    name: AmpCurveParams
+    type: Class
+  - uid: Wss.CoreModule.CoreConfig
+    name: CoreConfig
+    type: Class
+  - uid: Wss.CoreModule.CoreConfigController
+    name: CoreConfigController
+    type: Class
+  - uid: Wss.CoreModule.DictConfigBase
+    name: DictConfigBase
+    type: Class
+  - uid: Wss.CoreModule.IBasicStimulation
+    name: IBasicStimulation
+    type: Interface
+  - uid: Wss.CoreModule.ICoreConfig
+    name: ICoreConfig
+    type: Interface
+  - uid: Wss.CoreModule.IFrameCodec
+    name: IFrameCodec
+    type: Interface
+  - uid: Wss.CoreModule.IStimulationCore
+    name: IStimulationCore
+    type: Interface
+  - uid: Wss.CoreModule.ITransport
+    name: ITransport
+    type: Interface
+  - uid: Wss.CoreModule.JsonReader
+    name: JsonReader
+    type: Class
+  - uid: Wss.CoreModule.Log
+    name: Log
+    type: Class
+  - uid: Wss.CoreModule.Log.LogLevel
+    name: Log.LogLevel
+    type: Enum
+  - uid: Wss.CoreModule.ModuleSettings
+    name: ModuleSettings
+    type: Class
+  - uid: Wss.CoreModule.ModuleSettings.FingerswitchConfig
+    name: ModuleSettings.FingerswitchConfig
+    type: Enum
+  - uid: Wss.CoreModule.ModuleSettings.HwConfigFlags
+    name: ModuleSettings.HwConfigFlags
+    type: Enum
+  - uid: Wss.CoreModule.ModuleSettings.ParameterStepKind
+    name: ModuleSettings.ParameterStepKind
+    type: Enum
+  - uid: Wss.CoreModule.SerialPortTransport
+    name: SerialPortTransport
+    type: Class
+  - uid: Wss.CoreModule.StimParamsBasicExtensions
+    name: StimParamsBasicExtensions
+    type: Class
+  - uid: Wss.CoreModule.TestModeTransport
+    name: TestModeTransport
+    type: Class
+  - uid: Wss.CoreModule.WSSLimits
+    name: WSSLimits
+    type: Enum
+  - uid: Wss.CoreModule.WSSMessageIDs
+    name: WSSMessageIDs
+    type: Enum
+  - uid: Wss.CoreModule.WSSVersionHandler
+    name: WSSVersionHandler
+    type: Class
+  - uid: Wss.CoreModule.WSSVersionHandler.SupportedVersions
+    name: WSSVersionHandler.SupportedVersions
+    type: Enum
+  - uid: Wss.CoreModule.Waveform
+    name: Waveform
+    type: Class
+  - uid: Wss.CoreModule.WaveformBuilder
+    name: WaveformBuilder
+    type: Class
+  - uid: Wss.CoreModule.WssClient
+    name: WssClient
+    type: Class
+  - uid: Wss.CoreModule.WssFrameCodec
+    name: WssFrameCodec
+    type: Class
+  - uid: Wss.CoreModule.WssStimulationCore
+    name: WssStimulationCore
+    type: Class
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    type: Enum
+- uid: Wss.ModelModule
+  name: Wss.ModelModule
+  type: Namespace
+  items:
+  - uid: Wss.ModelModule.IModelParamsCore
+    name: IModelParamsCore
+    type: Interface
+  - uid: Wss.ModelModule.ModelConfig
+    name: ModelConfig
+    type: Class
+  - uid: Wss.ModelModule.ModelConfigController
+    name: ModelConfigController
+    type: Class
+  - uid: Wss.ModelModule.ModelParamsLayer
+    name: ModelParamsLayer
+    type: Class
+memberLayout: SamePage

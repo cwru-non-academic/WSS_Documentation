@@ -1,55 +1,45 @@
-﻿{
-    "metadata":  [
-                     {
-                         "dest":  "api",
-                         "filter":  "filterConfig.yml",
-                         "disableGitFeatures":  true,
-                         "src":  [
-                                     {
-                                         "files":  [
-                                                       "ApiProject/ApiProject.csproj"
-                                                   ]
-                                     }
-                                 ]
-                     }
-                 ],
-    "build":  {
-                  "content":  [
-                                  {
-                                      "files":  [
-                                                    "*.md",
-                                                    "**/*.md"
-                                                ],
-                                      "exclude":  [
-                                                      "_site/**",
-                                                      "api/**"
-                                                  ]
-                                  },
-                                  {
-                                      "files":  [
-                                                    "api/**.yml",
-                                                    "api/index.md"
-                                                ]
-                                  }
-                              ],
-                  "resource":  [
-                                   {
-                                       "files":  [
-                                                     "images/**"
-                                                 ]
-                                   }
-                               ],
-                  "globalMetadata":  {
-                                         "_appTitle":  "WSS Interfacing Documentation",
-                                         "_enableSearch":  true,
-                                         "showExternalInherited":  false
-                                     },
-                  "template":  [
-                                   "default"
-                               ],
-                  "xref":  [
-                               "https://xref.docs.microsoft.com/query?uid={uid}"
-                           ],
-                  "markdownEngineName":  "markdig"
-              }
+{
+  "metadata": [],
+  "build": {
+    "content": [
+      {
+        "files": [
+          "*.md",
+          "**/*.md"
+        ],
+        "exclude": [
+          "_site/**",
+          "api/**",
+          "external/**"
+        ]
+      },
+      {
+        "files": [
+          "api/**.yml",
+          "api/**/index.md",
+          "api/**/toc.yml"
+        ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "images/**",
+          "external/**"
+        ]
+      }
+    ],
+    "globalMetadata": {
+      "_appTitle": "WSS Documentation Hub",
+      "_enableSearch": true,
+      "showExternalInherited": false
+    },
+    "template": [
+      "default"
+    ],
+    "xref": [
+      "https://xref.docs.microsoft.com/query?uid={uid}"
+    ],
+    "markdownEngineName": "markdig"
+  }
 }

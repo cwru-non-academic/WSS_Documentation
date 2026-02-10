@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class StimParamsConfigController | WSS Documentation Hub </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class StimParamsConfigController | WSS Documentation Hub ">
+    
+    <meta name="description" content="Provides high-level access to stimulation parameter configuration. Automatically seeds channel entries based on max device count and ensures safe access. Supports dotted keys of form &amp;quot;stim.ch.{N}.{leaf}&amp;quot;.">
+      <link rel="shortcut icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../styles/docfx.css">
+      <link rel="stylesheet" href="../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Wss.CalibrationModule.StimParamsConfigController">
+
+
+
+  <h1 id="Wss_CalibrationModule_StimParamsConfigController" data-uid="Wss.CalibrationModule.StimParamsConfigController" class="text-break">Class StimParamsConfigController</h1>
+  <div class="markdown level0 summary"><p>Provides high-level access to stimulation parameter configuration.
+Automatically seeds channel entries based on max device count and ensures safe access.
+Supports dotted keys of form &quot;stim.ch.{N}.{leaf}&quot;.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">object</span></div>
+    <div class="level1"><span class="xref">StimParamsConfigController</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Wss.html">Wss</a>.<a class="xref" href="Wss.CalibrationModule.html">CalibrationModule</a></h6>
+  <h6><strong>Assembly</strong>: WSS_Core_Interface.dll</h6>
+  <h5 id="Wss_CalibrationModule_StimParamsConfigController_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class StimParamsConfigController</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+
+
+  <a id="Wss_CalibrationModule_StimParamsConfigController__ctor_" data-uid="Wss.CalibrationModule.StimParamsConfigController.#ctor*"></a>
+  <h4 id="Wss_CalibrationModule_StimParamsConfigController__ctor_System_String_System_Int32_" data-uid="Wss.CalibrationModule.StimParamsConfigController.#ctor(System.String,System.Int32)">StimParamsConfigController(string, int)</h4>
+  <div class="markdown level1 summary"><p>Constructs a new stimulation parameter controller using the provided JSON path and max WSS value.
+Automatically creates default channel entries if missing.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public StimParamsConfigController(string path, int maxWss)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">path</span></td>
+        <td><p>Path to the JSON configuration file.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">maxWss</span></td>
+        <td><p>Maximum number of WSS devices supported by this instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+</h3>
+
+
+  <a id="Wss_CalibrationModule_StimParamsConfigController_MaxWss_" data-uid="Wss.CalibrationModule.StimParamsConfigController.MaxWss*"></a>
+  <h4 id="Wss_CalibrationModule_StimParamsConfigController_MaxWss" data-uid="Wss.CalibrationModule.StimParamsConfigController.MaxWss">MaxWss</h4>
+  <div class="markdown level1 summary"><p>Number of WSS units allowed by configuration.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int MaxWss { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CalibrationModule_StimParamsConfigController_PerWss_" data-uid="Wss.CalibrationModule.StimParamsConfigController.PerWss*"></a>
+  <h4 id="Wss_CalibrationModule_StimParamsConfigController_PerWss" data-uid="Wss.CalibrationModule.StimParamsConfigController.PerWss">PerWss</h4>
+  <div class="markdown level1 summary"><p>Hardware constant: channels per WSS.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int PerWss { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CalibrationModule_StimParamsConfigController_TotalChannels_" data-uid="Wss.CalibrationModule.StimParamsConfigController.TotalChannels*"></a>
+  <h4 id="Wss_CalibrationModule_StimParamsConfigController_TotalChannels" data-uid="Wss.CalibrationModule.StimParamsConfigController.TotalChannels">TotalChannels</h4>
+  <div class="markdown level1 summary"><p>Total number of channels (ChannelsPerWss × MaxWss).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int TotalChannels { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+
+
+  <a id="Wss_CalibrationModule_StimParamsConfigController_AddOrUpdateStimParam_" data-uid="Wss.CalibrationModule.StimParamsConfigController.AddOrUpdateStimParam*"></a>
+  <h4 id="Wss_CalibrationModule_StimParamsConfigController_AddOrUpdateStimParam_System_String_System_Single_" data-uid="Wss.CalibrationModule.StimParamsConfigController.AddOrUpdateStimParam(System.String,System.Single)">AddOrUpdateStimParam(string, float)</h4>
+  <div class="markdown level1 summary"><p>Adds or updates a stimulation parameter at the specified dotted key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddOrUpdateStimParam(string key, float value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Parameter key (e.g., &quot;stim.ch.1.defaultPA&quot;).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">float</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>Value to assign.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CalibrationModule_StimParamsConfigController_GetAllStimParams_" data-uid="Wss.CalibrationModule.StimParamsConfigController.GetAllStimParams*"></a>
+  <h4 id="Wss_CalibrationModule_StimParamsConfigController_GetAllStimParams" data-uid="Wss.CalibrationModule.StimParamsConfigController.GetAllStimParams">GetAllStimParams()</h4>
+  <div class="markdown level1 summary"><p>Returns all numeric stimulation parameters as a flat dictionary of dotted keys and float values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, float&gt; GetAllStimParams()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">string</span>, <span class="xref">float</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CalibrationModule_StimParamsConfigController_GetChannelAmp_" data-uid="Wss.CalibrationModule.StimParamsConfigController.GetChannelAmp*"></a>
+  <h4 id="Wss_CalibrationModule_StimParamsConfigController_GetChannelAmp_System_Int32_" data-uid="Wss.CalibrationModule.StimParamsConfigController.GetChannelAmp(System.Int32)">GetChannelAmp(int)</h4>
+  <div class="markdown level1 summary"><p>Gets the default amplitude (PA) stored for the channel.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float GetChannelAmp(int ch)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">ch</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">float</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CalibrationModule_StimParamsConfigController_GetChannelAmpMode_" data-uid="Wss.CalibrationModule.StimParamsConfigController.GetChannelAmpMode*"></a>
+  <h4 id="Wss_CalibrationModule_StimParamsConfigController_GetChannelAmpMode_System_Int32_" data-uid="Wss.CalibrationModule.StimParamsConfigController.GetChannelAmpMode(System.Int32)">GetChannelAmpMode(int)</h4>
+  <div class="markdown level1 summary"><p>Gets the configured amplitude-control mode, warning and falling back to PW when invalid.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetChannelAmpMode(int ch)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">ch</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CalibrationModule_StimParamsConfigController_GetChannelDefaultPW_" data-uid="Wss.CalibrationModule.StimParamsConfigController.GetChannelDefaultPW*"></a>
+  <h4 id="Wss_CalibrationModule_StimParamsConfigController_GetChannelDefaultPW_System_Int32_" data-uid="Wss.CalibrationModule.StimParamsConfigController.GetChannelDefaultPW(System.Int32)">GetChannelDefaultPW(int)</h4>
+  <div class="markdown level1 summary"><p>Gets the default pulse width used when PA mode is active.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetChannelDefaultPW(int ch)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">ch</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CalibrationModule_StimParamsConfigController_GetChannelIPI_" data-uid="Wss.CalibrationModule.StimParamsConfigController.GetChannelIPI*"></a>
+  <h4 id="Wss_CalibrationModule_StimParamsConfigController_GetChannelIPI_System_Int32_" data-uid="Wss.CalibrationModule.StimParamsConfigController.GetChannelIPI(System.Int32)">GetChannelIPI(int)</h4>
+  <div class="markdown level1 summary"><p>Gets inter-pulse interval (IPI) for a channel in mili seconds.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetChannelIPI(int ch)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">ch</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CalibrationModule_StimParamsConfigController_GetChannelPAMax_" data-uid="Wss.CalibrationModule.StimParamsConfigController.GetChannelPAMax*"></a>
+  <h4 id="Wss_CalibrationModule_StimParamsConfigController_GetChannelPAMax_System_Int32_" data-uid="Wss.CalibrationModule.StimParamsConfigController.GetChannelPAMax(System.Int32)">GetChannelPAMax(int)</h4>
+  <div class="markdown level1 summary"><p>Gets maximum PA (mA) for the channel.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float GetChannelPAMax(int ch)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">ch</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">float</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CalibrationModule_StimParamsConfigController_GetChannelPAMin_" data-uid="Wss.CalibrationModule.StimParamsConfigController.GetChannelPAMin*"></a>
+  <h4 id="Wss_CalibrationModule_StimParamsConfigController_GetChannelPAMin_System_Int32_" data-uid="Wss.CalibrationModule.StimParamsConfigController.GetChannelPAMin(System.Int32)">GetChannelPAMin(int)</h4>
+  <div class="markdown level1 summary"><p>Gets minimum PA (mA) for the channel.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float GetChannelPAMin(int ch)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">ch</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">float</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CalibrationModule_StimParamsConfigController_GetChannelPWMax_" data-uid="Wss.CalibrationModule.StimParamsConfigController.GetChannelPWMax*"></a>
+  <h4 id="Wss_CalibrationModule_StimParamsConfigController_GetChannelPWMax_System_Int32_" data-uid="Wss.CalibrationModule.StimParamsConfigController.GetChannelPWMax(System.Int32)">GetChannelPWMax(int)</h4>
+  <div class="markdown level1 summary"><p>Gets maximum pulse width for a channel in micro seconds.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetChannelPWMax(int ch)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">ch</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CalibrationModule_StimParamsConfigController_GetChannelPWMin_" data-uid="Wss.CalibrationModule.StimParamsConfigController.GetChannelPWMin*"></a>
+  <h4 id="Wss_CalibrationModule_StimParamsConfigController_GetChannelPWMin_System_Int32_" data-uid="Wss.CalibrationModule.StimParamsConfigController.GetChannelPWMin(System.Int32)">GetChannelPWMin(int)</h4>
+  <div class="markdown level1 summary"><p>Gets minimum pulse width for a channel in micro seconds.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetChannelPWMin(int ch)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">ch</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CalibrationModule_StimParamsConfigController_GetStimParam_" data-uid="Wss.CalibrationModule.StimParamsConfigController.GetStimParam*"></a>
+  <h4 id="Wss_CalibrationModule_StimParamsConfigController_GetStimParam_System_String_" data-uid="Wss.CalibrationModule.StimParamsConfigController.GetStimParam(System.String)">GetStimParam(string)</h4>
+  <div class="markdown level1 summary"><p>Retrieves a stimulation parameter value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float GetStimParam(string key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Parameter key (e.g., &quot;stim.ch.1.maxPW&quot;).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">float</span></td>
+        <td><p>Parameter value as float.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CalibrationModule_StimParamsConfigController_IsChannelInRange_" data-uid="Wss.CalibrationModule.StimParamsConfigController.IsChannelInRange*"></a>
+  <h4 id="Wss_CalibrationModule_StimParamsConfigController_IsChannelInRange_System_Int32_" data-uid="Wss.CalibrationModule.StimParamsConfigController.IsChannelInRange(System.Int32)">IsChannelInRange(int)</h4>
+  <div class="markdown level1 summary"><p>Checks whether a channel index is within the valid range.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsChannelInRange(int ch)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">ch</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CalibrationModule_StimParamsConfigController_LoadParamsJson_" data-uid="Wss.CalibrationModule.StimParamsConfigController.LoadParamsJson*"></a>
+  <h4 id="Wss_CalibrationModule_StimParamsConfigController_LoadParamsJson" data-uid="Wss.CalibrationModule.StimParamsConfigController.LoadParamsJson">LoadParamsJson()</h4>
+  <div class="markdown level1 summary"><p>Reloads the current context file (same path used at construction or the last Load(path)).
+Reinstantiates the config to re-read JSON from disk, then ensures channel template exists.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void LoadParamsJson()</code></pre>
+  </div>
+
+
+  <a id="Wss_CalibrationModule_StimParamsConfigController_LoadParamsJson_" data-uid="Wss.CalibrationModule.StimParamsConfigController.LoadParamsJson*"></a>
+  <h4 id="Wss_CalibrationModule_StimParamsConfigController_LoadParamsJson_System_String_" data-uid="Wss.CalibrationModule.StimParamsConfigController.LoadParamsJson(System.String)">LoadParamsJson(string)</h4>
+  <div class="markdown level1 summary"><p>Loads a new context file. If <code class="paramref">path</code> is a directory,
+uses &quot;stimParams.json&quot; within it. Replaces the active config and backfills the template.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void LoadParamsJson(string path)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">path</span></td>
+        <td><p>Absolute/relative file path or directory.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ArgumentException</span></td>
+        <td><p>If the path is null or whitespace.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CalibrationModule_StimParamsConfigController_SaveParamsJson_" data-uid="Wss.CalibrationModule.StimParamsConfigController.SaveParamsJson*"></a>
+  <h4 id="Wss_CalibrationModule_StimParamsConfigController_SaveParamsJson" data-uid="Wss.CalibrationModule.StimParamsConfigController.SaveParamsJson">SaveParamsJson()</h4>
+  <div class="markdown level1 summary"><p>Persists the current stimulation params to disk using the underlying config's Save().
+Thread-safe via the config layer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SaveParamsJson()</code></pre>
+  </div>
+
+
+  <a id="Wss_CalibrationModule_StimParamsConfigController_SetAllChannelsAmpMode_" data-uid="Wss.CalibrationModule.StimParamsConfigController.SetAllChannelsAmpMode*"></a>
+  <h4 id="Wss_CalibrationModule_StimParamsConfigController_SetAllChannelsAmpMode_System_String_" data-uid="Wss.CalibrationModule.StimParamsConfigController.SetAllChannelsAmpMode(System.String)">SetAllChannelsAmpMode(string)</h4>
+  <div class="markdown level1 summary"><p>Sets the amplitude-control mode for every channel in one call.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetAllChannelsAmpMode(string mode)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">mode</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CalibrationModule_StimParamsConfigController_SetChannelAmp_" data-uid="Wss.CalibrationModule.StimParamsConfigController.SetChannelAmp*"></a>
+  <h4 id="Wss_CalibrationModule_StimParamsConfigController_SetChannelAmp_System_Int32_System_Single_" data-uid="Wss.CalibrationModule.StimParamsConfigController.SetChannelAmp(System.Int32,System.Single)">SetChannelAmp(int, float)</h4>
+  <div class="markdown level1 summary"><p>Sets the default amplitude (PA) for a channel. Used when PW is the controlled axis.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetChannelAmp(int ch, float mA)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">ch</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">float</span></td>
+        <td><span class="parametername">mA</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CalibrationModule_StimParamsConfigController_SetChannelAmpMode_" data-uid="Wss.CalibrationModule.StimParamsConfigController.SetChannelAmpMode*"></a>
+  <h4 id="Wss_CalibrationModule_StimParamsConfigController_SetChannelAmpMode_System_Int32_System_String_" data-uid="Wss.CalibrationModule.StimParamsConfigController.SetChannelAmpMode(System.Int32,System.String)">SetChannelAmpMode(int, string)</h4>
+  <div class="markdown level1 summary"><p>Sets the amplitude-control mode (&quot;PW&quot; or &quot;PA&quot;) for the specified channel.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetChannelAmpMode(int ch, string mode)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">ch</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">mode</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CalibrationModule_StimParamsConfigController_SetChannelDefaultPW_" data-uid="Wss.CalibrationModule.StimParamsConfigController.SetChannelDefaultPW*"></a>
+  <h4 id="Wss_CalibrationModule_StimParamsConfigController_SetChannelDefaultPW_System_Int32_System_Int32_" data-uid="Wss.CalibrationModule.StimParamsConfigController.SetChannelDefaultPW(System.Int32,System.Int32)">SetChannelDefaultPW(int, int)</h4>
+  <div class="markdown level1 summary"><p>Sets the default pulse width used when PA is the controlled axis.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetChannelDefaultPW(int ch, int us)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">ch</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">us</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CalibrationModule_StimParamsConfigController_SetChannelIPI_" data-uid="Wss.CalibrationModule.StimParamsConfigController.SetChannelIPI*"></a>
+  <h4 id="Wss_CalibrationModule_StimParamsConfigController_SetChannelIPI_System_Int32_System_Int32_" data-uid="Wss.CalibrationModule.StimParamsConfigController.SetChannelIPI(System.Int32,System.Int32)">SetChannelIPI(int, int)</h4>
+  <div class="markdown level1 summary"><p>Sets inter-pulse interval (IPI) for the specified channel in mili seconds.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetChannelIPI(int ch, int ms)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">ch</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">ms</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CalibrationModule_StimParamsConfigController_SetChannelPAMax_" data-uid="Wss.CalibrationModule.StimParamsConfigController.SetChannelPAMax*"></a>
+  <h4 id="Wss_CalibrationModule_StimParamsConfigController_SetChannelPAMax_System_Int32_System_Single_" data-uid="Wss.CalibrationModule.StimParamsConfigController.SetChannelPAMax(System.Int32,System.Single)">SetChannelPAMax(int, float)</h4>
+  <div class="markdown level1 summary"><p>Sets maximum PA (mA) for the specified channel.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetChannelPAMax(int ch, float mA)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">ch</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">float</span></td>
+        <td><span class="parametername">mA</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CalibrationModule_StimParamsConfigController_SetChannelPAMin_" data-uid="Wss.CalibrationModule.StimParamsConfigController.SetChannelPAMin*"></a>
+  <h4 id="Wss_CalibrationModule_StimParamsConfigController_SetChannelPAMin_System_Int32_System_Single_" data-uid="Wss.CalibrationModule.StimParamsConfigController.SetChannelPAMin(System.Int32,System.Single)">SetChannelPAMin(int, float)</h4>
+  <div class="markdown level1 summary"><p>Sets minimum PA (mA) for the specified channel.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetChannelPAMin(int ch, float mA)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">ch</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">float</span></td>
+        <td><span class="parametername">mA</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CalibrationModule_StimParamsConfigController_SetChannelPWMax_" data-uid="Wss.CalibrationModule.StimParamsConfigController.SetChannelPWMax*"></a>
+  <h4 id="Wss_CalibrationModule_StimParamsConfigController_SetChannelPWMax_System_Int32_System_Int32_" data-uid="Wss.CalibrationModule.StimParamsConfigController.SetChannelPWMax(System.Int32,System.Int32)">SetChannelPWMax(int, int)</h4>
+  <div class="markdown level1 summary"><p>Sets maximum pulse width for the specified channel in micro seconds.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetChannelPWMax(int ch, int us)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">ch</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">us</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CalibrationModule_StimParamsConfigController_SetChannelPWMin_" data-uid="Wss.CalibrationModule.StimParamsConfigController.SetChannelPWMin*"></a>
+  <h4 id="Wss_CalibrationModule_StimParamsConfigController_SetChannelPWMin_System_Int32_System_Int32_" data-uid="Wss.CalibrationModule.StimParamsConfigController.SetChannelPWMin(System.Int32,System.Int32)">SetChannelPWMin(int, int)</h4>
+  <div class="markdown level1 summary"><p>Sets minimum pulse width for the specified channel in micro seconds.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetChannelPWMin(int ch, int us)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">ch</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">us</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CalibrationModule_StimParamsConfigController_TryGetStimParam_" data-uid="Wss.CalibrationModule.StimParamsConfigController.TryGetStimParam*"></a>
+  <h4 id="Wss_CalibrationModule_StimParamsConfigController_TryGetStimParam_System_String_System_Single__" data-uid="Wss.CalibrationModule.StimParamsConfigController.TryGetStimParam(System.String,System.Single@)">TryGetStimParam(string, out float)</h4>
+  <div class="markdown level1 summary"><p>Attempts to retrieve a stimulation parameter value without throwing.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryGetStimParam(string key, out float value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Parameter key.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">float</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>Output value if found.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td><p>True if the parameter exists.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

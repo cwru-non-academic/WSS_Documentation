@@ -1,0 +1,514 @@
+### YamlMime:ManagedReference
+items:
+- uid: Wss.CoreModule.StimParamsBasicExtensions
+  commentId: T:Wss.CoreModule.StimParamsBasicExtensions
+  id: StimParamsBasicExtensions
+  parent: Wss.CoreModule
+  children:
+  - Wss.CoreModule.StimParamsBasicExtensions.LoadBoard(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WssTarget)
+  - Wss.CoreModule.StimParamsBasicExtensions.LoadWaveform(Wss.CalibrationModule.IStimParamsCore,System.String,System.Int32)
+  - Wss.CoreModule.StimParamsBasicExtensions.RequestConfigs(Wss.CalibrationModule.IStimParamsCore,System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  - Wss.CoreModule.StimParamsBasicExtensions.SaveBoard(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WssTarget)
+  - Wss.CoreModule.StimParamsBasicExtensions.TryUpdateWaveform(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  - Wss.CoreModule.StimParamsBasicExtensions.UpdateEventShape(Wss.CalibrationModule.IStimParamsCore,System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  - Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform(Wss.CalibrationModule.IStimParamsCore,System.Int32[],System.Int32,Wss.CoreModule.WssTarget)
+  - Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  - Wss.CoreModule.StimParamsBasicExtensions.WaveformSetup(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  langs:
+  - csharp
+  - vb
+  name: StimParamsBasicExtensions
+  nameWithType: StimParamsBasicExtensions
+  fullName: Wss.CoreModule.StimParamsBasicExtensions
+  type: Class
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Convenience extension methods over <xref href="Wss.CalibrationModule.IStimParamsCore" data-throw-if-not-resolved="false"></xref> that forward
+
+    to the optional BASIC layer (<xref href="Wss.CoreModule.IBasicStimulation" data-throw-if-not-resolved="false"></xref>).
+  example: []
+  syntax:
+    content: public static class StimParamsBasicExtensions
+    content.vb: Public Module StimParamsBasicExtensions
+  inheritance:
+  - System.Object
+- uid: Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  id: UpdateWaveform(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  isExtensionMethod: true
+  parent: Wss.CoreModule.StimParamsBasicExtensions
+  langs:
+  - csharp
+  - vb
+  name: UpdateWaveform(IStimParamsCore, WaveformBuilder, int, WssTarget)
+  nameWithType: StimParamsBasicExtensions.UpdateWaveform(IStimParamsCore, WaveformBuilder, int, WssTarget)
+  fullName: Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform(Wss.CalibrationModule.IStimParamsCore, Wss.CoreModule.WaveformBuilder, int, Wss.CoreModule.WssTarget)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Forward to BASIC.UpdateWaveform(WaveformBuilder,...).
+  example: []
+  syntax:
+    content: public static void UpdateWaveform(this IStimParamsCore s, WaveformBuilder wf, int eventId, WssTarget t)
+    parameters:
+    - id: s
+      type: Wss.CalibrationModule.IStimParamsCore
+    - id: wf
+      type: Wss.CoreModule.WaveformBuilder
+    - id: eventId
+      type: System.Int32
+    - id: t
+      type: Wss.CoreModule.WssTarget
+    content.vb: Public Shared Sub UpdateWaveform(s As IStimParamsCore, wf As WaveformBuilder, eventId As Integer, t As WssTarget)
+  overload: Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform*
+  nameWithType.vb: StimParamsBasicExtensions.UpdateWaveform(IStimParamsCore, WaveformBuilder, Integer, WssTarget)
+  fullName.vb: Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform(Wss.CalibrationModule.IStimParamsCore, Wss.CoreModule.WaveformBuilder, Integer, Wss.CoreModule.WssTarget)
+  name.vb: UpdateWaveform(IStimParamsCore, WaveformBuilder, Integer, WssTarget)
+- uid: Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform(Wss.CalibrationModule.IStimParamsCore,System.Int32[],System.Int32,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform(Wss.CalibrationModule.IStimParamsCore,System.Int32[],System.Int32,Wss.CoreModule.WssTarget)
+  id: UpdateWaveform(Wss.CalibrationModule.IStimParamsCore,System.Int32[],System.Int32,Wss.CoreModule.WssTarget)
+  isExtensionMethod: true
+  parent: Wss.CoreModule.StimParamsBasicExtensions
+  langs:
+  - csharp
+  - vb
+  name: UpdateWaveform(IStimParamsCore, int[], int, WssTarget)
+  nameWithType: StimParamsBasicExtensions.UpdateWaveform(IStimParamsCore, int[], int, WssTarget)
+  fullName: Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform(Wss.CalibrationModule.IStimParamsCore, int[], int, Wss.CoreModule.WssTarget)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Forward to BASIC.UpdateWaveform(int[],...).
+  example: []
+  syntax:
+    content: public static void UpdateWaveform(this IStimParamsCore s, int[] waveform, int eventId, WssTarget t)
+    parameters:
+    - id: s
+      type: Wss.CalibrationModule.IStimParamsCore
+    - id: waveform
+      type: System.Int32[]
+    - id: eventId
+      type: System.Int32
+    - id: t
+      type: Wss.CoreModule.WssTarget
+    content.vb: Public Shared Sub UpdateWaveform(s As IStimParamsCore, waveform As Integer(), eventId As Integer, t As WssTarget)
+  overload: Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform*
+  nameWithType.vb: StimParamsBasicExtensions.UpdateWaveform(IStimParamsCore, Integer(), Integer, WssTarget)
+  fullName.vb: Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform(Wss.CalibrationModule.IStimParamsCore, Integer(), Integer, Wss.CoreModule.WssTarget)
+  name.vb: UpdateWaveform(IStimParamsCore, Integer(), Integer, WssTarget)
+- uid: Wss.CoreModule.StimParamsBasicExtensions.UpdateEventShape(Wss.CalibrationModule.IStimParamsCore,System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.StimParamsBasicExtensions.UpdateEventShape(Wss.CalibrationModule.IStimParamsCore,System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  id: UpdateEventShape(Wss.CalibrationModule.IStimParamsCore,System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  isExtensionMethod: true
+  parent: Wss.CoreModule.StimParamsBasicExtensions
+  langs:
+  - csharp
+  - vb
+  name: UpdateEventShape(IStimParamsCore, int, int, int, WssTarget)
+  nameWithType: StimParamsBasicExtensions.UpdateEventShape(IStimParamsCore, int, int, int, WssTarget)
+  fullName: Wss.CoreModule.StimParamsBasicExtensions.UpdateEventShape(Wss.CalibrationModule.IStimParamsCore, int, int, int, Wss.CoreModule.WssTarget)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Forward to BASIC.UpdateEventShape(...).
+  example: []
+  syntax:
+    content: public static void UpdateEventShape(this IStimParamsCore s, int cathodicWaveform, int anodicWaveform, int eventId, WssTarget t)
+    parameters:
+    - id: s
+      type: Wss.CalibrationModule.IStimParamsCore
+    - id: cathodicWaveform
+      type: System.Int32
+    - id: anodicWaveform
+      type: System.Int32
+    - id: eventId
+      type: System.Int32
+    - id: t
+      type: Wss.CoreModule.WssTarget
+    content.vb: Public Shared Sub UpdateEventShape(s As IStimParamsCore, cathodicWaveform As Integer, anodicWaveform As Integer, eventId As Integer, t As WssTarget)
+  overload: Wss.CoreModule.StimParamsBasicExtensions.UpdateEventShape*
+  nameWithType.vb: StimParamsBasicExtensions.UpdateEventShape(IStimParamsCore, Integer, Integer, Integer, WssTarget)
+  fullName.vb: Wss.CoreModule.StimParamsBasicExtensions.UpdateEventShape(Wss.CalibrationModule.IStimParamsCore, Integer, Integer, Integer, Wss.CoreModule.WssTarget)
+  name.vb: UpdateEventShape(IStimParamsCore, Integer, Integer, Integer, WssTarget)
+- uid: Wss.CoreModule.StimParamsBasicExtensions.LoadWaveform(Wss.CalibrationModule.IStimParamsCore,System.String,System.Int32)
+  commentId: M:Wss.CoreModule.StimParamsBasicExtensions.LoadWaveform(Wss.CalibrationModule.IStimParamsCore,System.String,System.Int32)
+  id: LoadWaveform(Wss.CalibrationModule.IStimParamsCore,System.String,System.Int32)
+  isExtensionMethod: true
+  parent: Wss.CoreModule.StimParamsBasicExtensions
+  langs:
+  - csharp
+  - vb
+  name: LoadWaveform(IStimParamsCore, string, int)
+  nameWithType: StimParamsBasicExtensions.LoadWaveform(IStimParamsCore, string, int)
+  fullName: Wss.CoreModule.StimParamsBasicExtensions.LoadWaveform(Wss.CalibrationModule.IStimParamsCore, string, int)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Forward to BASIC.LoadWaveform(...).
+  example: []
+  syntax:
+    content: public static void LoadWaveform(this IStimParamsCore s, string fileName, int eventId)
+    parameters:
+    - id: s
+      type: Wss.CalibrationModule.IStimParamsCore
+    - id: fileName
+      type: System.String
+    - id: eventId
+      type: System.Int32
+    content.vb: Public Shared Sub LoadWaveform(s As IStimParamsCore, fileName As String, eventId As Integer)
+  overload: Wss.CoreModule.StimParamsBasicExtensions.LoadWaveform*
+  nameWithType.vb: StimParamsBasicExtensions.LoadWaveform(IStimParamsCore, String, Integer)
+  fullName.vb: Wss.CoreModule.StimParamsBasicExtensions.LoadWaveform(Wss.CalibrationModule.IStimParamsCore, String, Integer)
+  name.vb: LoadWaveform(IStimParamsCore, String, Integer)
+- uid: Wss.CoreModule.StimParamsBasicExtensions.WaveformSetup(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.StimParamsBasicExtensions.WaveformSetup(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  id: WaveformSetup(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  isExtensionMethod: true
+  parent: Wss.CoreModule.StimParamsBasicExtensions
+  langs:
+  - csharp
+  - vb
+  name: WaveformSetup(IStimParamsCore, WaveformBuilder, int, WssTarget)
+  nameWithType: StimParamsBasicExtensions.WaveformSetup(IStimParamsCore, WaveformBuilder, int, WssTarget)
+  fullName: Wss.CoreModule.StimParamsBasicExtensions.WaveformSetup(Wss.CalibrationModule.IStimParamsCore, Wss.CoreModule.WaveformBuilder, int, Wss.CoreModule.WssTarget)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Forward to BASIC.WaveformSetup(...).
+  example: []
+  syntax:
+    content: public static void WaveformSetup(this IStimParamsCore s, WaveformBuilder wf, int eventId, WssTarget t)
+    parameters:
+    - id: s
+      type: Wss.CalibrationModule.IStimParamsCore
+    - id: wf
+      type: Wss.CoreModule.WaveformBuilder
+    - id: eventId
+      type: System.Int32
+    - id: t
+      type: Wss.CoreModule.WssTarget
+    content.vb: Public Shared Sub WaveformSetup(s As IStimParamsCore, wf As WaveformBuilder, eventId As Integer, t As WssTarget)
+  overload: Wss.CoreModule.StimParamsBasicExtensions.WaveformSetup*
+  nameWithType.vb: StimParamsBasicExtensions.WaveformSetup(IStimParamsCore, WaveformBuilder, Integer, WssTarget)
+  fullName.vb: Wss.CoreModule.StimParamsBasicExtensions.WaveformSetup(Wss.CalibrationModule.IStimParamsCore, Wss.CoreModule.WaveformBuilder, Integer, Wss.CoreModule.WssTarget)
+  name.vb: WaveformSetup(IStimParamsCore, WaveformBuilder, Integer, WssTarget)
+- uid: Wss.CoreModule.StimParamsBasicExtensions.SaveBoard(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.StimParamsBasicExtensions.SaveBoard(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WssTarget)
+  id: SaveBoard(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WssTarget)
+  isExtensionMethod: true
+  parent: Wss.CoreModule.StimParamsBasicExtensions
+  langs:
+  - csharp
+  - vb
+  name: SaveBoard(IStimParamsCore, WssTarget)
+  nameWithType: StimParamsBasicExtensions.SaveBoard(IStimParamsCore, WssTarget)
+  fullName: Wss.CoreModule.StimParamsBasicExtensions.SaveBoard(Wss.CalibrationModule.IStimParamsCore, Wss.CoreModule.WssTarget)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Forward to BASIC.Save(...).
+  example: []
+  syntax:
+    content: public static void SaveBoard(this IStimParamsCore s, WssTarget t)
+    parameters:
+    - id: s
+      type: Wss.CalibrationModule.IStimParamsCore
+    - id: t
+      type: Wss.CoreModule.WssTarget
+    content.vb: Public Shared Sub SaveBoard(s As IStimParamsCore, t As WssTarget)
+  overload: Wss.CoreModule.StimParamsBasicExtensions.SaveBoard*
+- uid: Wss.CoreModule.StimParamsBasicExtensions.LoadBoard(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.StimParamsBasicExtensions.LoadBoard(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WssTarget)
+  id: LoadBoard(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WssTarget)
+  isExtensionMethod: true
+  parent: Wss.CoreModule.StimParamsBasicExtensions
+  langs:
+  - csharp
+  - vb
+  name: LoadBoard(IStimParamsCore, WssTarget)
+  nameWithType: StimParamsBasicExtensions.LoadBoard(IStimParamsCore, WssTarget)
+  fullName: Wss.CoreModule.StimParamsBasicExtensions.LoadBoard(Wss.CalibrationModule.IStimParamsCore, Wss.CoreModule.WssTarget)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Forward to BASIC.Load(...).
+  example: []
+  syntax:
+    content: public static void LoadBoard(this IStimParamsCore s, WssTarget t)
+    parameters:
+    - id: s
+      type: Wss.CalibrationModule.IStimParamsCore
+    - id: t
+      type: Wss.CoreModule.WssTarget
+    content.vb: Public Shared Sub LoadBoard(s As IStimParamsCore, t As WssTarget)
+  overload: Wss.CoreModule.StimParamsBasicExtensions.LoadBoard*
+- uid: Wss.CoreModule.StimParamsBasicExtensions.RequestConfigs(Wss.CalibrationModule.IStimParamsCore,System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.StimParamsBasicExtensions.RequestConfigs(Wss.CalibrationModule.IStimParamsCore,System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  id: RequestConfigs(Wss.CalibrationModule.IStimParamsCore,System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  isExtensionMethod: true
+  parent: Wss.CoreModule.StimParamsBasicExtensions
+  langs:
+  - csharp
+  - vb
+  name: RequestConfigs(IStimParamsCore, int, int, WssTarget)
+  nameWithType: StimParamsBasicExtensions.RequestConfigs(IStimParamsCore, int, int, WssTarget)
+  fullName: Wss.CoreModule.StimParamsBasicExtensions.RequestConfigs(Wss.CalibrationModule.IStimParamsCore, int, int, Wss.CoreModule.WssTarget)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Forward to BASIC.Request_Configs(...).
+  example: []
+  syntax:
+    content: public static void RequestConfigs(this IStimParamsCore s, int command, int id, WssTarget t)
+    parameters:
+    - id: s
+      type: Wss.CalibrationModule.IStimParamsCore
+    - id: command
+      type: System.Int32
+    - id: id
+      type: System.Int32
+    - id: t
+      type: Wss.CoreModule.WssTarget
+    content.vb: Public Shared Sub RequestConfigs(s As IStimParamsCore, command As Integer, id As Integer, t As WssTarget)
+  overload: Wss.CoreModule.StimParamsBasicExtensions.RequestConfigs*
+  nameWithType.vb: StimParamsBasicExtensions.RequestConfigs(IStimParamsCore, Integer, Integer, WssTarget)
+  fullName.vb: Wss.CoreModule.StimParamsBasicExtensions.RequestConfigs(Wss.CalibrationModule.IStimParamsCore, Integer, Integer, Wss.CoreModule.WssTarget)
+  name.vb: RequestConfigs(IStimParamsCore, Integer, Integer, WssTarget)
+- uid: Wss.CoreModule.StimParamsBasicExtensions.TryUpdateWaveform(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.StimParamsBasicExtensions.TryUpdateWaveform(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  id: TryUpdateWaveform(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  isExtensionMethod: true
+  parent: Wss.CoreModule.StimParamsBasicExtensions
+  langs:
+  - csharp
+  - vb
+  name: TryUpdateWaveform(IStimParamsCore, WaveformBuilder, int, WssTarget)
+  nameWithType: StimParamsBasicExtensions.TryUpdateWaveform(IStimParamsCore, WaveformBuilder, int, WssTarget)
+  fullName: Wss.CoreModule.StimParamsBasicExtensions.TryUpdateWaveform(Wss.CalibrationModule.IStimParamsCore, Wss.CoreModule.WaveformBuilder, int, Wss.CoreModule.WssTarget)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Attempts to forward to BASIC.UpdateWaveform(WaveformBuilder,...) without throwing.
+  example: []
+  syntax:
+    content: public static bool TryUpdateWaveform(this IStimParamsCore s, WaveformBuilder wf, int eventId, WssTarget t)
+    parameters:
+    - id: s
+      type: Wss.CalibrationModule.IStimParamsCore
+      description: Stimulation params core instance.
+    - id: wf
+      type: Wss.CoreModule.WaveformBuilder
+      description: Waveform builder to upload.
+    - id: eventId
+      type: System.Int32
+      description: Event ID to associate with the waveform.
+    - id: t
+      type: Wss.CoreModule.WssTarget
+      description: Target device.
+    return:
+      type: System.Boolean
+      description: <code>true</code> if BASIC is available and the call succeeded; otherwise <code>false</code>.
+    content.vb: Public Shared Function TryUpdateWaveform(s As IStimParamsCore, wf As WaveformBuilder, eventId As Integer, t As WssTarget) As Boolean
+  overload: Wss.CoreModule.StimParamsBasicExtensions.TryUpdateWaveform*
+  nameWithType.vb: StimParamsBasicExtensions.TryUpdateWaveform(IStimParamsCore, WaveformBuilder, Integer, WssTarget)
+  fullName.vb: Wss.CoreModule.StimParamsBasicExtensions.TryUpdateWaveform(Wss.CalibrationModule.IStimParamsCore, Wss.CoreModule.WaveformBuilder, Integer, Wss.CoreModule.WssTarget)
+  name.vb: TryUpdateWaveform(IStimParamsCore, WaveformBuilder, Integer, WssTarget)
+references:
+- uid: Wss.CalibrationModule.IStimParamsCore
+  commentId: T:Wss.CalibrationModule.IStimParamsCore
+  parent: Wss.CalibrationModule
+  href: Wss.CalibrationModule.IStimParamsCore.html
+  name: IStimParamsCore
+  nameWithType: IStimParamsCore
+  fullName: Wss.CalibrationModule.IStimParamsCore
+- uid: Wss.CoreModule.IBasicStimulation
+  commentId: T:Wss.CoreModule.IBasicStimulation
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.IBasicStimulation.html
+  name: IBasicStimulation
+  nameWithType: IBasicStimulation
+  fullName: Wss.CoreModule.IBasicStimulation
+- uid: Wss.CoreModule
+  commentId: N:Wss.CoreModule
+  href: Wss.html
+  name: Wss.CoreModule
+  nameWithType: Wss.CoreModule
+  fullName: Wss.CoreModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Wss.CalibrationModule
+  commentId: N:Wss.CalibrationModule
+  href: Wss.html
+  name: Wss.CalibrationModule
+  nameWithType: Wss.CalibrationModule
+  fullName: Wss.CalibrationModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CalibrationModule
+    name: CalibrationModule
+    href: Wss.CalibrationModule.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CalibrationModule
+    name: CalibrationModule
+    href: Wss.CalibrationModule.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform*
+  commentId: Overload:Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform
+  href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_UpdateWaveform_Wss_CalibrationModule_IStimParamsCore_Wss_CoreModule_WaveformBuilder_System_Int32_Wss_CoreModule_WssTarget_
+  name: UpdateWaveform
+  nameWithType: StimParamsBasicExtensions.UpdateWaveform
+  fullName: Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform
+- uid: Wss.CoreModule.WaveformBuilder
+  commentId: T:Wss.CoreModule.WaveformBuilder
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.WaveformBuilder.html
+  name: WaveformBuilder
+  nameWithType: WaveformBuilder
+  fullName: Wss.CoreModule.WaveformBuilder
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Wss.CoreModule.WssTarget
+  commentId: T:Wss.CoreModule.WssTarget
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.WssTarget.html
+  name: WssTarget
+  nameWithType: WssTarget
+  fullName: Wss.CoreModule.WssTarget
+- uid: System.Int32[]
+  isExternal: true
+  name: int[]
+  nameWithType: int[]
+  fullName: int[]
+  nameWithType.vb: Integer()
+  fullName.vb: Integer()
+  name.vb: Integer()
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Wss.CoreModule.StimParamsBasicExtensions.UpdateEventShape*
+  commentId: Overload:Wss.CoreModule.StimParamsBasicExtensions.UpdateEventShape
+  href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_UpdateEventShape_Wss_CalibrationModule_IStimParamsCore_System_Int32_System_Int32_System_Int32_Wss_CoreModule_WssTarget_
+  name: UpdateEventShape
+  nameWithType: StimParamsBasicExtensions.UpdateEventShape
+  fullName: Wss.CoreModule.StimParamsBasicExtensions.UpdateEventShape
+- uid: Wss.CoreModule.StimParamsBasicExtensions.LoadWaveform*
+  commentId: Overload:Wss.CoreModule.StimParamsBasicExtensions.LoadWaveform
+  href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_LoadWaveform_Wss_CalibrationModule_IStimParamsCore_System_String_System_Int32_
+  name: LoadWaveform
+  nameWithType: StimParamsBasicExtensions.LoadWaveform
+  fullName: Wss.CoreModule.StimParamsBasicExtensions.LoadWaveform
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Wss.CoreModule.StimParamsBasicExtensions.WaveformSetup*
+  commentId: Overload:Wss.CoreModule.StimParamsBasicExtensions.WaveformSetup
+  href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_WaveformSetup_Wss_CalibrationModule_IStimParamsCore_Wss_CoreModule_WaveformBuilder_System_Int32_Wss_CoreModule_WssTarget_
+  name: WaveformSetup
+  nameWithType: StimParamsBasicExtensions.WaveformSetup
+  fullName: Wss.CoreModule.StimParamsBasicExtensions.WaveformSetup
+- uid: Wss.CoreModule.StimParamsBasicExtensions.SaveBoard*
+  commentId: Overload:Wss.CoreModule.StimParamsBasicExtensions.SaveBoard
+  href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_SaveBoard_Wss_CalibrationModule_IStimParamsCore_Wss_CoreModule_WssTarget_
+  name: SaveBoard
+  nameWithType: StimParamsBasicExtensions.SaveBoard
+  fullName: Wss.CoreModule.StimParamsBasicExtensions.SaveBoard
+- uid: Wss.CoreModule.StimParamsBasicExtensions.LoadBoard*
+  commentId: Overload:Wss.CoreModule.StimParamsBasicExtensions.LoadBoard
+  href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_LoadBoard_Wss_CalibrationModule_IStimParamsCore_Wss_CoreModule_WssTarget_
+  name: LoadBoard
+  nameWithType: StimParamsBasicExtensions.LoadBoard
+  fullName: Wss.CoreModule.StimParamsBasicExtensions.LoadBoard
+- uid: Wss.CoreModule.StimParamsBasicExtensions.RequestConfigs*
+  commentId: Overload:Wss.CoreModule.StimParamsBasicExtensions.RequestConfigs
+  href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_RequestConfigs_Wss_CalibrationModule_IStimParamsCore_System_Int32_System_Int32_Wss_CoreModule_WssTarget_
+  name: RequestConfigs
+  nameWithType: StimParamsBasicExtensions.RequestConfigs
+  fullName: Wss.CoreModule.StimParamsBasicExtensions.RequestConfigs
+- uid: Wss.CoreModule.StimParamsBasicExtensions.TryUpdateWaveform*
+  commentId: Overload:Wss.CoreModule.StimParamsBasicExtensions.TryUpdateWaveform
+  href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_TryUpdateWaveform_Wss_CalibrationModule_IStimParamsCore_Wss_CoreModule_WaveformBuilder_System_Int32_Wss_CoreModule_WssTarget_
+  name: TryUpdateWaveform
+  nameWithType: StimParamsBasicExtensions.TryUpdateWaveform
+  fullName: Wss.CoreModule.StimParamsBasicExtensions.TryUpdateWaveform
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

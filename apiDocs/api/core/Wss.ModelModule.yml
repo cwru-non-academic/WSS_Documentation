@@ -1,0 +1,68 @@
+### YamlMime:ManagedReference
+items:
+- uid: Wss.ModelModule
+  commentId: N:Wss.ModelModule
+  id: Wss.ModelModule
+  children:
+  - Wss.ModelModule.IModelParamsCore
+  - Wss.ModelModule.ModelConfig
+  - Wss.ModelModule.ModelConfigController
+  - Wss.ModelModule.ModelParamsLayer
+  langs:
+  - csharp
+  - vb
+  name: Wss.ModelModule
+  nameWithType: Wss.ModelModule
+  fullName: Wss.ModelModule
+  type: Namespace
+  assemblies:
+  - WSS_Core_Interface
+references:
+- uid: Wss.ModelModule.IModelParamsCore
+  commentId: T:Wss.ModelModule.IModelParamsCore
+  parent: Wss.ModelModule
+  href: Wss.ModelModule.IModelParamsCore.html
+  name: IModelParamsCore
+  nameWithType: IModelParamsCore
+  fullName: Wss.ModelModule.IModelParamsCore
+- uid: Wss.ModelModule.ModelConfig
+  commentId: T:Wss.ModelModule.ModelConfig
+  href: Wss.ModelModule.ModelConfig.html
+  name: ModelConfig
+  nameWithType: ModelConfig
+  fullName: Wss.ModelModule.ModelConfig
+- uid: Wss.ModelModule.ModelConfigController
+  commentId: T:Wss.ModelModule.ModelConfigController
+  parent: Wss.ModelModule
+  href: Wss.ModelModule.ModelConfigController.html
+  name: ModelConfigController
+  nameWithType: ModelConfigController
+  fullName: Wss.ModelModule.ModelConfigController
+- uid: Wss.ModelModule.ModelParamsLayer
+  commentId: T:Wss.ModelModule.ModelParamsLayer
+  href: Wss.ModelModule.ModelParamsLayer.html
+  name: ModelParamsLayer
+  nameWithType: ModelParamsLayer
+  fullName: Wss.ModelModule.ModelParamsLayer
+- uid: Wss.ModelModule
+  commentId: N:Wss.ModelModule
+  href: Wss.html
+  name: Wss.ModelModule
+  nameWithType: Wss.ModelModule
+  fullName: Wss.ModelModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.ModelModule
+    name: ModelModule
+    href: Wss.ModelModule.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.ModelModule
+    name: ModelModule
+    href: Wss.ModelModule.html

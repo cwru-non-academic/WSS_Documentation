@@ -1,0 +1,2321 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class StimulationController | WSS Documentation Hub </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class StimulationController | WSS Documentation Hub ">
+    
+    <meta name="description" content="Host-agnostic wrapper around the full stimulation stack (core → params → model). Provides the same API surface as the Unity Stimulation MonoBehaviour but manages initialization, ticking, and shutdown inside a plain .NET application.">
+      <link rel="shortcut icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../styles/docfx.css">
+      <link rel="stylesheet" href="../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="HFI.Wss.StimulationController">
+
+
+
+  <h1 id="HFI_Wss_StimulationController" data-uid="HFI.Wss.StimulationController" class="text-break">Class StimulationController</h1>
+  <div class="markdown level0 summary"><p>Host-agnostic wrapper around the full stimulation stack (core → params → model).
+Provides the same API surface as the Unity <code>Stimulation</code> MonoBehaviour but manages
+initialization, ticking, and shutdown inside a plain .NET application.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">object</span></div>
+    <div class="level1"><span class="xref">StimulationController</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="HFI.html">HFI</a>.<a class="xref" href="HFI.Wss.html">Wss</a></h6>
+  <h6><strong>Assembly</strong>: HFI_WSS_Csharp_Implementation.dll</h6>
+  <h5 id="HFI_Wss_StimulationController_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class StimulationController</code></pre>
+  </div>
+  <h5 id="HFI_Wss_StimulationController_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>This type starts a background tick loop when <a class="xref" href="HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Initialize">Initialize()</a> completes.
+The public API is primarily intended for single-threaded use; avoid calling stimulation methods
+concurrently with <a class="xref" href="HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Shutdown">Shutdown()</a>.</p>
+</div>
+  <h3 id="constructors">Constructors
+</h3>
+
+
+  <a id="HFI_Wss_StimulationController__ctor_" data-uid="HFI.Wss.StimulationController.#ctor*"></a>
+  <h4 id="HFI_Wss_StimulationController__ctor_HFI_Wss_StimulationOptions_" data-uid="HFI.Wss.StimulationController.#ctor(HFI.Wss.StimulationOptions)">StimulationController(StimulationOptions)</h4>
+  <div class="markdown level1 summary"><p>Creates a controller instance with the provided connection and configuration options.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public StimulationController(StimulationOptions options)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="HFI.Wss.StimulationOptions.html">StimulationOptions</a></td>
+        <td><span class="parametername">options</span></td>
+        <td><p>Options that control transport, config paths, and tick behavior.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ArgumentNullException</span></td>
+        <td><p>Thrown when <code class="paramref">options</code> is null.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">ArgumentException</span></td>
+        <td><p>Thrown when an option value is invalid.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">ArgumentOutOfRangeException</span></td>
+        <td><p>Thrown when an option value is out of range.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+</h3>
+
+
+  <a id="HFI_Wss_StimulationController_BasicSupported_" data-uid="HFI.Wss.StimulationController.BasicSupported*"></a>
+  <h4 id="HFI_Wss_StimulationController_BasicSupported" data-uid="HFI.Wss.StimulationController.BasicSupported">BasicSupported</h4>
+  <div class="markdown level1 summary"><p>True if the underlying core exposes basic-stimulation APIs.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool BasicSupported { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_StimulationController_started_" data-uid="HFI.Wss.StimulationController.started*"></a>
+  <h4 id="HFI_Wss_StimulationController_started" data-uid="HFI.Wss.StimulationController.started">started</h4>
+  <div class="markdown level1 summary"><p>True after <a class="xref" href="HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_StartStimulation">StartStimulation()</a> succeeds.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool started { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+
+
+  <a id="HFI_Wss_StimulationController_AddOrUpdateStimParam_" data-uid="HFI.Wss.StimulationController.AddOrUpdateStimParam*"></a>
+  <h4 id="HFI_Wss_StimulationController_AddOrUpdateStimParam_System_String_System_Single_" data-uid="HFI.Wss.StimulationController.AddOrUpdateStimParam(System.String,System.Single)">AddOrUpdateStimParam(string, float)</h4>
+  <div class="markdown level1 summary"><p>Adds or updates a stimulation parameter value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddOrUpdateStimParam(string key, float value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Parameter key (e.g., &quot;stim.ch.1.amp&quot;).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">float</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>Parameter value (units depend on the key).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">InvalidOperationException</span></td>
+        <td><p>Thrown when <a class="xref" href="HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Initialize">Initialize()</a> has not been called.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_StimulationController_Dispose_" data-uid="HFI.Wss.StimulationController.Dispose*"></a>
+  <h4 id="HFI_Wss_StimulationController_Dispose" data-uid="HFI.Wss.StimulationController.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"><p>Shuts down the controller and releases any underlying resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+
+
+  <a id="HFI_Wss_StimulationController_DisposeAsync_" data-uid="HFI.Wss.StimulationController.DisposeAsync*"></a>
+  <h4 id="HFI_Wss_StimulationController_DisposeAsync" data-uid="HFI.Wss.StimulationController.DisposeAsync">DisposeAsync()</h4>
+  <div class="markdown level1 summary"><p>Asynchronously shuts down the controller and releases any underlying resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ValueTask DisposeAsync()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ValueTask</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_StimulationController_GetAllStimParams_" data-uid="HFI.Wss.StimulationController.GetAllStimParams*"></a>
+  <h4 id="HFI_Wss_StimulationController_GetAllStimParams" data-uid="HFI.Wss.StimulationController.GetAllStimParams">GetAllStimParams()</h4>
+  <div class="markdown level1 summary"><p>Gets a copy of all known stimulation parameters.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, float&gt; GetAllStimParams()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">string</span>, <span class="xref">float</span>&gt;</td>
+        <td><p>A dictionary mapping parameter keys to their values.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">InvalidOperationException</span></td>
+        <td><p>Thrown when <a class="xref" href="HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Initialize">Initialize()</a> has not been called.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_StimulationController_GetChannelAmp_" data-uid="HFI.Wss.StimulationController.GetChannelAmp*"></a>
+  <h4 id="HFI_Wss_StimulationController_GetChannelAmp_System_String_" data-uid="HFI.Wss.StimulationController.GetChannelAmp(System.String)">GetChannelAmp(string)</h4>
+  <div class="markdown level1 summary"><p>Gets the channel amplitude.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float GetChannelAmp(string finger)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">finger</span></td>
+        <td><p>Finger name (e.g., &quot;thumb&quot;, &quot;index&quot;) or channel alias (e.g., &quot;ch1&quot;).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">float</span></td>
+        <td><p>Amplitude in milliamps.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">InvalidOperationException</span></td>
+        <td><p>Thrown when <a class="xref" href="HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Initialize">Initialize()</a> has not been called.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_StimulationController_GetChannelIPI_" data-uid="HFI.Wss.StimulationController.GetChannelIPI*"></a>
+  <h4 id="HFI_Wss_StimulationController_GetChannelIPI_System_String_" data-uid="HFI.Wss.StimulationController.GetChannelIPI(System.String)">GetChannelIPI(string)</h4>
+  <div class="markdown level1 summary"><p>Gets the inter-pulse interval for a channel.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetChannelIPI(string finger)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">finger</span></td>
+        <td><p>Finger name (e.g., &quot;thumb&quot;, &quot;index&quot;) or channel alias (e.g., &quot;ch1&quot;).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><p>Inter-pulse interval in milliseconds.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">InvalidOperationException</span></td>
+        <td><p>Thrown when <a class="xref" href="HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Initialize">Initialize()</a> has not been called.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_StimulationController_GetChannelPWMax_" data-uid="HFI.Wss.StimulationController.GetChannelPWMax*"></a>
+  <h4 id="HFI_Wss_StimulationController_GetChannelPWMax_System_String_" data-uid="HFI.Wss.StimulationController.GetChannelPWMax(System.String)">GetChannelPWMax(string)</h4>
+  <div class="markdown level1 summary"><p>Gets the maximum pulse width for a channel.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetChannelPWMax(string finger)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">finger</span></td>
+        <td><p>Finger name (e.g., &quot;thumb&quot;, &quot;index&quot;) or channel alias (e.g., &quot;ch1&quot;).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><p>Pulse width in microseconds.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">InvalidOperationException</span></td>
+        <td><p>Thrown when <a class="xref" href="HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Initialize">Initialize()</a> has not been called.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_StimulationController_GetChannelPWMin_" data-uid="HFI.Wss.StimulationController.GetChannelPWMin*"></a>
+  <h4 id="HFI_Wss_StimulationController_GetChannelPWMin_System_String_" data-uid="HFI.Wss.StimulationController.GetChannelPWMin(System.String)">GetChannelPWMin(string)</h4>
+  <div class="markdown level1 summary"><p>Gets the minimum pulse width for a channel.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetChannelPWMin(string finger)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">finger</span></td>
+        <td><p>Finger name (e.g., &quot;thumb&quot;, &quot;index&quot;) or channel alias (e.g., &quot;ch1&quot;).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><p>Pulse width in microseconds.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">InvalidOperationException</span></td>
+        <td><p>Thrown when <a class="xref" href="HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Initialize">Initialize()</a> has not been called.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_StimulationController_GetCoreConfigCTRL_" data-uid="HFI.Wss.StimulationController.GetCoreConfigCTRL*"></a>
+  <h4 id="HFI_Wss_StimulationController_GetCoreConfigCTRL" data-uid="HFI.Wss.StimulationController.GetCoreConfigCTRL">GetCoreConfigCTRL()</h4>
+  <div class="markdown level1 summary"><p>Gets the core configuration controller.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CoreConfigController GetCoreConfigCTRL()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="../core/Wss.CoreModule.CoreConfigController.html">CoreConfigController</a></td>
+        <td><p>The core configuration controller instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">InvalidOperationException</span></td>
+        <td><p>Thrown when <a class="xref" href="HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Initialize">Initialize()</a> has not been called.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_StimulationController_GetModelConfigCTRL_" data-uid="HFI.Wss.StimulationController.GetModelConfigCTRL*"></a>
+  <h4 id="HFI_Wss_StimulationController_GetModelConfigCTRL" data-uid="HFI.Wss.StimulationController.GetModelConfigCTRL">GetModelConfigCTRL()</h4>
+  <div class="markdown level1 summary"><p>Gets the model configuration controller.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ModelConfigController GetModelConfigCTRL()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="../core/Wss.ModelModule.ModelConfigController.html">ModelConfigController</a></td>
+        <td><p>The model configuration controller instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">InvalidOperationException</span></td>
+        <td><p>Thrown when <a class="xref" href="HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Initialize">Initialize()</a> has not been called.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_StimulationController_GetStimIntensity_" data-uid="HFI.Wss.StimulationController.GetStimIntensity*"></a>
+  <h4 id="HFI_Wss_StimulationController_GetStimIntensity_System_String_" data-uid="HFI.Wss.StimulationController.GetStimIntensity(System.String)">GetStimIntensity(string)</h4>
+  <div class="markdown level1 summary"><p>Gets the current stimulation intensity for the specified channel.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetStimIntensity(string finger)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">finger</span></td>
+        <td><p>Finger name (e.g., &quot;thumb&quot;, &quot;index&quot;) or channel alias (e.g., &quot;ch1&quot;).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><p>The current intensity value (device/model-specific units).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">InvalidOperationException</span></td>
+        <td><p>Thrown when <a class="xref" href="HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Initialize">Initialize()</a> has not been called.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_StimulationController_GetStimParam_" data-uid="HFI.Wss.StimulationController.GetStimParam*"></a>
+  <h4 id="HFI_Wss_StimulationController_GetStimParam_System_String_" data-uid="HFI.Wss.StimulationController.GetStimParam(System.String)">GetStimParam(string)</h4>
+  <div class="markdown level1 summary"><p>Gets a stimulation parameter value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float GetStimParam(string key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Parameter key.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">float</span></td>
+        <td><p>The parameter value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">InvalidOperationException</span></td>
+        <td><p>Thrown when <a class="xref" href="HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Initialize">Initialize()</a> has not been called.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_StimulationController_Initialize_" data-uid="HFI.Wss.StimulationController.Initialize*"></a>
+  <h4 id="HFI_Wss_StimulationController_Initialize" data-uid="HFI.Wss.StimulationController.Initialize">Initialize()</h4>
+  <div class="markdown level1 summary"><p>Builds the full stimulation stack and initializes the hardware connection.
+Automatically starts the background tick loop.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Initialize()</code></pre>
+  </div>
+
+
+  <a id="HFI_Wss_StimulationController_IsFingerValid_" data-uid="HFI.Wss.StimulationController.IsFingerValid*"></a>
+  <h4 id="HFI_Wss_StimulationController_IsFingerValid_System_String_" data-uid="HFI.Wss.StimulationController.IsFingerValid(System.String)">IsFingerValid(string)</h4>
+  <div class="markdown level1 summary"><p>Checks whether a finger name or channel alias resolves to a valid channel for the current configuration.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsFingerValid(string finger)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">finger</span></td>
+        <td><p>Finger name (e.g., &quot;thumb&quot;, &quot;index&quot;) or channel alias (e.g., &quot;ch1&quot;).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td><p><code>true</code> when the channel is in range; otherwise <code>false</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">InvalidOperationException</span></td>
+        <td><p>Thrown when <a class="xref" href="HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Initialize">Initialize()</a> has not been called.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_StimulationController_LoadCoreConfigFile_" data-uid="HFI.Wss.StimulationController.LoadCoreConfigFile*"></a>
+  <h4 id="HFI_Wss_StimulationController_LoadCoreConfigFile" data-uid="HFI.Wss.StimulationController.LoadCoreConfigFile">LoadCoreConfigFile()</h4>
+  <div class="markdown level1 summary"><p>Reloads the core configuration JSON.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void LoadCoreConfigFile()</code></pre>
+  </div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">InvalidOperationException</span></td>
+        <td><p>Thrown when <a class="xref" href="HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Initialize">Initialize()</a> has not been called.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_StimulationController_LoadParamsJson_" data-uid="HFI.Wss.StimulationController.LoadParamsJson*"></a>
+  <h4 id="HFI_Wss_StimulationController_LoadParamsJson" data-uid="HFI.Wss.StimulationController.LoadParamsJson">LoadParamsJson()</h4>
+  <div class="markdown level1 summary"><p>Loads stimulation parameters from the default JSON path.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void LoadParamsJson()</code></pre>
+  </div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">InvalidOperationException</span></td>
+        <td><p>Thrown when <a class="xref" href="HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Initialize">Initialize()</a> has not been called.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_StimulationController_LoadParamsJson_" data-uid="HFI.Wss.StimulationController.LoadParamsJson*"></a>
+  <h4 id="HFI_Wss_StimulationController_LoadParamsJson_System_String_" data-uid="HFI.Wss.StimulationController.LoadParamsJson(System.String)">LoadParamsJson(string)</h4>
+  <div class="markdown level1 summary"><p>Loads stimulation parameters from a JSON file or directory.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void LoadParamsJson(string pathOrDir)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">pathOrDir</span></td>
+        <td><p>File path or directory path; directory inputs use the library default filename.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">InvalidOperationException</span></td>
+        <td><p>Thrown when <a class="xref" href="HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Initialize">Initialize()</a> has not been called.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_StimulationController_Ready_" data-uid="HFI.Wss.StimulationController.Ready*"></a>
+  <h4 id="HFI_Wss_StimulationController_Ready" data-uid="HFI.Wss.StimulationController.Ready">Ready()</h4>
+  <div class="markdown level1 summary"><p>Gets whether the underlying stack reports a ready state.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Ready()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td><p><code>true</code> when ready; otherwise <code>false</code>. Returns <code>false</code> before initialization.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_StimulationController_Save_" data-uid="HFI.Wss.StimulationController.Save*"></a>
+  <h4 id="HFI_Wss_StimulationController_Save" data-uid="HFI.Wss.StimulationController.Save">Save()</h4>
+  <div class="markdown level1 summary"><p>Persists basic-stimulation configuration to all devices.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Save()</code></pre>
+  </div>
+  <h5 id="HFI_Wss_StimulationController_Save_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If basic stimulation is not supported, this method logs an error and returns without throwing.</p>
+</div>
+
+
+  <a id="HFI_Wss_StimulationController_Save_" data-uid="HFI.Wss.StimulationController.Save*"></a>
+  <h4 id="HFI_Wss_StimulationController_Save_System_Int32_" data-uid="HFI.Wss.StimulationController.Save(System.Int32)">Save(int)</h4>
+  <div class="markdown level1 summary"><p>Persists basic-stimulation configuration to the target device.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Save(int targetWSS)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">targetWSS</span></td>
+        <td><p>0 = broadcast; 1-3 = specific device. Other values map to device 1.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="HFI_Wss_StimulationController_Save_System_Int32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If basic stimulation is not supported, this method logs an error and returns without throwing.</p>
+</div>
+
+
+  <a id="HFI_Wss_StimulationController_SaveParamsJson_" data-uid="HFI.Wss.StimulationController.SaveParamsJson*"></a>
+  <h4 id="HFI_Wss_StimulationController_SaveParamsJson" data-uid="HFI.Wss.StimulationController.SaveParamsJson">SaveParamsJson()</h4>
+  <div class="markdown level1 summary"><p>Persists stimulation parameters to the default JSON path.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SaveParamsJson()</code></pre>
+  </div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">InvalidOperationException</span></td>
+        <td><p>Thrown when <a class="xref" href="HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Initialize">Initialize()</a> has not been called.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_StimulationController_SetChannelAmp_" data-uid="HFI.Wss.StimulationController.SetChannelAmp*"></a>
+  <h4 id="HFI_Wss_StimulationController_SetChannelAmp_System_String_System_Single_" data-uid="HFI.Wss.StimulationController.SetChannelAmp(System.String,System.Single)">SetChannelAmp(string, float)</h4>
+  <div class="markdown level1 summary"><p>Sets the channel amplitude.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetChannelAmp(string finger, float mA)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">finger</span></td>
+        <td><p>Finger name (e.g., &quot;thumb&quot;, &quot;index&quot;) or channel alias (e.g., &quot;ch1&quot;).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">float</span></td>
+        <td><span class="parametername">mA</span></td>
+        <td><p>Amplitude in milliamps.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">InvalidOperationException</span></td>
+        <td><p>Thrown when <a class="xref" href="HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Initialize">Initialize()</a> has not been called.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_StimulationController_SetChannelIPI_" data-uid="HFI.Wss.StimulationController.SetChannelIPI*"></a>
+  <h4 id="HFI_Wss_StimulationController_SetChannelIPI_System_String_System_Int32_" data-uid="HFI.Wss.StimulationController.SetChannelIPI(System.String,System.Int32)">SetChannelIPI(string, int)</h4>
+  <div class="markdown level1 summary"><p>Sets the inter-pulse interval for a channel.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetChannelIPI(string finger, int ms)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">finger</span></td>
+        <td><p>Finger name (e.g., &quot;thumb&quot;, &quot;index&quot;) or channel alias (e.g., &quot;ch1&quot;).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">ms</span></td>
+        <td><p>Inter-pulse interval in milliseconds.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">InvalidOperationException</span></td>
+        <td><p>Thrown when <a class="xref" href="HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Initialize">Initialize()</a> has not been called.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_StimulationController_SetChannelPWMax_" data-uid="HFI.Wss.StimulationController.SetChannelPWMax*"></a>
+  <h4 id="HFI_Wss_StimulationController_SetChannelPWMax_System_String_System_Int32_" data-uid="HFI.Wss.StimulationController.SetChannelPWMax(System.String,System.Int32)">SetChannelPWMax(string, int)</h4>
+  <div class="markdown level1 summary"><p>Sets the maximum pulse width for a channel.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetChannelPWMax(string finger, int us)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">finger</span></td>
+        <td><p>Finger name (e.g., &quot;thumb&quot;, &quot;index&quot;) or channel alias (e.g., &quot;ch1&quot;).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">us</span></td>
+        <td><p>Pulse width in microseconds.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">InvalidOperationException</span></td>
+        <td><p>Thrown when <a class="xref" href="HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Initialize">Initialize()</a> has not been called.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_StimulationController_SetChannelPWMin_" data-uid="HFI.Wss.StimulationController.SetChannelPWMin*"></a>
+  <h4 id="HFI_Wss_StimulationController_SetChannelPWMin_System_String_System_Int32_" data-uid="HFI.Wss.StimulationController.SetChannelPWMin(System.String,System.Int32)">SetChannelPWMin(string, int)</h4>
+  <div class="markdown level1 summary"><p>Sets the minimum pulse width for a channel.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetChannelPWMin(string finger, int us)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">finger</span></td>
+        <td><p>Finger name (e.g., &quot;thumb&quot;, &quot;index&quot;) or channel alias (e.g., &quot;ch1&quot;).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">us</span></td>
+        <td><p>Pulse width in microseconds.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">InvalidOperationException</span></td>
+        <td><p>Thrown when <a class="xref" href="HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Initialize">Initialize()</a> has not been called.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_StimulationController_Shutdown_" data-uid="HFI.Wss.StimulationController.Shutdown*"></a>
+  <h4 id="HFI_Wss_StimulationController_Shutdown" data-uid="HFI.Wss.StimulationController.Shutdown">Shutdown()</h4>
+  <div class="markdown level1 summary"><p>Stops ticking and tears down the connection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Shutdown()</code></pre>
+  </div>
+
+
+  <a id="HFI_Wss_StimulationController_StartStimulation_" data-uid="HFI.Wss.StimulationController.StartStimulation*"></a>
+  <h4 id="HFI_Wss_StimulationController_StartStimulation" data-uid="HFI.Wss.StimulationController.StartStimulation">StartStimulation()</h4>
+  <div class="markdown level1 summary"><p>Broadcasts a start-stimulation command and marks <a class="xref" href="HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_started">started</a> as true.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void StartStimulation()</code></pre>
+  </div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">InvalidOperationException</span></td>
+        <td><p>Thrown when <a class="xref" href="HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Initialize">Initialize()</a> has not been called.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_StimulationController_Started_" data-uid="HFI.Wss.StimulationController.Started*"></a>
+  <h4 id="HFI_Wss_StimulationController_Started" data-uid="HFI.Wss.StimulationController.Started">Started()</h4>
+  <div class="markdown level1 summary"><p>Gets whether the underlying stack reports stimulation started.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Started()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td><p><code>true</code> when started; otherwise <code>false</code>. Returns <code>false</code> before initialization.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_StimulationController_StimWithMode_" data-uid="HFI.Wss.StimulationController.StimWithMode*"></a>
+  <h4 id="HFI_Wss_StimulationController_StimWithMode_System_String_System_Single_" data-uid="HFI.Wss.StimulationController.StimWithMode(System.String,System.Single)">StimWithMode(string, float)</h4>
+  <div class="markdown level1 summary"><p>Sends a stimulation request interpreted by the active mode (model/params-dependent).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void StimWithMode(string finger, float magnitude)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">finger</span></td>
+        <td><p>Finger name (e.g., &quot;thumb&quot;, &quot;index&quot;) or channel alias (e.g., &quot;ch1&quot;).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">float</span></td>
+        <td><span class="parametername">magnitude</span></td>
+        <td><p>Magnitude value interpreted by the active mode.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">InvalidOperationException</span></td>
+        <td><p>Thrown when <a class="xref" href="HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Initialize">Initialize()</a> has not been called.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_StimulationController_StimulateAnalog_" data-uid="HFI.Wss.StimulationController.StimulateAnalog*"></a>
+  <h4 id="HFI_Wss_StimulationController_StimulateAnalog_System_String_System_Int32_System_Int32_System_Int32_" data-uid="HFI.Wss.StimulationController.StimulateAnalog(System.String,System.Int32,System.Int32,System.Int32)">StimulateAnalog(string, int, int, int)</h4>
+  <div class="markdown level1 summary"><p>Sends a direct (basic) analog stimulation request for a channel.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void StimulateAnalog(string finger, int PW, int amp = 3, int IPI = 10)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">finger</span></td>
+        <td><p>Finger name (e.g., &quot;thumb&quot;, &quot;index&quot;) or channel alias (e.g., &quot;ch1&quot;).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">PW</span></td>
+        <td><p>Pulse width (device-specific; commonly microseconds).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">amp</span></td>
+        <td><p>Amplitude setting (device-specific).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">IPI</span></td>
+        <td><p>Inter-pulse interval (device-specific; commonly milliseconds).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">InvalidOperationException</span></td>
+        <td><p>Thrown when <a class="xref" href="HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Initialize">Initialize()</a> has not been called.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_StimulationController_StimulateNormalized_" data-uid="HFI.Wss.StimulationController.StimulateNormalized*"></a>
+  <h4 id="HFI_Wss_StimulationController_StimulateNormalized_System_String_System_Single_" data-uid="HFI.Wss.StimulationController.StimulateNormalized(System.String,System.Single)">StimulateNormalized(string, float)</h4>
+  <div class="markdown level1 summary"><p>Sends a normalized stimulation magnitude for the specified channel.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void StimulateNormalized(string finger, float magnitude)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">finger</span></td>
+        <td><p>Finger name (e.g., &quot;thumb&quot;, &quot;index&quot;) or channel alias (e.g., &quot;ch1&quot;).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">float</span></td>
+        <td><span class="parametername">magnitude</span></td>
+        <td><p>Normalized magnitude (device/model-specific convention).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">InvalidOperationException</span></td>
+        <td><p>Thrown when <a class="xref" href="HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Initialize">Initialize()</a> has not been called.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_StimulationController_StopStimulation_" data-uid="HFI.Wss.StimulationController.StopStimulation*"></a>
+  <h4 id="HFI_Wss_StimulationController_StopStimulation" data-uid="HFI.Wss.StimulationController.StopStimulation">StopStimulation()</h4>
+  <div class="markdown level1 summary"><p>Broadcasts a stop-stimulation command and marks <a class="xref" href="HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_started">started</a> as false.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void StopStimulation()</code></pre>
+  </div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">InvalidOperationException</span></td>
+        <td><p>Thrown when <a class="xref" href="HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Initialize">Initialize()</a> has not been called.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_StimulationController_TryGetStimParam_" data-uid="HFI.Wss.StimulationController.TryGetStimParam*"></a>
+  <h4 id="HFI_Wss_StimulationController_TryGetStimParam_System_String_System_Single__" data-uid="HFI.Wss.StimulationController.TryGetStimParam(System.String,System.Single@)">TryGetStimParam(string, out float)</h4>
+  <div class="markdown level1 summary"><p>Attempts to get a stimulation parameter value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryGetStimParam(string key, out float v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Parameter key.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">float</span></td>
+        <td><span class="parametername">v</span></td>
+        <td><p>Receives the parameter value when present.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td><p><code>true</code> when the parameter exists; otherwise <code>false</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">InvalidOperationException</span></td>
+        <td><p>Thrown when <a class="xref" href="HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Initialize">Initialize()</a> has not been called.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_StimulationController_UpdateChannelParams_" data-uid="HFI.Wss.StimulationController.UpdateChannelParams*"></a>
+  <h4 id="HFI_Wss_StimulationController_UpdateChannelParams_System_String_System_Int32_System_Int32_System_Int32_" data-uid="HFI.Wss.StimulationController.UpdateChannelParams(System.String,System.Int32,System.Int32,System.Int32)">UpdateChannelParams(string, int, int, int)</h4>
+  <div class="markdown level1 summary"><p>Updates a channel's max/min pulse width and amplitude parameters using the conventional parameter keys.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateChannelParams(string finger, int max, int min, int amp)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">finger</span></td>
+        <td><p>Finger name (e.g., &quot;thumb&quot;, &quot;index&quot;) or channel alias (e.g., &quot;ch1&quot;).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">max</span></td>
+        <td><p>Maximum pulse width (units depend on the parameter schema; commonly microseconds).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">min</span></td>
+        <td><p>Minimum pulse width (units depend on the parameter schema; commonly microseconds).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">amp</span></td>
+        <td><p>Amplitude value (units depend on the parameter schema).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">InvalidOperationException</span></td>
+        <td><p>Thrown when <a class="xref" href="HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Initialize">Initialize()</a> has not been called.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">ArgumentOutOfRangeException</span></td>
+        <td><p>Thrown when <code class="paramref">finger</code> resolves to an out-of-range channel.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_StimulationController_UpdateIPD_" data-uid="HFI.Wss.StimulationController.UpdateIPD*"></a>
+  <h4 id="HFI_Wss_StimulationController_UpdateIPD_System_Int32_System_Int32_" data-uid="HFI.Wss.StimulationController.UpdateIPD(System.Int32,System.Int32)">UpdateIPD(int, int)</h4>
+  <div class="markdown level1 summary"><p>Updates the inter-phase delay for an event on all devices.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateIPD(int ipd, int eventID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">ipd</span></td>
+        <td><p>Inter-phase delay (device-specific; commonly microseconds).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventID</span></td>
+        <td><p>Event identifier to update.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="HFI_Wss_StimulationController_UpdateIPD_System_Int32_System_Int32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If basic stimulation is not supported, this method logs an error and returns without throwing.</p>
+</div>
+
+
+  <a id="HFI_Wss_StimulationController_UpdateIPD_" data-uid="HFI.Wss.StimulationController.UpdateIPD*"></a>
+  <h4 id="HFI_Wss_StimulationController_UpdateIPD_System_Int32_System_Int32_System_Int32_" data-uid="HFI.Wss.StimulationController.UpdateIPD(System.Int32,System.Int32,System.Int32)">UpdateIPD(int, int, int)</h4>
+  <div class="markdown level1 summary"><p>Updates the inter-phase delay for an event on the target device.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateIPD(int targetWSS, int ipd, int eventID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">targetWSS</span></td>
+        <td><p>0 = broadcast; 1-3 = specific device. Other values map to device 1.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">ipd</span></td>
+        <td><p>Inter-phase delay (device-specific; commonly microseconds).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventID</span></td>
+        <td><p>Event identifier to update.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="HFI_Wss_StimulationController_UpdateIPD_System_Int32_System_Int32_System_Int32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If basic stimulation is not supported, this method logs an error and returns without throwing.</p>
+</div>
+
+
+  <a id="HFI_Wss_StimulationController_WaveformSetup_" data-uid="HFI.Wss.StimulationController.WaveformSetup*"></a>
+  <h4 id="HFI_Wss_StimulationController_WaveformSetup_System_Int32_Wss_CoreModule_WaveformBuilder_System_Int32_" data-uid="HFI.Wss.StimulationController.WaveformSetup(System.Int32,Wss.CoreModule.WaveformBuilder,System.Int32)">WaveformSetup(int, WaveformBuilder, int)</h4>
+  <div class="markdown level1 summary"><p>Performs waveform setup for an event on the target device.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void WaveformSetup(int targetWSS, WaveformBuilder wave, int eventID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">targetWSS</span></td>
+        <td><p>0 = broadcast; 1-3 = specific device. Other values map to device 1.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="../core/Wss.CoreModule.WaveformBuilder.html">WaveformBuilder</a></td>
+        <td><span class="parametername">wave</span></td>
+        <td><p>Waveform builder instance.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventID</span></td>
+        <td><p>Event identifier to configure.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="HFI_Wss_StimulationController_WaveformSetup_System_Int32_Wss_CoreModule_WaveformBuilder_System_Int32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If basic stimulation is not supported, this method logs an error and returns without throwing.</p>
+</div>
+
+
+  <a id="HFI_Wss_StimulationController_WaveformSetup_" data-uid="HFI.Wss.StimulationController.WaveformSetup*"></a>
+  <h4 id="HFI_Wss_StimulationController_WaveformSetup_Wss_CoreModule_WaveformBuilder_System_Int32_" data-uid="HFI.Wss.StimulationController.WaveformSetup(Wss.CoreModule.WaveformBuilder,System.Int32)">WaveformSetup(WaveformBuilder, int)</h4>
+  <div class="markdown level1 summary"><p>Performs waveform setup for an event on all devices.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void WaveformSetup(WaveformBuilder wave, int eventID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="../core/Wss.CoreModule.WaveformBuilder.html">WaveformBuilder</a></td>
+        <td><span class="parametername">wave</span></td>
+        <td><p>Waveform builder instance.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventID</span></td>
+        <td><p>Event identifier to configure.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="HFI_Wss_StimulationController_WaveformSetup_Wss_CoreModule_WaveformBuilder_System_Int32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If basic stimulation is not supported, this method logs an error and returns without throwing.</p>
+</div>
+
+
+  <a id="HFI_Wss_StimulationController_isModeValid_" data-uid="HFI.Wss.StimulationController.isModeValid*"></a>
+  <h4 id="HFI_Wss_StimulationController_isModeValid" data-uid="HFI.Wss.StimulationController.isModeValid">isModeValid()</h4>
+  <div class="markdown level1 summary"><p>Gets whether the current stimulation mode is valid for the loaded configuration.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool isModeValid()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td><p><code>true</code> when the mode is valid; otherwise <code>false</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">InvalidOperationException</span></td>
+        <td><p>Thrown when <a class="xref" href="HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Initialize">Initialize()</a> has not been called.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_StimulationController_load_" data-uid="HFI.Wss.StimulationController.load*"></a>
+  <h4 id="HFI_Wss_StimulationController_load" data-uid="HFI.Wss.StimulationController.load">load()</h4>
+  <div class="markdown level1 summary"><p>Loads basic-stimulation configuration from all devices.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void load()</code></pre>
+  </div>
+  <h5 id="HFI_Wss_StimulationController_load_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If basic stimulation is not supported, this method logs an error and returns without throwing.</p>
+</div>
+
+
+  <a id="HFI_Wss_StimulationController_load_" data-uid="HFI.Wss.StimulationController.load*"></a>
+  <h4 id="HFI_Wss_StimulationController_load_System_Int32_" data-uid="HFI.Wss.StimulationController.load(System.Int32)">load(int)</h4>
+  <div class="markdown level1 summary"><p>Loads basic-stimulation configuration from the target device.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void load(int targetWSS)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">targetWSS</span></td>
+        <td><p>0 = broadcast; 1-3 = specific device. Other values map to device 1.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="HFI_Wss_StimulationController_load_System_Int32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If basic stimulation is not supported, this method logs an error and returns without throwing.</p>
+</div>
+
+
+  <a id="HFI_Wss_StimulationController_loadWaveform_" data-uid="HFI.Wss.StimulationController.loadWaveform*"></a>
+  <h4 id="HFI_Wss_StimulationController_loadWaveform_System_String_System_Int32_" data-uid="HFI.Wss.StimulationController.loadWaveform(System.String,System.Int32)">loadWaveform(string, int)</h4>
+  <div class="markdown level1 summary"><p>Loads a waveform file into the specified event slot.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void loadWaveform(string fileName, int eventID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">fileName</span></td>
+        <td><p>Waveform file path (as expected by the underlying WSS library).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventID</span></td>
+        <td><p>Event identifier to update.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="HFI_Wss_StimulationController_loadWaveform_System_String_System_Int32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If basic stimulation is not supported, this method logs an error and returns without throwing.</p>
+</div>
+
+
+  <a id="HFI_Wss_StimulationController_releaseRadio_" data-uid="HFI.Wss.StimulationController.releaseRadio*"></a>
+  <h4 id="HFI_Wss_StimulationController_releaseRadio" data-uid="HFI.Wss.StimulationController.releaseRadio">releaseRadio()</h4>
+  <div class="markdown level1 summary"><p>Explicitly releases the radio connection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void releaseRadio()</code></pre>
+  </div>
+
+
+  <a id="HFI_Wss_StimulationController_request_Configs_" data-uid="HFI.Wss.StimulationController.request_Configs*"></a>
+  <h4 id="HFI_Wss_StimulationController_request_Configs_System_Int32_System_Int32_System_Int32_" data-uid="HFI.Wss.StimulationController.request_Configs(System.Int32,System.Int32,System.Int32)">request_Configs(int, int, int)</h4>
+  <div class="markdown level1 summary"><p>Requests a configuration payload from the target device.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void request_Configs(int targetWSS, int command, int id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">targetWSS</span></td>
+        <td><p>0 = broadcast; 1-3 = specific device. Other values map to device 1.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">command</span></td>
+        <td><p>Command identifier (device-specific).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>Config identifier (device-specific).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="HFI_Wss_StimulationController_request_Configs_System_Int32_System_Int32_System_Int32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If basic stimulation is not supported, this method logs an error and returns without throwing.</p>
+</div>
+
+
+  <a id="HFI_Wss_StimulationController_resetRadio_" data-uid="HFI.Wss.StimulationController.resetRadio*"></a>
+  <h4 id="HFI_Wss_StimulationController_resetRadio" data-uid="HFI.Wss.StimulationController.resetRadio">resetRadio()</h4>
+  <div class="markdown level1 summary"><p>Performs a radio reset by shutting down and re-initializing the connection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void resetRadio()</code></pre>
+  </div>
+
+
+  <a id="HFI_Wss_StimulationController_updateWaveform_" data-uid="HFI.Wss.StimulationController.updateWaveform*"></a>
+  <h4 id="HFI_Wss_StimulationController_updateWaveform_System_Int32_System_Int32_System_Int32_" data-uid="HFI.Wss.StimulationController.updateWaveform(System.Int32,System.Int32,System.Int32)">updateWaveform(int, int, int)</h4>
+  <div class="markdown level1 summary"><p>Updates an event shape using cathodic/anodic waveform identifiers on all devices.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void updateWaveform(int cathodicWaveform, int anodicWaveform, int eventID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">cathodicWaveform</span></td>
+        <td><p>Cathodic waveform identifier.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">anodicWaveform</span></td>
+        <td><p>Anodic waveform identifier.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventID</span></td>
+        <td><p>Event identifier to update.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="HFI_Wss_StimulationController_updateWaveform_System_Int32_System_Int32_System_Int32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If basic stimulation is not supported, this method logs an error and returns without throwing.</p>
+</div>
+
+
+  <a id="HFI_Wss_StimulationController_updateWaveform_" data-uid="HFI.Wss.StimulationController.updateWaveform*"></a>
+  <h4 id="HFI_Wss_StimulationController_updateWaveform_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="HFI.Wss.StimulationController.updateWaveform(System.Int32,System.Int32,System.Int32,System.Int32)">updateWaveform(int, int, int, int)</h4>
+  <div class="markdown level1 summary"><p>Updates an event shape using cathodic/anodic waveform identifiers on the target device.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void updateWaveform(int targetWSS, int cathodicWaveform, int anodicWaveform, int eventID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">targetWSS</span></td>
+        <td><p>0 = broadcast; 1-3 = specific device. Other values map to device 1.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">cathodicWaveform</span></td>
+        <td><p>Cathodic waveform identifier.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">anodicWaveform</span></td>
+        <td><p>Anodic waveform identifier.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventID</span></td>
+        <td><p>Event identifier to update.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="HFI_Wss_StimulationController_updateWaveform_System_Int32_System_Int32_System_Int32_System_Int32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If basic stimulation is not supported, this method logs an error and returns without throwing.</p>
+</div>
+
+
+  <a id="HFI_Wss_StimulationController_updateWaveform_" data-uid="HFI.Wss.StimulationController.updateWaveform*"></a>
+  <h4 id="HFI_Wss_StimulationController_updateWaveform_System_Int32_System_Int32___System_Int32_" data-uid="HFI.Wss.StimulationController.updateWaveform(System.Int32,System.Int32[],System.Int32)">updateWaveform(int, int[], int)</h4>
+  <div class="markdown level1 summary"><p>Updates a waveform definition on the target device.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void updateWaveform(int targetWSS, int[] waveform, int eventID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">targetWSS</span></td>
+        <td><p>0 = broadcast; 1-3 = specific device. Other values map to device 1.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span>[]</td>
+        <td><span class="parametername">waveform</span></td>
+        <td><p>Waveform samples (device-specific representation).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventID</span></td>
+        <td><p>Event identifier to update.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="HFI_Wss_StimulationController_updateWaveform_System_Int32_System_Int32___System_Int32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If basic stimulation is not supported, this method logs an error and returns without throwing.</p>
+</div>
+
+
+  <a id="HFI_Wss_StimulationController_updateWaveform_" data-uid="HFI.Wss.StimulationController.updateWaveform*"></a>
+  <h4 id="HFI_Wss_StimulationController_updateWaveform_System_Int32_Wss_CoreModule_WaveformBuilder_System_Int32_" data-uid="HFI.Wss.StimulationController.updateWaveform(System.Int32,Wss.CoreModule.WaveformBuilder,System.Int32)">updateWaveform(int, WaveformBuilder, int)</h4>
+  <div class="markdown level1 summary"><p>Updates a waveform definition on the target device.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void updateWaveform(int targetWSS, WaveformBuilder waveform, int eventID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">targetWSS</span></td>
+        <td><p>0 = broadcast; 1-3 = specific device. Other values map to device 1.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="../core/Wss.CoreModule.WaveformBuilder.html">WaveformBuilder</a></td>
+        <td><span class="parametername">waveform</span></td>
+        <td><p>Waveform builder instance.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventID</span></td>
+        <td><p>Event identifier to update.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="HFI_Wss_StimulationController_updateWaveform_System_Int32_Wss_CoreModule_WaveformBuilder_System_Int32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If basic stimulation is not supported, this method logs an error and returns without throwing.</p>
+</div>
+
+
+  <a id="HFI_Wss_StimulationController_updateWaveform_" data-uid="HFI.Wss.StimulationController.updateWaveform*"></a>
+  <h4 id="HFI_Wss_StimulationController_updateWaveform_System_Int32___System_Int32_" data-uid="HFI.Wss.StimulationController.updateWaveform(System.Int32[],System.Int32)">updateWaveform(int[], int)</h4>
+  <div class="markdown level1 summary"><p>Updates a waveform definition on all devices.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void updateWaveform(int[] waveform, int eventID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span>[]</td>
+        <td><span class="parametername">waveform</span></td>
+        <td><p>Waveform samples (device-specific representation).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventID</span></td>
+        <td><p>Event identifier to update.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="HFI_Wss_StimulationController_updateWaveform_System_Int32___System_Int32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If basic stimulation is not supported, this method logs an error and returns without throwing.</p>
+</div>
+
+
+  <a id="HFI_Wss_StimulationController_updateWaveform_" data-uid="HFI.Wss.StimulationController.updateWaveform*"></a>
+  <h4 id="HFI_Wss_StimulationController_updateWaveform_Wss_CoreModule_WaveformBuilder_System_Int32_" data-uid="HFI.Wss.StimulationController.updateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32)">updateWaveform(WaveformBuilder, int)</h4>
+  <div class="markdown level1 summary"><p>Updates a waveform definition on all devices.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void updateWaveform(WaveformBuilder waveform, int eventID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="../core/Wss.CoreModule.WaveformBuilder.html">WaveformBuilder</a></td>
+        <td><span class="parametername">waveform</span></td>
+        <td><p>Waveform builder instance.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventID</span></td>
+        <td><p>Event identifier to update.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="HFI_Wss_StimulationController_updateWaveform_Wss_CoreModule_WaveformBuilder_System_Int32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If basic stimulation is not supported, this method logs an error and returns without throwing.</p>
+</div>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

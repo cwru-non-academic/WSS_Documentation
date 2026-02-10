@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>wss_py_wrapper.stimulation_controller &#8212; wss-py-wrapper  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css?v=686e5160" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=27fed22d" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for wss_py_wrapper.stimulation_controller</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;High-level controller wrapping the .NET stimulation stack.</span>
+
+<span class="sd">This module contains the interop-heavy runtime core. The main entry point is</span>
+<span class="sd">:class:`~wss_py_wrapper.stimulation_controller.StimulationController`.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">WssConfig</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.log_sink</span><span class="w"> </span><span class="kn">import</span> <span class="n">FileLogSink</span><span class="p">,</span> <span class="n">install_csharp_log_sink</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.wss_loader</span><span class="w"> </span><span class="kn">import</span> <span class="n">WssLoader</span><span class="p">,</span> <span class="n">collect_dlls</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_resolve_log_type</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Resolve the .NET ``Log`` type from supported namespaces.</span>
+
+<span class="sd">    The wrapper supports multiple namespace layouts depending on the DLL set.</span>
+
+<span class="sd">    :returns: A .NET type exposing ``SetSink``/``ResetSink`` and level methods.</span>
+<span class="sd">    :raises RuntimeError: If no compatible Log type can be located.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">WSS_Core_Interface</span><span class="w"> </span><span class="kn">import</span> <span class="n">Log</span> <span class="k">as</span> <span class="n">WssLog</span>  <span class="c1"># type: ignore</span>
+
+        <span class="k">return</span> <span class="n">WssLog</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">Wss.CoreModule</span><span class="w"> </span><span class="kn">import</span> <span class="n">Log</span> <span class="k">as</span> <span class="n">WssLog</span>  <span class="c1"># type: ignore</span>
+
+        <span class="k">return</span> <span class="n">WssLog</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">Log</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">LogModule</span>  <span class="c1"># type: ignore</span>
+
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">LogModule</span><span class="p">,</span> <span class="s2">&quot;Log&quot;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">LogModule</span><span class="o">.</span><span class="n">Log</span>
+        <span class="k">return</span> <span class="n">LogModule</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Unable to locate C# Log type in WSS_Core_Interface.dll.&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="StimulationController">
+<a class="viewcode-back" href="../../api.html#wss_py_wrapper.StimulationController">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">StimulationController</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Python wrapper around the WSS .NET stimulation controller layers.</span>
+
+<span class="sd">    Lifecycle:</span>
+<span class="sd">    - Call :meth:`Initialize` before using any stimulation methods.</span>
+<span class="sd">    - Call :meth:`Shutdown` to stop the background tick thread and dispose .NET objects.</span>
+
+<span class="sd">    Threading:</span>
+<span class="sd">    - A background tick loop calls ``Tick()`` at ``config.tick_interval_ms``.</span>
+<span class="sd">    - Methods are guarded by an internal lock at key lifecycle transitions.</span>
+
+<span class="sd">    :param config: Wrapper configuration.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">WssConfig</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_config</span> <span class="o">=</span> <span class="n">config</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gate</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_wss</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_basic_wss</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_basic_supported</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tick_thread</span><span class="p">:</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tick_stop</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Event</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log_reset</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log_type</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_net_types</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">started</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">BasicSupported</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether the optional &quot;Basic&quot; .NET API is available.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_basic_supported</span>
+
+<div class="viewcode-block" id="StimulationController.Initialize">
+<a class="viewcode-back" href="../../api.html#wss_py_wrapper.StimulationController.Initialize">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">Initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Load .NET DLLs, initialize layers, and start the tick loop.</span>
+
+<span class="sd">        This method is safe to call multiple times; subsequent calls are no-ops</span>
+<span class="sd">        once initialized.</span>
+
+<span class="sd">        :raises FileNotFoundError: If required DLLs cannot be found.</span>
+<span class="sd">        :raises RuntimeError: If required .NET types cannot be imported.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gate</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wss</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">_load_dotnet</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_install_log_sink</span><span class="p">()</span>
+
+            <span class="n">core</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_core</span><span class="p">()</span>
+            <span class="n">params_layer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_net_types</span><span class="p">[</span><span class="s2">&quot;StimParamsLayer&quot;</span><span class="p">](</span><span class="n">core</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">config_path</span><span class="p">))</span>
+            <span class="n">model_layer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_net_types</span><span class="p">[</span><span class="s2">&quot;ModelParamsLayer&quot;</span><span class="p">](</span><span class="n">params_layer</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">config_path</span><span class="p">))</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">_wss</span> <span class="o">=</span> <span class="n">model_layer</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_basic_supported</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_basic_wss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_try_get_basic</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_wss</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">_wss</span><span class="o">.</span><span class="n">Initialize</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_tick_loop</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="StimulationController.Shutdown">
+<a class="viewcode-back" href="../../api.html#wss_py_wrapper.StimulationController.Shutdown">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">Shutdown</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Stop stimulation, stop the tick loop, and dispose .NET objects.</span>
+
+<span class="sd">        Exceptions during shutdown are logged (when possible) but do not prevent</span>
+<span class="sd">        the remainder of cleanup.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gate</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_stop_tick_loop</span><span class="p">()</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wss</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_wss</span><span class="o">.</span><span class="n">Shutdown</span><span class="p">()</span>
+                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_log_error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error during Shutdown: </span><span class="si">{</span><span class="n">ex</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_wss</span><span class="o">.</span><span class="n">Dispose</span><span class="p">()</span>
+                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_log_error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error disposing stimulation core: </span><span class="si">{</span><span class="n">ex</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_log_reset</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_log_reset</span><span class="p">()</span>
+                <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                    <span class="k">pass</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">_wss</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_basic_wss</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_basic_supported</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">started</span> <span class="o">=</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="StimulationController.releaseRadio">
+<a class="viewcode-back" href="../../api.html#wss_py_wrapper.StimulationController.releaseRadio">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">releaseRadio</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Backward-compatible alias for :meth:`Shutdown`.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Shutdown</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="StimulationController.resetRadio">
+<a class="viewcode-back" href="../../api.html#wss_py_wrapper.StimulationController.resetRadio">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">resetRadio</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Restart the .NET core without reloading DLLs.</span>
+
+<span class="sd">        This shuts down and re-initializes the underlying .NET object and</span>
+<span class="sd">        restarts the tick loop.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gate</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wss</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_stop_tick_loop</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_wss</span><span class="o">.</span><span class="n">Shutdown</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_wss</span><span class="o">.</span><span class="n">Initialize</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_tick_loop</span><span class="p">()</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_ensure_tick_loop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wss</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tick_thread</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tick_thread</span><span class="o">.</span><span class="n">is_alive</span><span class="p">():</span>
+            <span class="k">return</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stop_tick_loop</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tick_stop</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+
+        <span class="n">interval</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">tick_interval_ms</span><span class="p">))</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tick_stop</span><span class="o">.</span><span class="n">is_set</span><span class="p">():</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wss</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_wss</span><span class="o">.</span><span class="n">Tick</span><span class="p">()</span>
+                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_log_error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tick loop failure: </span><span class="si">{</span><span class="n">ex</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">interval</span> <span class="o">/</span> <span class="mf">1000.0</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tick_thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">loop</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;wss-tick&quot;</span><span class="p">,</span> <span class="n">daemon</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tick_thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_stop_tick_loop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tick_thread</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tick_stop</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tick_thread</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tick_thread</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="StimulationController.StimulateAnalog">
+<a class="viewcode-back" href="../../api.html#wss_py_wrapper.StimulationController.StimulateAnalog">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">StimulateAnalog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">finger</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">PW</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">amp</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">IPI</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Send a direct analog stimulation request.</span>
+
+<span class="sd">        :param finger: Finger name (e.g. ``&quot;index&quot;``) or channel alias (e.g. ``&quot;ch2&quot;``).</span>
+<span class="sd">        :param PW: Pulse width (units defined by the .NET interface).</span>
+<span class="sd">        :param amp: Amplitude (units defined by the .NET interface).</span>
+<span class="sd">        :param IPI: Inter-pulse interval (units defined by the .NET interface).</span>
+<span class="sd">        :raises RuntimeError: If called before :meth:`Initialize`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">wss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_wss</span><span class="p">()</span>
+        <span class="n">channel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_finger_to_channel</span><span class="p">(</span><span class="n">finger</span><span class="p">)</span>
+        <span class="n">wss</span><span class="o">.</span><span class="n">StimulateAnalog</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">PW</span><span class="p">,</span> <span class="n">amp</span><span class="p">,</span> <span class="n">IPI</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StimulationController.StartStimulation">
+<a class="viewcode-back" href="../../api.html#wss_py_wrapper.StimulationController.StartStimulation">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">StartStimulation</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Broadcast a start stimulation command.</span>
+
+<span class="sd">        :raises RuntimeError: If called before :meth:`Initialize`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">wss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_wss</span><span class="p">()</span>
+        <span class="n">wss</span><span class="o">.</span><span class="n">StartStim</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_net_types</span><span class="p">[</span><span class="s2">&quot;WssTarget&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">Broadcast</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">started</span> <span class="o">=</span> <span class="kc">True</span></div>
+
+
+<div class="viewcode-block" id="StimulationController.StopStimulation">
+<a class="viewcode-back" href="../../api.html#wss_py_wrapper.StimulationController.StopStimulation">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">StopStimulation</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Broadcast a stop stimulation command.</span>
+
+<span class="sd">        :raises RuntimeError: If called before :meth:`Initialize`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">wss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_wss</span><span class="p">()</span>
+        <span class="n">wss</span><span class="o">.</span><span class="n">StopStim</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_net_types</span><span class="p">[</span><span class="s2">&quot;WssTarget&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">Broadcast</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">started</span> <span class="o">=</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="StimulationController.Save">
+<a class="viewcode-back" href="../../api.html#wss_py_wrapper.StimulationController.Save">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">Save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">targetWSS</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">basic</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_require_basic</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">basic</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_int_to_wss_target</span><span class="p">(</span><span class="n">targetWSS</span><span class="p">)</span>
+        <span class="n">basic</span><span class="o">.</span><span class="n">Save</span><span class="p">(</span><span class="n">target</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StimulationController.load">
+<a class="viewcode-back" href="../../api.html#wss_py_wrapper.StimulationController.load">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">targetWSS</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">basic</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_require_basic</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">basic</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_int_to_wss_target</span><span class="p">(</span><span class="n">targetWSS</span><span class="p">)</span>
+        <span class="n">basic</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="n">target</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StimulationController.request_Configs">
+<a class="viewcode-back" href="../../api.html#wss_py_wrapper.StimulationController.request_Configs">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">request_Configs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">targetWSS</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">command</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">basic</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_require_basic</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">basic</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">basic</span><span class="o">.</span><span class="n">Request_Configs</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_int_to_wss_target</span><span class="p">(</span><span class="n">targetWSS</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="StimulationController.updateWaveform">
+<a class="viewcode-back" href="../../api.html#wss_py_wrapper.StimulationController.updateWaveform">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">updateWaveform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">basic</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_require_basic</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">basic</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_net_types</span><span class="p">[</span><span class="s2">&quot;WaveformBuilder&quot;</span><span class="p">]):</span>
+            <span class="n">waveform</span><span class="p">,</span> <span class="n">event_id</span> <span class="o">=</span> <span class="n">args</span>
+            <span class="n">basic</span><span class="o">.</span><span class="n">UpdateWaveform</span><span class="p">(</span><span class="n">waveform</span><span class="p">,</span> <span class="n">event_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_net_types</span><span class="p">[</span><span class="s2">&quot;WssTarget&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">Broadcast</span><span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_net_types</span><span class="p">[</span><span class="s2">&quot;WaveformBuilder&quot;</span><span class="p">]):</span>
+            <span class="n">target</span><span class="p">,</span> <span class="n">waveform</span><span class="p">,</span> <span class="n">event_id</span> <span class="o">=</span> <span class="n">args</span>
+            <span class="n">basic</span><span class="o">.</span><span class="n">UpdateWaveform</span><span class="p">(</span><span class="n">waveform</span><span class="p">,</span> <span class="n">event_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_int_to_wss_target</span><span class="p">(</span><span class="n">target</span><span class="p">))</span>
+            <span class="k">return</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+            <span class="n">waveform</span><span class="p">,</span> <span class="n">event_id</span> <span class="o">=</span> <span class="n">args</span>
+            <span class="n">basic</span><span class="o">.</span><span class="n">UpdateWaveform</span><span class="p">(</span><span class="n">waveform</span><span class="p">,</span> <span class="n">event_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_net_types</span><span class="p">[</span><span class="s2">&quot;WssTarget&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">Broadcast</span><span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+            <span class="n">target</span><span class="p">,</span> <span class="n">waveform</span><span class="p">,</span> <span class="n">event_id</span> <span class="o">=</span> <span class="n">args</span>
+            <span class="n">basic</span><span class="o">.</span><span class="n">UpdateWaveform</span><span class="p">(</span><span class="n">waveform</span><span class="p">,</span> <span class="n">event_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_int_to_wss_target</span><span class="p">(</span><span class="n">target</span><span class="p">))</span>
+            <span class="k">return</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">and</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">args</span><span class="p">):</span>
+            <span class="n">cathodic</span><span class="p">,</span> <span class="n">anodic</span><span class="p">,</span> <span class="n">event_id</span> <span class="o">=</span> <span class="n">args</span>
+            <span class="n">basic</span><span class="o">.</span><span class="n">UpdateEventShape</span><span class="p">(</span><span class="n">cathodic</span><span class="p">,</span> <span class="n">anodic</span><span class="p">,</span> <span class="n">event_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_net_types</span><span class="p">[</span><span class="s2">&quot;WssTarget&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">Broadcast</span><span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span> <span class="ow">and</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">args</span><span class="p">):</span>
+            <span class="n">target</span><span class="p">,</span> <span class="n">cathodic</span><span class="p">,</span> <span class="n">anodic</span><span class="p">,</span> <span class="n">event_id</span> <span class="o">=</span> <span class="n">args</span>
+            <span class="n">basic</span><span class="o">.</span><span class="n">UpdateEventShape</span><span class="p">(</span><span class="n">cathodic</span><span class="p">,</span> <span class="n">anodic</span><span class="p">,</span> <span class="n">event_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_int_to_wss_target</span><span class="p">(</span><span class="n">target</span><span class="p">))</span>
+            <span class="k">return</span>
+
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unsupported updateWaveform signature.&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StimulationController.loadWaveform">
+<a class="viewcode-back" href="../../api.html#wss_py_wrapper.StimulationController.loadWaveform">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">loadWaveform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileName</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">eventID</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">basic</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_require_basic</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">basic</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">basic</span><span class="o">.</span><span class="n">LoadWaveform</span><span class="p">(</span><span class="n">fileName</span><span class="p">,</span> <span class="n">eventID</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StimulationController.WaveformSetup">
+<a class="viewcode-back" href="../../api.html#wss_py_wrapper.StimulationController.WaveformSetup">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">WaveformSetup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wave</span><span class="p">,</span> <span class="n">eventID</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">targetWSS</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">basic</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_require_basic</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">basic</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_int_to_wss_target</span><span class="p">(</span><span class="n">targetWSS</span><span class="p">)</span>
+        <span class="n">basic</span><span class="o">.</span><span class="n">WaveformSetup</span><span class="p">(</span><span class="n">wave</span><span class="p">,</span> <span class="n">eventID</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StimulationController.UpdateIPD">
+<a class="viewcode-back" href="../../api.html#wss_py_wrapper.StimulationController.UpdateIPD">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">UpdateIPD</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ipd</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">eventID</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">targetWSS</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">basic</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_require_basic</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">basic</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_int_to_wss_target</span><span class="p">(</span><span class="n">targetWSS</span><span class="p">)</span>
+        <span class="n">basic</span><span class="o">.</span><span class="n">UpdateIPD</span><span class="p">(</span><span class="n">ipd</span><span class="p">,</span> <span class="n">eventID</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StimulationController.StimulateNormalized">
+<a class="viewcode-back" href="../../api.html#wss_py_wrapper.StimulationController.StimulateNormalized">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">StimulateNormalized</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">finger</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">magnitude</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Stimulate a channel with a normalized magnitude.</span>
+
+<span class="sd">        :param finger: Finger name (e.g. ``&quot;thumb&quot;``) or channel alias (e.g. ``&quot;ch1&quot;``).</span>
+<span class="sd">        :param magnitude: Normalized magnitude as defined by the .NET interface.</span>
+<span class="sd">        :raises RuntimeError: If called before :meth:`Initialize`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">wss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_wss</span><span class="p">()</span>
+        <span class="n">ch</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_finger_to_channel</span><span class="p">(</span><span class="n">finger</span><span class="p">)</span>
+        <span class="n">wss</span><span class="o">.</span><span class="n">StimulateNormalized</span><span class="p">(</span><span class="n">ch</span><span class="p">,</span> <span class="n">magnitude</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StimulationController.GetStimIntensity">
+<a class="viewcode-back" href="../../api.html#wss_py_wrapper.StimulationController.GetStimIntensity">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">GetStimIntensity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">finger</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">wss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_wss</span><span class="p">()</span>
+        <span class="n">ch</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_finger_to_channel</span><span class="p">(</span><span class="n">finger</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">wss</span><span class="o">.</span><span class="n">GetStimIntensity</span><span class="p">(</span><span class="n">ch</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="StimulationController.SaveParamsJson">
+<a class="viewcode-back" href="../../api.html#wss_py_wrapper.StimulationController.SaveParamsJson">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">SaveParamsJson</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Persist stimulation parameters JSON via the .NET layer.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_wss</span><span class="p">()</span><span class="o">.</span><span class="n">SaveParamsJson</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="StimulationController.LoadParamsJson">
+<a class="viewcode-back" href="../../api.html#wss_py_wrapper.StimulationController.LoadParamsJson">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">LoadParamsJson</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pathOrDir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Load stimulation parameters JSON via the .NET layer.</span>
+
+<span class="sd">        :param pathOrDir: Optional file/directory path interpreted by the .NET layer.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">wss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_wss</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">pathOrDir</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">wss</span><span class="o">.</span><span class="n">LoadParamsJson</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">wss</span><span class="o">.</span><span class="n">LoadParamsJson</span><span class="p">(</span><span class="n">pathOrDir</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StimulationController.AddOrUpdateStimParam">
+<a class="viewcode-back" href="../../api.html#wss_py_wrapper.StimulationController.AddOrUpdateStimParam">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">AddOrUpdateStimParam</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_wss</span><span class="p">()</span><span class="o">.</span><span class="n">AddOrUpdateStimParam</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StimulationController.GetStimParam">
+<a class="viewcode-back" href="../../api.html#wss_py_wrapper.StimulationController.GetStimParam">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">GetStimParam</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_wss</span><span class="p">()</span><span class="o">.</span><span class="n">GetStimParam</span><span class="p">(</span><span class="n">key</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StimulationController.TryGetStimParam">
+<a class="viewcode-back" href="../../api.html#wss_py_wrapper.StimulationController.TryGetStimParam">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">TryGetStimParam</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_wss</span><span class="p">()</span><span class="o">.</span><span class="n">TryGetStimParam</span><span class="p">(</span><span class="n">key</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StimulationController.GetAllStimParams">
+<a class="viewcode-back" href="../../api.html#wss_py_wrapper.StimulationController.GetAllStimParams">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">GetAllStimParams</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_wss</span><span class="p">()</span><span class="o">.</span><span class="n">GetAllStimParams</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="StimulationController.SetChannelAmp">
+<a class="viewcode-back" href="../../api.html#wss_py_wrapper.StimulationController.SetChannelAmp">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">SetChannelAmp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">finger</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">mA</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">wss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_wss</span><span class="p">()</span>
+        <span class="n">ch</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_finger_to_channel</span><span class="p">(</span><span class="n">finger</span><span class="p">)</span>
+        <span class="n">wss</span><span class="o">.</span><span class="n">SetChannelAmp</span><span class="p">(</span><span class="n">ch</span><span class="p">,</span> <span class="n">mA</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StimulationController.SetChannelPWMin">
+<a class="viewcode-back" href="../../api.html#wss_py_wrapper.StimulationController.SetChannelPWMin">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">SetChannelPWMin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">finger</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">us</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">wss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_wss</span><span class="p">()</span>
+        <span class="n">ch</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_finger_to_channel</span><span class="p">(</span><span class="n">finger</span><span class="p">)</span>
+        <span class="n">wss</span><span class="o">.</span><span class="n">SetChannelPWMin</span><span class="p">(</span><span class="n">ch</span><span class="p">,</span> <span class="n">us</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StimulationController.SetChannelPWMax">
+<a class="viewcode-back" href="../../api.html#wss_py_wrapper.StimulationController.SetChannelPWMax">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">SetChannelPWMax</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">finger</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">us</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">wss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_wss</span><span class="p">()</span>
+        <span class="n">ch</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_finger_to_channel</span><span class="p">(</span><span class="n">finger</span><span class="p">)</span>
+        <span class="n">wss</span><span class="o">.</span><span class="n">SetChannelPWMax</span><span class="p">(</span><span class="n">ch</span><span class="p">,</span> <span class="n">us</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StimulationController.SetChannelIPI">
+<a class="viewcode-back" href="../../api.html#wss_py_wrapper.StimulationController.SetChannelIPI">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">SetChannelIPI</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">finger</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">ms</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">wss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_wss</span><span class="p">()</span>
+        <span class="n">ch</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_finger_to_channel</span><span class="p">(</span><span class="n">finger</span><span class="p">)</span>
+        <span class="n">wss</span><span class="o">.</span><span class="n">SetChannelIPI</span><span class="p">(</span><span class="n">ch</span><span class="p">,</span> <span class="n">ms</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StimulationController.GetChannelAmp">
+<a class="viewcode-back" href="../../api.html#wss_py_wrapper.StimulationController.GetChannelAmp">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">GetChannelAmp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">finger</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="n">wss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_wss</span><span class="p">()</span>
+        <span class="n">ch</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_finger_to_channel</span><span class="p">(</span><span class="n">finger</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">wss</span><span class="o">.</span><span class="n">GetChannelAmp</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StimulationController.GetChannelPWMin">
+<a class="viewcode-back" href="../../api.html#wss_py_wrapper.StimulationController.GetChannelPWMin">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">GetChannelPWMin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">finger</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">wss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_wss</span><span class="p">()</span>
+        <span class="n">ch</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_finger_to_channel</span><span class="p">(</span><span class="n">finger</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">wss</span><span class="o">.</span><span class="n">GetChannelPWMin</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StimulationController.GetChannelPWMax">
+<a class="viewcode-back" href="../../api.html#wss_py_wrapper.StimulationController.GetChannelPWMax">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">GetChannelPWMax</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">finger</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">wss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_wss</span><span class="p">()</span>
+        <span class="n">ch</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_finger_to_channel</span><span class="p">(</span><span class="n">finger</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">wss</span><span class="o">.</span><span class="n">GetChannelPWMax</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StimulationController.GetChannelIPI">
+<a class="viewcode-back" href="../../api.html#wss_py_wrapper.StimulationController.GetChannelIPI">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">GetChannelIPI</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">finger</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">wss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_wss</span><span class="p">()</span>
+        <span class="n">ch</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_finger_to_channel</span><span class="p">(</span><span class="n">finger</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">wss</span><span class="o">.</span><span class="n">GetChannelIPI</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StimulationController.IsFingerValid">
+<a class="viewcode-back" href="../../api.html#wss_py_wrapper.StimulationController.IsFingerValid">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">IsFingerValid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">finger</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="n">wss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_wss</span><span class="p">()</span>
+        <span class="n">ch</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_finger_to_channel</span><span class="p">(</span><span class="n">finger</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">wss</span><span class="o">.</span><span class="n">IsChannelInRange</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StimulationController.StimWithMode">
+<a class="viewcode-back" href="../../api.html#wss_py_wrapper.StimulationController.StimWithMode">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">StimWithMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">finger</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">magnitude</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Stimulate using the active mode/model parameters.</span>
+
+<span class="sd">        :param finger: Finger name (e.g. ``&quot;index&quot;``) or channel alias (e.g. ``&quot;ch2&quot;``).</span>
+<span class="sd">        :param magnitude: Normalized magnitude.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">wss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_wss</span><span class="p">()</span>
+        <span class="n">ch</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_finger_to_channel</span><span class="p">(</span><span class="n">finger</span><span class="p">)</span>
+        <span class="n">wss</span><span class="o">.</span><span class="n">StimWithMode</span><span class="p">(</span><span class="n">ch</span><span class="p">,</span> <span class="n">magnitude</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StimulationController.UpdateChannelParams">
+<a class="viewcode-back" href="../../api.html#wss_py_wrapper.StimulationController.UpdateChannelParams">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">UpdateChannelParams</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">finger</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">max_val</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">min_val</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">amp</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update per-channel stimulation parameters.</span>
+
+<span class="sd">        This writes values under keys like ``stim.ch.&lt;ch&gt;.maxPW``.</span>
+
+<span class="sd">        :param finger: Finger name or channel alias.</span>
+<span class="sd">        :param max_val: Maximum pulse width.</span>
+<span class="sd">        :param min_val: Minimum pulse width.</span>
+<span class="sd">        :param amp: Channel amplitude.</span>
+<span class="sd">        :raises ValueError: If the channel is invalid for the current configuration.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">wss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_wss</span><span class="p">()</span>
+        <span class="n">ch</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_finger_to_channel</span><span class="p">(</span><span class="n">finger</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">wss</span><span class="o">.</span><span class="n">IsChannelInRange</span><span class="p">(</span><span class="n">ch</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Channel </span><span class="si">{</span><span class="n">ch</span><span class="si">}</span><span class="s2"> is not valid for current config.&quot;</span><span class="p">)</span>
+
+        <span class="n">base_key</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;stim.ch.</span><span class="si">{</span><span class="n">ch</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">wss</span><span class="o">.</span><span class="n">AddOrUpdateStimParam</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_key</span><span class="si">}</span><span class="s2">.maxPW&quot;</span><span class="p">,</span> <span class="n">max_val</span><span class="p">)</span>
+        <span class="n">wss</span><span class="o">.</span><span class="n">AddOrUpdateStimParam</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_key</span><span class="si">}</span><span class="s2">.minPW&quot;</span><span class="p">,</span> <span class="n">min_val</span><span class="p">)</span>
+        <span class="n">wss</span><span class="o">.</span><span class="n">AddOrUpdateStimParam</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_key</span><span class="si">}</span><span class="s2">.amp&quot;</span><span class="p">,</span> <span class="n">amp</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StimulationController.isModeValid">
+<a class="viewcode-back" href="../../api.html#wss_py_wrapper.StimulationController.isModeValid">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">isModeValid</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_wss</span><span class="p">()</span><span class="o">.</span><span class="n">IsModeValid</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="StimulationController.Ready">
+<a class="viewcode-back" href="../../api.html#wss_py_wrapper.StimulationController.Ready">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">Ready</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wss</span><span class="o">.</span><span class="n">Ready</span><span class="p">()</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wss</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="StimulationController.Started">
+<a class="viewcode-back" href="../../api.html#wss_py_wrapper.StimulationController.Started">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">Started</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wss</span><span class="o">.</span><span class="n">Started</span><span class="p">()</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wss</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="StimulationController.GetModelConfigCTRL">
+<a class="viewcode-back" href="../../api.html#wss_py_wrapper.StimulationController.GetModelConfigCTRL">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">GetModelConfigCTRL</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_wss</span><span class="p">()</span><span class="o">.</span><span class="n">GetModelConfigController</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="StimulationController.GetCoreConfigCTRL">
+<a class="viewcode-back" href="../../api.html#wss_py_wrapper.StimulationController.GetCoreConfigCTRL">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">GetCoreConfigCTRL</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_wss</span><span class="p">()</span><span class="o">.</span><span class="n">GetCoreConfigController</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="StimulationController.LoadCoreConfigFile">
+<a class="viewcode-back" href="../../api.html#wss_py_wrapper.StimulationController.LoadCoreConfigFile">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">LoadCoreConfigFile</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reload the core configuration file via the .NET layer.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_wss</span><span class="p">()</span><span class="o">.</span><span class="n">LoadConfigFile</span><span class="p">()</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_load_dotnet</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">dlls</span> <span class="o">=</span> <span class="n">collect_dlls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">cs_lib_dir</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">dlls</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No DLLs found in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">cs_lib_dir</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="n">loader</span> <span class="o">=</span> <span class="n">WssLoader</span><span class="p">(</span><span class="n">dlls</span><span class="p">)</span>
+        <span class="n">loader</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="kn">from</span><span class="w"> </span><span class="nn">WSS_Core_Interface</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>  <span class="c1"># type: ignore</span>
+                <span class="n">CoreConfigController</span><span class="p">,</span>
+                <span class="n">ModelConfigController</span><span class="p">,</span>
+                <span class="n">ModelParamsLayer</span><span class="p">,</span>
+                <span class="n">StimParamsLayer</span><span class="p">,</span>
+                <span class="n">WaveformBuilder</span><span class="p">,</span>
+                <span class="n">WssStimulationCore</span><span class="p">,</span>
+                <span class="n">WssTarget</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="kn">from</span><span class="w"> </span><span class="nn">Wss.CoreModule</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>  <span class="c1"># type: ignore</span>
+                <span class="n">CoreConfigController</span><span class="p">,</span>
+                <span class="n">WaveformBuilder</span><span class="p">,</span>
+                <span class="n">WssStimulationCore</span><span class="p">,</span>
+                <span class="n">WssTarget</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="kn">from</span><span class="w"> </span><span class="nn">Wss.ModelModule</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelConfigController</span><span class="p">,</span> <span class="n">ModelParamsLayer</span>  <span class="c1"># type: ignore</span>
+            <span class="kn">from</span><span class="w"> </span><span class="nn">Wss.CalibrationModule</span><span class="w"> </span><span class="kn">import</span> <span class="n">StimParamsLayer</span>  <span class="c1"># type: ignore</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_net_types</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;CoreConfigController&quot;</span><span class="p">:</span> <span class="n">CoreConfigController</span><span class="p">,</span>
+            <span class="s2">&quot;ModelConfigController&quot;</span><span class="p">:</span> <span class="n">ModelConfigController</span><span class="p">,</span>
+            <span class="s2">&quot;ModelParamsLayer&quot;</span><span class="p">:</span> <span class="n">ModelParamsLayer</span><span class="p">,</span>
+            <span class="s2">&quot;StimParamsLayer&quot;</span><span class="p">:</span> <span class="n">StimParamsLayer</span><span class="p">,</span>
+            <span class="s2">&quot;WaveformBuilder&quot;</span><span class="p">:</span> <span class="n">WaveformBuilder</span><span class="p">,</span>
+            <span class="s2">&quot;WssStimulationCore&quot;</span><span class="p">:</span> <span class="n">WssStimulationCore</span><span class="p">,</span>
+            <span class="s2">&quot;WssTarget&quot;</span><span class="p">:</span> <span class="n">WssTarget</span><span class="p">,</span>
+        <span class="p">}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_create_core</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">core_class</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_net_types</span><span class="p">[</span><span class="s2">&quot;WssStimulationCore&quot;</span><span class="p">]</span>
+        <span class="n">config_path</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">config_path</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">serial_port</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">core_class</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">serial_port</span><span class="p">,</span> <span class="n">config_path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">test_mode</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">max_setup_tries</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">core_class</span><span class="p">(</span><span class="n">config_path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">test_mode</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">max_setup_tries</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_install_log_sink</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_log_reset</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log_type</span> <span class="o">=</span> <span class="n">_resolve_log_type</span><span class="p">()</span>
+        <span class="n">sink</span> <span class="o">=</span> <span class="n">FileLogSink</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">log_path</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log_reset</span> <span class="o">=</span> <span class="n">install_csharp_log_sink</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_log_type</span><span class="p">,</span> <span class="n">sink</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_log_error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_log_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_log_type</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_ensure_wss</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wss</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Call Initialize() before using the stimulation controller.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wss</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_try_get_basic</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wss</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">wss</span><span class="o">.</span><span class="n">TryGetBasic</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">None</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+            <span class="n">success</span><span class="p">,</span> <span class="n">basic</span> <span class="o">=</span> <span class="n">result</span>
+            <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">success</span><span class="p">),</span> <span class="n">basic</span>
+
+        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">result</span><span class="p">),</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_require_basic</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_basic_supported</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_basic_wss</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_log_error</span><span class="p">(</span><span class="s2">&quot;Basic stimulation not supported.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_basic_wss</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_int_to_wss_target</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_net_types</span><span class="p">[</span><span class="s2">&quot;WssTarget&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">Broadcast</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">target</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_net_types</span><span class="p">[</span><span class="s2">&quot;WssTarget&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">Wss1</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_net_types</span><span class="p">[</span><span class="s2">&quot;WssTarget&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">Wss2</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_net_types</span><span class="p">[</span><span class="s2">&quot;WssTarget&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">Wss3</span>
+        <span class="k">return</span> <span class="n">target</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_finger_to_channel</span><span class="p">(</span><span class="n">finger_or_alias</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">finger_or_alias</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+
+        <span class="k">if</span> <span class="n">finger_or_alias</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;ch&quot;</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">finger_or_alias</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="k">return</span> <span class="mi">0</span>
+
+        <span class="n">match</span> <span class="o">=</span> <span class="n">finger_or_alias</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">match</span> <span class="o">==</span> <span class="s2">&quot;thumb&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">match</span> <span class="o">==</span> <span class="s2">&quot;index&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">2</span>
+        <span class="k">if</span> <span class="n">match</span> <span class="o">==</span> <span class="s2">&quot;middle&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">3</span>
+        <span class="k">if</span> <span class="n">match</span> <span class="o">==</span> <span class="s2">&quot;ring&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">4</span>
+        <span class="k">if</span> <span class="n">match</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;pinky&quot;</span><span class="p">,</span> <span class="s2">&quot;little&quot;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="mi">5</span>
+        <span class="k">return</span> <span class="mi">0</span></div>
+
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">wss-py-wrapper</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.1.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

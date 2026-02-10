@@ -1,0 +1,643 @@
+### YamlMime:ManagedReference
+items:
+- uid: Wss.CoreModule.WSSMessageIDs
+  commentId: T:Wss.CoreModule.WSSMessageIDs
+  id: WSSMessageIDs
+  parent: Wss.CoreModule
+  children:
+  - Wss.CoreModule.WSSMessageIDs.AddEventToSchedule
+  - Wss.CoreModule.WSSMessageIDs.BoardCommands
+  - Wss.CoreModule.WSSMessageIDs.ChangeGroupState
+  - Wss.CoreModule.WSSMessageIDs.ChangeScheduleConfig
+  - Wss.CoreModule.WSSMessageIDs.Clear
+  - Wss.CoreModule.WSSMessageIDs.CreateContactConfig
+  - Wss.CoreModule.WSSMessageIDs.CreateEvent
+  - Wss.CoreModule.WSSMessageIDs.CreateSchedule
+  - Wss.CoreModule.WSSMessageIDs.CustomWaveform
+  - Wss.CoreModule.WSSMessageIDs.DeleteContactConfig
+  - Wss.CoreModule.WSSMessageIDs.DeleteEvent
+  - Wss.CoreModule.WSSMessageIDs.DeleteSchedule
+  - Wss.CoreModule.WSSMessageIDs.Echo
+  - Wss.CoreModule.WSSMessageIDs.EditEventConfig
+  - Wss.CoreModule.WSSMessageIDs.Error
+  - Wss.CoreModule.WSSMessageIDs.ModuleQuery
+  - Wss.CoreModule.WSSMessageIDs.MoveEventToSchedule
+  - Wss.CoreModule.WSSMessageIDs.RemoveEventFromSchedule
+  - Wss.CoreModule.WSSMessageIDs.RequestAnalog
+  - Wss.CoreModule.WSSMessageIDs.RequestConfig
+  - Wss.CoreModule.WSSMessageIDs.Reset
+  - Wss.CoreModule.WSSMessageIDs.ResetSchedule
+  - Wss.CoreModule.WSSMessageIDs.StimulationSwitch
+  - Wss.CoreModule.WSSMessageIDs.StreamChangeAll
+  - Wss.CoreModule.WSSMessageIDs.StreamChangeNoIPI
+  - Wss.CoreModule.WSSMessageIDs.StreamChangeNoPA
+  - Wss.CoreModule.WSSMessageIDs.StreamChangeNoPW
+  - Wss.CoreModule.WSSMessageIDs.SyncGroup
+  langs:
+  - csharp
+  - vb
+  name: WSSMessageIDs
+  nameWithType: WSSMessageIDs
+  fullName: Wss.CoreModule.WSSMessageIDs
+  type: Enum
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Protocol message identifiers used by the firmware.
+
+    Values correspond to on-wire command codes.
+  example: []
+  syntax:
+    content: 'public enum WSSMessageIDs : byte'
+    content.vb: Public Enum WSSMessageIDs As Byte
+- uid: Wss.CoreModule.WSSMessageIDs.Error
+  commentId: F:Wss.CoreModule.WSSMessageIDs.Error
+  id: Error
+  parent: Wss.CoreModule.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: Error
+  nameWithType: WSSMessageIDs.Error
+  fullName: Wss.CoreModule.WSSMessageIDs.Error
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Error reply or status.
+  example: []
+  syntax:
+    content: Error = 5
+    return:
+      type: Wss.CoreModule.WSSMessageIDs
+- uid: Wss.CoreModule.WSSMessageIDs.ModuleQuery
+  commentId: F:Wss.CoreModule.WSSMessageIDs.ModuleQuery
+  id: ModuleQuery
+  parent: Wss.CoreModule.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: ModuleQuery
+  nameWithType: WSSMessageIDs.ModuleQuery
+  fullName: Wss.CoreModule.WSSMessageIDs.ModuleQuery
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Queries module identity and capabilities.
+  example: []
+  syntax:
+    content: ModuleQuery = 1
+    return:
+      type: Wss.CoreModule.WSSMessageIDs
+- uid: Wss.CoreModule.WSSMessageIDs.Reset
+  commentId: F:Wss.CoreModule.WSSMessageIDs.Reset
+  id: Reset
+  parent: Wss.CoreModule.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: Reset
+  nameWithType: WSSMessageIDs.Reset
+  fullName: Wss.CoreModule.WSSMessageIDs.Reset
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Device reset command.
+  example: []
+  syntax:
+    content: Reset = 4
+    return:
+      type: Wss.CoreModule.WSSMessageIDs
+- uid: Wss.CoreModule.WSSMessageIDs.Echo
+  commentId: F:Wss.CoreModule.WSSMessageIDs.Echo
+  id: Echo
+  parent: Wss.CoreModule.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: Echo
+  nameWithType: WSSMessageIDs.Echo
+  fullName: Wss.CoreModule.WSSMessageIDs.Echo
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Ping/pong transport echo.
+  example: []
+  syntax:
+    content: Echo = 7
+    return:
+      type: Wss.CoreModule.WSSMessageIDs
+- uid: Wss.CoreModule.WSSMessageIDs.RequestAnalog
+  commentId: F:Wss.CoreModule.WSSMessageIDs.RequestAnalog
+  id: RequestAnalog
+  parent: Wss.CoreModule.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: RequestAnalog
+  nameWithType: WSSMessageIDs.RequestAnalog
+  fullName: Wss.CoreModule.WSSMessageIDs.RequestAnalog
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Requests analog value(s).
+  example: []
+  syntax:
+    content: RequestAnalog = 2
+    return:
+      type: Wss.CoreModule.WSSMessageIDs
+- uid: Wss.CoreModule.WSSMessageIDs.Clear
+  commentId: F:Wss.CoreModule.WSSMessageIDs.Clear
+  id: Clear
+  parent: Wss.CoreModule.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: Clear
+  nameWithType: WSSMessageIDs.Clear
+  fullName: Wss.CoreModule.WSSMessageIDs.Clear
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Clears device state or buffers.
+  example: []
+  syntax:
+    content: Clear = 64
+    return:
+      type: Wss.CoreModule.WSSMessageIDs
+- uid: Wss.CoreModule.WSSMessageIDs.RequestConfig
+  commentId: F:Wss.CoreModule.WSSMessageIDs.RequestConfig
+  id: RequestConfig
+  parent: Wss.CoreModule.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: RequestConfig
+  nameWithType: WSSMessageIDs.RequestConfig
+  fullName: Wss.CoreModule.WSSMessageIDs.RequestConfig
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Requests configuration block.
+  example: []
+  syntax:
+    content: RequestConfig = 65
+    return:
+      type: Wss.CoreModule.WSSMessageIDs
+- uid: Wss.CoreModule.WSSMessageIDs.CreateContactConfig
+  commentId: F:Wss.CoreModule.WSSMessageIDs.CreateContactConfig
+  id: CreateContactConfig
+  parent: Wss.CoreModule.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: CreateContactConfig
+  nameWithType: WSSMessageIDs.CreateContactConfig
+  fullName: Wss.CoreModule.WSSMessageIDs.CreateContactConfig
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Creates a contact configuration.
+  example: []
+  syntax:
+    content: CreateContactConfig = 66
+    return:
+      type: Wss.CoreModule.WSSMessageIDs
+- uid: Wss.CoreModule.WSSMessageIDs.DeleteContactConfig
+  commentId: F:Wss.CoreModule.WSSMessageIDs.DeleteContactConfig
+  id: DeleteContactConfig
+  parent: Wss.CoreModule.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: DeleteContactConfig
+  nameWithType: WSSMessageIDs.DeleteContactConfig
+  fullName: Wss.CoreModule.WSSMessageIDs.DeleteContactConfig
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Deletes a contact configuration.
+  example: []
+  syntax:
+    content: DeleteContactConfig = 67
+    return:
+      type: Wss.CoreModule.WSSMessageIDs
+- uid: Wss.CoreModule.WSSMessageIDs.CreateEvent
+  commentId: F:Wss.CoreModule.WSSMessageIDs.CreateEvent
+  id: CreateEvent
+  parent: Wss.CoreModule.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: CreateEvent
+  nameWithType: WSSMessageIDs.CreateEvent
+  fullName: Wss.CoreModule.WSSMessageIDs.CreateEvent
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Creates a stimulation event.
+  example: []
+  syntax:
+    content: CreateEvent = 68
+    return:
+      type: Wss.CoreModule.WSSMessageIDs
+- uid: Wss.CoreModule.WSSMessageIDs.DeleteEvent
+  commentId: F:Wss.CoreModule.WSSMessageIDs.DeleteEvent
+  id: DeleteEvent
+  parent: Wss.CoreModule.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: DeleteEvent
+  nameWithType: WSSMessageIDs.DeleteEvent
+  fullName: Wss.CoreModule.WSSMessageIDs.DeleteEvent
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Deletes a stimulation event.
+  example: []
+  syntax:
+    content: DeleteEvent = 69
+    return:
+      type: Wss.CoreModule.WSSMessageIDs
+- uid: Wss.CoreModule.WSSMessageIDs.AddEventToSchedule
+  commentId: F:Wss.CoreModule.WSSMessageIDs.AddEventToSchedule
+  id: AddEventToSchedule
+  parent: Wss.CoreModule.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: AddEventToSchedule
+  nameWithType: WSSMessageIDs.AddEventToSchedule
+  fullName: Wss.CoreModule.WSSMessageIDs.AddEventToSchedule
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Adds an event to a schedule.
+  example: []
+  syntax:
+    content: AddEventToSchedule = 70
+    return:
+      type: Wss.CoreModule.WSSMessageIDs
+- uid: Wss.CoreModule.WSSMessageIDs.RemoveEventFromSchedule
+  commentId: F:Wss.CoreModule.WSSMessageIDs.RemoveEventFromSchedule
+  id: RemoveEventFromSchedule
+  parent: Wss.CoreModule.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: RemoveEventFromSchedule
+  nameWithType: WSSMessageIDs.RemoveEventFromSchedule
+  fullName: Wss.CoreModule.WSSMessageIDs.RemoveEventFromSchedule
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Removes an event from a schedule.
+  example: []
+  syntax:
+    content: RemoveEventFromSchedule = 71
+    return:
+      type: Wss.CoreModule.WSSMessageIDs
+- uid: Wss.CoreModule.WSSMessageIDs.MoveEventToSchedule
+  commentId: F:Wss.CoreModule.WSSMessageIDs.MoveEventToSchedule
+  id: MoveEventToSchedule
+  parent: Wss.CoreModule.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: MoveEventToSchedule
+  nameWithType: WSSMessageIDs.MoveEventToSchedule
+  fullName: Wss.CoreModule.WSSMessageIDs.MoveEventToSchedule
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Moves an event within a schedule.
+  example: []
+  syntax:
+    content: MoveEventToSchedule = 72
+    return:
+      type: Wss.CoreModule.WSSMessageIDs
+- uid: Wss.CoreModule.WSSMessageIDs.EditEventConfig
+  commentId: F:Wss.CoreModule.WSSMessageIDs.EditEventConfig
+  id: EditEventConfig
+  parent: Wss.CoreModule.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: EditEventConfig
+  nameWithType: WSSMessageIDs.EditEventConfig
+  fullName: Wss.CoreModule.WSSMessageIDs.EditEventConfig
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Edits an existing event configuration.
+  example: []
+  syntax:
+    content: EditEventConfig = 73
+    return:
+      type: Wss.CoreModule.WSSMessageIDs
+- uid: Wss.CoreModule.WSSMessageIDs.CreateSchedule
+  commentId: F:Wss.CoreModule.WSSMessageIDs.CreateSchedule
+  id: CreateSchedule
+  parent: Wss.CoreModule.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: CreateSchedule
+  nameWithType: WSSMessageIDs.CreateSchedule
+  fullName: Wss.CoreModule.WSSMessageIDs.CreateSchedule
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Creates a stimulation schedule.
+  example: []
+  syntax:
+    content: CreateSchedule = 74
+    return:
+      type: Wss.CoreModule.WSSMessageIDs
+- uid: Wss.CoreModule.WSSMessageIDs.DeleteSchedule
+  commentId: F:Wss.CoreModule.WSSMessageIDs.DeleteSchedule
+  id: DeleteSchedule
+  parent: Wss.CoreModule.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: DeleteSchedule
+  nameWithType: WSSMessageIDs.DeleteSchedule
+  fullName: Wss.CoreModule.WSSMessageIDs.DeleteSchedule
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Deletes a stimulation schedule.
+  example: []
+  syntax:
+    content: DeleteSchedule = 75
+    return:
+      type: Wss.CoreModule.WSSMessageIDs
+- uid: Wss.CoreModule.WSSMessageIDs.SyncGroup
+  commentId: F:Wss.CoreModule.WSSMessageIDs.SyncGroup
+  id: SyncGroup
+  parent: Wss.CoreModule.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: SyncGroup
+  nameWithType: WSSMessageIDs.SyncGroup
+  fullName: Wss.CoreModule.WSSMessageIDs.SyncGroup
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Synchronizes a group of devices.
+  example: []
+  syntax:
+    content: SyncGroup = 76
+    return:
+      type: Wss.CoreModule.WSSMessageIDs
+- uid: Wss.CoreModule.WSSMessageIDs.ChangeGroupState
+  commentId: F:Wss.CoreModule.WSSMessageIDs.ChangeGroupState
+  id: ChangeGroupState
+  parent: Wss.CoreModule.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: ChangeGroupState
+  nameWithType: WSSMessageIDs.ChangeGroupState
+  fullName: Wss.CoreModule.WSSMessageIDs.ChangeGroupState
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Changes a group state.
+  example: []
+  syntax:
+    content: ChangeGroupState = 77
+    return:
+      type: Wss.CoreModule.WSSMessageIDs
+- uid: Wss.CoreModule.WSSMessageIDs.ChangeScheduleConfig
+  commentId: F:Wss.CoreModule.WSSMessageIDs.ChangeScheduleConfig
+  id: ChangeScheduleConfig
+  parent: Wss.CoreModule.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: ChangeScheduleConfig
+  nameWithType: WSSMessageIDs.ChangeScheduleConfig
+  fullName: Wss.CoreModule.WSSMessageIDs.ChangeScheduleConfig
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Changes schedule configuration.
+  example: []
+  syntax:
+    content: ChangeScheduleConfig = 78
+    return:
+      type: Wss.CoreModule.WSSMessageIDs
+- uid: Wss.CoreModule.WSSMessageIDs.ResetSchedule
+  commentId: F:Wss.CoreModule.WSSMessageIDs.ResetSchedule
+  id: ResetSchedule
+  parent: Wss.CoreModule.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: ResetSchedule
+  nameWithType: WSSMessageIDs.ResetSchedule
+  fullName: Wss.CoreModule.WSSMessageIDs.ResetSchedule
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Resets schedule to defaults.
+  example: []
+  syntax:
+    content: ResetSchedule = 79
+    return:
+      type: Wss.CoreModule.WSSMessageIDs
+- uid: Wss.CoreModule.WSSMessageIDs.CustomWaveform
+  commentId: F:Wss.CoreModule.WSSMessageIDs.CustomWaveform
+  id: CustomWaveform
+  parent: Wss.CoreModule.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: CustomWaveform
+  nameWithType: WSSMessageIDs.CustomWaveform
+  fullName: Wss.CoreModule.WSSMessageIDs.CustomWaveform
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Uploads or selects a custom waveform.
+  example: []
+  syntax:
+    content: CustomWaveform = 157
+    return:
+      type: Wss.CoreModule.WSSMessageIDs
+- uid: Wss.CoreModule.WSSMessageIDs.StimulationSwitch
+  commentId: F:Wss.CoreModule.WSSMessageIDs.StimulationSwitch
+  id: StimulationSwitch
+  parent: Wss.CoreModule.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: StimulationSwitch
+  nameWithType: WSSMessageIDs.StimulationSwitch
+  fullName: Wss.CoreModule.WSSMessageIDs.StimulationSwitch
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Global stimulation on/off switch.
+  example: []
+  syntax:
+    content: StimulationSwitch = 11
+    return:
+      type: Wss.CoreModule.WSSMessageIDs
+- uid: Wss.CoreModule.WSSMessageIDs.BoardCommands
+  commentId: F:Wss.CoreModule.WSSMessageIDs.BoardCommands
+  id: BoardCommands
+  parent: Wss.CoreModule.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: BoardCommands
+  nameWithType: WSSMessageIDs.BoardCommands
+  fullName: Wss.CoreModule.WSSMessageIDs.BoardCommands
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Generic board control and diagnostics.
+  example: []
+  syntax:
+    content: BoardCommands = 9
+    return:
+      type: Wss.CoreModule.WSSMessageIDs
+- uid: Wss.CoreModule.WSSMessageIDs.StreamChangeAll
+  commentId: F:Wss.CoreModule.WSSMessageIDs.StreamChangeAll
+  id: StreamChangeAll
+  parent: Wss.CoreModule.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: StreamChangeAll
+  nameWithType: WSSMessageIDs.StreamChangeAll
+  fullName: Wss.CoreModule.WSSMessageIDs.StreamChangeAll
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: 'Streaming update: all fields.'
+  example: []
+  syntax:
+    content: StreamChangeAll = 48
+    return:
+      type: Wss.CoreModule.WSSMessageIDs
+- uid: Wss.CoreModule.WSSMessageIDs.StreamChangeNoIPI
+  commentId: F:Wss.CoreModule.WSSMessageIDs.StreamChangeNoIPI
+  id: StreamChangeNoIPI
+  parent: Wss.CoreModule.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: StreamChangeNoIPI
+  nameWithType: WSSMessageIDs.StreamChangeNoIPI
+  fullName: Wss.CoreModule.WSSMessageIDs.StreamChangeNoIPI
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: 'Streaming update: no IPI field.'
+  example: []
+  syntax:
+    content: StreamChangeNoIPI = 49
+    return:
+      type: Wss.CoreModule.WSSMessageIDs
+- uid: Wss.CoreModule.WSSMessageIDs.StreamChangeNoPA
+  commentId: F:Wss.CoreModule.WSSMessageIDs.StreamChangeNoPA
+  id: StreamChangeNoPA
+  parent: Wss.CoreModule.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: StreamChangeNoPA
+  nameWithType: WSSMessageIDs.StreamChangeNoPA
+  fullName: Wss.CoreModule.WSSMessageIDs.StreamChangeNoPA
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: 'Streaming update: no pulse amplitude.'
+  example: []
+  syntax:
+    content: StreamChangeNoPA = 51
+    return:
+      type: Wss.CoreModule.WSSMessageIDs
+- uid: Wss.CoreModule.WSSMessageIDs.StreamChangeNoPW
+  commentId: F:Wss.CoreModule.WSSMessageIDs.StreamChangeNoPW
+  id: StreamChangeNoPW
+  parent: Wss.CoreModule.WSSMessageIDs
+  langs:
+  - csharp
+  - vb
+  name: StreamChangeNoPW
+  nameWithType: WSSMessageIDs.StreamChangeNoPW
+  fullName: Wss.CoreModule.WSSMessageIDs.StreamChangeNoPW
+  type: Field
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: 'Streaming update: no pulse width.'
+  example: []
+  syntax:
+    content: StreamChangeNoPW = 50
+    return:
+      type: Wss.CoreModule.WSSMessageIDs
+references:
+- uid: Wss.CoreModule
+  commentId: N:Wss.CoreModule
+  href: Wss.html
+  name: Wss.CoreModule
+  nameWithType: Wss.CoreModule
+  fullName: Wss.CoreModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+- uid: Wss.CoreModule.WSSMessageIDs
+  commentId: T:Wss.CoreModule.WSSMessageIDs
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.WSSMessageIDs.html
+  name: WSSMessageIDs
+  nameWithType: WSSMessageIDs
+  fullName: Wss.CoreModule.WSSMessageIDs

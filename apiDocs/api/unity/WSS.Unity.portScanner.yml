@@ -1,0 +1,133 @@
+### YamlMime:ManagedReference
+items:
+- uid: WSS.Unity.portScanner
+  commentId: T:WSS.Unity.portScanner
+  id: portScanner
+  parent: WSS.Unity
+  children:
+  - WSS.Unity.portScanner.selectPort
+  langs:
+  - csharp
+  - vb
+  name: portScanner
+  nameWithType: portScanner
+  fullName: portScanner
+  type: Class
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  summary: >-
+    Simple Unity helper that scans available serial ports and allows selecting
+
+    one from a UI dropdown to force the COM port used by the stimulation script.
+
+    Attach this to a separate GameObject and wire the <code>selectPort()</code>
+
+    method to a UI event (e.g., button click) to apply the chosen port.
+  remarks: >-
+    Usage:
+
+    - Place this script on a separate GameObject (not a child of the stimulation object).
+
+    - Assign <xref href="portScanner.stim" data-throw-if-not-resolved="false"></xref> and <xref href="portScanner.serialList" data-throw-if-not-resolved="false"></xref> in the inspector.
+
+    - Ensure the stimulation script has <code>forcePort</code> enabled so the dropdown selection is used.
+  example: []
+  syntax:
+    content: 'public class portScanner : MonoBehaviour'
+    content.vb: Public Class portScanner Inherits MonoBehaviour
+  inheritance:
+  - System.Object
+  - UnityEngine.Object
+  - UnityEngine.Component
+  - UnityEngine.Behaviour
+  - UnityEngine.MonoBehaviour
+- uid: WSS.Unity.portScanner.selectPort
+  commentId: M:WSS.Unity.portScanner.selectPort
+  id: selectPort
+  parent: WSS.Unity.portScanner
+  langs:
+  - csharp
+  - vb
+  name: selectPort()
+  nameWithType: portScanner.selectPort()
+  fullName: portScanner.selectPort()
+  type: Method
+  assemblies:
+  - UnitySubmodule.Docs
+  namespace: WSS.Unity
+  summary: Applies the selected COM port to the stimulation script and re-enables it.
+  example: []
+  syntax:
+    content: public void selectPort()
+    content.vb: Public Sub selectPort()
+  overload: WSS.Unity.portScanner.selectPort*
+references:
+- uid: portScanner.stim
+  commentId: F:portScanner.stim
+  name: stim
+  nameWithType: portScanner.stim
+  fullName: portScanner.stim
+- uid: portScanner.serialList
+  commentId: F:portScanner.serialList
+  name: serialList
+  nameWithType: portScanner.serialList
+  fullName: portScanner.serialList
+- uid: WSS.Unity
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: UnityEngine.Object
+  commentId: T:UnityEngine.Object
+  parent: UnityEngine
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: UnityEngine.Object
+- uid: UnityEngine.Component
+  commentId: T:UnityEngine.Component
+  parent: UnityEngine
+  isExternal: true
+  name: Component
+  nameWithType: Component
+  fullName: UnityEngine.Component
+- uid: UnityEngine.Behaviour
+  commentId: T:UnityEngine.Behaviour
+  parent: UnityEngine
+  isExternal: true
+  name: Behaviour
+  nameWithType: Behaviour
+  fullName: UnityEngine.Behaviour
+- uid: UnityEngine.MonoBehaviour
+  commentId: T:UnityEngine.MonoBehaviour
+  parent: UnityEngine
+  isExternal: true
+  name: MonoBehaviour
+  nameWithType: MonoBehaviour
+  fullName: UnityEngine.MonoBehaviour
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: UnityEngine
+  commentId: N:UnityEngine
+  isExternal: true
+  name: UnityEngine
+  nameWithType: UnityEngine
+  fullName: UnityEngine
+- uid: WSS.Unity.portScanner.selectPort*
+  commentId: Overload:WSS.Unity.portScanner.selectPort
+  href: WSS.Unity.portScanner.html#portScanner_selectPort
+  name: selectPort
+  nameWithType: portScanner.selectPort
+  fullName: portScanner.selectPort

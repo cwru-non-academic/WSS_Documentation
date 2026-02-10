@@ -1,0 +1,499 @@
+### YamlMime:ManagedReference
+items:
+- uid: Wss.CoreModule.IBasicStimulation
+  commentId: T:Wss.CoreModule.IBasicStimulation
+  id: IBasicStimulation
+  parent: Wss.CoreModule
+  children:
+  - Wss.CoreModule.IBasicStimulation.Load(Wss.CoreModule.WssTarget)
+  - Wss.CoreModule.IBasicStimulation.LoadWaveform(System.String,System.Int32)
+  - Wss.CoreModule.IBasicStimulation.Request_Configs(System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  - Wss.CoreModule.IBasicStimulation.Save(Wss.CoreModule.WssTarget)
+  - Wss.CoreModule.IBasicStimulation.UpdateEventShape(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  - Wss.CoreModule.IBasicStimulation.UpdateIPD(System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  - Wss.CoreModule.IBasicStimulation.UpdateIPD(System.Int32,Wss.CoreModule.WssTarget)
+  - Wss.CoreModule.IBasicStimulation.UpdateWaveform(System.Int32[],System.Int32,Wss.CoreModule.WssTarget)
+  - Wss.CoreModule.IBasicStimulation.UpdateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  - Wss.CoreModule.IBasicStimulation.WaveformSetup(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  langs:
+  - csharp
+  - vb
+  name: IBasicStimulation
+  nameWithType: IBasicStimulation
+  fullName: Wss.CoreModule.IBasicStimulation
+  type: Interface
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Basic stimulation operations that upload or select waveforms and manage
+
+    board configuration. Calls are non-blocking; implementations may enqueue
+
+    setup steps and return immediately.
+  example: []
+  syntax:
+    content: public interface IBasicStimulation
+    content.vb: Public Interface IBasicStimulation
+- uid: Wss.CoreModule.IBasicStimulation.UpdateEventShape(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.IBasicStimulation.UpdateEventShape(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  id: UpdateEventShape(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.IBasicStimulation
+  langs:
+  - csharp
+  - vb
+  name: UpdateEventShape(int, int, int, WssTarget)
+  nameWithType: IBasicStimulation.UpdateEventShape(int, int, int, WssTarget)
+  fullName: Wss.CoreModule.IBasicStimulation.UpdateEventShape(int, int, int, Wss.CoreModule.WssTarget)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Sets event shape IDs directly for the given <code class="paramref">eventID</code>.
+
+    Implementations should send setup edits with replies.
+  example: []
+  syntax:
+    content: void UpdateEventShape(int cathodicWaveform, int anodicWaveform, int eventID, WssTarget wssTarget)
+    parameters:
+    - id: cathodicWaveform
+      type: System.Int32
+      description: Shape ID for the standard phase.
+    - id: anodicWaveform
+      type: System.Int32
+      description: Shape ID for the recharge phase.
+    - id: eventID
+      type: System.Int32
+      description: Event slot to modify.
+    - id: wssTarget
+      type: Wss.CoreModule.WssTarget
+      description: Target device or broadcast.
+    content.vb: Sub UpdateEventShape(cathodicWaveform As Integer, anodicWaveform As Integer, eventID As Integer, wssTarget As WssTarget)
+  overload: Wss.CoreModule.IBasicStimulation.UpdateEventShape*
+  nameWithType.vb: IBasicStimulation.UpdateEventShape(Integer, Integer, Integer, WssTarget)
+  fullName.vb: Wss.CoreModule.IBasicStimulation.UpdateEventShape(Integer, Integer, Integer, Wss.CoreModule.WssTarget)
+  name.vb: UpdateEventShape(Integer, Integer, Integer, WssTarget)
+- uid: Wss.CoreModule.IBasicStimulation.UpdateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.IBasicStimulation.UpdateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  id: UpdateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.IBasicStimulation
+  langs:
+  - csharp
+  - vb
+  name: UpdateWaveform(WaveformBuilder, int, WssTarget)
+  nameWithType: IBasicStimulation.UpdateWaveform(WaveformBuilder, int, WssTarget)
+  fullName: Wss.CoreModule.IBasicStimulation.UpdateWaveform(Wss.CoreModule.WaveformBuilder, int, Wss.CoreModule.WssTarget)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Uploads a prepared waveform and assigns shapes for <code class="paramref">eventID</code>.
+  example: []
+  syntax:
+    content: void UpdateWaveform(WaveformBuilder waveform, int eventID, WssTarget wssTarget)
+    parameters:
+    - id: waveform
+      type: Wss.CoreModule.WaveformBuilder
+      description: Prepared <xref href="Wss.CoreModule.WaveformBuilder" data-throw-if-not-resolved="false"></xref>.
+    - id: eventID
+      type: System.Int32
+      description: Event slot to target.
+    - id: wssTarget
+      type: Wss.CoreModule.WssTarget
+      description: Target device or broadcast.
+    content.vb: Sub UpdateWaveform(waveform As WaveformBuilder, eventID As Integer, wssTarget As WssTarget)
+  overload: Wss.CoreModule.IBasicStimulation.UpdateWaveform*
+  nameWithType.vb: IBasicStimulation.UpdateWaveform(WaveformBuilder, Integer, WssTarget)
+  fullName.vb: Wss.CoreModule.IBasicStimulation.UpdateWaveform(Wss.CoreModule.WaveformBuilder, Integer, Wss.CoreModule.WssTarget)
+  name.vb: UpdateWaveform(WaveformBuilder, Integer, WssTarget)
+- uid: Wss.CoreModule.IBasicStimulation.UpdateWaveform(System.Int32[],System.Int32,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.IBasicStimulation.UpdateWaveform(System.Int32[],System.Int32,Wss.CoreModule.WssTarget)
+  id: UpdateWaveform(System.Int32[],System.Int32,Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.IBasicStimulation
+  langs:
+  - csharp
+  - vb
+  name: UpdateWaveform(int[], int, WssTarget)
+  nameWithType: IBasicStimulation.UpdateWaveform(int[], int, WssTarget)
+  fullName: Wss.CoreModule.IBasicStimulation.UpdateWaveform(int[], int, Wss.CoreModule.WssTarget)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Builds a custom waveform from raw points and schedules the upload
+
+    for the specified <code class="paramref">eventID</code>.
+  example: []
+  syntax:
+    content: void UpdateWaveform(int[] waveform, int eventID, WssTarget wssTarget)
+    parameters:
+    - id: waveform
+      type: System.Int32[]
+      description: Concatenated waveform definition.
+    - id: eventID
+      type: System.Int32
+      description: Event slot to target.
+    - id: wssTarget
+      type: Wss.CoreModule.WssTarget
+      description: Target device or broadcast.
+    content.vb: Sub UpdateWaveform(waveform As Integer(), eventID As Integer, wssTarget As WssTarget)
+  overload: Wss.CoreModule.IBasicStimulation.UpdateWaveform*
+  nameWithType.vb: IBasicStimulation.UpdateWaveform(Integer(), Integer, WssTarget)
+  fullName.vb: Wss.CoreModule.IBasicStimulation.UpdateWaveform(Integer(), Integer, Wss.CoreModule.WssTarget)
+  name.vb: UpdateWaveform(Integer(), Integer, WssTarget)
+- uid: Wss.CoreModule.IBasicStimulation.LoadWaveform(System.String,System.Int32)
+  commentId: M:Wss.CoreModule.IBasicStimulation.LoadWaveform(System.String,System.Int32)
+  id: LoadWaveform(System.String,System.Int32)
+  parent: Wss.CoreModule.IBasicStimulation
+  langs:
+  - csharp
+  - vb
+  name: LoadWaveform(string, int)
+  nameWithType: IBasicStimulation.LoadWaveform(string, int)
+  fullName: Wss.CoreModule.IBasicStimulation.LoadWaveform(string, int)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Loads a waveform JSON file (â€¦WF.json), builds it, and enqueues an upload.
+  example: []
+  syntax:
+    content: void LoadWaveform(string fileName, int eventID)
+    parameters:
+    - id: fileName
+      type: System.String
+      description: "File name or path; â€œWF.jsonâ€\x9D suffix is enforced."
+    - id: eventID
+      type: System.Int32
+      description: Event slot to target.
+    content.vb: Sub LoadWaveform(fileName As String, eventID As Integer)
+  overload: Wss.CoreModule.IBasicStimulation.LoadWaveform*
+  nameWithType.vb: IBasicStimulation.LoadWaveform(String, Integer)
+  fullName.vb: Wss.CoreModule.IBasicStimulation.LoadWaveform(String, Integer)
+  name.vb: LoadWaveform(String, Integer)
+- uid: Wss.CoreModule.IBasicStimulation.WaveformSetup(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.IBasicStimulation.WaveformSetup(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  id: WaveformSetup(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.IBasicStimulation
+  langs:
+  - csharp
+  - vb
+  name: WaveformSetup(WaveformBuilder, int, WssTarget)
+  nameWithType: IBasicStimulation.WaveformSetup(WaveformBuilder, int, WssTarget)
+  fullName: Wss.CoreModule.IBasicStimulation.WaveformSetup(Wss.CoreModule.WaveformBuilder, int, Wss.CoreModule.WssTarget)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Schedules the upload of custom waveform chunks and points
+
+    <code class="paramref">eventID</code> at the uploaded shapes.
+  example: []
+  syntax:
+    content: void WaveformSetup(WaveformBuilder wave, int eventID, WssTarget wssTarget)
+    parameters:
+    - id: wave
+      type: Wss.CoreModule.WaveformBuilder
+      description: Waveform builder.
+    - id: eventID
+      type: System.Int32
+      description: Event slot to target.
+    - id: wssTarget
+      type: Wss.CoreModule.WssTarget
+      description: Target device or broadcast.
+    content.vb: Sub WaveformSetup(wave As WaveformBuilder, eventID As Integer, wssTarget As WssTarget)
+  overload: Wss.CoreModule.IBasicStimulation.WaveformSetup*
+  nameWithType.vb: IBasicStimulation.WaveformSetup(WaveformBuilder, Integer, WssTarget)
+  fullName.vb: Wss.CoreModule.IBasicStimulation.WaveformSetup(Wss.CoreModule.WaveformBuilder, Integer, Wss.CoreModule.WssTarget)
+  name.vb: WaveformSetup(WaveformBuilder, Integer, WssTarget)
+- uid: Wss.CoreModule.IBasicStimulation.Save(Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.IBasicStimulation.Save(Wss.CoreModule.WssTarget)
+  id: Save(Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.IBasicStimulation
+  langs:
+  - csharp
+  - vb
+  name: Save(WssTarget)
+  nameWithType: IBasicStimulation.Save(WssTarget)
+  fullName: Wss.CoreModule.IBasicStimulation.Save(Wss.CoreModule.WssTarget)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Saves board settings to non-volatile memory. Implementations should
+
+    pause streaming if needed, perform the save, then resume.
+  example: []
+  syntax:
+    content: void Save(WssTarget wssTarget)
+    parameters:
+    - id: wssTarget
+      type: Wss.CoreModule.WssTarget
+      description: Target device or broadcast.
+    content.vb: Sub Save(wssTarget As WssTarget)
+  overload: Wss.CoreModule.IBasicStimulation.Save*
+- uid: Wss.CoreModule.IBasicStimulation.Load(Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.IBasicStimulation.Load(Wss.CoreModule.WssTarget)
+  id: Load(Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.IBasicStimulation
+  langs:
+  - csharp
+  - vb
+  name: Load(WssTarget)
+  nameWithType: IBasicStimulation.Load(WssTarget)
+  fullName: Wss.CoreModule.IBasicStimulation.Load(Wss.CoreModule.WssTarget)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Loads board settings from non-volatile memory. Implementations should
+
+    pause streaming if needed, perform the load, then resume.
+  example: []
+  syntax:
+    content: void Load(WssTarget wssTarget)
+    parameters:
+    - id: wssTarget
+      type: Wss.CoreModule.WssTarget
+      description: Target device or broadcast.
+    content.vb: Sub Load(wssTarget As WssTarget)
+  overload: Wss.CoreModule.IBasicStimulation.Load*
+- uid: Wss.CoreModule.IBasicStimulation.Request_Configs(System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.IBasicStimulation.Request_Configs(System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  id: Request_Configs(System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.IBasicStimulation
+  langs:
+  - csharp
+  - vb
+  name: Request_Configs(int, int, WssTarget)
+  nameWithType: IBasicStimulation.Request_Configs(int, int, WssTarget)
+  fullName: Wss.CoreModule.IBasicStimulation.Request_Configs(int, int, Wss.CoreModule.WssTarget)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Requests configuration blocks from the device.
+  example: []
+  syntax:
+    content: void Request_Configs(int command, int id, WssTarget wssTarget)
+    parameters:
+    - id: command
+      type: System.Int32
+      description: Command group identifier.
+    - id: id
+      type: System.Int32
+      description: Sub-id / selector.
+    - id: wssTarget
+      type: Wss.CoreModule.WssTarget
+      description: Target device or broadcast.
+    content.vb: Sub Request_Configs(command As Integer, id As Integer, wssTarget As WssTarget)
+  overload: Wss.CoreModule.IBasicStimulation.Request_Configs*
+  nameWithType.vb: IBasicStimulation.Request_Configs(Integer, Integer, WssTarget)
+  fullName.vb: Wss.CoreModule.IBasicStimulation.Request_Configs(Integer, Integer, Wss.CoreModule.WssTarget)
+  name.vb: Request_Configs(Integer, Integer, WssTarget)
+- uid: Wss.CoreModule.IBasicStimulation.UpdateIPD(System.Int32,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.IBasicStimulation.UpdateIPD(System.Int32,Wss.CoreModule.WssTarget)
+  id: UpdateIPD(System.Int32,Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.IBasicStimulation
+  langs:
+  - csharp
+  - vb
+  name: UpdateIPD(int, WssTarget)
+  nameWithType: IBasicStimulation.UpdateIPD(int, WssTarget)
+  fullName: Wss.CoreModule.IBasicStimulation.UpdateIPD(int, Wss.CoreModule.WssTarget)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Updates inter-phase delay (IPD) for events 1–3 via setup commands (with replies).
+
+    If currently Streaming, the core pauses streaming, sends edits, and resumes when done.
+  example: []
+  syntax:
+    content: void UpdateIPD(int ipd, WssTarget wssTarget = WssTarget.Broadcast)
+    parameters:
+    - id: ipd
+      type: System.Int32
+      description: Inter-phase delay in microseconds (clamped internally).
+    - id: wssTarget
+      type: Wss.CoreModule.WssTarget
+      description: Target device or broadcast.
+    content.vb: Sub UpdateIPD(ipd As Integer, wssTarget As WssTarget = WssTarget.Broadcast)
+  overload: Wss.CoreModule.IBasicStimulation.UpdateIPD*
+  nameWithType.vb: IBasicStimulation.UpdateIPD(Integer, WssTarget)
+  fullName.vb: Wss.CoreModule.IBasicStimulation.UpdateIPD(Integer, Wss.CoreModule.WssTarget)
+  name.vb: UpdateIPD(Integer, WssTarget)
+- uid: Wss.CoreModule.IBasicStimulation.UpdateIPD(System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.IBasicStimulation.UpdateIPD(System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  id: UpdateIPD(System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.IBasicStimulation
+  langs:
+  - csharp
+  - vb
+  name: UpdateIPD(int, int, WssTarget)
+  nameWithType: IBasicStimulation.UpdateIPD(int, int, WssTarget)
+  fullName: Wss.CoreModule.IBasicStimulation.UpdateIPD(int, int, Wss.CoreModule.WssTarget)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Updates inter-phase delay (IPD) for a specific <code class="paramref">eventID</code> via setup commands (with replies).
+
+    If currently Streaming, the core pauses streaming, sends the edit, and resumes when done.
+  example: []
+  syntax:
+    content: void UpdateIPD(int ipd, int eventID, WssTarget wssTarget = WssTarget.Broadcast)
+    parameters:
+    - id: ipd
+      type: System.Int32
+      description: Inter-phase delay in microseconds (clamped internally).
+    - id: eventID
+      type: System.Int32
+      description: Event slot to target.
+    - id: wssTarget
+      type: Wss.CoreModule.WssTarget
+      description: Target device or broadcast.
+    content.vb: Sub UpdateIPD(ipd As Integer, eventID As Integer, wssTarget As WssTarget = WssTarget.Broadcast)
+  overload: Wss.CoreModule.IBasicStimulation.UpdateIPD*
+  nameWithType.vb: IBasicStimulation.UpdateIPD(Integer, Integer, WssTarget)
+  fullName.vb: Wss.CoreModule.IBasicStimulation.UpdateIPD(Integer, Integer, Wss.CoreModule.WssTarget)
+  name.vb: UpdateIPD(Integer, Integer, WssTarget)
+references:
+- uid: Wss.CoreModule
+  commentId: N:Wss.CoreModule
+  href: Wss.html
+  name: Wss.CoreModule
+  nameWithType: Wss.CoreModule
+  fullName: Wss.CoreModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+- uid: Wss.CoreModule.IBasicStimulation.UpdateEventShape*
+  commentId: Overload:Wss.CoreModule.IBasicStimulation.UpdateEventShape
+  href: Wss.CoreModule.IBasicStimulation.html#Wss_CoreModule_IBasicStimulation_UpdateEventShape_System_Int32_System_Int32_System_Int32_Wss_CoreModule_WssTarget_
+  name: UpdateEventShape
+  nameWithType: IBasicStimulation.UpdateEventShape
+  fullName: Wss.CoreModule.IBasicStimulation.UpdateEventShape
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Wss.CoreModule.WssTarget
+  commentId: T:Wss.CoreModule.WssTarget
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.WssTarget.html
+  name: WssTarget
+  nameWithType: WssTarget
+  fullName: Wss.CoreModule.WssTarget
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Wss.CoreModule.WaveformBuilder
+  commentId: T:Wss.CoreModule.WaveformBuilder
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.WaveformBuilder.html
+  name: WaveformBuilder
+  nameWithType: WaveformBuilder
+  fullName: Wss.CoreModule.WaveformBuilder
+- uid: Wss.CoreModule.IBasicStimulation.UpdateWaveform*
+  commentId: Overload:Wss.CoreModule.IBasicStimulation.UpdateWaveform
+  href: Wss.CoreModule.IBasicStimulation.html#Wss_CoreModule_IBasicStimulation_UpdateWaveform_Wss_CoreModule_WaveformBuilder_System_Int32_Wss_CoreModule_WssTarget_
+  name: UpdateWaveform
+  nameWithType: IBasicStimulation.UpdateWaveform
+  fullName: Wss.CoreModule.IBasicStimulation.UpdateWaveform
+- uid: System.Int32[]
+  isExternal: true
+  name: int[]
+  nameWithType: int[]
+  fullName: int[]
+  nameWithType.vb: Integer()
+  fullName.vb: Integer()
+  name.vb: Integer()
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Wss.CoreModule.IBasicStimulation.LoadWaveform*
+  commentId: Overload:Wss.CoreModule.IBasicStimulation.LoadWaveform
+  href: Wss.CoreModule.IBasicStimulation.html#Wss_CoreModule_IBasicStimulation_LoadWaveform_System_String_System_Int32_
+  name: LoadWaveform
+  nameWithType: IBasicStimulation.LoadWaveform
+  fullName: Wss.CoreModule.IBasicStimulation.LoadWaveform
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Wss.CoreModule.IBasicStimulation.WaveformSetup*
+  commentId: Overload:Wss.CoreModule.IBasicStimulation.WaveformSetup
+  href: Wss.CoreModule.IBasicStimulation.html#Wss_CoreModule_IBasicStimulation_WaveformSetup_Wss_CoreModule_WaveformBuilder_System_Int32_Wss_CoreModule_WssTarget_
+  name: WaveformSetup
+  nameWithType: IBasicStimulation.WaveformSetup
+  fullName: Wss.CoreModule.IBasicStimulation.WaveformSetup
+- uid: Wss.CoreModule.IBasicStimulation.Save*
+  commentId: Overload:Wss.CoreModule.IBasicStimulation.Save
+  href: Wss.CoreModule.IBasicStimulation.html#Wss_CoreModule_IBasicStimulation_Save_Wss_CoreModule_WssTarget_
+  name: Save
+  nameWithType: IBasicStimulation.Save
+  fullName: Wss.CoreModule.IBasicStimulation.Save
+- uid: Wss.CoreModule.IBasicStimulation.Load*
+  commentId: Overload:Wss.CoreModule.IBasicStimulation.Load
+  href: Wss.CoreModule.IBasicStimulation.html#Wss_CoreModule_IBasicStimulation_Load_Wss_CoreModule_WssTarget_
+  name: Load
+  nameWithType: IBasicStimulation.Load
+  fullName: Wss.CoreModule.IBasicStimulation.Load
+- uid: Wss.CoreModule.IBasicStimulation.Request_Configs*
+  commentId: Overload:Wss.CoreModule.IBasicStimulation.Request_Configs
+  href: Wss.CoreModule.IBasicStimulation.html#Wss_CoreModule_IBasicStimulation_Request_Configs_System_Int32_System_Int32_Wss_CoreModule_WssTarget_
+  name: Request_Configs
+  nameWithType: IBasicStimulation.Request_Configs
+  fullName: Wss.CoreModule.IBasicStimulation.Request_Configs
+- uid: Wss.CoreModule.IBasicStimulation.UpdateIPD*
+  commentId: Overload:Wss.CoreModule.IBasicStimulation.UpdateIPD
+  href: Wss.CoreModule.IBasicStimulation.html#Wss_CoreModule_IBasicStimulation_UpdateIPD_System_Int32_Wss_CoreModule_WssTarget_
+  name: UpdateIPD
+  nameWithType: IBasicStimulation.UpdateIPD
+  fullName: Wss.CoreModule.IBasicStimulation.UpdateIPD

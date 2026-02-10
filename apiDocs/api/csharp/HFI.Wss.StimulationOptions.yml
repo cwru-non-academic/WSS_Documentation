@@ -1,0 +1,286 @@
+### YamlMime:ManagedReference
+items:
+- uid: HFI.Wss.StimulationOptions
+  commentId: T:HFI.Wss.StimulationOptions
+  id: StimulationOptions
+  parent: HFI.Wss
+  children:
+  - HFI.Wss.StimulationOptions.ConfigPath
+  - HFI.Wss.StimulationOptions.CreateDefault
+  - HFI.Wss.StimulationOptions.MaxSetupTries
+  - HFI.Wss.StimulationOptions.SerialPort
+  - HFI.Wss.StimulationOptions.TestMode
+  - HFI.Wss.StimulationOptions.TickIntervalMs
+  langs:
+  - csharp
+  - vb
+  name: StimulationOptions
+  nameWithType: StimulationOptions
+  fullName: HFI.Wss.StimulationOptions
+  type: Class
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Configuration record for <xref href="HFI.Wss.StimulationController" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public sealed class StimulationOptions
+    content.vb: Public NotInheritable Class StimulationOptions
+  inheritance:
+  - System.Object
+- uid: HFI.Wss.StimulationOptions.SerialPort
+  commentId: P:HFI.Wss.StimulationOptions.SerialPort
+  id: SerialPort
+  parent: HFI.Wss.StimulationOptions
+  langs:
+  - csharp
+  - vb
+  name: SerialPort
+  nameWithType: StimulationOptions.SerialPort
+  fullName: HFI.Wss.StimulationOptions.SerialPort
+  type: Property
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Optional serial device name (e.g., "COM3" or "/dev/ttyUSB0"). Uses auto-detect when null.
+  example: []
+  syntax:
+    content: public string? SerialPort { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property SerialPort As String
+  overload: HFI.Wss.StimulationOptions.SerialPort*
+- uid: HFI.Wss.StimulationOptions.TestMode
+  commentId: P:HFI.Wss.StimulationOptions.TestMode
+  id: TestMode
+  parent: HFI.Wss.StimulationOptions
+  langs:
+  - csharp
+  - vb
+  name: TestMode
+  nameWithType: StimulationOptions.TestMode
+  fullName: HFI.Wss.StimulationOptions.TestMode
+  type: Property
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Enables simulated mode without real hardware communication.
+  example: []
+  syntax:
+    content: public bool TestMode { get; init; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property TestMode As Boolean
+  overload: HFI.Wss.StimulationOptions.TestMode*
+- uid: HFI.Wss.StimulationOptions.MaxSetupTries
+  commentId: P:HFI.Wss.StimulationOptions.MaxSetupTries
+  id: MaxSetupTries
+  parent: HFI.Wss.StimulationOptions
+  langs:
+  - csharp
+  - vb
+  name: MaxSetupTries
+  nameWithType: StimulationOptions.MaxSetupTries
+  fullName: HFI.Wss.StimulationOptions.MaxSetupTries
+  type: Property
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Maximum number of setup retries before failing initialization.
+  example: []
+  syntax:
+    content: public int MaxSetupTries { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property MaxSetupTries As Integer
+  overload: HFI.Wss.StimulationOptions.MaxSetupTries*
+- uid: HFI.Wss.StimulationOptions.ConfigPath
+  commentId: P:HFI.Wss.StimulationOptions.ConfigPath
+  id: ConfigPath
+  parent: HFI.Wss.StimulationOptions
+  langs:
+  - csharp
+  - vb
+  name: ConfigPath
+  nameWithType: StimulationOptions.ConfigPath
+  fullName: HFI.Wss.StimulationOptions.ConfigPath
+  type: Property
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Directory that holds the JSON configs used by the WSS stack.
+  example: []
+  syntax:
+    content: public string ConfigPath { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ConfigPath As String
+  overload: HFI.Wss.StimulationOptions.ConfigPath*
+- uid: HFI.Wss.StimulationOptions.TickIntervalMs
+  commentId: P:HFI.Wss.StimulationOptions.TickIntervalMs
+  id: TickIntervalMs
+  parent: HFI.Wss.StimulationOptions
+  langs:
+  - csharp
+  - vb
+  name: TickIntervalMs
+  nameWithType: StimulationOptions.TickIntervalMs
+  fullName: HFI.Wss.StimulationOptions.TickIntervalMs
+  type: Property
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Delay in milliseconds between background tick invocations.
+  example: []
+  syntax:
+    content: public int TickIntervalMs { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property TickIntervalMs As Integer
+  overload: HFI.Wss.StimulationOptions.TickIntervalMs*
+- uid: HFI.Wss.StimulationOptions.CreateDefault
+  commentId: M:HFI.Wss.StimulationOptions.CreateDefault
+  id: CreateDefault
+  parent: HFI.Wss.StimulationOptions
+  langs:
+  - csharp
+  - vb
+  name: CreateDefault()
+  nameWithType: StimulationOptions.CreateDefault()
+  fullName: HFI.Wss.StimulationOptions.CreateDefault()
+  type: Method
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Creates default options using a <code>Config</code> directory under the current working directory.
+  example: []
+  syntax:
+    content: public static StimulationOptions CreateDefault()
+    return:
+      type: HFI.Wss.StimulationOptions
+    content.vb: Public Shared Function CreateDefault() As StimulationOptions
+  overload: HFI.Wss.StimulationOptions.CreateDefault*
+references:
+- uid: HFI.Wss.StimulationController
+  commentId: T:HFI.Wss.StimulationController
+  href: HFI.Wss.StimulationController.html
+  name: StimulationController
+  nameWithType: StimulationController
+  fullName: HFI.Wss.StimulationController
+- uid: HFI.Wss
+  commentId: N:HFI.Wss
+  href: HFI.html
+  name: HFI.Wss
+  nameWithType: HFI.Wss
+  fullName: HFI.Wss
+  spec.csharp:
+  - uid: HFI
+    name: HFI
+    href: HFI.html
+  - name: .
+  - uid: HFI.Wss
+    name: Wss
+    href: HFI.Wss.html
+  spec.vb:
+  - uid: HFI
+    name: HFI
+    href: HFI.html
+  - name: .
+  - uid: HFI.Wss
+    name: Wss
+    href: HFI.Wss.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: HFI.Wss.StimulationOptions.SerialPort*
+  commentId: Overload:HFI.Wss.StimulationOptions.SerialPort
+  href: HFI.Wss.StimulationOptions.html#HFI_Wss_StimulationOptions_SerialPort
+  name: SerialPort
+  nameWithType: StimulationOptions.SerialPort
+  fullName: HFI.Wss.StimulationOptions.SerialPort
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: HFI.Wss.StimulationOptions.TestMode*
+  commentId: Overload:HFI.Wss.StimulationOptions.TestMode
+  href: HFI.Wss.StimulationOptions.html#HFI_Wss_StimulationOptions_TestMode
+  name: TestMode
+  nameWithType: StimulationOptions.TestMode
+  fullName: HFI.Wss.StimulationOptions.TestMode
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: HFI.Wss.StimulationOptions.MaxSetupTries*
+  commentId: Overload:HFI.Wss.StimulationOptions.MaxSetupTries
+  href: HFI.Wss.StimulationOptions.html#HFI_Wss_StimulationOptions_MaxSetupTries
+  name: MaxSetupTries
+  nameWithType: StimulationOptions.MaxSetupTries
+  fullName: HFI.Wss.StimulationOptions.MaxSetupTries
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: HFI.Wss.StimulationOptions.ConfigPath*
+  commentId: Overload:HFI.Wss.StimulationOptions.ConfigPath
+  href: HFI.Wss.StimulationOptions.html#HFI_Wss_StimulationOptions_ConfigPath
+  name: ConfigPath
+  nameWithType: StimulationOptions.ConfigPath
+  fullName: HFI.Wss.StimulationOptions.ConfigPath
+- uid: HFI.Wss.StimulationOptions.TickIntervalMs*
+  commentId: Overload:HFI.Wss.StimulationOptions.TickIntervalMs
+  href: HFI.Wss.StimulationOptions.html#HFI_Wss_StimulationOptions_TickIntervalMs
+  name: TickIntervalMs
+  nameWithType: StimulationOptions.TickIntervalMs
+  fullName: HFI.Wss.StimulationOptions.TickIntervalMs
+- uid: HFI.Wss.StimulationOptions.CreateDefault*
+  commentId: Overload:HFI.Wss.StimulationOptions.CreateDefault
+  href: HFI.Wss.StimulationOptions.html#HFI_Wss_StimulationOptions_CreateDefault
+  name: CreateDefault
+  nameWithType: StimulationOptions.CreateDefault
+  fullName: HFI.Wss.StimulationOptions.CreateDefault
+- uid: HFI.Wss.StimulationOptions
+  commentId: T:HFI.Wss.StimulationOptions
+  parent: HFI.Wss
+  href: HFI.Wss.StimulationOptions.html
+  name: StimulationOptions
+  nameWithType: StimulationOptions
+  fullName: HFI.Wss.StimulationOptions

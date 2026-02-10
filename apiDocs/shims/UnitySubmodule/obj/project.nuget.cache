@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "EFZpqpSKLAM=",
+  "success": true,
+  "projectFilePath": "/home/lemf/Documents/GitHub/WSS_Documentation/apiDocs/shims/UnitySubmodule/UnitySubmodule.Docs.csproj",
+  "expectedPackageFiles": [
+    "/home/lemf/.nuget/packages/microsoft.netcore.app.ref/7.0.20/microsoft.netcore.app.ref.7.0.20.nupkg.sha512",
+    "/home/lemf/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.20/microsoft.aspnetcore.app.ref.7.0.20.nupkg.sha512"
+  ],
+  "logs": []
+}

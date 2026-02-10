@@ -1,0 +1,342 @@
+### YamlMime:ManagedReference
+items:
+- uid: Wss.CoreModule
+  commentId: N:Wss.CoreModule
+  id: Wss.CoreModule
+  children:
+  - Wss.CoreModule.AmpCurveParams
+  - Wss.CoreModule.CoreConfig
+  - Wss.CoreModule.CoreConfigController
+  - Wss.CoreModule.DictConfigBase
+  - Wss.CoreModule.IBasicStimulation
+  - Wss.CoreModule.ICoreConfig
+  - Wss.CoreModule.IFrameCodec
+  - Wss.CoreModule.IStimulationCore
+  - Wss.CoreModule.ITransport
+  - Wss.CoreModule.JsonReader
+  - Wss.CoreModule.Log
+  - Wss.CoreModule.Log.LogLevel
+  - Wss.CoreModule.ModuleSettings
+  - Wss.CoreModule.ModuleSettings.FingerswitchConfig
+  - Wss.CoreModule.ModuleSettings.HwConfigFlags
+  - Wss.CoreModule.ModuleSettings.ParameterStepKind
+  - Wss.CoreModule.SerialPortTransport
+  - Wss.CoreModule.StimParamsBasicExtensions
+  - Wss.CoreModule.TestModeTransport
+  - Wss.CoreModule.WSSLimits
+  - Wss.CoreModule.WSSMessageIDs
+  - Wss.CoreModule.WSSVersionHandler
+  - Wss.CoreModule.WSSVersionHandler.SupportedVersions
+  - Wss.CoreModule.Waveform
+  - Wss.CoreModule.WaveformBuilder
+  - Wss.CoreModule.WssClient
+  - Wss.CoreModule.WssFrameCodec
+  - Wss.CoreModule.WssStimulationCore
+  - Wss.CoreModule.WssTarget
+  langs:
+  - csharp
+  - vb
+  name: Wss.CoreModule
+  nameWithType: Wss.CoreModule
+  fullName: Wss.CoreModule
+  type: Namespace
+  assemblies:
+  - WSS_Core_Interface
+references:
+- uid: Wss.CoreModule.CoreConfig
+  commentId: T:Wss.CoreModule.CoreConfig
+  href: Wss.CoreModule.CoreConfig.html
+  name: CoreConfig
+  nameWithType: CoreConfig
+  fullName: Wss.CoreModule.CoreConfig
+- uid: Wss.CoreModule.AmpCurveParams
+  commentId: T:Wss.CoreModule.AmpCurveParams
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.AmpCurveParams.html
+  name: AmpCurveParams
+  nameWithType: AmpCurveParams
+  fullName: Wss.CoreModule.AmpCurveParams
+- uid: Wss.CoreModule.CoreConfigController
+  commentId: T:Wss.CoreModule.CoreConfigController
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.CoreConfigController.html
+  name: CoreConfigController
+  nameWithType: CoreConfigController
+  fullName: Wss.CoreModule.CoreConfigController
+- uid: Wss.CoreModule.DictConfigBase
+  commentId: T:Wss.CoreModule.DictConfigBase
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.DictConfigBase.html
+  name: DictConfigBase
+  nameWithType: DictConfigBase
+  fullName: Wss.CoreModule.DictConfigBase
+- uid: Wss.CoreModule.JsonReader
+  commentId: T:Wss.CoreModule.JsonReader
+  href: Wss.CoreModule.JsonReader.html
+  name: JsonReader
+  nameWithType: JsonReader
+  fullName: Wss.CoreModule.JsonReader
+- uid: Wss.CoreModule.IBasicStimulation
+  commentId: T:Wss.CoreModule.IBasicStimulation
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.IBasicStimulation.html
+  name: IBasicStimulation
+  nameWithType: IBasicStimulation
+  fullName: Wss.CoreModule.IBasicStimulation
+- uid: Wss.CoreModule.ICoreConfig
+  commentId: T:Wss.CoreModule.ICoreConfig
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.ICoreConfig.html
+  name: ICoreConfig
+  nameWithType: ICoreConfig
+  fullName: Wss.CoreModule.ICoreConfig
+- uid: Wss.CoreModule.IFrameCodec
+  commentId: T:Wss.CoreModule.IFrameCodec
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.IFrameCodec.html
+  name: IFrameCodec
+  nameWithType: IFrameCodec
+  fullName: Wss.CoreModule.IFrameCodec
+- uid: Wss.CoreModule.IStimulationCore
+  commentId: T:Wss.CoreModule.IStimulationCore
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.IStimulationCore.html
+  name: IStimulationCore
+  nameWithType: IStimulationCore
+  fullName: Wss.CoreModule.IStimulationCore
+- uid: Wss.CoreModule.ITransport
+  commentId: T:Wss.CoreModule.ITransport
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.ITransport.html
+  name: ITransport
+  nameWithType: ITransport
+  fullName: Wss.CoreModule.ITransport
+- uid: Wss.CoreModule.ModuleSettings
+  commentId: T:Wss.CoreModule.ModuleSettings
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.ModuleSettings.html
+  name: ModuleSettings
+  nameWithType: ModuleSettings
+  fullName: Wss.CoreModule.ModuleSettings
+- uid: Wss.CoreModule.ModuleSettings.HwConfigFlags
+  commentId: T:Wss.CoreModule.ModuleSettings.HwConfigFlags
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.ModuleSettings.html
+  name: ModuleSettings.HwConfigFlags
+  nameWithType: ModuleSettings.HwConfigFlags
+  fullName: Wss.CoreModule.ModuleSettings.HwConfigFlags
+  spec.csharp:
+  - uid: Wss.CoreModule.ModuleSettings
+    name: ModuleSettings
+    href: Wss.CoreModule.ModuleSettings.html
+  - name: .
+  - uid: Wss.CoreModule.ModuleSettings.HwConfigFlags
+    name: HwConfigFlags
+    href: Wss.CoreModule.ModuleSettings.HwConfigFlags.html
+  spec.vb:
+  - uid: Wss.CoreModule.ModuleSettings
+    name: ModuleSettings
+    href: Wss.CoreModule.ModuleSettings.html
+  - name: .
+  - uid: Wss.CoreModule.ModuleSettings.HwConfigFlags
+    name: HwConfigFlags
+    href: Wss.CoreModule.ModuleSettings.HwConfigFlags.html
+- uid: Wss.CoreModule.ModuleSettings.FingerswitchConfig
+  commentId: T:Wss.CoreModule.ModuleSettings.FingerswitchConfig
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.ModuleSettings.html
+  name: ModuleSettings.FingerswitchConfig
+  nameWithType: ModuleSettings.FingerswitchConfig
+  fullName: Wss.CoreModule.ModuleSettings.FingerswitchConfig
+  spec.csharp:
+  - uid: Wss.CoreModule.ModuleSettings
+    name: ModuleSettings
+    href: Wss.CoreModule.ModuleSettings.html
+  - name: .
+  - uid: Wss.CoreModule.ModuleSettings.FingerswitchConfig
+    name: FingerswitchConfig
+    href: Wss.CoreModule.ModuleSettings.FingerswitchConfig.html
+  spec.vb:
+  - uid: Wss.CoreModule.ModuleSettings
+    name: ModuleSettings
+    href: Wss.CoreModule.ModuleSettings.html
+  - name: .
+  - uid: Wss.CoreModule.ModuleSettings.FingerswitchConfig
+    name: FingerswitchConfig
+    href: Wss.CoreModule.ModuleSettings.FingerswitchConfig.html
+- uid: Wss.CoreModule.ModuleSettings.ParameterStepKind
+  commentId: T:Wss.CoreModule.ModuleSettings.ParameterStepKind
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.ModuleSettings.html
+  name: ModuleSettings.ParameterStepKind
+  nameWithType: ModuleSettings.ParameterStepKind
+  fullName: Wss.CoreModule.ModuleSettings.ParameterStepKind
+  spec.csharp:
+  - uid: Wss.CoreModule.ModuleSettings
+    name: ModuleSettings
+    href: Wss.CoreModule.ModuleSettings.html
+  - name: .
+  - uid: Wss.CoreModule.ModuleSettings.ParameterStepKind
+    name: ParameterStepKind
+    href: Wss.CoreModule.ModuleSettings.ParameterStepKind.html
+  spec.vb:
+  - uid: Wss.CoreModule.ModuleSettings
+    name: ModuleSettings
+    href: Wss.CoreModule.ModuleSettings.html
+  - name: .
+  - uid: Wss.CoreModule.ModuleSettings.ParameterStepKind
+    name: ParameterStepKind
+    href: Wss.CoreModule.ModuleSettings.ParameterStepKind.html
+- uid: Wss.CoreModule.SerialPortTransport
+  commentId: T:Wss.CoreModule.SerialPortTransport
+  href: Wss.CoreModule.SerialPortTransport.html
+  name: SerialPortTransport
+  nameWithType: SerialPortTransport
+  fullName: Wss.CoreModule.SerialPortTransport
+- uid: Wss.CoreModule.StimParamsBasicExtensions
+  commentId: T:Wss.CoreModule.StimParamsBasicExtensions
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.StimParamsBasicExtensions.html
+  name: StimParamsBasicExtensions
+  nameWithType: StimParamsBasicExtensions
+  fullName: Wss.CoreModule.StimParamsBasicExtensions
+- uid: Wss.CoreModule.Waveform
+  commentId: T:Wss.CoreModule.Waveform
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.Waveform.html
+  name: Waveform
+  nameWithType: Waveform
+  fullName: Wss.CoreModule.Waveform
+- uid: Wss.CoreModule.WaveformBuilder
+  commentId: T:Wss.CoreModule.WaveformBuilder
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.WaveformBuilder.html
+  name: WaveformBuilder
+  nameWithType: WaveformBuilder
+  fullName: Wss.CoreModule.WaveformBuilder
+- uid: Wss.CoreModule.Log
+  commentId: T:Wss.CoreModule.Log
+  href: Wss.CoreModule.Log.html
+  name: Log
+  nameWithType: Log
+  fullName: Wss.CoreModule.Log
+- uid: Wss.CoreModule.Log.LogLevel
+  commentId: T:Wss.CoreModule.Log.LogLevel
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.Log.html
+  name: Log.LogLevel
+  nameWithType: Log.LogLevel
+  fullName: Wss.CoreModule.Log.LogLevel
+  spec.csharp:
+  - uid: Wss.CoreModule.Log
+    name: Log
+    href: Wss.CoreModule.Log.html
+  - name: .
+  - uid: Wss.CoreModule.Log.LogLevel
+    name: LogLevel
+    href: Wss.CoreModule.Log.LogLevel.html
+  spec.vb:
+  - uid: Wss.CoreModule.Log
+    name: Log
+    href: Wss.CoreModule.Log.html
+  - name: .
+  - uid: Wss.CoreModule.Log.LogLevel
+    name: LogLevel
+    href: Wss.CoreModule.Log.LogLevel.html
+- uid: Wss.CoreModule.TestModeTransport
+  commentId: T:Wss.CoreModule.TestModeTransport
+  href: Wss.CoreModule.TestModeTransport.html
+  name: TestModeTransport
+  nameWithType: TestModeTransport
+  fullName: Wss.CoreModule.TestModeTransport
+- uid: Wss.CoreModule.WssClient
+  commentId: T:Wss.CoreModule.WssClient
+  href: Wss.CoreModule.WssClient.html
+  name: WssClient
+  nameWithType: WssClient
+  fullName: Wss.CoreModule.WssClient
+- uid: Wss.CoreModule.WssFrameCodec
+  commentId: T:Wss.CoreModule.WssFrameCodec
+  href: Wss.CoreModule.WssFrameCodec.html
+  name: WssFrameCodec
+  nameWithType: WssFrameCodec
+  fullName: Wss.CoreModule.WssFrameCodec
+- uid: Wss.CoreModule.WSSLimits
+  commentId: T:Wss.CoreModule.WSSLimits
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.WSSLimits.html
+  name: WSSLimits
+  nameWithType: WSSLimits
+  fullName: Wss.CoreModule.WSSLimits
+- uid: Wss.CoreModule.WSSMessageIDs
+  commentId: T:Wss.CoreModule.WSSMessageIDs
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.WSSMessageIDs.html
+  name: WSSMessageIDs
+  nameWithType: WSSMessageIDs
+  fullName: Wss.CoreModule.WSSMessageIDs
+- uid: Wss.CoreModule.WssStimulationCore
+  commentId: T:Wss.CoreModule.WssStimulationCore
+  href: Wss.CoreModule.WssStimulationCore.html
+  name: WssStimulationCore
+  nameWithType: WssStimulationCore
+  fullName: Wss.CoreModule.WssStimulationCore
+- uid: Wss.CoreModule.WssTarget
+  commentId: T:Wss.CoreModule.WssTarget
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.WssTarget.html
+  name: WssTarget
+  nameWithType: WssTarget
+  fullName: Wss.CoreModule.WssTarget
+- uid: Wss.CoreModule.WSSVersionHandler
+  commentId: T:Wss.CoreModule.WSSVersionHandler
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.WSSVersionHandler.html
+  name: WSSVersionHandler
+  nameWithType: WSSVersionHandler
+  fullName: Wss.CoreModule.WSSVersionHandler
+- uid: Wss.CoreModule.WSSVersionHandler.SupportedVersions
+  commentId: T:Wss.CoreModule.WSSVersionHandler.SupportedVersions
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.WSSVersionHandler.html
+  name: WSSVersionHandler.SupportedVersions
+  nameWithType: WSSVersionHandler.SupportedVersions
+  fullName: Wss.CoreModule.WSSVersionHandler.SupportedVersions
+  spec.csharp:
+  - uid: Wss.CoreModule.WSSVersionHandler
+    name: WSSVersionHandler
+    href: Wss.CoreModule.WSSVersionHandler.html
+  - name: .
+  - uid: Wss.CoreModule.WSSVersionHandler.SupportedVersions
+    name: SupportedVersions
+    href: Wss.CoreModule.WSSVersionHandler.SupportedVersions.html
+  spec.vb:
+  - uid: Wss.CoreModule.WSSVersionHandler
+    name: WSSVersionHandler
+    href: Wss.CoreModule.WSSVersionHandler.html
+  - name: .
+  - uid: Wss.CoreModule.WSSVersionHandler.SupportedVersions
+    name: SupportedVersions
+    href: Wss.CoreModule.WSSVersionHandler.SupportedVersions.html
+- uid: Wss.CoreModule
+  commentId: N:Wss.CoreModule
+  href: Wss.html
+  name: Wss.CoreModule
+  nameWithType: Wss.CoreModule
+  fullName: Wss.CoreModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html

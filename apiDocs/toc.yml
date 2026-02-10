@@ -1,8 +1,20 @@
-- name: Introduction
-  href: introduction.md
-- name: Getting Started
-  href: getting-started.md
-- name: API Reference
-  href: api/WSSInterfacing.html
- - name: Files
-  href: api/WSSInterfacing.html
+- name: Home
+  href: index.md
+- name: Guides
+  items:
+  - name: core-architecture
+    href: conceptual/core-architecture.md
+  - name: layering-guide
+    href: conceptual/layering-guide.md
+- name: C# API
+  items:
+  - name: API: Core (C#)
+    href: api/core/toc.yml
+  - name: API: C# Integration (C#)
+    href: api/csharp/toc.yml
+  - name: API: Unity Integration (C#)
+    href: api/unity/toc.yml
+- name: Python API
+  items:
+  - name: API: Python Integration (Python)
+    href: external/python-integration/index.html

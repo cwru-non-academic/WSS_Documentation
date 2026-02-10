@@ -1,0 +1,2850 @@
+### YamlMime:ManagedReference
+items:
+- uid: Wss.CalibrationModule.IStimParamsCore
+  commentId: T:Wss.CalibrationModule.IStimParamsCore
+  id: IStimParamsCore
+  parent: Wss.CalibrationModule
+  children:
+  - Wss.CalibrationModule.IStimParamsCore.AddOrUpdateStimParam(System.String,System.Single)
+  - Wss.CalibrationModule.IStimParamsCore.GetAllStimParams
+  - Wss.CalibrationModule.IStimParamsCore.GetChannelAmp(System.Int32)
+  - Wss.CalibrationModule.IStimParamsCore.GetChannelAmpMode(System.Int32)
+  - Wss.CalibrationModule.IStimParamsCore.GetChannelDefault(System.Int32)
+  - Wss.CalibrationModule.IStimParamsCore.GetChannelDefaultPW(System.Int32)
+  - Wss.CalibrationModule.IStimParamsCore.GetChannelIPI(System.Int32)
+  - Wss.CalibrationModule.IStimParamsCore.GetChannelMax(System.Int32)
+  - Wss.CalibrationModule.IStimParamsCore.GetChannelMin(System.Int32)
+  - Wss.CalibrationModule.IStimParamsCore.GetChannelPAMax(System.Int32)
+  - Wss.CalibrationModule.IStimParamsCore.GetChannelPAMin(System.Int32)
+  - Wss.CalibrationModule.IStimParamsCore.GetChannelPWMax(System.Int32)
+  - Wss.CalibrationModule.IStimParamsCore.GetChannelPWMin(System.Int32)
+  - Wss.CalibrationModule.IStimParamsCore.GetStimIntensity(System.Int32)
+  - Wss.CalibrationModule.IStimParamsCore.GetStimParam(System.String)
+  - Wss.CalibrationModule.IStimParamsCore.GetStimParamsConfigController
+  - Wss.CalibrationModule.IStimParamsCore.LoadParamsJson
+  - Wss.CalibrationModule.IStimParamsCore.LoadParamsJson(System.String)
+  - Wss.CalibrationModule.IStimParamsCore.SaveParamsJson
+  - Wss.CalibrationModule.IStimParamsCore.SetAllChannelsAmpMode(System.String)
+  - Wss.CalibrationModule.IStimParamsCore.SetChannelAmp(System.Int32,System.Single)
+  - Wss.CalibrationModule.IStimParamsCore.SetChannelAmpMode(System.Int32,System.String)
+  - Wss.CalibrationModule.IStimParamsCore.SetChannelDefault(System.Int32,System.Single)
+  - Wss.CalibrationModule.IStimParamsCore.SetChannelDefaultPW(System.Int32,System.Int32)
+  - Wss.CalibrationModule.IStimParamsCore.SetChannelIPI(System.Int32,System.Int32)
+  - Wss.CalibrationModule.IStimParamsCore.SetChannelMax(System.Int32,System.Single)
+  - Wss.CalibrationModule.IStimParamsCore.SetChannelMin(System.Int32,System.Single)
+  - Wss.CalibrationModule.IStimParamsCore.SetChannelPAMax(System.Int32,System.Single)
+  - Wss.CalibrationModule.IStimParamsCore.SetChannelPAMin(System.Int32,System.Single)
+  - Wss.CalibrationModule.IStimParamsCore.SetChannelPWMax(System.Int32,System.Int32)
+  - Wss.CalibrationModule.IStimParamsCore.SetChannelPWMin(System.Int32,System.Int32)
+  - Wss.CalibrationModule.IStimParamsCore.StimulateNormalized(System.Int32,System.Single)
+  - Wss.CalibrationModule.IStimParamsCore.TryGetBasic(Wss.CoreModule.IBasicStimulation@)
+  - Wss.CalibrationModule.IStimParamsCore.TryGetStimParam(System.String,System.Single@)
+  langs:
+  - csharp
+  - vb
+  name: IStimParamsCore
+  nameWithType: IStimParamsCore
+  fullName: Wss.CalibrationModule.IStimParamsCore
+  type: Interface
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: >-
+    Core + parameters surface layered over <xref href="Wss.CoreModule.IStimulationCore" data-throw-if-not-resolved="false"></xref>.
+
+    Provides normalized-drive stimulation, per-channel parameter access,
+
+    and JSON persistence for stimulation parameters. BASIC is optional and
+
+    can be exposed via <xref href="Wss.CalibrationModule.IStimParamsCore.TryGetBasic(Wss.CoreModule.IBasicStimulation%40)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: 'public interface IStimParamsCore : IStimulationCore'
+    content.vb: Public Interface IStimParamsCore Inherits IStimulationCore
+  inheritedMembers:
+  - Wss.CoreModule.IStimulationCore.Initialize
+  - Wss.CoreModule.IStimulationCore.Tick
+  - Wss.CoreModule.IStimulationCore.Shutdown
+  - Wss.CoreModule.IStimulationCore.Started
+  - Wss.CoreModule.IStimulationCore.Ready
+  - Wss.CoreModule.IStimulationCore.StimulateAnalog(System.Int32,System.Int32,System.Single,System.Int32)
+  - Wss.CoreModule.IStimulationCore.ZeroOutStim(Wss.CoreModule.WssTarget)
+  - Wss.CoreModule.IStimulationCore.StartStim(Wss.CoreModule.WssTarget)
+  - Wss.CoreModule.IStimulationCore.StopStim(Wss.CoreModule.WssTarget)
+  - Wss.CoreModule.IStimulationCore.LoadConfigFile
+  - Wss.CoreModule.IStimulationCore.GetCoreConfigController
+  - Wss.CoreModule.IStimulationCore.IsChannelInRange(System.Int32)
+  extensionMethods:
+  - Wss.CalibrationModule.IStimParamsCore.Wss.CoreModule.StimParamsBasicExtensions.LoadBoard(Wss.CoreModule.WssTarget)
+  - Wss.CalibrationModule.IStimParamsCore.Wss.CoreModule.StimParamsBasicExtensions.LoadWaveform(System.String,System.Int32)
+  - Wss.CalibrationModule.IStimParamsCore.Wss.CoreModule.StimParamsBasicExtensions.RequestConfigs(System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  - Wss.CalibrationModule.IStimParamsCore.Wss.CoreModule.StimParamsBasicExtensions.SaveBoard(Wss.CoreModule.WssTarget)
+  - Wss.CalibrationModule.IStimParamsCore.Wss.CoreModule.StimParamsBasicExtensions.TryUpdateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  - Wss.CalibrationModule.IStimParamsCore.Wss.CoreModule.StimParamsBasicExtensions.UpdateEventShape(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  - Wss.CalibrationModule.IStimParamsCore.Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform(System.Int32[],System.Int32,Wss.CoreModule.WssTarget)
+  - Wss.CalibrationModule.IStimParamsCore.Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  - Wss.CalibrationModule.IStimParamsCore.Wss.CoreModule.StimParamsBasicExtensions.WaveformSetup(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+- uid: Wss.CalibrationModule.IStimParamsCore.StimulateNormalized(System.Int32,System.Single)
+  commentId: M:Wss.CalibrationModule.IStimParamsCore.StimulateNormalized(System.Int32,System.Single)
+  id: StimulateNormalized(System.Int32,System.Single)
+  parent: Wss.CalibrationModule.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: StimulateNormalized(int, float)
+  nameWithType: IStimParamsCore.StimulateNormalized(int, float)
+  fullName: Wss.CalibrationModule.IStimParamsCore.StimulateNormalized(int, float)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: >-
+    Computes a pulse width from a normalized value in [0,1] using per-channel
+
+    parameters (minPW, maxPW, amp, IPI) and forwards the result to the core.
+
+    Implementations clamp the input to [0,1] and cache the last PW sent.
+  example: []
+  syntax:
+    content: void StimulateNormalized(int channel, float normalizedValue)
+    parameters:
+    - id: channel
+      type: System.Int32
+      description: 1-based logical channel.
+    - id: normalizedValue
+      type: System.Single
+      description: Normalized drive in [0,1].
+    content.vb: Sub StimulateNormalized(channel As Integer, normalizedValue As Single)
+  overload: Wss.CalibrationModule.IStimParamsCore.StimulateNormalized*
+  nameWithType.vb: IStimParamsCore.StimulateNormalized(Integer, Single)
+  fullName.vb: Wss.CalibrationModule.IStimParamsCore.StimulateNormalized(Integer, Single)
+  name.vb: StimulateNormalized(Integer, Single)
+- uid: Wss.CalibrationModule.IStimParamsCore.GetStimIntensity(System.Int32)
+  commentId: M:Wss.CalibrationModule.IStimParamsCore.GetStimIntensity(System.Int32)
+  id: GetStimIntensity(System.Int32)
+  parent: Wss.CalibrationModule.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: GetStimIntensity(int)
+  nameWithType: IStimParamsCore.GetStimIntensity(int)
+  fullName: Wss.CalibrationModule.IStimParamsCore.GetStimIntensity(int)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: >-
+    Returns the most recently computed stimulation intensity for the channel.
+
+    For PW-driven systems, this is the last pulse width (µs) sent by
+
+    <xref href="Wss.CalibrationModule.IStimParamsCore.StimulateNormalized(System.Int32%2cSystem.Single)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: float GetStimIntensity(int channel)
+    parameters:
+    - id: channel
+      type: System.Int32
+      description: 1-based logical channel.
+    return:
+      type: System.Single
+      description: Most recent intensity value (µs or mA depending on mode).
+    content.vb: Function GetStimIntensity(channel As Integer) As Single
+  overload: Wss.CalibrationModule.IStimParamsCore.GetStimIntensity*
+  nameWithType.vb: IStimParamsCore.GetStimIntensity(Integer)
+  fullName.vb: Wss.CalibrationModule.IStimParamsCore.GetStimIntensity(Integer)
+  name.vb: GetStimIntensity(Integer)
+- uid: Wss.CalibrationModule.IStimParamsCore.SaveParamsJson
+  commentId: M:Wss.CalibrationModule.IStimParamsCore.SaveParamsJson
+  id: SaveParamsJson
+  parent: Wss.CalibrationModule.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: SaveParamsJson()
+  nameWithType: IStimParamsCore.SaveParamsJson()
+  fullName: Wss.CalibrationModule.IStimParamsCore.SaveParamsJson()
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Saves the current stimulation-parameters JSON to disk.
+  example: []
+  syntax:
+    content: void SaveParamsJson()
+    content.vb: Sub SaveParamsJson()
+  overload: Wss.CalibrationModule.IStimParamsCore.SaveParamsJson*
+- uid: Wss.CalibrationModule.IStimParamsCore.LoadParamsJson
+  commentId: M:Wss.CalibrationModule.IStimParamsCore.LoadParamsJson
+  id: LoadParamsJson
+  parent: Wss.CalibrationModule.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: LoadParamsJson()
+  nameWithType: IStimParamsCore.LoadParamsJson()
+  fullName: Wss.CalibrationModule.IStimParamsCore.LoadParamsJson()
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Loads the stimulation-parameters JSON from the default location.
+  example: []
+  syntax:
+    content: void LoadParamsJson()
+    content.vb: Sub LoadParamsJson()
+  overload: Wss.CalibrationModule.IStimParamsCore.LoadParamsJson*
+- uid: Wss.CalibrationModule.IStimParamsCore.LoadParamsJson(System.String)
+  commentId: M:Wss.CalibrationModule.IStimParamsCore.LoadParamsJson(System.String)
+  id: LoadParamsJson(System.String)
+  parent: Wss.CalibrationModule.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: LoadParamsJson(string)
+  nameWithType: IStimParamsCore.LoadParamsJson(string)
+  fullName: Wss.CalibrationModule.IStimParamsCore.LoadParamsJson(string)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Loads the stimulation-parameters JSON from a specific file path or directory.
+  example: []
+  syntax:
+    content: void LoadParamsJson(string path)
+    parameters:
+    - id: path
+      type: System.String
+      description: File path or directory.
+    content.vb: Sub LoadParamsJson(path As String)
+  overload: Wss.CalibrationModule.IStimParamsCore.LoadParamsJson*
+  nameWithType.vb: IStimParamsCore.LoadParamsJson(String)
+  fullName.vb: Wss.CalibrationModule.IStimParamsCore.LoadParamsJson(String)
+  name.vb: LoadParamsJson(String)
+- uid: Wss.CalibrationModule.IStimParamsCore.AddOrUpdateStimParam(System.String,System.Single)
+  commentId: M:Wss.CalibrationModule.IStimParamsCore.AddOrUpdateStimParam(System.String,System.Single)
+  id: AddOrUpdateStimParam(System.String,System.Single)
+  parent: Wss.CalibrationModule.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: AddOrUpdateStimParam(string, float)
+  nameWithType: IStimParamsCore.AddOrUpdateStimParam(string, float)
+  fullName: Wss.CalibrationModule.IStimParamsCore.AddOrUpdateStimParam(string, float)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: >-
+    Adds or updates a parameter by dotted key. Examples:
+
+    <code>stim.ch.1.defaultPA</code>, <code>stim.ch.2.minPW</code>, <code>stim.ch.3.maxPW</code>, <code>stim.ch.4.IPI</code>.
+  example: []
+  syntax:
+    content: void AddOrUpdateStimParam(string key, float value)
+    parameters:
+    - id: key
+      type: System.String
+      description: Dotted parameter key.
+    - id: value
+      type: System.Single
+      description: Value to set.
+    content.vb: Sub AddOrUpdateStimParam(key As String, value As Single)
+  overload: Wss.CalibrationModule.IStimParamsCore.AddOrUpdateStimParam*
+  nameWithType.vb: IStimParamsCore.AddOrUpdateStimParam(String, Single)
+  fullName.vb: Wss.CalibrationModule.IStimParamsCore.AddOrUpdateStimParam(String, Single)
+  name.vb: AddOrUpdateStimParam(String, Single)
+- uid: Wss.CalibrationModule.IStimParamsCore.GetStimParam(System.String)
+  commentId: M:Wss.CalibrationModule.IStimParamsCore.GetStimParam(System.String)
+  id: GetStimParam(System.String)
+  parent: Wss.CalibrationModule.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: GetStimParam(string)
+  nameWithType: IStimParamsCore.GetStimParam(string)
+  fullName: Wss.CalibrationModule.IStimParamsCore.GetStimParam(string)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Reads a parameter by dotted key. Throws if the key is missing.
+  example: []
+  syntax:
+    content: float GetStimParam(string key)
+    parameters:
+    - id: key
+      type: System.String
+      description: Dotted parameter key.
+    return:
+      type: System.Single
+      description: Parameter value as float.
+    content.vb: Function GetStimParam(key As String) As Single
+  overload: Wss.CalibrationModule.IStimParamsCore.GetStimParam*
+  nameWithType.vb: IStimParamsCore.GetStimParam(String)
+  fullName.vb: Wss.CalibrationModule.IStimParamsCore.GetStimParam(String)
+  name.vb: GetStimParam(String)
+- uid: Wss.CalibrationModule.IStimParamsCore.TryGetStimParam(System.String,System.Single@)
+  commentId: M:Wss.CalibrationModule.IStimParamsCore.TryGetStimParam(System.String,System.Single@)
+  id: TryGetStimParam(System.String,System.Single@)
+  parent: Wss.CalibrationModule.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: TryGetStimParam(string, out float)
+  nameWithType: IStimParamsCore.TryGetStimParam(string, out float)
+  fullName: Wss.CalibrationModule.IStimParamsCore.TryGetStimParam(string, out float)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Tries to read a parameter by dotted key.
+  example: []
+  syntax:
+    content: bool TryGetStimParam(string key, out float value)
+    parameters:
+    - id: key
+      type: System.String
+      description: Dotted parameter key.
+    - id: value
+      type: System.Single
+      description: Out value if the key exists.
+    return:
+      type: System.Boolean
+      description: <code>true</code> if found, otherwise <code>false</code>.
+    content.vb: Function TryGetStimParam(key As String, value As Single) As Boolean
+  overload: Wss.CalibrationModule.IStimParamsCore.TryGetStimParam*
+  nameWithType.vb: IStimParamsCore.TryGetStimParam(String, Single)
+  fullName.vb: Wss.CalibrationModule.IStimParamsCore.TryGetStimParam(String, Single)
+  name.vb: TryGetStimParam(String, Single)
+- uid: Wss.CalibrationModule.IStimParamsCore.GetAllStimParams
+  commentId: M:Wss.CalibrationModule.IStimParamsCore.GetAllStimParams
+  id: GetAllStimParams
+  parent: Wss.CalibrationModule.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: GetAllStimParams()
+  nameWithType: IStimParamsCore.GetAllStimParams()
+  fullName: Wss.CalibrationModule.IStimParamsCore.GetAllStimParams()
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Returns a copy of all current stimulation parameters as a dotted-key map.
+  example: []
+  syntax:
+    content: Dictionary<string, float> GetAllStimParams()
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,System.Single}
+      description: Dictionary mapping dotted keys to parameter values.
+    content.vb: Function GetAllStimParams() As Dictionary(Of String, Single)
+  overload: Wss.CalibrationModule.IStimParamsCore.GetAllStimParams*
+- uid: Wss.CalibrationModule.IStimParamsCore.GetStimParamsConfigController
+  commentId: M:Wss.CalibrationModule.IStimParamsCore.GetStimParamsConfigController
+  id: GetStimParamsConfigController
+  parent: Wss.CalibrationModule.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: GetStimParamsConfigController()
+  nameWithType: IStimParamsCore.GetStimParamsConfigController()
+  fullName: Wss.CalibrationModule.IStimParamsCore.GetStimParamsConfigController()
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Returns the parameters/configuration controller for stimulation params.
+  example: []
+  syntax:
+    content: StimParamsConfigController GetStimParamsConfigController()
+    return:
+      type: Wss.CalibrationModule.StimParamsConfigController
+      description: The active <xref href="Wss.CalibrationModule.StimParamsConfigController" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Function GetStimParamsConfigController() As StimParamsConfigController
+  overload: Wss.CalibrationModule.IStimParamsCore.GetStimParamsConfigController*
+- uid: Wss.CalibrationModule.IStimParamsCore.SetChannelAmp(System.Int32,System.Single)
+  commentId: M:Wss.CalibrationModule.IStimParamsCore.SetChannelAmp(System.Int32,System.Single)
+  id: SetChannelAmp(System.Int32,System.Single)
+  parent: Wss.CalibrationModule.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: SetChannelAmp(int, float)
+  nameWithType: IStimParamsCore.SetChannelAmp(int, float)
+  fullName: Wss.CalibrationModule.IStimParamsCore.SetChannelAmp(int, float)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Sets the per-channel default amplitude (PA) in mA.
+  example: []
+  syntax:
+    content: void SetChannelAmp(int ch, float mA)
+    parameters:
+    - id: ch
+      type: System.Int32
+      description: 1-based logical channel.
+    - id: mA
+      type: System.Single
+      description: Amplitude in milliamps.
+    content.vb: Sub SetChannelAmp(ch As Integer, mA As Single)
+  overload: Wss.CalibrationModule.IStimParamsCore.SetChannelAmp*
+  nameWithType.vb: IStimParamsCore.SetChannelAmp(Integer, Single)
+  fullName.vb: Wss.CalibrationModule.IStimParamsCore.SetChannelAmp(Integer, Single)
+  name.vb: SetChannelAmp(Integer, Single)
+- uid: Wss.CalibrationModule.IStimParamsCore.SetChannelPAMin(System.Int32,System.Single)
+  commentId: M:Wss.CalibrationModule.IStimParamsCore.SetChannelPAMin(System.Int32,System.Single)
+  id: SetChannelPAMin(System.Int32,System.Single)
+  parent: Wss.CalibrationModule.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: SetChannelPAMin(int, float)
+  nameWithType: IStimParamsCore.SetChannelPAMin(int, float)
+  fullName: Wss.CalibrationModule.IStimParamsCore.SetChannelPAMin(int, float)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Sets per-channel minimum PA in mA.
+  example: []
+  syntax:
+    content: void SetChannelPAMin(int ch, float mA)
+    parameters:
+    - id: ch
+      type: System.Int32
+      description: 1-based logical channel.
+    - id: mA
+      type: System.Single
+      description: Minimum amplitude in milliamps.
+    content.vb: Sub SetChannelPAMin(ch As Integer, mA As Single)
+  overload: Wss.CalibrationModule.IStimParamsCore.SetChannelPAMin*
+  nameWithType.vb: IStimParamsCore.SetChannelPAMin(Integer, Single)
+  fullName.vb: Wss.CalibrationModule.IStimParamsCore.SetChannelPAMin(Integer, Single)
+  name.vb: SetChannelPAMin(Integer, Single)
+- uid: Wss.CalibrationModule.IStimParamsCore.SetChannelPAMax(System.Int32,System.Single)
+  commentId: M:Wss.CalibrationModule.IStimParamsCore.SetChannelPAMax(System.Int32,System.Single)
+  id: SetChannelPAMax(System.Int32,System.Single)
+  parent: Wss.CalibrationModule.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: SetChannelPAMax(int, float)
+  nameWithType: IStimParamsCore.SetChannelPAMax(int, float)
+  fullName: Wss.CalibrationModule.IStimParamsCore.SetChannelPAMax(int, float)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Sets per-channel maximum PA in mA.
+  example: []
+  syntax:
+    content: void SetChannelPAMax(int ch, float mA)
+    parameters:
+    - id: ch
+      type: System.Int32
+      description: 1-based logical channel.
+    - id: mA
+      type: System.Single
+      description: Maximum amplitude in milliamps.
+    content.vb: Sub SetChannelPAMax(ch As Integer, mA As Single)
+  overload: Wss.CalibrationModule.IStimParamsCore.SetChannelPAMax*
+  nameWithType.vb: IStimParamsCore.SetChannelPAMax(Integer, Single)
+  fullName.vb: Wss.CalibrationModule.IStimParamsCore.SetChannelPAMax(Integer, Single)
+  name.vb: SetChannelPAMax(Integer, Single)
+- uid: Wss.CalibrationModule.IStimParamsCore.SetChannelPWMin(System.Int32,System.Int32)
+  commentId: M:Wss.CalibrationModule.IStimParamsCore.SetChannelPWMin(System.Int32,System.Int32)
+  id: SetChannelPWMin(System.Int32,System.Int32)
+  parent: Wss.CalibrationModule.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: SetChannelPWMin(int, int)
+  nameWithType: IStimParamsCore.SetChannelPWMin(int, int)
+  fullName: Wss.CalibrationModule.IStimParamsCore.SetChannelPWMin(int, int)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Sets per-channel minimum pulse width in µs.
+  example: []
+  syntax:
+    content: void SetChannelPWMin(int ch, int us)
+    parameters:
+    - id: ch
+      type: System.Int32
+      description: 1-based logical channel.
+    - id: us
+      type: System.Int32
+      description: Minimum pulse width in microseconds.
+    content.vb: Sub SetChannelPWMin(ch As Integer, us As Integer)
+  overload: Wss.CalibrationModule.IStimParamsCore.SetChannelPWMin*
+  nameWithType.vb: IStimParamsCore.SetChannelPWMin(Integer, Integer)
+  fullName.vb: Wss.CalibrationModule.IStimParamsCore.SetChannelPWMin(Integer, Integer)
+  name.vb: SetChannelPWMin(Integer, Integer)
+- uid: Wss.CalibrationModule.IStimParamsCore.SetChannelPWMax(System.Int32,System.Int32)
+  commentId: M:Wss.CalibrationModule.IStimParamsCore.SetChannelPWMax(System.Int32,System.Int32)
+  id: SetChannelPWMax(System.Int32,System.Int32)
+  parent: Wss.CalibrationModule.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: SetChannelPWMax(int, int)
+  nameWithType: IStimParamsCore.SetChannelPWMax(int, int)
+  fullName: Wss.CalibrationModule.IStimParamsCore.SetChannelPWMax(int, int)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Sets per-channel maximum pulse width in µs.
+  example: []
+  syntax:
+    content: void SetChannelPWMax(int ch, int us)
+    parameters:
+    - id: ch
+      type: System.Int32
+      description: 1-based logical channel.
+    - id: us
+      type: System.Int32
+      description: Maximum pulse width in microseconds.
+    content.vb: Sub SetChannelPWMax(ch As Integer, us As Integer)
+  overload: Wss.CalibrationModule.IStimParamsCore.SetChannelPWMax*
+  nameWithType.vb: IStimParamsCore.SetChannelPWMax(Integer, Integer)
+  fullName.vb: Wss.CalibrationModule.IStimParamsCore.SetChannelPWMax(Integer, Integer)
+  name.vb: SetChannelPWMax(Integer, Integer)
+- uid: Wss.CalibrationModule.IStimParamsCore.SetChannelDefaultPW(System.Int32,System.Int32)
+  commentId: M:Wss.CalibrationModule.IStimParamsCore.SetChannelDefaultPW(System.Int32,System.Int32)
+  id: SetChannelDefaultPW(System.Int32,System.Int32)
+  parent: Wss.CalibrationModule.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: SetChannelDefaultPW(int, int)
+  nameWithType: IStimParamsCore.SetChannelDefaultPW(int, int)
+  fullName: Wss.CalibrationModule.IStimParamsCore.SetChannelDefaultPW(int, int)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Sets the per-channel default pulse width in µs.
+  example: []
+  syntax:
+    content: void SetChannelDefaultPW(int ch, int us)
+    parameters:
+    - id: ch
+      type: System.Int32
+      description: 1-based logical channel.
+    - id: us
+      type: System.Int32
+      description: Default pulse width in microseconds.
+    content.vb: Sub SetChannelDefaultPW(ch As Integer, us As Integer)
+  overload: Wss.CalibrationModule.IStimParamsCore.SetChannelDefaultPW*
+  nameWithType.vb: IStimParamsCore.SetChannelDefaultPW(Integer, Integer)
+  fullName.vb: Wss.CalibrationModule.IStimParamsCore.SetChannelDefaultPW(Integer, Integer)
+  name.vb: SetChannelDefaultPW(Integer, Integer)
+- uid: Wss.CalibrationModule.IStimParamsCore.SetChannelIPI(System.Int32,System.Int32)
+  commentId: M:Wss.CalibrationModule.IStimParamsCore.SetChannelIPI(System.Int32,System.Int32)
+  id: SetChannelIPI(System.Int32,System.Int32)
+  parent: Wss.CalibrationModule.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: SetChannelIPI(int, int)
+  nameWithType: IStimParamsCore.SetChannelIPI(int, int)
+  fullName: Wss.CalibrationModule.IStimParamsCore.SetChannelIPI(int, int)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Sets per-channel IPI in ms.
+  example: []
+  syntax:
+    content: void SetChannelIPI(int ch, int ms)
+    parameters:
+    - id: ch
+      type: System.Int32
+      description: 1-based logical channel.
+    - id: ms
+      type: System.Int32
+      description: Inter-pulse interval in milliseconds.
+    content.vb: Sub SetChannelIPI(ch As Integer, ms As Integer)
+  overload: Wss.CalibrationModule.IStimParamsCore.SetChannelIPI*
+  nameWithType.vb: IStimParamsCore.SetChannelIPI(Integer, Integer)
+  fullName.vb: Wss.CalibrationModule.IStimParamsCore.SetChannelIPI(Integer, Integer)
+  name.vb: SetChannelIPI(Integer, Integer)
+- uid: Wss.CalibrationModule.IStimParamsCore.SetChannelAmpMode(System.Int32,System.String)
+  commentId: M:Wss.CalibrationModule.IStimParamsCore.SetChannelAmpMode(System.Int32,System.String)
+  id: SetChannelAmpMode(System.Int32,System.String)
+  parent: Wss.CalibrationModule.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: SetChannelAmpMode(int, string)
+  nameWithType: IStimParamsCore.SetChannelAmpMode(int, string)
+  fullName: Wss.CalibrationModule.IStimParamsCore.SetChannelAmpMode(int, string)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Sets the amplitude-control mode ("PW"/"PA") for a channel.
+  example: []
+  syntax:
+    content: void SetChannelAmpMode(int ch, string mode)
+    parameters:
+    - id: ch
+      type: System.Int32
+      description: 1-based logical channel.
+    - id: mode
+      type: System.String
+      description: Target amplitude mode string.
+    content.vb: Sub SetChannelAmpMode(ch As Integer, mode As String)
+  overload: Wss.CalibrationModule.IStimParamsCore.SetChannelAmpMode*
+  nameWithType.vb: IStimParamsCore.SetChannelAmpMode(Integer, String)
+  fullName.vb: Wss.CalibrationModule.IStimParamsCore.SetChannelAmpMode(Integer, String)
+  name.vb: SetChannelAmpMode(Integer, String)
+- uid: Wss.CalibrationModule.IStimParamsCore.SetAllChannelsAmpMode(System.String)
+  commentId: M:Wss.CalibrationModule.IStimParamsCore.SetAllChannelsAmpMode(System.String)
+  id: SetAllChannelsAmpMode(System.String)
+  parent: Wss.CalibrationModule.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: SetAllChannelsAmpMode(string)
+  nameWithType: IStimParamsCore.SetAllChannelsAmpMode(string)
+  fullName: Wss.CalibrationModule.IStimParamsCore.SetAllChannelsAmpMode(string)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Sets the same amplitude-control mode for all channels.
+  example: []
+  syntax:
+    content: void SetAllChannelsAmpMode(string mode)
+    parameters:
+    - id: mode
+      type: System.String
+      description: Target amplitude mode string.
+    content.vb: Sub SetAllChannelsAmpMode(mode As String)
+  overload: Wss.CalibrationModule.IStimParamsCore.SetAllChannelsAmpMode*
+  nameWithType.vb: IStimParamsCore.SetAllChannelsAmpMode(String)
+  fullName.vb: Wss.CalibrationModule.IStimParamsCore.SetAllChannelsAmpMode(String)
+  name.vb: SetAllChannelsAmpMode(String)
+- uid: Wss.CalibrationModule.IStimParamsCore.SetChannelMin(System.Int32,System.Single)
+  commentId: M:Wss.CalibrationModule.IStimParamsCore.SetChannelMin(System.Int32,System.Single)
+  id: SetChannelMin(System.Int32,System.Single)
+  parent: Wss.CalibrationModule.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: SetChannelMin(int, float)
+  nameWithType: IStimParamsCore.SetChannelMin(int, float)
+  fullName: Wss.CalibrationModule.IStimParamsCore.SetChannelMin(int, float)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Sets the active-control minimum for a channel (µs when PW mode, mA when PA mode).
+  example: []
+  syntax:
+    content: void SetChannelMin(int ch, float value)
+    parameters:
+    - id: ch
+      type: System.Int32
+      description: 1-based logical channel.
+    - id: value
+      type: System.Single
+      description: Minimum value in the active axis units (µs for PW mode).
+    content.vb: Sub SetChannelMin(ch As Integer, value As Single)
+  overload: Wss.CalibrationModule.IStimParamsCore.SetChannelMin*
+  nameWithType.vb: IStimParamsCore.SetChannelMin(Integer, Single)
+  fullName.vb: Wss.CalibrationModule.IStimParamsCore.SetChannelMin(Integer, Single)
+  name.vb: SetChannelMin(Integer, Single)
+- uid: Wss.CalibrationModule.IStimParamsCore.SetChannelMax(System.Int32,System.Single)
+  commentId: M:Wss.CalibrationModule.IStimParamsCore.SetChannelMax(System.Int32,System.Single)
+  id: SetChannelMax(System.Int32,System.Single)
+  parent: Wss.CalibrationModule.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: SetChannelMax(int, float)
+  nameWithType: IStimParamsCore.SetChannelMax(int, float)
+  fullName: Wss.CalibrationModule.IStimParamsCore.SetChannelMax(int, float)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Sets the active-control maximum for a channel (µs when PW mode, mA when PA mode).
+  example: []
+  syntax:
+    content: void SetChannelMax(int ch, float value)
+    parameters:
+    - id: ch
+      type: System.Int32
+      description: 1-based logical channel.
+    - id: value
+      type: System.Single
+      description: Maximum value in the active axis units (µs for PW mode).
+    content.vb: Sub SetChannelMax(ch As Integer, value As Single)
+  overload: Wss.CalibrationModule.IStimParamsCore.SetChannelMax*
+  nameWithType.vb: IStimParamsCore.SetChannelMax(Integer, Single)
+  fullName.vb: Wss.CalibrationModule.IStimParamsCore.SetChannelMax(Integer, Single)
+  name.vb: SetChannelMax(Integer, Single)
+- uid: Wss.CalibrationModule.IStimParamsCore.SetChannelDefault(System.Int32,System.Single)
+  commentId: M:Wss.CalibrationModule.IStimParamsCore.SetChannelDefault(System.Int32,System.Single)
+  id: SetChannelDefault(System.Int32,System.Single)
+  parent: Wss.CalibrationModule.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: SetChannelDefault(int, float)
+  nameWithType: IStimParamsCore.SetChannelDefault(int, float)
+  fullName: Wss.CalibrationModule.IStimParamsCore.SetChannelDefault(int, float)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Sets the non-controlled axis default (PA when PW mode, PW when PA mode).
+  example: []
+  syntax:
+    content: void SetChannelDefault(int ch, float value)
+    parameters:
+    - id: ch
+      type: System.Int32
+      description: 1-based logical channel.
+    - id: value
+      type: System.Single
+      description: Default value expressed in the non-controlled axis units (µs for PA mode).
+    content.vb: Sub SetChannelDefault(ch As Integer, value As Single)
+  overload: Wss.CalibrationModule.IStimParamsCore.SetChannelDefault*
+  nameWithType.vb: IStimParamsCore.SetChannelDefault(Integer, Single)
+  fullName.vb: Wss.CalibrationModule.IStimParamsCore.SetChannelDefault(Integer, Single)
+  name.vb: SetChannelDefault(Integer, Single)
+- uid: Wss.CalibrationModule.IStimParamsCore.GetChannelAmp(System.Int32)
+  commentId: M:Wss.CalibrationModule.IStimParamsCore.GetChannelAmp(System.Int32)
+  id: GetChannelAmp(System.Int32)
+  parent: Wss.CalibrationModule.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: GetChannelAmp(int)
+  nameWithType: IStimParamsCore.GetChannelAmp(int)
+  fullName: Wss.CalibrationModule.IStimParamsCore.GetChannelAmp(int)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Gets the per-channel default amplitude (PA) in mA.
+  example: []
+  syntax:
+    content: float GetChannelAmp(int ch)
+    parameters:
+    - id: ch
+      type: System.Int32
+      description: 1-based logical channel.
+    return:
+      type: System.Single
+      description: Default amplitude in milliamps.
+    content.vb: Function GetChannelAmp(ch As Integer) As Single
+  overload: Wss.CalibrationModule.IStimParamsCore.GetChannelAmp*
+  nameWithType.vb: IStimParamsCore.GetChannelAmp(Integer)
+  fullName.vb: Wss.CalibrationModule.IStimParamsCore.GetChannelAmp(Integer)
+  name.vb: GetChannelAmp(Integer)
+- uid: Wss.CalibrationModule.IStimParamsCore.GetChannelPAMin(System.Int32)
+  commentId: M:Wss.CalibrationModule.IStimParamsCore.GetChannelPAMin(System.Int32)
+  id: GetChannelPAMin(System.Int32)
+  parent: Wss.CalibrationModule.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: GetChannelPAMin(int)
+  nameWithType: IStimParamsCore.GetChannelPAMin(int)
+  fullName: Wss.CalibrationModule.IStimParamsCore.GetChannelPAMin(int)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Gets per-channel minimum PA in mA.
+  example: []
+  syntax:
+    content: float GetChannelPAMin(int ch)
+    parameters:
+    - id: ch
+      type: System.Int32
+      description: 1-based logical channel.
+    return:
+      type: System.Single
+      description: Minimum amplitude in milliamps.
+    content.vb: Function GetChannelPAMin(ch As Integer) As Single
+  overload: Wss.CalibrationModule.IStimParamsCore.GetChannelPAMin*
+  nameWithType.vb: IStimParamsCore.GetChannelPAMin(Integer)
+  fullName.vb: Wss.CalibrationModule.IStimParamsCore.GetChannelPAMin(Integer)
+  name.vb: GetChannelPAMin(Integer)
+- uid: Wss.CalibrationModule.IStimParamsCore.GetChannelPAMax(System.Int32)
+  commentId: M:Wss.CalibrationModule.IStimParamsCore.GetChannelPAMax(System.Int32)
+  id: GetChannelPAMax(System.Int32)
+  parent: Wss.CalibrationModule.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: GetChannelPAMax(int)
+  nameWithType: IStimParamsCore.GetChannelPAMax(int)
+  fullName: Wss.CalibrationModule.IStimParamsCore.GetChannelPAMax(int)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Gets per-channel maximum PA in mA.
+  example: []
+  syntax:
+    content: float GetChannelPAMax(int ch)
+    parameters:
+    - id: ch
+      type: System.Int32
+      description: 1-based logical channel.
+    return:
+      type: System.Single
+      description: Maximum amplitude in milliamps.
+    content.vb: Function GetChannelPAMax(ch As Integer) As Single
+  overload: Wss.CalibrationModule.IStimParamsCore.GetChannelPAMax*
+  nameWithType.vb: IStimParamsCore.GetChannelPAMax(Integer)
+  fullName.vb: Wss.CalibrationModule.IStimParamsCore.GetChannelPAMax(Integer)
+  name.vb: GetChannelPAMax(Integer)
+- uid: Wss.CalibrationModule.IStimParamsCore.GetChannelPWMin(System.Int32)
+  commentId: M:Wss.CalibrationModule.IStimParamsCore.GetChannelPWMin(System.Int32)
+  id: GetChannelPWMin(System.Int32)
+  parent: Wss.CalibrationModule.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: GetChannelPWMin(int)
+  nameWithType: IStimParamsCore.GetChannelPWMin(int)
+  fullName: Wss.CalibrationModule.IStimParamsCore.GetChannelPWMin(int)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Gets per-channel minimum pulse width in µs.
+  example: []
+  syntax:
+    content: int GetChannelPWMin(int ch)
+    parameters:
+    - id: ch
+      type: System.Int32
+      description: 1-based logical channel.
+    return:
+      type: System.Int32
+      description: Minimum pulse width in microseconds.
+    content.vb: Function GetChannelPWMin(ch As Integer) As Integer
+  overload: Wss.CalibrationModule.IStimParamsCore.GetChannelPWMin*
+  nameWithType.vb: IStimParamsCore.GetChannelPWMin(Integer)
+  fullName.vb: Wss.CalibrationModule.IStimParamsCore.GetChannelPWMin(Integer)
+  name.vb: GetChannelPWMin(Integer)
+- uid: Wss.CalibrationModule.IStimParamsCore.GetChannelPWMax(System.Int32)
+  commentId: M:Wss.CalibrationModule.IStimParamsCore.GetChannelPWMax(System.Int32)
+  id: GetChannelPWMax(System.Int32)
+  parent: Wss.CalibrationModule.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: GetChannelPWMax(int)
+  nameWithType: IStimParamsCore.GetChannelPWMax(int)
+  fullName: Wss.CalibrationModule.IStimParamsCore.GetChannelPWMax(int)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Gets per-channel maximum pulse width in µs.
+  example: []
+  syntax:
+    content: int GetChannelPWMax(int ch)
+    parameters:
+    - id: ch
+      type: System.Int32
+      description: 1-based logical channel.
+    return:
+      type: System.Int32
+      description: Maximum pulse width in microseconds.
+    content.vb: Function GetChannelPWMax(ch As Integer) As Integer
+  overload: Wss.CalibrationModule.IStimParamsCore.GetChannelPWMax*
+  nameWithType.vb: IStimParamsCore.GetChannelPWMax(Integer)
+  fullName.vb: Wss.CalibrationModule.IStimParamsCore.GetChannelPWMax(Integer)
+  name.vb: GetChannelPWMax(Integer)
+- uid: Wss.CalibrationModule.IStimParamsCore.GetChannelDefaultPW(System.Int32)
+  commentId: M:Wss.CalibrationModule.IStimParamsCore.GetChannelDefaultPW(System.Int32)
+  id: GetChannelDefaultPW(System.Int32)
+  parent: Wss.CalibrationModule.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: GetChannelDefaultPW(int)
+  nameWithType: IStimParamsCore.GetChannelDefaultPW(int)
+  fullName: Wss.CalibrationModule.IStimParamsCore.GetChannelDefaultPW(int)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Gets the per-channel default pulse width in µs.
+  example: []
+  syntax:
+    content: int GetChannelDefaultPW(int ch)
+    parameters:
+    - id: ch
+      type: System.Int32
+      description: 1-based logical channel.
+    return:
+      type: System.Int32
+      description: Default pulse width in microseconds.
+    content.vb: Function GetChannelDefaultPW(ch As Integer) As Integer
+  overload: Wss.CalibrationModule.IStimParamsCore.GetChannelDefaultPW*
+  nameWithType.vb: IStimParamsCore.GetChannelDefaultPW(Integer)
+  fullName.vb: Wss.CalibrationModule.IStimParamsCore.GetChannelDefaultPW(Integer)
+  name.vb: GetChannelDefaultPW(Integer)
+- uid: Wss.CalibrationModule.IStimParamsCore.GetChannelIPI(System.Int32)
+  commentId: M:Wss.CalibrationModule.IStimParamsCore.GetChannelIPI(System.Int32)
+  id: GetChannelIPI(System.Int32)
+  parent: Wss.CalibrationModule.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: GetChannelIPI(int)
+  nameWithType: IStimParamsCore.GetChannelIPI(int)
+  fullName: Wss.CalibrationModule.IStimParamsCore.GetChannelIPI(int)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Gets per-channel IPI in ms.
+  example: []
+  syntax:
+    content: int GetChannelIPI(int ch)
+    parameters:
+    - id: ch
+      type: System.Int32
+      description: 1-based logical channel.
+    return:
+      type: System.Int32
+      description: Inter-pulse interval in milliseconds.
+    content.vb: Function GetChannelIPI(ch As Integer) As Integer
+  overload: Wss.CalibrationModule.IStimParamsCore.GetChannelIPI*
+  nameWithType.vb: IStimParamsCore.GetChannelIPI(Integer)
+  fullName.vb: Wss.CalibrationModule.IStimParamsCore.GetChannelIPI(Integer)
+  name.vb: GetChannelIPI(Integer)
+- uid: Wss.CalibrationModule.IStimParamsCore.GetChannelAmpMode(System.Int32)
+  commentId: M:Wss.CalibrationModule.IStimParamsCore.GetChannelAmpMode(System.Int32)
+  id: GetChannelAmpMode(System.Int32)
+  parent: Wss.CalibrationModule.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: GetChannelAmpMode(int)
+  nameWithType: IStimParamsCore.GetChannelAmpMode(int)
+  fullName: Wss.CalibrationModule.IStimParamsCore.GetChannelAmpMode(int)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Gets the current amplitude-control mode for a channel.
+  example: []
+  syntax:
+    content: string GetChannelAmpMode(int ch)
+    parameters:
+    - id: ch
+      type: System.Int32
+      description: 1-based logical channel.
+    return:
+      type: System.String
+      description: "\"PW\" or \"PA\"."
+    content.vb: Function GetChannelAmpMode(ch As Integer) As String
+  overload: Wss.CalibrationModule.IStimParamsCore.GetChannelAmpMode*
+  nameWithType.vb: IStimParamsCore.GetChannelAmpMode(Integer)
+  fullName.vb: Wss.CalibrationModule.IStimParamsCore.GetChannelAmpMode(Integer)
+  name.vb: GetChannelAmpMode(Integer)
+- uid: Wss.CalibrationModule.IStimParamsCore.GetChannelMin(System.Int32)
+  commentId: M:Wss.CalibrationModule.IStimParamsCore.GetChannelMin(System.Int32)
+  id: GetChannelMin(System.Int32)
+  parent: Wss.CalibrationModule.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: GetChannelMin(int)
+  nameWithType: IStimParamsCore.GetChannelMin(int)
+  fullName: Wss.CalibrationModule.IStimParamsCore.GetChannelMin(int)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Gets the active-control minimum (µs when PW mode, mA when PA mode).
+  example: []
+  syntax:
+    content: float GetChannelMin(int ch)
+    parameters:
+    - id: ch
+      type: System.Int32
+      description: 1-based logical channel.
+    return:
+      type: System.Single
+      description: Minimum value in the active axis units (µs for PW mode).
+    content.vb: Function GetChannelMin(ch As Integer) As Single
+  overload: Wss.CalibrationModule.IStimParamsCore.GetChannelMin*
+  nameWithType.vb: IStimParamsCore.GetChannelMin(Integer)
+  fullName.vb: Wss.CalibrationModule.IStimParamsCore.GetChannelMin(Integer)
+  name.vb: GetChannelMin(Integer)
+- uid: Wss.CalibrationModule.IStimParamsCore.GetChannelMax(System.Int32)
+  commentId: M:Wss.CalibrationModule.IStimParamsCore.GetChannelMax(System.Int32)
+  id: GetChannelMax(System.Int32)
+  parent: Wss.CalibrationModule.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: GetChannelMax(int)
+  nameWithType: IStimParamsCore.GetChannelMax(int)
+  fullName: Wss.CalibrationModule.IStimParamsCore.GetChannelMax(int)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Gets the active-control maximum (µs when PW mode, mA when PA mode).
+  example: []
+  syntax:
+    content: float GetChannelMax(int ch)
+    parameters:
+    - id: ch
+      type: System.Int32
+      description: 1-based logical channel.
+    return:
+      type: System.Single
+      description: Maximum value in the active axis units (µs for PW mode).
+    content.vb: Function GetChannelMax(ch As Integer) As Single
+  overload: Wss.CalibrationModule.IStimParamsCore.GetChannelMax*
+  nameWithType.vb: IStimParamsCore.GetChannelMax(Integer)
+  fullName.vb: Wss.CalibrationModule.IStimParamsCore.GetChannelMax(Integer)
+  name.vb: GetChannelMax(Integer)
+- uid: Wss.CalibrationModule.IStimParamsCore.GetChannelDefault(System.Int32)
+  commentId: M:Wss.CalibrationModule.IStimParamsCore.GetChannelDefault(System.Int32)
+  id: GetChannelDefault(System.Int32)
+  parent: Wss.CalibrationModule.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: GetChannelDefault(int)
+  nameWithType: IStimParamsCore.GetChannelDefault(int)
+  fullName: Wss.CalibrationModule.IStimParamsCore.GetChannelDefault(int)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: Gets the non-controlled axis default (PA when PW mode, PW when PA mode).
+  example: []
+  syntax:
+    content: float GetChannelDefault(int ch)
+    parameters:
+    - id: ch
+      type: System.Int32
+      description: 1-based logical channel.
+    return:
+      type: System.Single
+      description: Default value expressed in the non-controlled axis units (µs for PA mode).
+    content.vb: Function GetChannelDefault(ch As Integer) As Single
+  overload: Wss.CalibrationModule.IStimParamsCore.GetChannelDefault*
+  nameWithType.vb: IStimParamsCore.GetChannelDefault(Integer)
+  fullName.vb: Wss.CalibrationModule.IStimParamsCore.GetChannelDefault(Integer)
+  name.vb: GetChannelDefault(Integer)
+- uid: Wss.CalibrationModule.IStimParamsCore.TryGetBasic(Wss.CoreModule.IBasicStimulation@)
+  commentId: M:Wss.CalibrationModule.IStimParamsCore.TryGetBasic(Wss.CoreModule.IBasicStimulation@)
+  id: TryGetBasic(Wss.CoreModule.IBasicStimulation@)
+  parent: Wss.CalibrationModule.IStimParamsCore
+  langs:
+  - csharp
+  - vb
+  name: TryGetBasic(out IBasicStimulation)
+  nameWithType: IStimParamsCore.TryGetBasic(out IBasicStimulation)
+  fullName: Wss.CalibrationModule.IStimParamsCore.TryGetBasic(out Wss.CoreModule.IBasicStimulation)
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CalibrationModule
+  summary: >-
+    Exposes the optional BASIC capability if available from the wrapped core.
+
+    Returns <code>true</code> and sets <code class="paramref">basic</code> if supported.
+  example: []
+  syntax:
+    content: bool TryGetBasic(out IBasicStimulation basic)
+    parameters:
+    - id: basic
+      type: Wss.CoreModule.IBasicStimulation
+      description: Out parameter for the BASIC interface.
+    return:
+      type: System.Boolean
+      description: <code>true</code> when BASIC is available, otherwise <code>false</code>.
+    content.vb: Function TryGetBasic(basic As IBasicStimulation) As Boolean
+  overload: Wss.CalibrationModule.IStimParamsCore.TryGetBasic*
+  nameWithType.vb: IStimParamsCore.TryGetBasic(IBasicStimulation)
+  fullName.vb: Wss.CalibrationModule.IStimParamsCore.TryGetBasic(Wss.CoreModule.IBasicStimulation)
+  name.vb: TryGetBasic(IBasicStimulation)
+references:
+- uid: Wss.CoreModule.IStimulationCore
+  commentId: T:Wss.CoreModule.IStimulationCore
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.IStimulationCore.html
+  name: IStimulationCore
+  nameWithType: IStimulationCore
+  fullName: Wss.CoreModule.IStimulationCore
+- uid: Wss.CalibrationModule.IStimParamsCore.TryGetBasic(Wss.CoreModule.IBasicStimulation@)
+  commentId: M:Wss.CalibrationModule.IStimParamsCore.TryGetBasic(Wss.CoreModule.IBasicStimulation@)
+  parent: Wss.CalibrationModule.IStimParamsCore
+  href: Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_TryGetBasic_Wss_CoreModule_IBasicStimulation__
+  name: TryGetBasic(out IBasicStimulation)
+  nameWithType: IStimParamsCore.TryGetBasic(out IBasicStimulation)
+  fullName: Wss.CalibrationModule.IStimParamsCore.TryGetBasic(out Wss.CoreModule.IBasicStimulation)
+  nameWithType.vb: IStimParamsCore.TryGetBasic(IBasicStimulation)
+  fullName.vb: Wss.CalibrationModule.IStimParamsCore.TryGetBasic(Wss.CoreModule.IBasicStimulation)
+  name.vb: TryGetBasic(IBasicStimulation)
+  spec.csharp:
+  - uid: Wss.CalibrationModule.IStimParamsCore.TryGetBasic(Wss.CoreModule.IBasicStimulation@)
+    name: TryGetBasic
+    href: Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_TryGetBasic_Wss_CoreModule_IBasicStimulation__
+  - name: (
+  - name: out
+  - name: " "
+  - uid: Wss.CoreModule.IBasicStimulation
+    name: IBasicStimulation
+    href: Wss.CoreModule.IBasicStimulation.html
+  - name: )
+  spec.vb:
+  - uid: Wss.CalibrationModule.IStimParamsCore.TryGetBasic(Wss.CoreModule.IBasicStimulation@)
+    name: TryGetBasic
+    href: Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_TryGetBasic_Wss_CoreModule_IBasicStimulation__
+  - name: (
+  - uid: Wss.CoreModule.IBasicStimulation
+    name: IBasicStimulation
+    href: Wss.CoreModule.IBasicStimulation.html
+  - name: )
+- uid: Wss.CalibrationModule
+  commentId: N:Wss.CalibrationModule
+  href: Wss.html
+  name: Wss.CalibrationModule
+  nameWithType: Wss.CalibrationModule
+  fullName: Wss.CalibrationModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CalibrationModule
+    name: CalibrationModule
+    href: Wss.CalibrationModule.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CalibrationModule
+    name: CalibrationModule
+    href: Wss.CalibrationModule.html
+- uid: Wss.CoreModule.IStimulationCore.Initialize
+  commentId: M:Wss.CoreModule.IStimulationCore.Initialize
+  parent: Wss.CoreModule.IStimulationCore
+  href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_Initialize
+  name: Initialize()
+  nameWithType: IStimulationCore.Initialize()
+  fullName: Wss.CoreModule.IStimulationCore.Initialize()
+  spec.csharp:
+  - uid: Wss.CoreModule.IStimulationCore.Initialize
+    name: Initialize
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_Initialize
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.IStimulationCore.Initialize
+    name: Initialize
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_Initialize
+  - name: (
+  - name: )
+- uid: Wss.CoreModule.IStimulationCore.Tick
+  commentId: M:Wss.CoreModule.IStimulationCore.Tick
+  parent: Wss.CoreModule.IStimulationCore
+  href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_Tick
+  name: Tick()
+  nameWithType: IStimulationCore.Tick()
+  fullName: Wss.CoreModule.IStimulationCore.Tick()
+  spec.csharp:
+  - uid: Wss.CoreModule.IStimulationCore.Tick
+    name: Tick
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_Tick
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.IStimulationCore.Tick
+    name: Tick
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_Tick
+  - name: (
+  - name: )
+- uid: Wss.CoreModule.IStimulationCore.Shutdown
+  commentId: M:Wss.CoreModule.IStimulationCore.Shutdown
+  parent: Wss.CoreModule.IStimulationCore
+  href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_Shutdown
+  name: Shutdown()
+  nameWithType: IStimulationCore.Shutdown()
+  fullName: Wss.CoreModule.IStimulationCore.Shutdown()
+  spec.csharp:
+  - uid: Wss.CoreModule.IStimulationCore.Shutdown
+    name: Shutdown
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_Shutdown
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.IStimulationCore.Shutdown
+    name: Shutdown
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_Shutdown
+  - name: (
+  - name: )
+- uid: Wss.CoreModule.IStimulationCore.Started
+  commentId: M:Wss.CoreModule.IStimulationCore.Started
+  parent: Wss.CoreModule.IStimulationCore
+  href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_Started
+  name: Started()
+  nameWithType: IStimulationCore.Started()
+  fullName: Wss.CoreModule.IStimulationCore.Started()
+  spec.csharp:
+  - uid: Wss.CoreModule.IStimulationCore.Started
+    name: Started
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_Started
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.IStimulationCore.Started
+    name: Started
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_Started
+  - name: (
+  - name: )
+- uid: Wss.CoreModule.IStimulationCore.Ready
+  commentId: M:Wss.CoreModule.IStimulationCore.Ready
+  parent: Wss.CoreModule.IStimulationCore
+  href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_Ready
+  name: Ready()
+  nameWithType: IStimulationCore.Ready()
+  fullName: Wss.CoreModule.IStimulationCore.Ready()
+  spec.csharp:
+  - uid: Wss.CoreModule.IStimulationCore.Ready
+    name: Ready
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_Ready
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.IStimulationCore.Ready
+    name: Ready
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_Ready
+  - name: (
+  - name: )
+- uid: Wss.CoreModule.IStimulationCore.StimulateAnalog(System.Int32,System.Int32,System.Single,System.Int32)
+  commentId: M:Wss.CoreModule.IStimulationCore.StimulateAnalog(System.Int32,System.Int32,System.Single,System.Int32)
+  parent: Wss.CoreModule.IStimulationCore
+  isExternal: true
+  href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_StimulateAnalog_System_Int32_System_Int32_System_Single_System_Int32_
+  name: StimulateAnalog(int, int, float, int)
+  nameWithType: IStimulationCore.StimulateAnalog(int, int, float, int)
+  fullName: Wss.CoreModule.IStimulationCore.StimulateAnalog(int, int, float, int)
+  nameWithType.vb: IStimulationCore.StimulateAnalog(Integer, Integer, Single, Integer)
+  fullName.vb: Wss.CoreModule.IStimulationCore.StimulateAnalog(Integer, Integer, Single, Integer)
+  name.vb: StimulateAnalog(Integer, Integer, Single, Integer)
+  spec.csharp:
+  - uid: Wss.CoreModule.IStimulationCore.StimulateAnalog(System.Int32,System.Int32,System.Single,System.Int32)
+    name: StimulateAnalog
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_StimulateAnalog_System_Int32_System_Int32_System_Single_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.IStimulationCore.StimulateAnalog(System.Int32,System.Int32,System.Single,System.Int32)
+    name: StimulateAnalog
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_StimulateAnalog_System_Int32_System_Int32_System_Single_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: Wss.CoreModule.IStimulationCore.ZeroOutStim(Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.IStimulationCore.ZeroOutStim(Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.IStimulationCore
+  href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_ZeroOutStim_Wss_CoreModule_WssTarget_
+  name: ZeroOutStim(WssTarget)
+  nameWithType: IStimulationCore.ZeroOutStim(WssTarget)
+  fullName: Wss.CoreModule.IStimulationCore.ZeroOutStim(Wss.CoreModule.WssTarget)
+  spec.csharp:
+  - uid: Wss.CoreModule.IStimulationCore.ZeroOutStim(Wss.CoreModule.WssTarget)
+    name: ZeroOutStim
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_ZeroOutStim_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.IStimulationCore.ZeroOutStim(Wss.CoreModule.WssTarget)
+    name: ZeroOutStim
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_ZeroOutStim_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+- uid: Wss.CoreModule.IStimulationCore.StartStim(Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.IStimulationCore.StartStim(Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.IStimulationCore
+  href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_StartStim_Wss_CoreModule_WssTarget_
+  name: StartStim(WssTarget)
+  nameWithType: IStimulationCore.StartStim(WssTarget)
+  fullName: Wss.CoreModule.IStimulationCore.StartStim(Wss.CoreModule.WssTarget)
+  spec.csharp:
+  - uid: Wss.CoreModule.IStimulationCore.StartStim(Wss.CoreModule.WssTarget)
+    name: StartStim
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_StartStim_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.IStimulationCore.StartStim(Wss.CoreModule.WssTarget)
+    name: StartStim
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_StartStim_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+- uid: Wss.CoreModule.IStimulationCore.StopStim(Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.IStimulationCore.StopStim(Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.IStimulationCore
+  href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_StopStim_Wss_CoreModule_WssTarget_
+  name: StopStim(WssTarget)
+  nameWithType: IStimulationCore.StopStim(WssTarget)
+  fullName: Wss.CoreModule.IStimulationCore.StopStim(Wss.CoreModule.WssTarget)
+  spec.csharp:
+  - uid: Wss.CoreModule.IStimulationCore.StopStim(Wss.CoreModule.WssTarget)
+    name: StopStim
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_StopStim_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.IStimulationCore.StopStim(Wss.CoreModule.WssTarget)
+    name: StopStim
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_StopStim_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+- uid: Wss.CoreModule.IStimulationCore.LoadConfigFile
+  commentId: M:Wss.CoreModule.IStimulationCore.LoadConfigFile
+  parent: Wss.CoreModule.IStimulationCore
+  href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_LoadConfigFile
+  name: LoadConfigFile()
+  nameWithType: IStimulationCore.LoadConfigFile()
+  fullName: Wss.CoreModule.IStimulationCore.LoadConfigFile()
+  spec.csharp:
+  - uid: Wss.CoreModule.IStimulationCore.LoadConfigFile
+    name: LoadConfigFile
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_LoadConfigFile
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.IStimulationCore.LoadConfigFile
+    name: LoadConfigFile
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_LoadConfigFile
+  - name: (
+  - name: )
+- uid: Wss.CoreModule.IStimulationCore.GetCoreConfigController
+  commentId: M:Wss.CoreModule.IStimulationCore.GetCoreConfigController
+  parent: Wss.CoreModule.IStimulationCore
+  href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_GetCoreConfigController
+  name: GetCoreConfigController()
+  nameWithType: IStimulationCore.GetCoreConfigController()
+  fullName: Wss.CoreModule.IStimulationCore.GetCoreConfigController()
+  spec.csharp:
+  - uid: Wss.CoreModule.IStimulationCore.GetCoreConfigController
+    name: GetCoreConfigController
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_GetCoreConfigController
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.IStimulationCore.GetCoreConfigController
+    name: GetCoreConfigController
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_GetCoreConfigController
+  - name: (
+  - name: )
+- uid: Wss.CoreModule.IStimulationCore.IsChannelInRange(System.Int32)
+  commentId: M:Wss.CoreModule.IStimulationCore.IsChannelInRange(System.Int32)
+  parent: Wss.CoreModule.IStimulationCore
+  isExternal: true
+  href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_IsChannelInRange_System_Int32_
+  name: IsChannelInRange(int)
+  nameWithType: IStimulationCore.IsChannelInRange(int)
+  fullName: Wss.CoreModule.IStimulationCore.IsChannelInRange(int)
+  nameWithType.vb: IStimulationCore.IsChannelInRange(Integer)
+  fullName.vb: Wss.CoreModule.IStimulationCore.IsChannelInRange(Integer)
+  name.vb: IsChannelInRange(Integer)
+  spec.csharp:
+  - uid: Wss.CoreModule.IStimulationCore.IsChannelInRange(System.Int32)
+    name: IsChannelInRange
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_IsChannelInRange_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.IStimulationCore.IsChannelInRange(System.Int32)
+    name: IsChannelInRange
+    href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_IsChannelInRange_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: Wss.CalibrationModule.IStimParamsCore.Wss.CoreModule.StimParamsBasicExtensions.LoadBoard(Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.StimParamsBasicExtensions.LoadBoard(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.StimParamsBasicExtensions
+  definition: Wss.CoreModule.StimParamsBasicExtensions.LoadBoard(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WssTarget)
+  href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_LoadBoard_Wss_CalibrationModule_IStimParamsCore_Wss_CoreModule_WssTarget_
+  name: LoadBoard(IStimParamsCore, WssTarget)
+  nameWithType: StimParamsBasicExtensions.LoadBoard(IStimParamsCore, WssTarget)
+  fullName: Wss.CoreModule.StimParamsBasicExtensions.LoadBoard(Wss.CalibrationModule.IStimParamsCore, Wss.CoreModule.WssTarget)
+  spec.csharp:
+  - uid: Wss.CoreModule.StimParamsBasicExtensions.LoadBoard(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WssTarget)
+    name: LoadBoard
+    href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_LoadBoard_Wss_CalibrationModule_IStimParamsCore_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CalibrationModule.IStimParamsCore
+    name: IStimParamsCore
+    href: Wss.CalibrationModule.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.StimParamsBasicExtensions.LoadBoard(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WssTarget)
+    name: LoadBoard
+    href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_LoadBoard_Wss_CalibrationModule_IStimParamsCore_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CalibrationModule.IStimParamsCore
+    name: IStimParamsCore
+    href: Wss.CalibrationModule.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+- uid: Wss.CalibrationModule.IStimParamsCore.Wss.CoreModule.StimParamsBasicExtensions.LoadWaveform(System.String,System.Int32)
+  commentId: M:Wss.CoreModule.StimParamsBasicExtensions.LoadWaveform(Wss.CalibrationModule.IStimParamsCore,System.String,System.Int32)
+  parent: Wss.CoreModule.StimParamsBasicExtensions
+  definition: Wss.CoreModule.StimParamsBasicExtensions.LoadWaveform(Wss.CalibrationModule.IStimParamsCore,System.String,System.Int32)
+  href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_LoadWaveform_Wss_CalibrationModule_IStimParamsCore_System_String_System_Int32_
+  name: LoadWaveform(IStimParamsCore, string, int)
+  nameWithType: StimParamsBasicExtensions.LoadWaveform(IStimParamsCore, string, int)
+  fullName: Wss.CoreModule.StimParamsBasicExtensions.LoadWaveform(Wss.CalibrationModule.IStimParamsCore, string, int)
+  nameWithType.vb: StimParamsBasicExtensions.LoadWaveform(IStimParamsCore, String, Integer)
+  fullName.vb: Wss.CoreModule.StimParamsBasicExtensions.LoadWaveform(Wss.CalibrationModule.IStimParamsCore, String, Integer)
+  name.vb: LoadWaveform(IStimParamsCore, String, Integer)
+  spec.csharp:
+  - uid: Wss.CoreModule.StimParamsBasicExtensions.LoadWaveform(Wss.CalibrationModule.IStimParamsCore,System.String,System.Int32)
+    name: LoadWaveform
+    href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_LoadWaveform_Wss_CalibrationModule_IStimParamsCore_System_String_System_Int32_
+  - name: (
+  - uid: Wss.CalibrationModule.IStimParamsCore
+    name: IStimParamsCore
+    href: Wss.CalibrationModule.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.StimParamsBasicExtensions.LoadWaveform(Wss.CalibrationModule.IStimParamsCore,System.String,System.Int32)
+    name: LoadWaveform
+    href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_LoadWaveform_Wss_CalibrationModule_IStimParamsCore_System_String_System_Int32_
+  - name: (
+  - uid: Wss.CalibrationModule.IStimParamsCore
+    name: IStimParamsCore
+    href: Wss.CalibrationModule.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: Wss.CalibrationModule.IStimParamsCore.Wss.CoreModule.StimParamsBasicExtensions.RequestConfigs(System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.StimParamsBasicExtensions.RequestConfigs(Wss.CalibrationModule.IStimParamsCore,System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.StimParamsBasicExtensions
+  definition: Wss.CoreModule.StimParamsBasicExtensions.RequestConfigs(Wss.CalibrationModule.IStimParamsCore,System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_RequestConfigs_Wss_CalibrationModule_IStimParamsCore_System_Int32_System_Int32_Wss_CoreModule_WssTarget_
+  name: RequestConfigs(IStimParamsCore, int, int, WssTarget)
+  nameWithType: StimParamsBasicExtensions.RequestConfigs(IStimParamsCore, int, int, WssTarget)
+  fullName: Wss.CoreModule.StimParamsBasicExtensions.RequestConfigs(Wss.CalibrationModule.IStimParamsCore, int, int, Wss.CoreModule.WssTarget)
+  nameWithType.vb: StimParamsBasicExtensions.RequestConfigs(IStimParamsCore, Integer, Integer, WssTarget)
+  fullName.vb: Wss.CoreModule.StimParamsBasicExtensions.RequestConfigs(Wss.CalibrationModule.IStimParamsCore, Integer, Integer, Wss.CoreModule.WssTarget)
+  name.vb: RequestConfigs(IStimParamsCore, Integer, Integer, WssTarget)
+  spec.csharp:
+  - uid: Wss.CoreModule.StimParamsBasicExtensions.RequestConfigs(Wss.CalibrationModule.IStimParamsCore,System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+    name: RequestConfigs
+    href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_RequestConfigs_Wss_CalibrationModule_IStimParamsCore_System_Int32_System_Int32_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CalibrationModule.IStimParamsCore
+    name: IStimParamsCore
+    href: Wss.CalibrationModule.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.StimParamsBasicExtensions.RequestConfigs(Wss.CalibrationModule.IStimParamsCore,System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+    name: RequestConfigs
+    href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_RequestConfigs_Wss_CalibrationModule_IStimParamsCore_System_Int32_System_Int32_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CalibrationModule.IStimParamsCore
+    name: IStimParamsCore
+    href: Wss.CalibrationModule.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+- uid: Wss.CalibrationModule.IStimParamsCore.Wss.CoreModule.StimParamsBasicExtensions.SaveBoard(Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.StimParamsBasicExtensions.SaveBoard(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.StimParamsBasicExtensions
+  definition: Wss.CoreModule.StimParamsBasicExtensions.SaveBoard(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WssTarget)
+  href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_SaveBoard_Wss_CalibrationModule_IStimParamsCore_Wss_CoreModule_WssTarget_
+  name: SaveBoard(IStimParamsCore, WssTarget)
+  nameWithType: StimParamsBasicExtensions.SaveBoard(IStimParamsCore, WssTarget)
+  fullName: Wss.CoreModule.StimParamsBasicExtensions.SaveBoard(Wss.CalibrationModule.IStimParamsCore, Wss.CoreModule.WssTarget)
+  spec.csharp:
+  - uid: Wss.CoreModule.StimParamsBasicExtensions.SaveBoard(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WssTarget)
+    name: SaveBoard
+    href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_SaveBoard_Wss_CalibrationModule_IStimParamsCore_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CalibrationModule.IStimParamsCore
+    name: IStimParamsCore
+    href: Wss.CalibrationModule.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.StimParamsBasicExtensions.SaveBoard(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WssTarget)
+    name: SaveBoard
+    href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_SaveBoard_Wss_CalibrationModule_IStimParamsCore_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CalibrationModule.IStimParamsCore
+    name: IStimParamsCore
+    href: Wss.CalibrationModule.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+- uid: Wss.CalibrationModule.IStimParamsCore.Wss.CoreModule.StimParamsBasicExtensions.TryUpdateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.StimParamsBasicExtensions.TryUpdateWaveform(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.StimParamsBasicExtensions
+  definition: Wss.CoreModule.StimParamsBasicExtensions.TryUpdateWaveform(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_TryUpdateWaveform_Wss_CalibrationModule_IStimParamsCore_Wss_CoreModule_WaveformBuilder_System_Int32_Wss_CoreModule_WssTarget_
+  name: TryUpdateWaveform(IStimParamsCore, WaveformBuilder, int, WssTarget)
+  nameWithType: StimParamsBasicExtensions.TryUpdateWaveform(IStimParamsCore, WaveformBuilder, int, WssTarget)
+  fullName: Wss.CoreModule.StimParamsBasicExtensions.TryUpdateWaveform(Wss.CalibrationModule.IStimParamsCore, Wss.CoreModule.WaveformBuilder, int, Wss.CoreModule.WssTarget)
+  nameWithType.vb: StimParamsBasicExtensions.TryUpdateWaveform(IStimParamsCore, WaveformBuilder, Integer, WssTarget)
+  fullName.vb: Wss.CoreModule.StimParamsBasicExtensions.TryUpdateWaveform(Wss.CalibrationModule.IStimParamsCore, Wss.CoreModule.WaveformBuilder, Integer, Wss.CoreModule.WssTarget)
+  name.vb: TryUpdateWaveform(IStimParamsCore, WaveformBuilder, Integer, WssTarget)
+  spec.csharp:
+  - uid: Wss.CoreModule.StimParamsBasicExtensions.TryUpdateWaveform(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+    name: TryUpdateWaveform
+    href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_TryUpdateWaveform_Wss_CalibrationModule_IStimParamsCore_Wss_CoreModule_WaveformBuilder_System_Int32_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CalibrationModule.IStimParamsCore
+    name: IStimParamsCore
+    href: Wss.CalibrationModule.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WaveformBuilder
+    name: WaveformBuilder
+    href: Wss.CoreModule.WaveformBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.StimParamsBasicExtensions.TryUpdateWaveform(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+    name: TryUpdateWaveform
+    href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_TryUpdateWaveform_Wss_CalibrationModule_IStimParamsCore_Wss_CoreModule_WaveformBuilder_System_Int32_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CalibrationModule.IStimParamsCore
+    name: IStimParamsCore
+    href: Wss.CalibrationModule.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WaveformBuilder
+    name: WaveformBuilder
+    href: Wss.CoreModule.WaveformBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+- uid: Wss.CalibrationModule.IStimParamsCore.Wss.CoreModule.StimParamsBasicExtensions.UpdateEventShape(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.StimParamsBasicExtensions.UpdateEventShape(Wss.CalibrationModule.IStimParamsCore,System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.StimParamsBasicExtensions
+  definition: Wss.CoreModule.StimParamsBasicExtensions.UpdateEventShape(Wss.CalibrationModule.IStimParamsCore,System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_UpdateEventShape_Wss_CalibrationModule_IStimParamsCore_System_Int32_System_Int32_System_Int32_Wss_CoreModule_WssTarget_
+  name: UpdateEventShape(IStimParamsCore, int, int, int, WssTarget)
+  nameWithType: StimParamsBasicExtensions.UpdateEventShape(IStimParamsCore, int, int, int, WssTarget)
+  fullName: Wss.CoreModule.StimParamsBasicExtensions.UpdateEventShape(Wss.CalibrationModule.IStimParamsCore, int, int, int, Wss.CoreModule.WssTarget)
+  nameWithType.vb: StimParamsBasicExtensions.UpdateEventShape(IStimParamsCore, Integer, Integer, Integer, WssTarget)
+  fullName.vb: Wss.CoreModule.StimParamsBasicExtensions.UpdateEventShape(Wss.CalibrationModule.IStimParamsCore, Integer, Integer, Integer, Wss.CoreModule.WssTarget)
+  name.vb: UpdateEventShape(IStimParamsCore, Integer, Integer, Integer, WssTarget)
+  spec.csharp:
+  - uid: Wss.CoreModule.StimParamsBasicExtensions.UpdateEventShape(Wss.CalibrationModule.IStimParamsCore,System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+    name: UpdateEventShape
+    href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_UpdateEventShape_Wss_CalibrationModule_IStimParamsCore_System_Int32_System_Int32_System_Int32_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CalibrationModule.IStimParamsCore
+    name: IStimParamsCore
+    href: Wss.CalibrationModule.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.StimParamsBasicExtensions.UpdateEventShape(Wss.CalibrationModule.IStimParamsCore,System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+    name: UpdateEventShape
+    href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_UpdateEventShape_Wss_CalibrationModule_IStimParamsCore_System_Int32_System_Int32_System_Int32_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CalibrationModule.IStimParamsCore
+    name: IStimParamsCore
+    href: Wss.CalibrationModule.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+- uid: Wss.CalibrationModule.IStimParamsCore.Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform(System.Int32[],System.Int32,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform(Wss.CalibrationModule.IStimParamsCore,System.Int32[],System.Int32,Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.StimParamsBasicExtensions
+  definition: Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform(Wss.CalibrationModule.IStimParamsCore,System.Int32[],System.Int32,Wss.CoreModule.WssTarget)
+  href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_UpdateWaveform_Wss_CalibrationModule_IStimParamsCore_System_Int32___System_Int32_Wss_CoreModule_WssTarget_
+  name: UpdateWaveform(IStimParamsCore, int[], int, WssTarget)
+  nameWithType: StimParamsBasicExtensions.UpdateWaveform(IStimParamsCore, int[], int, WssTarget)
+  fullName: Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform(Wss.CalibrationModule.IStimParamsCore, int[], int, Wss.CoreModule.WssTarget)
+  nameWithType.vb: StimParamsBasicExtensions.UpdateWaveform(IStimParamsCore, Integer(), Integer, WssTarget)
+  fullName.vb: Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform(Wss.CalibrationModule.IStimParamsCore, Integer(), Integer, Wss.CoreModule.WssTarget)
+  name.vb: UpdateWaveform(IStimParamsCore, Integer(), Integer, WssTarget)
+  spec.csharp:
+  - uid: Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform(Wss.CalibrationModule.IStimParamsCore,System.Int32[],System.Int32,Wss.CoreModule.WssTarget)
+    name: UpdateWaveform
+    href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_UpdateWaveform_Wss_CalibrationModule_IStimParamsCore_System_Int32___System_Int32_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CalibrationModule.IStimParamsCore
+    name: IStimParamsCore
+    href: Wss.CalibrationModule.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform(Wss.CalibrationModule.IStimParamsCore,System.Int32[],System.Int32,Wss.CoreModule.WssTarget)
+    name: UpdateWaveform
+    href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_UpdateWaveform_Wss_CalibrationModule_IStimParamsCore_System_Int32___System_Int32_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CalibrationModule.IStimParamsCore
+    name: IStimParamsCore
+    href: Wss.CalibrationModule.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+- uid: Wss.CalibrationModule.IStimParamsCore.Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.StimParamsBasicExtensions
+  definition: Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_UpdateWaveform_Wss_CalibrationModule_IStimParamsCore_Wss_CoreModule_WaveformBuilder_System_Int32_Wss_CoreModule_WssTarget_
+  name: UpdateWaveform(IStimParamsCore, WaveformBuilder, int, WssTarget)
+  nameWithType: StimParamsBasicExtensions.UpdateWaveform(IStimParamsCore, WaveformBuilder, int, WssTarget)
+  fullName: Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform(Wss.CalibrationModule.IStimParamsCore, Wss.CoreModule.WaveformBuilder, int, Wss.CoreModule.WssTarget)
+  nameWithType.vb: StimParamsBasicExtensions.UpdateWaveform(IStimParamsCore, WaveformBuilder, Integer, WssTarget)
+  fullName.vb: Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform(Wss.CalibrationModule.IStimParamsCore, Wss.CoreModule.WaveformBuilder, Integer, Wss.CoreModule.WssTarget)
+  name.vb: UpdateWaveform(IStimParamsCore, WaveformBuilder, Integer, WssTarget)
+  spec.csharp:
+  - uid: Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+    name: UpdateWaveform
+    href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_UpdateWaveform_Wss_CalibrationModule_IStimParamsCore_Wss_CoreModule_WaveformBuilder_System_Int32_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CalibrationModule.IStimParamsCore
+    name: IStimParamsCore
+    href: Wss.CalibrationModule.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WaveformBuilder
+    name: WaveformBuilder
+    href: Wss.CoreModule.WaveformBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+    name: UpdateWaveform
+    href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_UpdateWaveform_Wss_CalibrationModule_IStimParamsCore_Wss_CoreModule_WaveformBuilder_System_Int32_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CalibrationModule.IStimParamsCore
+    name: IStimParamsCore
+    href: Wss.CalibrationModule.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WaveformBuilder
+    name: WaveformBuilder
+    href: Wss.CoreModule.WaveformBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+- uid: Wss.CalibrationModule.IStimParamsCore.Wss.CoreModule.StimParamsBasicExtensions.WaveformSetup(Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.StimParamsBasicExtensions.WaveformSetup(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  parent: Wss.CoreModule.StimParamsBasicExtensions
+  definition: Wss.CoreModule.StimParamsBasicExtensions.WaveformSetup(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_WaveformSetup_Wss_CalibrationModule_IStimParamsCore_Wss_CoreModule_WaveformBuilder_System_Int32_Wss_CoreModule_WssTarget_
+  name: WaveformSetup(IStimParamsCore, WaveformBuilder, int, WssTarget)
+  nameWithType: StimParamsBasicExtensions.WaveformSetup(IStimParamsCore, WaveformBuilder, int, WssTarget)
+  fullName: Wss.CoreModule.StimParamsBasicExtensions.WaveformSetup(Wss.CalibrationModule.IStimParamsCore, Wss.CoreModule.WaveformBuilder, int, Wss.CoreModule.WssTarget)
+  nameWithType.vb: StimParamsBasicExtensions.WaveformSetup(IStimParamsCore, WaveformBuilder, Integer, WssTarget)
+  fullName.vb: Wss.CoreModule.StimParamsBasicExtensions.WaveformSetup(Wss.CalibrationModule.IStimParamsCore, Wss.CoreModule.WaveformBuilder, Integer, Wss.CoreModule.WssTarget)
+  name.vb: WaveformSetup(IStimParamsCore, WaveformBuilder, Integer, WssTarget)
+  spec.csharp:
+  - uid: Wss.CoreModule.StimParamsBasicExtensions.WaveformSetup(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+    name: WaveformSetup
+    href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_WaveformSetup_Wss_CalibrationModule_IStimParamsCore_Wss_CoreModule_WaveformBuilder_System_Int32_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CalibrationModule.IStimParamsCore
+    name: IStimParamsCore
+    href: Wss.CalibrationModule.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WaveformBuilder
+    name: WaveformBuilder
+    href: Wss.CoreModule.WaveformBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.StimParamsBasicExtensions.WaveformSetup(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+    name: WaveformSetup
+    href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_WaveformSetup_Wss_CalibrationModule_IStimParamsCore_Wss_CoreModule_WaveformBuilder_System_Int32_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CalibrationModule.IStimParamsCore
+    name: IStimParamsCore
+    href: Wss.CalibrationModule.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WaveformBuilder
+    name: WaveformBuilder
+    href: Wss.CoreModule.WaveformBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+- uid: Wss.CoreModule
+  commentId: N:Wss.CoreModule
+  href: Wss.html
+  name: Wss.CoreModule
+  nameWithType: Wss.CoreModule
+  fullName: Wss.CoreModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+- uid: Wss.CalibrationModule.IStimParamsCore
+  commentId: T:Wss.CalibrationModule.IStimParamsCore
+  parent: Wss.CalibrationModule
+  href: Wss.CalibrationModule.IStimParamsCore.html
+  name: IStimParamsCore
+  nameWithType: IStimParamsCore
+  fullName: Wss.CalibrationModule.IStimParamsCore
+- uid: Wss.CoreModule.StimParamsBasicExtensions.LoadBoard(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.StimParamsBasicExtensions.LoadBoard(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WssTarget)
+  href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_LoadBoard_Wss_CalibrationModule_IStimParamsCore_Wss_CoreModule_WssTarget_
+  name: LoadBoard(IStimParamsCore, WssTarget)
+  nameWithType: StimParamsBasicExtensions.LoadBoard(IStimParamsCore, WssTarget)
+  fullName: Wss.CoreModule.StimParamsBasicExtensions.LoadBoard(Wss.CalibrationModule.IStimParamsCore, Wss.CoreModule.WssTarget)
+  spec.csharp:
+  - uid: Wss.CoreModule.StimParamsBasicExtensions.LoadBoard(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WssTarget)
+    name: LoadBoard
+    href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_LoadBoard_Wss_CalibrationModule_IStimParamsCore_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CalibrationModule.IStimParamsCore
+    name: IStimParamsCore
+    href: Wss.CalibrationModule.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.StimParamsBasicExtensions.LoadBoard(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WssTarget)
+    name: LoadBoard
+    href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_LoadBoard_Wss_CalibrationModule_IStimParamsCore_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CalibrationModule.IStimParamsCore
+    name: IStimParamsCore
+    href: Wss.CalibrationModule.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+- uid: Wss.CoreModule.StimParamsBasicExtensions
+  commentId: T:Wss.CoreModule.StimParamsBasicExtensions
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.StimParamsBasicExtensions.html
+  name: StimParamsBasicExtensions
+  nameWithType: StimParamsBasicExtensions
+  fullName: Wss.CoreModule.StimParamsBasicExtensions
+- uid: Wss.CoreModule.StimParamsBasicExtensions.LoadWaveform(Wss.CalibrationModule.IStimParamsCore,System.String,System.Int32)
+  commentId: M:Wss.CoreModule.StimParamsBasicExtensions.LoadWaveform(Wss.CalibrationModule.IStimParamsCore,System.String,System.Int32)
+  isExternal: true
+  href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_LoadWaveform_Wss_CalibrationModule_IStimParamsCore_System_String_System_Int32_
+  name: LoadWaveform(IStimParamsCore, string, int)
+  nameWithType: StimParamsBasicExtensions.LoadWaveform(IStimParamsCore, string, int)
+  fullName: Wss.CoreModule.StimParamsBasicExtensions.LoadWaveform(Wss.CalibrationModule.IStimParamsCore, string, int)
+  nameWithType.vb: StimParamsBasicExtensions.LoadWaveform(IStimParamsCore, String, Integer)
+  fullName.vb: Wss.CoreModule.StimParamsBasicExtensions.LoadWaveform(Wss.CalibrationModule.IStimParamsCore, String, Integer)
+  name.vb: LoadWaveform(IStimParamsCore, String, Integer)
+  spec.csharp:
+  - uid: Wss.CoreModule.StimParamsBasicExtensions.LoadWaveform(Wss.CalibrationModule.IStimParamsCore,System.String,System.Int32)
+    name: LoadWaveform
+    href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_LoadWaveform_Wss_CalibrationModule_IStimParamsCore_System_String_System_Int32_
+  - name: (
+  - uid: Wss.CalibrationModule.IStimParamsCore
+    name: IStimParamsCore
+    href: Wss.CalibrationModule.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.StimParamsBasicExtensions.LoadWaveform(Wss.CalibrationModule.IStimParamsCore,System.String,System.Int32)
+    name: LoadWaveform
+    href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_LoadWaveform_Wss_CalibrationModule_IStimParamsCore_System_String_System_Int32_
+  - name: (
+  - uid: Wss.CalibrationModule.IStimParamsCore
+    name: IStimParamsCore
+    href: Wss.CalibrationModule.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: )
+- uid: Wss.CoreModule.StimParamsBasicExtensions.RequestConfigs(Wss.CalibrationModule.IStimParamsCore,System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.StimParamsBasicExtensions.RequestConfigs(Wss.CalibrationModule.IStimParamsCore,System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  isExternal: true
+  href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_RequestConfigs_Wss_CalibrationModule_IStimParamsCore_System_Int32_System_Int32_Wss_CoreModule_WssTarget_
+  name: RequestConfigs(IStimParamsCore, int, int, WssTarget)
+  nameWithType: StimParamsBasicExtensions.RequestConfigs(IStimParamsCore, int, int, WssTarget)
+  fullName: Wss.CoreModule.StimParamsBasicExtensions.RequestConfigs(Wss.CalibrationModule.IStimParamsCore, int, int, Wss.CoreModule.WssTarget)
+  nameWithType.vb: StimParamsBasicExtensions.RequestConfigs(IStimParamsCore, Integer, Integer, WssTarget)
+  fullName.vb: Wss.CoreModule.StimParamsBasicExtensions.RequestConfigs(Wss.CalibrationModule.IStimParamsCore, Integer, Integer, Wss.CoreModule.WssTarget)
+  name.vb: RequestConfigs(IStimParamsCore, Integer, Integer, WssTarget)
+  spec.csharp:
+  - uid: Wss.CoreModule.StimParamsBasicExtensions.RequestConfigs(Wss.CalibrationModule.IStimParamsCore,System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+    name: RequestConfigs
+    href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_RequestConfigs_Wss_CalibrationModule_IStimParamsCore_System_Int32_System_Int32_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CalibrationModule.IStimParamsCore
+    name: IStimParamsCore
+    href: Wss.CalibrationModule.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.StimParamsBasicExtensions.RequestConfigs(Wss.CalibrationModule.IStimParamsCore,System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+    name: RequestConfigs
+    href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_RequestConfigs_Wss_CalibrationModule_IStimParamsCore_System_Int32_System_Int32_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CalibrationModule.IStimParamsCore
+    name: IStimParamsCore
+    href: Wss.CalibrationModule.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+- uid: Wss.CoreModule.StimParamsBasicExtensions.SaveBoard(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.StimParamsBasicExtensions.SaveBoard(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WssTarget)
+  href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_SaveBoard_Wss_CalibrationModule_IStimParamsCore_Wss_CoreModule_WssTarget_
+  name: SaveBoard(IStimParamsCore, WssTarget)
+  nameWithType: StimParamsBasicExtensions.SaveBoard(IStimParamsCore, WssTarget)
+  fullName: Wss.CoreModule.StimParamsBasicExtensions.SaveBoard(Wss.CalibrationModule.IStimParamsCore, Wss.CoreModule.WssTarget)
+  spec.csharp:
+  - uid: Wss.CoreModule.StimParamsBasicExtensions.SaveBoard(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WssTarget)
+    name: SaveBoard
+    href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_SaveBoard_Wss_CalibrationModule_IStimParamsCore_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CalibrationModule.IStimParamsCore
+    name: IStimParamsCore
+    href: Wss.CalibrationModule.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.StimParamsBasicExtensions.SaveBoard(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WssTarget)
+    name: SaveBoard
+    href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_SaveBoard_Wss_CalibrationModule_IStimParamsCore_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CalibrationModule.IStimParamsCore
+    name: IStimParamsCore
+    href: Wss.CalibrationModule.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+- uid: Wss.CoreModule.StimParamsBasicExtensions.TryUpdateWaveform(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.StimParamsBasicExtensions.TryUpdateWaveform(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  isExternal: true
+  href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_TryUpdateWaveform_Wss_CalibrationModule_IStimParamsCore_Wss_CoreModule_WaveformBuilder_System_Int32_Wss_CoreModule_WssTarget_
+  name: TryUpdateWaveform(IStimParamsCore, WaveformBuilder, int, WssTarget)
+  nameWithType: StimParamsBasicExtensions.TryUpdateWaveform(IStimParamsCore, WaveformBuilder, int, WssTarget)
+  fullName: Wss.CoreModule.StimParamsBasicExtensions.TryUpdateWaveform(Wss.CalibrationModule.IStimParamsCore, Wss.CoreModule.WaveformBuilder, int, Wss.CoreModule.WssTarget)
+  nameWithType.vb: StimParamsBasicExtensions.TryUpdateWaveform(IStimParamsCore, WaveformBuilder, Integer, WssTarget)
+  fullName.vb: Wss.CoreModule.StimParamsBasicExtensions.TryUpdateWaveform(Wss.CalibrationModule.IStimParamsCore, Wss.CoreModule.WaveformBuilder, Integer, Wss.CoreModule.WssTarget)
+  name.vb: TryUpdateWaveform(IStimParamsCore, WaveformBuilder, Integer, WssTarget)
+  spec.csharp:
+  - uid: Wss.CoreModule.StimParamsBasicExtensions.TryUpdateWaveform(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+    name: TryUpdateWaveform
+    href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_TryUpdateWaveform_Wss_CalibrationModule_IStimParamsCore_Wss_CoreModule_WaveformBuilder_System_Int32_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CalibrationModule.IStimParamsCore
+    name: IStimParamsCore
+    href: Wss.CalibrationModule.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WaveformBuilder
+    name: WaveformBuilder
+    href: Wss.CoreModule.WaveformBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.StimParamsBasicExtensions.TryUpdateWaveform(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+    name: TryUpdateWaveform
+    href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_TryUpdateWaveform_Wss_CalibrationModule_IStimParamsCore_Wss_CoreModule_WaveformBuilder_System_Int32_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CalibrationModule.IStimParamsCore
+    name: IStimParamsCore
+    href: Wss.CalibrationModule.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WaveformBuilder
+    name: WaveformBuilder
+    href: Wss.CoreModule.WaveformBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+- uid: Wss.CoreModule.StimParamsBasicExtensions.UpdateEventShape(Wss.CalibrationModule.IStimParamsCore,System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.StimParamsBasicExtensions.UpdateEventShape(Wss.CalibrationModule.IStimParamsCore,System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+  isExternal: true
+  href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_UpdateEventShape_Wss_CalibrationModule_IStimParamsCore_System_Int32_System_Int32_System_Int32_Wss_CoreModule_WssTarget_
+  name: UpdateEventShape(IStimParamsCore, int, int, int, WssTarget)
+  nameWithType: StimParamsBasicExtensions.UpdateEventShape(IStimParamsCore, int, int, int, WssTarget)
+  fullName: Wss.CoreModule.StimParamsBasicExtensions.UpdateEventShape(Wss.CalibrationModule.IStimParamsCore, int, int, int, Wss.CoreModule.WssTarget)
+  nameWithType.vb: StimParamsBasicExtensions.UpdateEventShape(IStimParamsCore, Integer, Integer, Integer, WssTarget)
+  fullName.vb: Wss.CoreModule.StimParamsBasicExtensions.UpdateEventShape(Wss.CalibrationModule.IStimParamsCore, Integer, Integer, Integer, Wss.CoreModule.WssTarget)
+  name.vb: UpdateEventShape(IStimParamsCore, Integer, Integer, Integer, WssTarget)
+  spec.csharp:
+  - uid: Wss.CoreModule.StimParamsBasicExtensions.UpdateEventShape(Wss.CalibrationModule.IStimParamsCore,System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+    name: UpdateEventShape
+    href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_UpdateEventShape_Wss_CalibrationModule_IStimParamsCore_System_Int32_System_Int32_System_Int32_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CalibrationModule.IStimParamsCore
+    name: IStimParamsCore
+    href: Wss.CalibrationModule.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.StimParamsBasicExtensions.UpdateEventShape(Wss.CalibrationModule.IStimParamsCore,System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget)
+    name: UpdateEventShape
+    href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_UpdateEventShape_Wss_CalibrationModule_IStimParamsCore_System_Int32_System_Int32_System_Int32_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CalibrationModule.IStimParamsCore
+    name: IStimParamsCore
+    href: Wss.CalibrationModule.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+- uid: Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform(Wss.CalibrationModule.IStimParamsCore,System.Int32[],System.Int32,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform(Wss.CalibrationModule.IStimParamsCore,System.Int32[],System.Int32,Wss.CoreModule.WssTarget)
+  isExternal: true
+  href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_UpdateWaveform_Wss_CalibrationModule_IStimParamsCore_System_Int32___System_Int32_Wss_CoreModule_WssTarget_
+  name: UpdateWaveform(IStimParamsCore, int[], int, WssTarget)
+  nameWithType: StimParamsBasicExtensions.UpdateWaveform(IStimParamsCore, int[], int, WssTarget)
+  fullName: Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform(Wss.CalibrationModule.IStimParamsCore, int[], int, Wss.CoreModule.WssTarget)
+  nameWithType.vb: StimParamsBasicExtensions.UpdateWaveform(IStimParamsCore, Integer(), Integer, WssTarget)
+  fullName.vb: Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform(Wss.CalibrationModule.IStimParamsCore, Integer(), Integer, Wss.CoreModule.WssTarget)
+  name.vb: UpdateWaveform(IStimParamsCore, Integer(), Integer, WssTarget)
+  spec.csharp:
+  - uid: Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform(Wss.CalibrationModule.IStimParamsCore,System.Int32[],System.Int32,Wss.CoreModule.WssTarget)
+    name: UpdateWaveform
+    href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_UpdateWaveform_Wss_CalibrationModule_IStimParamsCore_System_Int32___System_Int32_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CalibrationModule.IStimParamsCore
+    name: IStimParamsCore
+    href: Wss.CalibrationModule.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform(Wss.CalibrationModule.IStimParamsCore,System.Int32[],System.Int32,Wss.CoreModule.WssTarget)
+    name: UpdateWaveform
+    href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_UpdateWaveform_Wss_CalibrationModule_IStimParamsCore_System_Int32___System_Int32_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CalibrationModule.IStimParamsCore
+    name: IStimParamsCore
+    href: Wss.CalibrationModule.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+- uid: Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  isExternal: true
+  href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_UpdateWaveform_Wss_CalibrationModule_IStimParamsCore_Wss_CoreModule_WaveformBuilder_System_Int32_Wss_CoreModule_WssTarget_
+  name: UpdateWaveform(IStimParamsCore, WaveformBuilder, int, WssTarget)
+  nameWithType: StimParamsBasicExtensions.UpdateWaveform(IStimParamsCore, WaveformBuilder, int, WssTarget)
+  fullName: Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform(Wss.CalibrationModule.IStimParamsCore, Wss.CoreModule.WaveformBuilder, int, Wss.CoreModule.WssTarget)
+  nameWithType.vb: StimParamsBasicExtensions.UpdateWaveform(IStimParamsCore, WaveformBuilder, Integer, WssTarget)
+  fullName.vb: Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform(Wss.CalibrationModule.IStimParamsCore, Wss.CoreModule.WaveformBuilder, Integer, Wss.CoreModule.WssTarget)
+  name.vb: UpdateWaveform(IStimParamsCore, WaveformBuilder, Integer, WssTarget)
+  spec.csharp:
+  - uid: Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+    name: UpdateWaveform
+    href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_UpdateWaveform_Wss_CalibrationModule_IStimParamsCore_Wss_CoreModule_WaveformBuilder_System_Int32_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CalibrationModule.IStimParamsCore
+    name: IStimParamsCore
+    href: Wss.CalibrationModule.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WaveformBuilder
+    name: WaveformBuilder
+    href: Wss.CoreModule.WaveformBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.StimParamsBasicExtensions.UpdateWaveform(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+    name: UpdateWaveform
+    href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_UpdateWaveform_Wss_CalibrationModule_IStimParamsCore_Wss_CoreModule_WaveformBuilder_System_Int32_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CalibrationModule.IStimParamsCore
+    name: IStimParamsCore
+    href: Wss.CalibrationModule.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WaveformBuilder
+    name: WaveformBuilder
+    href: Wss.CoreModule.WaveformBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+- uid: Wss.CoreModule.StimParamsBasicExtensions.WaveformSetup(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  commentId: M:Wss.CoreModule.StimParamsBasicExtensions.WaveformSetup(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+  isExternal: true
+  href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_WaveformSetup_Wss_CalibrationModule_IStimParamsCore_Wss_CoreModule_WaveformBuilder_System_Int32_Wss_CoreModule_WssTarget_
+  name: WaveformSetup(IStimParamsCore, WaveformBuilder, int, WssTarget)
+  nameWithType: StimParamsBasicExtensions.WaveformSetup(IStimParamsCore, WaveformBuilder, int, WssTarget)
+  fullName: Wss.CoreModule.StimParamsBasicExtensions.WaveformSetup(Wss.CalibrationModule.IStimParamsCore, Wss.CoreModule.WaveformBuilder, int, Wss.CoreModule.WssTarget)
+  nameWithType.vb: StimParamsBasicExtensions.WaveformSetup(IStimParamsCore, WaveformBuilder, Integer, WssTarget)
+  fullName.vb: Wss.CoreModule.StimParamsBasicExtensions.WaveformSetup(Wss.CalibrationModule.IStimParamsCore, Wss.CoreModule.WaveformBuilder, Integer, Wss.CoreModule.WssTarget)
+  name.vb: WaveformSetup(IStimParamsCore, WaveformBuilder, Integer, WssTarget)
+  spec.csharp:
+  - uid: Wss.CoreModule.StimParamsBasicExtensions.WaveformSetup(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+    name: WaveformSetup
+    href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_WaveformSetup_Wss_CalibrationModule_IStimParamsCore_Wss_CoreModule_WaveformBuilder_System_Int32_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CalibrationModule.IStimParamsCore
+    name: IStimParamsCore
+    href: Wss.CalibrationModule.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WaveformBuilder
+    name: WaveformBuilder
+    href: Wss.CoreModule.WaveformBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.StimParamsBasicExtensions.WaveformSetup(Wss.CalibrationModule.IStimParamsCore,Wss.CoreModule.WaveformBuilder,System.Int32,Wss.CoreModule.WssTarget)
+    name: WaveformSetup
+    href: Wss.CoreModule.StimParamsBasicExtensions.html#Wss_CoreModule_StimParamsBasicExtensions_WaveformSetup_Wss_CalibrationModule_IStimParamsCore_Wss_CoreModule_WaveformBuilder_System_Int32_Wss_CoreModule_WssTarget_
+  - name: (
+  - uid: Wss.CalibrationModule.IStimParamsCore
+    name: IStimParamsCore
+    href: Wss.CalibrationModule.IStimParamsCore.html
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WaveformBuilder
+    name: WaveformBuilder
+    href: Wss.CoreModule.WaveformBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: )
+- uid: Wss.CalibrationModule.IStimParamsCore.StimulateNormalized*
+  commentId: Overload:Wss.CalibrationModule.IStimParamsCore.StimulateNormalized
+  href: Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_StimulateNormalized_System_Int32_System_Single_
+  name: StimulateNormalized
+  nameWithType: IStimParamsCore.StimulateNormalized
+  fullName: Wss.CalibrationModule.IStimParamsCore.StimulateNormalized
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Wss.CalibrationModule.IStimParamsCore.StimulateNormalized(System.Int32,System.Single)
+  commentId: M:Wss.CalibrationModule.IStimParamsCore.StimulateNormalized(System.Int32,System.Single)
+  parent: Wss.CalibrationModule.IStimParamsCore
+  isExternal: true
+  href: Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_StimulateNormalized_System_Int32_System_Single_
+  name: StimulateNormalized(int, float)
+  nameWithType: IStimParamsCore.StimulateNormalized(int, float)
+  fullName: Wss.CalibrationModule.IStimParamsCore.StimulateNormalized(int, float)
+  nameWithType.vb: IStimParamsCore.StimulateNormalized(Integer, Single)
+  fullName.vb: Wss.CalibrationModule.IStimParamsCore.StimulateNormalized(Integer, Single)
+  name.vb: StimulateNormalized(Integer, Single)
+  spec.csharp:
+  - uid: Wss.CalibrationModule.IStimParamsCore.StimulateNormalized(System.Int32,System.Single)
+    name: StimulateNormalized
+    href: Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_StimulateNormalized_System_Int32_System_Single_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Wss.CalibrationModule.IStimParamsCore.StimulateNormalized(System.Int32,System.Single)
+    name: StimulateNormalized
+    href: Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_StimulateNormalized_System_Int32_System_Single_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+  - name: )
+- uid: Wss.CalibrationModule.IStimParamsCore.GetStimIntensity*
+  commentId: Overload:Wss.CalibrationModule.IStimParamsCore.GetStimIntensity
+  href: Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_GetStimIntensity_System_Int32_
+  name: GetStimIntensity
+  nameWithType: IStimParamsCore.GetStimIntensity
+  fullName: Wss.CalibrationModule.IStimParamsCore.GetStimIntensity
+- uid: Wss.CalibrationModule.IStimParamsCore.SaveParamsJson*
+  commentId: Overload:Wss.CalibrationModule.IStimParamsCore.SaveParamsJson
+  href: Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_SaveParamsJson
+  name: SaveParamsJson
+  nameWithType: IStimParamsCore.SaveParamsJson
+  fullName: Wss.CalibrationModule.IStimParamsCore.SaveParamsJson
+- uid: Wss.CalibrationModule.IStimParamsCore.LoadParamsJson*
+  commentId: Overload:Wss.CalibrationModule.IStimParamsCore.LoadParamsJson
+  href: Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_LoadParamsJson
+  name: LoadParamsJson
+  nameWithType: IStimParamsCore.LoadParamsJson
+  fullName: Wss.CalibrationModule.IStimParamsCore.LoadParamsJson
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Wss.CalibrationModule.IStimParamsCore.AddOrUpdateStimParam*
+  commentId: Overload:Wss.CalibrationModule.IStimParamsCore.AddOrUpdateStimParam
+  href: Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_AddOrUpdateStimParam_System_String_System_Single_
+  name: AddOrUpdateStimParam
+  nameWithType: IStimParamsCore.AddOrUpdateStimParam
+  fullName: Wss.CalibrationModule.IStimParamsCore.AddOrUpdateStimParam
+- uid: Wss.CalibrationModule.IStimParamsCore.GetStimParam*
+  commentId: Overload:Wss.CalibrationModule.IStimParamsCore.GetStimParam
+  href: Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_GetStimParam_System_String_
+  name: GetStimParam
+  nameWithType: IStimParamsCore.GetStimParam
+  fullName: Wss.CalibrationModule.IStimParamsCore.GetStimParam
+- uid: Wss.CalibrationModule.IStimParamsCore.TryGetStimParam*
+  commentId: Overload:Wss.CalibrationModule.IStimParamsCore.TryGetStimParam
+  href: Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_TryGetStimParam_System_String_System_Single__
+  name: TryGetStimParam
+  nameWithType: IStimParamsCore.TryGetStimParam
+  fullName: Wss.CalibrationModule.IStimParamsCore.TryGetStimParam
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Wss.CalibrationModule.IStimParamsCore.GetAllStimParams*
+  commentId: Overload:Wss.CalibrationModule.IStimParamsCore.GetAllStimParams
+  href: Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_GetAllStimParams
+  name: GetAllStimParams
+  nameWithType: IStimParamsCore.GetAllStimParams
+  fullName: Wss.CalibrationModule.IStimParamsCore.GetAllStimParams
+- uid: System.Collections.Generic.Dictionary{System.String,System.Single}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,System.Single}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  name: Dictionary<string, float>
+  nameWithType: Dictionary<string, float>
+  fullName: System.Collections.Generic.Dictionary<string, float>
+  nameWithType.vb: Dictionary(Of String, Single)
+  fullName.vb: System.Collections.Generic.Dictionary(Of String, Single)
+  name.vb: Dictionary(Of String, Single)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Wss.CalibrationModule.StimParamsConfigController
+  commentId: T:Wss.CalibrationModule.StimParamsConfigController
+  parent: Wss.CalibrationModule
+  href: Wss.CalibrationModule.StimParamsConfigController.html
+  name: StimParamsConfigController
+  nameWithType: StimParamsConfigController
+  fullName: Wss.CalibrationModule.StimParamsConfigController
+- uid: Wss.CalibrationModule.IStimParamsCore.GetStimParamsConfigController*
+  commentId: Overload:Wss.CalibrationModule.IStimParamsCore.GetStimParamsConfigController
+  href: Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_GetStimParamsConfigController
+  name: GetStimParamsConfigController
+  nameWithType: IStimParamsCore.GetStimParamsConfigController
+  fullName: Wss.CalibrationModule.IStimParamsCore.GetStimParamsConfigController
+- uid: Wss.CalibrationModule.IStimParamsCore.SetChannelAmp*
+  commentId: Overload:Wss.CalibrationModule.IStimParamsCore.SetChannelAmp
+  href: Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_SetChannelAmp_System_Int32_System_Single_
+  name: SetChannelAmp
+  nameWithType: IStimParamsCore.SetChannelAmp
+  fullName: Wss.CalibrationModule.IStimParamsCore.SetChannelAmp
+- uid: Wss.CalibrationModule.IStimParamsCore.SetChannelPAMin*
+  commentId: Overload:Wss.CalibrationModule.IStimParamsCore.SetChannelPAMin
+  href: Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_SetChannelPAMin_System_Int32_System_Single_
+  name: SetChannelPAMin
+  nameWithType: IStimParamsCore.SetChannelPAMin
+  fullName: Wss.CalibrationModule.IStimParamsCore.SetChannelPAMin
+- uid: Wss.CalibrationModule.IStimParamsCore.SetChannelPAMax*
+  commentId: Overload:Wss.CalibrationModule.IStimParamsCore.SetChannelPAMax
+  href: Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_SetChannelPAMax_System_Int32_System_Single_
+  name: SetChannelPAMax
+  nameWithType: IStimParamsCore.SetChannelPAMax
+  fullName: Wss.CalibrationModule.IStimParamsCore.SetChannelPAMax
+- uid: Wss.CalibrationModule.IStimParamsCore.SetChannelPWMin*
+  commentId: Overload:Wss.CalibrationModule.IStimParamsCore.SetChannelPWMin
+  href: Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_SetChannelPWMin_System_Int32_System_Int32_
+  name: SetChannelPWMin
+  nameWithType: IStimParamsCore.SetChannelPWMin
+  fullName: Wss.CalibrationModule.IStimParamsCore.SetChannelPWMin
+- uid: Wss.CalibrationModule.IStimParamsCore.SetChannelPWMax*
+  commentId: Overload:Wss.CalibrationModule.IStimParamsCore.SetChannelPWMax
+  href: Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_SetChannelPWMax_System_Int32_System_Int32_
+  name: SetChannelPWMax
+  nameWithType: IStimParamsCore.SetChannelPWMax
+  fullName: Wss.CalibrationModule.IStimParamsCore.SetChannelPWMax
+- uid: Wss.CalibrationModule.IStimParamsCore.SetChannelDefaultPW*
+  commentId: Overload:Wss.CalibrationModule.IStimParamsCore.SetChannelDefaultPW
+  href: Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_SetChannelDefaultPW_System_Int32_System_Int32_
+  name: SetChannelDefaultPW
+  nameWithType: IStimParamsCore.SetChannelDefaultPW
+  fullName: Wss.CalibrationModule.IStimParamsCore.SetChannelDefaultPW
+- uid: Wss.CalibrationModule.IStimParamsCore.SetChannelIPI*
+  commentId: Overload:Wss.CalibrationModule.IStimParamsCore.SetChannelIPI
+  href: Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_SetChannelIPI_System_Int32_System_Int32_
+  name: SetChannelIPI
+  nameWithType: IStimParamsCore.SetChannelIPI
+  fullName: Wss.CalibrationModule.IStimParamsCore.SetChannelIPI
+- uid: Wss.CalibrationModule.IStimParamsCore.SetChannelAmpMode*
+  commentId: Overload:Wss.CalibrationModule.IStimParamsCore.SetChannelAmpMode
+  href: Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_SetChannelAmpMode_System_Int32_System_String_
+  name: SetChannelAmpMode
+  nameWithType: IStimParamsCore.SetChannelAmpMode
+  fullName: Wss.CalibrationModule.IStimParamsCore.SetChannelAmpMode
+- uid: Wss.CalibrationModule.IStimParamsCore.SetAllChannelsAmpMode*
+  commentId: Overload:Wss.CalibrationModule.IStimParamsCore.SetAllChannelsAmpMode
+  href: Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_SetAllChannelsAmpMode_System_String_
+  name: SetAllChannelsAmpMode
+  nameWithType: IStimParamsCore.SetAllChannelsAmpMode
+  fullName: Wss.CalibrationModule.IStimParamsCore.SetAllChannelsAmpMode
+- uid: Wss.CalibrationModule.IStimParamsCore.SetChannelMin*
+  commentId: Overload:Wss.CalibrationModule.IStimParamsCore.SetChannelMin
+  href: Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_SetChannelMin_System_Int32_System_Single_
+  name: SetChannelMin
+  nameWithType: IStimParamsCore.SetChannelMin
+  fullName: Wss.CalibrationModule.IStimParamsCore.SetChannelMin
+- uid: Wss.CalibrationModule.IStimParamsCore.SetChannelMax*
+  commentId: Overload:Wss.CalibrationModule.IStimParamsCore.SetChannelMax
+  href: Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_SetChannelMax_System_Int32_System_Single_
+  name: SetChannelMax
+  nameWithType: IStimParamsCore.SetChannelMax
+  fullName: Wss.CalibrationModule.IStimParamsCore.SetChannelMax
+- uid: Wss.CalibrationModule.IStimParamsCore.SetChannelDefault*
+  commentId: Overload:Wss.CalibrationModule.IStimParamsCore.SetChannelDefault
+  href: Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_SetChannelDefault_System_Int32_System_Single_
+  name: SetChannelDefault
+  nameWithType: IStimParamsCore.SetChannelDefault
+  fullName: Wss.CalibrationModule.IStimParamsCore.SetChannelDefault
+- uid: Wss.CalibrationModule.IStimParamsCore.GetChannelAmp*
+  commentId: Overload:Wss.CalibrationModule.IStimParamsCore.GetChannelAmp
+  href: Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_GetChannelAmp_System_Int32_
+  name: GetChannelAmp
+  nameWithType: IStimParamsCore.GetChannelAmp
+  fullName: Wss.CalibrationModule.IStimParamsCore.GetChannelAmp
+- uid: Wss.CalibrationModule.IStimParamsCore.GetChannelPAMin*
+  commentId: Overload:Wss.CalibrationModule.IStimParamsCore.GetChannelPAMin
+  href: Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_GetChannelPAMin_System_Int32_
+  name: GetChannelPAMin
+  nameWithType: IStimParamsCore.GetChannelPAMin
+  fullName: Wss.CalibrationModule.IStimParamsCore.GetChannelPAMin
+- uid: Wss.CalibrationModule.IStimParamsCore.GetChannelPAMax*
+  commentId: Overload:Wss.CalibrationModule.IStimParamsCore.GetChannelPAMax
+  href: Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_GetChannelPAMax_System_Int32_
+  name: GetChannelPAMax
+  nameWithType: IStimParamsCore.GetChannelPAMax
+  fullName: Wss.CalibrationModule.IStimParamsCore.GetChannelPAMax
+- uid: Wss.CalibrationModule.IStimParamsCore.GetChannelPWMin*
+  commentId: Overload:Wss.CalibrationModule.IStimParamsCore.GetChannelPWMin
+  href: Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_GetChannelPWMin_System_Int32_
+  name: GetChannelPWMin
+  nameWithType: IStimParamsCore.GetChannelPWMin
+  fullName: Wss.CalibrationModule.IStimParamsCore.GetChannelPWMin
+- uid: Wss.CalibrationModule.IStimParamsCore.GetChannelPWMax*
+  commentId: Overload:Wss.CalibrationModule.IStimParamsCore.GetChannelPWMax
+  href: Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_GetChannelPWMax_System_Int32_
+  name: GetChannelPWMax
+  nameWithType: IStimParamsCore.GetChannelPWMax
+  fullName: Wss.CalibrationModule.IStimParamsCore.GetChannelPWMax
+- uid: Wss.CalibrationModule.IStimParamsCore.GetChannelDefaultPW*
+  commentId: Overload:Wss.CalibrationModule.IStimParamsCore.GetChannelDefaultPW
+  href: Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_GetChannelDefaultPW_System_Int32_
+  name: GetChannelDefaultPW
+  nameWithType: IStimParamsCore.GetChannelDefaultPW
+  fullName: Wss.CalibrationModule.IStimParamsCore.GetChannelDefaultPW
+- uid: Wss.CalibrationModule.IStimParamsCore.GetChannelIPI*
+  commentId: Overload:Wss.CalibrationModule.IStimParamsCore.GetChannelIPI
+  href: Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_GetChannelIPI_System_Int32_
+  name: GetChannelIPI
+  nameWithType: IStimParamsCore.GetChannelIPI
+  fullName: Wss.CalibrationModule.IStimParamsCore.GetChannelIPI
+- uid: Wss.CalibrationModule.IStimParamsCore.GetChannelAmpMode*
+  commentId: Overload:Wss.CalibrationModule.IStimParamsCore.GetChannelAmpMode
+  href: Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_GetChannelAmpMode_System_Int32_
+  name: GetChannelAmpMode
+  nameWithType: IStimParamsCore.GetChannelAmpMode
+  fullName: Wss.CalibrationModule.IStimParamsCore.GetChannelAmpMode
+- uid: Wss.CalibrationModule.IStimParamsCore.GetChannelMin*
+  commentId: Overload:Wss.CalibrationModule.IStimParamsCore.GetChannelMin
+  href: Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_GetChannelMin_System_Int32_
+  name: GetChannelMin
+  nameWithType: IStimParamsCore.GetChannelMin
+  fullName: Wss.CalibrationModule.IStimParamsCore.GetChannelMin
+- uid: Wss.CalibrationModule.IStimParamsCore.GetChannelMax*
+  commentId: Overload:Wss.CalibrationModule.IStimParamsCore.GetChannelMax
+  href: Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_GetChannelMax_System_Int32_
+  name: GetChannelMax
+  nameWithType: IStimParamsCore.GetChannelMax
+  fullName: Wss.CalibrationModule.IStimParamsCore.GetChannelMax
+- uid: Wss.CalibrationModule.IStimParamsCore.GetChannelDefault*
+  commentId: Overload:Wss.CalibrationModule.IStimParamsCore.GetChannelDefault
+  href: Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_GetChannelDefault_System_Int32_
+  name: GetChannelDefault
+  nameWithType: IStimParamsCore.GetChannelDefault
+  fullName: Wss.CalibrationModule.IStimParamsCore.GetChannelDefault
+- uid: Wss.CalibrationModule.IStimParamsCore.TryGetBasic*
+  commentId: Overload:Wss.CalibrationModule.IStimParamsCore.TryGetBasic
+  href: Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_TryGetBasic_Wss_CoreModule_IBasicStimulation__
+  name: TryGetBasic
+  nameWithType: IStimParamsCore.TryGetBasic
+  fullName: Wss.CalibrationModule.IStimParamsCore.TryGetBasic
+- uid: Wss.CoreModule.IBasicStimulation
+  commentId: T:Wss.CoreModule.IBasicStimulation
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.IBasicStimulation.html
+  name: IBasicStimulation
+  nameWithType: IBasicStimulation
+  fullName: Wss.CoreModule.IBasicStimulation

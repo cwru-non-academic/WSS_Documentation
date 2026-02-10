@@ -21,10 +21,24 @@ This repository contains end‑to‑end documentation for the Wearable Stimulati
 - [Software API Website](./apiDocs/api/WSSInterfacing.html)
   - What: Generated API documentation for core code (interfaces, classes, methods) via DocFX.
 
-## Building the API site
+## Building the documentation site (multi-repo)
 
 Scripts live under `apiDocs/`:
 - PowerShell (Windows): `apiDocs/build-docs.ps1`
 - Bash (macOS/Linux/Git Bash): `apiDocs/build-docs.sh`
+
+The docs hub supports multiple repositories and tools via `apiDocs/repos.manifest.json`:
+- C# repos: DocFX API metadata (separate API sections per repo)
+- Python repos: Sphinx HTML builds hosted inside the DocFX site
+
+Run with the manifest:
+
+```bash
+./apiDocs/build-docs.sh --manifest ./apiDocs/repos.manifest.json
+```
+
+```powershell
+./apiDocs/build-docs.ps1 -ManifestPath ./apiDocs/repos.manifest.json
+```
 
 See [How to Compile Docs using DocFX](./howtoCompileAPIDocs/BuildSoftwareDocs.html) for step‑by‑step instructions, prerequisites, and troubleshooting.

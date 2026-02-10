@@ -1,0 +1,266 @@
+### YamlMime:ManagedReference
+items:
+- uid: Wss.CoreModule.IFrameCodec
+  commentId: T:Wss.CoreModule.IFrameCodec
+  id: IFrameCodec
+  parent: Wss.CoreModule
+  children:
+  - Wss.CoreModule.IFrameCodec.Deframe(System.Byte[])
+  - Wss.CoreModule.IFrameCodec.Frame(System.Byte,System.Byte,System.Byte[])
+  langs:
+  - csharp
+  - vb
+  name: IFrameCodec
+  nameWithType: IFrameCodec
+  fullName: Wss.CoreModule.IFrameCodec
+  type: Interface
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Contract for framing and deframing messages over byte-stream transports (Serial, BLE, TCP).
+  example: []
+  syntax:
+    content: public interface IFrameCodec
+    content.vb: Public Interface IFrameCodec
+- uid: Wss.CoreModule.IFrameCodec.Frame(System.Byte,System.Byte,System.Byte[])
+  commentId: M:Wss.CoreModule.IFrameCodec.Frame(System.Byte,System.Byte,System.Byte[])
+  id: Frame(System.Byte,System.Byte,System.Byte[])
+  parent: Wss.CoreModule.IFrameCodec
+  langs:
+  - csharp
+  - vb
+  name: Frame(byte, byte, byte[])
+  nameWithType: IFrameCodec.Frame(byte, byte, byte[])
+  fullName: Wss.CoreModule.IFrameCodec.Frame(byte, byte, byte[])
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Builds a wire-safe frame for transmission using SLIP-style escaping.
+
+    Output format (before escaping): <code>[sender][target][payload...][checksum][END]</code>.
+  example: []
+  syntax:
+    content: byte[] Frame(byte sender, byte target, byte[] payload)
+    parameters:
+    - id: sender
+      type: System.Byte
+      description: Sender address byte.
+    - id: target
+      type: System.Byte
+      description: Target/receiver address byte (e.g., device address or broadcast).
+    - id: payload
+      type: System.Byte[]
+      description: The protocol payload (e.g., <code>[cmd][len][...]</code>). The codec does not modify the payload.
+    return:
+      type: System.Byte[]
+      description: Escaped frame ready to send (always terminates with END).
+    content.vb: Function Frame(sender As Byte, target As Byte, payload As Byte()) As Byte()
+  overload: Wss.CoreModule.IFrameCodec.Frame*
+  nameWithType.vb: IFrameCodec.Frame(Byte, Byte, Byte())
+  fullName.vb: Wss.CoreModule.IFrameCodec.Frame(Byte, Byte, Byte())
+  name.vb: Frame(Byte, Byte, Byte())
+- uid: Wss.CoreModule.IFrameCodec.Deframe(System.Byte[])
+  commentId: M:Wss.CoreModule.IFrameCodec.Deframe(System.Byte[])
+  id: Deframe(System.Byte[])
+  parent: Wss.CoreModule.IFrameCodec
+  langs:
+  - csharp
+  - vb
+  name: Deframe(byte[])
+  nameWithType: IFrameCodec.Deframe(byte[])
+  fullName: Wss.CoreModule.IFrameCodec.Deframe(byte[])
+  type: Method
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Progressive deframer: feed any-size incoming chunks and get back zero or more
+
+    complete, unescaped frames. Each returned frame has the format
+
+    <code>[sender][target][payload...][checksum]</code> (END is consumed).
+  example: []
+  syntax:
+    content: IEnumerable<byte[]> Deframe(byte[] chunk)
+    parameters:
+    - id: chunk
+      type: System.Byte[]
+      description: A raw byte chunk from the transport (may be partial or contain multiple frames).
+    return:
+      type: System.Collections.Generic.IEnumerable{System.Byte[]}
+      description: 0..N complete, unescaped frames (END removed). Checksum is not validated here.
+    content.vb: Function Deframe(chunk As Byte()) As IEnumerable(Of Byte())
+  overload: Wss.CoreModule.IFrameCodec.Deframe*
+  nameWithType.vb: IFrameCodec.Deframe(Byte())
+  fullName.vb: Wss.CoreModule.IFrameCodec.Deframe(Byte())
+  name.vb: Deframe(Byte())
+references:
+- uid: Wss.CoreModule
+  commentId: N:Wss.CoreModule
+  href: Wss.html
+  name: Wss.CoreModule
+  nameWithType: Wss.CoreModule
+  fullName: Wss.CoreModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+- uid: Wss.CoreModule.IFrameCodec.Frame*
+  commentId: Overload:Wss.CoreModule.IFrameCodec.Frame
+  href: Wss.CoreModule.IFrameCodec.html#Wss_CoreModule_IFrameCodec_Frame_System_Byte_System_Byte_System_Byte___
+  name: Frame
+  nameWithType: IFrameCodec.Frame
+  fullName: Wss.CoreModule.IFrameCodec.Frame
+- uid: System.Byte
+  commentId: T:System.Byte
+  parent: System
+  isExternal: true
+  name: byte
+  nameWithType: byte
+  fullName: byte
+  nameWithType.vb: Byte
+  fullName.vb: Byte
+  name.vb: Byte
+- uid: System.Byte[]
+  isExternal: true
+  name: byte[]
+  nameWithType: byte[]
+  fullName: byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Wss.CoreModule.IFrameCodec.Deframe*
+  commentId: Overload:Wss.CoreModule.IFrameCodec.Deframe
+  href: Wss.CoreModule.IFrameCodec.html#Wss_CoreModule_IFrameCodec_Deframe_System_Byte___
+  name: Deframe
+  nameWithType: IFrameCodec.Deframe
+  fullName: Wss.CoreModule.IFrameCodec.Deframe
+- uid: System.Collections.Generic.IEnumerable{System.Byte[]}
+  commentId: T:System.Collections.Generic.IEnumerable{System.Byte[]}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  name: IEnumerable<byte[]>
+  nameWithType: IEnumerable<byte[]>
+  fullName: System.Collections.Generic.IEnumerable<byte[]>
+  nameWithType.vb: IEnumerable(Of Byte())
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Byte())
+  name.vb: IEnumerable(Of Byte())
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+  - name: '['
+  - name: ']'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+  - name: (
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic

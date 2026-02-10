@@ -1,0 +1,1638 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class StimulationParams | WSS Documentation Hub </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class StimulationParams | WSS Documentation Hub ">
+    
+    <meta name="description" content="Provides a Unity-facing API for WSS stimulation using the core + params layer.">
+      <link rel="shortcut icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../styles/docfx.css">
+      <link rel="stylesheet" href="../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="WSS.Unity.StimulationParams">
+
+
+
+  <h1 id="WSS_Unity_StimulationParams" data-uid="WSS.Unity.StimulationParams" class="text-break">Class StimulationParams</h1>
+  <div class="markdown level0 summary"><p>Provides a Unity-facing API for WSS stimulation using the core + params layer.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">object</span></div>
+    <div class="level1"><span class="xref">Object</span></div>
+    <div class="level2"><span class="xref">Component</span></div>
+    <div class="level3"><span class="xref">Behaviour</span></div>
+    <div class="level4"><span class="xref">MonoBehaviour</span></div>
+    <div class="level5"><span class="xref">StimulationParams</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="WSS.Unity.html">WSS.Unity</a></h6>
+  <h6><strong>Assembly</strong>: UnitySubmodule.Docs.dll</h6>
+  <h5 id="WSS_Unity_StimulationParams_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class StimulationParams : MonoBehaviour</code></pre>
+  </div>
+  <h5 id="WSS_Unity_StimulationParams_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>This component composes <code>WssStimulationCore</code> -&gt; <code>StimParamsLayer</code> and exposes
+convenience methods that accept finger aliases (e.g., &quot;index&quot; or &quot;ch2&quot;).</p>
+<p>Lifecycle: the device is initialized in <span class="xref">StimulationParams.OnEnable()</span>, ticked in <span class="xref">StimulationParams.Update()</span>,
+and shut down in <span class="xref">StimulationParams.OnDisable()</span>.</p>
+</div>
+  <h3 id="fields">Fields
+</h3>
+
+
+  <h4 id="WSS_Unity_StimulationParams_comPort" data-uid="WSS.Unity.StimulationParams.comPort">comPort</h4>
+  <div class="markdown level1 summary"><p>Target COM port to use when <code>forcePort</code> is enabled.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[SerializeField]
+public string comPort</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <h4 id="WSS_Unity_StimulationParams_forcePort" data-uid="WSS.Unity.StimulationParams.forcePort">forcePort</h4>
+  <div class="markdown level1 summary"><p>Forces connection to a specific COM port instead of auto-detecting.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[SerializeField]
+public bool forcePort</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <h4 id="WSS_Unity_StimulationParams_started" data-uid="WSS.Unity.StimulationParams.started">started</h4>
+  <div class="markdown level1 summary"><p>Gets or sets a user-managed flag indicating whether stimulation is considered started.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool started</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="WSS_Unity_StimulationParams_started_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This wrapper does not update this field; use <code>Started()</code> to query device state.</p>
+</div>
+  <h3 id="methods">Methods
+</h3>
+
+
+  <a id="WSS_Unity_StimulationParams_AddOrUpdateStimParam_" data-uid="WSS.Unity.StimulationParams.AddOrUpdateStimParam*"></a>
+  <h4 id="WSS_Unity_StimulationParams_AddOrUpdateStimParam_System_String_System_Single_" data-uid="WSS.Unity.StimulationParams.AddOrUpdateStimParam(System.String,System.Single)">AddOrUpdateStimParam(string, float)</h4>
+  <div class="markdown level1 summary"><p>Sets a parameter by dotted key. Examples: &quot;stim.ch.0.amp&quot;, &quot;stim.ch.1.minPW&quot;.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddOrUpdateStimParam(string key, float value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">float</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSS_Unity_StimulationParams_Awake_" data-uid="WSS.Unity.StimulationParams.Awake*"></a>
+  <h4 id="WSS_Unity_StimulationParams_Awake" data-uid="WSS.Unity.StimulationParams.Awake">Awake()</h4>
+  <div class="markdown level1 summary"><p>Builds the core WSS and wraps it with <code>StimParamsLayer</code>.
+Tries to expose <a class="xref" href="../core/Wss.CoreModule.IBasicStimulation.html">IBasicStimulation</a> if available.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Awake()</code></pre>
+  </div>
+
+
+  <a id="WSS_Unity_StimulationParams_GetAllStimParams_" data-uid="WSS.Unity.StimulationParams.GetAllStimParams*"></a>
+  <h4 id="WSS_Unity_StimulationParams_GetAllStimParams" data-uid="WSS.Unity.StimulationParams.GetAllStimParams">GetAllStimParams()</h4>
+  <div class="markdown level1 summary"><p>Returns a copy of all current params as dotted-key map.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, float&gt; GetAllStimParams()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">string</span>, <span class="xref">float</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSS_Unity_StimulationParams_GetChannelAmp_" data-uid="WSS.Unity.StimulationParams.GetChannelAmp*"></a>
+  <h4 id="WSS_Unity_StimulationParams_GetChannelAmp_System_String_" data-uid="WSS.Unity.StimulationParams.GetChannelAmp(System.String)">GetChannelAmp(string)</h4>
+  <div class="markdown level1 summary"><p>Gets per-finger amplitude in mA.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float GetChannelAmp(string finger)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">finger</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">float</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSS_Unity_StimulationParams_GetChannelIPI_" data-uid="WSS.Unity.StimulationParams.GetChannelIPI*"></a>
+  <h4 id="WSS_Unity_StimulationParams_GetChannelIPI_System_String_" data-uid="WSS.Unity.StimulationParams.GetChannelIPI(System.String)">GetChannelIPI(string)</h4>
+  <div class="markdown level1 summary"><p>Gets per-finger IPI in ms.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetChannelIPI(string finger)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">finger</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSS_Unity_StimulationParams_GetChannelPWMax_" data-uid="WSS.Unity.StimulationParams.GetChannelPWMax*"></a>
+  <h4 id="WSS_Unity_StimulationParams_GetChannelPWMax_System_String_" data-uid="WSS.Unity.StimulationParams.GetChannelPWMax(System.String)">GetChannelPWMax(string)</h4>
+  <div class="markdown level1 summary"><p>Gets per-finger maximum pulse width in microseconds.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetChannelPWMax(string finger)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">finger</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSS_Unity_StimulationParams_GetChannelPWMin_" data-uid="WSS.Unity.StimulationParams.GetChannelPWMin*"></a>
+  <h4 id="WSS_Unity_StimulationParams_GetChannelPWMin_System_String_" data-uid="WSS.Unity.StimulationParams.GetChannelPWMin(System.String)">GetChannelPWMin(string)</h4>
+  <div class="markdown level1 summary"><p>Gets per-finger minimum pulse width in microseconds.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetChannelPWMin(string finger)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">finger</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSS_Unity_StimulationParams_GetCoreConfigCTRL_" data-uid="WSS.Unity.StimulationParams.GetCoreConfigCTRL*"></a>
+  <h4 id="WSS_Unity_StimulationParams_GetCoreConfigCTRL" data-uid="WSS.Unity.StimulationParams.GetCoreConfigCTRL">GetCoreConfigCTRL()</h4>
+  <div class="markdown level1 summary"><p>Provides access to the core configuration controller.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CoreConfigController GetCoreConfigCTRL()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="../core/Wss.CoreModule.CoreConfigController.html">CoreConfigController</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSS_Unity_StimulationParams_GetLastPulseWidth_" data-uid="WSS.Unity.StimulationParams.GetLastPulseWidth*"></a>
+  <h4 id="WSS_Unity_StimulationParams_GetLastPulseWidth_System_String_" data-uid="WSS.Unity.StimulationParams.GetLastPulseWidth(System.String)">GetLastPulseWidth(string)</h4>
+  <div class="markdown level1 summary"><p>Gets the last computed stimulation intensity for a finger.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetLastPulseWidth(string finger)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">finger</span></td>
+        <td><p>Finger label or alias.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="WSS_Unity_StimulationParams_GetLastPulseWidth_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>For PW-driven systems this value is pulse width in microseconds.</p>
+</div>
+
+
+  <a id="WSS_Unity_StimulationParams_GetStimParam_" data-uid="WSS.Unity.StimulationParams.GetStimParam*"></a>
+  <h4 id="WSS_Unity_StimulationParams_GetStimParam_System_String_" data-uid="WSS.Unity.StimulationParams.GetStimParam(System.String)">GetStimParam(string)</h4>
+  <div class="markdown level1 summary"><p>Gets a parameter by dotted key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float GetStimParam(string key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">float</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSS_Unity_StimulationParams_IsFingerValid_" data-uid="WSS.Unity.StimulationParams.IsFingerValid*"></a>
+  <h4 id="WSS_Unity_StimulationParams_IsFingerValid_System_String_" data-uid="WSS.Unity.StimulationParams.IsFingerValid(System.String)">IsFingerValid(string)</h4>
+  <div class="markdown level1 summary"><p>Returns true if the finger maps to a valid channel for the current configuration.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsFingerValid(string finger)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">finger</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSS_Unity_StimulationParams_LoadParamsJson_" data-uid="WSS.Unity.StimulationParams.LoadParamsJson*"></a>
+  <h4 id="WSS_Unity_StimulationParams_LoadParamsJson" data-uid="WSS.Unity.StimulationParams.LoadParamsJson">LoadParamsJson()</h4>
+  <div class="markdown level1 summary"><p>Loads params JSON from default location.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void LoadParamsJson()</code></pre>
+  </div>
+
+
+  <a id="WSS_Unity_StimulationParams_LoadParamsJson_" data-uid="WSS.Unity.StimulationParams.LoadParamsJson*"></a>
+  <h4 id="WSS_Unity_StimulationParams_LoadParamsJson_System_String_" data-uid="WSS.Unity.StimulationParams.LoadParamsJson(System.String)">LoadParamsJson(string)</h4>
+  <div class="markdown level1 summary"><p>Loads params JSON from a given file or directory.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void LoadParamsJson(string pathOrDir)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">pathOrDir</span></td>
+        <td><p>File path or directory with default name.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSS_Unity_StimulationParams_Ready_" data-uid="WSS.Unity.StimulationParams.Ready*"></a>
+  <h4 id="WSS_Unity_StimulationParams_Ready" data-uid="WSS.Unity.StimulationParams.Ready">Ready()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Ready()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSS_Unity_StimulationParams_Save_" data-uid="WSS.Unity.StimulationParams.Save*"></a>
+  <h4 id="WSS_Unity_StimulationParams_Save" data-uid="WSS.Unity.StimulationParams.Save">Save()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Save()</code></pre>
+  </div>
+  <h5 id="WSS_Unity_StimulationParams_Save_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Broadcasts to all connected WSS units.</p>
+</div>
+
+
+  <a id="WSS_Unity_StimulationParams_Save_" data-uid="WSS.Unity.StimulationParams.Save*"></a>
+  <h4 id="WSS_Unity_StimulationParams_Save_System_Int32_" data-uid="WSS.Unity.StimulationParams.Save(System.Int32)">Save(int)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Save(int targetWSS)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">targetWSS</span></td>
+        <td><p>0=broadcast, 1..3=unit index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSS_Unity_StimulationParams_SaveParamsJson_" data-uid="WSS.Unity.StimulationParams.SaveParamsJson*"></a>
+  <h4 id="WSS_Unity_StimulationParams_SaveParamsJson" data-uid="WSS.Unity.StimulationParams.SaveParamsJson">SaveParamsJson()</h4>
+  <div class="markdown level1 summary"><p>Saves current params JSON to disk.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SaveParamsJson()</code></pre>
+  </div>
+
+
+  <a id="WSS_Unity_StimulationParams_SetChannelAmp_" data-uid="WSS.Unity.StimulationParams.SetChannelAmp*"></a>
+  <h4 id="WSS_Unity_StimulationParams_SetChannelAmp_System_String_System_Single_" data-uid="WSS.Unity.StimulationParams.SetChannelAmp(System.String,System.Single)">SetChannelAmp(string, float)</h4>
+  <div class="markdown level1 summary"><p>Sets per-finger amplitude in mA.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetChannelAmp(string finger, float mA)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">finger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">float</span></td>
+        <td><span class="parametername">mA</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSS_Unity_StimulationParams_SetChannelIPI_" data-uid="WSS.Unity.StimulationParams.SetChannelIPI*"></a>
+  <h4 id="WSS_Unity_StimulationParams_SetChannelIPI_System_String_System_Int32_" data-uid="WSS.Unity.StimulationParams.SetChannelIPI(System.String,System.Int32)">SetChannelIPI(string, int)</h4>
+  <div class="markdown level1 summary"><p>Sets per-finger IPI in ms.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetChannelIPI(string finger, int ms)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">finger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">ms</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSS_Unity_StimulationParams_SetChannelPWMax_" data-uid="WSS.Unity.StimulationParams.SetChannelPWMax*"></a>
+  <h4 id="WSS_Unity_StimulationParams_SetChannelPWMax_System_String_System_Int32_" data-uid="WSS.Unity.StimulationParams.SetChannelPWMax(System.String,System.Int32)">SetChannelPWMax(string, int)</h4>
+  <div class="markdown level1 summary"><p>Sets per-finger maximum pulse width in microseconds.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetChannelPWMax(string finger, int us)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">finger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">us</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSS_Unity_StimulationParams_SetChannelPWMin_" data-uid="WSS.Unity.StimulationParams.SetChannelPWMin*"></a>
+  <h4 id="WSS_Unity_StimulationParams_SetChannelPWMin_System_String_System_Int32_" data-uid="WSS.Unity.StimulationParams.SetChannelPWMin(System.String,System.Int32)">SetChannelPWMin(string, int)</h4>
+  <div class="markdown level1 summary"><p>Sets per-finger minimum pulse width in microseconds.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetChannelPWMin(string finger, int us)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">finger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">us</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSS_Unity_StimulationParams_StartStimulation_" data-uid="WSS.Unity.StimulationParams.StartStimulation*"></a>
+  <h4 id="WSS_Unity_StimulationParams_StartStimulation" data-uid="WSS.Unity.StimulationParams.StartStimulation">StartStimulation()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void StartStimulation()</code></pre>
+  </div>
+  <h5 id="WSS_Unity_StimulationParams_StartStimulation_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Broadcasts to all connected WSS units.</p>
+</div>
+
+
+  <a id="WSS_Unity_StimulationParams_Started_" data-uid="WSS.Unity.StimulationParams.Started*"></a>
+  <h4 id="WSS_Unity_StimulationParams_Started" data-uid="WSS.Unity.StimulationParams.Started">Started()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Started()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSS_Unity_StimulationParams_StimulateAnalog_" data-uid="WSS.Unity.StimulationParams.StimulateAnalog*"></a>
+  <h4 id="WSS_Unity_StimulationParams_StimulateAnalog_System_String_System_Int32_System_Int32_System_Int32_" data-uid="WSS.Unity.StimulationParams.StimulateAnalog(System.String,System.Int32,System.Int32,System.Int32)">StimulateAnalog(string, int, int, int)</h4>
+  <div class="markdown level1 summary"><p>Sends a direct analog stimulation command using raw parameters.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void StimulateAnalog(string finger, int PW, int amp = 3, int IPI = 10)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">finger</span></td>
+        <td><p>Finger name or channel alias (e.g., &quot;index&quot; or &quot;ch2&quot;).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">PW</span></td>
+        <td><p>Pulse width in microseconds.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">amp</span></td>
+        <td><p>Amplitude in milliamps (default = 3).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">IPI</span></td>
+        <td><p>Inter-pulse interval in milliseconds (default = 10).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSS_Unity_StimulationParams_StimulateNormalized_" data-uid="WSS.Unity.StimulationParams.StimulateNormalized*"></a>
+  <h4 id="WSS_Unity_StimulationParams_StimulateNormalized_System_String_System_Single_" data-uid="WSS.Unity.StimulationParams.StimulateNormalized(System.String,System.Single)">StimulateNormalized(string, float)</h4>
+  <div class="markdown level1 summary"><p>Stimulates using a normalized drive value in the range [0, 1].</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void StimulateNormalized(string finger, float value01)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">finger</span></td>
+        <td><p>Finger label or alias (e.g., &quot;index&quot;, &quot;ring&quot;, &quot;ch2&quot;).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">float</span></td>
+        <td><span class="parametername">value01</span></td>
+        <td><p>Normalized drive in [0,1]. Values are clamped.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSS_Unity_StimulationParams_StopStimulation_" data-uid="WSS.Unity.StimulationParams.StopStimulation*"></a>
+  <h4 id="WSS_Unity_StimulationParams_StopStimulation" data-uid="WSS.Unity.StimulationParams.StopStimulation">StopStimulation()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void StopStimulation()</code></pre>
+  </div>
+  <h5 id="WSS_Unity_StimulationParams_StopStimulation_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Broadcasts to all connected WSS units.</p>
+</div>
+
+
+  <a id="WSS_Unity_StimulationParams_TryGetStimParam_" data-uid="WSS.Unity.StimulationParams.TryGetStimParam*"></a>
+  <h4 id="WSS_Unity_StimulationParams_TryGetStimParam_System_String_System_Single__" data-uid="WSS.Unity.StimulationParams.TryGetStimParam(System.String,System.Single@)">TryGetStimParam(string, out float)</h4>
+  <div class="markdown level1 summary"><p>Tries to read a parameter by dotted key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryGetStimParam(string key, out float v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">float</span></td>
+        <td><span class="parametername">v</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSS_Unity_StimulationParams_UpdateChannelParams_" data-uid="WSS.Unity.StimulationParams.UpdateChannelParams*"></a>
+  <h4 id="WSS_Unity_StimulationParams_UpdateChannelParams_System_String_System_Int32_System_Int32_System_Int32_" data-uid="WSS.Unity.StimulationParams.UpdateChannelParams(System.String,System.Int32,System.Int32,System.Int32)">UpdateChannelParams(string, int, int, int)</h4>
+  <div class="markdown level1 summary"><p>Updates per-finger calibration params.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateChannelParams(string finger, int max, int min, int amp)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">finger</span></td>
+        <td><p>e.g., &quot;index&quot;, &quot;ring&quot;, or &quot;ch2&quot;.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">max</span></td>
+        <td><p>Maximum pulse width in microseconds.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">min</span></td>
+        <td><p>Minimum pulse width in microseconds.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">amp</span></td>
+        <td><p>Amplitude (mA).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ArgumentOutOfRangeException</span></td>
+        <td><p>If finger maps to an invalid channel.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSS_Unity_StimulationParams_UpdateIPD_" data-uid="WSS.Unity.StimulationParams.UpdateIPD*"></a>
+  <h4 id="WSS_Unity_StimulationParams_UpdateIPD_System_Int32_System_Int32_" data-uid="WSS.Unity.StimulationParams.UpdateIPD(System.Int32,System.Int32)">UpdateIPD(int, int)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateIPD(int ipd, int eventID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">ipd</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventID</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="WSS_Unity_StimulationParams_UpdateIPD_System_Int32_System_Int32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Broadcasts to all connected WSS units.</p>
+</div>
+
+
+  <a id="WSS_Unity_StimulationParams_UpdateIPD_" data-uid="WSS.Unity.StimulationParams.UpdateIPD*"></a>
+  <h4 id="WSS_Unity_StimulationParams_UpdateIPD_System_Int32_System_Int32_System_Int32_" data-uid="WSS.Unity.StimulationParams.UpdateIPD(System.Int32,System.Int32,System.Int32)">UpdateIPD(int, int, int)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateIPD(int targetWSS, int ipd, int eventID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">targetWSS</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">ipd</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventID</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSS_Unity_StimulationParams_WaveformSetup_" data-uid="WSS.Unity.StimulationParams.WaveformSetup*"></a>
+  <h4 id="WSS_Unity_StimulationParams_WaveformSetup_System_Int32_Wss_CoreModule_WaveformBuilder_System_Int32_" data-uid="WSS.Unity.StimulationParams.WaveformSetup(System.Int32,Wss.CoreModule.WaveformBuilder,System.Int32)">WaveformSetup(int, WaveformBuilder, int)</h4>
+  <div class="markdown level1 summary"><p>Defines a custom waveform for the specified event slot on a target unit.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void WaveformSetup(int targetWSS, WaveformBuilder wave, int eventID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">targetWSS</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="../core/Wss.CoreModule.WaveformBuilder.html">WaveformBuilder</a></td>
+        <td><span class="parametername">wave</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventID</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSS_Unity_StimulationParams_WaveformSetup_" data-uid="WSS.Unity.StimulationParams.WaveformSetup*"></a>
+  <h4 id="WSS_Unity_StimulationParams_WaveformSetup_Wss_CoreModule_WaveformBuilder_System_Int32_" data-uid="WSS.Unity.StimulationParams.WaveformSetup(Wss.CoreModule.WaveformBuilder,System.Int32)">WaveformSetup(WaveformBuilder, int)</h4>
+  <div class="markdown level1 summary"><p>Defines a custom waveform for the specified event slot on all units.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void WaveformSetup(WaveformBuilder wave, int eventID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="../core/Wss.CoreModule.WaveformBuilder.html">WaveformBuilder</a></td>
+        <td><span class="parametername">wave</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventID</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSS_Unity_StimulationParams_load_" data-uid="WSS.Unity.StimulationParams.load*"></a>
+  <h4 id="WSS_Unity_StimulationParams_load" data-uid="WSS.Unity.StimulationParams.load">load()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void load()</code></pre>
+  </div>
+  <h5 id="WSS_Unity_StimulationParams_load_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Broadcasts to all connected WSS units.</p>
+</div>
+
+
+  <a id="WSS_Unity_StimulationParams_load_" data-uid="WSS.Unity.StimulationParams.load*"></a>
+  <h4 id="WSS_Unity_StimulationParams_load_System_Int32_" data-uid="WSS.Unity.StimulationParams.load(System.Int32)">load(int)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void load(int targetWSS)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">targetWSS</span></td>
+        <td><p>0=broadcast, 1..3=unit index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSS_Unity_StimulationParams_loadWaveform_" data-uid="WSS.Unity.StimulationParams.loadWaveform*"></a>
+  <h4 id="WSS_Unity_StimulationParams_loadWaveform_System_String_System_Int32_" data-uid="WSS.Unity.StimulationParams.loadWaveform(System.String,System.Int32)">loadWaveform(string, int)</h4>
+  <div class="markdown level1 summary"><p>Loads a waveform definition from external file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void loadWaveform(string fileName, int eventID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">fileName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventID</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSS_Unity_StimulationParams_releaseRadio_" data-uid="WSS.Unity.StimulationParams.releaseRadio*"></a>
+  <h4 id="WSS_Unity_StimulationParams_releaseRadio" data-uid="WSS.Unity.StimulationParams.releaseRadio">releaseRadio()</h4>
+  <div class="markdown level1 summary"><p>Explicitly releases the radio connection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void releaseRadio()</code></pre>
+  </div>
+
+
+  <a id="WSS_Unity_StimulationParams_request_Configs_" data-uid="WSS.Unity.StimulationParams.request_Configs*"></a>
+  <h4 id="WSS_Unity_StimulationParams_request_Configs_System_Int32_System_Int32_System_Int32_" data-uid="WSS.Unity.StimulationParams.request_Configs(System.Int32,System.Int32,System.Int32)">request_Configs(int, int, int)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void request_Configs(int targetWSS, int command, int id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">targetWSS</span></td>
+        <td><p>0=broadcast, 1..3=unit index.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">command</span></td>
+        <td><p>Configuration block selector.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>Optional block id.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSS_Unity_StimulationParams_resetRadio_" data-uid="WSS.Unity.StimulationParams.resetRadio*"></a>
+  <h4 id="WSS_Unity_StimulationParams_resetRadio" data-uid="WSS.Unity.StimulationParams.resetRadio">resetRadio()</h4>
+  <div class="markdown level1 summary"><p>Performs a radio reset by shutting down and re-initializing the connection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void resetRadio()</code></pre>
+  </div>
+
+
+  <a id="WSS_Unity_StimulationParams_updateWaveform_" data-uid="WSS.Unity.StimulationParams.updateWaveform*"></a>
+  <h4 id="WSS_Unity_StimulationParams_updateWaveform_System_Int32_System_Int32_System_Int32_" data-uid="WSS.Unity.StimulationParams.updateWaveform(System.Int32,System.Int32,System.Int32)">updateWaveform(int, int, int)</h4>
+  <div class="markdown level1 summary"><p>Selects a predefined or custom waveform shape from device memory.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void updateWaveform(int cathodicWaveform, int anodicWaveform, int eventID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">cathodicWaveform</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">anodicWaveform</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventID</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="WSS_Unity_StimulationParams_updateWaveform_System_Int32_System_Int32_System_Int32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Slots 0-10 are predefined. Slots 11-13 are custom.</p>
+</div>
+
+
+  <a id="WSS_Unity_StimulationParams_updateWaveform_" data-uid="WSS.Unity.StimulationParams.updateWaveform*"></a>
+  <h4 id="WSS_Unity_StimulationParams_updateWaveform_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="WSS.Unity.StimulationParams.updateWaveform(System.Int32,System.Int32,System.Int32,System.Int32)">updateWaveform(int, int, int, int)</h4>
+  <div class="markdown level1 summary"><p>Selects a predefined or custom waveform shape for a target unit.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void updateWaveform(int targetWSS, int cathodicWaveform, int anodicWaveform, int eventID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">targetWSS</span></td>
+        <td><p>0=broadcast, 1..3=unit index.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">cathodicWaveform</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">anodicWaveform</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventID</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSS_Unity_StimulationParams_updateWaveform_" data-uid="WSS.Unity.StimulationParams.updateWaveform*"></a>
+  <h4 id="WSS_Unity_StimulationParams_updateWaveform_System_Int32_System_Int32___System_Int32_" data-uid="WSS.Unity.StimulationParams.updateWaveform(System.Int32,System.Int32[],System.Int32)">updateWaveform(int, int[], int)</h4>
+  <div class="markdown level1 summary"><p>Updates the waveform parameters for a specific event on a target unit.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void updateWaveform(int targetWSS, int[] waveform, int eventID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">targetWSS</span></td>
+        <td><p>0=broadcast, 1..3=unit index.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span>[]</td>
+        <td><span class="parametername">waveform</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventID</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSS_Unity_StimulationParams_updateWaveform_" data-uid="WSS.Unity.StimulationParams.updateWaveform*"></a>
+  <h4 id="WSS_Unity_StimulationParams_updateWaveform_System_Int32_Wss_CoreModule_WaveformBuilder_System_Int32_" data-uid="WSS.Unity.StimulationParams.updateWaveform(System.Int32,Wss.CoreModule.WaveformBuilder,System.Int32)">updateWaveform(int, WaveformBuilder, int)</h4>
+  <div class="markdown level1 summary"><p>Updates waveform using JSON-loaded builder definition for a target unit.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void updateWaveform(int targetWSS, WaveformBuilder waveform, int eventID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">targetWSS</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="../core/Wss.CoreModule.WaveformBuilder.html">WaveformBuilder</a></td>
+        <td><span class="parametername">waveform</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventID</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="WSS_Unity_StimulationParams_updateWaveform_" data-uid="WSS.Unity.StimulationParams.updateWaveform*"></a>
+  <h4 id="WSS_Unity_StimulationParams_updateWaveform_System_Int32___System_Int32_" data-uid="WSS.Unity.StimulationParams.updateWaveform(System.Int32[],System.Int32)">updateWaveform(int[], int)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void updateWaveform(int[] waveform, int eventID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span>[]</td>
+        <td><span class="parametername">waveform</span></td>
+        <td><p>Serialized device waveform.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventID</span></td>
+        <td><p>Target event slot.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="WSS_Unity_StimulationParams_updateWaveform_System_Int32___System_Int32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Broadcasts to all connected WSS units.</p>
+</div>
+
+
+  <a id="WSS_Unity_StimulationParams_updateWaveform_" data-uid="WSS.Unity.StimulationParams.updateWaveform*"></a>
+  <h4 id="WSS_Unity_StimulationParams_updateWaveform_Wss_CoreModule_WaveformBuilder_System_Int32_" data-uid="WSS.Unity.StimulationParams.updateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32)">updateWaveform(WaveformBuilder, int)</h4>
+  <div class="markdown level1 summary"><p>Updates waveform using JSON-loaded builder definition for all units.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void updateWaveform(WaveformBuilder waveform, int eventID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="../core/Wss.CoreModule.WaveformBuilder.html">WaveformBuilder</a></td>
+        <td><span class="parametername">waveform</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">eventID</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="WSS_Unity_StimulationParams_updateWaveform_Wss_CoreModule_WaveformBuilder_System_Int32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Broadcasts to all connected WSS units.</p>
+</div>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>
