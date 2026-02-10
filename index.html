@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>WSS Documentation</title>
+    <style>
+      :root { color-scheme: light; }
+      body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin: 2rem auto; padding: 0 1rem; max-width: 56rem; line-height: 1.5; }
+      h1 { margin: 0 0 0.25rem 0; }
+      p { margin: 0.25rem 0 1.25rem 0; color: #333; }
+      ul { padding-left: 1.2rem; }
+      li { margin: 0.5rem 0; }
+      a { color: #0b57d0; text-decoration: none; }
+      a:hover { text-decoration: underline; }
+      .hint { font-size: 0.95rem; color: #555; }
+      code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 0.95em; }
+    </style>
+  </head>
+  <body>
+    <h1>WSS Documentation</h1>
+    <p>Docs hub for conceptual guides plus API references across linked repositories.</p>
+
+    <ul>
+      <li>
+        <a href="apiDocs/">Software Documentation Hub</a>
+        <div class="hint">DocFX site with separated C# API sections and embedded Python (Sphinx) docs.</div>
+      </li>
+      <li>
+        <a href="hardwareDocs/wsshardware.html">Hardware Overview</a>
+        <div class="hint">Photos, panels, cables/electrodes, and the control unit.</div>
+      </li>
+      <li>
+        <a href="wssCommandsDocs/wsscommands.html">WSS Commands Reference</a>
+        <div class="hint">Message construction guide (IDs, inputs/units, examples, checksum).</div>
+      </li>
+      <li>
+        <a href="simpleSerialPortDocs/SimpleSerial.html">Simple Serial Guide</a>
+        <div class="hint">List ports, configure, and send/receive frames (Windows/macOS/MATLAB).</div>
+      </li>
+      <li>
+        <a href="howtoCompileAPIDocs/BuildSoftwareDocs.html">Build Instructions</a>
+        <div class="hint">How to configure <code>apiDocs/repos.manifest.json</code> and build the hub.</div>
+      </li>
+    </ul>
+  </body>
+</html>

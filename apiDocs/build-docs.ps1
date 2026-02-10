@@ -61,7 +61,8 @@ function Get-MarkdownTitle {
   param([string]$Path)
 
   foreach ($line in Get-Content -LiteralPath $Path -TotalCount 80) {
-    if ($line -match '^\s*#\s+(.+)$') {
+    $clean = $line.TrimStart([char]0xFEFF)
+    if ($clean -match '^\s*#\s+(.+)$') {
       return $Matches[1].Trim()
     }
   }
@@ -320,6 +321,8 @@ $indexLines.Add('# WSS Documentation Hub')
 $indexLines.Add('')
 $indexLines.Add('This site combines conceptual documentation with API references from multiple repositories.')
 $indexLines.Add('')
+$indexLines.Add('Use the left navigation to browse all namespaces, interfaces, classes, and guides.')
+$indexLines.Add('')
 
 if ($guideFiles.Count -gt 0) {
   $indexLines.Add('## Guides')
@@ -372,4 +375,4 @@ try {
   Pop-Location
 }
 
-Write-Host "Done. Output at: $(Join-Path $docsDir '_site')"
+Write-Host "Done. Output at: $docsDir"

@@ -2,9 +2,9 @@
   href: index.md
 - name: Guides
   items:
-  - name: core-architecture
+  - name: Core Architecture (Transport, Codec, Core)
     href: conceptual/core-architecture.md
-  - name: layering-guide
+  - name: Layering Guide (Modules)
     href: conceptual/layering-guide.md
 - name: C# API
   items:

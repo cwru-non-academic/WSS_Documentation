@@ -3,7 +3,7 @@
 This repository contains end‑to‑end documentation for the Wearable Stimulation System (WSS): hardware, serial/command protocol, and a generated software API site (DocFX).
 
 ## Quick Links
-  - Start Here: [GitHub Pages](https://cwru-non-academic.github.io/WSS_Documentation/) use to access all of the content bellow in html format.
+  - Start Here: [GitHub Pages](https://cwru-non-academic.github.io/WSS_Documentation/) use to access all of the content bellow in html format (This might look like the page did not change but the URL should have changed).
   
 - Repos
   - Core C# Library: [GitHub](https://github.com/cwru-non-academic/WSSCoreInterface)
@@ -13,14 +13,14 @@ This repository contains end‑to‑end documentation for the Wearable Stimulati
 - [Hardware Overview](./hardwareDocs/wsshardware.html)
   - What: Photos, panels, cables/electrodes, and the gold control unit.
 
+- [Software Documentation Hub](./apiDocs/)
+  - What: DocFX site that hosts conceptual guides plus separated API references (Core C#, C# implementation, Unity Implementation, Python Implementation) in one place.
+
 - [WSS Commands Reference](./wssCommandsDocs/wsscommands.html)
   - What: Complete message construction guide (IDs, inputs/units, examples, checksum) with a linked index.
 
 - [Simple Serial Guide](./simpleSerialPortDocs/SimpleSerial.html) (Windows, macOS, MATLAB)
   - What: How to list ports, configure, and send/receive Echo frames on each platform.
-
-- [Software API Website](./apiDocs/api/WSSInterfacing.html)
-  - What: Generated API documentation for core code (interfaces, classes, methods) via DocFX.
 
 ## Building the documentation site (multi-repo)
 

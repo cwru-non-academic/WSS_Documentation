@@ -257,7 +257,7 @@
   "index.html": {
     "href": "index.html",
     "title": "WSS Documentation Hub | WSS Documentation Hub",
-    "summary": "WSS Documentation Hub This site combines conceptual documentation with API references from multiple repositories. Guides core-architecture layering-guide C# API API: Core (C#) API: C# Integration (C#) API: Unity Integration (C#) Python API API: Python Integration (Python)"
+    "summary": "WSS Documentation Hub This site combines conceptual documentation with API references from multiple repositories. Use the left navigation to browse all namespaces, interfaces, classes, and guides. Guides Core Architecture (Transport, Codec, Core) Layering Guide (Modules) C# API API: Core (C#) API: C# Integration (C#) API: Unity Integration (C#) Python API API: Python Integration (Python)"
   },
   "shims/UnitySubmodule/README.html": {
     "href": "shims/UnitySubmodule/README.html",

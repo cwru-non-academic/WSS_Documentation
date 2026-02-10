@@ -275,7 +275,7 @@ done
     printf '%s\n' '  items:'
     for file in "${conceptual_files[@]}"; do
       name="$(basename "$file")"
-      title="$(awk '/^# /{sub(/^# /, ""); print; exit}' "$file")"
+      title="$(awk 'NR==1{sub(/^\xef\xbb\xbf/, "")} /^# /{sub(/^# /, ""); print; exit}' "$file")"
       if [[ -z "$title" ]]; then
         title="${name%.md}"
       fi
@@ -313,13 +313,15 @@ done
   printf '%s\n' ''
   printf '%s\n' 'This site combines conceptual documentation with API references from multiple repositories.'
   printf '%s\n' ''
+  printf '%s\n' 'Use the left navigation to browse all namespaces, interfaces, classes, and guides.'
+  printf '%s\n' ''
 
   conceptual_files=("$SCRIPT_DIR"/conceptual/*.md)
   if [[ -e "${conceptual_files[0]}" ]]; then
     printf '%s\n' '## Guides'
     for file in "${conceptual_files[@]}"; do
       name="$(basename "$file")"
-      title="$(awk '/^# /{sub(/^# /, ""); print; exit}' "$file")"
+      title="$(awk 'NR==1{sub(/^\xef\xbb\xbf/, "")} /^# /{sub(/^# /, ""); print; exit}' "$file")"
       if [[ -z "$title" ]]; then
         title="${name%.md}"
       fi
@@ -365,4 +367,4 @@ else
 fi
 popd >/dev/null
 
-echo "Done. Output at: $SCRIPT_DIR/_site"
+echo "Done. Output at: $SCRIPT_DIR"

@@ -2,9 +2,11 @@
 
 This site combines conceptual documentation with API references from multiple repositories.
 
+Use the left navigation to browse all namespaces, interfaces, classes, and guides.
+
 ## Guides
-- [core-architecture](conceptual/core-architecture.md)
-- [layering-guide](conceptual/layering-guide.md)
+- [Core Architecture (Transport, Codec, Core)](conceptual/core-architecture.md)
+- [Layering Guide (Modules)](conceptual/layering-guide.md)
 
 ## C# API
 - [API: Core (C#)](xref:Wss.CoreModule)
