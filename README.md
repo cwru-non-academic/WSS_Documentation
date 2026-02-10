@@ -8,6 +8,7 @@ This repository contains end‑to‑end documentation for the Wearable Stimulati
 - Repos
   - Core C# Library: [GitHub](https://github.com/cwru-non-academic/WSSCoreInterface)
   - Unity Implementation: [GitHub](https://github.com/cwru-non-academic/HFI_WSS_Unity_Interface)
+  - Python Implementation: [GitHub](https://github.com/cwru-non-academic/HFI_WSS_Python_Interface)
 
 - [Hardware Overview](./hardwareDocs/wsshardware.html)
   - What: Photos, panels, cables/electrodes, and the gold control unit.
