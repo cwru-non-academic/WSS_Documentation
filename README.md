@@ -3,12 +3,13 @@
 This repository contains end‑to‑end documentation for the Wearable Stimulation System (WSS): hardware, serial/command protocol, and a generated software API site (DocFX).
 
 ## Quick Links
-  - Start Here: [GitHub Pages](https://cwru-non-academic.github.io/WSS_Documentation/) use to access all of the content bellow in html format (This might look like the page did not change if you were alredy in GitHub Pages and not in the repo Readme).
+  - Start Here: [GitHub Pages](https://cwru-non-academic.github.io/WSS_Documentation/) use to access all of the content bellow in html format.
   
 - Repos
   - Core C# Library: [GitHub](https://github.com/cwru-non-academic/WSSCoreInterface)
   - Unity Implementation: [GitHub](https://github.com/cwru-non-academic/HFI_WSS_Unity_Interface)
   - Python Implementation: [GitHub](https://github.com/cwru-non-academic/HFI_WSS_Python_Interface)
+  - C# Standalone Implementation: [GitHub](https://github.com/cwru-non-academic/HFI_WSS_Csharp_Implementation)
 
 - [Hardware Overview](./hardwareDocs/wsshardware.html)
   - What: Photos, panels, cables/electrodes, and the gold control unit.
