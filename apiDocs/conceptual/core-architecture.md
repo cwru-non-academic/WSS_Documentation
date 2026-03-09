@@ -50,8 +50,8 @@ sequenceDiagram
   Core->>Core: NormalSetup() seeds steps
   Core->>Device: Clear/Create/Config/Edit/Add/Sync/Start (queued)
   Device-->>Core: Replies per step
-  Core->>Core: Queue drains → Ready
-  Core->>Core: Tick() observes Started → StartStreamingInternal()
+  Core->>Core: Queue drains -> Ready
+  Core->>Core: Tick() observes Started -> StartStreamingInternal()
   Core-->>App: Now Streaming
 ```
 
@@ -66,11 +66,11 @@ sequenceDiagram
   participant Core
   participant Device
   App->>Core: e.g., Request_Configs(cmd,id)
-  Note over Core: If Streaming → StopStreamingInternal(); resumeAfter = true
+  Note over Core: If Streaming -> StopStreamingInternal(); resumeAfter = true
   Core->>Device: Send command (await reply)
   Device-->>Core: Reply or timeout
   alt Success
-    Core->>Core: Queue drains; if resumeAfter → StartStreamingInternal()
+    Core->>Core: Queue drains; if resumeAfter -> StartStreamingInternal()
   else Timeout/Error
     Core->>Core: State = Error; SafeDisconnect()
   end

@@ -126,8 +126,8 @@
   Core-&gt;&gt;Core: NormalSetup() seeds steps
   Core-&gt;&gt;Device: Clear/Create/Config/Edit/Add/Sync/Start (queued)
   Device--&gt;&gt;Core: Replies per step
-  Core-&gt;&gt;Core: Queue drains → Ready
-  Core-&gt;&gt;Core: Tick() observes Started → StartStreamingInternal()
+  Core-&gt;&gt;Core: Queue drains -&gt; Ready
+  Core-&gt;&gt;Core: Tick() observes Started -&gt; StartStreamingInternal()
   Core--&gt;&gt;App: Now Streaming
 </code></pre>
 <p>Notes</p>
@@ -141,11 +141,11 @@
   participant Core
   participant Device
   App-&gt;&gt;Core: e.g., Request_Configs(cmd,id)
-  Note over Core: If Streaming → StopStreamingInternal(); resumeAfter = true
+  Note over Core: If Streaming -&gt; StopStreamingInternal(); resumeAfter = true
   Core-&gt;&gt;Device: Send command (await reply)
   Device--&gt;&gt;Core: Reply or timeout
   alt Success
-    Core-&gt;&gt;Core: Queue drains; if resumeAfter → StartStreamingInternal()
+    Core-&gt;&gt;Core: Queue drains; if resumeAfter -&gt; StartStreamingInternal()
   else Timeout/Error
     Core-&gt;&gt;Core: State = Error; SafeDisconnect()
   end
