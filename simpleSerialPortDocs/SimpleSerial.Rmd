@@ -1,6 +1,7 @@
-﻿---
+---
 output:
-  html_document: default
+  html_document:
+    css: ../rmd-overrides.css
   pdf_document: default
 ---
 # Simple Serial Communication with WSS

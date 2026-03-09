@@ -1,6 +1,7 @@
-﻿---
+---
 output:
-  html_document: default
+  html_document:
+    css: ../rmd-overrides.css
   pdf_document: default
 ---
 # Building Software API Docs (DocFX)
@@ -24,6 +25,46 @@ The docs project lives under `apiDocs/` and uses `apiDocs/repos.manifest.json` t
 ## Configure linked repositories
 
 Edit `apiDocs/repos.manifest.json` and add one entry per linked repo.
+
+This repo's default manifest is written to use environment variables for the linked repo roots (for example: `"root": "${WSS_CORE_REPO_ROOT}"`).
+The build scripts expand `${VARNAME}` tokens at runtime.
+
+Quick start:
+
+1) Set the required environment variables (paths to the linked repos).
+2) Run the build script with the manifest.
+
+### Required environment variables
+
+Set these to your local checkouts:
+
+- `WSS_CORE_REPO_ROOT` (C# Core): `/path/to/WSSCoreInterface`
+- `WSS_CSHARP_REPO_ROOT` (C# integration): `/path/to/HFI_WSS_Csharp_Implementation`
+- `WSS_UNITY_REPO_ROOT` (Unity repo / Unity project root): `/path/to/Project using HFI_WSS_Unity_Interface`
+- `WSS_UNITY_INTEGRATION_SRC` (Unity integration submodule root inside the Unity project)
+  - This must be the subfolder that contains the integration code you want documented.
+  - Example: `$WSS_UNITY_REPO_ROOT/Assets/SubModules/WSSInterfacingModule`
+- `WSS_PYTHON_REPO_ROOT` (Python integration)
+  - This must be the Python project root that contains a `docs/` folder (with `docs/conf.py`).
+  - Example: `/path/to/WSS_Python_Wrapper/WSS_Py_Wrapper`
+
+Examples:
+
+```bash
+export WSS_CORE_REPO_ROOT="/path/to/WSSCoreInterface"
+export WSS_CSHARP_REPO_ROOT="/path/to/HFI_WSS_Csharp_Implementation"
+export WSS_UNITY_REPO_ROOT="/path/to/SimpleStimulationConsole"
+export WSS_UNITY_INTEGRATION_SRC="$WSS_UNITY_REPO_ROOT/Assets/SubModules/WSSInterfacingModule"
+export WSS_PYTHON_REPO_ROOT="/path/to/WSS_Python_Wrapper/WSS_Py_Wrapper"
+```
+
+```powershell
+$env:WSS_CORE_REPO_ROOT = 'C:\\path\\to\\WSSCoreInterface'
+$env:WSS_CSHARP_REPO_ROOT = 'C:\\path\\to\\HFI_WSS_Csharp_Implementation'
+$env:WSS_UNITY_REPO_ROOT = 'C:\\path\\to\\SimpleStimulationConsole'
+$env:WSS_UNITY_INTEGRATION_SRC = "$env:WSS_UNITY_REPO_ROOT\\Assets\\SubModules\\WSSInterfacingModule"
+$env:WSS_PYTHON_REPO_ROOT = 'C:\\path\\to\\WSS_Python_Wrapper\\WSS_Py_Wrapper'
+```
 
 For C# repos provide:
 - `root`: repo root path
@@ -53,9 +94,8 @@ For Python repos provide:
 
 Selecting the correct Python `root` + `sphinxSource`
 
-- `root` should be the Python project root (the folder with `pyproject.toml`/`setup.cfg` and the
-  Sphinx docs tree).
-- `sphinxSource` should point to the directory that contains `conf.py`.
+- `root` must be the Python project root that contains the Sphinx `docs/` folder.
+- `sphinxSource` should point to the directory that contains `conf.py` (usually `docs`).
 
 Example (WSS_Python_Wrapper):
 
@@ -81,7 +121,7 @@ Execution policy
 If scripts are blocked:
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File "A:\\Documents\\GIT Projects\\WSS-documentation\\docs\\build-docs.ps1" -CodeRoot "...\\WSSInterfacingModule"
+powershell -NoProfile -ExecutionPolicy Bypass -File ".\\apiDocs\\build-docs.ps1" -ManifestPath ".\\apiDocs\\repos.manifest.json"
 ```
 
 ## macOS/Linux or Git Bash (Windows)
@@ -145,11 +185,12 @@ Where:
 
 - `WSS_UNITY_REPO_ROOT` points at the Unity app repo.
 - `WSS_UNITY_INTEGRATION_SRC` points at the submodule folder you want documented.
+  - It must be the integration submodule root inside the Unity project (not the Unity repo root).
 
 ## Output
 
-- The static site is generated at: `apiDocs/_site`
-- Open `apiDocs/_site/index.html` in a browser (or use `-Serve` in PowerShell)
+- The static site is generated under: `apiDocs/` (for example: `apiDocs/index.html`)
+- Open `apiDocs/index.html` in a browser (or use `-Serve` in PowerShell)
 
 ## Troubleshooting
 
@@ -179,4 +220,4 @@ Where:
 - `apiDocs/` — DocFX project (docfx.json, templates, tools)
 - `apiDocs/build-docs.ps1` — PowerShell build script (Windows)
 - `apiDocs/build-docs.sh` — Bash build script (macOS/Linux/Git Bash)
-- `apiDocs/_site/` — Generated website (output)
+- DocFX output is written into `apiDocs/` (HTML files plus `api/`, `conceptual/`, `styles/`)

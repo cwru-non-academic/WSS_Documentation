@@ -35,7 +35,8 @@
       "showExternalInherited": false
     },
     "template": [
-      "default"
+      "default",
+      "templates/wss"
     ],
     "xref": [
       "https://xref.docs.microsoft.com/query?uid={uid}"

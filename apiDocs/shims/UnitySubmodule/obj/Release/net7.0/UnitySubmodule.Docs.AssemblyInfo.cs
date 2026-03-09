@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("UnitySubmodule.Docs")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c85a3339aed23a70040adb4c14f9008d38c40f39")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+885d1cf82622f0b779b55e0b3c51cff4b7811964")]
 [assembly: System.Reflection.AssemblyProductAttribute("UnitySubmodule.Docs")]
 [assembly: System.Reflection.AssemblyTitleAttribute("UnitySubmodule.Docs")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

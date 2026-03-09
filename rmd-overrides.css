@@ -1,0 +1,19 @@
+/* Overrides for HTML generated from RMarkdown (pandoc). */
+
+/* Make Markdown blockquotes readable (avoid dark/low-contrast styling). */
+body blockquote {
+  background-color: #f6f8fa !important;
+  border-left: 4px solid #3a6ea5 !important;
+  color: #111111 !important;
+  margin: 1em 0 !important;
+  padding: 0.75em 1em !important;
+}
+
+body blockquote p {
+  color: inherit !important;
+}
+
+body blockquote code {
+  background-color: rgba(0, 0, 0, 0.06) !important;
+  color: inherit !important;
+}
