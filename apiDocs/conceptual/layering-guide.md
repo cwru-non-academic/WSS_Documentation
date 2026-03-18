@@ -7,10 +7,10 @@ This guide focuses on how functionality grows as you add modules on top of the c
 ```mermaid
 flowchart LR
   App[Client / App / UI] --> Core[WssStimulationCore]
-  Core --> Transport[ITransport]
+  Core --> Codec[IFrameCodec]
+  Codec --> Transport[ITransport]
   Transport --> Device[Device]
-  Device -. inbound .-> Core
-  Core -. callbacks .-> App
+  Device -. inbound .-> Codec -. deframe .-> Core -. events .-> App
 ```
 
 - Capabilities:
@@ -26,12 +26,13 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-  App[Client / App] --> Params[Stim Params Module]
+  App[Client / App / UI]  --> Params[Stim Params Module]
   Params --> Core[WssStimulationCore]
   Core --> Codec[IFrameCodec]
   Codec --> Transport[ITransport]
   Transport --> Device[Device]
   Device -. inbound .-> Codec -. deframe .-> Core -. events .-> App
+  Params-. parameters .-> App
   Core <--> Params
 ```
 
@@ -46,13 +47,15 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-  App[Client / App] --> Model[Model Module]
+  App[Client / App / UI]  --> Model[Model Module]
   Model --> Params[Stim Params Module]
   Params --> Core[WssStimulationCore]
   Core --> Codec[IFrameCodec]
   Codec --> Transport[ITransport]
   Transport --> Device[Device]
   Device -. inbound .-> Codec -. deframe .-> Core -. events .-> App
+  Params-. parameters .-> App
+  Model-. parameters .-> App
   Core <--> Params
   Params <--> Model
 ```
@@ -70,7 +73,16 @@ flowchart LR
 
 ## Optional Capability: Basic Stimulation
 
-The Basic Stimulation interface (`WSSBaseCode/Interfaces/IBasicStimulation.cs`) is an optional capability layer that adds higher-level stimulation operations on top of the core. It is suitable for firmware/hardware that supports waveform editing, event shaping, and config persistence.
+The Basic Stimulation interface (`WSSBaseCode/Interfaces/IBasicStimulation.cs`) is an optional capability layer that adds higher-level stimulation operations on top of the core. It is suitable for firmware/hardware that supports waveform editing, event shaping, and config persistence. It serves stimulator-specific functionality.
+
+```mermaid
+flowchart LR
+  App[Client / App / UI] --> Core[WssStimulationCore+BasicStimulation]
+  Core --> Codec
+  Codec --> Transport[ITransport]
+  Transport --> Device[Device]
+  Device -. inbound .-> Codec -. deframe .-> Core -. events .-> App
+```
 
 - Purpose
   - Provide a minimal, consistent API to upload/select waveforms and to save/load/query board configuration.

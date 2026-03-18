@@ -33,12 +33,11 @@ stateDiagram-v2
   Ready --> Started: Device reports Started
   Started --> Streaming: StartStreamingInternal
   Streaming --> SettingUp: ScheduleSetupChange
-  SettingUp --> Streaming: Queue drains (resume)
   Streaming --> Error: Unhandled exception
   Error --> Disconnected: Shutdown()
 ```
 
-## Startup Sequence
+## Startup and Shutdown Sequence
 ```mermaid
 sequenceDiagram
   participant App
@@ -46,18 +45,36 @@ sequenceDiagram
   participant Device
   App->>Core: Initialize()
   Core->>Device: ConnectAsync()
+  App->>Core: Tick()
   Device-->>Core: Connected
-  Core->>Core: NormalSetup() seeds steps
-  Core->>Device: Clear/Create/Config/Edit/Add/Sync/Start (queued)
+  Core->>Core: Observes Connected -> NormalSetup()
+  Core->>Device: Clear/Create/Config/Edit/Add/Sync/(queued)
   Device-->>Core: Replies per step
   Core->>Core: Queue drains -> Ready
-  Core->>Core: Tick() observes Started -> StartStreamingInternal()
-  Core-->>App: Now Streaming
+  Core->>Device: Start()
+  Device-->>Core: Started
+  Core->>Core: Observes Started -> StartStreamingInternal()
+  Core->>Device: StreamChange()
+  Device-->>Core: Error
+  Core->>Core: Observes Error -> StopStreamingInternal()
+  Core->>Device: DisconnectAsync()
+   Device-->>Core: Disconnected
+  Core->>Device: Dispose()
+   Device-->>Core: Releases resources
+   Core-->>App: Disconnected
+  App->>Core: Shutdown()
+  Core->>Core: StopStreamingInternal()
+  Core->>Device: DisconnectAsync()
+   Device-->>Core: Disconnected
+  Core->>Device: Dispose()
+   Device-->>Core: Releases resources
+   Core-->>App: Disconnected
 ```
 
 Notes
 - `NormalSetup()` seeds a full device configuration and ends with `StartStim(...)` for each target.
 - `Tick()` advances the state machine; `StartStreamingInternal()` begins the background streaming loop.
+- `Error` or `Shutdown()` trigger a safe disconnection process where `Dispose()` prepares for a new `Initialize()`.
 
 ## Mid‑Stream Setup (Commands Requiring Replies)
 ```mermaid
@@ -66,13 +83,22 @@ sequenceDiagram
   participant Core
   participant Device
   App->>Core: e.g., Request_Configs(cmd,id)
-  Note over Core: If Streaming -> StopStreamingInternal(); resumeAfter = true
+  Core->>Core: StopStreamingInternal()
   Core->>Device: Send command (await reply)
   Device-->>Core: Reply or timeout
   alt Success
-    Core->>Core: Queue drains; if resumeAfter -> StartStreamingInternal()
+    alt Queue empty
+      Core->>Core: StartStreamingInternal()
+      Core->>Device: StreamChange()
+    else Queue not empty
+      Core ->> Core: Repeat with next in queue
+    end
   else Timeout/Error
-    Core->>Core: State = Error; SafeDisconnect()
+    Core->>Device: DisconnectAsync()
+    Device-->>Core: Disconnected
+    Core->>Device: Dispose()
+    Device-->>Core: Releases resources
+    Core-->>App: Disconnected
   end
 ```
 

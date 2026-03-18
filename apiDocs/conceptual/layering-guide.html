@@ -76,10 +76,10 @@
 <h2 id="core-only">Core Only</h2>
 <pre><code class="lang-mermaid">flowchart LR
   App[Client / App / UI] --&gt; Core[WssStimulationCore]
-  Core --&gt; Transport[ITransport]
+  Core --&gt; Codec[IFrameCodec]
+  Codec --&gt; Transport[ITransport]
   Transport --&gt; Device[Device]
-  Device -. inbound .-&gt; Core
-  Core -. callbacks .-&gt; App
+  Device -. inbound .-&gt; Codec -. deframe .-&gt; Core -. events .-&gt; App
 </code></pre>
 <ul>
 <li>Capabilities:
@@ -99,12 +99,13 @@
 </ul>
 <h2 id="core--params-module">Core + Params Module</h2>
 <pre><code class="lang-mermaid">flowchart LR
-  App[Client / App] --&gt; Params[Stim Params Module]
+  App[Client / App / UI]  --&gt; Params[Stim Params Module]
   Params --&gt; Core[WssStimulationCore]
   Core --&gt; Codec[IFrameCodec]
   Codec --&gt; Transport[ITransport]
   Transport --&gt; Device[Device]
   Device -. inbound .-&gt; Codec -. deframe .-&gt; Core -. events .-&gt; App
+  Params-. parameters .-&gt; App
   Core &lt;--&gt; Params
 </code></pre>
 <ul>
@@ -123,13 +124,15 @@
 </ul>
 <h2 id="core--params--model-module">Core + Params + Model Module</h2>
 <pre><code class="lang-mermaid">flowchart LR
-  App[Client / App] --&gt; Model[Model Module]
+  App[Client / App / UI]  --&gt; Model[Model Module]
   Model --&gt; Params[Stim Params Module]
   Params --&gt; Core[WssStimulationCore]
   Core --&gt; Codec[IFrameCodec]
   Codec --&gt; Transport[ITransport]
   Transport --&gt; Device[Device]
   Device -. inbound .-&gt; Codec -. deframe .-&gt; Core -. events .-&gt; App
+  Params-. parameters .-&gt; App
+  Model-. parameters .-&gt; App
   Core &lt;--&gt; Params
   Params &lt;--&gt; Model
 </code></pre>
@@ -153,7 +156,14 @@
 <li>See also: Core Architecture for transport/codec/core wiring and data flow.</li>
 </ul>
 <h2 id="optional-capability-basic-stimulation">Optional Capability: Basic Stimulation</h2>
-<p>The Basic Stimulation interface (<code>WSSBaseCode/Interfaces/IBasicStimulation.cs</code>) is an optional capability layer that adds higher-level stimulation operations on top of the core. It is suitable for firmware/hardware that supports waveform editing, event shaping, and config persistence.</p>
+<p>The Basic Stimulation interface (<code>WSSBaseCode/Interfaces/IBasicStimulation.cs</code>) is an optional capability layer that adds higher-level stimulation operations on top of the core. It is suitable for firmware/hardware that supports waveform editing, event shaping, and config persistence. It serves stimulator-specific functionality.</p>
+<pre><code class="lang-mermaid">flowchart LR
+  App[Client / App / UI] --&gt; Core[WssStimulationCore+BasicStimulation]
+  Core --&gt; Codec
+  Codec --&gt; Transport[ITransport]
+  Transport --&gt; Device[Device]
+  Device -. inbound .-&gt; Codec -. deframe .-&gt; Core -. events .-&gt; App
+</code></pre>
 <ul>
 <li>Purpose
 <ul>
