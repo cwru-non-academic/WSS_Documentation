@@ -1,0 +1,400 @@
+### YamlMime:ManagedReference
+items:
+- uid: Wss.CoreModule.SerialPortTransportOptions
+  commentId: T:Wss.CoreModule.SerialPortTransportOptions
+  id: SerialPortTransportOptions
+  parent: Wss.CoreModule
+  children:
+  - Wss.CoreModule.SerialPortTransportOptions.AutoSelectPort
+  - Wss.CoreModule.SerialPortTransportOptions.Baud
+  - Wss.CoreModule.SerialPortTransportOptions.DataBits
+  - Wss.CoreModule.SerialPortTransportOptions.Parity
+  - Wss.CoreModule.SerialPortTransportOptions.PortName
+  - Wss.CoreModule.SerialPortTransportOptions.ReadTimeoutMs
+  - Wss.CoreModule.SerialPortTransportOptions.StopBits
+  langs:
+  - csharp
+  - vb
+  name: SerialPortTransportOptions
+  nameWithType: SerialPortTransportOptions
+  fullName: Wss.CoreModule.SerialPortTransportOptions
+  type: Class
+  assemblies:
+  - WSS.Transport.Serial
+  namespace: Wss.CoreModule
+  summary: Holds connection settings for <xref href="Wss.CoreModule.SerialPortTransport" data-throw-if-not-resolved="false"></xref>.
+  remarks: >-
+    Exactly one port selection mode must be used: either set <xref href="Wss.CoreModule.SerialPortTransportOptions.AutoSelectPort" data-throw-if-not-resolved="false"></xref> to true,
+
+    or provide a non-empty <xref href="Wss.CoreModule.SerialPortTransportOptions.PortName" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public sealed class SerialPortTransportOptions
+    content.vb: Public NotInheritable Class SerialPortTransportOptions
+  inheritance:
+  - System.Object
+- uid: Wss.CoreModule.SerialPortTransportOptions.PortName
+  commentId: P:Wss.CoreModule.SerialPortTransportOptions.PortName
+  id: PortName
+  parent: Wss.CoreModule.SerialPortTransportOptions
+  langs:
+  - csharp
+  - vb
+  name: PortName
+  nameWithType: SerialPortTransportOptions.PortName
+  fullName: Wss.CoreModule.SerialPortTransportOptions.PortName
+  type: Property
+  assemblies:
+  - WSS.Transport.Serial
+  namespace: Wss.CoreModule
+  summary: >-
+    Gets or sets the explicit port name.
+
+    Use values such as <code>COM5</code> on Windows or <code>/dev/ttyUSB0</code> on Linux/macOS.
+
+    This must be provided when <xref href="Wss.CoreModule.SerialPortTransportOptions.AutoSelectPort" data-throw-if-not-resolved="false"></xref> is false.
+  example: []
+  syntax:
+    content: public string PortName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property PortName As String
+  overload: Wss.CoreModule.SerialPortTransportOptions.PortName*
+- uid: Wss.CoreModule.SerialPortTransportOptions.AutoSelectPort
+  commentId: P:Wss.CoreModule.SerialPortTransportOptions.AutoSelectPort
+  id: AutoSelectPort
+  parent: Wss.CoreModule.SerialPortTransportOptions
+  langs:
+  - csharp
+  - vb
+  name: AutoSelectPort
+  nameWithType: SerialPortTransportOptions.AutoSelectPort
+  fullName: Wss.CoreModule.SerialPortTransportOptions.AutoSelectPort
+  type: Property
+  assemblies:
+  - WSS.Transport.Serial
+  namespace: Wss.CoreModule
+  summary: >-
+    Gets or sets whether the transport should automatically select the best available serial port.
+
+    When true, <xref href="Wss.CoreModule.SerialPortTransportOptions.PortName" data-throw-if-not-resolved="false"></xref> must be left empty.
+  example: []
+  syntax:
+    content: public bool AutoSelectPort { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property AutoSelectPort As Boolean
+  overload: Wss.CoreModule.SerialPortTransportOptions.AutoSelectPort*
+- uid: Wss.CoreModule.SerialPortTransportOptions.Baud
+  commentId: P:Wss.CoreModule.SerialPortTransportOptions.Baud
+  id: Baud
+  parent: Wss.CoreModule.SerialPortTransportOptions
+  langs:
+  - csharp
+  - vb
+  name: Baud
+  nameWithType: SerialPortTransportOptions.Baud
+  fullName: Wss.CoreModule.SerialPortTransportOptions.Baud
+  type: Property
+  assemblies:
+  - WSS.Transport.Serial
+  namespace: Wss.CoreModule
+  summary: Gets or sets the baud rate. The default is 115200.
+  example: []
+  syntax:
+    content: public int Baud { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Baud As Integer
+  overload: Wss.CoreModule.SerialPortTransportOptions.Baud*
+- uid: Wss.CoreModule.SerialPortTransportOptions.Parity
+  commentId: P:Wss.CoreModule.SerialPortTransportOptions.Parity
+  id: Parity
+  parent: Wss.CoreModule.SerialPortTransportOptions
+  langs:
+  - csharp
+  - vb
+  name: Parity
+  nameWithType: SerialPortTransportOptions.Parity
+  fullName: Wss.CoreModule.SerialPortTransportOptions.Parity
+  type: Property
+  assemblies:
+  - WSS.Transport.Serial
+  namespace: Wss.CoreModule
+  summary: Gets or sets the parity mode. The default is <xref href="System.IO.Ports.Parity.None" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public Parity Parity { get; set; }
+    parameters: []
+    return:
+      type: System.IO.Ports.Parity
+    content.vb: Public Property Parity As Parity
+  overload: Wss.CoreModule.SerialPortTransportOptions.Parity*
+- uid: Wss.CoreModule.SerialPortTransportOptions.DataBits
+  commentId: P:Wss.CoreModule.SerialPortTransportOptions.DataBits
+  id: DataBits
+  parent: Wss.CoreModule.SerialPortTransportOptions
+  langs:
+  - csharp
+  - vb
+  name: DataBits
+  nameWithType: SerialPortTransportOptions.DataBits
+  fullName: Wss.CoreModule.SerialPortTransportOptions.DataBits
+  type: Property
+  assemblies:
+  - WSS.Transport.Serial
+  namespace: Wss.CoreModule
+  summary: Gets or sets the number of data bits. The default is 8.
+  example: []
+  syntax:
+    content: public int DataBits { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property DataBits As Integer
+  overload: Wss.CoreModule.SerialPortTransportOptions.DataBits*
+- uid: Wss.CoreModule.SerialPortTransportOptions.StopBits
+  commentId: P:Wss.CoreModule.SerialPortTransportOptions.StopBits
+  id: StopBits
+  parent: Wss.CoreModule.SerialPortTransportOptions
+  langs:
+  - csharp
+  - vb
+  name: StopBits
+  nameWithType: SerialPortTransportOptions.StopBits
+  fullName: Wss.CoreModule.SerialPortTransportOptions.StopBits
+  type: Property
+  assemblies:
+  - WSS.Transport.Serial
+  namespace: Wss.CoreModule
+  summary: Gets or sets the stop-bit configuration. The default is <xref href="System.IO.Ports.StopBits.One" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public StopBits StopBits { get; set; }
+    parameters: []
+    return:
+      type: System.IO.Ports.StopBits
+    content.vb: Public Property StopBits As StopBits
+  overload: Wss.CoreModule.SerialPortTransportOptions.StopBits*
+- uid: Wss.CoreModule.SerialPortTransportOptions.ReadTimeoutMs
+  commentId: P:Wss.CoreModule.SerialPortTransportOptions.ReadTimeoutMs
+  id: ReadTimeoutMs
+  parent: Wss.CoreModule.SerialPortTransportOptions
+  langs:
+  - csharp
+  - vb
+  name: ReadTimeoutMs
+  nameWithType: SerialPortTransportOptions.ReadTimeoutMs
+  fullName: Wss.CoreModule.SerialPortTransportOptions.ReadTimeoutMs
+  type: Property
+  assemblies:
+  - WSS.Transport.Serial
+  namespace: Wss.CoreModule
+  summary: >-
+    Gets or sets the synchronous serial read timeout, in milliseconds.
+
+    The default is 10.
+  example: []
+  syntax:
+    content: public int ReadTimeoutMs { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property ReadTimeoutMs As Integer
+  overload: Wss.CoreModule.SerialPortTransportOptions.ReadTimeoutMs*
+references:
+- uid: Wss.CoreModule.SerialPortTransport
+  commentId: T:Wss.CoreModule.SerialPortTransport
+  href: Wss.CoreModule.SerialPortTransport.html
+  name: SerialPortTransport
+  nameWithType: SerialPortTransport
+  fullName: Wss.CoreModule.SerialPortTransport
+- uid: Wss.CoreModule.SerialPortTransportOptions.AutoSelectPort
+  commentId: P:Wss.CoreModule.SerialPortTransportOptions.AutoSelectPort
+  href: Wss.CoreModule.SerialPortTransportOptions.html#Wss_CoreModule_SerialPortTransportOptions_AutoSelectPort
+  name: AutoSelectPort
+  nameWithType: SerialPortTransportOptions.AutoSelectPort
+  fullName: Wss.CoreModule.SerialPortTransportOptions.AutoSelectPort
+- uid: Wss.CoreModule.SerialPortTransportOptions.PortName
+  commentId: P:Wss.CoreModule.SerialPortTransportOptions.PortName
+  href: Wss.CoreModule.SerialPortTransportOptions.html#Wss_CoreModule_SerialPortTransportOptions_PortName
+  name: PortName
+  nameWithType: SerialPortTransportOptions.PortName
+  fullName: Wss.CoreModule.SerialPortTransportOptions.PortName
+- uid: Wss.CoreModule
+  commentId: N:Wss.CoreModule
+  href: Wss.html
+  name: Wss.CoreModule
+  nameWithType: Wss.CoreModule
+  fullName: Wss.CoreModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Wss.CoreModule.SerialPortTransportOptions.PortName*
+  commentId: Overload:Wss.CoreModule.SerialPortTransportOptions.PortName
+  href: Wss.CoreModule.SerialPortTransportOptions.html#Wss_CoreModule_SerialPortTransportOptions_PortName
+  name: PortName
+  nameWithType: SerialPortTransportOptions.PortName
+  fullName: Wss.CoreModule.SerialPortTransportOptions.PortName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Wss.CoreModule.SerialPortTransportOptions.AutoSelectPort*
+  commentId: Overload:Wss.CoreModule.SerialPortTransportOptions.AutoSelectPort
+  href: Wss.CoreModule.SerialPortTransportOptions.html#Wss_CoreModule_SerialPortTransportOptions_AutoSelectPort
+  name: AutoSelectPort
+  nameWithType: SerialPortTransportOptions.AutoSelectPort
+  fullName: Wss.CoreModule.SerialPortTransportOptions.AutoSelectPort
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Wss.CoreModule.SerialPortTransportOptions.Baud*
+  commentId: Overload:Wss.CoreModule.SerialPortTransportOptions.Baud
+  href: Wss.CoreModule.SerialPortTransportOptions.html#Wss_CoreModule_SerialPortTransportOptions_Baud
+  name: Baud
+  nameWithType: SerialPortTransportOptions.Baud
+  fullName: Wss.CoreModule.SerialPortTransportOptions.Baud
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.IO.Ports.Parity.None
+  commentId: F:System.IO.Ports.Parity.None
+  isExternal: true
+  name: None
+  nameWithType: Parity.None
+  fullName: System.IO.Ports.Parity.None
+- uid: Wss.CoreModule.SerialPortTransportOptions.Parity*
+  commentId: Overload:Wss.CoreModule.SerialPortTransportOptions.Parity
+  href: Wss.CoreModule.SerialPortTransportOptions.html#Wss_CoreModule_SerialPortTransportOptions_Parity
+  name: Parity
+  nameWithType: SerialPortTransportOptions.Parity
+  fullName: Wss.CoreModule.SerialPortTransportOptions.Parity
+- uid: System.IO.Ports.Parity
+  commentId: T:System.IO.Ports.Parity
+  parent: System.IO.Ports
+  isExternal: true
+  name: Parity
+  nameWithType: Parity
+  fullName: System.IO.Ports.Parity
+- uid: System.IO.Ports
+  commentId: N:System.IO.Ports
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.IO.Ports
+  nameWithType: System.IO.Ports
+  fullName: System.IO.Ports
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+  - name: .
+  - uid: System.IO.Ports
+    name: Ports
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.ports
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+  - name: .
+  - uid: System.IO.Ports
+    name: Ports
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.ports
+- uid: Wss.CoreModule.SerialPortTransportOptions.DataBits*
+  commentId: Overload:Wss.CoreModule.SerialPortTransportOptions.DataBits
+  href: Wss.CoreModule.SerialPortTransportOptions.html#Wss_CoreModule_SerialPortTransportOptions_DataBits
+  name: DataBits
+  nameWithType: SerialPortTransportOptions.DataBits
+  fullName: Wss.CoreModule.SerialPortTransportOptions.DataBits
+- uid: System.IO.Ports.StopBits.One
+  commentId: F:System.IO.Ports.StopBits.One
+  isExternal: true
+  name: One
+  nameWithType: StopBits.One
+  fullName: System.IO.Ports.StopBits.One
+- uid: Wss.CoreModule.SerialPortTransportOptions.StopBits*
+  commentId: Overload:Wss.CoreModule.SerialPortTransportOptions.StopBits
+  href: Wss.CoreModule.SerialPortTransportOptions.html#Wss_CoreModule_SerialPortTransportOptions_StopBits
+  name: StopBits
+  nameWithType: SerialPortTransportOptions.StopBits
+  fullName: Wss.CoreModule.SerialPortTransportOptions.StopBits
+- uid: System.IO.Ports.StopBits
+  commentId: T:System.IO.Ports.StopBits
+  parent: System.IO.Ports
+  isExternal: true
+  name: StopBits
+  nameWithType: StopBits
+  fullName: System.IO.Ports.StopBits
+- uid: Wss.CoreModule.SerialPortTransportOptions.ReadTimeoutMs*
+  commentId: Overload:Wss.CoreModule.SerialPortTransportOptions.ReadTimeoutMs
+  href: Wss.CoreModule.SerialPortTransportOptions.html#Wss_CoreModule_SerialPortTransportOptions_ReadTimeoutMs
+  name: ReadTimeoutMs
+  nameWithType: SerialPortTransportOptions.ReadTimeoutMs
+  fullName: Wss.CoreModule.SerialPortTransportOptions.ReadTimeoutMs

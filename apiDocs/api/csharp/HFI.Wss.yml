@@ -6,6 +6,7 @@ items:
   children:
   - HFI.Wss.StimulationController
   - HFI.Wss.StimulationOptions
+  - HFI.Wss.StimulationTransportKind
   langs:
   - csharp
   - vb
@@ -22,6 +23,13 @@ references:
   name: StimulationController
   nameWithType: StimulationController
   fullName: HFI.Wss.StimulationController
+- uid: HFI.Wss.StimulationTransportKind
+  commentId: T:HFI.Wss.StimulationTransportKind
+  parent: HFI.Wss
+  href: HFI.Wss.StimulationTransportKind.html
+  name: StimulationTransportKind
+  nameWithType: StimulationTransportKind
+  fullName: HFI.Wss.StimulationTransportKind
 - uid: HFI.Wss.StimulationOptions
   commentId: T:HFI.Wss.StimulationOptions
   parent: HFI.Wss

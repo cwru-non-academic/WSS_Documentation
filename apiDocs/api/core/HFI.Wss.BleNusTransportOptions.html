@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class BleNusTransportOptions | WSS Documentation Hub </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class BleNusTransportOptions | WSS Documentation Hub ">
+    
+    <meta name="description" content="Configuration for .">
+      <link rel="shortcut icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../styles/docfx.css">
+      <link rel="stylesheet" href="../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="HFI.Wss.BleNusTransportOptions">
+
+
+
+  <h1 id="HFI_Wss_BleNusTransportOptions" data-uid="HFI.Wss.BleNusTransportOptions" class="text-break">Class BleNusTransportOptions</h1>
+  <div class="markdown level0 summary"><p>Configuration for <a class="xref" href="HFI.Wss.BleNusTransport.html">BleNusTransport</a>.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">object</span></div>
+    <div class="level1"><span class="xref">BleNusTransportOptions</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="HFI.html">HFI</a>.<a class="xref" href="HFI.Wss.html">Wss</a></h6>
+  <h6><strong>Assembly</strong>: WSS.Transport.BLE.dll</h6>
+  <h5 id="HFI_Wss_BleNusTransportOptions_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class BleNusTransportOptions</code></pre>
+  </div>
+  <h5 id="HFI_Wss_BleNusTransportOptions_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>When <a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_AutoSelectDevice">AutoSelectDevice</a> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>, callers must provide either
+<a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_DeviceId">DeviceId</a> or <a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_DeviceName">DeviceName</a>. Scan-based operations honor <a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_ScanTimeout">ScanTimeout</a>
+when a timeout is configured.</p>
+</div>
+  <h3 id="properties">Properties
+</h3>
+
+
+  <a id="HFI_Wss_BleNusTransportOptions_AutoSelectDevice_" data-uid="HFI.Wss.BleNusTransportOptions.AutoSelectDevice*"></a>
+  <h4 id="HFI_Wss_BleNusTransportOptions_AutoSelectDevice" data-uid="HFI.Wss.BleNusTransportOptions.AutoSelectDevice">AutoSelectDevice</h4>
+  <div class="markdown level1 summary"><p>When true, scans for compatible BLE devices and auto-selects the best valid candidate.
+Auto-selection only accepts devices that expose the configured service and both required
+characteristics with the expected properties, then prefers stronger RSSI.
+When false, the caller must provide <a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_DeviceId">DeviceId</a> or <a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_DeviceName">DeviceName</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool AutoSelectDevice { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_BleNusTransportOptions_DeviceId_" data-uid="HFI.Wss.BleNusTransportOptions.DeviceId*"></a>
+  <h4 id="HFI_Wss_BleNusTransportOptions_DeviceId" data-uid="HFI.Wss.BleNusTransportOptions.DeviceId">DeviceId</h4>
+  <div class="markdown level1 summary"><p>Explicit BLE device identifier to connect to when <a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_AutoSelectDevice">AutoSelectDevice</a> is disabled.
+When provided, it takes precedence over <a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_DeviceName">DeviceName</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? DeviceId { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_BleNusTransportOptions_DeviceName_" data-uid="HFI.Wss.BleNusTransportOptions.DeviceName*"></a>
+  <h4 id="HFI_Wss_BleNusTransportOptions_DeviceName" data-uid="HFI.Wss.BleNusTransportOptions.DeviceName">DeviceName</h4>
+  <div class="markdown level1 summary"><p>Exact BLE device name to scan for when <a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_AutoSelectDevice">AutoSelectDevice</a> is disabled and
+<a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_DeviceId">DeviceId</a> is not provided.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? DeviceName { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_BleNusTransportOptions_NotifyCharacteristicUuid_" data-uid="HFI.Wss.BleNusTransportOptions.NotifyCharacteristicUuid*"></a>
+  <h4 id="HFI_Wss_BleNusTransportOptions_NotifyCharacteristicUuid" data-uid="HFI.Wss.BleNusTransportOptions.NotifyCharacteristicUuid">NotifyCharacteristicUuid</h4>
+  <div class="markdown level1 summary"><p>Required BLE notification characteristic UUID. Auto-select rejects devices that do not expose it
+with notify or indicate support.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Guid NotifyCharacteristicUuid { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Guid</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_BleNusTransportOptions_ScanTimeout_" data-uid="HFI.Wss.BleNusTransportOptions.ScanTimeout*"></a>
+  <h4 id="HFI_Wss_BleNusTransportOptions_ScanTimeout" data-uid="HFI.Wss.BleNusTransportOptions.ScanTimeout">ScanTimeout</h4>
+  <div class="markdown level1 summary"><p>Maximum scan duration used for configured-name lookup and auto-selection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TimeSpan? ScanTimeout { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TimeSpan</span>?</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_BleNusTransportOptions_ServiceUuid_" data-uid="HFI.Wss.BleNusTransportOptions.ServiceUuid*"></a>
+  <h4 id="HFI_Wss_BleNusTransportOptions_ServiceUuid" data-uid="HFI.Wss.BleNusTransportOptions.ServiceUuid">ServiceUuid</h4>
+  <div class="markdown level1 summary"><p>Required BLE service UUID. Auto-select only considers devices that expose this service.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Guid ServiceUuid { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Guid</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_BleNusTransportOptions_WriteCharacteristicUuid_" data-uid="HFI.Wss.BleNusTransportOptions.WriteCharacteristicUuid*"></a>
+  <h4 id="HFI_Wss_BleNusTransportOptions_WriteCharacteristicUuid" data-uid="HFI.Wss.BleNusTransportOptions.WriteCharacteristicUuid">WriteCharacteristicUuid</h4>
+  <div class="markdown level1 summary"><p>Required BLE write characteristic UUID. Auto-select rejects devices that do not expose it
+with write-with-response support.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Guid WriteCharacteristicUuid { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Guid</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

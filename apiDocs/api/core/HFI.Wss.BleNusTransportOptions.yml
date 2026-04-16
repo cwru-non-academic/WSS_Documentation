@@ -1,0 +1,398 @@
+### YamlMime:ManagedReference
+items:
+- uid: HFI.Wss.BleNusTransportOptions
+  commentId: T:HFI.Wss.BleNusTransportOptions
+  id: BleNusTransportOptions
+  parent: HFI.Wss
+  children:
+  - HFI.Wss.BleNusTransportOptions.AutoSelectDevice
+  - HFI.Wss.BleNusTransportOptions.DeviceId
+  - HFI.Wss.BleNusTransportOptions.DeviceName
+  - HFI.Wss.BleNusTransportOptions.NotifyCharacteristicUuid
+  - HFI.Wss.BleNusTransportOptions.ScanTimeout
+  - HFI.Wss.BleNusTransportOptions.ServiceUuid
+  - HFI.Wss.BleNusTransportOptions.WriteCharacteristicUuid
+  langs:
+  - csharp
+  - vb
+  name: BleNusTransportOptions
+  nameWithType: BleNusTransportOptions
+  fullName: HFI.Wss.BleNusTransportOptions
+  type: Class
+  assemblies:
+  - WSS.Transport.BLE
+  namespace: HFI.Wss
+  summary: Configuration for <xref href="HFI.Wss.BleNusTransport" data-throw-if-not-resolved="false"></xref>.
+  remarks: >-
+    When <xref href="HFI.Wss.BleNusTransportOptions.AutoSelectDevice" data-throw-if-not-resolved="false"></xref> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>, callers must provide either
+
+    <xref href="HFI.Wss.BleNusTransportOptions.DeviceId" data-throw-if-not-resolved="false"></xref> or <xref href="HFI.Wss.BleNusTransportOptions.DeviceName" data-throw-if-not-resolved="false"></xref>. Scan-based operations honor <xref href="HFI.Wss.BleNusTransportOptions.ScanTimeout" data-throw-if-not-resolved="false"></xref>
+
+    when a timeout is configured.
+  example: []
+  syntax:
+    content: public sealed class BleNusTransportOptions
+    content.vb: Public NotInheritable Class BleNusTransportOptions
+  inheritance:
+  - System.Object
+- uid: HFI.Wss.BleNusTransportOptions.DeviceId
+  commentId: P:HFI.Wss.BleNusTransportOptions.DeviceId
+  id: DeviceId
+  parent: HFI.Wss.BleNusTransportOptions
+  langs:
+  - csharp
+  - vb
+  name: DeviceId
+  nameWithType: BleNusTransportOptions.DeviceId
+  fullName: HFI.Wss.BleNusTransportOptions.DeviceId
+  type: Property
+  assemblies:
+  - WSS.Transport.BLE
+  namespace: HFI.Wss
+  summary: >-
+    Explicit BLE device identifier to connect to when <xref href="HFI.Wss.BleNusTransportOptions.AutoSelectDevice" data-throw-if-not-resolved="false"></xref> is disabled.
+
+    When provided, it takes precedence over <xref href="HFI.Wss.BleNusTransportOptions.DeviceName" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public string? DeviceId { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property DeviceId As String
+  overload: HFI.Wss.BleNusTransportOptions.DeviceId*
+- uid: HFI.Wss.BleNusTransportOptions.DeviceName
+  commentId: P:HFI.Wss.BleNusTransportOptions.DeviceName
+  id: DeviceName
+  parent: HFI.Wss.BleNusTransportOptions
+  langs:
+  - csharp
+  - vb
+  name: DeviceName
+  nameWithType: BleNusTransportOptions.DeviceName
+  fullName: HFI.Wss.BleNusTransportOptions.DeviceName
+  type: Property
+  assemblies:
+  - WSS.Transport.BLE
+  namespace: HFI.Wss
+  summary: >-
+    Exact BLE device name to scan for when <xref href="HFI.Wss.BleNusTransportOptions.AutoSelectDevice" data-throw-if-not-resolved="false"></xref> is disabled and
+
+    <xref href="HFI.Wss.BleNusTransportOptions.DeviceId" data-throw-if-not-resolved="false"></xref> is not provided.
+  example: []
+  syntax:
+    content: public string? DeviceName { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property DeviceName As String
+  overload: HFI.Wss.BleNusTransportOptions.DeviceName*
+- uid: HFI.Wss.BleNusTransportOptions.ServiceUuid
+  commentId: P:HFI.Wss.BleNusTransportOptions.ServiceUuid
+  id: ServiceUuid
+  parent: HFI.Wss.BleNusTransportOptions
+  langs:
+  - csharp
+  - vb
+  name: ServiceUuid
+  nameWithType: BleNusTransportOptions.ServiceUuid
+  fullName: HFI.Wss.BleNusTransportOptions.ServiceUuid
+  type: Property
+  assemblies:
+  - WSS.Transport.BLE
+  namespace: HFI.Wss
+  summary: Required BLE service UUID. Auto-select only considers devices that expose this service.
+  example: []
+  syntax:
+    content: public Guid ServiceUuid { get; init; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: Public Property ServiceUuid As Guid
+  overload: HFI.Wss.BleNusTransportOptions.ServiceUuid*
+- uid: HFI.Wss.BleNusTransportOptions.WriteCharacteristicUuid
+  commentId: P:HFI.Wss.BleNusTransportOptions.WriteCharacteristicUuid
+  id: WriteCharacteristicUuid
+  parent: HFI.Wss.BleNusTransportOptions
+  langs:
+  - csharp
+  - vb
+  name: WriteCharacteristicUuid
+  nameWithType: BleNusTransportOptions.WriteCharacteristicUuid
+  fullName: HFI.Wss.BleNusTransportOptions.WriteCharacteristicUuid
+  type: Property
+  assemblies:
+  - WSS.Transport.BLE
+  namespace: HFI.Wss
+  summary: >-
+    Required BLE write characteristic UUID. Auto-select rejects devices that do not expose it
+
+    with write-with-response support.
+  example: []
+  syntax:
+    content: public Guid WriteCharacteristicUuid { get; init; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: Public Property WriteCharacteristicUuid As Guid
+  overload: HFI.Wss.BleNusTransportOptions.WriteCharacteristicUuid*
+- uid: HFI.Wss.BleNusTransportOptions.NotifyCharacteristicUuid
+  commentId: P:HFI.Wss.BleNusTransportOptions.NotifyCharacteristicUuid
+  id: NotifyCharacteristicUuid
+  parent: HFI.Wss.BleNusTransportOptions
+  langs:
+  - csharp
+  - vb
+  name: NotifyCharacteristicUuid
+  nameWithType: BleNusTransportOptions.NotifyCharacteristicUuid
+  fullName: HFI.Wss.BleNusTransportOptions.NotifyCharacteristicUuid
+  type: Property
+  assemblies:
+  - WSS.Transport.BLE
+  namespace: HFI.Wss
+  summary: >-
+    Required BLE notification characteristic UUID. Auto-select rejects devices that do not expose it
+
+    with notify or indicate support.
+  example: []
+  syntax:
+    content: public Guid NotifyCharacteristicUuid { get; init; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: Public Property NotifyCharacteristicUuid As Guid
+  overload: HFI.Wss.BleNusTransportOptions.NotifyCharacteristicUuid*
+- uid: HFI.Wss.BleNusTransportOptions.ScanTimeout
+  commentId: P:HFI.Wss.BleNusTransportOptions.ScanTimeout
+  id: ScanTimeout
+  parent: HFI.Wss.BleNusTransportOptions
+  langs:
+  - csharp
+  - vb
+  name: ScanTimeout
+  nameWithType: BleNusTransportOptions.ScanTimeout
+  fullName: HFI.Wss.BleNusTransportOptions.ScanTimeout
+  type: Property
+  assemblies:
+  - WSS.Transport.BLE
+  namespace: HFI.Wss
+  summary: Maximum scan duration used for configured-name lookup and auto-selection.
+  example: []
+  syntax:
+    content: public TimeSpan? ScanTimeout { get; init; }
+    parameters: []
+    return:
+      type: System.Nullable{System.TimeSpan}
+    content.vb: Public Property ScanTimeout As TimeSpan?
+  overload: HFI.Wss.BleNusTransportOptions.ScanTimeout*
+- uid: HFI.Wss.BleNusTransportOptions.AutoSelectDevice
+  commentId: P:HFI.Wss.BleNusTransportOptions.AutoSelectDevice
+  id: AutoSelectDevice
+  parent: HFI.Wss.BleNusTransportOptions
+  langs:
+  - csharp
+  - vb
+  name: AutoSelectDevice
+  nameWithType: BleNusTransportOptions.AutoSelectDevice
+  fullName: HFI.Wss.BleNusTransportOptions.AutoSelectDevice
+  type: Property
+  assemblies:
+  - WSS.Transport.BLE
+  namespace: HFI.Wss
+  summary: >-
+    When true, scans for compatible BLE devices and auto-selects the best valid candidate.
+
+    Auto-selection only accepts devices that expose the configured service and both required
+
+    characteristics with the expected properties, then prefers stronger RSSI.
+
+    When false, the caller must provide <xref href="HFI.Wss.BleNusTransportOptions.DeviceId" data-throw-if-not-resolved="false"></xref> or <xref href="HFI.Wss.BleNusTransportOptions.DeviceName" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool AutoSelectDevice { get; init; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property AutoSelectDevice As Boolean
+  overload: HFI.Wss.BleNusTransportOptions.AutoSelectDevice*
+references:
+- uid: HFI.Wss.BleNusTransport
+  commentId: T:HFI.Wss.BleNusTransport
+  href: HFI.Wss.BleNusTransport.html
+  name: BleNusTransport
+  nameWithType: BleNusTransport
+  fullName: HFI.Wss.BleNusTransport
+- uid: HFI.Wss.BleNusTransportOptions.AutoSelectDevice
+  commentId: P:HFI.Wss.BleNusTransportOptions.AutoSelectDevice
+  href: HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_AutoSelectDevice
+  name: AutoSelectDevice
+  nameWithType: BleNusTransportOptions.AutoSelectDevice
+  fullName: HFI.Wss.BleNusTransportOptions.AutoSelectDevice
+- uid: HFI.Wss.BleNusTransportOptions.DeviceId
+  commentId: P:HFI.Wss.BleNusTransportOptions.DeviceId
+  href: HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_DeviceId
+  name: DeviceId
+  nameWithType: BleNusTransportOptions.DeviceId
+  fullName: HFI.Wss.BleNusTransportOptions.DeviceId
+- uid: HFI.Wss.BleNusTransportOptions.DeviceName
+  commentId: P:HFI.Wss.BleNusTransportOptions.DeviceName
+  href: HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_DeviceName
+  name: DeviceName
+  nameWithType: BleNusTransportOptions.DeviceName
+  fullName: HFI.Wss.BleNusTransportOptions.DeviceName
+- uid: HFI.Wss.BleNusTransportOptions.ScanTimeout
+  commentId: P:HFI.Wss.BleNusTransportOptions.ScanTimeout
+  href: HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_ScanTimeout
+  name: ScanTimeout
+  nameWithType: BleNusTransportOptions.ScanTimeout
+  fullName: HFI.Wss.BleNusTransportOptions.ScanTimeout
+- uid: HFI.Wss
+  commentId: N:HFI.Wss
+  href: HFI.html
+  name: HFI.Wss
+  nameWithType: HFI.Wss
+  fullName: HFI.Wss
+  spec.csharp:
+  - uid: HFI
+    name: HFI
+    href: HFI.html
+  - name: .
+  - uid: HFI.Wss
+    name: Wss
+    href: HFI.Wss.html
+  spec.vb:
+  - uid: HFI
+    name: HFI
+    href: HFI.html
+  - name: .
+  - uid: HFI.Wss
+    name: Wss
+    href: HFI.Wss.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: HFI.Wss.BleNusTransportOptions.DeviceId*
+  commentId: Overload:HFI.Wss.BleNusTransportOptions.DeviceId
+  href: HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_DeviceId
+  name: DeviceId
+  nameWithType: BleNusTransportOptions.DeviceId
+  fullName: HFI.Wss.BleNusTransportOptions.DeviceId
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: HFI.Wss.BleNusTransportOptions.DeviceName*
+  commentId: Overload:HFI.Wss.BleNusTransportOptions.DeviceName
+  href: HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_DeviceName
+  name: DeviceName
+  nameWithType: BleNusTransportOptions.DeviceName
+  fullName: HFI.Wss.BleNusTransportOptions.DeviceName
+- uid: HFI.Wss.BleNusTransportOptions.ServiceUuid*
+  commentId: Overload:HFI.Wss.BleNusTransportOptions.ServiceUuid
+  href: HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_ServiceUuid
+  name: ServiceUuid
+  nameWithType: BleNusTransportOptions.ServiceUuid
+  fullName: HFI.Wss.BleNusTransportOptions.ServiceUuid
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: HFI.Wss.BleNusTransportOptions.WriteCharacteristicUuid*
+  commentId: Overload:HFI.Wss.BleNusTransportOptions.WriteCharacteristicUuid
+  href: HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_WriteCharacteristicUuid
+  name: WriteCharacteristicUuid
+  nameWithType: BleNusTransportOptions.WriteCharacteristicUuid
+  fullName: HFI.Wss.BleNusTransportOptions.WriteCharacteristicUuid
+- uid: HFI.Wss.BleNusTransportOptions.NotifyCharacteristicUuid*
+  commentId: Overload:HFI.Wss.BleNusTransportOptions.NotifyCharacteristicUuid
+  href: HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_NotifyCharacteristicUuid
+  name: NotifyCharacteristicUuid
+  nameWithType: BleNusTransportOptions.NotifyCharacteristicUuid
+  fullName: HFI.Wss.BleNusTransportOptions.NotifyCharacteristicUuid
+- uid: HFI.Wss.BleNusTransportOptions.ScanTimeout*
+  commentId: Overload:HFI.Wss.BleNusTransportOptions.ScanTimeout
+  href: HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_ScanTimeout
+  name: ScanTimeout
+  nameWithType: BleNusTransportOptions.ScanTimeout
+  fullName: HFI.Wss.BleNusTransportOptions.ScanTimeout
+- uid: System.Nullable{System.TimeSpan}
+  commentId: T:System.Nullable{System.TimeSpan}
+  parent: System
+  definition: System.Nullable`1
+  name: TimeSpan?
+  nameWithType: TimeSpan?
+  fullName: System.TimeSpan?
+  spec.csharp:
+  - uid: System.TimeSpan
+    name: TimeSpan
+    isExternal: true
+  - name: '?'
+  spec.vb:
+  - uid: System.TimeSpan
+    name: TimeSpan
+    isExternal: true
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: HFI.Wss.BleNusTransportOptions.AutoSelectDevice*
+  commentId: Overload:HFI.Wss.BleNusTransportOptions.AutoSelectDevice
+  href: HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_AutoSelectDevice
+  name: AutoSelectDevice
+  nameWithType: BleNusTransportOptions.AutoSelectDevice
+  fullName: HFI.Wss.BleNusTransportOptions.AutoSelectDevice
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

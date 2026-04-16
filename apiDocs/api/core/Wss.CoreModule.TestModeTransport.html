@@ -106,13 +106,13 @@ Default auto-responder validates checksum, flips sender/target, and echoes or re
 
 
   <a id="Wss_CoreModule_TestModeTransport__ctor_" data-uid="Wss.CoreModule.TestModeTransport.#ctor*"></a>
-  <h4 id="Wss_CoreModule_TestModeTransport__ctor_System_Nullable_System_TimeSpan__System_Int32_System_Int32_System_Double_System_Random_System_Byte___System_Func_System_Byte___System_Threading_Tasks_Task_System_Byte_____" data-uid="Wss.CoreModule.TestModeTransport.#ctor(System.Nullable{System.TimeSpan},System.Int32,System.Int32,System.Double,System.Random,System.Byte[],System.Func{System.Byte[],System.Threading.Tasks.Task{System.Byte[]}})">TestModeTransport(TimeSpan?, int, int, double, Random, byte[], Func&lt;byte[], Task&lt;byte[]&gt;&gt;)</h4>
-  <div class="markdown level1 summary"><p>Initializes a new <a class="xref" href="Wss.CoreModule.TestModeTransport.html">TestModeTransport</a> with optional configuration.</p>
+  <h4 id="Wss_CoreModule_TestModeTransport__ctor_Wss_CoreModule_TestModeTransportOptions_" data-uid="Wss.CoreModule.TestModeTransport.#ctor(Wss.CoreModule.TestModeTransportOptions)">TestModeTransport(TestModeTransportOptions)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new <a class="xref" href="Wss.CoreModule.TestModeTransport.html">TestModeTransport</a> with a single options object.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TestModeTransport(TimeSpan? baseLatency = null, int jitterMs = 0, int maxInboundChunkSize = 0, double inboundDropProbability = 0, Random rng = null, byte[] fallbackPayload = null, Func&lt;byte[], Task&lt;byte[]&gt;&gt; autoResponderAsync = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public TestModeTransport(TestModeTransportOptions options)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-condensed">
@@ -125,45 +125,29 @@ Default auto-responder validates checksum, flips sender/target, and echoes or re
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">TimeSpan</span>?</td>
-        <td><span class="parametername">baseLatency</span></td>
-        <td><p>Artificial latency applied to inbound delivery (default 0).</p>
+        <td><a class="xref" href="Wss.CoreModule.TestModeTransportOptions.html">TestModeTransportOptions</a></td>
+        <td><span class="parametername">options</span></td>
+        <td><p>In-memory transport behavior settings.</p>
 </td>
       </tr>
+    </tbody>
+  </table>
+  <h5 id="Wss_CoreModule_TestModeTransport__ctor_Wss_CoreModule_TestModeTransportOptions__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Null <a class="xref" href="Wss.CoreModule.TestModeTransportOptions.html#Wss_CoreModule_TestModeTransportOptions_Rng">Rng</a> and <a class="xref" href="Wss.CoreModule.TestModeTransportOptions.html#Wss_CoreModule_TestModeTransportOptions_FallbackPayload">FallbackPayload</a>
+values are replaced with safe defaults.</p>
+</div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
       <tr>
-        <td><span class="xref">int</span></td>
-        <td><span class="parametername">jitterMs</span></td>
-        <td><p>Random jitter in milliseconds (default 0).</p>
-</td>
+        <th>Type</th>
+        <th>Condition</th>
       </tr>
+    </thead>
+    <tbody>
       <tr>
-        <td><span class="xref">int</span></td>
-        <td><span class="parametername">maxInboundChunkSize</span></td>
-        <td><p>If &gt;0, splits inbound payloads (default 0).</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">double</span></td>
-        <td><span class="parametername">inboundDropProbability</span></td>
-        <td><p>Probability [0..1] of dropping an inbound chunk (default 0.0).</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">Random</span></td>
-        <td><span class="parametername">rng</span></td>
-        <td><p>Random generator to use (default new Random(1234)).</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">byte</span>[]</td>
-        <td><span class="parametername">fallbackPayload</span></td>
-        <td><p>Payload used when checksum fails (default {0xE1,0xE2,0xE3}).</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">Func</span>&lt;<span class="xref">byte</span>[], <span class="xref">Task</span>&lt;<span class="xref">byte</span>[]&gt;&gt;</td>
-        <td><span class="parametername">autoResponderAsync</span></td>
-        <td><p>Optional override auto-responder (default null = built-in).</p>
+        <td><span class="xref">ArgumentNullException</span></td>
+        <td><p>Thrown when <code class="paramref">options</code> is null.</p>
 </td>
       </tr>
     </tbody>
@@ -521,7 +505,7 @@ Default auto-responder validates checksum, flips sender/target, and echoes or re
 
   <a id="Wss_CoreModule_TestModeTransport_Dispose_" data-uid="Wss.CoreModule.TestModeTransport.Dispose*"></a>
   <h4 id="Wss_CoreModule_TestModeTransport_Dispose" data-uid="Wss.CoreModule.TestModeTransport.Dispose">Dispose()</h4>
-  <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</p>
+  <div class="markdown level1 summary"><p>Disposes the transport, cancels background operations, and releases resources.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>

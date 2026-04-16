@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width">
       <meta name="title" content="Class CoreConfig | WSS Documentation Hub ">
     
-    <meta name="description" content="Strongly-typed core configuration model persisted in JSON. Exposes the maximum number of devices and the firmware version string.">
+    <meta name="description" content="Represents the core configuration persisted to stimConfig.json. Includes device-count, firmware, target-address, and amplitude-curve settings.">
       <link rel="shortcut icon" href="../../favicon.ico">
       <link rel="stylesheet" href="../../styles/docfx.vendor.min.css">
       <link rel="stylesheet" href="../../styles/docfx.css">
@@ -81,8 +81,8 @@
 
 
   <h1 id="Wss_CoreModule_CoreConfig" data-uid="Wss.CoreModule.CoreConfig" class="text-break">Class CoreConfig</h1>
-  <div class="markdown level0 summary"><p>Strongly-typed core configuration model persisted in JSON.
-Exposes the maximum number of devices and the firmware version string.</p>
+  <div class="markdown level0 summary"><p>Represents the core configuration persisted to <code>stimConfig.json</code>.
+Includes device-count, firmware, target-address, and amplitude-curve settings.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -121,6 +121,33 @@ Defaults to three entries matching the 72mA built-in curve.</p>
     <tbody>
       <tr>
         <td><a class="xref" href="Wss.CoreModule.AmpCurveParams.html">AmpCurveParams</a>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_CoreConfig_broadcastTarget_" data-uid="Wss.CoreModule.CoreConfig.broadcastTarget*"></a>
+  <h4 id="Wss_CoreModule_CoreConfig_broadcastTarget" data-uid="Wss.CoreModule.CoreConfig.broadcastTarget">broadcastTarget</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the on-wire broadcast receiver address used when sending to all devices.
+The value is persisted as a hexadecimal string such as <code>0x8F</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string broadcastTarget { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -200,6 +227,34 @@ When false, use built-in defaults (72mA) or device-reported mode (10mA) mapping.
     <tbody>
       <tr>
         <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_CoreConfig_wssTargets_" data-uid="Wss.CoreModule.CoreConfig.wssTargets*"></a>
+  <h4 id="Wss_CoreModule_CoreConfig_wssTargets" data-uid="Wss.CoreModule.CoreConfig.wssTargets">wssTargets</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the on-wire receiver addresses for logical <code>Wss1</code>, <code>Wss2</code>, and <code>Wss3</code>.
+Index 0 maps to <code>Wss1</code>, index 1 to <code>Wss2</code>, and index 2 to <code>Wss3</code>.
+Each entry is persisted as a hexadecimal string such as <code>0x81</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string[] wssTargets { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span>[]</td>
         <td></td>
       </tr>
     </tbody>

@@ -11,6 +11,58 @@
       }
     },
     {
+      "type": "Conceptual",
+      "source_relative_path": "advanced.md",
+      "output": {
+        ".html": {
+          "relative_path": "advanced.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/core/HFI.Wss.BleNusTransport.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/core/HFI.Wss.BleNusTransport.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "HFI.Wss.BleNusTransport",
+      "Summary": "<p sourcefile=\"api/core/HFI.Wss.BleNusTransport.yml\" sourcestartlinenumber=\"1\">BLE transport backed by the Nordic UART Service (NUS).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/core/HFI.Wss.BleNusTransportOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/core/HFI.Wss.BleNusTransportOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "HFI.Wss.BleNusTransportOptions",
+      "Summary": "<p sourcefile=\"api/core/HFI.Wss.BleNusTransportOptions.yml\" sourcestartlinenumber=\"1\">Configuration for <xref href=\"HFI.Wss.BleNusTransport\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/core/HFI.Wss.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/core/HFI.Wss.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "HFI.Wss",
+      "Summary": null
+    },
+    {
       "type": "ManagedReference",
       "source_relative_path": "api/core/Wss.CalibrationModule.IStimParamsCore.yml",
       "output": {
@@ -96,6 +148,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/core/Wss.CoreModule.ContactConfigDefinition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/core/Wss.CoreModule.ContactConfigDefinition.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Wss.CoreModule.ContactConfigDefinition",
+      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.ContactConfigDefinition.yml\" sourcestartlinenumber=\"1\">Describes a contact configuration to create on the WSS device.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/core/Wss.CoreModule.CoreConfig.yml",
       "output": {
         ".html": {
@@ -106,7 +172,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Wss.CoreModule.CoreConfig",
-      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.CoreConfig.yml\" sourcestartlinenumber=\"1\">Strongly-typed core configuration model persisted in JSON.\nExposes the maximum number of devices and the firmware version string.</p>\n"
+      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.CoreConfig.yml\" sourcestartlinenumber=\"1\">Represents the core configuration persisted to <code>stimConfig.json</code>.\nIncludes device-count, firmware, target-address, and amplitude-curve settings.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -124,6 +190,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/core/Wss.CoreModule.CreateEventRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/core/Wss.CoreModule.CreateEventRequest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Wss.CoreModule.CreateEventRequest",
+      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.CreateEventRequest.yml\" sourcestartlinenumber=\"1\">Describes an event to create on the WSS device.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/core/Wss.CoreModule.DictConfigBase.yml",
       "output": {
         ".html": {
@@ -135,6 +215,20 @@
       "IsMRef": true,
       "Title": "Wss.CoreModule.DictConfigBase",
       "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.DictConfigBase.yml\" sourcestartlinenumber=\"1\">Base class for JSON-backed configuration objects that expose dotted-key access.\nWraps a <xref href=\"Newtonsoft.Json.Linq.JObject\" data-throw-if-not-resolved=\"false\"></xref> and provides thread-safe getters/setters and persistence.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/core/Wss.CoreModule.EventPulseWidths.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/core/Wss.CoreModule.EventPulseWidths.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Wss.CoreModule.EventPulseWidths",
+      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.EventPulseWidths.yml\" sourcestartlinenumber=\"1\">Holds pulse-width values for an event definition.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -306,6 +400,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/core/Wss.CoreModule.ScheduleDefinition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/core/Wss.CoreModule.ScheduleDefinition.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Wss.CoreModule.ScheduleDefinition",
+      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.ScheduleDefinition.yml\" sourcestartlinenumber=\"1\">Describes a schedule to create on the WSS device.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/core/Wss.CoreModule.SerialPortTransport.yml",
       "output": {
         ".html": {
@@ -317,6 +425,20 @@
       "IsMRef": true,
       "Title": "Wss.CoreModule.SerialPortTransport",
       "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.SerialPortTransport.yml\" sourcestartlinenumber=\"1\">Serial-port implementation of <xref href=\"Wss.CoreModule.ITransport\" data-throw-if-not-resolved=\"false\"></xref> for WSS communications.\nWraps <xref href=\"System.IO.Ports.SerialPort\" data-throw-if-not-resolved=\"false\"></xref> and exposes an event-driven receive API that works well in Unity/.NET Standard 2.0.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/core/Wss.CoreModule.SerialPortTransportOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/core/Wss.CoreModule.SerialPortTransportOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Wss.CoreModule.SerialPortTransportOptions",
+      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.SerialPortTransportOptions.yml\" sourcestartlinenumber=\"1\">Holds connection settings for <xref href=\"Wss.CoreModule.SerialPortTransport\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -334,6 +456,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/core/Wss.CoreModule.StreamChangeRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/core/Wss.CoreModule.StreamChangeRequest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Wss.CoreModule.StreamChangeRequest",
+      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.StreamChangeRequest.yml\" sourcestartlinenumber=\"1\">Describes a streaming update for PA, PW, and IPI groups.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/core/Wss.CoreModule.TestModeTransport.yml",
       "output": {
         ".html": {
@@ -345,6 +481,20 @@
       "IsMRef": true,
       "Title": "Wss.CoreModule.TestModeTransport",
       "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.TestModeTransport.yml\" sourcestartlinenumber=\"1\">In-memory transport for debugging and unit tests. No real I/O.\nFeatures: artificial latency, jitter, inbound chunking, and drop simulation.\nDefault auto-responder validates checksum, flips sender/target, and echoes or replaces payload.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/core/Wss.CoreModule.TestModeTransportOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/core/Wss.CoreModule.TestModeTransportOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Wss.CoreModule.TestModeTransportOptions",
+      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.TestModeTransportOptions.yml\" sourcestartlinenumber=\"1\">Holds behavior settings for <xref href=\"Wss.CoreModule.TestModeTransport\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -446,6 +596,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/core/Wss.CoreModule.WssClientOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/core/Wss.CoreModule.WssClientOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Wss.CoreModule.WssClientOptions",
+      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.WssClientOptions.yml\" sourcestartlinenumber=\"1\">Holds behavioral settings for <xref href=\"Wss.CoreModule.WssClient\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/core/Wss.CoreModule.WssFrameCodec.yml",
       "output": {
         ".html": {
@@ -471,6 +635,20 @@
       "IsMRef": true,
       "Title": "Wss.CoreModule.WssStimulationCore",
       "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.WssStimulationCore.yml\" sourcestartlinenumber=\"1\">Stimulation core that manages connection, setup (via a queued step runner), and a background\nstreaming loop. Public mutator methods enqueue device edits and return immediately.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/core/Wss.CoreModule.WssStimulationCoreOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/core/Wss.CoreModule.WssStimulationCoreOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Wss.CoreModule.WssStimulationCoreOptions",
+      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.WssStimulationCoreOptions.yml\" sourcestartlinenumber=\"1\">Holds startup and default stimulation settings for <xref href=\"Wss.CoreModule.WssStimulationCore\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -613,6 +791,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/csharp/HFI.Wss.StimulationTransportKind.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/csharp/HFI.Wss.StimulationTransportKind.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "HFI.Wss.StimulationTransportKind",
+      "Summary": "<p sourcefile=\"api/csharp/HFI.Wss.StimulationTransportKind.yml\" sourcestartlinenumber=\"1\">Configuration record for <xref href=\"HFI.Wss.StimulationController\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/csharp/HFI.Wss.yml",
       "output": {
         ".html": {
@@ -639,94 +831,41 @@
       "version": ""
     },
     {
-      "type": "ManagedReference",
-      "source_relative_path": "api/unity/WSS.Unity.Stimulation.yml",
+      "type": "Conceptual",
+      "source_relative_path": "classes/WssStimulationCore.md",
       "output": {
         ".html": {
-          "relative_path": "api/unity/WSS.Unity.Stimulation.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Stimulation",
-      "Summary": "<p sourcefile=\"api/unity/WSS.Unity.Stimulation.yml\" sourcestartlinenumber=\"1\">Provides a Unity-facing API for WSS stimulation using the full params + model stack.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/unity/WSS.Unity.StimulationParams.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/unity/WSS.Unity.StimulationParams.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "StimulationParams",
-      "Summary": "<p sourcefile=\"api/unity/WSS.Unity.StimulationParams.yml\" sourcestartlinenumber=\"1\">Provides a Unity-facing API for WSS stimulation using the core + params layer.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/unity/WSS.Unity.Stimulationbasic.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/unity/WSS.Unity.Stimulationbasic.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Stimulationbasic",
-      "Summary": "<p sourcefile=\"api/unity/WSS.Unity.Stimulationbasic.yml\" sourcestartlinenumber=\"1\">Provides a Unity-facing API for the basic WSS stimulation core.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/unity/WSS.Unity.portScanner.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/unity/WSS.Unity.portScanner.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "portScanner",
-      "Summary": "<p sourcefile=\"api/unity/WSS.Unity.portScanner.yml\" sourcestartlinenumber=\"1\">Simple Unity helper that scans available serial ports and allows selecting\none from a UI dropdown to force the COM port used by the stimulation script.\nAttach this to a separate GameObject and wire the <code>selectPort()</code>\nmethod to a UI event (e.g., button click) to apply the chosen port.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/unity/WSS.Unity.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/unity/WSS.Unity.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "",
-      "Summary": null
-    },
-    {
-      "type": "Toc",
-      "source_relative_path": "api/unity/toc.yml",
-      "output": {
-        ".json": {
-          "relative_path": "api/unity/toc.json"
-        },
-        ".html": {
-          "relative_path": "api/unity/toc.html"
+          "relative_path": "classes/WssStimulationCore.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "classes/WssStimulationCore.md",
+      "source_relative_path": "concepts.md",
       "output": {
         ".html": {
-          "relative_path": "classes/WssStimulationCore.html"
+          "relative_path": "concepts.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "conceptual/building-software-api-docs.md",
+      "output": {
+        ".html": {
+          "relative_path": "conceptual/building-software-api-docs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "conceptual/config-files-reference.md",
+      "output": {
+        ".html": {
+          "relative_path": "conceptual/config-files-reference.html"
         }
       },
       "version": ""
@@ -743,6 +882,26 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "conceptual/firmware-compatibility-matrix.md",
+      "output": {
+        ".html": {
+          "relative_path": "conceptual/firmware-compatibility-matrix.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "conceptual/integration-library-runtime-selection.md",
+      "output": {
+        ".html": {
+          "relative_path": "conceptual/integration-library-runtime-selection.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "conceptual/layering-guide.md",
       "output": {
         ".html": {
@@ -752,301 +911,91 @@
       "version": ""
     },
     {
-      "type": "Resource",
-      "source_relative_path": "external/python-integration/_modules/index.html",
+      "type": "Conceptual",
+      "source_relative_path": "conceptual/repository-and-kit-links.md",
       "output": {
-        "resource": {
-          "relative_path": "external/python-integration/_modules/index.html"
+        ".html": {
+          "relative_path": "conceptual/repository-and-kit-links.html"
         }
       },
       "version": ""
     },
     {
-      "type": "Resource",
-      "source_relative_path": "external/python-integration/_modules/wss_py_wrapper/config.html",
+      "type": "Conceptual",
+      "source_relative_path": "conceptual/setup-order-and-modification.md",
       "output": {
-        "resource": {
-          "relative_path": "external/python-integration/_modules/wss_py_wrapper/config.html"
+        ".html": {
+          "relative_path": "conceptual/setup-order-and-modification.html"
         }
       },
       "version": ""
     },
     {
-      "type": "Resource",
-      "source_relative_path": "external/python-integration/_modules/wss_py_wrapper/log_sink.html",
+      "type": "Conceptual",
+      "source_relative_path": "conceptual/simple-serial-communication.md",
       "output": {
-        "resource": {
-          "relative_path": "external/python-integration/_modules/wss_py_wrapper/log_sink.html"
+        ".html": {
+          "relative_path": "conceptual/simple-serial-communication.html"
         }
       },
       "version": ""
     },
     {
-      "type": "Resource",
-      "source_relative_path": "external/python-integration/_modules/wss_py_wrapper/logger.html",
+      "type": "Conceptual",
+      "source_relative_path": "conceptual/start-here-adding-layers-or-core-functionality.md",
       "output": {
-        "resource": {
-          "relative_path": "external/python-integration/_modules/wss_py_wrapper/logger.html"
+        ".html": {
+          "relative_path": "conceptual/start-here-adding-layers-or-core-functionality.html"
         }
       },
       "version": ""
     },
     {
-      "type": "Resource",
-      "source_relative_path": "external/python-integration/_modules/wss_py_wrapper/stimulation_controller.html",
+      "type": "Conceptual",
+      "source_relative_path": "conceptual/start-here-building-a-new-integration-library.md",
       "output": {
-        "resource": {
-          "relative_path": "external/python-integration/_modules/wss_py_wrapper/stimulation_controller.html"
+        ".html": {
+          "relative_path": "conceptual/start-here-building-a-new-integration-library.html"
         }
       },
       "version": ""
     },
     {
-      "type": "Resource",
-      "source_relative_path": "external/python-integration/_modules/wss_py_wrapper/wss_loader.html",
+      "type": "Conceptual",
+      "source_relative_path": "conceptual/start-here-developing-an-application.md",
       "output": {
-        "resource": {
-          "relative_path": "external/python-integration/_modules/wss_py_wrapper/wss_loader.html"
+        ".html": {
+          "relative_path": "conceptual/start-here-developing-an-application.html"
         }
       },
       "version": ""
     },
     {
-      "type": "Resource",
-      "source_relative_path": "external/python-integration/_sources/api.rst.txt",
+      "type": "Conceptual",
+      "source_relative_path": "conceptual/start-here-minor-core-modifications.md",
       "output": {
-        "resource": {
-          "relative_path": "external/python-integration/_sources/api.rst.txt"
+        ".html": {
+          "relative_path": "conceptual/start-here-minor-core-modifications.html"
         }
       },
       "version": ""
     },
     {
-      "type": "Resource",
-      "source_relative_path": "external/python-integration/_sources/index.rst.txt",
+      "type": "Conceptual",
+      "source_relative_path": "conceptual/start-here-using-an-application.md",
       "output": {
-        "resource": {
-          "relative_path": "external/python-integration/_sources/index.rst.txt"
+        ".html": {
+          "relative_path": "conceptual/start-here-using-an-application.html"
         }
       },
       "version": ""
     },
     {
-      "type": "Resource",
-      "source_relative_path": "external/python-integration/_sources/usage.rst.txt",
+      "type": "Conceptual",
+      "source_relative_path": "conceptual/wss-commands-reference.md",
       "output": {
-        "resource": {
-          "relative_path": "external/python-integration/_sources/usage.rst.txt"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "external/python-integration/_static/alabaster.css",
-      "output": {
-        "resource": {
-          "relative_path": "external/python-integration/_static/alabaster.css"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "external/python-integration/_static/basic.css",
-      "output": {
-        "resource": {
-          "relative_path": "external/python-integration/_static/basic.css"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "external/python-integration/_static/custom.css",
-      "output": {
-        "resource": {
-          "relative_path": "external/python-integration/_static/custom.css"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "external/python-integration/_static/doctools.js",
-      "output": {
-        "resource": {
-          "relative_path": "external/python-integration/_static/doctools.js"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "external/python-integration/_static/documentation_options.js",
-      "output": {
-        "resource": {
-          "relative_path": "external/python-integration/_static/documentation_options.js"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "external/python-integration/_static/file.png",
-      "output": {
-        "resource": {
-          "relative_path": "external/python-integration/_static/file.png"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "external/python-integration/_static/github-banner.svg",
-      "output": {
-        "resource": {
-          "relative_path": "external/python-integration/_static/github-banner.svg"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "external/python-integration/_static/language_data.js",
-      "output": {
-        "resource": {
-          "relative_path": "external/python-integration/_static/language_data.js"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "external/python-integration/_static/minus.png",
-      "output": {
-        "resource": {
-          "relative_path": "external/python-integration/_static/minus.png"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "external/python-integration/_static/plus.png",
-      "output": {
-        "resource": {
-          "relative_path": "external/python-integration/_static/plus.png"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "external/python-integration/_static/pygments.css",
-      "output": {
-        "resource": {
-          "relative_path": "external/python-integration/_static/pygments.css"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "external/python-integration/_static/searchtools.js",
-      "output": {
-        "resource": {
-          "relative_path": "external/python-integration/_static/searchtools.js"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "external/python-integration/_static/sphinx_highlight.js",
-      "output": {
-        "resource": {
-          "relative_path": "external/python-integration/_static/sphinx_highlight.js"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "external/python-integration/api.html",
-      "output": {
-        "resource": {
-          "relative_path": "external/python-integration/api.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "external/python-integration/genindex.html",
-      "output": {
-        "resource": {
-          "relative_path": "external/python-integration/genindex.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "external/python-integration/index.html",
-      "output": {
-        "resource": {
-          "relative_path": "external/python-integration/index.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "external/python-integration/objects.inv",
-      "output": {
-        "resource": {
-          "relative_path": "external/python-integration/objects.inv"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "external/python-integration/py-modindex.html",
-      "output": {
-        "resource": {
-          "relative_path": "external/python-integration/py-modindex.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "external/python-integration/search.html",
-      "output": {
-        "resource": {
-          "relative_path": "external/python-integration/search.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "external/python-integration/searchindex.js",
-      "output": {
-        "resource": {
-          "relative_path": "external/python-integration/searchindex.js"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "external/python-integration/usage.html",
-      "output": {
-        "resource": {
-          "relative_path": "external/python-integration/usage.html"
+        ".html": {
+          "relative_path": "conceptual/wss-commands-reference.html"
         }
       },
       "version": ""
@@ -1063,10 +1012,30 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "maintainers.md",
+      "output": {
+        ".html": {
+          "relative_path": "maintainers.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "shims/UnitySubmodule/README.md",
       "output": {
         ".html": {
           "relative_path": "shims/UnitySubmodule/README.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "start-here.md",
+      "output": {
+        ".html": {
+          "relative_path": "start-here.html"
         }
       },
       "version": ""

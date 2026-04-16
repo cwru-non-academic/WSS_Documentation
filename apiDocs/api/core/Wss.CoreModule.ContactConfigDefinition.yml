@@ -1,0 +1,282 @@
+### YamlMime:ManagedReference
+items:
+- uid: Wss.CoreModule.ContactConfigDefinition
+  commentId: T:Wss.CoreModule.ContactConfigDefinition
+  id: ContactConfigDefinition
+  parent: Wss.CoreModule
+  children:
+  - Wss.CoreModule.ContactConfigDefinition.ContactId
+  - Wss.CoreModule.ContactConfigDefinition.Leds
+  - Wss.CoreModule.ContactConfigDefinition.RechargeSetup
+  - Wss.CoreModule.ContactConfigDefinition.StimSetup
+  langs:
+  - csharp
+  - vb
+  name: ContactConfigDefinition
+  nameWithType: ContactConfigDefinition
+  fullName: Wss.CoreModule.ContactConfigDefinition
+  type: Class
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Describes a contact configuration to create on the WSS device.
+  remarks: >-
+    <p>
+
+    The setup arrays use caller-facing ordering where index 0 is closest to the switch and index 3 is farthest.
+
+    Each element must be 0 (unused), 1 (source), or 2 (sink).
+
+    </p>
+
+    <p>
+
+    LED configuration is optional and may be ignored by firmware that does not support LED settings.
+
+    </p>
+  example: []
+  syntax:
+    content: public sealed class ContactConfigDefinition
+    content.vb: Public NotInheritable Class ContactConfigDefinition
+  inheritance:
+  - System.Object
+- uid: Wss.CoreModule.ContactConfigDefinition.ContactId
+  commentId: P:Wss.CoreModule.ContactConfigDefinition.ContactId
+  id: ContactId
+  parent: Wss.CoreModule.ContactConfigDefinition
+  langs:
+  - csharp
+  - vb
+  name: ContactId
+  nameWithType: ContactConfigDefinition.ContactId
+  fullName: Wss.CoreModule.ContactConfigDefinition.ContactId
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Gets or sets the contact configuration ID (0..255).
+  example: []
+  syntax:
+    content: public int ContactId { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property ContactId As Integer
+  overload: Wss.CoreModule.ContactConfigDefinition.ContactId*
+- uid: Wss.CoreModule.ContactConfigDefinition.StimSetup
+  commentId: P:Wss.CoreModule.ContactConfigDefinition.StimSetup
+  id: StimSetup
+  parent: Wss.CoreModule.ContactConfigDefinition
+  langs:
+  - csharp
+  - vb
+  name: StimSetup
+  nameWithType: ContactConfigDefinition.StimSetup
+  fullName: Wss.CoreModule.ContactConfigDefinition.StimSetup
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Gets or sets the stimulation-phase contact roles.
+
+    Provide exactly 4 values where index 0 is closest to the switch.
+  example: []
+  syntax:
+    content: public int[] StimSetup { get; set; }
+    parameters: []
+    return:
+      type: System.Int32[]
+    content.vb: Public Property StimSetup As Integer()
+  overload: Wss.CoreModule.ContactConfigDefinition.StimSetup*
+- uid: Wss.CoreModule.ContactConfigDefinition.RechargeSetup
+  commentId: P:Wss.CoreModule.ContactConfigDefinition.RechargeSetup
+  id: RechargeSetup
+  parent: Wss.CoreModule.ContactConfigDefinition
+  langs:
+  - csharp
+  - vb
+  name: RechargeSetup
+  nameWithType: ContactConfigDefinition.RechargeSetup
+  fullName: Wss.CoreModule.ContactConfigDefinition.RechargeSetup
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Gets or sets the recharge-phase contact roles.
+
+    Provide exactly 4 values where index 0 is closest to the switch.
+  example: []
+  syntax:
+    content: public int[] RechargeSetup { get; set; }
+    parameters: []
+    return:
+      type: System.Int32[]
+    content.vb: Public Property RechargeSetup As Integer()
+  overload: Wss.CoreModule.ContactConfigDefinition.RechargeSetup*
+- uid: Wss.CoreModule.ContactConfigDefinition.Leds
+  commentId: P:Wss.CoreModule.ContactConfigDefinition.Leds
+  id: Leds
+  parent: Wss.CoreModule.ContactConfigDefinition
+  langs:
+  - csharp
+  - vb
+  name: Leds
+  nameWithType: ContactConfigDefinition.Leds
+  fullName: Wss.CoreModule.ContactConfigDefinition.Leds
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Gets or sets the optional LED bitmask.
+
+    Leave null to omit LED configuration from the command payload.
+  example: []
+  syntax:
+    content: public int? Leds { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: Public Property Leds As Integer?
+  overload: Wss.CoreModule.ContactConfigDefinition.Leds*
+references:
+- uid: Wss.CoreModule
+  commentId: N:Wss.CoreModule
+  href: Wss.html
+  name: Wss.CoreModule
+  nameWithType: Wss.CoreModule
+  fullName: Wss.CoreModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Wss.CoreModule.ContactConfigDefinition.ContactId*
+  commentId: Overload:Wss.CoreModule.ContactConfigDefinition.ContactId
+  href: Wss.CoreModule.ContactConfigDefinition.html#Wss_CoreModule_ContactConfigDefinition_ContactId
+  name: ContactId
+  nameWithType: ContactConfigDefinition.ContactId
+  fullName: Wss.CoreModule.ContactConfigDefinition.ContactId
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Wss.CoreModule.ContactConfigDefinition.StimSetup*
+  commentId: Overload:Wss.CoreModule.ContactConfigDefinition.StimSetup
+  href: Wss.CoreModule.ContactConfigDefinition.html#Wss_CoreModule_ContactConfigDefinition_StimSetup
+  name: StimSetup
+  nameWithType: ContactConfigDefinition.StimSetup
+  fullName: Wss.CoreModule.ContactConfigDefinition.StimSetup
+- uid: System.Int32[]
+  isExternal: true
+  name: int[]
+  nameWithType: int[]
+  fullName: int[]
+  nameWithType.vb: Integer()
+  fullName.vb: Integer()
+  name.vb: Integer()
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Wss.CoreModule.ContactConfigDefinition.RechargeSetup*
+  commentId: Overload:Wss.CoreModule.ContactConfigDefinition.RechargeSetup
+  href: Wss.CoreModule.ContactConfigDefinition.html#Wss_CoreModule_ContactConfigDefinition_RechargeSetup
+  name: RechargeSetup
+  nameWithType: ContactConfigDefinition.RechargeSetup
+  fullName: Wss.CoreModule.ContactConfigDefinition.RechargeSetup
+- uid: Wss.CoreModule.ContactConfigDefinition.Leds*
+  commentId: Overload:Wss.CoreModule.ContactConfigDefinition.Leds
+  href: Wss.CoreModule.ContactConfigDefinition.html#Wss_CoreModule_ContactConfigDefinition_Leds
+  name: Leds
+  nameWithType: ContactConfigDefinition.Leds
+  fullName: Wss.CoreModule.ContactConfigDefinition.Leds
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  name: int?
+  nameWithType: int?
+  fullName: int?
+  nameWithType.vb: Integer?
+  fullName.vb: Integer?
+  name.vb: Integer?
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '?'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class CreateEventRequest | WSS Documentation Hub </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class CreateEventRequest | WSS Documentation Hub ">
+    
+    <meta name="description" content="Describes an event to create on the WSS device.">
+      <link rel="shortcut icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../styles/docfx.css">
+      <link rel="stylesheet" href="../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Wss.CoreModule.CreateEventRequest">
+
+
+
+  <h1 id="Wss_CoreModule_CreateEventRequest" data-uid="Wss.CoreModule.CreateEventRequest" class="text-break">Class CreateEventRequest</h1>
+  <div class="markdown level0 summary"><p>Describes an event to create on the WSS device.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">object</span></div>
+    <div class="level1"><span class="xref">CreateEventRequest</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Wss.html">Wss</a>.<a class="xref" href="Wss.CoreModule.html">CoreModule</a></h6>
+  <h6><strong>Assembly</strong>: WSS_Core_Interface.dll</h6>
+  <h5 id="Wss_CoreModule_CreateEventRequest_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class CreateEventRequest</code></pre>
+  </div>
+  <h5 id="Wss_CoreModule_CreateEventRequest_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>This request supports the same payload shapes as the previous overload set:
+basic event, event with explicit shape IDs, event with amplitude and pulse-width data,
+or event with both shape and amplitude data.
+<a class="xref" href="Wss.CoreModule.CreateEventRequest.html#Wss_CoreModule_CreateEventRequest_StandardShapeId">StandardShapeId</a> and <a class="xref" href="Wss.CoreModule.CreateEventRequest.html#Wss_CoreModule_CreateEventRequest_RechargeShapeId">RechargeShapeId</a> must be supplied together.
+<a class="xref" href="Wss.CoreModule.CreateEventRequest.html#Wss_CoreModule_CreateEventRequest_StandardAmplitudes">StandardAmplitudes</a> and <a class="xref" href="Wss.CoreModule.CreateEventRequest.html#Wss_CoreModule_CreateEventRequest_RechargeAmplitudes">RechargeAmplitudes</a> must be supplied together.
+<a class="xref" href="Wss.CoreModule.CreateEventRequest.html#Wss_CoreModule_CreateEventRequest_PulseWidths">PulseWidths</a> is required when amplitude arrays are supplied, and amplitude arrays are required
+when <a class="xref" href="Wss.CoreModule.CreateEventRequest.html#Wss_CoreModule_CreateEventRequest_PulseWidths">PulseWidths</a> is supplied.</p>
+</div>
+  <h3 id="properties">Properties
+</h3>
+
+
+  <a id="Wss_CoreModule_CreateEventRequest_ContactConfigId_" data-uid="Wss.CoreModule.CreateEventRequest.ContactConfigId*"></a>
+  <h4 id="Wss_CoreModule_CreateEventRequest_ContactConfigId" data-uid="Wss.CoreModule.CreateEventRequest.ContactConfigId">ContactConfigId</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the contact configuration ID (0..255).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ContactConfigId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_CreateEventRequest_DelayMs_" data-uid="Wss.CoreModule.CreateEventRequest.DelayMs*"></a>
+  <h4 id="Wss_CoreModule_CreateEventRequest_DelayMs" data-uid="Wss.CoreModule.CreateEventRequest.DelayMs">DelayMs</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the delay from schedule start, in milliseconds.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int DelayMs { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_CreateEventRequest_EventId_" data-uid="Wss.CoreModule.CreateEventRequest.EventId*"></a>
+  <h4 id="Wss_CoreModule_CreateEventRequest_EventId" data-uid="Wss.CoreModule.CreateEventRequest.EventId">EventId</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the event ID (0..255).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int EventId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_CreateEventRequest_PulseWidths_" data-uid="Wss.CoreModule.CreateEventRequest.PulseWidths*"></a>
+  <h4 id="Wss_CoreModule_CreateEventRequest_PulseWidths" data-uid="Wss.CoreModule.CreateEventRequest.PulseWidths">PulseWidths</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the optional pulse-width payload.
+This is required when amplitude arrays are supplied.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EventPulseWidths PulseWidths { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Wss.CoreModule.EventPulseWidths.html">EventPulseWidths</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_CreateEventRequest_RechargeAmplitudes_" data-uid="Wss.CoreModule.CreateEventRequest.RechargeAmplitudes*"></a>
+  <h4 id="Wss_CoreModule_CreateEventRequest_RechargeAmplitudes" data-uid="Wss.CoreModule.CreateEventRequest.RechargeAmplitudes">RechargeAmplitudes</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the optional four-element amplitude array for the recharge phase.
+Must be supplied together with <a class="xref" href="Wss.CoreModule.CreateEventRequest.html#Wss_CoreModule_CreateEventRequest_StandardAmplitudes">StandardAmplitudes</a> and <a class="xref" href="Wss.CoreModule.CreateEventRequest.html#Wss_CoreModule_CreateEventRequest_PulseWidths">PulseWidths</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int[] RechargeAmplitudes { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_CreateEventRequest_RechargeShapeId_" data-uid="Wss.CoreModule.CreateEventRequest.RechargeShapeId*"></a>
+  <h4 id="Wss_CoreModule_CreateEventRequest_RechargeShapeId" data-uid="Wss.CoreModule.CreateEventRequest.RechargeShapeId">RechargeShapeId</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the optional recharge-phase shape ID.
+Must be supplied together with <a class="xref" href="Wss.CoreModule.CreateEventRequest.html#Wss_CoreModule_CreateEventRequest_StandardShapeId">StandardShapeId</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int? RechargeShapeId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span>?</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_CreateEventRequest_StandardAmplitudes_" data-uid="Wss.CoreModule.CreateEventRequest.StandardAmplitudes*"></a>
+  <h4 id="Wss_CoreModule_CreateEventRequest_StandardAmplitudes" data-uid="Wss.CoreModule.CreateEventRequest.StandardAmplitudes">StandardAmplitudes</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the optional four-element amplitude array for the standard phase.
+Must be supplied together with <a class="xref" href="Wss.CoreModule.CreateEventRequest.html#Wss_CoreModule_CreateEventRequest_RechargeAmplitudes">RechargeAmplitudes</a> and <a class="xref" href="Wss.CoreModule.CreateEventRequest.html#Wss_CoreModule_CreateEventRequest_PulseWidths">PulseWidths</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int[] StandardAmplitudes { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_CoreModule_CreateEventRequest_StandardShapeId_" data-uid="Wss.CoreModule.CreateEventRequest.StandardShapeId*"></a>
+  <h4 id="Wss_CoreModule_CreateEventRequest_StandardShapeId" data-uid="Wss.CoreModule.CreateEventRequest.StandardShapeId">StandardShapeId</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the optional standard-phase shape ID.
+Must be supplied together with <a class="xref" href="Wss.CoreModule.CreateEventRequest.html#Wss_CoreModule_CreateEventRequest_RechargeShapeId">RechargeShapeId</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int? StandardShapeId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span>?</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

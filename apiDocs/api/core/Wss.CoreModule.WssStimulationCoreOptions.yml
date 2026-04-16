@@ -1,0 +1,353 @@
+### YamlMime:ManagedReference
+items:
+- uid: Wss.CoreModule.WssStimulationCoreOptions
+  commentId: T:Wss.CoreModule.WssStimulationCoreOptions
+  id: WssStimulationCoreOptions
+  parent: Wss.CoreModule
+  children:
+  - Wss.CoreModule.WssStimulationCoreOptions.ConfigPath
+  - Wss.CoreModule.WssStimulationCoreOptions.DefaultAmp
+  - Wss.CoreModule.WssStimulationCoreOptions.DefaultIpd
+  - Wss.CoreModule.WssStimulationCoreOptions.DefaultIpi
+  - Wss.CoreModule.WssStimulationCoreOptions.DefaultRatio
+  - Wss.CoreModule.WssStimulationCoreOptions.DefaultSync
+  - Wss.CoreModule.WssStimulationCoreOptions.MaxSetupTries
+  langs:
+  - csharp
+  - vb
+  name: WssStimulationCoreOptions
+  nameWithType: WssStimulationCoreOptions
+  fullName: Wss.CoreModule.WssStimulationCoreOptions
+  type: Class
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Holds startup and default stimulation settings for <xref href="Wss.CoreModule.WssStimulationCore" data-throw-if-not-resolved="false"></xref>.
+  remarks: >-
+    These values affect configuration loading, setup retry behavior, and the default schedule/event values used
+
+    during the core's initial device setup. Packet spacing is intentionally not exposed here because it remains a
+
+    fixed hardware/radio constraint in the core implementation.
+
+    The core constructor requires a non-empty <xref href="Wss.CoreModule.WssStimulationCoreOptions.ConfigPath" data-throw-if-not-resolved="false"></xref> and validates that
+
+    <xref href="Wss.CoreModule.WssStimulationCoreOptions.MaxSetupTries" data-throw-if-not-resolved="false"></xref> is at least 1.
+  example: []
+  syntax:
+    content: public sealed class WssStimulationCoreOptions
+    content.vb: Public NotInheritable Class WssStimulationCoreOptions
+  inheritance:
+  - System.Object
+- uid: Wss.CoreModule.WssStimulationCoreOptions.ConfigPath
+  commentId: P:Wss.CoreModule.WssStimulationCoreOptions.ConfigPath
+  id: ConfigPath
+  parent: Wss.CoreModule.WssStimulationCoreOptions
+  langs:
+  - csharp
+  - vb
+  name: ConfigPath
+  nameWithType: WssStimulationCoreOptions.ConfigPath
+  fullName: Wss.CoreModule.WssStimulationCoreOptions.ConfigPath
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Gets or sets the core configuration file path.
+
+    Directory paths resolve to <code>stimConfig.json</code> in that directory.
+  example: []
+  syntax:
+    content: public string ConfigPath { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ConfigPath As String
+  overload: Wss.CoreModule.WssStimulationCoreOptions.ConfigPath*
+- uid: Wss.CoreModule.WssStimulationCoreOptions.MaxSetupTries
+  commentId: P:Wss.CoreModule.WssStimulationCoreOptions.MaxSetupTries
+  id: MaxSetupTries
+  parent: Wss.CoreModule.WssStimulationCoreOptions
+  langs:
+  - csharp
+  - vb
+  name: MaxSetupTries
+  nameWithType: WssStimulationCoreOptions.MaxSetupTries
+  fullName: Wss.CoreModule.WssStimulationCoreOptions.MaxSetupTries
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Gets or sets the maximum number of setup retries before the core enters the Error state.
+
+    This must be at least 1. The default is 5.
+  example: []
+  syntax:
+    content: public int MaxSetupTries { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property MaxSetupTries As Integer
+  overload: Wss.CoreModule.WssStimulationCoreOptions.MaxSetupTries*
+- uid: Wss.CoreModule.WssStimulationCoreOptions.DefaultIpi
+  commentId: P:Wss.CoreModule.WssStimulationCoreOptions.DefaultIpi
+  id: DefaultIpi
+  parent: Wss.CoreModule.WssStimulationCoreOptions
+  langs:
+  - csharp
+  - vb
+  name: DefaultIpi
+  nameWithType: WssStimulationCoreOptions.DefaultIpi
+  fullName: Wss.CoreModule.WssStimulationCoreOptions.DefaultIpi
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Gets or sets the default inter-pulse interval used during initial setup, in milliseconds.
+
+    The default is 10.
+  example: []
+  syntax:
+    content: public int DefaultIpi { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property DefaultIpi As Integer
+  overload: Wss.CoreModule.WssStimulationCoreOptions.DefaultIpi*
+- uid: Wss.CoreModule.WssStimulationCoreOptions.DefaultAmp
+  commentId: P:Wss.CoreModule.WssStimulationCoreOptions.DefaultAmp
+  id: DefaultAmp
+  parent: Wss.CoreModule.WssStimulationCoreOptions
+  langs:
+  - csharp
+  - vb
+  name: DefaultAmp
+  nameWithType: WssStimulationCoreOptions.DefaultAmp
+  fullName: Wss.CoreModule.WssStimulationCoreOptions.DefaultAmp
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Gets or sets the default amplitude used during initial setup, in mA.
+
+    The default is 1.0.
+  example: []
+  syntax:
+    content: public float DefaultAmp { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property DefaultAmp As Single
+  overload: Wss.CoreModule.WssStimulationCoreOptions.DefaultAmp*
+- uid: Wss.CoreModule.WssStimulationCoreOptions.DefaultSync
+  commentId: P:Wss.CoreModule.WssStimulationCoreOptions.DefaultSync
+  id: DefaultSync
+  parent: Wss.CoreModule.WssStimulationCoreOptions
+  langs:
+  - csharp
+  - vb
+  name: DefaultSync
+  nameWithType: WssStimulationCoreOptions.DefaultSync
+  fullName: Wss.CoreModule.WssStimulationCoreOptions.DefaultSync
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Gets or sets the default sync group used during initial setup.
+
+    The default is 170.
+  example: []
+  syntax:
+    content: public int DefaultSync { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property DefaultSync As Integer
+  overload: Wss.CoreModule.WssStimulationCoreOptions.DefaultSync*
+- uid: Wss.CoreModule.WssStimulationCoreOptions.DefaultRatio
+  commentId: P:Wss.CoreModule.WssStimulationCoreOptions.DefaultRatio
+  id: DefaultRatio
+  parent: Wss.CoreModule.WssStimulationCoreOptions
+  langs:
+  - csharp
+  - vb
+  name: DefaultRatio
+  nameWithType: WssStimulationCoreOptions.DefaultRatio
+  fullName: Wss.CoreModule.WssStimulationCoreOptions.DefaultRatio
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Gets or sets the default event ratio used during initial setup.
+
+    The default is 8.
+  example: []
+  syntax:
+    content: public int DefaultRatio { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property DefaultRatio As Integer
+  overload: Wss.CoreModule.WssStimulationCoreOptions.DefaultRatio*
+- uid: Wss.CoreModule.WssStimulationCoreOptions.DefaultIpd
+  commentId: P:Wss.CoreModule.WssStimulationCoreOptions.DefaultIpd
+  id: DefaultIpd
+  parent: Wss.CoreModule.WssStimulationCoreOptions
+  langs:
+  - csharp
+  - vb
+  name: DefaultIpd
+  nameWithType: WssStimulationCoreOptions.DefaultIpd
+  fullName: Wss.CoreModule.WssStimulationCoreOptions.DefaultIpd
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Gets or sets the default inter-phase delay used during initial setup, in microseconds.
+
+    The default is 50.
+  example: []
+  syntax:
+    content: public int DefaultIpd { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property DefaultIpd As Integer
+  overload: Wss.CoreModule.WssStimulationCoreOptions.DefaultIpd*
+references:
+- uid: Wss.CoreModule.WssStimulationCore
+  commentId: T:Wss.CoreModule.WssStimulationCore
+  href: Wss.CoreModule.WssStimulationCore.html
+  name: WssStimulationCore
+  nameWithType: WssStimulationCore
+  fullName: Wss.CoreModule.WssStimulationCore
+- uid: Wss.CoreModule.WssStimulationCoreOptions.ConfigPath
+  commentId: P:Wss.CoreModule.WssStimulationCoreOptions.ConfigPath
+  href: Wss.CoreModule.WssStimulationCoreOptions.html#Wss_CoreModule_WssStimulationCoreOptions_ConfigPath
+  name: ConfigPath
+  nameWithType: WssStimulationCoreOptions.ConfigPath
+  fullName: Wss.CoreModule.WssStimulationCoreOptions.ConfigPath
+- uid: Wss.CoreModule.WssStimulationCoreOptions.MaxSetupTries
+  commentId: P:Wss.CoreModule.WssStimulationCoreOptions.MaxSetupTries
+  href: Wss.CoreModule.WssStimulationCoreOptions.html#Wss_CoreModule_WssStimulationCoreOptions_MaxSetupTries
+  name: MaxSetupTries
+  nameWithType: WssStimulationCoreOptions.MaxSetupTries
+  fullName: Wss.CoreModule.WssStimulationCoreOptions.MaxSetupTries
+- uid: Wss.CoreModule
+  commentId: N:Wss.CoreModule
+  href: Wss.html
+  name: Wss.CoreModule
+  nameWithType: Wss.CoreModule
+  fullName: Wss.CoreModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Wss.CoreModule.WssStimulationCoreOptions.ConfigPath*
+  commentId: Overload:Wss.CoreModule.WssStimulationCoreOptions.ConfigPath
+  href: Wss.CoreModule.WssStimulationCoreOptions.html#Wss_CoreModule_WssStimulationCoreOptions_ConfigPath
+  name: ConfigPath
+  nameWithType: WssStimulationCoreOptions.ConfigPath
+  fullName: Wss.CoreModule.WssStimulationCoreOptions.ConfigPath
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Wss.CoreModule.WssStimulationCoreOptions.MaxSetupTries*
+  commentId: Overload:Wss.CoreModule.WssStimulationCoreOptions.MaxSetupTries
+  href: Wss.CoreModule.WssStimulationCoreOptions.html#Wss_CoreModule_WssStimulationCoreOptions_MaxSetupTries
+  name: MaxSetupTries
+  nameWithType: WssStimulationCoreOptions.MaxSetupTries
+  fullName: Wss.CoreModule.WssStimulationCoreOptions.MaxSetupTries
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Wss.CoreModule.WssStimulationCoreOptions.DefaultIpi*
+  commentId: Overload:Wss.CoreModule.WssStimulationCoreOptions.DefaultIpi
+  href: Wss.CoreModule.WssStimulationCoreOptions.html#Wss_CoreModule_WssStimulationCoreOptions_DefaultIpi
+  name: DefaultIpi
+  nameWithType: WssStimulationCoreOptions.DefaultIpi
+  fullName: Wss.CoreModule.WssStimulationCoreOptions.DefaultIpi
+- uid: Wss.CoreModule.WssStimulationCoreOptions.DefaultAmp*
+  commentId: Overload:Wss.CoreModule.WssStimulationCoreOptions.DefaultAmp
+  href: Wss.CoreModule.WssStimulationCoreOptions.html#Wss_CoreModule_WssStimulationCoreOptions_DefaultAmp
+  name: DefaultAmp
+  nameWithType: WssStimulationCoreOptions.DefaultAmp
+  fullName: Wss.CoreModule.WssStimulationCoreOptions.DefaultAmp
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Wss.CoreModule.WssStimulationCoreOptions.DefaultSync*
+  commentId: Overload:Wss.CoreModule.WssStimulationCoreOptions.DefaultSync
+  href: Wss.CoreModule.WssStimulationCoreOptions.html#Wss_CoreModule_WssStimulationCoreOptions_DefaultSync
+  name: DefaultSync
+  nameWithType: WssStimulationCoreOptions.DefaultSync
+  fullName: Wss.CoreModule.WssStimulationCoreOptions.DefaultSync
+- uid: Wss.CoreModule.WssStimulationCoreOptions.DefaultRatio*
+  commentId: Overload:Wss.CoreModule.WssStimulationCoreOptions.DefaultRatio
+  href: Wss.CoreModule.WssStimulationCoreOptions.html#Wss_CoreModule_WssStimulationCoreOptions_DefaultRatio
+  name: DefaultRatio
+  nameWithType: WssStimulationCoreOptions.DefaultRatio
+  fullName: Wss.CoreModule.WssStimulationCoreOptions.DefaultRatio
+- uid: Wss.CoreModule.WssStimulationCoreOptions.DefaultIpd*
+  commentId: Overload:Wss.CoreModule.WssStimulationCoreOptions.DefaultIpd
+  href: Wss.CoreModule.WssStimulationCoreOptions.html#Wss_CoreModule_WssStimulationCoreOptions_DefaultIpd
+  name: DefaultIpd
+  nameWithType: WssStimulationCoreOptions.DefaultIpd
+  fullName: Wss.CoreModule.WssStimulationCoreOptions.DefaultIpd

@@ -8,6 +8,7 @@ items:
   - Wss.CoreModule.CoreConfigController.#ctor
   - Wss.CoreModule.CoreConfigController.#ctor(System.String)
   - Wss.CoreModule.CoreConfigController.AmpCurves
+  - Wss.CoreModule.CoreConfigController.BroadcastTarget
   - Wss.CoreModule.CoreConfigController.Firmware
   - Wss.CoreModule.CoreConfigController.IsLoaded
   - Wss.CoreModule.CoreConfigController.LoadJson
@@ -17,6 +18,7 @@ items:
   - Wss.CoreModule.CoreConfigController.SetFirmware(System.String,Wss.CoreModule.WSSVersionHandler)
   - Wss.CoreModule.CoreConfigController.SetMaxWss(System.Int32)
   - Wss.CoreModule.CoreConfigController.UseConfigAmpCurves
+  - Wss.CoreModule.CoreConfigController.WssTargets
   - Wss.CoreModule.CoreConfigController._configPath
   langs:
   - csharp
@@ -183,7 +185,7 @@ items:
   summary: >-
     Loads the core configuration from disk at the specified <code class="paramref">path</code>.
 
-    If <code class="paramref">path</code> is a directory, the file name <code>core.json</code> is appended.
+    If <code class="paramref">path</code> is a directory, the file name <code>stimConfig.json</code> is appended.
 
     If the file does not exist or is invalid, a default configuration is created and saved.
 
@@ -279,6 +281,65 @@ items:
   overload: Wss.CoreModule.CoreConfigController.Firmware*
   implements:
   - Wss.CoreModule.ICoreConfig.Firmware
+- uid: Wss.CoreModule.CoreConfigController.BroadcastTarget
+  commentId: P:Wss.CoreModule.CoreConfigController.BroadcastTarget
+  id: BroadcastTarget
+  parent: Wss.CoreModule.CoreConfigController
+  langs:
+  - csharp
+  - vb
+  name: BroadcastTarget
+  nameWithType: CoreConfigController.BroadcastTarget
+  fullName: Wss.CoreModule.CoreConfigController.BroadcastTarget
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Gets the configured on-wire broadcast receiver address.
+  remarks: >-
+    The value is read from the persisted hexadecimal string in <xref href="Wss.CoreModule.CoreConfig.broadcastTarget" data-throw-if-not-resolved="false"></xref>.
+
+    If the stored value is missing or invalid, the historical default <code>0x8F</code> is returned and
+
+    the normalized value is immediately persisted back to disk.
+  example: []
+  syntax:
+    content: public byte BroadcastTarget { get; }
+    parameters: []
+    return:
+      type: System.Byte
+    content.vb: Public ReadOnly Property BroadcastTarget As Byte
+  overload: Wss.CoreModule.CoreConfigController.BroadcastTarget*
+- uid: Wss.CoreModule.CoreConfigController.WssTargets
+  commentId: P:Wss.CoreModule.CoreConfigController.WssTargets
+  id: WssTargets
+  parent: Wss.CoreModule.CoreConfigController
+  langs:
+  - csharp
+  - vb
+  name: WssTargets
+  nameWithType: CoreConfigController.WssTargets
+  fullName: Wss.CoreModule.CoreConfigController.WssTargets
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Gets the configured on-wire receiver addresses for logical Wss1..Wss3.
+
+    A normalized three-entry copy is returned.
+  remarks: >-
+    Missing entries are backfilled with the historical defaults <code>0x81</code>, <code>0x82</code>, and <code>0x83</code>.
+
+    When normalization changes the in-memory configuration, the updated values are immediately persisted.
+  example: []
+  syntax:
+    content: public byte[] WssTargets { get; }
+    parameters: []
+    return:
+      type: System.Byte[]
+    content.vb: Public ReadOnly Property WssTargets As Byte()
+  overload: Wss.CoreModule.CoreConfigController.WssTargets*
 - uid: Wss.CoreModule.CoreConfigController.UseConfigAmpCurves
   commentId: P:Wss.CoreModule.CoreConfigController.UseConfigAmpCurves
   id: UseConfigAmpCurves
@@ -317,6 +378,12 @@ items:
   - WSS_Core_Interface
   namespace: Wss.CoreModule
   summary: Returns the configured amplitude curve parameters per WSS (index 0..2 maps to Wss1..Wss3).
+  remarks: >-
+    The returned array is the live in-memory configuration array, not a defensive copy.
+
+    Mutating the returned array or its entries changes the loaded configuration until it is reloaded.
+
+    Call <xref href="Wss.CoreModule.CoreConfigController.SaveJson" data-throw-if-not-resolved="false"></xref> to persist those changes.
   example: []
   syntax:
     content: public AmpCurveParams[] AmpCurves { get; }
@@ -352,6 +419,10 @@ items:
       description: New maximum WSS count. Must be greater than zero.
     content.vb: Public Sub SetMaxWss(v As Integer)
   overload: Wss.CoreModule.CoreConfigController.SetMaxWss*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: Thrown when <code class="paramref">v</code> is less than or equal to zero.
   nameWithType.vb: CoreConfigController.SetMaxWss(Integer)
   fullName.vb: Wss.CoreModule.CoreConfigController.SetMaxWss(Integer)
   name.vb: SetMaxWss(Integer)
@@ -385,6 +456,13 @@ items:
       description: Version handler used to validate whether the supplied firmware string is supported.
     content.vb: Public Sub SetFirmware(v As String, verHandler As WSSVersionHandler)
   overload: Wss.CoreModule.CoreConfigController.SetFirmware*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when <code class="paramref">verHandler</code> is null.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when <code class="paramref">v</code> is not supported by <code class="paramref">verHandler</code>.
   nameWithType.vb: CoreConfigController.SetFirmware(String, WSSVersionHandler)
   fullName.vb: Wss.CoreModule.CoreConfigController.SetFirmware(String, Wss.CoreModule.WSSVersionHandler)
   name.vb: SetFirmware(String, WSSVersionHandler)
@@ -530,12 +608,78 @@ references:
   name: Firmware
   nameWithType: ICoreConfig.Firmware
   fullName: Wss.CoreModule.ICoreConfig.Firmware
+- uid: Wss.CoreModule.CoreConfig.broadcastTarget
+  commentId: P:Wss.CoreModule.CoreConfig.broadcastTarget
+  href: Wss.CoreModule.CoreConfig.html#Wss_CoreModule_CoreConfig_broadcastTarget
+  name: broadcastTarget
+  nameWithType: CoreConfig.broadcastTarget
+  fullName: Wss.CoreModule.CoreConfig.broadcastTarget
+- uid: Wss.CoreModule.CoreConfigController.BroadcastTarget*
+  commentId: Overload:Wss.CoreModule.CoreConfigController.BroadcastTarget
+  href: Wss.CoreModule.CoreConfigController.html#Wss_CoreModule_CoreConfigController_BroadcastTarget
+  name: BroadcastTarget
+  nameWithType: CoreConfigController.BroadcastTarget
+  fullName: Wss.CoreModule.CoreConfigController.BroadcastTarget
+- uid: System.Byte
+  commentId: T:System.Byte
+  parent: System
+  isExternal: true
+  name: byte
+  nameWithType: byte
+  fullName: byte
+  nameWithType.vb: Byte
+  fullName.vb: Byte
+  name.vb: Byte
+- uid: Wss.CoreModule.CoreConfigController.WssTargets*
+  commentId: Overload:Wss.CoreModule.CoreConfigController.WssTargets
+  href: Wss.CoreModule.CoreConfigController.html#Wss_CoreModule_CoreConfigController_WssTargets
+  name: WssTargets
+  nameWithType: CoreConfigController.WssTargets
+  fullName: Wss.CoreModule.CoreConfigController.WssTargets
+- uid: System.Byte[]
+  isExternal: true
+  name: byte[]
+  nameWithType: byte[]
+  fullName: byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+  - name: (
+  - name: )
 - uid: Wss.CoreModule.CoreConfigController.UseConfigAmpCurves*
   commentId: Overload:Wss.CoreModule.CoreConfigController.UseConfigAmpCurves
   href: Wss.CoreModule.CoreConfigController.html#Wss_CoreModule_CoreConfigController_UseConfigAmpCurves
   name: UseConfigAmpCurves
   nameWithType: CoreConfigController.UseConfigAmpCurves
   fullName: Wss.CoreModule.CoreConfigController.UseConfigAmpCurves
+- uid: Wss.CoreModule.CoreConfigController.SaveJson
+  commentId: M:Wss.CoreModule.CoreConfigController.SaveJson
+  href: Wss.CoreModule.CoreConfigController.html#Wss_CoreModule_CoreConfigController_SaveJson
+  name: SaveJson()
+  nameWithType: CoreConfigController.SaveJson()
+  fullName: Wss.CoreModule.CoreConfigController.SaveJson()
+  spec.csharp:
+  - uid: Wss.CoreModule.CoreConfigController.SaveJson
+    name: SaveJson
+    href: Wss.CoreModule.CoreConfigController.html#Wss_CoreModule_CoreConfigController_SaveJson
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.CoreConfigController.SaveJson
+    name: SaveJson
+    href: Wss.CoreModule.CoreConfigController.html#Wss_CoreModule_CoreConfigController_SaveJson
+  - name: (
+  - name: )
 - uid: Wss.CoreModule.CoreConfigController.AmpCurves*
   commentId: Overload:Wss.CoreModule.CoreConfigController.AmpCurves
   href: Wss.CoreModule.CoreConfigController.html#Wss_CoreModule_CoreConfigController_AmpCurves
@@ -563,12 +707,24 @@ references:
     href: Wss.CoreModule.AmpCurveParams.html
   - name: (
   - name: )
+- uid: System.ArgumentOutOfRangeException
+  commentId: T:System.ArgumentOutOfRangeException
+  isExternal: true
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
 - uid: Wss.CoreModule.CoreConfigController.SetMaxWss*
   commentId: Overload:Wss.CoreModule.CoreConfigController.SetMaxWss
   href: Wss.CoreModule.CoreConfigController.html#Wss_CoreModule_CoreConfigController_SetMaxWss_System_Int32_
   name: SetMaxWss
   nameWithType: CoreConfigController.SetMaxWss
   fullName: Wss.CoreModule.CoreConfigController.SetMaxWss
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+  isExternal: true
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
 - uid: Wss.CoreModule.CoreConfigController.SetFirmware*
   commentId: Overload:Wss.CoreModule.CoreConfigController.SetFirmware
   href: Wss.CoreModule.CoreConfigController.html#Wss_CoreModule_CoreConfigController_SetFirmware_System_String_Wss_CoreModule_WSSVersionHandler_

@@ -1,5 +1,7 @@
 ﻿# Layering Guide (Modules)
 
+[Home](../index.md) | [Back to Concepts](../concepts.md)
+
 This guide focuses on how functionality grows as you add modules on top of the core. It illustrates three configurations: Core only, Core + Params, and Core + Params + Model.
 
 ## Core Only
@@ -96,3 +98,9 @@ flowchart LR
 - Future direction
   - Split `IBasicStimulation` into smaller capability interfaces to match firmware/hardware feature sets (e.g., `IWaveformUpload`, `IEventEditing`, `IConfigPersistence`, `IConfigQuery`).
   - Compose the final “stimulator” from supported capability interfaces at runtime.
+
+Navigation:
+
+- [Back to Home](../index.md)
+- [Back to Concepts](../concepts.md)
+- [Related: Core Architecture (Transport, Codec, Core)](core-architecture.md)

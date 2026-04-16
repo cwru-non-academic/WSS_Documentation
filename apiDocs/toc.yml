@@ -1,11 +1,42 @@
 - name: Home
   href: index.md
-- name: Guides
+- name: Start Here
+  href: start-here.md
   items:
-  - name: Core Architecture (Transport, Codec, Core)
-    href: conceptual/core-architecture.md
+  - name: Start Here: Using an Application
+    href: conceptual/start-here-using-an-application.md
+  - name: Start Here: Developing an Application
+    href: conceptual/start-here-developing-an-application.md
+  - name: Start Here: Building a New Integration Library
+    href: conceptual/start-here-building-a-new-integration-library.md
+  - name: Start Here: Minor Core Modifications
+    href: conceptual/start-here-minor-core-modifications.md
+  - name: Start Here: Adding Layers or Core Functionality
+    href: conceptual/start-here-adding-layers-or-core-functionality.md
+  - name: Choosing a Runtime for an Integration Library
+    href: conceptual/integration-library-runtime-selection.md
+  - name: Repository and Kit Links
+    href: conceptual/repository-and-kit-links.md
+- name: Concepts
+  href: concepts.md
+  items:
   - name: Layering Guide (Modules)
     href: conceptual/layering-guide.md
+  - name: Core Architecture (Transport, Codec, Core)
+    href: conceptual/core-architecture.md
+  - name: Setup Order and Modification
+    href: conceptual/setup-order-and-modification.md
+  - name: Firmware Compatibility Matrix
+    href: conceptual/firmware-compatibility-matrix.md
+  - name: Config Files Reference
+    href: conceptual/config-files-reference.md
+- name: Advanced
+  href: advanced.md
+  items:
+  - name: WSS Commands Reference
+    href: conceptual/wss-commands-reference.md
+  - name: Simple Serial Communication with WSS
+    href: conceptual/simple-serial-communication.md
 - name: C# API
   items:
   - name: API: Core (C#)
@@ -14,7 +45,8 @@
     href: api/csharp/toc.yml
   - name: API: Unity Integration (C#)
     href: api/unity/toc.yml
-- name: Python API
+- name: Maintainers
+  href: maintainers.md
   items:
-  - name: API: Python Integration (Python)
-    href: external/python-integration/index.html
+  - name: Building Software API Docs
+    href: conceptual/building-software-api-docs.md

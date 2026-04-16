@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Start Here: Developing an Application | WSS Documentation Hub </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Start Here: Developing an Application | WSS Documentation Hub ">
+    
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="start-here-developing-an-application">Start Here: Developing an Application</h1>
+
+<p><a href="../index.html">Home</a> | <a href="../start-here.html">Back to Start Here</a></p>
+<h2 id="who-this-is-for">Who This Is For</h2>
+<p>This guide is for people building a new application on top of an existing WSS integration library.</p>
+<p>Examples include a GUI, CLI, ROS node, experiment runner, or other user-facing tool that uses an existing Python, C#, Unity, or future integration library.</p>
+<h2 id="which-integration-libraries-are-available">Which Integration Libraries Are Available</h2>
+<ul>
+<li>Unity integration library
+<ul>
+<li>Used when your application lives inside a Unity project or Unity-centered workflow.</li>
+</ul>
+</li>
+<li>C# integration library
+<ul>
+<li>Used when your application is a .NET-native tool or service.</li>
+</ul>
+</li>
+<li>Python integration library
+<ul>
+<li>Used when your application is built around Python workflows, scripting, or robotics tooling.</li>
+</ul>
+</li>
+</ul>
+<p>An integration library selects which WSS functionality to surface from the core and optional layers, then adapts it to a language or platform.</p>
+<p>An application uses that integration library to provide a concrete user experience.</p>
+<h2 id="what-an-application-usually-owns">What an Application Usually Owns</h2>
+<p>When you are developing an application, the integration library should already handle the language/platform adaptation. Your application usually owns:</p>
+<ul>
+<li>the user interaction model
+<ul>
+<li>GUI, CLI, ROS topics/services, scripts, or experiment automation</li>
+</ul>
+</li>
+<li>lifecycle timing
+<ul>
+<li>when initialization happens, how often updates occur, and when shutdown happens</li>
+</ul>
+</li>
+<li>workflow logic
+<ul>
+<li>what actions happen in what order for your experiment, session, or tool</li>
+</ul>
+</li>
+<li>configuration management
+<ul>
+<li>which config set gets loaded and when it gets reloaded or saved</li>
+</ul>
+</li>
+<li>guardrails for users
+<ul>
+<li>validation, status display, mode checks, and safe shutdown behavior</li>
+</ul>
+</li>
+</ul>
+<p>The integration library owns the WSS-facing API surface. The application decides how that API is presented and used.</p>
+<h2 id="which-apis-are-usually-exposed">Which APIs Are Usually Exposed</h2>
+<p>An integration library typically exposes:</p>
+<ul>
+<li>lifecycle control such as <code>Initialize()</code>, <code>Tick()</code>, and <code>Shutdown()</code></li>
+<li>stimulation control such as <code>StartStim(...)</code> and <code>StopStim(...)</code></li>
+<li>selected parameter or waveform operations when optional functionality is included</li>
+<li>configuration loading or saving when the chosen layers support it</li>
+<li>integration libraries also decide which transport protocols are available</li>
+</ul>
+<p>The exact API surface depends on which WSS layers the integration library attaches.</p>
+<h2 id="config-files-in-an-application">Config Files in an Application</h2>
+<p>Most applications should treat configuration as part of the application workflow, not as a one-time setup detail.</p>
+<p>The application usually decides where the config files live and passes that location down to the integration library.</p>
+<p>Integration libraries usually default to using a root-level config location when the application does not provide one explicitly.</p>
+<p>If the application points to a config location and the files do not exist yet, the library stack will usually auto-generate the config files there with default values. The application can then modify those files and reload them later.</p>
+<p>Common config responsibilities in an application are:</p>
+<ul>
+<li>selecting the active config set for the current device or experiment</li>
+<li>loading configuration before initialization</li>
+<li>allowing safe reload when settings change</li>
+<li>keeping hardware setup, stimulation parameters, and model behavior consistent with each other</li>
+</ul>
+<p>If your application uses the standard WSS config directory layout, the main files are:</p>
+<ul>
+<li><code>stimConfig.json</code>
+<ul>
+<li>core-level runtime configuration</li>
+</ul>
+</li>
+<li><code>stimParams.json</code>
+<ul>
+<li>per-channel stimulation parameter configuration</li>
+</ul>
+</li>
+<li><code>modelConfig.json</code>
+<ul>
+<li>model-layer configuration</li>
+</ul>
+</li>
+</ul>
+<p>For a full reference of each config file and every section inside it, see <a href="config-files-reference.html">Config Files Reference</a>.</p>
+<h2 id="which-capabilities-are-usually-surfaced">Which Capabilities Are Usually Surfaced</h2>
+<p>When reading or extending an existing integration library, the important application-facing capability groups are usually:</p>
+<ul>
+<li>core lifecycle and connection state
+<ul>
+<li>initialize, tick, ready, started, shutdown</li>
+</ul>
+</li>
+<li>direct stimulation control
+<ul>
+<li>start, stop, direct analog stimulation, zeroing/stopping behavior</li>
+</ul>
+</li>
+<li>stimulation-parameter access
+<ul>
+<li>reading limits/defaults and updating per-channel parameters</li>
+</ul>
+</li>
+<li>model-driven stimulation
+<ul>
+<li>using model-layer logic when the integration library includes it</li>
+</ul>
+</li>
+<li>optional higher-level stimulation features
+<ul>
+<li>waveform, event, or config helpers when a BASIC-style capability is attached</li>
+</ul>
+</li>
+</ul>
+<p>The integration library decides which of these become public API, and your application decides which of them become part of the user workflow. Ideally, an integration library exposes all available public methods for the supported layers.</p>
+<h2 id="setup-changes-after-startup">Setup Changes After Startup</h2>
+<p>Applications do not always need to accept the setup created by the core during initialization.</p>
+<p>If the integration library exposes enough setup-related methods, the application can issue setup commands after startup to replace or override the active setup. That means a whole new setup can be created at the application level without modifying the core itself.</p>
+<p>The important distinction is:</p>
+<ul>
+<li>the core owns the default initial setup that happens automatically during startup</li>
+<li>the application can still change setup later if the integration layer exposes the required methods</li>
+</ul>
+<p>See <a href="setup-order-and-modification.html">Setup Order and Modification</a> for the current initial setup order and the dependency rules that should still be respected when changing setup later.</p>
+<h2 id="build-the-lifecycle-first">Build the Lifecycle First</h2>
+<p>Before building UI, command parsing, ROS plumbing, or experiment automation, get the application lifecycle working end to end.</p>
+<p>Most applications should be understood in terms of this flow:</p>
+<ol>
+<li><code>Initialize()</code>
+<ul>
+<li>Begin connection and device setup through the integration library.</li>
+</ul>
+</li>
+<li><code>Tick()</code>
+<ul>
+<li>Advance the state machine when the integration uses a polling or update model.</li>
+</ul>
+</li>
+<li>wait for readiness
+<ul>
+<li>Confirm the stack reaches a usable state before allowing stimulation actions.</li>
+</ul>
+</li>
+<li>perform application actions
+<ul>
+<li>start stimulation, stop stimulation, load config, edit parameters, or query state.</li>
+</ul>
+</li>
+<li><code>Shutdown()</code>
+<ul>
+<li>stop activity and release resources safely.</li>
+</ul>
+</li>
+</ol>
+<p>In practice, a good first milestone is a small application that can:</p>
+<ul>
+<li>initialize</li>
+<li>tick on a stable interval</li>
+<li>report ready/not-ready state</li>
+<li>trigger one safe stimulation action</li>
+<li>shut down cleanly</li>
+</ul>
+<p>Once that works, add the rest of your application-specific UX or workflow logic.</p>
+<h2 id="important-api-areas">Important API Areas</h2>
+<p>The most useful thing in this guide is to point you to the API areas you will likely wire into your application rather than restating full signatures here.</p>
+<h3 id="integration-library-entry-points">Integration-library entry points</h3>
+<ul>
+<li>Lifecycle and status
+<ul>
+<li><a class="xref" href="../api/csharp/HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Initialize">Initialize()</a></li>
+<li><a class="xref" href="../api/csharp/HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Ready">Ready()</a></li>
+<li><a class="xref" href="../api/csharp/HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Shutdown">Shutdown()</a></li>
+</ul>
+</li>
+<li>Application-driven stimulation
+<ul>
+<li><a class="xref" href="../api/csharp/HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_StartStimulation">StartStimulation()</a></li>
+<li><a class="xref" href="../api/csharp/HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_StimulateAnalog_System_String_System_Int32_System_Int32_System_Int32_">StimulateAnalog(string, int, int, int)</a></li>
+<li><a class="xref" href="../api/csharp/HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_IsFingerValid_System_String_">IsFingerValid(string)</a></li>
+</ul>
+</li>
+<li>Config reload and parameter refresh
+<ul>
+<li><a class="xref" href="../api/csharp/HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_LoadCoreConfigFile">LoadCoreConfigFile()</a></li>
+<li><a class="xref" href="../api/csharp/HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_LoadParamsJson">LoadParamsJson()</a></li>
+<li><a class="xref" href="../api/csharp/HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_LoadParamsJson_System_String_">LoadParamsJson(string)</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="stimulation-parameter-apis">Stimulation-parameter APIs</h3>
+<p>These are useful when your application exposes editing, presets, inspection, or calibration-oriented tooling:</p>
+<ul>
+<li><a class="xref" href="../api/csharp/HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_AddOrUpdateStimParam_System_String_System_Single_">AddOrUpdateStimParam(string, float)</a></li>
+<li><a class="xref" href="../api/csharp/HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_GetAllStimParams">GetAllStimParams()</a></li>
+<li><a class="xref" href="../api/csharp/HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_GetStimIntensity_System_String_">GetStimIntensity(string)</a></li>
+<li><a class="xref" href="../api/csharp/HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_GetStimParam_System_String_">GetStimParam(string)</a></li>
+<li><a class="xref" href="../api/csharp/HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_StimulateNormalized_System_String_System_Single_">StimulateNormalized(string, float)</a></li>
+</ul>
+<p>For channel-level behavior in the params layer, see:</p>
+<ul>
+<li><a class="xref" href="../api/core/Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_GetChannelAmpMode_System_Int32_">GetChannelAmpMode(int)</a></li>
+<li><a class="xref" href="../api/core/Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_GetChannelDefault_System_Int32_">GetChannelDefault(int)</a></li>
+<li><a class="xref" href="../api/core/Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_GetChannelMax_System_Int32_">GetChannelMax(int)</a></li>
+<li><a class="xref" href="../api/core/Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_GetChannelMin_System_Int32_">GetChannelMin(int)</a></li>
+</ul>
+<h3 id="lower-level-behavior-your-application-may-depend-on">Lower-level behavior your application may depend on</h3>
+<ul>
+<li><a class="xref" href="../api/core/Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_StartStim_Wss_CoreModule_WssTarget_">IStimulationCore.StartStim(WssTarget)</a></li>
+<li><a class="xref" href="../api/core/Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_LoadConfigFile">IStimulationCore.LoadConfigFile()</a></li>
+<li><a class="xref" href="../api/core/Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_IsChannelInRange_System_Int32_">IStimulationCore.IsChannelInRange(int)</a></li>
+<li><a class="xref" href="../api/core/Wss.CalibrationModule.StimParamsLayer.html#Wss_CalibrationModule_StimParamsLayer_ZeroOutStim_Wss_CoreModule_WssTarget_">StimParamsLayer.ZeroOutStim(WssTarget)</a></li>
+</ul>
+<p>If you are not sure how these capabilities are composed underneath the integration library, see <a href="layering-guide.html">Layering Guide (Modules)</a>.</p>
+<h2 id="next-steps">Next Steps</h2>
+<ul>
+<li>If you need to create a new integration library for another language or platform, continue to <a href="start-here-building-a-new-integration-library.html">Start Here: Building a New Integration Library</a>.</li>
+<li>If you need to understand how the existing architecture behaves underneath your application, see <a href="layering-guide.html">Layering Guide (Modules)</a>.</li>
+</ul>
+<p>Navigation:</p>
+<ul>
+<li><a href="../index.html">Back to Home</a></li>
+<li><a href="../start-here.html">Back to Start Here</a></li>
+<li><a href="start-here-using-an-application.html">Previous: Start Here: Using an Application</a></li>
+<li><a href="start-here-building-a-new-integration-library.html">Next: Start Here: Building a New Integration Library</a></li>
+</ul>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/cwru-non-academic/WSS_Documentation/blob/main/apiDocs/conceptual/start-here-developing-an-application.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

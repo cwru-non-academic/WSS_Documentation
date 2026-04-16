@@ -1,0 +1,164 @@
+### YamlMime:ManagedReference
+items:
+- uid: Wss.CoreModule.EventPulseWidths
+  commentId: T:Wss.CoreModule.EventPulseWidths
+  id: EventPulseWidths
+  parent: Wss.CoreModule
+  children:
+  - Wss.CoreModule.EventPulseWidths.Ipd
+  - Wss.CoreModule.EventPulseWidths.RechargePw
+  - Wss.CoreModule.EventPulseWidths.StandardPw
+  langs:
+  - csharp
+  - vb
+  name: EventPulseWidths
+  nameWithType: EventPulseWidths
+  fullName: Wss.CoreModule.EventPulseWidths
+  type: Class
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Holds pulse-width values for an event definition.
+  example: []
+  syntax:
+    content: public sealed class EventPulseWidths
+    content.vb: Public NotInheritable Class EventPulseWidths
+  inheritance:
+  - System.Object
+- uid: Wss.CoreModule.EventPulseWidths.StandardPw
+  commentId: P:Wss.CoreModule.EventPulseWidths.StandardPw
+  id: StandardPw
+  parent: Wss.CoreModule.EventPulseWidths
+  langs:
+  - csharp
+  - vb
+  name: StandardPw
+  nameWithType: EventPulseWidths.StandardPw
+  fullName: Wss.CoreModule.EventPulseWidths.StandardPw
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Gets or sets the standard-phase pulse width, in microseconds.
+  example: []
+  syntax:
+    content: public int StandardPw { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property StandardPw As Integer
+  overload: Wss.CoreModule.EventPulseWidths.StandardPw*
+- uid: Wss.CoreModule.EventPulseWidths.RechargePw
+  commentId: P:Wss.CoreModule.EventPulseWidths.RechargePw
+  id: RechargePw
+  parent: Wss.CoreModule.EventPulseWidths
+  langs:
+  - csharp
+  - vb
+  name: RechargePw
+  nameWithType: EventPulseWidths.RechargePw
+  fullName: Wss.CoreModule.EventPulseWidths.RechargePw
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Gets or sets the recharge-phase pulse width, in microseconds.
+  example: []
+  syntax:
+    content: public int RechargePw { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property RechargePw As Integer
+  overload: Wss.CoreModule.EventPulseWidths.RechargePw*
+- uid: Wss.CoreModule.EventPulseWidths.Ipd
+  commentId: P:Wss.CoreModule.EventPulseWidths.Ipd
+  id: Ipd
+  parent: Wss.CoreModule.EventPulseWidths
+  langs:
+  - csharp
+  - vb
+  name: Ipd
+  nameWithType: EventPulseWidths.Ipd
+  fullName: Wss.CoreModule.EventPulseWidths.Ipd
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Gets or sets the inter-phase delay, in microseconds.
+  example: []
+  syntax:
+    content: public int Ipd { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Ipd As Integer
+  overload: Wss.CoreModule.EventPulseWidths.Ipd*
+references:
+- uid: Wss.CoreModule
+  commentId: N:Wss.CoreModule
+  href: Wss.html
+  name: Wss.CoreModule
+  nameWithType: Wss.CoreModule
+  fullName: Wss.CoreModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Wss.CoreModule.EventPulseWidths.StandardPw*
+  commentId: Overload:Wss.CoreModule.EventPulseWidths.StandardPw
+  href: Wss.CoreModule.EventPulseWidths.html#Wss_CoreModule_EventPulseWidths_StandardPw
+  name: StandardPw
+  nameWithType: EventPulseWidths.StandardPw
+  fullName: Wss.CoreModule.EventPulseWidths.StandardPw
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Wss.CoreModule.EventPulseWidths.RechargePw*
+  commentId: Overload:Wss.CoreModule.EventPulseWidths.RechargePw
+  href: Wss.CoreModule.EventPulseWidths.html#Wss_CoreModule_EventPulseWidths_RechargePw
+  name: RechargePw
+  nameWithType: EventPulseWidths.RechargePw
+  fullName: Wss.CoreModule.EventPulseWidths.RechargePw
+- uid: Wss.CoreModule.EventPulseWidths.Ipd*
+  commentId: Overload:Wss.CoreModule.EventPulseWidths.Ipd
+  href: Wss.CoreModule.EventPulseWidths.html#Wss_CoreModule_EventPulseWidths_Ipd
+  name: Ipd
+  nameWithType: EventPulseWidths.Ipd
+  fullName: Wss.CoreModule.EventPulseWidths.Ipd

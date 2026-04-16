@@ -5,8 +5,7 @@ items:
   id: WssStimulationCore
   parent: Wss.CoreModule
   children:
-  - Wss.CoreModule.WssStimulationCore.#ctor(System.String,System.Boolean,System.Int32)
-  - Wss.CoreModule.WssStimulationCore.#ctor(System.String,System.String,System.Boolean,System.Int32)
+  - Wss.CoreModule.WssStimulationCore.#ctor(Wss.CoreModule.ITransport,Wss.CoreModule.WssStimulationCoreOptions)
   - Wss.CoreModule.WssStimulationCore.Dispose
   - Wss.CoreModule.WssStimulationCore.GetCoreConfigController
   - Wss.CoreModule.WssStimulationCore.Initialize
@@ -55,68 +54,50 @@ items:
   implements:
   - Wss.CoreModule.IStimulationCore
   - Wss.CoreModule.IBasicStimulation
-- uid: Wss.CoreModule.WssStimulationCore.#ctor(System.String,System.String,System.Boolean,System.Int32)
-  commentId: M:Wss.CoreModule.WssStimulationCore.#ctor(System.String,System.String,System.Boolean,System.Int32)
-  id: '#ctor(System.String,System.String,System.Boolean,System.Int32)'
+- uid: Wss.CoreModule.WssStimulationCore.#ctor(Wss.CoreModule.ITransport,Wss.CoreModule.WssStimulationCoreOptions)
+  commentId: M:Wss.CoreModule.WssStimulationCore.#ctor(Wss.CoreModule.ITransport,Wss.CoreModule.WssStimulationCoreOptions)
+  id: '#ctor(Wss.CoreModule.ITransport,Wss.CoreModule.WssStimulationCoreOptions)'
   parent: Wss.CoreModule.WssStimulationCore
   langs:
   - csharp
   - vb
-  name: WssStimulationCore(string, string, bool, int)
-  nameWithType: WssStimulationCore.WssStimulationCore(string, string, bool, int)
-  fullName: Wss.CoreModule.WssStimulationCore.WssStimulationCore(string, string, bool, int)
+  name: WssStimulationCore(ITransport, WssStimulationCoreOptions)
+  nameWithType: WssStimulationCore.WssStimulationCore(ITransport, WssStimulationCoreOptions)
+  fullName: Wss.CoreModule.WssStimulationCore.WssStimulationCore(Wss.CoreModule.ITransport, Wss.CoreModule.WssStimulationCoreOptions)
   type: Constructor
   assemblies:
   - WSS_Core_Interface
   namespace: Wss.CoreModule
-  summary: Construct with explicit COM port.
+  summary: Initializes a stimulation core over a caller-provided transport.
+  remarks: >-
+    The core owns the lifetime of <code class="paramref">transport</code> and disposes it when the core is disposed.
+
+    Call <xref href="Wss.CoreModule.WssStimulationCore.Shutdown" data-throw-if-not-resolved="false"></xref> to stop streaming/disconnect without disposing the transport.
   example: []
   syntax:
-    content: public WssStimulationCore(string comPort, string JSONpath, bool testMode = false, int maxSetupTries = 5)
+    content: public WssStimulationCore(ITransport transport, WssStimulationCoreOptions options)
     parameters:
-    - id: comPort
-      type: System.String
-    - id: JSONpath
-      type: System.String
-    - id: testMode
-      type: System.Boolean
-    - id: maxSetupTries
-      type: System.Int32
-    content.vb: Public Sub New(comPort As String, JSONpath As String, testMode As Boolean = False, maxSetupTries As Integer = 5)
+    - id: transport
+      type: Wss.CoreModule.ITransport
+      description: Transport used to communicate with the WSS device(s).
+    - id: options
+      type: Wss.CoreModule.WssStimulationCoreOptions
+      description: Core configuration path, setup retry behavior, and default stimulation values used during initial setup.
+    content.vb: Public Sub New(transport As ITransport, options As WssStimulationCoreOptions)
   overload: Wss.CoreModule.WssStimulationCore.#ctor*
-  nameWithType.vb: WssStimulationCore.New(String, String, Boolean, Integer)
-  fullName.vb: Wss.CoreModule.WssStimulationCore.New(String, String, Boolean, Integer)
-  name.vb: New(String, String, Boolean, Integer)
-- uid: Wss.CoreModule.WssStimulationCore.#ctor(System.String,System.Boolean,System.Int32)
-  commentId: M:Wss.CoreModule.WssStimulationCore.#ctor(System.String,System.Boolean,System.Int32)
-  id: '#ctor(System.String,System.Boolean,System.Int32)'
-  parent: Wss.CoreModule.WssStimulationCore
-  langs:
-  - csharp
-  - vb
-  name: WssStimulationCore(string, bool, int)
-  nameWithType: WssStimulationCore.WssStimulationCore(string, bool, int)
-  fullName: Wss.CoreModule.WssStimulationCore.WssStimulationCore(string, bool, int)
-  type: Constructor
-  assemblies:
-  - WSS_Core_Interface
-  namespace: Wss.CoreModule
-  summary: Construct without specifying COM port (let transport decide).
-  example: []
-  syntax:
-    content: public WssStimulationCore(string JSONpath, bool testMode = false, int maxSetupTries = 5)
-    parameters:
-    - id: JSONpath
-      type: System.String
-    - id: testMode
-      type: System.Boolean
-    - id: maxSetupTries
-      type: System.Int32
-    content.vb: Public Sub New(JSONpath As String, testMode As Boolean = False, maxSetupTries As Integer = 5)
-  overload: Wss.CoreModule.WssStimulationCore.#ctor*
-  nameWithType.vb: WssStimulationCore.New(String, Boolean, Integer)
-  fullName.vb: Wss.CoreModule.WssStimulationCore.New(String, Boolean, Integer)
-  name.vb: New(String, Boolean, Integer)
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when <code class="paramref">transport</code> or <code class="paramref">options</code> is null.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when <xref href="Wss.CoreModule.WssStimulationCoreOptions.ConfigPath" data-throw-if-not-resolved="false"></xref> is null, empty, or whitespace.
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: Thrown when <xref href="Wss.CoreModule.WssStimulationCoreOptions.MaxSetupTries" data-throw-if-not-resolved="false"></xref> is less than 1.
+  nameWithType.vb: WssStimulationCore.New(ITransport, WssStimulationCoreOptions)
+  fullName.vb: Wss.CoreModule.WssStimulationCore.New(Wss.CoreModule.ITransport, Wss.CoreModule.WssStimulationCoreOptions)
+  name.vb: New(ITransport, WssStimulationCoreOptions)
 - uid: Wss.CoreModule.WssStimulationCore.Initialize
   commentId: M:Wss.CoreModule.WssStimulationCore.Initialize
   id: Initialize
@@ -140,6 +121,10 @@ items:
     content: public void Initialize()
     content.vb: Public Sub Initialize()
   overload: Wss.CoreModule.WssStimulationCore.Initialize*
+  exceptions:
+  - type: System.ObjectDisposedException
+    commentId: T:System.ObjectDisposedException
+    description: Thrown when the core has been disposed.
   implements:
   - Wss.CoreModule.IStimulationCore.Initialize
 - uid: Wss.CoreModule.WssStimulationCore.Tick
@@ -228,7 +213,10 @@ items:
   assemblies:
   - WSS_Core_Interface
   namespace: Wss.CoreModule
-  summary: Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+  remarks: >-
+    Calls <xref href="Wss.CoreModule.WssStimulationCore.Shutdown" data-throw-if-not-resolved="false"></xref> and then disposes the transport instance provided at construction time.
+
+    Safe to call multiple times.
   example: []
   syntax:
     content: public void Dispose()
@@ -911,45 +899,77 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: Wss.CoreModule.WssStimulationCoreOptions.ConfigPath
+  commentId: P:Wss.CoreModule.WssStimulationCoreOptions.ConfigPath
+  href: Wss.CoreModule.WssStimulationCoreOptions.html#Wss_CoreModule_WssStimulationCoreOptions_ConfigPath
+  name: ConfigPath
+  nameWithType: WssStimulationCoreOptions.ConfigPath
+  fullName: Wss.CoreModule.WssStimulationCoreOptions.ConfigPath
+- uid: Wss.CoreModule.WssStimulationCoreOptions.MaxSetupTries
+  commentId: P:Wss.CoreModule.WssStimulationCoreOptions.MaxSetupTries
+  href: Wss.CoreModule.WssStimulationCoreOptions.html#Wss_CoreModule_WssStimulationCoreOptions_MaxSetupTries
+  name: MaxSetupTries
+  nameWithType: WssStimulationCoreOptions.MaxSetupTries
+  fullName: Wss.CoreModule.WssStimulationCoreOptions.MaxSetupTries
+- uid: Wss.CoreModule.WssStimulationCore.Shutdown
+  commentId: M:Wss.CoreModule.WssStimulationCore.Shutdown
+  href: Wss.CoreModule.WssStimulationCore.html#Wss_CoreModule_WssStimulationCore_Shutdown
+  name: Shutdown()
+  nameWithType: WssStimulationCore.Shutdown()
+  fullName: Wss.CoreModule.WssStimulationCore.Shutdown()
+  spec.csharp:
+  - uid: Wss.CoreModule.WssStimulationCore.Shutdown
+    name: Shutdown
+    href: Wss.CoreModule.WssStimulationCore.html#Wss_CoreModule_WssStimulationCore_Shutdown
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.WssStimulationCore.Shutdown
+    name: Shutdown
+    href: Wss.CoreModule.WssStimulationCore.html#Wss_CoreModule_WssStimulationCore_Shutdown
+  - name: (
+  - name: )
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+  isExternal: true
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.ArgumentException
+  commentId: T:System.ArgumentException
+  isExternal: true
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: System.ArgumentOutOfRangeException
+  commentId: T:System.ArgumentOutOfRangeException
+  isExternal: true
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
 - uid: Wss.CoreModule.WssStimulationCore.#ctor*
   commentId: Overload:Wss.CoreModule.WssStimulationCore.#ctor
-  href: Wss.CoreModule.WssStimulationCore.html#Wss_CoreModule_WssStimulationCore__ctor_System_String_System_String_System_Boolean_System_Int32_
+  href: Wss.CoreModule.WssStimulationCore.html#Wss_CoreModule_WssStimulationCore__ctor_Wss_CoreModule_ITransport_Wss_CoreModule_WssStimulationCoreOptions_
   name: WssStimulationCore
   nameWithType: WssStimulationCore.WssStimulationCore
   fullName: Wss.CoreModule.WssStimulationCore.WssStimulationCore
   nameWithType.vb: WssStimulationCore.New
   fullName.vb: Wss.CoreModule.WssStimulationCore.New
   name.vb: New
-- uid: System.String
-  commentId: T:System.String
-  parent: System
-  isExternal: true
-  name: string
-  nameWithType: string
-  fullName: string
-  nameWithType.vb: String
-  fullName.vb: String
-  name.vb: String
-- uid: System.Boolean
-  commentId: T:System.Boolean
-  parent: System
-  isExternal: true
-  name: bool
-  nameWithType: bool
-  fullName: bool
-  nameWithType.vb: Boolean
-  fullName.vb: Boolean
-  name.vb: Boolean
-- uid: System.Int32
-  commentId: T:System.Int32
-  parent: System
-  isExternal: true
-  name: int
-  nameWithType: int
-  fullName: int
-  nameWithType.vb: Integer
-  fullName.vb: Integer
-  name.vb: Integer
+- uid: Wss.CoreModule.ITransport
+  commentId: T:Wss.CoreModule.ITransport
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.ITransport.html
+  name: ITransport
+  nameWithType: ITransport
+  fullName: Wss.CoreModule.ITransport
+- uid: Wss.CoreModule.WssStimulationCoreOptions
+  commentId: T:Wss.CoreModule.WssStimulationCoreOptions
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.WssStimulationCoreOptions.html
+  name: WssStimulationCoreOptions
+  nameWithType: WssStimulationCoreOptions
+  fullName: Wss.CoreModule.WssStimulationCoreOptions
 - uid: Wss.CoreModule.IStimulationCore.Tick
   commentId: M:Wss.CoreModule.IStimulationCore.Tick
   parent: Wss.CoreModule.IStimulationCore
@@ -969,6 +989,12 @@ references:
     href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_Tick
   - name: (
   - name: )
+- uid: System.ObjectDisposedException
+  commentId: T:System.ObjectDisposedException
+  isExternal: true
+  name: ObjectDisposedException
+  nameWithType: ObjectDisposedException
+  fullName: System.ObjectDisposedException
 - uid: Wss.CoreModule.WssStimulationCore.Initialize*
   commentId: Overload:Wss.CoreModule.WssStimulationCore.Initialize
   href: Wss.CoreModule.WssStimulationCore.html#Wss_CoreModule_WssStimulationCore_Initialize
@@ -1081,6 +1107,16 @@ references:
     href: Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_Started
   - name: (
   - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
 - uid: Wss.CoreModule.WssStimulationCore.Ready*
   commentId: Overload:Wss.CoreModule.WssStimulationCore.Ready
   href: Wss.CoreModule.WssStimulationCore.html#Wss_CoreModule_WssStimulationCore_Ready
@@ -1171,6 +1207,16 @@ references:
     name: Integer
     isExternal: true
   - name: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
 - uid: System.Single
   commentId: T:System.Single
   parent: System
@@ -1655,6 +1701,16 @@ references:
     name: Integer
     isExternal: true
   - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
 - uid: Wss.CoreModule.WssStimulationCore.Save*
   commentId: Overload:Wss.CoreModule.WssStimulationCore.Save
   href: Wss.CoreModule.WssStimulationCore.html#Wss_CoreModule_WssStimulationCore_Save_Wss_CoreModule_WssTarget_

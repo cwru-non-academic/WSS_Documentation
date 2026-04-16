@@ -1,0 +1,115 @@
+### YamlMime:ManagedReference
+items:
+- uid: HFI.Wss.StimulationTransportKind
+  commentId: T:HFI.Wss.StimulationTransportKind
+  id: StimulationTransportKind
+  parent: HFI.Wss
+  children:
+  - HFI.Wss.StimulationTransportKind.Ble
+  - HFI.Wss.StimulationTransportKind.Serial
+  - HFI.Wss.StimulationTransportKind.Test
+  langs:
+  - csharp
+  - vb
+  name: StimulationTransportKind
+  nameWithType: StimulationTransportKind
+  fullName: HFI.Wss.StimulationTransportKind
+  type: Enum
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  summary: Configuration record for <xref href="HFI.Wss.StimulationController" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public enum StimulationTransportKind
+    content.vb: Public Enum StimulationTransportKind
+- uid: HFI.Wss.StimulationTransportKind.Serial
+  commentId: F:HFI.Wss.StimulationTransportKind.Serial
+  id: Serial
+  parent: HFI.Wss.StimulationTransportKind
+  langs:
+  - csharp
+  - vb
+  name: Serial
+  nameWithType: StimulationTransportKind.Serial
+  fullName: HFI.Wss.StimulationTransportKind.Serial
+  type: Field
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  syntax:
+    content: Serial = 0
+    return:
+      type: HFI.Wss.StimulationTransportKind
+- uid: HFI.Wss.StimulationTransportKind.Ble
+  commentId: F:HFI.Wss.StimulationTransportKind.Ble
+  id: Ble
+  parent: HFI.Wss.StimulationTransportKind
+  langs:
+  - csharp
+  - vb
+  name: Ble
+  nameWithType: StimulationTransportKind.Ble
+  fullName: HFI.Wss.StimulationTransportKind.Ble
+  type: Field
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  syntax:
+    content: Ble = 1
+    return:
+      type: HFI.Wss.StimulationTransportKind
+- uid: HFI.Wss.StimulationTransportKind.Test
+  commentId: F:HFI.Wss.StimulationTransportKind.Test
+  id: Test
+  parent: HFI.Wss.StimulationTransportKind
+  langs:
+  - csharp
+  - vb
+  name: Test
+  nameWithType: StimulationTransportKind.Test
+  fullName: HFI.Wss.StimulationTransportKind.Test
+  type: Field
+  assemblies:
+  - HFI_WSS_Csharp_Implementation
+  namespace: HFI.Wss
+  syntax:
+    content: Test = 2
+    return:
+      type: HFI.Wss.StimulationTransportKind
+references:
+- uid: HFI.Wss.StimulationController
+  commentId: T:HFI.Wss.StimulationController
+  href: HFI.Wss.StimulationController.html
+  name: StimulationController
+  nameWithType: StimulationController
+  fullName: HFI.Wss.StimulationController
+- uid: HFI.Wss
+  commentId: N:HFI.Wss
+  href: HFI.html
+  name: HFI.Wss
+  nameWithType: HFI.Wss
+  fullName: HFI.Wss
+  spec.csharp:
+  - uid: HFI
+    name: HFI
+    href: HFI.html
+  - name: .
+  - uid: HFI.Wss
+    name: Wss
+    href: HFI.Wss.html
+  spec.vb:
+  - uid: HFI
+    name: HFI
+    href: HFI.html
+  - name: .
+  - uid: HFI.Wss
+    name: Wss
+    href: HFI.Wss.html
+- uid: HFI.Wss.StimulationTransportKind
+  commentId: T:HFI.Wss.StimulationTransportKind
+  parent: HFI.Wss
+  href: HFI.Wss.StimulationTransportKind.html
+  name: StimulationTransportKind
+  nameWithType: StimulationTransportKind
+  fullName: HFI.Wss.StimulationTransportKind

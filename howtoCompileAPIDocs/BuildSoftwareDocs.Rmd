@@ -6,6 +6,8 @@ output:
 ---
 # Building Software API Docs (DocFX)
 
+[Home](../README.md) | [Docs Hub](../apiDocs/index.md) | [Back to Maintainers](../apiDocs/maintainers.md)
+
 This guide explains how to generate the WSS documentation hub while keeping code in external repositories.
 
 The docs project lives under `apiDocs/` and uses `apiDocs/repos.manifest.json` to map each linked repo to a documentation tool:
@@ -22,6 +24,65 @@ The docs project lives under `apiDocs/` and uses `apiDocs/repos.manifest.json` t
 
 > If DocFX isn’t installed, the build script will remind you to run `docfx metadata` and `docfx build` once you add it to PATH.
 
+### Tool setup by OS
+
+Use the setup that matches your machine before running the build scripts.
+
+#### Windows
+
+- Install the .NET SDK 7 or later.
+- Install DocFX and make sure `docfx` is on your `PATH`.
+- Install Python 3.
+- Install Sphinx in the Python repo environment if you plan to build Python docs.
+- Run the docs build with PowerShell.
+
+Typical commands:
+
+```powershell
+dotnet tool install -g docfx
+python -m pip install -U pip
+python -m pip install sphinx
+```
+
+#### macOS
+
+- Install the .NET SDK 7 or later.
+- Install DocFX and make sure `docfx` is on your `PATH`.
+- Install Python 3.
+- Install Sphinx in the Python repo environment if you plan to build Python docs.
+- Run the docs build with Bash.
+
+Typical commands:
+
+```bash
+brew install --cask dotnet-sdk
+dotnet tool install -g docfx
+python3 -m pip install -U pip
+python3 -m pip install sphinx
+```
+
+If `docfx` is not found after installing it as a .NET global tool, add `~/.dotnet/tools` to your shell `PATH`.
+
+#### Linux
+
+- Install the .NET SDK 7 or later.
+- Install DocFX and make sure `docfx` is on your `PATH`.
+- Install Python 3 and `pip`.
+- Install Sphinx in the Python repo environment if you plan to build Python docs.
+- Run the docs build with Bash.
+
+Typical commands:
+
+```bash
+dotnet tool install -g docfx
+python3 -m pip install -U pip
+python3 -m pip install sphinx
+```
+
+Install the .NET SDK with your distribution's package manager or Microsoft's installer for your distro before running the commands above.
+
+If `docfx` is not found after installing it as a .NET global tool, add `~/.dotnet/tools` to your shell `PATH`.
+
 ## Configure linked repositories
 
 Edit `apiDocs/repos.manifest.json` and add one entry per linked repo.
@@ -34,11 +95,25 @@ Quick start:
 1) Set the required environment variables (paths to the linked repos).
 2) Run the build script with the manifest.
 
+If you only want the main/core docs, add the main-only flag:
+
+- Bash: `./apiDocs/build-docs.sh --manifest ./apiDocs/repos.manifest.json --main`
+- PowerShell: `./apiDocs/build-docs.ps1 -ManifestPath ./apiDocs/repos.manifest.json -Main`
+
+When `--main` or `-Main` is set, the build only includes the `core` manifest entry. In the default manifest, that `core` entry points at the root `WSS_Core_Interface.sln`, so main/core docs include the shared core plus any transport projects linked into that solution. Without that flag, the scripts build all enabled repositories.
+
+If you want to skip Python docs, add the skip-Python flag:
+
+- Bash: `./apiDocs/build-docs.sh --manifest ./apiDocs/repos.manifest.json --skip-python`
+- PowerShell: `./apiDocs/build-docs.ps1 -ManifestPath ./apiDocs/repos.manifest.json -SkipPython`
+
+When `--skip-python` or `-SkipPython` is set, the scripts skip Sphinx builds for `kind: python` manifest entries while still building the DocFX hub and any enabled C# API sections.
+
 ### Required environment variables
 
 Set these to your local checkouts:
 
-- `WSS_CORE_REPO_ROOT` (C# Core): `/path/to/WSSCoreInterface`
+- `WSS_CORE_REPO_ROOT` (C# core solution): `/path/to/WSSCoreInterface`
 - `WSS_CSHARP_REPO_ROOT` (C# integration): `/path/to/HFI_WSS_Csharp_Implementation`
 - `WSS_UNITY_REPO_ROOT` (Unity repo / Unity project root): `/path/to/Project using HFI_WSS_Unity_Interface`
 - `WSS_UNITY_INTEGRATION_SRC` (Unity integration submodule root inside the Unity project)
@@ -68,8 +143,11 @@ $env:WSS_PYTHON_REPO_ROOT = 'C:\\path\\to\\WSS_Python_Wrapper\\WSS_Py_Wrapper'
 
 For C# repos provide:
 - `root`: repo root path
-- `csproj`: path to project file relative to `root`
+- `csproj`: path to a C# project file relative to `root`
+- or `solution`: path to a C# solution file relative to `root`
 - `docfxDest`: unique output section (example: `api/core`)
+
+Use `solution` when one repository should publish all projects that belong to a shared root solution. This is the preferred setup for the WSS core repo so new transport projects are picked up automatically.
 
 Optional (C#): `entryUid`
 
@@ -110,11 +188,19 @@ Build with manifest:
 ./apiDocs/build-docs.ps1 -ManifestPath ./apiDocs/repos.manifest.json
 ```
 
+Build only the main/core docs:
+
+```powershell
+./apiDocs/build-docs.ps1 -ManifestPath ./apiDocs/repos.manifest.json -Main
+```
+
 Serve locally after build:
 
 ```powershell
 ./apiDocs/build-docs.ps1 -ManifestPath ./apiDocs/repos.manifest.json -Serve
 ```
+
+After the command starts the local server, look for the `localhost` URL printed by DocFX in the terminal (for example, `http://localhost:8080`) and open it in your browser.
 
 Execution policy
 
@@ -131,6 +217,20 @@ Build with manifest:
 ```bash
 ./apiDocs/build-docs.sh --manifest ./apiDocs/repos.manifest.json
 ```
+
+Build only the main/core docs:
+
+```bash
+./apiDocs/build-docs.sh --manifest ./apiDocs/repos.manifest.json --main
+```
+
+Serve locally after build:
+
+```bash
+./apiDocs/build-docs.sh --manifest ./apiDocs/repos.manifest.json --serve
+```
+
+After the command starts the local server, look for the `localhost` URL printed by DocFX in the terminal (for example, `http://localhost:8080`) and open it in your browser.
 
 Permission denied
 
@@ -150,6 +250,7 @@ bash ./apiDocs/build-docs.sh --manifest ./apiDocs/repos.manifest.json
 ## What the scripts do
 
 - Reads enabled entries from `apiDocs/repos.manifest.json`
+- If `--main` / `-Main` is set, keeps only the `core` entry and skips all optional external integrations
 - Builds Python docs with Sphinx into `apiDocs/external/<repo-id>`
 - Generates a DocFX config file (`apiDocs/docfx.generated.json`) with one metadata section per C# repo
 - Regenerates `apiDocs/index.md` and `apiDocs/toc.yml` so all sections are accessible from the main page
@@ -221,3 +322,9 @@ Where:
 - `apiDocs/build-docs.ps1` — PowerShell build script (Windows)
 - `apiDocs/build-docs.sh` — Bash build script (macOS/Linux/Git Bash)
 - DocFX output is written into `apiDocs/` (HTML files plus `api/`, `conceptual/`, `styles/`)
+
+Navigation:
+
+- [Back to Home](../README.md)
+- [Back to Docs Hub](../apiDocs/index.md)
+- [Back to Maintainers](../apiDocs/maintainers.md)

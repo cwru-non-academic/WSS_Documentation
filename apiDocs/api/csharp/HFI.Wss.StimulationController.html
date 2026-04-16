@@ -108,7 +108,7 @@ concurrently with <a class="xref" href="HFI.Wss.StimulationController.html#HFI_W
 
   <a id="HFI_Wss_StimulationController__ctor_" data-uid="HFI.Wss.StimulationController.#ctor*"></a>
   <h4 id="HFI_Wss_StimulationController__ctor_HFI_Wss_StimulationOptions_" data-uid="HFI.Wss.StimulationController.#ctor(HFI.Wss.StimulationOptions)">StimulationController(StimulationOptions)</h4>
-  <div class="markdown level1 summary"><p>Creates a controller instance with the provided connection and configuration options.</p>
+  <div class="markdown level1 summary"><p>Creates a controller instance with the provided stimulation configuration options.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -128,7 +128,8 @@ concurrently with <a class="xref" href="HFI.Wss.StimulationController.html#HFI_W
       <tr>
         <td><a class="xref" href="HFI.Wss.StimulationOptions.html">StimulationOptions</a></td>
         <td><span class="parametername">options</span></td>
-        <td><p>Options that control transport, config paths, and tick behavior.</p>
+        <td><p>Options that control transport selection, config paths, and tick behavior without exposing
+transport implementation details to the caller.</p>
 </td>
       </tr>
     </tbody>
@@ -191,7 +192,7 @@ concurrently with <a class="xref" href="HFI.Wss.StimulationController.html#HFI_W
 
   <a id="HFI_Wss_StimulationController_started_" data-uid="HFI.Wss.StimulationController.started*"></a>
   <h4 id="HFI_Wss_StimulationController_started" data-uid="HFI.Wss.StimulationController.started">started</h4>
-  <div class="markdown level1 summary"><p>True after <a class="xref" href="HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_StartStimulation">StartStimulation()</a> succeeds.</p>
+  <div class="markdown level1 summary"><p>True after this controller issues a successful <a class="xref" href="HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_StartStimulation">StartStimulation()</a> request.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -213,6 +214,10 @@ concurrently with <a class="xref" href="HFI.Wss.StimulationController.html#HFI_W
       </tr>
     </tbody>
   </table>
+  <h5 id="HFI_Wss_StimulationController_started_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This is a controller-managed flag and may temporarily differ from <a class="xref" href="HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Started">Started()</a>, which
+queries the underlying WSS stack for its current state.</p>
+</div>
   <h3 id="methods">Methods
 </h3>
 
@@ -277,11 +282,15 @@ concurrently with <a class="xref" href="HFI.Wss.StimulationController.html#HFI_W
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
   </div>
+  <h5 id="HFI_Wss_StimulationController_Dispose_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method performs synchronous shutdown and waits for the background tick loop to stop before
+returning.</p>
+</div>
 
 
   <a id="HFI_Wss_StimulationController_DisposeAsync_" data-uid="HFI.Wss.StimulationController.DisposeAsync*"></a>
   <h4 id="HFI_Wss_StimulationController_DisposeAsync" data-uid="HFI.Wss.StimulationController.DisposeAsync">DisposeAsync()</h4>
-  <div class="markdown level1 summary"><p>Asynchronously shuts down the controller and releases any underlying resources.</p>
+  <div class="markdown level1 summary"><p>Shuts down the controller and releases any underlying resources.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -303,6 +312,10 @@ concurrently with <a class="xref" href="HFI.Wss.StimulationController.html#HFI_W
       </tr>
     </tbody>
   </table>
+  <h5 id="HFI_Wss_StimulationController_DisposeAsync_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Disposal is performed synchronously by calling <a class="xref" href="HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Shutdown">Shutdown()</a>. The returned
+<span class="xref">System.Threading.Tasks.ValueTask</span> is already complete when this method returns.</p>
+</div>
 
 
   <a id="HFI_Wss_StimulationController_GetAllStimParams_" data-uid="HFI.Wss.StimulationController.GetAllStimParams*"></a>
@@ -810,6 +823,13 @@ Automatically starts the background tick loop.</p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Initialize()</code></pre>
   </div>
+  <h5 id="HFI_Wss_StimulationController_Initialize_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The controller creates the transport internally based on <a class="xref" href="HFI.Wss.StimulationOptions.html#HFI_Wss_StimulationOptions_Transport">Transport</a>:
+test mode uses <a class="xref" href="../core/Wss.CoreModule.TestModeTransport.html">TestModeTransport</a>, serial uses <a class="xref" href="../core/Wss.CoreModule.SerialPortTransport.html">SerialPortTransport</a>,
+and BLE uses <a class="xref" href="../core/HFI.Wss.BleNusTransport.html">BleNusTransport</a>.
+This method is idempotent and returns immediately when the controller is already initialized.
+Initialization failures from the underlying WSS stack propagate to the caller.</p>
+</div>
 
 
   <a id="HFI_Wss_StimulationController_IsFingerValid_" data-uid="HFI.Wss.StimulationController.IsFingerValid*"></a>
@@ -1009,7 +1029,8 @@ Automatically starts the background tick loop.</p>
     <pre><code class="lang-csharp hljs">public void Save()</code></pre>
   </div>
   <h5 id="HFI_Wss_StimulationController_Save_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>If basic stimulation is not supported, this method logs an error and returns without throwing.</p>
+  <div class="markdown level1 remarks"><p>If the basic-stimulation API is unavailable, including before initialization, this method logs an
+error and returns without throwing.</p>
 </div>
 
 
@@ -1041,7 +1062,8 @@ Automatically starts the background tick loop.</p>
     </tbody>
   </table>
   <h5 id="HFI_Wss_StimulationController_Save_System_Int32__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>If basic stimulation is not supported, this method logs an error and returns without throwing.</p>
+  <div class="markdown level1 remarks"><p>If the basic-stimulation API is unavailable, including before initialization, this method logs an
+error and returns without throwing.</p>
 </div>
 
 
@@ -1278,13 +1300,17 @@ Automatically starts the background tick loop.</p>
 
   <a id="HFI_Wss_StimulationController_Shutdown_" data-uid="HFI.Wss.StimulationController.Shutdown*"></a>
   <h4 id="HFI_Wss_StimulationController_Shutdown" data-uid="HFI.Wss.StimulationController.Shutdown">Shutdown()</h4>
-  <div class="markdown level1 summary"><p>Stops ticking and tears down the connection.</p>
+  <div class="markdown level1 summary"><p>Stops the background tick loop and tears down the active connection.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Shutdown()</code></pre>
   </div>
+  <h5 id="HFI_Wss_StimulationController_Shutdown_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method blocks until the current tick loop exits and then shuts down and disposes the active
+WSS stack. It is safe to call multiple times; calls made before initialization return without error.</p>
+</div>
 
 
   <a id="HFI_Wss_StimulationController_StartStimulation_" data-uid="HFI.Wss.StimulationController.StartStimulation*"></a>
@@ -1702,7 +1728,8 @@ Automatically starts the background tick loop.</p>
     </tbody>
   </table>
   <h5 id="HFI_Wss_StimulationController_UpdateIPD_System_Int32_System_Int32__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>If basic stimulation is not supported, this method logs an error and returns without throwing.</p>
+  <div class="markdown level1 remarks"><p>If the basic-stimulation API is unavailable, including before initialization, this method logs an
+error and returns without throwing.</p>
 </div>
 
 
@@ -1746,7 +1773,8 @@ Automatically starts the background tick loop.</p>
     </tbody>
   </table>
   <h5 id="HFI_Wss_StimulationController_UpdateIPD_System_Int32_System_Int32_System_Int32__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>If basic stimulation is not supported, this method logs an error and returns without throwing.</p>
+  <div class="markdown level1 remarks"><p>If the basic-stimulation API is unavailable, including before initialization, this method logs an
+error and returns without throwing.</p>
 </div>
 
 
@@ -1790,7 +1818,8 @@ Automatically starts the background tick loop.</p>
     </tbody>
   </table>
   <h5 id="HFI_Wss_StimulationController_WaveformSetup_System_Int32_Wss_CoreModule_WaveformBuilder_System_Int32__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>If basic stimulation is not supported, this method logs an error and returns without throwing.</p>
+  <div class="markdown level1 remarks"><p>If the basic-stimulation API is unavailable, including before initialization, this method logs an
+error and returns without throwing.</p>
 </div>
 
 
@@ -1828,7 +1857,8 @@ Automatically starts the background tick loop.</p>
     </tbody>
   </table>
   <h5 id="HFI_Wss_StimulationController_WaveformSetup_Wss_CoreModule_WaveformBuilder_System_Int32__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>If basic stimulation is not supported, this method logs an error and returns without throwing.</p>
+  <div class="markdown level1 remarks"><p>If the basic-stimulation API is unavailable, including before initialization, this method logs an
+error and returns without throwing.</p>
 </div>
 
 
@@ -1885,7 +1915,8 @@ Automatically starts the background tick loop.</p>
     <pre><code class="lang-csharp hljs">public void load()</code></pre>
   </div>
   <h5 id="HFI_Wss_StimulationController_load_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>If basic stimulation is not supported, this method logs an error and returns without throwing.</p>
+  <div class="markdown level1 remarks"><p>If the basic-stimulation API is unavailable, including before initialization, this method logs an
+error and returns without throwing.</p>
 </div>
 
 
@@ -1917,7 +1948,8 @@ Automatically starts the background tick loop.</p>
     </tbody>
   </table>
   <h5 id="HFI_Wss_StimulationController_load_System_Int32__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>If basic stimulation is not supported, this method logs an error and returns without throwing.</p>
+  <div class="markdown level1 remarks"><p>If the basic-stimulation API is unavailable, including before initialization, this method logs an
+error and returns without throwing.</p>
 </div>
 
 
@@ -1955,19 +1987,24 @@ Automatically starts the background tick loop.</p>
     </tbody>
   </table>
   <h5 id="HFI_Wss_StimulationController_loadWaveform_System_String_System_Int32__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>If basic stimulation is not supported, this method logs an error and returns without throwing.</p>
+  <div class="markdown level1 remarks"><p>If the basic-stimulation API is unavailable, including before initialization, this method logs an
+error and returns without throwing.</p>
 </div>
 
 
   <a id="HFI_Wss_StimulationController_releaseRadio_" data-uid="HFI.Wss.StimulationController.releaseRadio*"></a>
   <h4 id="HFI_Wss_StimulationController_releaseRadio" data-uid="HFI.Wss.StimulationController.releaseRadio">releaseRadio()</h4>
-  <div class="markdown level1 summary"><p>Explicitly releases the radio connection.</p>
+  <div class="markdown level1 summary"><p>Explicitly releases the active radio connection.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void releaseRadio()</code></pre>
   </div>
+  <h5 id="HFI_Wss_StimulationController_releaseRadio_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This is equivalent to calling <a class="xref" href="HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Shutdown">Shutdown()</a> and has the same blocking and idempotent
+behavior.</p>
+</div>
 
 
   <a id="HFI_Wss_StimulationController_request_Configs_" data-uid="HFI.Wss.StimulationController.request_Configs*"></a>
@@ -2010,7 +2047,8 @@ Automatically starts the background tick loop.</p>
     </tbody>
   </table>
   <h5 id="HFI_Wss_StimulationController_request_Configs_System_Int32_System_Int32_System_Int32__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>If basic stimulation is not supported, this method logs an error and returns without throwing.</p>
+  <div class="markdown level1 remarks"><p>If the basic-stimulation API is unavailable, including before initialization, this method logs an
+error and returns without throwing.</p>
 </div>
 
 
@@ -2023,6 +2061,10 @@ Automatically starts the background tick loop.</p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void resetRadio()</code></pre>
   </div>
+  <h5 id="HFI_Wss_StimulationController_resetRadio_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method stops the current tick loop, reinitializes the underlying WSS stack in place, and then
+starts ticking again. If the controller has not been initialized yet, this method does nothing.</p>
+</div>
 
 
   <a id="HFI_Wss_StimulationController_updateWaveform_" data-uid="HFI.Wss.StimulationController.updateWaveform*"></a>
@@ -2065,7 +2107,8 @@ Automatically starts the background tick loop.</p>
     </tbody>
   </table>
   <h5 id="HFI_Wss_StimulationController_updateWaveform_System_Int32_System_Int32_System_Int32__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>If basic stimulation is not supported, this method logs an error and returns without throwing.</p>
+  <div class="markdown level1 remarks"><p>If the basic-stimulation API is unavailable, including before initialization, this method logs an
+error and returns without throwing.</p>
 </div>
 
 
@@ -2115,7 +2158,8 @@ Automatically starts the background tick loop.</p>
     </tbody>
   </table>
   <h5 id="HFI_Wss_StimulationController_updateWaveform_System_Int32_System_Int32_System_Int32_System_Int32__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>If basic stimulation is not supported, this method logs an error and returns without throwing.</p>
+  <div class="markdown level1 remarks"><p>If the basic-stimulation API is unavailable, including before initialization, this method logs an
+error and returns without throwing.</p>
 </div>
 
 
@@ -2159,7 +2203,8 @@ Automatically starts the background tick loop.</p>
     </tbody>
   </table>
   <h5 id="HFI_Wss_StimulationController_updateWaveform_System_Int32_System_Int32___System_Int32__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>If basic stimulation is not supported, this method logs an error and returns without throwing.</p>
+  <div class="markdown level1 remarks"><p>If the basic-stimulation API is unavailable, including before initialization, this method logs an
+error and returns without throwing.</p>
 </div>
 
 
@@ -2203,7 +2248,8 @@ Automatically starts the background tick loop.</p>
     </tbody>
   </table>
   <h5 id="HFI_Wss_StimulationController_updateWaveform_System_Int32_Wss_CoreModule_WaveformBuilder_System_Int32__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>If basic stimulation is not supported, this method logs an error and returns without throwing.</p>
+  <div class="markdown level1 remarks"><p>If the basic-stimulation API is unavailable, including before initialization, this method logs an
+error and returns without throwing.</p>
 </div>
 
 
@@ -2241,7 +2287,8 @@ Automatically starts the background tick loop.</p>
     </tbody>
   </table>
   <h5 id="HFI_Wss_StimulationController_updateWaveform_System_Int32___System_Int32__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>If basic stimulation is not supported, this method logs an error and returns without throwing.</p>
+  <div class="markdown level1 remarks"><p>If the basic-stimulation API is unavailable, including before initialization, this method logs an
+error and returns without throwing.</p>
 </div>
 
 
@@ -2279,7 +2326,8 @@ Automatically starts the background tick loop.</p>
     </tbody>
   </table>
   <h5 id="HFI_Wss_StimulationController_updateWaveform_Wss_CoreModule_WaveformBuilder_System_Int32__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>If basic stimulation is not supported, this method logs an error and returns without throwing.</p>
+  <div class="markdown level1 remarks"><p>If the basic-stimulation API is unavailable, including before initialization, this method logs an
+error and returns without throwing.</p>
 </div>
 
 </article>

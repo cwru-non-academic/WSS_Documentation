@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Start Here: Using an Application | WSS Documentation Hub </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Start Here: Using an Application | WSS Documentation Hub ">
+    
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="start-here-using-an-application">Start Here: Using an Application</h1>
+
+<p><a href="../index.html">Home</a> | <a href="../start-here.html">Back to Start Here</a></p>
+<h2 id="who-this-is-for">Who This Is For</h2>
+<p>This guide is for people who want to use existing WSS functionality through an existing WSS application.</p>
+<p>If you want to operate WSS through an existing GUI, CLI, Unity application, ROS node, or other user-facing tool, start here.</p>
+<h2 id="which-applications-are-available">Which Applications Are Available</h2>
+<ul>
+<li>Unity application
+<ul>
+<li>Built on top of the Unity integration library.</li>
+<li>This is the Unity-facing application path when WSS is being used from within a Unity project or Unity-based workflow.</li>
+</ul>
+</li>
+<li>C# application
+<ul>
+<li>Built on top of the C# integration library.</li>
+<li>This is the .NET application path for desktop tools, experiment software, or other C#-native workflows.</li>
+</ul>
+</li>
+<li>Python CLI application
+<ul>
+<li>Built on top of the Python integration library.</li>
+<li>This is a command-line entry point for initializing WSS, checking status, reloading config, and issuing stimulation commands.</li>
+</ul>
+</li>
+<li>Python ROS application
+<ul>
+<li>Built on top of the Python integration library.</li>
+<li>This is the robotics-oriented application path when WSS needs to be controlled from a ROS workflow.</li>
+</ul>
+</li>
+</ul>
+<p>Applications sit on top of integration libraries. The integration library decides which WSS core and layer functionality is exposed to the application, and the application decides how a user interacts with it.</p>
+<h2 id="how-to-use-the-config-files">How To Use the Config Files</h2>
+<p>Many WSS applications rely on a <code>Config/</code> directory to define how the core, parameter layer, and model layer behave. In the Python CLI application, the default config directory contains three files:</p>
+<ul>
+<li><code>stimConfig.json</code></li>
+<li><code>stimParams.json</code></li>
+<li><code>modelConfig.json</code></li>
+</ul>
+<p>Together, these files define the hardware/core setup, per-channel stimulation behavior, and optional model-layer behavior.</p>
+<p>The application usually decides where the config files live and passes that location down to the integration library.</p>
+<p>Integration libraries usually default to using a root-level config location when the application does not provide one explicitly.</p>
+<p>If the application points to a config location and the files do not exist yet, the library stack will usually auto-generate the config files there with default values. Those files can then be edited and reloaded later.</p>
+<ul>
+<li><code>stimConfig.json</code>
+<ul>
+<li>Core-level runtime configuration.</li>
+<li>Defines the number of WSS units, firmware target, and amplitude-curve behavior.</li>
+</ul>
+</li>
+<li><code>stimParams.json</code>
+<ul>
+<li>Per-channel stimulation parameter configuration.</li>
+<li>Defines how channel-level stimulation values and limits are interpreted.</li>
+</ul>
+</li>
+<li><code>modelConfig.json</code>
+<ul>
+<li>Model-layer configuration.</li>
+<li>Defines the active controller mode and the constants used by that mode.</li>
+</ul>
+</li>
+</ul>
+<p>For a full reference of each config file and every section inside it, see <a href="config-files-reference.html">Config Files Reference</a>.</p>
+<p>When working with an application:</p>
+<ul>
+<li>start from the example or default config shipped with that application</li>
+<li>change only the values you need for your device and workflow</li>
+<li>keep one config set per common setup so it is easy to reuse and compare</li>
+<li>treat <code>stimConfig.json</code>, <code>stimParams.json</code>, and <code>modelConfig.json</code> as related pieces of one runtime configuration rather than unrelated files</li>
+</ul>
+<h2 id="first-connection-flow">First Connection Flow</h2>
+<p>The typical startup flow is:</p>
+<ol>
+<li>Choose the application that matches your workflow.</li>
+<li>Review and update the config files for your hardware and stimulation setup.</li>
+<li>Launch the application and call <code>Initialize()</code>.</li>
+<li>During initialization, the application creates the configured WSS stack and starts the connection/setup process.</li>
+<li>Setup commands are loaded into each WSS so the expected startup state and programming are applied.</li>
+<li>If setup completes successfully, the system moves into <code>Ready</code> and then into active stimulation/streaming behavior.</li>
+<li><code>StartStim(...)</code> is part of the normal setup flow, so startup stimulation is typically scheduled automatically during initialization.</li>
+<li>After initialization, the application continues advancing the system through <code>Tick()</code>.</li>
+<li>The application decides the tick interval, and that interval controls how often the periodic update loop runs.</li>
+<li>When the application shuts down, it calls <code>Shutdown()</code>.</li>
+<li><code>Shutdown()</code> stops stimulation, releases transport and connection resources, and cleans up the running stack.</li>
+</ol>
+<p>If you are not sure what happens under the hood, see <a href="layering-guide.html">Layering Guide (Modules)</a>.</p>
+<h2 id="changing-setup-after-startup">Changing Setup After Startup</h2>
+<p>If you need to modify setup from within an application, see <a href="start-here-developing-an-application.html">Start Here: Developing an Application</a>.</p>
+<p>That guide covers the application-level path for changing setup after startup and points to <a href="setup-order-and-modification.html">Setup Order and Modification</a> for the setup dependency rules.</p>
+<h2 id="important-api-functions">Important API Functions</h2>
+<p>In many applications these functions are wrapped by buttons, commands, menus, or scripts. The most useful thing here is not to repeat their full documentation, but to point you to the original API pages where parameters, return values, and behavior are already documented.</p>
+<h3 id="application-facing-entry-points">Application-facing entry points</h3>
+<ul>
+<li>Initialization and lifecycle
+<ul>
+<li><a class="xref" href="../api/csharp/HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Initialize">Initialize()</a></li>
+<li><a class="xref" href="../api/csharp/HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Ready">Ready()</a></li>
+<li><a class="xref" href="../api/csharp/HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Shutdown">Shutdown()</a></li>
+</ul>
+</li>
+<li>Starting stimulation
+<ul>
+<li><a class="xref" href="../api/csharp/HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_StartStimulation">StartStimulation()</a></li>
+<li>Under the hood, startup also relies on core-level <code>StartStim(...)</code> during the setup sequence.</li>
+</ul>
+</li>
+<li>Direct stimulation and validation
+<ul>
+<li><a class="xref" href="../api/csharp/HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_StimulateAnalog_System_String_System_Int32_System_Int32_System_Int32_">StimulateAnalog(string, int, int, int)</a></li>
+<li><a class="xref" href="../api/csharp/HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_IsFingerValid_System_String_">IsFingerValid(string)</a></li>
+</ul>
+</li>
+<li>Reloading configuration
+<ul>
+<li><a class="xref" href="../api/csharp/HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_LoadCoreConfigFile">LoadCoreConfigFile()</a></li>
+<li><a class="xref" href="../api/csharp/HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_LoadParamsJson">LoadParamsJson()</a></li>
+<li><a class="xref" href="../api/csharp/HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_LoadParamsJson_System_String_">LoadParamsJson(string)</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="useful-stimulation-parameter-apis">Useful stimulation-parameter APIs</h3>
+<p>These are useful when the selected application or integration library exposes parameter editing or inspection directly:</p>
+<ul>
+<li><a class="xref" href="../api/csharp/HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_AddOrUpdateStimParam_System_String_System_Single_">AddOrUpdateStimParam(string, float)</a></li>
+<li><a class="xref" href="../api/csharp/HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_GetAllStimParams">GetAllStimParams()</a></li>
+<li><a class="xref" href="../api/csharp/HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_GetStimIntensity_System_String_">GetStimIntensity(string)</a></li>
+<li><a class="xref" href="../api/csharp/HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_GetStimParam_System_String_">GetStimParam(string)</a></li>
+<li><a class="xref" href="../api/csharp/HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_StimulateNormalized_System_String_System_Single_">StimulateNormalized(string, float)</a></li>
+</ul>
+<p>For channel-level parameter behavior in the calibration layer, see:</p>
+<ul>
+<li><a class="xref" href="../api/core/Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_GetChannelAmpMode_System_Int32_">GetChannelAmpMode(int)</a></li>
+<li><a class="xref" href="../api/core/Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_GetChannelDefault_System_Int32_">GetChannelDefault(int)</a></li>
+<li><a class="xref" href="../api/core/Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_GetChannelMax_System_Int32_">GetChannelMax(int)</a></li>
+<li><a class="xref" href="../api/core/Wss.CalibrationModule.IStimParamsCore.html#Wss_CalibrationModule_IStimParamsCore_GetChannelMin_System_Int32_">GetChannelMin(int)</a></li>
+</ul>
+<p>For model-layer channel behavior, see:</p>
+<ul>
+<li><a class="xref" href="../api/core/Wss.ModelModule.ModelParamsLayer.html#Wss_ModelModule_ModelParamsLayer_GetChannelAmpMode_System_Int32_">ModelParamsLayer.GetChannelAmpMode(int)</a></li>
+</ul>
+<p>For lower-level core behavior that applications often rely on indirectly, see:</p>
+<ul>
+<li><a class="xref" href="../api/core/Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_IsChannelInRange_System_Int32_">IStimulationCore.IsChannelInRange(int)</a></li>
+<li><a class="xref" href="../api/core/Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_LoadConfigFile">IStimulationCore.LoadConfigFile()</a></li>
+<li><a class="xref" href="../api/core/Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_StimulateAnalog_System_Int32_System_Int32_System_Single_System_Int32_">IStimulationCore.StimulateAnalog(int, int, float, int)</a></li>
+<li><a class="xref" href="../api/core/Wss.CalibrationModule.StimParamsLayer.html#Wss_CalibrationModule_StimParamsLayer_ZeroOutStim_Wss_CoreModule_WssTarget_">StimParamsLayer.ZeroOutStim(WssTarget)</a></li>
+<li><a class="xref" href="../api/core/Wss.CoreModule.IStimulationCore.html#Wss_CoreModule_IStimulationCore_StartStim_Wss_CoreModule_WssTarget_">IStimulationCore.StartStim(WssTarget)</a></li>
+</ul>
+<h2 id="next-steps">Next Steps</h2>
+<ul>
+<li>If you want to build your own application on top of an existing integration library, continue to <a href="start-here-developing-an-application.html">Start Here: Developing an Application</a>.</li>
+<li>If you need a new language or platform integration, continue to <a href="start-here-building-a-new-integration-library.html">Start Here: Building a New Integration Library</a>.</li>
+</ul>
+<p>Navigation:</p>
+<ul>
+<li><a href="../index.html">Back to Home</a></li>
+<li><a href="../start-here.html">Back to Start Here</a></li>
+<li><a href="start-here-developing-an-application.html">Next: Start Here: Developing an Application</a></li>
+</ul>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/cwru-non-academic/WSS_Documentation/blob/main/apiDocs/conceptual/start-here-using-an-application.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

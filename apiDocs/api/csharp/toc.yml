@@ -10,4 +10,7 @@ items:
   - uid: HFI.Wss.StimulationOptions
     name: StimulationOptions
     type: Class
+  - uid: HFI.Wss.StimulationTransportKind
+    name: StimulationTransportKind
+    type: Enum
 memberLayout: SamePage

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Setup Order and Modification | WSS Documentation Hub </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Setup Order and Modification | WSS Documentation Hub ">
+    
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="setup-order-and-modification">Setup Order and Modification</h1>
+
+<p><a href="../index.html">Home</a> | <a href="../concepts.html">Back to Concepts</a></p>
+<p>This guide explains the two main ways setup can happen in the WSS stack:</p>
+<ul>
+<li>initial setup driven by the core during startup</li>
+<li>later setup changes driven by commands exposed through an integration library or application</li>
+</ul>
+<p>That distinction matters because you do not always need to modify the core just to change setup behavior.</p>
+<h2 id="two-ways-setup-can-happen">Two Ways Setup Can Happen</h2>
+<p>There are two important setup paths in the current architecture.</p>
+<h3 id="1-initial-setup-in-the-core">1. Initial Setup in the Core</h3>
+<p>This is the startup setup that happens automatically after connection succeeds.</p>
+<ul>
+<li><code>WssStimulationCore.Initialize()</code> begins connection and setup</li>
+<li>once connected, the core calls <code>NormalSetup()</code></li>
+<li><code>NormalSetup()</code> seeds the setup queue for each target and drives the initial device configuration</li>
+</ul>
+<p>This is the right place to make a change only when you want to modify the default setup that should happen every time the core starts.</p>
+<h3 id="2-setup-changes-after-startup">2. Setup Changes After Startup</h3>
+<p>Setup can also be changed after initial startup by sending the right sequence of setup-related commands.</p>
+<p>That means an integration library or application can often replace or override setup behavior without modifying the core itself, as long as it exposes the necessary methods.</p>
+<p>Examples:</p>
+<ul>
+<li>loading a different config after startup</li>
+<li>clearing and recreating event or schedule definitions</li>
+<li>uploading a different waveform setup</li>
+<li>changing event configuration or schedule configuration during a session</li>
+<li>issuing enough setup commands to effectively create a whole new setup after the initial one is complete</li>
+</ul>
+<p>So the key distinction is:</p>
+<ul>
+<li>modify the core when you want to change the default startup setup for every run</li>
+<li>use integration-library or application-level setup commands when you only want to change the setup that is active during a particular workflow or session</li>
+</ul>
+<h2 id="current-initial-setup-order">Current Initial Setup Order</h2>
+<p>The current documented startup flow is:</p>
+<ol>
+<li><code>Initialize()</code></li>
+<li>connect transport</li>
+<li><code>NormalSetup()</code></li>
+<li><code>Clear</code></li>
+<li><code>Create</code></li>
+<li><code>Config</code></li>
+<li><code>Edit</code></li>
+<li><code>Add</code></li>
+<li><code>Sync</code></li>
+<li>queue drains to <code>Ready</code></li>
+<li><code>StartStim(...)</code></li>
+<li>device reports <code>Started</code></li>
+<li>streaming begins</li>
+</ol>
+<p>This is the best current high-level description of what the core does during automatic setup.</p>
+<h2 id="command-intent-translation">Command-Intent Translation</h2>
+<p>Translating those buckets into likely command intent:</p>
+<ol>
+<li>Clear old device state</li>
+<li>Create base structures</li>
+<li>Configure created items</li>
+<li>Add relationships</li>
+<li>Sync or activate prepared groups</li>
+<li>Start stimulation</li>
+<li>Begin streaming once the device has entered the started state</li>
+</ol>
+<p>In more concrete terms, that usually means:</p>
+<h3 id="1-clear-old-device-state">1. Clear Old Device State</h3>
+<ul>
+<li>clear events</li>
+<li>clear schedules</li>
+<li>clear contacts</li>
+<li>clear all</li>
+</ul>
+<p>Plain English: remove old programmed state so the new setup does not inherit unexpected leftover definitions from a previous run.</p>
+<p>Example commands:</p>
+<ul>
+<li><code>Clear(1)</code>
+<ul>
+<li>clears event definitions already stored on the device</li>
+</ul>
+</li>
+<li><code>Clear(2)</code>
+<ul>
+<li>clears schedule definitions already stored on the device</li>
+</ul>
+</li>
+<li><code>Clear(3)</code>
+<ul>
+<li>clears contact configurations already stored on the device</li>
+</ul>
+</li>
+<li><code>Clear(0)</code>
+<ul>
+<li>clears everything so setup starts from a clean state</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-create-base-structures">2. Create Base Structures</h3>
+<ul>
+<li>create contact configs</li>
+<li>create events</li>
+<li>create schedules</li>
+</ul>
+<p>Plain English: create the device objects that later setup steps will edit and connect together.</p>
+<p>Example commands:</p>
+<ul>
+<li><code>CreateContactConfig(...)</code>
+<ul>
+<li>creates a contact pattern the device can use later in an event</li>
+</ul>
+</li>
+<li><code>CreateEvent(...)</code>
+<ul>
+<li>creates a stimulation event definition with IDs and base timing/shape information</li>
+</ul>
+</li>
+<li><code>CreateSchedule(...)</code>
+<ul>
+<li>creates a schedule container that events can later be added to</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-configure-created-items">3. Configure Created Items</h3>
+<ul>
+<li>edit event config</li>
+<li>change schedule config</li>
+<li>optional waveform or IPD setup</li>
+</ul>
+<p>Plain English: now that the objects exist, fill in the details that make them behave the way you want.</p>
+<p>Example commands:</p>
+<ul>
+<li><code>EditEventAmp(...)</code>
+<ul>
+<li>changes the event's amplitude settings</li>
+</ul>
+</li>
+<li><code>EditEventPw(...)</code>
+<ul>
+<li>changes the event's pulse-width settings</li>
+</ul>
+</li>
+<li><code>EditEventShape(...)</code>
+<ul>
+<li>changes the waveform or shape settings used by the event</li>
+</ul>
+</li>
+<li><code>ChangeScheduleDuration(...)</code>
+<ul>
+<li>changes how long the schedule runs</li>
+</ul>
+</li>
+<li><code>ChangeScheduleState(...)</code>
+<ul>
+<li>changes whether the schedule is enabled or disabled</li>
+</ul>
+</li>
+<li><code>UpdateIPD(...)</code>
+<ul>
+<li>changes inter-phase delay behavior when that is part of the setup</li>
+</ul>
+</li>
+<li><code>WaveformSetup(...)</code>
+<ul>
+<li>uploads a waveform and points an event at it when waveform-based setup is needed</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-add-relationships">4. Add Relationships</h3>
+<ul>
+<li>add event to schedule</li>
+<li>move/remove as needed</li>
+</ul>
+<p>Plain English: connect the already-created pieces together so the device knows which events belong to which schedules.</p>
+<p>Example commands:</p>
+<ul>
+<li><code>AddEventToSchedule(...)</code>
+<ul>
+<li>inserts an event into a schedule so that schedule can trigger it</li>
+</ul>
+</li>
+<li><code>MoveEventToSchedule(...)</code>
+<ul>
+<li>moves an event from one schedule context to another</li>
+</ul>
+</li>
+<li><code>DeleteEventFromSchedule(...)</code>
+<ul>
+<li>removes an event from a schedule when the relationship should no longer exist</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-sync-or-activate-prepared-groups">5. Sync or Activate Prepared Groups</h3>
+<ul>
+<li>sync group</li>
+<li>prepare for start</li>
+</ul>
+<p>Plain English: finalize grouped behavior so the prepared setup is ready to run coherently when stimulation starts.</p>
+<p>Example commands:</p>
+<ul>
+<li><code>SyncGroup(...)</code>
+<ul>
+<li>tells the device to synchronize grouped behavior before stimulation begins</li>
+</ul>
+</li>
+<li><code>ChangeGroupState(...)</code>
+<ul>
+<li>changes whether a group is active or inactive as part of the prepared setup</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-start-stimulation">6. Start Stimulation</h3>
+<p>Plain English: once setup is complete, tell the device to begin stimulation using the programmed setup.</p>
+<p>Example commands:</p>
+<ul>
+<li><code>StartStim(...)</code>
+<ul>
+<li>tells the device to switch from prepared setup into active stimulation</li>
+</ul>
+</li>
+<li><code>StopStim(...)</code>
+<ul>
+<li>stops stimulation when needed; this is not part of setup creation, but it is often part of safely replacing or changing setup later</li>
+</ul>
+</li>
+</ul>
+<p>This is the ordering you should preserve unless you have a strong reason to change it.</p>
+<h2 id="why-the-order-matters">Why the Order Matters</h2>
+<p>The setup order exists to preserve dependencies between commands.</p>
+<ul>
+<li>Do not edit something before it exists.</li>
+<li>Do not add an event to a schedule before both the event and schedule exist.</li>
+<li>Do not sync or start before the device has the intended setup.</li>
+<li>Do not move <code>StartStim(...)</code> earlier unless you are sure the remaining setup actions are no longer required before stimulation begins.</li>
+</ul>
+<p>In other words, the safe default is:</p>
+<ul>
+<li>clear first</li>
+<li>create before configure</li>
+<li>configure before add/sync/start</li>
+<li>start only after setup is complete</li>
+</ul>
+<h2 id="when-you-need-to-modify-the-core">When You Need To Modify the Core</h2>
+<p>Modify the core setup when you want to change the automatic startup behavior itself.</p>
+<p>Typical cases:</p>
+<ul>
+<li>a new setup step must always happen after connect</li>
+<li>the order of startup commands must change for all users of the core</li>
+<li>startup setup must become firmware-dependent</li>
+<li><code>Ready</code> should only be reached after a different or expanded set of setup steps completes</li>
+</ul>
+<p>These changes usually belong in <code>WssStimulationCore.NormalSetup()</code> or the setup runner behavior around it.</p>
+<h2 id="when-you-do-not-need-to-modify-the-core">When You Do Not Need To Modify the Core</h2>
+<p>You do not need to modify the core if the integration library or application already exposes enough setup-related methods to recreate the desired setup after startup.</p>
+<p>Typical cases:</p>
+<ul>
+<li>you want a different setup for one workflow or experiment</li>
+<li>you want to reload configuration while the program is running</li>
+<li>you want to replace events, schedules, or waveforms after the initial setup</li>
+<li>you want the application to own setup changes instead of baking them into every startup</li>
+</ul>
+<p>In those cases, setup can be modified at a higher level by calling the exposed WSS methods in the right order.</p>
+<h2 id="safe-process-for-changing-setup">Safe Process for Changing Setup</h2>
+<p>Whether you modify startup setup or runtime setup, use this process:</p>
+<ol>
+<li>identify the dependency of the new or changed step</li>
+<li>place it after the objects it depends on exist</li>
+<li>place it before any later step that assumes the change is already applied</li>
+<li>check whether the step is firmware-specific and should be gated</li>
+<li>decide whether it belongs only in initial setup or should also be possible after startup</li>
+<li>confirm that <code>Ready</code> and <code>Started</code> still mean what the rest of the system expects</li>
+</ol>
+<h2 id="common-mistake">Common Mistake</h2>
+<p>One common mistake is assuming that changing setup always requires changing the core.</p>
+<p>That is not true.</p>
+<p>The core only owns the default initial setup path. Once the application is running, setup can also be changed from higher layers if those methods are exposed.</p>
+<h2 id="related-guides">Related Guides</h2>
+<ul>
+<li><a href="core-architecture.html">Core Architecture (Transport, Codec, Core)</a></li>
+<li><a href="start-here-minor-core-modifications.html">Start Here: Minor Core Modifications</a></li>
+<li><a href="start-here-developing-an-application.html">Start Here: Developing an Application</a></li>
+<li><a href="start-here-building-a-new-integration-library.html">Start Here: Building a New Integration Library</a></li>
+</ul>
+<p>Navigation:</p>
+<ul>
+<li><a href="../index.html">Back to Home</a></li>
+<li><a href="../concepts.html">Back to Concepts</a></li>
+<li><a href="core-architecture.html">Previous: Core Architecture (Transport, Codec, Core)</a></li>
+<li><a href="config-files-reference.html">Next: Config Files Reference</a></li>
+</ul>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/cwru-non-academic/WSS_Documentation/blob/main/apiDocs/conceptual/setup-order-and-modification.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

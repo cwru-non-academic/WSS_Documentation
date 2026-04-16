@@ -1,0 +1,459 @@
+### YamlMime:ManagedReference
+items:
+- uid: Wss.CoreModule.TestModeTransportOptions
+  commentId: T:Wss.CoreModule.TestModeTransportOptions
+  id: TestModeTransportOptions
+  parent: Wss.CoreModule
+  children:
+  - Wss.CoreModule.TestModeTransportOptions.AutoResponderAsync
+  - Wss.CoreModule.TestModeTransportOptions.BaseLatency
+  - Wss.CoreModule.TestModeTransportOptions.FallbackPayload
+  - Wss.CoreModule.TestModeTransportOptions.InboundDropProbability
+  - Wss.CoreModule.TestModeTransportOptions.JitterMs
+  - Wss.CoreModule.TestModeTransportOptions.MaxInboundChunkSize
+  - Wss.CoreModule.TestModeTransportOptions.Rng
+  langs:
+  - csharp
+  - vb
+  name: TestModeTransportOptions
+  nameWithType: TestModeTransportOptions
+  fullName: Wss.CoreModule.TestModeTransportOptions
+  type: Class
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Holds behavior settings for <xref href="Wss.CoreModule.TestModeTransport" data-throw-if-not-resolved="false"></xref>.
+  remarks: >-
+    The transport constructor requires a non-null options instance. When <xref href="Wss.CoreModule.TestModeTransportOptions.Rng" data-throw-if-not-resolved="false"></xref> or
+
+    <xref href="Wss.CoreModule.TestModeTransportOptions.FallbackPayload" data-throw-if-not-resolved="false"></xref> is left null, <xref href="Wss.CoreModule.TestModeTransport" data-throw-if-not-resolved="false"></xref> substitutes safe defaults.
+  example: []
+  syntax:
+    content: public sealed class TestModeTransportOptions
+    content.vb: Public NotInheritable Class TestModeTransportOptions
+  inheritance:
+  - System.Object
+- uid: Wss.CoreModule.TestModeTransportOptions.BaseLatency
+  commentId: P:Wss.CoreModule.TestModeTransportOptions.BaseLatency
+  id: BaseLatency
+  parent: Wss.CoreModule.TestModeTransportOptions
+  langs:
+  - csharp
+  - vb
+  name: BaseLatency
+  nameWithType: TestModeTransportOptions.BaseLatency
+  fullName: Wss.CoreModule.TestModeTransportOptions.BaseLatency
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Gets or sets the artificial latency applied to inbound delivery.
+  example: []
+  syntax:
+    content: public TimeSpan BaseLatency { get; set; }
+    parameters: []
+    return:
+      type: System.TimeSpan
+    content.vb: Public Property BaseLatency As TimeSpan
+  overload: Wss.CoreModule.TestModeTransportOptions.BaseLatency*
+- uid: Wss.CoreModule.TestModeTransportOptions.JitterMs
+  commentId: P:Wss.CoreModule.TestModeTransportOptions.JitterMs
+  id: JitterMs
+  parent: Wss.CoreModule.TestModeTransportOptions
+  langs:
+  - csharp
+  - vb
+  name: JitterMs
+  nameWithType: TestModeTransportOptions.JitterMs
+  fullName: Wss.CoreModule.TestModeTransportOptions.JitterMs
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Gets or sets the random jitter added to <xref href="Wss.CoreModule.TestModeTransportOptions.BaseLatency" data-throw-if-not-resolved="false"></xref>, in milliseconds.
+  example: []
+  syntax:
+    content: public int JitterMs { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property JitterMs As Integer
+  overload: Wss.CoreModule.TestModeTransportOptions.JitterMs*
+- uid: Wss.CoreModule.TestModeTransportOptions.MaxInboundChunkSize
+  commentId: P:Wss.CoreModule.TestModeTransportOptions.MaxInboundChunkSize
+  id: MaxInboundChunkSize
+  parent: Wss.CoreModule.TestModeTransportOptions
+  langs:
+  - csharp
+  - vb
+  name: MaxInboundChunkSize
+  nameWithType: TestModeTransportOptions.MaxInboundChunkSize
+  fullName: Wss.CoreModule.TestModeTransportOptions.MaxInboundChunkSize
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Gets or sets the maximum inbound chunk size.
+
+    Values greater than zero split inbound payloads into chunks up to this size.
+  example: []
+  syntax:
+    content: public int MaxInboundChunkSize { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property MaxInboundChunkSize As Integer
+  overload: Wss.CoreModule.TestModeTransportOptions.MaxInboundChunkSize*
+- uid: Wss.CoreModule.TestModeTransportOptions.InboundDropProbability
+  commentId: P:Wss.CoreModule.TestModeTransportOptions.InboundDropProbability
+  id: InboundDropProbability
+  parent: Wss.CoreModule.TestModeTransportOptions
+  langs:
+  - csharp
+  - vb
+  name: InboundDropProbability
+  nameWithType: TestModeTransportOptions.InboundDropProbability
+  fullName: Wss.CoreModule.TestModeTransportOptions.InboundDropProbability
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Gets or sets the probability in the range [0..1] of randomly dropping an inbound chunk.
+  example: []
+  syntax:
+    content: public double InboundDropProbability { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property InboundDropProbability As Double
+  overload: Wss.CoreModule.TestModeTransportOptions.InboundDropProbability*
+- uid: Wss.CoreModule.TestModeTransportOptions.Rng
+  commentId: P:Wss.CoreModule.TestModeTransportOptions.Rng
+  id: Rng
+  parent: Wss.CoreModule.TestModeTransportOptions
+  langs:
+  - csharp
+  - vb
+  name: Rng
+  nameWithType: TestModeTransportOptions.Rng
+  fullName: Wss.CoreModule.TestModeTransportOptions.Rng
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Gets or sets the random generator used for jitter, chunk sizing, drops, and synthetic replies.
+
+    When null, <xref href="Wss.CoreModule.TestModeTransport" data-throw-if-not-resolved="false"></xref> creates a default instance.
+  example: []
+  syntax:
+    content: public Random Rng { get; set; }
+    parameters: []
+    return:
+      type: System.Random
+    content.vb: Public Property Rng As Random
+  overload: Wss.CoreModule.TestModeTransportOptions.Rng*
+- uid: Wss.CoreModule.TestModeTransportOptions.FallbackPayload
+  commentId: P:Wss.CoreModule.TestModeTransportOptions.FallbackPayload
+  id: FallbackPayload
+  parent: Wss.CoreModule.TestModeTransportOptions
+  langs:
+  - csharp
+  - vb
+  name: FallbackPayload
+  nameWithType: TestModeTransportOptions.FallbackPayload
+  fullName: Wss.CoreModule.TestModeTransportOptions.FallbackPayload
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Gets or sets the payload used when an incoming checksum is invalid.
+
+    When null, <xref href="Wss.CoreModule.TestModeTransport" data-throw-if-not-resolved="false"></xref> uses a default fallback payload.
+  example: []
+  syntax:
+    content: public byte[] FallbackPayload { get; set; }
+    parameters: []
+    return:
+      type: System.Byte[]
+    content.vb: Public Property FallbackPayload As Byte()
+  overload: Wss.CoreModule.TestModeTransportOptions.FallbackPayload*
+- uid: Wss.CoreModule.TestModeTransportOptions.AutoResponderAsync
+  commentId: P:Wss.CoreModule.TestModeTransportOptions.AutoResponderAsync
+  id: AutoResponderAsync
+  parent: Wss.CoreModule.TestModeTransportOptions
+  langs:
+  - csharp
+  - vb
+  name: AutoResponderAsync
+  nameWithType: TestModeTransportOptions.AutoResponderAsync
+  fullName: Wss.CoreModule.TestModeTransportOptions.AutoResponderAsync
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Gets or sets an optional override auto-responder.
+
+    When null, the built-in responder is used.
+  example: []
+  syntax:
+    content: public Func<byte[], Task<byte[]>> AutoResponderAsync { get; set; }
+    parameters: []
+    return:
+      type: System.Func{System.Byte[],System.Threading.Tasks.Task{System.Byte[]}}
+    content.vb: Public Property AutoResponderAsync As Func(Of Byte(), Task(Of Byte()))
+  overload: Wss.CoreModule.TestModeTransportOptions.AutoResponderAsync*
+references:
+- uid: Wss.CoreModule.TestModeTransport
+  commentId: T:Wss.CoreModule.TestModeTransport
+  href: Wss.CoreModule.TestModeTransport.html
+  name: TestModeTransport
+  nameWithType: TestModeTransport
+  fullName: Wss.CoreModule.TestModeTransport
+- uid: Wss.CoreModule.TestModeTransportOptions.Rng
+  commentId: P:Wss.CoreModule.TestModeTransportOptions.Rng
+  href: Wss.CoreModule.TestModeTransportOptions.html#Wss_CoreModule_TestModeTransportOptions_Rng
+  name: Rng
+  nameWithType: TestModeTransportOptions.Rng
+  fullName: Wss.CoreModule.TestModeTransportOptions.Rng
+- uid: Wss.CoreModule.TestModeTransportOptions.FallbackPayload
+  commentId: P:Wss.CoreModule.TestModeTransportOptions.FallbackPayload
+  href: Wss.CoreModule.TestModeTransportOptions.html#Wss_CoreModule_TestModeTransportOptions_FallbackPayload
+  name: FallbackPayload
+  nameWithType: TestModeTransportOptions.FallbackPayload
+  fullName: Wss.CoreModule.TestModeTransportOptions.FallbackPayload
+- uid: Wss.CoreModule
+  commentId: N:Wss.CoreModule
+  href: Wss.html
+  name: Wss.CoreModule
+  nameWithType: Wss.CoreModule
+  fullName: Wss.CoreModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Wss.CoreModule.TestModeTransportOptions.BaseLatency*
+  commentId: Overload:Wss.CoreModule.TestModeTransportOptions.BaseLatency
+  href: Wss.CoreModule.TestModeTransportOptions.html#Wss_CoreModule_TestModeTransportOptions_BaseLatency
+  name: BaseLatency
+  nameWithType: TestModeTransportOptions.BaseLatency
+  fullName: Wss.CoreModule.TestModeTransportOptions.BaseLatency
+- uid: System.TimeSpan
+  commentId: T:System.TimeSpan
+  parent: System
+  isExternal: true
+  name: TimeSpan
+  nameWithType: TimeSpan
+  fullName: System.TimeSpan
+- uid: Wss.CoreModule.TestModeTransportOptions.BaseLatency
+  commentId: P:Wss.CoreModule.TestModeTransportOptions.BaseLatency
+  href: Wss.CoreModule.TestModeTransportOptions.html#Wss_CoreModule_TestModeTransportOptions_BaseLatency
+  name: BaseLatency
+  nameWithType: TestModeTransportOptions.BaseLatency
+  fullName: Wss.CoreModule.TestModeTransportOptions.BaseLatency
+- uid: Wss.CoreModule.TestModeTransportOptions.JitterMs*
+  commentId: Overload:Wss.CoreModule.TestModeTransportOptions.JitterMs
+  href: Wss.CoreModule.TestModeTransportOptions.html#Wss_CoreModule_TestModeTransportOptions_JitterMs
+  name: JitterMs
+  nameWithType: TestModeTransportOptions.JitterMs
+  fullName: Wss.CoreModule.TestModeTransportOptions.JitterMs
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Wss.CoreModule.TestModeTransportOptions.MaxInboundChunkSize*
+  commentId: Overload:Wss.CoreModule.TestModeTransportOptions.MaxInboundChunkSize
+  href: Wss.CoreModule.TestModeTransportOptions.html#Wss_CoreModule_TestModeTransportOptions_MaxInboundChunkSize
+  name: MaxInboundChunkSize
+  nameWithType: TestModeTransportOptions.MaxInboundChunkSize
+  fullName: Wss.CoreModule.TestModeTransportOptions.MaxInboundChunkSize
+- uid: Wss.CoreModule.TestModeTransportOptions.InboundDropProbability*
+  commentId: Overload:Wss.CoreModule.TestModeTransportOptions.InboundDropProbability
+  href: Wss.CoreModule.TestModeTransportOptions.html#Wss_CoreModule_TestModeTransportOptions_InboundDropProbability
+  name: InboundDropProbability
+  nameWithType: TestModeTransportOptions.InboundDropProbability
+  fullName: Wss.CoreModule.TestModeTransportOptions.InboundDropProbability
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: Wss.CoreModule.TestModeTransportOptions.Rng*
+  commentId: Overload:Wss.CoreModule.TestModeTransportOptions.Rng
+  href: Wss.CoreModule.TestModeTransportOptions.html#Wss_CoreModule_TestModeTransportOptions_Rng
+  name: Rng
+  nameWithType: TestModeTransportOptions.Rng
+  fullName: Wss.CoreModule.TestModeTransportOptions.Rng
+- uid: System.Random
+  commentId: T:System.Random
+  parent: System
+  isExternal: true
+  name: Random
+  nameWithType: Random
+  fullName: System.Random
+- uid: Wss.CoreModule.TestModeTransportOptions.FallbackPayload*
+  commentId: Overload:Wss.CoreModule.TestModeTransportOptions.FallbackPayload
+  href: Wss.CoreModule.TestModeTransportOptions.html#Wss_CoreModule_TestModeTransportOptions_FallbackPayload
+  name: FallbackPayload
+  nameWithType: TestModeTransportOptions.FallbackPayload
+  fullName: Wss.CoreModule.TestModeTransportOptions.FallbackPayload
+- uid: System.Byte[]
+  isExternal: true
+  name: byte[]
+  nameWithType: byte[]
+  fullName: byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Wss.CoreModule.TestModeTransportOptions.AutoResponderAsync*
+  commentId: Overload:Wss.CoreModule.TestModeTransportOptions.AutoResponderAsync
+  href: Wss.CoreModule.TestModeTransportOptions.html#Wss_CoreModule_TestModeTransportOptions_AutoResponderAsync
+  name: AutoResponderAsync
+  nameWithType: TestModeTransportOptions.AutoResponderAsync
+  fullName: Wss.CoreModule.TestModeTransportOptions.AutoResponderAsync
+- uid: System.Func{System.Byte[],System.Threading.Tasks.Task{System.Byte[]}}
+  commentId: T:System.Func{System.Byte[],System.Threading.Tasks.Task{System.Byte[]}}
+  parent: System
+  definition: System.Func`2
+  name: Func<byte[], Task<byte[]>>
+  nameWithType: Func<byte[], Task<byte[]>>
+  fullName: System.Func<byte[], System.Threading.Tasks.Task<byte[]>>
+  nameWithType.vb: Func(Of Byte(), Task(Of Byte()))
+  fullName.vb: System.Func(Of Byte(), System.Threading.Tasks.Task(Of Byte()))
+  name.vb: Func(Of Byte(), Task(Of Byte()))
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+  - name: <
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: <
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+  - name: '['
+  - name: ']'
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+  - name: (
+  - name: )
+  - name: )
+  - name: )
+- uid: System.Func`2
+  commentId: T:System.Func`2
+  isExternal: true
+  name: Func<T, TResult>
+  nameWithType: Func<T, TResult>
+  fullName: System.Func<T, TResult>
+  nameWithType.vb: Func(Of T, TResult)
+  fullName.vb: System.Func(Of T, TResult)
+  name.vb: Func(Of T, TResult)
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: )

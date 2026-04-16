@@ -6,6 +6,8 @@ output:
 ---
 # WSS (Wearable Stimulation System)
 
+[Home](../README.md)
+
 WSS is a modular and programmable system for delivering Functional Electrical Stimulation (FES) using dry active electrodes. The system consists of a gray stimulation unit (main device), electrode cables, and a gold control unit for wireless operation.
 
 ## 1. Gray Box – Main Stimulation Unit
@@ -159,3 +161,7 @@ The gold box is a rectangular controller designed to send serial commands to the
 - Connection to PC: Micro-USB-C port (visible on the narrow side)
 
 > Each gold box is dedicated to a specific gray box. The matching ID can be found on the bottom label of each unit.
+
+Navigation:
+
+- [Back to Home](../README.md)

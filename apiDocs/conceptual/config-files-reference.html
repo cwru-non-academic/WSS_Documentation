@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Config Files Reference | WSS Documentation Hub </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Config Files Reference | WSS Documentation Hub ">
+    
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="config-files-reference">Config Files Reference</h1>
+
+<p><a href="../index.html">Home</a> | <a href="../concepts.html">Back to Concepts</a></p>
+<p>This reference describes the configuration files used by WSS applications that rely on a <code>Config/</code> directory.</p>
+<p>In the Python CLI application, the default config directory contains:</p>
+<ul>
+<li><code>stimConfig.json</code></li>
+<li><code>stimParams.json</code></li>
+<li><code>modelConfig.json</code></li>
+</ul>
+<p>Together, these files define the hardware/core setup, per-channel stimulation behavior, and optional model-layer behavior.</p>
+<h2 id="stimconfigjson"><code>stimConfig.json</code></h2>
+<p>This is the core configuration file. It controls how many WSS units the application expects, which firmware behavior to target, and whether custom amplitude conversion curves should be used.</p>
+<p>Sections:</p>
+<ul>
+<li><code>maxWSS</code>
+<ul>
+<li>The maximum number of WSS devices the application should manage.</li>
+<li>This also determines how many total channels exist in the running system.</li>
+</ul>
+</li>
+<li><code>firmware</code>
+<ul>
+<li>The firmware version string used by the core when it creates the WSS version handler.</li>
+<li>See <a href="firmware-compatibility-matrix.html">Firmware Compatibility Matrix</a> for the currently documented supported versions and version-gated features.</li>
+</ul>
+</li>
+<li><code>useConfigAmpCurves</code>
+<ul>
+<li>Controls whether amplitude conversion should come from this file or from the built-in/default mapping.</li>
+</ul>
+</li>
+<li><code>ampCurves</code>
+<ul>
+<li>Per-WSS amplitude curve parameters.</li>
+<li>Each entry defines the piecewise mapping from amplitude in mA to the device-side drive value.</li>
+<li>The fields are:
+<ul>
+<li><code>LowThreshold</code></li>
+<li><code>LowConst</code></li>
+<li><code>ExpPower</code></li>
+<li><code>LinearOffset</code></li>
+<li><code>LinearSlope</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="stimparamsjson"><code>stimParams.json</code></h2>
+<p>This is the stimulation-parameters configuration file. It is mainly used by the calibration/params layer to define how each channel should behave.</p>
+<p>Sections:</p>
+<ul>
+<li><code>stim</code>
+<ul>
+<li>Root stimulation-parameter section.</li>
+</ul>
+</li>
+<li><code>stim.ch</code>
+<ul>
+<li>Per-channel parameter table.</li>
+<li>Each numbered child such as <code>1</code>, <code>2</code>, or <code>3</code> defines one stimulation channel.</li>
+</ul>
+</li>
+<li>Per-channel fields
+<ul>
+<li><code>ampMode</code>
+<ul>
+<li>Whether the channel is controlled through pulse width (<code>PW</code>) or pulse amplitude (<code>PA</code>).</li>
+</ul>
+</li>
+<li><code>minPW</code> and <code>maxPW</code>
+<ul>
+<li>Pulse-width limits used when the channel is operating in <code>PW</code> mode.</li>
+</ul>
+</li>
+<li><code>minPA</code> and <code>maxPA</code>
+<ul>
+<li>Amplitude limits used when the channel is operating in <code>PA</code> mode.</li>
+</ul>
+</li>
+<li><code>defaultPA</code>
+<ul>
+<li>Default amplitude used when pulse width is the actively controlled quantity.</li>
+</ul>
+</li>
+<li><code>defaultPW</code>
+<ul>
+<li>Default pulse width used when pulse amplitude is the actively controlled quantity.</li>
+</ul>
+</li>
+<li><code>IPI</code>
+<ul>
+<li>Inter-pulse interval for the channel.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>In general, this file defines how normalized or higher-level stimulation requests get translated into channel-specific stimulation values.</p>
+<h2 id="modelconfigjson"><code>modelConfig.json</code></h2>
+<p>This is the model-layer configuration file. It defines the controller mode and the constants used by the model layer before requests are passed down into the stimulation-parameters layer.</p>
+<p>Sections:</p>
+<ul>
+<li><code>calib</code>
+<ul>
+<li>Contains the active controller mode.</li>
+</ul>
+</li>
+<li><code>calib.mode</code>
+<ul>
+<li>The model/controller mode to use.</li>
+<li>Current examples are <code>P</code> and <code>PD</code>.</li>
+</ul>
+</li>
+<li><code>constants</code>
+<ul>
+<li>Controller constants used by the selected model mode.</li>
+<li>Current fields include:
+<ul>
+<li><code>PModeProportional</code></li>
+<li><code>PModeOffset</code></li>
+<li><code>PDModeProportional</code></li>
+<li><code>PDModeDerivative</code></li>
+<li><code>PDModeOffset</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>In general, this file defines how application input is transformed by the model layer before it becomes stimulation output.</p>
+<p>Navigation:</p>
+<ul>
+<li><a href="../index.html">Back to Home</a></li>
+<li><a href="../concepts.html">Back to Concepts</a></li>
+<li><a href="start-here-using-an-application.html">Related: Start Here: Using an Application</a></li>
+</ul>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/cwru-non-academic/WSS_Documentation/blob/main/apiDocs/conceptual/config-files-reference.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

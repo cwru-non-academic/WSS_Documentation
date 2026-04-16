@@ -9,6 +9,7 @@ DOCFX_GENERATED="$SCRIPT_DIR/docfx.generated.json"
 MANIFEST_PATH="${DOCS_MANIFEST_PATH:-$SCRIPT_DIR/repos.manifest.json}"
 SERVE=0
 SKIP_PYTHON=0
+MAIN_ONLY=0
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -24,9 +25,13 @@ while [[ $# -gt 0 ]]; do
       SKIP_PYTHON=1
       shift
       ;;
+    --main)
+      MAIN_ONLY=1
+      shift
+      ;;
     *)
       echo "Unknown argument: $1" >&2
-      echo "Usage: ./apiDocs/build-docs.sh [--manifest <path>] [--serve] [--skip-python]" >&2
+      echo "Usage: ./apiDocs/build-docs.sh [--manifest <path>] [--serve] [--skip-python] [--main]" >&2
       exit 1
       ;;
   esac
@@ -96,7 +101,31 @@ metadata_entries='[]'
 declare -a api_nav=()
 declare -a python_nav=()
 
-mapfile -t repos < <(jq -c '.repositories[] | select(.enabled != false)' "$MANIFEST_PATH")
+resolve_csharp_source() {
+  local repo_json="$1"
+
+  local source_raw
+  source_raw="$(jq -r '.solution // .csproj // empty' <<<"$repo_json")"
+  if [[ -z "$source_raw" ]]; then
+    echo "ERROR: C# repo is missing 'solution' or 'csproj'." >&2
+    return 1
+  fi
+
+  local source_base
+  source_base="$(jq -r '.solutionBase // .csprojBase // "repo"' <<<"$repo_json")"
+
+  REPLY="$source_raw|$source_base"
+  return 0
+}
+
+repo_filter='.repositories[] | select(.enabled != false)'
+if [[ $MAIN_ONLY -eq 1 ]]; then
+  repo_filter+=" | select(.id == \"core\")"
+fi
+
+mapfile -t repos < <(jq -c "$repo_filter" "$MANIFEST_PATH")
+
+rm -rf "$SCRIPT_DIR/api" "$SCRIPT_DIR/external"
 
 for repo in "${repos[@]}"; do
   id="$(jq -r '.id // empty' <<<"$repo")"
@@ -123,33 +152,34 @@ for repo in "${repos[@]}"; do
   fi
 
   if [[ "$kind" == "csharp" ]]; then
-    csproj_raw="$(jq -r '.csproj // empty' <<<"$repo")"
-    csproj_base="$(jq -r '.csprojBase // "repo"' <<<"$repo")"
+    resolve_csharp_source "$repo" || exit 1
+    csharp_source_raw="${REPLY%%|*}"
+    csharp_source_base="${REPLY#*|}"
     global_ns_id="$(jq -r '.globalNamespaceId // empty' <<<"$repo")"
-    if [[ -z "$csproj_raw" ]]; then
-      echo "ERROR: C# repo '$id' is missing 'csproj'." >&2
-      exit 1
+
+    csharp_source_resolve_base="$root"
+    if [[ "$csharp_source_base" == "hub" ]]; then
+      csharp_source_resolve_base="$REPO_ROOT"
     fi
 
-    csproj_resolve_base="$root"
-    if [[ "$csproj_base" == "hub" ]]; then
-      csproj_resolve_base="$REPO_ROOT"
-    fi
-
-    if ! resolve_path "$csproj_resolve_base" "$csproj_raw"; then
+    if ! resolve_path "$csharp_source_resolve_base" "$csharp_source_raw"; then
       exit 1
     fi
-    csproj="$REPLY"
-    if [[ -z "$csproj" ]]; then
-      echo "ERROR: Could not resolve csproj path for '$id'." >&2
+    csharp_source_path="$REPLY"
+    if [[ -z "$csharp_source_path" ]]; then
+      echo "ERROR: Could not resolve C# project or solution path for '$id'." >&2
       exit 1
     fi
-    if [[ ! -f "$csproj" ]]; then
-      echo "ERROR: C# project not found for '$id': $csproj" >&2
+    if [[ ! -f "$csharp_source_path" ]]; then
+      echo "ERROR: C# project or solution not found for '$id': $csharp_source_path" >&2
       exit 1
     fi
-    csproj_dir="$(dirname "$csproj")"
-    csproj_file="$(basename "$csproj")"
+    if [[ "$csharp_source_path" != *.csproj && "$csharp_source_path" != *.sln ]]; then
+      echo "ERROR: C# repo '$id' must point to a .csproj or .sln file: $csharp_source_path" >&2
+      exit 1
+    fi
+    csharp_source_dir="$(dirname "$csharp_source_path")"
+    csharp_source_file="$(basename "$csharp_source_path")"
 
     dest="$(jq -r '.docfxDest // empty' <<<"$repo")"
     entry_uid="$(jq -r '.entryUid // empty' <<<"$repo")"
@@ -176,8 +206,8 @@ for repo in "${repos[@]}"; do
 
     metadata_entries="$(jq -c \
       --arg dest "$dest" \
-      --arg csprojDir "$csproj_dir" \
-      --arg csprojFile "$csproj_file" \
+      --arg sourceDir "$csharp_source_dir" \
+      --arg sourceFile "$csharp_source_file" \
       --arg globalNsId "$global_ns_id" \
       --argjson props "$props" \
       '. + [
@@ -187,7 +217,7 @@ for repo in "${repos[@]}"; do
             filter: "filterConfig.yml",
             disableGitFeatures: true,
             src: [
-              { src: $csprojDir, files: [$csprojFile] }
+              { src: $sourceDir, files: [$sourceFile] }
             ]
           }
           + (if $props == null then {} else { properties: $props } end)
@@ -268,21 +298,43 @@ done
 {
   printf '%s\n' '- name: Home'
   printf '%s\n' '  href: index.md'
-
-  conceptual_files=("$SCRIPT_DIR"/conceptual/*.md)
-  if [[ -e "${conceptual_files[0]}" ]]; then
-    printf '%s\n' '- name: Guides'
-    printf '%s\n' '  items:'
-    for file in "${conceptual_files[@]}"; do
-      name="$(basename "$file")"
-      title="$(awk 'NR==1{sub(/^\xef\xbb\xbf/, "")} /^# /{sub(/^# /, ""); print; exit}' "$file")"
-      if [[ -z "$title" ]]; then
-        title="${name%.md}"
-      fi
-      printf '  - name: %s\n' "$title"
-      printf '    href: conceptual/%s\n' "$name"
-    done
-  fi
+  printf '%s\n' '- name: Start Here'
+  printf '%s\n' '  href: start-here.md'
+  printf '%s\n' '  items:'
+  printf '%s\n' '  - name: Start Here: Using an Application'
+  printf '%s\n' '    href: conceptual/start-here-using-an-application.md'
+  printf '%s\n' '  - name: Start Here: Developing an Application'
+  printf '%s\n' '    href: conceptual/start-here-developing-an-application.md'
+  printf '%s\n' '  - name: Start Here: Building a New Integration Library'
+  printf '%s\n' '    href: conceptual/start-here-building-a-new-integration-library.md'
+  printf '%s\n' '  - name: Start Here: Minor Core Modifications'
+  printf '%s\n' '    href: conceptual/start-here-minor-core-modifications.md'
+  printf '%s\n' '  - name: Start Here: Adding Layers or Core Functionality'
+  printf '%s\n' '    href: conceptual/start-here-adding-layers-or-core-functionality.md'
+  printf '%s\n' '  - name: Choosing a Runtime for an Integration Library'
+  printf '%s\n' '    href: conceptual/integration-library-runtime-selection.md'
+  printf '%s\n' '  - name: Repository and Kit Links'
+  printf '%s\n' '    href: conceptual/repository-and-kit-links.md'
+  printf '%s\n' '- name: Concepts'
+  printf '%s\n' '  href: concepts.md'
+  printf '%s\n' '  items:'
+  printf '%s\n' '  - name: Layering Guide (Modules)'
+  printf '%s\n' '    href: conceptual/layering-guide.md'
+  printf '%s\n' '  - name: Core Architecture (Transport, Codec, Core)'
+  printf '%s\n' '    href: conceptual/core-architecture.md'
+  printf '%s\n' '  - name: Setup Order and Modification'
+  printf '%s\n' '    href: conceptual/setup-order-and-modification.md'
+  printf '%s\n' '  - name: Firmware Compatibility Matrix'
+  printf '%s\n' '    href: conceptual/firmware-compatibility-matrix.md'
+  printf '%s\n' '  - name: Config Files Reference'
+  printf '%s\n' '    href: conceptual/config-files-reference.md'
+  printf '%s\n' '- name: Advanced'
+  printf '%s\n' '  href: advanced.md'
+  printf '%s\n' '  items:'
+  printf '%s\n' '  - name: WSS Commands Reference'
+  printf '%s\n' '    href: conceptual/wss-commands-reference.md'
+  printf '%s\n' '  - name: Simple Serial Communication with WSS'
+  printf '%s\n' '    href: conceptual/simple-serial-communication.md'
 
   if [[ ${#api_nav[@]} -gt 0 ]]; then
     printf '%s\n' '- name: C# API'
@@ -296,59 +348,76 @@ done
     done
   fi
 
-  if [[ ${#python_nav[@]} -gt 0 ]]; then
-    printf '%s\n' '- name: Python API'
-    printf '%s\n' '  items:'
-    for item in "${python_nav[@]}"; do
-      nav_title="${item%%|*}"
-      nav_href="${item#*|}"
-      printf '  - name: %s\n' "$nav_title"
-      printf '    href: %s\n' "$nav_href"
-    done
-  fi
+  printf '%s\n' '- name: Maintainers'
+  printf '%s\n' '  href: maintainers.md'
+  printf '%s\n' '  items:'
+  printf '%s\n' '  - name: Building Software API Docs'
+  printf '%s\n' '    href: conceptual/building-software-api-docs.md'
 } > "$SCRIPT_DIR/toc.yml"
 
 {
   printf '%s\n' '# WSS Documentation Hub'
   printf '%s\n' ''
-  printf '%s\n' 'This site combines conceptual documentation with API references from multiple repositories.'
+  printf '%s\n' 'This site is organized first for people using WSS applications and for developers building applications or integrations on top of WSS.'
   printf '%s\n' ''
-  printf '%s\n' 'Use the left navigation to browse all namespaces, interfaces, classes, and guides.'
+  printf '%s\n' '## Choose Your Path'
   printf '%s\n' ''
-
-  conceptual_files=("$SCRIPT_DIR"/conceptual/*.md)
-  if [[ -e "${conceptual_files[0]}" ]]; then
-    printf '%s\n' '## Guides'
-    for file in "${conceptual_files[@]}"; do
-      name="$(basename "$file")"
-      title="$(awk 'NR==1{sub(/^\xef\xbb\xbf/, "")} /^# /{sub(/^# /, ""); print; exit}' "$file")"
-      if [[ -z "$title" ]]; then
-        title="${name%.md}"
-      fi
-      printf -- '- [%s](conceptual/%s)\n' "$title" "$name"
-    done
-    printf '%s\n' ''
-  fi
-
+  printf '%s\n' '- [Start Here](start-here.md)'
+  printf '%s\n' '  - The best entry point if you are deciding whether you are using an existing application, building a new application, creating a new integration library, or making focused core changes.'
+  printf '%s\n' '- [Using an Application](conceptual/start-here-using-an-application.md)'
+  printf '%s\n' '  - Start here if you want to run WSS through an existing GUI, CLI, Unity, or Python workflow.'
+  printf '%s\n' '- [Developing an Application](conceptual/start-here-developing-an-application.md)'
+  printf '%s\n' '  - Start here if you are building a user-facing tool on top of an existing WSS integration library.'
+  printf '%s\n' '- [Building a New Integration Library](conceptual/start-here-building-a-new-integration-library.md)'
+  printf '%s\n' '  - Start here if you need to expose WSS to a new language, platform, or transport environment.'
+  printf '%s\n' ''
+  printf '%s\n' '## Repository And Kit Links'
+  printf '%s\n' ''
+  printf '%s\n' '- [Repository and Kit Links](conceptual/repository-and-kit-links.md)'
+  printf '%s\n' '  - One page for grouped application, integration library, and core repository and kit links.'
+  printf '%s\n' ''
+  printf '%s\n' '## Core Concepts'
+  printf '%s\n' ''
+  printf '%s\n' '- [Concepts](concepts.md)'
+  printf '%s\n' '  - Overview of the main architecture, layering, setup, firmware compatibility, and config references.'
+  printf '%s\n' '- [Layering Guide (Modules)](conceptual/layering-guide.md)'
+  printf '%s\n' '  - Explains how WSS grows from Core to Params to Model and where new reusable functionality should live.'
+  printf '%s\n' '- [Core Architecture (Transport, Codec, Core)](conceptual/core-architecture.md)'
+  printf '%s\n' '  - Explains transports, framing, lifecycle, setup sequencing, and streaming behavior.'
+  printf '%s\n' '- [Config Files Reference](conceptual/config-files-reference.md)'
+  printf '%s\n' '  - Describes the standard config files used by applications and integration libraries.'
+  printf '%s\n' ''
   if [[ ${#api_nav[@]} -gt 0 ]]; then
-    printf '%s\n' '## C# API'
+    printf '%s\n' '## API Reference'
+    printf '%s\n' ''
     for item in "${api_nav[@]}"; do
       nav_title="${item%%|*}"
       rest="${item#*|}"
       nav_href_html="${rest#*|}"
       printf -- '- [%s](%s)\n' "$nav_title" "$nav_href_html"
     done
+    if [[ ${#python_nav[@]} -gt 0 ]]; then
+      printf '%s\n' '- Python Integration (Python)'
+      printf '%s\n' '  - Published under `external/<repo>/` when Python docs are enabled in the docs build manifest.'
+    fi
     printf '%s\n' ''
   fi
 
-  if [[ ${#python_nav[@]} -gt 0 ]]; then
-    printf '%s\n' '## Python API'
-    for item in "${python_nav[@]}"; do
-      nav_title="${item%%|*}"
-      nav_href="${item#*|}"
-      printf -- '- [%s](%s)\n' "$nav_title" "$nav_href"
-    done
-  fi
+  printf '%s\n' '## Advanced Reference'
+  printf '%s\n' ''
+  printf '%s\n' '- [Advanced](advanced.md)'
+  printf '%s\n' '  - Lower-level protocol and raw communication material for debugging and direct device work.'
+  printf '%s\n' '- [WSS Commands Reference](conceptual/wss-commands-reference.md)'
+  printf '%s\n' '  - Byte-level command and protocol reference.'
+  printf '%s\n' '- [Simple Serial Communication with WSS](conceptual/simple-serial-communication.md)'
+  printf '%s\n' '  - Raw serial communication examples for macOS, Windows, and MATLAB.'
+  printf '%s\n' ''
+  printf '%s\n' '## Docs Maintenance'
+  printf '%s\n' ''
+  printf '%s\n' '- [Maintainers](maintainers.md)'
+  printf '%s\n' '  - Build and maintain the documentation hub itself.'
+  printf '%s\n' '- [Building Software API Docs](conceptual/building-software-api-docs.md)'
+  printf '%s\n' '  - Build workflow for the multi-repository DocFX site and generated API docs.'
 } > "$SCRIPT_DIR/index.md"
 
 jq --argjson metadata "$metadata_entries" '.metadata = $metadata' "$DOCFX_BASE" > "$DOCFX_GENERATED"

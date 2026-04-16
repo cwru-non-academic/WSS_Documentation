@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Firmware Compatibility Matrix | WSS Documentation Hub </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Firmware Compatibility Matrix | WSS Documentation Hub ">
+    
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="firmware-compatibility-matrix">Firmware Compatibility Matrix</h1>
+
+<p><a href="../index.html">Home</a> | <a href="../concepts.html">Back to Concepts</a></p>
+<p>This page summarizes the firmware-version behavior currently documented in the WSS core.</p>
+<p>It is meant to be the human-readable companion to <code>WSSVersionHandler</code> and other version-gated behavior in the core client.</p>
+<h2 id="what-this-page-covers">What This Page Covers</h2>
+<p>This matrix is based on currently documented and transformed source behavior from:</p>
+<ul>
+<li><code>WSSVersionHandler</code></li>
+<li><code>WssClient</code></li>
+<li>the command reference where payload shape changes by firmware</li>
+</ul>
+<p>It only lists version-gated behavior that is explicitly visible in the current docs or transformed source.</p>
+<h2 id="how-firmware-selection-works">How Firmware Selection Works</h2>
+<p>The core reads the firmware version string from <code>stimConfig.json</code> and uses it to create <code>WSSVersionHandler</code>.</p>
+<ul>
+<li>supported version strings currently include <code>H03</code> and <code>J03</code></li>
+<li>unknown version strings currently fall back to <code>H03</code></li>
+<li>feature-gated behavior is then decided from the selected version</li>
+</ul>
+<p>That means the <code>firmware</code> field in <code>stimConfig.json</code> directly affects which optional behaviors the core will use.</p>
+<p>See <a href="config-files-reference.html">Config Files Reference</a> for where that value is configured.</p>
+<h2 id="supported-firmware-versions">Supported Firmware Versions</h2>
+<p>The currently documented supported firmware versions are:</p>
+<ul>
+<li><code>H03</code></li>
+<li><code>J03</code></li>
+</ul>
+<h2 id="compatibility-matrix">Compatibility Matrix</h2>
+<table>
+<thead>
+<tr>
+<th>Firmware</th>
+<th>Recognized by Core</th>
+<th>Fallback Target for Unknown String</th>
+<th>AmplitudeCheck</th>
+<th>LED Settings</th>
+<th>ModuleQuery</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>H03</code></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>baseline/default documented behavior</td>
+</tr>
+<tr>
+<td><code>J03</code></td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>adds LED-related behavior and ModuleQuery support</td>
+</tr>
+</tbody>
+</table>
+<h2 id="feature-notes">Feature Notes</h2>
+<h3 id="amplitudecheck"><code>AmplitudeCheck</code></h3>
+<ul>
+<li>Version source: <code>WSSVersionHandler</code></li>
+<li>Current minimum version: <code>J03</code></li>
+<li>Meaning in the current code: this is a named version-gated feature exposed through <code>IsFeatureAvailable(...)</code> and <code>IsAmplitudeCheckAvailable()</code></li>
+</ul>
+<p>At the moment, the current docs do not explain the higher-level user-facing behavior of amplitude checking in more detail, so this matrix only records that the feature gate exists.</p>
+<h3 id="led-settings">LED Settings</h3>
+<ul>
+<li>Version source: <code>WSSVersionHandler</code> and <code>WssClient</code></li>
+<li>Current minimum version: <code>J03</code></li>
+<li>Current documented effect:
+<ul>
+<li><code>CreateContactConfig(...)</code> accepts and sends <code>ledByte</code> only when firmware supports LED settings</li>
+<li>otherwise the LED value is ignored</li>
+</ul>
+</li>
+</ul>
+<p>This matches the command reference, which documents <code>ledByte</code> as <code>J03+</code> behavior.</p>
+<h3 id="modulequery"><code>ModuleQuery</code></h3>
+<ul>
+<li>Version source: <code>WssClient</code> behavior and generated API docs</li>
+<li>Current availability: <code>J</code> or later in the documented client behavior</li>
+<li>Current documented effect:
+<ul>
+<li>on supported firmware, <code>ModuleQuery</code> is sent and the reply is cached</li>
+<li>on older firmware, no command is sent and default cached settings are seeded instead</li>
+</ul>
+</li>
+</ul>
+<p>This means runtime settings inspection and <code>ModuleSettings</code> decoding behave differently depending on firmware.</p>
+<h2 id="what-changes-across-versions">What Changes Across Versions</h2>
+<p>In the currently documented codebase, firmware version affects at least these areas:</p>
+<ul>
+<li>whether certain named features are enabled</li>
+<li>whether LED configuration bytes are included in contact configuration commands</li>
+<li>whether <code>ModuleQuery</code> is actually sent or replaced by default seeded settings</li>
+<li>whether higher-level docs should treat a capability as available or unavailable</li>
+</ul>
+<h2 id="where-this-matters">Where This Matters</h2>
+<p>This matrix should be consulted when you are working on:</p>
+<ul>
+<li><code>stimConfig.json.firmware</code></li>
+<li>setup changes that may become firmware-dependent</li>
+<li>command payloads that vary by version</li>
+<li><code>ModuleSettings</code> behavior and ModuleQuery decoding</li>
+<li>adding support for a new firmware version in <code>WSSVersionHandler</code></li>
+</ul>
+<h2 id="notes-for-contributors">Notes for Contributors</h2>
+<p>If you add or change firmware support:</p>
+<ol>
+<li>update <code>WSSVersionHandler</code></li>
+<li>update this matrix</li>
+<li>update command docs where payload shape or optional fields change</li>
+<li>update setup docs if startup behavior becomes version-dependent</li>
+<li>update troubleshooting docs if the visible behavior changes for users</li>
+</ol>
+<h2 id="source-basis">Source Basis</h2>
+<p>This page is currently based on these documented behaviors:</p>
+<ul>
+<li><code>WSSVersionHandler.SupportedVersions</code>: <code>H03</code>, <code>J03</code></li>
+<li><code>WSSVersionHandler</code> unknown-string fallback to <code>H03</code></li>
+<li><code>WSSVersionHandler</code> feature gates for <code>AmplitudeCheck</code> and <code>LEDSettings</code></li>
+<li><code>WssClient.CreateContactConfig(...)</code> LED behavior</li>
+<li><code>WssClient.ModuleQuery(...)</code> version-gated behavior</li>
+</ul>
+<h2 id="related-guides">Related Guides</h2>
+<ul>
+<li><a href="config-files-reference.html">Config Files Reference</a></li>
+<li><a href="start-here-minor-core-modifications.html">Start Here: Minor Core Modifications</a></li>
+<li><a href="setup-order-and-modification.html">Setup Order and Modification</a></li>
+<li><a href="wss-commands-reference.html">WSS Commands Reference</a></li>
+</ul>
+<p>Navigation:</p>
+<ul>
+<li><a href="../index.html">Back to Home</a></li>
+<li><a href="../concepts.html">Back to Concepts</a></li>
+<li><a href="setup-order-and-modification.html">Previous: Setup Order and Modification</a></li>
+<li><a href="config-files-reference.html">Next: Config Files Reference</a></li>
+</ul>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/cwru-non-academic/WSS_Documentation/blob/main/apiDocs/conceptual/firmware-compatibility-matrix.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

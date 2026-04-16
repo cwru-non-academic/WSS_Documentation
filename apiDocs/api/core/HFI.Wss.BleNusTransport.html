@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class BleNusTransport | WSS Documentation Hub </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class BleNusTransport | WSS Documentation Hub ">
+    
+    <meta name="description" content="BLE transport backed by the Nordic UART Service (NUS).">
+      <link rel="shortcut icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../styles/docfx.css">
+      <link rel="stylesheet" href="../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="HFI.Wss.BleNusTransport">
+
+
+
+  <h1 id="HFI_Wss_BleNusTransport" data-uid="HFI.Wss.BleNusTransport" class="text-break">Class BleNusTransport</h1>
+  <div class="markdown level0 summary"><p>BLE transport backed by the Nordic UART Service (NUS).</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">object</span></div>
+    <div class="level1"><span class="xref">BleNusTransport</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="Wss.CoreModule.ITransport.html">ITransport</a></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="HFI.html">HFI</a>.<a class="xref" href="HFI.Wss.html">Wss</a></h6>
+  <h6><strong>Assembly</strong>: WSS.Transport.BLE.dll</h6>
+  <h5 id="HFI_Wss_BleNusTransport_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class BleNusTransport : ITransport</code></pre>
+  </div>
+  <h5 id="HFI_Wss_BleNusTransport_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>This is a low-level byte transport only. Outbound messages are written with response
+to the NUS RX characteristic, inbound messages arrive as notifications from the NUS
+TX characteristic, and writes are serialized so only one GATT write is in flight at a time.
+Device selection follows <a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_AutoSelectDevice">AutoSelectDevice</a>:
+when enabled, the transport scans for compatible BLE devices and chooses the best
+valid candidate; otherwise it requires an explicit <a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_DeviceId">DeviceId</a>
+or <a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_DeviceName">DeviceName</a>.</p>
+</div>
+  <h3 id="constructors">Constructors
+</h3>
+
+
+  <a id="HFI_Wss_BleNusTransport__ctor_" data-uid="HFI.Wss.BleNusTransport.#ctor*"></a>
+  <h4 id="HFI_Wss_BleNusTransport__ctor_HFI_Wss_BleNusTransportOptions_" data-uid="HFI.Wss.BleNusTransport.#ctor(HFI.Wss.BleNusTransportOptions)">BleNusTransport(BleNusTransportOptions)</h4>
+  <div class="markdown level1 summary"><p>Creates a BLE transport from a fully specified options object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BleNusTransport(BleNusTransportOptions options)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="HFI.Wss.BleNusTransportOptions.html">BleNusTransportOptions</a></td>
+        <td><span class="parametername">options</span></td>
+        <td><p>BLE transport configuration including device selection and required UUIDs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ArgumentNullException</span></td>
+        <td><p>Thrown when <code class="paramref">options</code> is null.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">ArgumentException</span></td>
+        <td><p>Thrown when the supplied options are invalid.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_BleNusTransport__ctor_" data-uid="HFI.Wss.BleNusTransport.#ctor*"></a>
+  <h4 id="HFI_Wss_BleNusTransport__ctor_System_String_" data-uid="HFI.Wss.BleNusTransport.#ctor(System.String)">BleNusTransport(string)</h4>
+  <div class="markdown level1 summary"><p>Creates a BLE transport that connects to a device with the specified advertised name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BleNusTransport(string deviceName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">deviceName</span></td>
+        <td><p>Exact BLE device name to scan for.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+</h3>
+
+
+  <h4 id="HFI_Wss_BleNusTransport_DefaultNotifyCharacteristicUuid" data-uid="HFI.Wss.BleNusTransport.DefaultNotifyCharacteristicUuid">DefaultNotifyCharacteristicUuid</h4>
+  <div class="markdown level1 summary"><p>Gets the default Nordic UART Service notification characteristic UUID used for inbound bytes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Guid DefaultNotifyCharacteristicUuid</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Guid</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <h4 id="HFI_Wss_BleNusTransport_DefaultServiceUuid" data-uid="HFI.Wss.BleNusTransport.DefaultServiceUuid">DefaultServiceUuid</h4>
+  <div class="markdown level1 summary"><p>Gets the default Nordic UART Service UUID used to discover compatible BLE devices.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Guid DefaultServiceUuid</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Guid</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <h4 id="HFI_Wss_BleNusTransport_DefaultWriteCharacteristicUuid" data-uid="HFI.Wss.BleNusTransport.DefaultWriteCharacteristicUuid">DefaultWriteCharacteristicUuid</h4>
+  <div class="markdown level1 summary"><p>Gets the default Nordic UART Service write characteristic UUID used for outbound bytes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Guid DefaultWriteCharacteristicUuid</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Guid</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+</h3>
+
+
+  <a id="HFI_Wss_BleNusTransport_IsConnected_" data-uid="HFI.Wss.BleNusTransport.IsConnected*"></a>
+  <h4 id="HFI_Wss_BleNusTransport_IsConnected" data-uid="HFI.Wss.BleNusTransport.IsConnected">IsConnected</h4>
+  <div class="markdown level1 summary"><p>Gets whether the transport currently has an active BLE session and both required GATT characteristics.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsConnected { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+
+
+  <a id="HFI_Wss_BleNusTransport_ConnectAsync_" data-uid="HFI.Wss.BleNusTransport.ConnectAsync*"></a>
+  <h4 id="HFI_Wss_BleNusTransport_ConnectAsync_System_Threading_CancellationToken_" data-uid="HFI.Wss.BleNusTransport.ConnectAsync(System.Threading.CancellationToken)">ConnectAsync(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Asynchronously scans for and connects to the configured BLE device.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task ConnectAsync(CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Cancellation token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span></td>
+        <td><p>A task that completes when the BLE session and required characteristics are ready.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ObjectDisposedException</span></td>
+        <td><p>Thrown when the transport has been disposed.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">InvalidOperationException</span></td>
+        <td><p>Thrown when no compatible BLE device can be resolved or the required service and characteristics are unavailable.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">OperationCanceledException</span></td>
+        <td><p>Thrown when the operation is canceled.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_BleNusTransport_CreateDefaultOptions_" data-uid="HFI.Wss.BleNusTransport.CreateDefaultOptions*"></a>
+  <h4 id="HFI_Wss_BleNusTransport_CreateDefaultOptions_System_String_" data-uid="HFI.Wss.BleNusTransport.CreateDefaultOptions(System.String)">CreateDefaultOptions(string)</h4>
+  <div class="markdown level1 summary"><p>Creates a default options object that resolves a BLE device by advertised name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static BleNusTransportOptions CreateDefaultOptions(string deviceName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">deviceName</span></td>
+        <td><p>Exact BLE device name to scan for.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="HFI.Wss.BleNusTransportOptions.html">BleNusTransportOptions</a></td>
+        <td><p>A new options object with <a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_DeviceName">DeviceName</a> set.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_BleNusTransport_DisconnectAsync_" data-uid="HFI.Wss.BleNusTransport.DisconnectAsync*"></a>
+  <h4 id="HFI_Wss_BleNusTransport_DisconnectAsync_System_Threading_CancellationToken_" data-uid="HFI.Wss.BleNusTransport.DisconnectAsync(System.Threading.CancellationToken)">DisconnectAsync(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Asynchronously disconnects the active BLE session and stops inbound notifications.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task DisconnectAsync(CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Cancellation token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span></td>
+        <td><p>A task that completes when platform-specific BLE resources have been released.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">OperationCanceledException</span></td>
+        <td><p>Thrown when the operation is canceled.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="HFI_Wss_BleNusTransport_Dispose_" data-uid="HFI.Wss.BleNusTransport.Dispose*"></a>
+  <h4 id="HFI_Wss_BleNusTransport_Dispose" data-uid="HFI.Wss.BleNusTransport.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"><p>Disconnects the transport and releases managed resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+  <h5 id="HFI_Wss_BleNusTransport_Dispose_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method performs a best-effort synchronous disconnect and logs disconnect failures instead of rethrowing them.</p>
+</div>
+
+
+  <a id="HFI_Wss_BleNusTransport_SendAsync_" data-uid="HFI.Wss.BleNusTransport.SendAsync*"></a>
+  <h4 id="HFI_Wss_BleNusTransport_SendAsync_System_Byte___System_Threading_CancellationToken_" data-uid="HFI.Wss.BleNusTransport.SendAsync(System.Byte[],System.Threading.CancellationToken)">SendAsync(byte[], CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Sends a block of raw bytes over the BLE write characteristic.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task SendAsync(byte[] data, CancellationToken ct = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">byte</span>[]</td>
+        <td><span class="parametername">data</span></td>
+        <td><p>Raw payload bytes to write.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">ct</span></td>
+        <td><p>Cancellation token.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span></td>
+        <td><p>A task that completes when the write has been handed off to the platform BLE stack.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="HFI_Wss_BleNusTransport_SendAsync_System_Byte___System_Threading_CancellationToken__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Writes are serialized so only one GATT write is in flight at a time.</p>
+</div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ArgumentNullException</span></td>
+        <td><p>Thrown when <code class="paramref">data</code> is null.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">ObjectDisposedException</span></td>
+        <td><p>Thrown when the transport has been disposed.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">InvalidOperationException</span></td>
+        <td><p>Thrown when the transport is not connected.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">OperationCanceledException</span></td>
+        <td><p>Thrown when the operation is canceled.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="events">Events
+</h3>
+
+
+  <h4 id="HFI_Wss_BleNusTransport_BytesReceived" data-uid="HFI.Wss.BleNusTransport.BytesReceived">BytesReceived</h4>
+  <div class="markdown level1 summary"><p>Raised when raw bytes are received from the BLE notification characteristic.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event Action&lt;byte[]&gt;? BytesReceived</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Action</span>&lt;<span class="xref">byte</span>[]&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="HFI_Wss_BleNusTransport_BytesReceived_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Handlers may be invoked on a background thread supplied by the underlying BLE stack.
+Marshal to the required context before touching thread-affine state.</p>
+</div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Wss.CoreModule.ITransport.html">ITransport</a>
+  </div>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

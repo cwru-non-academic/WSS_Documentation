@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Start Here: Adding Layers or Core Functionality | WSS Documentation Hub </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Start Here: Adding Layers or Core Functionality | WSS Documentation Hub ">
+    
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="start-here-adding-layers-or-core-functionality">Start Here: Adding Layers or Core Functionality</h1>
+
+<p><a href="../index.html">Home</a> | <a href="../start-here.html">Back to Start Here</a> | <a href="../concepts.html">Back to Concepts</a></p>
+<h2 id="who-this-is-for">Who This Is For</h2>
+<p>This guide is for contributors extending WSS itself rather than only consuming existing APIs.</p>
+<p>Use this path when you want to add new reusable functionality to the core, introduce a new layer, or reshape how capabilities are composed.</p>
+<p>If you only need to make a targeted core change such as adding a firmware version, updating a message, changing a limit, updating <code>ModuleSettings</code>, or changing setup order, use <a href="start-here-minor-core-modifications.html">Start Here: Minor Core Modifications</a> instead.</p>
+<h2 id="start-with-the-layering-guide">Start With the Layering Guide</h2>
+<p>Start with the <a href="layering-guide.html">Layering Guide (Modules)</a>.</p>
+<p>That guide shows how functionality grows from:</p>
+<ul>
+<li>Core only</li>
+<li>Core + Params</li>
+<li>Core + Params + Model</li>
+</ul>
+<p>Use that structure as the default pattern for introducing future reusable layers.</p>
+<p>The main idea is that functionality should be optional and composable. WSS should not force every consumer to adopt every feature that anyone has ever needed.</p>
+<p>Instead of putting all possible behavior directly into the core:</p>
+<ul>
+<li>keep the core focused on transport, framing, lifecycle, setup, and streaming behavior</li>
+<li>add reusable domain functionality in layers</li>
+<li>let integration libraries and applications choose which layers they actually need</li>
+</ul>
+<p>This makes it possible to keep the base stack smaller while still allowing advanced systems to build on top of it.</p>
+<h2 id="why-layers-exist">Why Layers Exist</h2>
+<p>Layers exist so that new functionality can be added without making all integrations carry that functionality by default.</p>
+<p>That matters because different consumers often need very different things:</p>
+<ul>
+<li>one integration may only need the base core</li>
+<li>another may need Params but not Model</li>
+<li>another may need Model plus additional domain logic above it</li>
+<li>another may need a completely different feature stack and should not be forced to include unrelated layers</li>
+</ul>
+<p>With layers, each new feature set can stay optional.</p>
+<p>That means:</p>
+<ul>
+<li>you do not need to implement everything in the core just because one project needed it</li>
+<li>you do not need to expose every possible feature in every integration library</li>
+<li>you can build higher-level functionality on top of lower-level layers only when it is needed</li>
+</ul>
+<h2 id="layer-dependencies-and-composition">Layer Dependencies and Composition</h2>
+<p>Layers can depend on previous layers.</p>
+<p>For example:</p>
+<ul>
+<li>Params depends on the core</li>
+<li>Model depends on Params, which depends on the core</li>
+<li>a future layer could depend on Model, which already depends on Params and Core</li>
+</ul>
+<p>This allows a higher-level layer to reuse the behavior below it instead of re-implementing it.</p>
+<p>It also means different feature paths can exist side by side.</p>
+<p>For example, if one future layer sits three layers above Model, you can include that path and get all of its dependencies automatically. But if another feature path also sits three layers above Model and depends on three different intermediate layers that your project does not need, you do not have to include that path at all.</p>
+<p>That is one of the main benefits of the layering approach: feature stacks can grow in different directions without forcing every consumer to adopt every branch.</p>
+<h2 id="when-to-add-a-layer-vs-change-the-core">When To Add a Layer vs. Change the Core</h2>
+<p>Add a new layer when the functionality is:</p>
+<ul>
+<li>optional rather than universally required</li>
+<li>domain-specific rather than transport/protocol-specific</li>
+<li>reusable across more than one integration or application</li>
+<li>naturally expressed on top of an existing layer or the base core</li>
+</ul>
+<p>Change the core when the functionality is truly part of the shared foundation, such as:</p>
+<ul>
+<li>lifecycle behavior</li>
+<li>setup sequencing</li>
+<li>streaming behavior</li>
+<li>transport/codec integration</li>
+<li>common device control behavior that everything depends on</li>
+</ul>
+<p>If a feature can reasonably be absent in some integrations, that is a strong sign it should be a layer rather than a core change.</p>
+<p>This is especially important for stimulator-specific firmware features. An optional layer is a good fit when a feature is supported by a stimulator's firmware, but it is not part of the minimum functionality required for the stimulator to work through the shared core.</p>
+<p>In other words:</p>
+<ul>
+<li>the core should contain the behavior that every supported stimulator needs in some form</li>
+<li>an optional layer should contain additional stimulator functionality that is useful, but not required for baseline operation</li>
+</ul>
+<p>This separation becomes more important as WSS expands to support more stimulators. Different stimulators may all support the shared core concepts, but each one may have different advanced firmware features. Optional layers make it possible for each stimulator family to expose its own advanced capabilities without forcing those features into the shared core for every device.</p>
+<h2 id="core-architecture">Core Architecture</h2>
+<p>Then review <a href="core-architecture.html">Core Architecture (Transport, Codec, Core)</a>.</p>
+<p>That guide explains:</p>
+<ul>
+<li>transport responsibilities</li>
+<li>framing and deframing</li>
+<li>lifecycle state transitions</li>
+<li>setup queues and mid-stream edits</li>
+<li>shutdown and error handling</li>
+</ul>
+<p>Changes to layers should respect these core behaviors rather than bypass them.</p>
+<p>The core is the shared foundation that layers build on top of. A good layer extends the system by using the core correctly, not by replacing the core's responsibilities.</p>
+<p>For example, layers should not take over:</p>
+<ul>
+<li>transport-specific behavior</li>
+<li>frame parsing and protocol mechanics</li>
+<li>lifecycle state management</li>
+<li>streaming loop ownership</li>
+</ul>
+<p>Those belong in the architecture described by the core guide. Layers should add behavior above that foundation.</p>
+<h2 id="development-philosophy">Development Philosophy</h2>
+<p>When adding new functionality:</p>
+<ul>
+<li>keep transport concerns in transport code</li>
+<li>keep protocol framing in codec/core code</li>
+<li>keep domain-specific behavior in layers</li>
+<li>compose functionality at the application or integration-library boundary</li>
+<li>prefer reusable capability layers over one-off feature branches inside the core</li>
+<li>expose only the API surface that a consumer actually needs</li>
+</ul>
+<p>The goal is not to make one giant stack that contains every feature by default. The goal is to make a system where capabilities can be combined in useful ways.</p>
+<p>Good layering design usually has these properties:</p>
+<ul>
+<li>each layer has a clear responsibility</li>
+<li>each layer adds something meaningful on top of the layer below it</li>
+<li>a layer can be left out when a project does not need it</li>
+<li>higher-level layers reuse lower-level layers instead of duplicating their logic</li>
+<li>integration libraries can expose only the layers they actually support</li>
+</ul>
+<p>Good additions usually make one of these clearer:</p>
+<ul>
+<li>what the base core is responsible for</li>
+<li>what a reusable layer adds</li>
+<li>what an integration library chooses to expose</li>
+</ul>
+<h2 id="a-good-mental-model">A Good Mental Model</h2>
+<p>Think of the system as a set of optional building blocks:</p>
+<ul>
+<li>Core gives you the shared device and lifecycle foundation.</li>
+<li>Params adds reusable parameter-management behavior.</li>
+<li>Model adds reusable model-driven behavior on top of Params.</li>
+<li>Optional stimulator-specific layers can add advanced firmware-supported behavior that is not required for all devices.</li>
+<li>Future layers can continue building upward from there.</li>
+</ul>
+<p>An integration library or application can then choose the exact stack it needs.</p>
+<p>That is why the layering approach scales better than putting every feature directly into the core: it keeps the system reusable, optional, and easier to evolve.</p>
+<h2 id="next-steps">Next Steps</h2>
+<ul>
+<li>If you are exposing WSS to a new language or platform, continue to <a href="start-here-building-a-new-integration-library.html">Start Here: Building a New Integration Library</a>.</li>
+<li>If you are using existing capabilities from an application, continue to <a href="start-here-developing-an-application.html">Start Here: Developing an Application</a>.</li>
+</ul>
+<p>Navigation:</p>
+<ul>
+<li><a href="../index.html">Back to Home</a></li>
+<li><a href="../start-here.html">Back to Start Here</a></li>
+<li><a href="../concepts.html">Back to Concepts</a></li>
+<li><a href="start-here-minor-core-modifications.html">Previous: Start Here: Minor Core Modifications</a></li>
+<li><a href="layering-guide.html">Related: Layering Guide (Modules)</a></li>
+</ul>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/cwru-non-academic/WSS_Documentation/blob/main/apiDocs/conceptual/start-here-adding-layers-or-core-functionality.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

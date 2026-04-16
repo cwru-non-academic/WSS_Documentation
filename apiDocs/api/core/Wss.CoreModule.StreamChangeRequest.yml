@@ -1,0 +1,234 @@
+### YamlMime:ManagedReference
+items:
+- uid: Wss.CoreModule.StreamChangeRequest
+  commentId: T:Wss.CoreModule.StreamChangeRequest
+  id: StreamChangeRequest
+  parent: Wss.CoreModule
+  children:
+  - Wss.CoreModule.StreamChangeRequest.InterPulseIntervals
+  - Wss.CoreModule.StreamChangeRequest.PulseAmplitudes
+  - Wss.CoreModule.StreamChangeRequest.PulseWidths
+  langs:
+  - csharp
+  - vb
+  name: StreamChangeRequest
+  nameWithType: StreamChangeRequest
+  fullName: Wss.CoreModule.StreamChangeRequest
+  type: Class
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Describes a streaming update for PA, PW, and IPI groups.
+  remarks: >-
+    The protocol supports omitting at most one of the three groups. Each supplied array must contain exactly
+
+    three values, one per streamed schedule slot. The request itself is required by
+
+    <xref href="Wss.CoreModule.WssClient.StreamChange(Wss.CoreModule.StreamChangeRequest%2cWss.CoreModule.WssTarget%2cSystem.Threading.CancellationToken)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public sealed class StreamChangeRequest
+    content.vb: Public NotInheritable Class StreamChangeRequest
+  inheritance:
+  - System.Object
+- uid: Wss.CoreModule.StreamChangeRequest.PulseAmplitudes
+  commentId: P:Wss.CoreModule.StreamChangeRequest.PulseAmplitudes
+  id: PulseAmplitudes
+  parent: Wss.CoreModule.StreamChangeRequest
+  langs:
+  - csharp
+  - vb
+  name: PulseAmplitudes
+  nameWithType: StreamChangeRequest.PulseAmplitudes
+  fullName: Wss.CoreModule.StreamChangeRequest.PulseAmplitudes
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Gets or sets the three pulse amplitudes (0..255).
+
+    Leave null to omit the PA group.
+  example: []
+  syntax:
+    content: public int[] PulseAmplitudes { get; set; }
+    parameters: []
+    return:
+      type: System.Int32[]
+    content.vb: Public Property PulseAmplitudes As Integer()
+  overload: Wss.CoreModule.StreamChangeRequest.PulseAmplitudes*
+- uid: Wss.CoreModule.StreamChangeRequest.PulseWidths
+  commentId: P:Wss.CoreModule.StreamChangeRequest.PulseWidths
+  id: PulseWidths
+  parent: Wss.CoreModule.StreamChangeRequest
+  langs:
+  - csharp
+  - vb
+  name: PulseWidths
+  nameWithType: StreamChangeRequest.PulseWidths
+  fullName: Wss.CoreModule.StreamChangeRequest.PulseWidths
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Gets or sets the three pulse widths (0..255).
+
+    Leave null to omit the PW group.
+  example: []
+  syntax:
+    content: public int[] PulseWidths { get; set; }
+    parameters: []
+    return:
+      type: System.Int32[]
+    content.vb: Public Property PulseWidths As Integer()
+  overload: Wss.CoreModule.StreamChangeRequest.PulseWidths*
+- uid: Wss.CoreModule.StreamChangeRequest.InterPulseIntervals
+  commentId: P:Wss.CoreModule.StreamChangeRequest.InterPulseIntervals
+  id: InterPulseIntervals
+  parent: Wss.CoreModule.StreamChangeRequest
+  langs:
+  - csharp
+  - vb
+  name: InterPulseIntervals
+  nameWithType: StreamChangeRequest.InterPulseIntervals
+  fullName: Wss.CoreModule.StreamChangeRequest.InterPulseIntervals
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Gets or sets the three inter-pulse intervals, in milliseconds (0..255).
+
+    Leave null to omit the IPI group.
+  example: []
+  syntax:
+    content: public int[] InterPulseIntervals { get; set; }
+    parameters: []
+    return:
+      type: System.Int32[]
+    content.vb: Public Property InterPulseIntervals As Integer()
+  overload: Wss.CoreModule.StreamChangeRequest.InterPulseIntervals*
+references:
+- uid: Wss.CoreModule.WssClient.StreamChange(Wss.CoreModule.StreamChangeRequest,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.StreamChange(Wss.CoreModule.StreamChangeRequest,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  isExternal: true
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_StreamChange_Wss_CoreModule_StreamChangeRequest_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  name: StreamChange(StreamChangeRequest, WssTarget, CancellationToken)
+  nameWithType: WssClient.StreamChange(StreamChangeRequest, WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.StreamChange(Wss.CoreModule.StreamChangeRequest, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Wss.CoreModule.WssClient.StreamChange(Wss.CoreModule.StreamChangeRequest,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+    name: StreamChange
+    href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_StreamChange_Wss_CoreModule_StreamChangeRequest_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  - name: (
+  - uid: Wss.CoreModule.StreamChangeRequest
+    name: StreamChangeRequest
+    href: Wss.CoreModule.StreamChangeRequest.html
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.WssClient.StreamChange(Wss.CoreModule.StreamChangeRequest,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+    name: StreamChange
+    href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_StreamChange_Wss_CoreModule_StreamChangeRequest_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  - name: (
+  - uid: Wss.CoreModule.StreamChangeRequest
+    name: StreamChangeRequest
+    href: Wss.CoreModule.StreamChangeRequest.html
+  - name: ','
+  - name: " "
+  - uid: Wss.CoreModule.WssTarget
+    name: WssTarget
+    href: Wss.CoreModule.WssTarget.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+  - name: )
+- uid: Wss.CoreModule
+  commentId: N:Wss.CoreModule
+  href: Wss.html
+  name: Wss.CoreModule
+  nameWithType: Wss.CoreModule
+  fullName: Wss.CoreModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Wss.CoreModule.StreamChangeRequest.PulseAmplitudes*
+  commentId: Overload:Wss.CoreModule.StreamChangeRequest.PulseAmplitudes
+  href: Wss.CoreModule.StreamChangeRequest.html#Wss_CoreModule_StreamChangeRequest_PulseAmplitudes
+  name: PulseAmplitudes
+  nameWithType: StreamChangeRequest.PulseAmplitudes
+  fullName: Wss.CoreModule.StreamChangeRequest.PulseAmplitudes
+- uid: System.Int32[]
+  isExternal: true
+  name: int[]
+  nameWithType: int[]
+  fullName: int[]
+  nameWithType.vb: Integer()
+  fullName.vb: Integer()
+  name.vb: Integer()
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Wss.CoreModule.StreamChangeRequest.PulseWidths*
+  commentId: Overload:Wss.CoreModule.StreamChangeRequest.PulseWidths
+  href: Wss.CoreModule.StreamChangeRequest.html#Wss_CoreModule_StreamChangeRequest_PulseWidths
+  name: PulseWidths
+  nameWithType: StreamChangeRequest.PulseWidths
+  fullName: Wss.CoreModule.StreamChangeRequest.PulseWidths
+- uid: Wss.CoreModule.StreamChangeRequest.InterPulseIntervals*
+  commentId: Overload:Wss.CoreModule.StreamChangeRequest.InterPulseIntervals
+  href: Wss.CoreModule.StreamChangeRequest.html#Wss_CoreModule_StreamChangeRequest_InterPulseIntervals
+  name: InterPulseIntervals
+  nameWithType: StreamChangeRequest.InterPulseIntervals
+  fullName: Wss.CoreModule.StreamChangeRequest.InterPulseIntervals

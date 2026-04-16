@@ -1,7 +1,8 @@
 param(
   [string]$ManifestPath,
   [switch]$Serve,
-  [switch]$SkipPython
+  [switch]$SkipPython,
+  [switch]$Main
 )
 
 Set-StrictMode -Version Latest
@@ -85,6 +86,28 @@ function Get-OptionalProperty {
   return $DefaultValue
 }
 
+function Get-CSharpSourceConfig {
+  param([Parameter(Mandatory = $true)] [object]$Repo)
+
+  $solutionValue = [string](Get-OptionalProperty -Object $Repo -Name 'solution')
+  if (-not [string]::IsNullOrWhiteSpace($solutionValue)) {
+    return [pscustomobject]@{
+      PathValue = $solutionValue
+      BaseValue = [string](Get-OptionalProperty -Object $Repo -Name 'solutionBase' -DefaultValue 'repo')
+    }
+  }
+
+  $csprojValue = [string](Get-OptionalProperty -Object $Repo -Name 'csproj')
+  if (-not [string]::IsNullOrWhiteSpace($csprojValue)) {
+    return [pscustomobject]@{
+      PathValue = $csprojValue
+      BaseValue = [string](Get-OptionalProperty -Object $Repo -Name 'csprojBase' -DefaultValue 'repo')
+    }
+  }
+
+  throw "C# repo '$([string](Get-OptionalProperty -Object $Repo -Name 'id'))' must define 'solution' or 'csproj'."
+}
+
 function Test-PythonHasSphinx {
   param([string]$PythonCommand)
 
@@ -125,6 +148,17 @@ if (-not $manifest.repositories) {
 }
 
 $enabledRepos = @($manifest.repositories | Where-Object { $_.enabled -ne $false })
+if ($Main) {
+  $enabledRepos = @($enabledRepos | Where-Object { $_.id -eq 'core' })
+}
+
+if (Test-Path -LiteralPath (Join-Path $docsDir 'api')) {
+  Remove-Item -LiteralPath (Join-Path $docsDir 'api') -Recurse -Force
+}
+if (Test-Path -LiteralPath (Join-Path $docsDir 'external')) {
+  Remove-Item -LiteralPath (Join-Path $docsDir 'external') -Recurse -Force
+}
+
 $csharpRepos = @()
 $pythonRepos = @()
 
@@ -201,21 +235,20 @@ $apiNavItems = @()
 
 foreach ($repo in $csharpRepos) {
   $repoId = [string](Get-OptionalProperty -Object $repo -Name 'id')
-  $csprojValue = [string](Get-OptionalProperty -Object $repo -Name 'csproj')
-  $csprojBase = [string](Get-OptionalProperty -Object $repo -Name 'csprojBase')
+  $csharpSource = Get-CSharpSourceConfig -Repo $repo
   $globalNamespaceId = [string](Get-OptionalProperty -Object $repo -Name 'globalNamespaceId')
-  if ([string]::IsNullOrWhiteSpace($csprojValue)) {
-    throw "C# repo '$repoId' must define 'csproj'."
+
+  $csharpSourceResolveBase = if ($csharpSource.BaseValue -eq 'hub') { $repoRoot } else { $repo.resolvedRoot }
+  $csharpSourcePath = Resolve-ConfiguredPath -BasePath $csharpSourceResolveBase -PathValue $csharpSource.PathValue
+  if (-not (Test-Path -LiteralPath $csharpSourcePath)) {
+    throw "C# project or solution file not found for '$repoId': $csharpSourcePath"
+  }
+  if (($csharpSourcePath -notlike '*.csproj') -and ($csharpSourcePath -notlike '*.sln')) {
+    throw "C# repo '$repoId' must point to a .csproj or .sln file: $csharpSourcePath"
   }
 
-  $csprojResolveBase = if ($csprojBase -eq 'hub') { $repoRoot } else { $repo.resolvedRoot }
-  $csprojPath = Resolve-ConfiguredPath -BasePath $csprojResolveBase -PathValue $csprojValue
-  if (-not (Test-Path -LiteralPath $csprojPath)) {
-    throw "C# project file not found for '$repoId': $csprojPath"
-  }
-
-  $csprojDir = [System.IO.Path]::GetDirectoryName($csprojPath)
-  $csprojFile = [System.IO.Path]::GetFileName($csprojPath)
+  $csharpSourceDir = [System.IO.Path]::GetDirectoryName($csharpSourcePath)
+  $csharpSourceFile = [System.IO.Path]::GetFileName($csharpSourcePath)
 
   $destValue = [string](Get-OptionalProperty -Object $repo -Name 'docfxDest')
   $entryUid = [string](Get-OptionalProperty -Object $repo -Name 'entryUid')
@@ -225,8 +258,8 @@ foreach ($repo in $csharpRepos) {
   }
 
   $srcEntry = @{
-    src = $csprojDir
-    files = @($csprojFile)
+    src = $csharpSourceDir
+    files = @($csharpSourceFile)
   }
 
   $msbuildProperties = Get-OptionalProperty -Object $repo -Name 'msbuildProperties'
@@ -276,25 +309,46 @@ foreach ($repo in $pythonRepos) {
   }
 }
 
-$guideFiles = @()
-$conceptualDir = Join-Path $docsDir 'conceptual'
-if (Test-Path -LiteralPath $conceptualDir) {
-  $guideFiles = @(Get-ChildItem -Path $conceptualDir -Filter *.md -File | Sort-Object Name)
-}
-
 $tocLines = New-Object System.Collections.Generic.List[string]
 $tocLines.Add('- name: Home')
 $tocLines.Add('  href: index.md')
-
-if ($guideFiles.Count -gt 0) {
-  $tocLines.Add('- name: Guides')
-  $tocLines.Add('  items:')
-  foreach ($file in $guideFiles) {
-    $title = Get-MarkdownTitle -Path $file.FullName
-    $tocLines.Add("  - name: $title")
-    $tocLines.Add("    href: conceptual/$($file.Name)")
-  }
-}
+$tocLines.Add('- name: Start Here')
+$tocLines.Add('  href: start-here.md')
+$tocLines.Add('  items:')
+$tocLines.Add('  - name: Start Here: Using an Application')
+$tocLines.Add('    href: conceptual/start-here-using-an-application.md')
+$tocLines.Add('  - name: Start Here: Developing an Application')
+$tocLines.Add('    href: conceptual/start-here-developing-an-application.md')
+$tocLines.Add('  - name: Start Here: Building a New Integration Library')
+$tocLines.Add('    href: conceptual/start-here-building-a-new-integration-library.md')
+$tocLines.Add('  - name: Start Here: Minor Core Modifications')
+$tocLines.Add('    href: conceptual/start-here-minor-core-modifications.md')
+$tocLines.Add('  - name: Start Here: Adding Layers or Core Functionality')
+$tocLines.Add('    href: conceptual/start-here-adding-layers-or-core-functionality.md')
+$tocLines.Add('  - name: Choosing a Runtime for an Integration Library')
+$tocLines.Add('    href: conceptual/integration-library-runtime-selection.md')
+$tocLines.Add('  - name: Repository and Kit Links')
+$tocLines.Add('    href: conceptual/repository-and-kit-links.md')
+$tocLines.Add('- name: Concepts')
+$tocLines.Add('  href: concepts.md')
+$tocLines.Add('  items:')
+$tocLines.Add('  - name: Layering Guide (Modules)')
+$tocLines.Add('    href: conceptual/layering-guide.md')
+$tocLines.Add('  - name: Core Architecture (Transport, Codec, Core)')
+$tocLines.Add('    href: conceptual/core-architecture.md')
+$tocLines.Add('  - name: Setup Order and Modification')
+$tocLines.Add('    href: conceptual/setup-order-and-modification.md')
+$tocLines.Add('  - name: Firmware Compatibility Matrix')
+$tocLines.Add('    href: conceptual/firmware-compatibility-matrix.md')
+$tocLines.Add('  - name: Config Files Reference')
+$tocLines.Add('    href: conceptual/config-files-reference.md')
+$tocLines.Add('- name: Advanced')
+$tocLines.Add('  href: advanced.md')
+$tocLines.Add('  items:')
+$tocLines.Add('  - name: WSS Commands Reference')
+$tocLines.Add('    href: conceptual/wss-commands-reference.md')
+$tocLines.Add('  - name: Simple Serial Communication with WSS')
+$tocLines.Add('    href: conceptual/simple-serial-communication.md')
 
 if ($apiNavItems.Count -gt 0) {
   $tocLines.Add('- name: C# API')
@@ -305,49 +359,76 @@ if ($apiNavItems.Count -gt 0) {
   }
 }
 
-if ($pythonNavItems.Count -gt 0) {
-  $tocLines.Add('- name: Python API')
-  $tocLines.Add('  items:')
-  foreach ($item in $pythonNavItems) {
-    $tocLines.Add("  - name: $($item.title)")
-    $tocLines.Add("    href: $($item.href)")
-  }
-}
+$tocLines.Add('- name: Maintainers')
+$tocLines.Add('  href: maintainers.md')
+$tocLines.Add('  items:')
+$tocLines.Add('  - name: Building Software API Docs')
+$tocLines.Add('    href: conceptual/building-software-api-docs.md')
 
 Set-Content -LiteralPath $tocPath -Value ($tocLines -join [Environment]::NewLine) -Encoding UTF8
 
 $indexLines = New-Object System.Collections.Generic.List[string]
 $indexLines.Add('# WSS Documentation Hub')
 $indexLines.Add('')
-$indexLines.Add('This site combines conceptual documentation with API references from multiple repositories.')
+$indexLines.Add('This site is organized first for people using WSS applications and for developers building applications or integrations on top of WSS.')
 $indexLines.Add('')
-$indexLines.Add('Use the left navigation to browse all namespaces, interfaces, classes, and guides.')
+$indexLines.Add('## Choose Your Path')
 $indexLines.Add('')
-
-if ($guideFiles.Count -gt 0) {
-  $indexLines.Add('## Guides')
-  foreach ($file in $guideFiles) {
-    $title = Get-MarkdownTitle -Path $file.FullName
-    $indexLines.Add("- [$title](conceptual/$($file.Name))")
-  }
-  $indexLines.Add('')
-}
+$indexLines.Add('- [Start Here](start-here.md)')
+$indexLines.Add('  - The best entry point if you are deciding whether you are using an existing application, building a new application, creating a new integration library, or making focused core changes.')
+$indexLines.Add('- [Using an Application](conceptual/start-here-using-an-application.md)')
+$indexLines.Add('  - Start here if you want to run WSS through an existing GUI, CLI, Unity, or Python workflow.')
+$indexLines.Add('- [Developing an Application](conceptual/start-here-developing-an-application.md)')
+$indexLines.Add('  - Start here if you are building a user-facing tool on top of an existing WSS integration library.')
+$indexLines.Add('- [Building a New Integration Library](conceptual/start-here-building-a-new-integration-library.md)')
+$indexLines.Add('  - Start here if you need to expose WSS to a new language, platform, or transport environment.')
+$indexLines.Add('')
+$indexLines.Add('## Repository And Kit Links')
+$indexLines.Add('')
+$indexLines.Add('- [Repository and Kit Links](conceptual/repository-and-kit-links.md)')
+$indexLines.Add('  - One page for grouped application, integration library, and core repository and kit links.')
+$indexLines.Add('')
+$indexLines.Add('## Core Concepts')
+$indexLines.Add('')
+$indexLines.Add('- [Concepts](concepts.md)')
+$indexLines.Add('  - Overview of the main architecture, layering, setup, firmware compatibility, and config references.')
+$indexLines.Add('- [Layering Guide (Modules)](conceptual/layering-guide.md)')
+$indexLines.Add('  - Explains how WSS grows from Core to Params to Model and where new reusable functionality should live.')
+$indexLines.Add('- [Core Architecture (Transport, Codec, Core)](conceptual/core-architecture.md)')
+$indexLines.Add('  - Explains transports, framing, lifecycle, setup sequencing, and streaming behavior.')
+$indexLines.Add('- [Config Files Reference](conceptual/config-files-reference.md)')
+$indexLines.Add('  - Describes the standard config files used by applications and integration libraries.')
+$indexLines.Add('')
 
 if ($apiNavItems.Count -gt 0) {
-  $indexLines.Add('## C# API')
+  $indexLines.Add('## API Reference')
+  $indexLines.Add('')
   foreach ($item in $apiNavItems) {
     $indexLines.Add("- [$($item.title)]($($item.pageHref))")
   }
-  $indexLines.Add('')
-}
-
-if ($pythonNavItems.Count -gt 0) {
-  $indexLines.Add('## Python API')
-  foreach ($item in $pythonNavItems) {
-    $indexLines.Add("- [$($item.title)]($($item.href))")
+  if ($pythonNavItems.Count -gt 0) {
+    $indexLines.Add('- Python Integration (Python)')
+    $indexLines.Add('  - Published under `external/<repo>/` when Python docs are enabled in the docs build manifest.')
   }
   $indexLines.Add('')
 }
+
+$indexLines.Add('## Advanced Reference')
+$indexLines.Add('')
+$indexLines.Add('- [Advanced](advanced.md)')
+$indexLines.Add('  - Lower-level protocol and raw communication material for debugging and direct device work.')
+$indexLines.Add('- [WSS Commands Reference](conceptual/wss-commands-reference.md)')
+$indexLines.Add('  - Byte-level command and protocol reference.')
+$indexLines.Add('- [Simple Serial Communication with WSS](conceptual/simple-serial-communication.md)')
+$indexLines.Add('  - Raw serial communication examples for macOS, Windows, and MATLAB.')
+$indexLines.Add('')
+$indexLines.Add('## Docs Maintenance')
+$indexLines.Add('')
+$indexLines.Add('- [Maintainers](maintainers.md)')
+$indexLines.Add('  - Build and maintain the documentation hub itself.')
+$indexLines.Add('- [Building Software API Docs](conceptual/building-software-api-docs.md)')
+$indexLines.Add('  - Build workflow for the multi-repository DocFX site and generated API docs.')
+$indexLines.Add('')
 
 Set-Content -LiteralPath $indexPath -Value ($indexLines -join [Environment]::NewLine) -Encoding UTF8
 

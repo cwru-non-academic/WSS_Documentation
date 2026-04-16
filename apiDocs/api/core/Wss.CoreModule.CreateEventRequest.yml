@@ -1,0 +1,445 @@
+### YamlMime:ManagedReference
+items:
+- uid: Wss.CoreModule.CreateEventRequest
+  commentId: T:Wss.CoreModule.CreateEventRequest
+  id: CreateEventRequest
+  parent: Wss.CoreModule
+  children:
+  - Wss.CoreModule.CreateEventRequest.ContactConfigId
+  - Wss.CoreModule.CreateEventRequest.DelayMs
+  - Wss.CoreModule.CreateEventRequest.EventId
+  - Wss.CoreModule.CreateEventRequest.PulseWidths
+  - Wss.CoreModule.CreateEventRequest.RechargeAmplitudes
+  - Wss.CoreModule.CreateEventRequest.RechargeShapeId
+  - Wss.CoreModule.CreateEventRequest.StandardAmplitudes
+  - Wss.CoreModule.CreateEventRequest.StandardShapeId
+  langs:
+  - csharp
+  - vb
+  name: CreateEventRequest
+  nameWithType: CreateEventRequest
+  fullName: Wss.CoreModule.CreateEventRequest
+  type: Class
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Describes an event to create on the WSS device.
+  remarks: >-
+    This request supports the same payload shapes as the previous overload set:
+
+    basic event, event with explicit shape IDs, event with amplitude and pulse-width data,
+
+    or event with both shape and amplitude data.
+
+    <xref href="Wss.CoreModule.CreateEventRequest.StandardShapeId" data-throw-if-not-resolved="false"></xref> and <xref href="Wss.CoreModule.CreateEventRequest.RechargeShapeId" data-throw-if-not-resolved="false"></xref> must be supplied together.
+
+    <xref href="Wss.CoreModule.CreateEventRequest.StandardAmplitudes" data-throw-if-not-resolved="false"></xref> and <xref href="Wss.CoreModule.CreateEventRequest.RechargeAmplitudes" data-throw-if-not-resolved="false"></xref> must be supplied together.
+
+    <xref href="Wss.CoreModule.CreateEventRequest.PulseWidths" data-throw-if-not-resolved="false"></xref> is required when amplitude arrays are supplied, and amplitude arrays are required
+
+    when <xref href="Wss.CoreModule.CreateEventRequest.PulseWidths" data-throw-if-not-resolved="false"></xref> is supplied.
+  example: []
+  syntax:
+    content: public sealed class CreateEventRequest
+    content.vb: Public NotInheritable Class CreateEventRequest
+  inheritance:
+  - System.Object
+- uid: Wss.CoreModule.CreateEventRequest.EventId
+  commentId: P:Wss.CoreModule.CreateEventRequest.EventId
+  id: EventId
+  parent: Wss.CoreModule.CreateEventRequest
+  langs:
+  - csharp
+  - vb
+  name: EventId
+  nameWithType: CreateEventRequest.EventId
+  fullName: Wss.CoreModule.CreateEventRequest.EventId
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Gets or sets the event ID (0..255).
+  example: []
+  syntax:
+    content: public int EventId { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property EventId As Integer
+  overload: Wss.CoreModule.CreateEventRequest.EventId*
+- uid: Wss.CoreModule.CreateEventRequest.DelayMs
+  commentId: P:Wss.CoreModule.CreateEventRequest.DelayMs
+  id: DelayMs
+  parent: Wss.CoreModule.CreateEventRequest
+  langs:
+  - csharp
+  - vb
+  name: DelayMs
+  nameWithType: CreateEventRequest.DelayMs
+  fullName: Wss.CoreModule.CreateEventRequest.DelayMs
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Gets or sets the delay from schedule start, in milliseconds.
+  example: []
+  syntax:
+    content: public int DelayMs { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property DelayMs As Integer
+  overload: Wss.CoreModule.CreateEventRequest.DelayMs*
+- uid: Wss.CoreModule.CreateEventRequest.ContactConfigId
+  commentId: P:Wss.CoreModule.CreateEventRequest.ContactConfigId
+  id: ContactConfigId
+  parent: Wss.CoreModule.CreateEventRequest
+  langs:
+  - csharp
+  - vb
+  name: ContactConfigId
+  nameWithType: CreateEventRequest.ContactConfigId
+  fullName: Wss.CoreModule.CreateEventRequest.ContactConfigId
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Gets or sets the contact configuration ID (0..255).
+  example: []
+  syntax:
+    content: public int ContactConfigId { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property ContactConfigId As Integer
+  overload: Wss.CoreModule.CreateEventRequest.ContactConfigId*
+- uid: Wss.CoreModule.CreateEventRequest.StandardShapeId
+  commentId: P:Wss.CoreModule.CreateEventRequest.StandardShapeId
+  id: StandardShapeId
+  parent: Wss.CoreModule.CreateEventRequest
+  langs:
+  - csharp
+  - vb
+  name: StandardShapeId
+  nameWithType: CreateEventRequest.StandardShapeId
+  fullName: Wss.CoreModule.CreateEventRequest.StandardShapeId
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Gets or sets the optional standard-phase shape ID.
+
+    Must be supplied together with <xref href="Wss.CoreModule.CreateEventRequest.RechargeShapeId" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public int? StandardShapeId { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: Public Property StandardShapeId As Integer?
+  overload: Wss.CoreModule.CreateEventRequest.StandardShapeId*
+- uid: Wss.CoreModule.CreateEventRequest.RechargeShapeId
+  commentId: P:Wss.CoreModule.CreateEventRequest.RechargeShapeId
+  id: RechargeShapeId
+  parent: Wss.CoreModule.CreateEventRequest
+  langs:
+  - csharp
+  - vb
+  name: RechargeShapeId
+  nameWithType: CreateEventRequest.RechargeShapeId
+  fullName: Wss.CoreModule.CreateEventRequest.RechargeShapeId
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Gets or sets the optional recharge-phase shape ID.
+
+    Must be supplied together with <xref href="Wss.CoreModule.CreateEventRequest.StandardShapeId" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public int? RechargeShapeId { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: Public Property RechargeShapeId As Integer?
+  overload: Wss.CoreModule.CreateEventRequest.RechargeShapeId*
+- uid: Wss.CoreModule.CreateEventRequest.StandardAmplitudes
+  commentId: P:Wss.CoreModule.CreateEventRequest.StandardAmplitudes
+  id: StandardAmplitudes
+  parent: Wss.CoreModule.CreateEventRequest
+  langs:
+  - csharp
+  - vb
+  name: StandardAmplitudes
+  nameWithType: CreateEventRequest.StandardAmplitudes
+  fullName: Wss.CoreModule.CreateEventRequest.StandardAmplitudes
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Gets or sets the optional four-element amplitude array for the standard phase.
+
+    Must be supplied together with <xref href="Wss.CoreModule.CreateEventRequest.RechargeAmplitudes" data-throw-if-not-resolved="false"></xref> and <xref href="Wss.CoreModule.CreateEventRequest.PulseWidths" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public int[] StandardAmplitudes { get; set; }
+    parameters: []
+    return:
+      type: System.Int32[]
+    content.vb: Public Property StandardAmplitudes As Integer()
+  overload: Wss.CoreModule.CreateEventRequest.StandardAmplitudes*
+- uid: Wss.CoreModule.CreateEventRequest.RechargeAmplitudes
+  commentId: P:Wss.CoreModule.CreateEventRequest.RechargeAmplitudes
+  id: RechargeAmplitudes
+  parent: Wss.CoreModule.CreateEventRequest
+  langs:
+  - csharp
+  - vb
+  name: RechargeAmplitudes
+  nameWithType: CreateEventRequest.RechargeAmplitudes
+  fullName: Wss.CoreModule.CreateEventRequest.RechargeAmplitudes
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Gets or sets the optional four-element amplitude array for the recharge phase.
+
+    Must be supplied together with <xref href="Wss.CoreModule.CreateEventRequest.StandardAmplitudes" data-throw-if-not-resolved="false"></xref> and <xref href="Wss.CoreModule.CreateEventRequest.PulseWidths" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public int[] RechargeAmplitudes { get; set; }
+    parameters: []
+    return:
+      type: System.Int32[]
+    content.vb: Public Property RechargeAmplitudes As Integer()
+  overload: Wss.CoreModule.CreateEventRequest.RechargeAmplitudes*
+- uid: Wss.CoreModule.CreateEventRequest.PulseWidths
+  commentId: P:Wss.CoreModule.CreateEventRequest.PulseWidths
+  id: PulseWidths
+  parent: Wss.CoreModule.CreateEventRequest
+  langs:
+  - csharp
+  - vb
+  name: PulseWidths
+  nameWithType: CreateEventRequest.PulseWidths
+  fullName: Wss.CoreModule.CreateEventRequest.PulseWidths
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Gets or sets the optional pulse-width payload.
+
+    This is required when amplitude arrays are supplied.
+  example: []
+  syntax:
+    content: public EventPulseWidths PulseWidths { get; set; }
+    parameters: []
+    return:
+      type: Wss.CoreModule.EventPulseWidths
+    content.vb: Public Property PulseWidths As EventPulseWidths
+  overload: Wss.CoreModule.CreateEventRequest.PulseWidths*
+references:
+- uid: Wss.CoreModule.CreateEventRequest.StandardShapeId
+  commentId: P:Wss.CoreModule.CreateEventRequest.StandardShapeId
+  href: Wss.CoreModule.CreateEventRequest.html#Wss_CoreModule_CreateEventRequest_StandardShapeId
+  name: StandardShapeId
+  nameWithType: CreateEventRequest.StandardShapeId
+  fullName: Wss.CoreModule.CreateEventRequest.StandardShapeId
+- uid: Wss.CoreModule.CreateEventRequest.RechargeShapeId
+  commentId: P:Wss.CoreModule.CreateEventRequest.RechargeShapeId
+  href: Wss.CoreModule.CreateEventRequest.html#Wss_CoreModule_CreateEventRequest_RechargeShapeId
+  name: RechargeShapeId
+  nameWithType: CreateEventRequest.RechargeShapeId
+  fullName: Wss.CoreModule.CreateEventRequest.RechargeShapeId
+- uid: Wss.CoreModule.CreateEventRequest.StandardAmplitudes
+  commentId: P:Wss.CoreModule.CreateEventRequest.StandardAmplitudes
+  href: Wss.CoreModule.CreateEventRequest.html#Wss_CoreModule_CreateEventRequest_StandardAmplitudes
+  name: StandardAmplitudes
+  nameWithType: CreateEventRequest.StandardAmplitudes
+  fullName: Wss.CoreModule.CreateEventRequest.StandardAmplitudes
+- uid: Wss.CoreModule.CreateEventRequest.RechargeAmplitudes
+  commentId: P:Wss.CoreModule.CreateEventRequest.RechargeAmplitudes
+  href: Wss.CoreModule.CreateEventRequest.html#Wss_CoreModule_CreateEventRequest_RechargeAmplitudes
+  name: RechargeAmplitudes
+  nameWithType: CreateEventRequest.RechargeAmplitudes
+  fullName: Wss.CoreModule.CreateEventRequest.RechargeAmplitudes
+- uid: Wss.CoreModule.CreateEventRequest.PulseWidths
+  commentId: P:Wss.CoreModule.CreateEventRequest.PulseWidths
+  href: Wss.CoreModule.CreateEventRequest.html#Wss_CoreModule_CreateEventRequest_PulseWidths
+  name: PulseWidths
+  nameWithType: CreateEventRequest.PulseWidths
+  fullName: Wss.CoreModule.CreateEventRequest.PulseWidths
+- uid: Wss.CoreModule
+  commentId: N:Wss.CoreModule
+  href: Wss.html
+  name: Wss.CoreModule
+  nameWithType: Wss.CoreModule
+  fullName: Wss.CoreModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Wss.CoreModule.CreateEventRequest.EventId*
+  commentId: Overload:Wss.CoreModule.CreateEventRequest.EventId
+  href: Wss.CoreModule.CreateEventRequest.html#Wss_CoreModule_CreateEventRequest_EventId
+  name: EventId
+  nameWithType: CreateEventRequest.EventId
+  fullName: Wss.CoreModule.CreateEventRequest.EventId
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Wss.CoreModule.CreateEventRequest.DelayMs*
+  commentId: Overload:Wss.CoreModule.CreateEventRequest.DelayMs
+  href: Wss.CoreModule.CreateEventRequest.html#Wss_CoreModule_CreateEventRequest_DelayMs
+  name: DelayMs
+  nameWithType: CreateEventRequest.DelayMs
+  fullName: Wss.CoreModule.CreateEventRequest.DelayMs
+- uid: Wss.CoreModule.CreateEventRequest.ContactConfigId*
+  commentId: Overload:Wss.CoreModule.CreateEventRequest.ContactConfigId
+  href: Wss.CoreModule.CreateEventRequest.html#Wss_CoreModule_CreateEventRequest_ContactConfigId
+  name: ContactConfigId
+  nameWithType: CreateEventRequest.ContactConfigId
+  fullName: Wss.CoreModule.CreateEventRequest.ContactConfigId
+- uid: Wss.CoreModule.CreateEventRequest.StandardShapeId*
+  commentId: Overload:Wss.CoreModule.CreateEventRequest.StandardShapeId
+  href: Wss.CoreModule.CreateEventRequest.html#Wss_CoreModule_CreateEventRequest_StandardShapeId
+  name: StandardShapeId
+  nameWithType: CreateEventRequest.StandardShapeId
+  fullName: Wss.CoreModule.CreateEventRequest.StandardShapeId
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  name: int?
+  nameWithType: int?
+  fullName: int?
+  nameWithType.vb: Integer?
+  fullName.vb: Integer?
+  name.vb: Integer?
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '?'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Wss.CoreModule.CreateEventRequest.RechargeShapeId*
+  commentId: Overload:Wss.CoreModule.CreateEventRequest.RechargeShapeId
+  href: Wss.CoreModule.CreateEventRequest.html#Wss_CoreModule_CreateEventRequest_RechargeShapeId
+  name: RechargeShapeId
+  nameWithType: CreateEventRequest.RechargeShapeId
+  fullName: Wss.CoreModule.CreateEventRequest.RechargeShapeId
+- uid: Wss.CoreModule.CreateEventRequest.StandardAmplitudes*
+  commentId: Overload:Wss.CoreModule.CreateEventRequest.StandardAmplitudes
+  href: Wss.CoreModule.CreateEventRequest.html#Wss_CoreModule_CreateEventRequest_StandardAmplitudes
+  name: StandardAmplitudes
+  nameWithType: CreateEventRequest.StandardAmplitudes
+  fullName: Wss.CoreModule.CreateEventRequest.StandardAmplitudes
+- uid: System.Int32[]
+  isExternal: true
+  name: int[]
+  nameWithType: int[]
+  fullName: int[]
+  nameWithType.vb: Integer()
+  fullName.vb: Integer()
+  name.vb: Integer()
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Wss.CoreModule.CreateEventRequest.RechargeAmplitudes*
+  commentId: Overload:Wss.CoreModule.CreateEventRequest.RechargeAmplitudes
+  href: Wss.CoreModule.CreateEventRequest.html#Wss_CoreModule_CreateEventRequest_RechargeAmplitudes
+  name: RechargeAmplitudes
+  nameWithType: CreateEventRequest.RechargeAmplitudes
+  fullName: Wss.CoreModule.CreateEventRequest.RechargeAmplitudes
+- uid: Wss.CoreModule.CreateEventRequest.PulseWidths*
+  commentId: Overload:Wss.CoreModule.CreateEventRequest.PulseWidths
+  href: Wss.CoreModule.CreateEventRequest.html#Wss_CoreModule_CreateEventRequest_PulseWidths
+  name: PulseWidths
+  nameWithType: CreateEventRequest.PulseWidths
+  fullName: Wss.CoreModule.CreateEventRequest.PulseWidths
+- uid: Wss.CoreModule.EventPulseWidths
+  commentId: T:Wss.CoreModule.EventPulseWidths
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.EventPulseWidths.html
+  name: EventPulseWidths
+  nameWithType: EventPulseWidths
+  fullName: Wss.CoreModule.EventPulseWidths

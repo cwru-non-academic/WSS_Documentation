@@ -102,13 +102,13 @@ sends them over an <a class="xref" href="Wss.CoreModule.ITransport.html">ITransp
 
 
   <a id="Wss_CoreModule_WssClient__ctor_" data-uid="Wss.CoreModule.WssClient.#ctor*"></a>
-  <h4 id="Wss_CoreModule_WssClient__ctor_Wss_CoreModule_ITransport_Wss_CoreModule_IFrameCodec_Wss_CoreModule_WSSVersionHandler_System_Byte_" data-uid="Wss.CoreModule.WssClient.#ctor(Wss.CoreModule.ITransport,Wss.CoreModule.IFrameCodec,Wss.CoreModule.WSSVersionHandler,System.Byte)">WssClient(ITransport, IFrameCodec, WSSVersionHandler, byte)</h4>
-  <div class="markdown level1 summary"><p>Initializes a new client over the provided transport and frame codec.</p>
+  <h4 id="Wss_CoreModule_WssClient__ctor_Wss_CoreModule_ITransport_Wss_CoreModule_IFrameCodec_Wss_CoreModule_WSSVersionHandler_Wss_CoreModule_WssClientOptions_" data-uid="Wss.CoreModule.WssClient.#ctor(Wss.CoreModule.ITransport,Wss.CoreModule.IFrameCodec,Wss.CoreModule.WSSVersionHandler,Wss.CoreModule.WssClientOptions)">WssClient(ITransport, IFrameCodec, WSSVersionHandler, WssClientOptions)</h4>
+  <div class="markdown level1 summary"><p>Creates a low-level protocol client over a caller-provided transport and frame codec.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public WssClient(ITransport transport, IFrameCodec codec, WSSVersionHandler versionHandler, byte sender = 0)</code></pre>
+    <pre><code class="lang-csharp hljs">public WssClient(ITransport transport, IFrameCodec codec, WSSVersionHandler versionHandler, WssClientOptions options)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-condensed">
@@ -123,13 +123,13 @@ sends them over an <a class="xref" href="Wss.CoreModule.ITransport.html">ITransp
       <tr>
         <td><a class="xref" href="Wss.CoreModule.ITransport.html">ITransport</a></td>
         <td><span class="parametername">transport</span></td>
-        <td><p>Underlying byte transport (e.g., serial, BLE).</p>
+        <td><p>Underlying byte transport (for example, serial or BLE).</p>
 </td>
       </tr>
       <tr>
         <td><a class="xref" href="Wss.CoreModule.IFrameCodec.html">IFrameCodec</a></td>
         <td><span class="parametername">codec</span></td>
-        <td><p>Frame codec (escape/unescape + checksum).</p>
+        <td><p>Frame codec used for escaping/deframing and checksum validation.</p>
 </td>
       </tr>
       <tr>
@@ -139,9 +139,36 @@ sends them over an <a class="xref" href="Wss.CoreModule.ITransport.html">ITransp
 </td>
       </tr>
       <tr>
-        <td><span class="xref">byte</span></td>
-        <td><span class="parametername">sender</span></td>
-        <td><p>Sender address byte (defaults to 0x00).</p>
+        <td><a class="xref" href="Wss.CoreModule.WssClientOptions.html">WssClientOptions</a></td>
+        <td><span class="parametername">options</span></td>
+        <td><p>Client options including sender address, transport ownership, reply timeout, and logical target address mapping.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Wss_CoreModule_WssClient__ctor_Wss_CoreModule_ITransport_Wss_CoreModule_IFrameCodec_Wss_CoreModule_WSSVersionHandler_Wss_CoreModule_WssClientOptions__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p><a class="xref" href="Wss.CoreModule.ITransport.html#Wss_CoreModule_ITransport_BytesReceived">BytesReceived</a> may be raised on a background thread depending on the transport implementation.
+Reply correlation primarily matches responses by <code>(target,msgId)</code>, with additional handling for
+protocol error replies and firmware paths that answer <a class="xref" href="Wss.CoreModule.WSSMessageIDs.html#Wss_CoreModule_WSSMessageIDs_ModuleQuery">ModuleQuery</a> using
+<a class="xref" href="Wss.CoreModule.WSSMessageIDs.html#Wss_CoreModule_WSSMessageIDs_RequestAnalog">RequestAnalog</a>.</p>
+</div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ArgumentNullException</span></td>
+        <td><p>Thrown when <code class="paramref">transport</code>, <code class="paramref">codec</code>, <code class="paramref">versionHandler</code>, or <code class="paramref">options</code> is null.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">ArgumentOutOfRangeException</span></td>
+        <td><p>Thrown when the configured response timeout is not positive.</p>
 </td>
       </tr>
     </tbody>
@@ -616,14 +643,14 @@ sends them over an <a class="xref" href="Wss.CoreModule.ITransport.html">ITransp
 
 
   <a id="Wss_CoreModule_WssClient_CreateContactConfig_" data-uid="Wss.CoreModule.WssClient.CreateContactConfig*"></a>
-  <h4 id="Wss_CoreModule_WssClient_CreateContactConfig_System_Int32_System_Int32___System_Int32___System_Int32_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_" data-uid="Wss.CoreModule.WssClient.CreateContactConfig(System.Int32,System.Int32[],System.Int32[],System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)">CreateContactConfig(int, int[], int[], int, WssTarget, CancellationToken)</h4>
+  <h4 id="Wss_CoreModule_WssClient_CreateContactConfig_Wss_CoreModule_ContactConfigDefinition_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_" data-uid="Wss.CoreModule.WssClient.CreateContactConfig(Wss.CoreModule.ContactConfigDefinition,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)">CreateContactConfig(ContactConfigDefinition, WssTarget, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Creates a contact configuration for the stimulator.
 Defines the sources and sinks for stimulation and recharge phases.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; CreateContactConfig(int contactId, int[] stimSetup, int[] rechargeSetup, int LEDs, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; CreateContactConfig(ContactConfigDefinition definition, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-condensed">
@@ -636,35 +663,10 @@ Defines the sources and sinks for stimulation and recharge phases.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">int</span></td>
-        <td><span class="parametername">contactId</span></td>
-        <td><p>ID for the contact configuration (0–255).</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">int</span>[]</td>
-        <td><span class="parametername">stimSetup</span></td>
-        <td><p>Array of 4 integers (0 = not used, 1 = source, 2 = sink) representing
-the stimulation phase for each output on the stimulator.<br>
-Index 0 = closest to switch, index 3 = farthest from switch.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">int</span>[]</td>
-        <td><span class="parametername">rechargeSetup</span></td>
-        <td><p>Array of 4 integers (0 = not used, 1 = source, 2 = sink) representing
-the recharge phase for each output on the stimulator.<br>
-Index 0 = closest to switch, index 3 = farthest from switch.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">int</span></td>
-        <td><span class="parametername">LEDs</span></td>
-        <td><p>Optional int representing LED locations to light during stimulation
-Index int read as binary so 0011 or 3 is both the first and second LEDs (first is clossest to the switch).
-1 in binary is on and 0 is off. The trigering of the event will trigger the on LEDs
-Ignored if not supported by firmware.
-Pass -1 to indicate no LED configuration.</p>
+        <td><a class="xref" href="Wss.CoreModule.ContactConfigDefinition.html">ContactConfigDefinition</a></td>
+        <td><span class="parametername">definition</span></td>
+        <td><p>Contact configuration values to encode and send, including the contact id, four-output stimulation setup,
+four-output recharge setup, and optional LED bitmask.</p>
 </td>
       </tr>
       <tr>
@@ -697,18 +699,39 @@ Pass -1 to indicate no LED configuration.</p>
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ArgumentNullException</span></td>
+        <td><p>Thrown when <code class="paramref">definition</code> is null.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">ArgumentException</span></td>
+        <td><p>Thrown when either setup array in <code class="paramref">definition</code> is null or does not contain exactly four entries.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
 
 
   <a id="Wss_CoreModule_WssClient_CreateEvent_" data-uid="Wss.CoreModule.WssClient.CreateEvent*"></a>
-  <h4 id="Wss_CoreModule_WssClient_CreateEvent_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32___System_Int32___System_Int32___Wss_CoreModule_WssTarget_System_Threading_CancellationToken_" data-uid="Wss.CoreModule.WssClient.CreateEvent(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32[],System.Int32[],System.Int32[],Wss.CoreModule.WssTarget,System.Threading.CancellationToken)">CreateEvent(int, int, int, int, int, int[], int[], int[], WssTarget, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Creates an event with explicit shape IDs, amplitude arrays for standard/recharge phases, and pulse width settings.
-PW fields are sent as 8-bit if all ≤ oneByte; otherwise all three (std, IPD, rech) are encoded as 16-bit big-endian.
-Wire order for PW matches your original: [stdPW, IPD, rechPW].</p>
+  <h4 id="Wss_CoreModule_WssClient_CreateEvent_Wss_CoreModule_CreateEventRequest_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_" data-uid="Wss.CoreModule.WssClient.CreateEvent(Wss.CoreModule.CreateEventRequest,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)">CreateEvent(CreateEventRequest, WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Creates an event on the WSS device from a grouped request model.
+The request supports the same payload combinations as the previous overload set:
+basic, shape-only, amplitudes plus pulse widths, or shapes plus amplitudes plus pulse widths.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; CreateEvent(int eventId, int delayMs, int contactConfigId, int standardShapeId, int rechargeShapeId, int[] standardAmp, int[] rechargeAmp, int[] pw, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; CreateEvent(CreateEventRequest request, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-condensed">
@@ -721,145 +744,9 @@ Wire order for PW matches your original: [stdPW, IPD, rechPW].</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">int</span></td>
-        <td><span class="parametername">eventId</span></td>
-        <td><p>Event ID (0–255 or your chosen cap).</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">int</span></td>
-        <td><span class="parametername">delayMs</span></td>
-        <td><p>Delay from schedule start in milliseconds (0–255 in this variant).</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">int</span></td>
-        <td><span class="parametername">contactConfigId</span></td>
-        <td><p>Contact configuration ID (0–255).</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">int</span></td>
-        <td><span class="parametername">standardShapeId</span></td>
-        <td><p>Shape ID used during the standard (stim) phase:
-0=Rectangular (default), 1=Rectangular (DAC), 2=Sine, 3=Gaussian,
-4=Exponential Increase, 5=Exponential Decrease,
-6=Linear Increase, 7=Linear Decrease,
-10=Trapezoid (setup required),
-11=User Program 1 (setup required),
-12=User Program 2 (setup required),
-13=User Program 3 (setup required).</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">int</span></td>
-        <td><span class="parametername">rechargeShapeId</span></td>
-        <td><p>Shape ID used during the recharge phase (same mapping as <code class="paramref">standardShapeId</code>).</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">int</span>[]</td>
-        <td><span class="parametername">standardAmp</span></td>
-        <td><p>Four amplitudes for the standard (stim) phase (0–255 each).</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">int</span>[]</td>
-        <td><span class="parametername">rechargeAmp</span></td>
-        <td><p>Four amplitudes for the recharge phase (0–255 each).</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">int</span>[]</td>
-        <td><span class="parametername">pw</span></td>
-        <td><p>Three PW parameters: [standardPW, rechargePW, IPD] in microseconds.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Wss.CoreModule.WssTarget.html">WssTarget</a></td>
-        <td><span class="parametername">target</span></td>
-        <td><p>Target WSS device.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">CancellationToken</span></td>
-        <td><span class="parametername">ct</span></td>
-        <td><p>Cancellation token.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-
-
-  <a id="Wss_CoreModule_WssClient_CreateEvent_" data-uid="Wss.CoreModule.WssClient.CreateEvent*"></a>
-  <h4 id="Wss_CoreModule_WssClient_CreateEvent_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_" data-uid="Wss.CoreModule.WssClient.CreateEvent(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)">CreateEvent(int, int, int, int, int, WssTarget, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Creates an event with explicit shape IDs for the standard and recharge phases.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; CreateEvent(int eventId, int delayMs, int contactConfigId, int standardShapeId, int rechargeShapeId, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">int</span></td>
-        <td><span class="parametername">eventId</span></td>
-        <td><p>Event ID (0–255).</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">int</span></td>
-        <td><span class="parametername">delayMs</span></td>
-        <td><p>Delay from schedule start in milliseconds (0–255 in this command variant).</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">int</span></td>
-        <td><span class="parametername">contactConfigId</span></td>
-        <td><p>Contact configuration ID (0–255).</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">int</span></td>
-        <td><span class="parametername">standardShapeId</span></td>
-        <td><p>Shape ID used during the standard (stim) phase:
-0=Rectangular (default), 1=Rectangular (DAC), 2=Sine, 3=Gaussian,
-4=Exponential Increase, 5=Exponential Decrease,
-6=Linear Increase, 7=Linear Decrease,
-10=Trapezoid (setup required),
-11=User Program 1 (setup required),
-12=User Program 2 (setup required),
-13=User Program 3 (setup required).</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">int</span></td>
-        <td><span class="parametername">rechargeShapeId</span></td>
-        <td><p>Shape ID used during the recharge phase (same mapping as <code class="paramref">standardShapeId</code>).</p>
+        <td><a class="xref" href="Wss.CoreModule.CreateEventRequest.html">CreateEventRequest</a></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>Grouped event request to encode and validate.</p>
 </td>
       </tr>
       <tr>
@@ -892,159 +779,24 @@ Wire order for PW matches your original: [stdPW, IPD, rechPW].</p>
       </tr>
     </tbody>
   </table>
-
-
-  <a id="Wss_CoreModule_WssClient_CreateEvent_" data-uid="Wss.CoreModule.WssClient.CreateEvent*"></a>
-  <h4 id="Wss_CoreModule_WssClient_CreateEvent_System_Int32_System_Int32_System_Int32_System_Int32___System_Int32___System_Int32___Wss_CoreModule_WssTarget_System_Threading_CancellationToken_" data-uid="Wss.CoreModule.WssClient.CreateEvent(System.Int32,System.Int32,System.Int32,System.Int32[],System.Int32[],System.Int32[],Wss.CoreModule.WssTarget,System.Threading.CancellationToken)">CreateEvent(int, int, int, int[], int[], int[], WssTarget, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Creates an event with amplitude arrays for standard/recharge phases plus pulse width settings.
-PW fields are sent as 8-bit if all ≤ oneByte; otherwise all three (std, IPD, rech) are encoded as 16-bit big-endian.
-Wire order for PW matches your original: [stdPW, IPD, rechPW].</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; CreateEvent(int eventId, int delayMs, int contactConfigId, int[] standardAmp, int[] rechargeAmp, int[] pw, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
+  <h5 class="exceptions">Exceptions</h5>
   <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
+        <th>Condition</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">int</span></td>
-        <td><span class="parametername">eventId</span></td>
-        <td><p>Event ID (0–255 or your chosen cap).</p>
+        <td><span class="xref">ArgumentNullException</span></td>
+        <td><p>Thrown when <code class="paramref">request</code> is null.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">int</span></td>
-        <td><span class="parametername">delayMs</span></td>
-        <td><p>Delay from schedule start in milliseconds (0–255 in this variant).</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">int</span></td>
-        <td><span class="parametername">contactConfigId</span></td>
-        <td><p>Contact configuration ID (0–255).</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">int</span>[]</td>
-        <td><span class="parametername">standardAmp</span></td>
-        <td><p>Four amplitudes for the standard (stim) phase (0–255 each).</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">int</span>[]</td>
-        <td><span class="parametername">rechargeAmp</span></td>
-        <td><p>Four amplitudes for the recharge phase (0–255 each).</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">int</span>[]</td>
-        <td><span class="parametername">pw</span></td>
-        <td><p>Three PW parameters: [standardPW, rechargePW, IPD] in microseconds.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Wss.CoreModule.WssTarget.html">WssTarget</a></td>
-        <td><span class="parametername">target</span></td>
-        <td><p>Target WSS device.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">CancellationToken</span></td>
-        <td><span class="parametername">ct</span></td>
-        <td><p>Cancellation token.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-
-
-  <a id="Wss_CoreModule_WssClient_CreateEvent_" data-uid="Wss.CoreModule.WssClient.CreateEvent*"></a>
-  <h4 id="Wss_CoreModule_WssClient_CreateEvent_System_Int32_System_Int32_System_Int32_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_" data-uid="Wss.CoreModule.WssClient.CreateEvent(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)">CreateEvent(int, int, int, WssTarget, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Creates a basic event on the WSS device.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; CreateEvent(int eventId, int delayMs, int contactConfigId, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">int</span></td>
-        <td><span class="parametername">eventId</span></td>
-        <td><p>Event ID (0–255).</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">int</span></td>
-        <td><span class="parametername">delayMs</span></td>
-        <td><p>Delay from schedule start in milliseconds (0–255 in this command variant).</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">int</span></td>
-        <td><span class="parametername">contactConfigId</span></td>
-        <td><p>Contact configuration ID (0–255).</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Wss.CoreModule.WssTarget.html">WssTarget</a></td>
-        <td><span class="parametername">target</span></td>
-        <td><p>Target WSS device (default: Wss1).</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">CancellationToken</span></td>
-        <td><span class="parametername">ct</span></td>
-        <td><p>Optional cancellation token.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
-        <td><p>Processed response string from the WSS target.</p>
+        <td><span class="xref">ArgumentException</span></td>
+        <td><p>Thrown when the request mixes incompatible combinations, such as only one shape ID,
+only one amplitude array, or pulse widths without both amplitude arrays.</p>
 </td>
       </tr>
     </tbody>
@@ -1052,13 +804,13 @@ Wire order for PW matches your original: [stdPW, IPD, rechPW].</p>
 
 
   <a id="Wss_CoreModule_WssClient_CreateSchedule_" data-uid="Wss.CoreModule.WssClient.CreateSchedule*"></a>
-  <h4 id="Wss_CoreModule_WssClient_CreateSchedule_System_Int32_System_Int32_System_Int32_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_" data-uid="Wss.CoreModule.WssClient.CreateSchedule(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)">CreateSchedule(int, int, int, WssTarget, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Creates a schedule.</p>
+  <h4 id="Wss_CoreModule_WssClient_CreateSchedule_Wss_CoreModule_ScheduleDefinition_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_" data-uid="Wss.CoreModule.WssClient.CreateSchedule(Wss.CoreModule.ScheduleDefinition,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)">CreateSchedule(ScheduleDefinition, WssTarget, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Creates a schedule from a grouped definition model.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; CreateSchedule(int scheduleId, int durationMs, int syncSignal, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; CreateSchedule(ScheduleDefinition definition, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-condensed">
@@ -1071,21 +823,9 @@ Wire order for PW matches your original: [stdPW, IPD, rechPW].</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">int</span></td>
-        <td><span class="parametername">scheduleId</span></td>
-        <td><p>Schedule ID (0–255).</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">int</span></td>
-        <td><span class="parametername">durationMs</span></td>
-        <td><p>Duration in milliseconds (16-bit, big-endian on wire).</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">int</span></td>
-        <td><span class="parametername">syncSignal</span></td>
-        <td><p>Sync group ID (0–255).</p>
+        <td><a class="xref" href="Wss.CoreModule.ScheduleDefinition.html">ScheduleDefinition</a></td>
+        <td><span class="parametername">definition</span></td>
+        <td><p>Schedule ID, duration, and sync group values.</p>
 </td>
       </tr>
       <tr>
@@ -1113,7 +853,29 @@ Wire order for PW matches your original: [stdPW, IPD, rechPW].</p>
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<span class="xref">string</span>&gt;</td>
-        <td></td>
+        <td><p>Processed response string from the WSS target.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ArgumentNullException</span></td>
+        <td><p>Thrown when <code class="paramref">definition</code> is null.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">ArgumentOutOfRangeException</span></td>
+        <td><p>Thrown when a value in <code class="paramref">definition</code> falls outside the protocol-supported range.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1417,14 +1179,18 @@ Wire order for PW matches your original: [stdPW, IPD, rechPW].</p>
 
   <a id="Wss_CoreModule_WssClient_Dispose_" data-uid="Wss.CoreModule.WssClient.Dispose*"></a>
   <h4 id="Wss_CoreModule_WssClient_Dispose" data-uid="Wss.CoreModule.WssClient.Dispose">Dispose()</h4>
-  <div class="markdown level1 summary"><p>Releases all resources used by the <a class="xref" href="Wss.CoreModule.WssClient.html">WssClient</a>.
-Closes the connection and cleans up internal state.</p>
+  <div class="markdown level1 summary"><p>Unsubscribes from inbound bytes and releases client state.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
   </div>
+  <h5 id="Wss_CoreModule_WssClient_Dispose_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Disposes the underlying transport only when this instance was constructed with
+<code>ownsTransport</code> set to <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>. This method does not call
+<a class="xref" href="Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_DisconnectAsync_System_Threading_CancellationToken_">DisconnectAsync(CancellationToken)</a> automatically.</p>
+</div>
 
 
   <a id="Wss_CoreModule_WssClient_Echo_" data-uid="Wss.CoreModule.WssClient.Echo*"></a>
@@ -2768,9 +2534,9 @@ Broadcast is acceptable for a system-wide switch.</p>
 
 
   <a id="Wss_CoreModule_WssClient_StreamChange_" data-uid="Wss.CoreModule.WssClient.StreamChange*"></a>
-  <h4 id="Wss_CoreModule_WssClient_StreamChange_System_Int32___System_Int32___System_Int32___Wss_CoreModule_WssTarget_System_Threading_CancellationToken_" data-uid="Wss.CoreModule.WssClient.StreamChange(System.Int32[],System.Int32[],System.Int32[],Wss.CoreModule.WssTarget,System.Threading.CancellationToken)">StreamChange(int[], int[], int[], WssTarget, CancellationToken)</h4>
+  <h4 id="Wss_CoreModule_WssClient_StreamChange_Wss_CoreModule_StreamChangeRequest_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_" data-uid="Wss.CoreModule.WssClient.StreamChange(Wss.CoreModule.StreamChangeRequest,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)">StreamChange(StreamChangeRequest, WssTarget, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Streams changes to PA (amplitude), PW (pulse width), and IPI (period) for up to three schedules in one shot.
-Pass exactly one of the arrays as <code>null</code> to omit that group (protocol supports omitting at most one group).
+The grouped request may omit at most one of the three data groups.
 Uses opcodes:
 0x30 = PA+PW+IPI,  0x31 = PA+PW (no IPI),  0x32 = PA+IPI (no PW),  0x33 = PW+IPI (no PA).
 All elements are 0..255 in this streaming variant (one byte each).</p>
@@ -2778,7 +2544,7 @@ All elements are 0..255 in this streaming variant (one byte each).</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task StreamChange(int[] pa, int[] pw, int[] ipi, WssTarget target = WssTarget.Broadcast, CancellationToken ct = default)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task StreamChange(StreamChangeRequest request, WssTarget target = WssTarget.Broadcast, CancellationToken ct = default)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-condensed">
@@ -2791,21 +2557,9 @@ All elements are 0..255 in this streaming variant (one byte each).</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">int</span>[]</td>
-        <td><span class="parametername">pa</span></td>
-        <td><p>Three amplitudes (0..255) or null to keep PA unchanged.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">int</span>[]</td>
-        <td><span class="parametername">pw</span></td>
-        <td><p>Three pulse widths (0..255) or null to keep PW unchanged.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">int</span>[]</td>
-        <td><span class="parametername">ipi</span></td>
-        <td><p>Three periods in ms (0..255) or null to keep IPI unchanged.</p>
+        <td><a class="xref" href="Wss.CoreModule.StreamChangeRequest.html">StreamChangeRequest</a></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>Grouped PA/PW/IPI request.</p>
 </td>
       </tr>
       <tr>
@@ -2833,7 +2587,34 @@ All elements are 0..255 in this streaming variant (one byte each).</p>
     <tbody>
       <tr>
         <td><span class="xref">Task</span></td>
-        <td></td>
+        <td><p>A task representing the outbound streaming send.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ArgumentNullException</span></td>
+        <td><p>Thrown when <code class="paramref">request</code> is null.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">NotSupportedException</span></td>
+        <td><p>Thrown when more than one data group is omitted.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">ArgumentException</span></td>
+        <td><p>Thrown when a supplied group does not contain exactly 3 elements.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -2923,7 +2704,7 @@ All elements are 0..255 in this streaming variant (one byte each).</p>
       <tr>
         <td><span class="xref">byte</span>[]</td>
         <td><span class="parametername">data</span></td>
-        <td><p>The cached data bytes (snapshot reference).</p>
+        <td><p>The cached data bytes for the most recent reply from <code class="paramref">target</code>.</p>
 </td>
       </tr>
     </tbody>
@@ -2944,6 +2725,9 @@ All elements are 0..255 in this streaming variant (one byte each).</p>
       </tr>
     </tbody>
   </table>
+  <h5 id="Wss_CoreModule_WssClient_TryGetModuleQueryData_Wss_CoreModule_WssTarget_System_Byte_____remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The returned array is the cached in-memory instance for the latest reply, not a defensive copy.</p>
+</div>
 
 
   <a id="Wss_CoreModule_WssClient_ZeroOutStim_" data-uid="Wss.CoreModule.WssClient.ZeroOutStim*"></a>

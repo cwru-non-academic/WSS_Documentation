@@ -6,6 +6,8 @@ output:
 ---
 # Simple Serial Communication with WSS
 
+[Home](../README.md) | [Docs Hub](../apiDocs/index.md) | [Back to Advanced](../apiDocs/advanced.md)
+
 This guide shows how to list ports, configure a serial connection, and send/receive a simple Echo message to a WSS device from macOS, Windows, and MATLAB.
 
 > The WSS radio receiver shows up as a USB–Serial device. Replace the example port (e.g., `/dev/tty.usbserial-AB0XXXXX` or `COM7`) with your actual device.
@@ -112,3 +114,9 @@ end
 - Only one program can have the serial port open at a time.
 - Drivers: Some USB‑Serial adapters need vendor drivers; install if the device does not appear.
 - If you only see ASCII in terminals, you may be sending text not bytes; use scripts above.
+
+Navigation:
+
+- [Back to Home](../README.md)
+- [Back to Docs Hub](../apiDocs/index.md)
+- [Back to Advanced](../apiDocs/advanced.md)

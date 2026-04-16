@@ -56,10 +56,17 @@
   "HFI.Wss.StimulationController.updateWaveform(System.Int32[],System.Int32)": "HFI.Wss.StimulationController.yml",
   "HFI.Wss.StimulationController.updateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32)": "HFI.Wss.StimulationController.yml",
   "HFI.Wss.StimulationOptions": "HFI.Wss.StimulationOptions.yml",
+  "HFI.Wss.StimulationOptions.BleAutoSelect": "HFI.Wss.StimulationOptions.yml",
+  "HFI.Wss.StimulationOptions.BleDeviceId": "HFI.Wss.StimulationOptions.yml",
+  "HFI.Wss.StimulationOptions.BleDeviceName": "HFI.Wss.StimulationOptions.yml",
   "HFI.Wss.StimulationOptions.ConfigPath": "HFI.Wss.StimulationOptions.yml",
   "HFI.Wss.StimulationOptions.CreateDefault": "HFI.Wss.StimulationOptions.yml",
   "HFI.Wss.StimulationOptions.MaxSetupTries": "HFI.Wss.StimulationOptions.yml",
   "HFI.Wss.StimulationOptions.SerialPort": "HFI.Wss.StimulationOptions.yml",
-  "HFI.Wss.StimulationOptions.TestMode": "HFI.Wss.StimulationOptions.yml",
-  "HFI.Wss.StimulationOptions.TickIntervalMs": "HFI.Wss.StimulationOptions.yml"
+  "HFI.Wss.StimulationOptions.TickIntervalMs": "HFI.Wss.StimulationOptions.yml",
+  "HFI.Wss.StimulationOptions.Transport": "HFI.Wss.StimulationOptions.yml",
+  "HFI.Wss.StimulationTransportKind": "HFI.Wss.StimulationTransportKind.yml",
+  "HFI.Wss.StimulationTransportKind.Ble": "HFI.Wss.StimulationTransportKind.yml",
+  "HFI.Wss.StimulationTransportKind.Serial": "HFI.Wss.StimulationTransportKind.yml",
+  "HFI.Wss.StimulationTransportKind.Test": "HFI.Wss.StimulationTransportKind.yml"
 }

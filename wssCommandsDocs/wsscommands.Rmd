@@ -5,6 +5,8 @@ output:
 ---
 # WSS Commands
 
+[Home](../README.md) | [Docs Hub](../apiDocs/index.md) | [Back to Advanced](../apiDocs/advanced.md)
+
 This is a complete, self-contained reference for constructing and sending messages to the Wearable Stimulation System (WSS). Use this together with SimpleSerial.Rmd for port setup and sending raw bytes.
 
 - Protocol framing and checksum
@@ -598,3 +600,8 @@ From WSSLimits:
 - Custom waveform amplitude: ≤ 2000
 - LEDs: 8 (LED bitmask sized to 8)
 
+Navigation:
+
+- [Back to Home](../README.md)
+- [Back to Docs Hub](../apiDocs/index.md)
+- [Back to Advanced](../apiDocs/advanced.md)

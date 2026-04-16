@@ -1,0 +1,186 @@
+### YamlMime:ManagedReference
+items:
+- uid: Wss.CoreModule.ScheduleDefinition
+  commentId: T:Wss.CoreModule.ScheduleDefinition
+  id: ScheduleDefinition
+  parent: Wss.CoreModule
+  children:
+  - Wss.CoreModule.ScheduleDefinition.DurationMs
+  - Wss.CoreModule.ScheduleDefinition.ScheduleId
+  - Wss.CoreModule.ScheduleDefinition.SyncSignal
+  langs:
+  - csharp
+  - vb
+  name: ScheduleDefinition
+  nameWithType: ScheduleDefinition
+  fullName: Wss.CoreModule.ScheduleDefinition
+  type: Class
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Describes a schedule to create on the WSS device.
+  remarks: >-
+    <xref href="Wss.CoreModule.ScheduleDefinition.ScheduleId" data-throw-if-not-resolved="false"></xref>, <xref href="Wss.CoreModule.ScheduleDefinition.DurationMs" data-throw-if-not-resolved="false"></xref>, and <xref href="Wss.CoreModule.ScheduleDefinition.SyncSignal" data-throw-if-not-resolved="false"></xref> use the same protocol
+
+    validation and encoding rules as the previous positional overload.
+  example: []
+  syntax:
+    content: public sealed class ScheduleDefinition
+    content.vb: Public NotInheritable Class ScheduleDefinition
+  inheritance:
+  - System.Object
+- uid: Wss.CoreModule.ScheduleDefinition.ScheduleId
+  commentId: P:Wss.CoreModule.ScheduleDefinition.ScheduleId
+  id: ScheduleId
+  parent: Wss.CoreModule.ScheduleDefinition
+  langs:
+  - csharp
+  - vb
+  name: ScheduleId
+  nameWithType: ScheduleDefinition.ScheduleId
+  fullName: Wss.CoreModule.ScheduleDefinition.ScheduleId
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Gets or sets the schedule ID (0..255).
+  example: []
+  syntax:
+    content: public int ScheduleId { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property ScheduleId As Integer
+  overload: Wss.CoreModule.ScheduleDefinition.ScheduleId*
+- uid: Wss.CoreModule.ScheduleDefinition.DurationMs
+  commentId: P:Wss.CoreModule.ScheduleDefinition.DurationMs
+  id: DurationMs
+  parent: Wss.CoreModule.ScheduleDefinition
+  langs:
+  - csharp
+  - vb
+  name: DurationMs
+  nameWithType: ScheduleDefinition.DurationMs
+  fullName: Wss.CoreModule.ScheduleDefinition.DurationMs
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Gets or sets the schedule duration, in milliseconds.
+  example: []
+  syntax:
+    content: public int DurationMs { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property DurationMs As Integer
+  overload: Wss.CoreModule.ScheduleDefinition.DurationMs*
+- uid: Wss.CoreModule.ScheduleDefinition.SyncSignal
+  commentId: P:Wss.CoreModule.ScheduleDefinition.SyncSignal
+  id: SyncSignal
+  parent: Wss.CoreModule.ScheduleDefinition
+  langs:
+  - csharp
+  - vb
+  name: SyncSignal
+  nameWithType: ScheduleDefinition.SyncSignal
+  fullName: Wss.CoreModule.ScheduleDefinition.SyncSignal
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Gets or sets the sync-signal group ID (0..255).
+  example: []
+  syntax:
+    content: public int SyncSignal { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property SyncSignal As Integer
+  overload: Wss.CoreModule.ScheduleDefinition.SyncSignal*
+references:
+- uid: Wss.CoreModule.ScheduleDefinition.ScheduleId
+  commentId: P:Wss.CoreModule.ScheduleDefinition.ScheduleId
+  href: Wss.CoreModule.ScheduleDefinition.html#Wss_CoreModule_ScheduleDefinition_ScheduleId
+  name: ScheduleId
+  nameWithType: ScheduleDefinition.ScheduleId
+  fullName: Wss.CoreModule.ScheduleDefinition.ScheduleId
+- uid: Wss.CoreModule.ScheduleDefinition.DurationMs
+  commentId: P:Wss.CoreModule.ScheduleDefinition.DurationMs
+  href: Wss.CoreModule.ScheduleDefinition.html#Wss_CoreModule_ScheduleDefinition_DurationMs
+  name: DurationMs
+  nameWithType: ScheduleDefinition.DurationMs
+  fullName: Wss.CoreModule.ScheduleDefinition.DurationMs
+- uid: Wss.CoreModule.ScheduleDefinition.SyncSignal
+  commentId: P:Wss.CoreModule.ScheduleDefinition.SyncSignal
+  href: Wss.CoreModule.ScheduleDefinition.html#Wss_CoreModule_ScheduleDefinition_SyncSignal
+  name: SyncSignal
+  nameWithType: ScheduleDefinition.SyncSignal
+  fullName: Wss.CoreModule.ScheduleDefinition.SyncSignal
+- uid: Wss.CoreModule
+  commentId: N:Wss.CoreModule
+  href: Wss.html
+  name: Wss.CoreModule
+  nameWithType: Wss.CoreModule
+  fullName: Wss.CoreModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Wss.CoreModule.ScheduleDefinition.ScheduleId*
+  commentId: Overload:Wss.CoreModule.ScheduleDefinition.ScheduleId
+  href: Wss.CoreModule.ScheduleDefinition.html#Wss_CoreModule_ScheduleDefinition_ScheduleId
+  name: ScheduleId
+  nameWithType: ScheduleDefinition.ScheduleId
+  fullName: Wss.CoreModule.ScheduleDefinition.ScheduleId
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Wss.CoreModule.ScheduleDefinition.DurationMs*
+  commentId: Overload:Wss.CoreModule.ScheduleDefinition.DurationMs
+  href: Wss.CoreModule.ScheduleDefinition.html#Wss_CoreModule_ScheduleDefinition_DurationMs
+  name: DurationMs
+  nameWithType: ScheduleDefinition.DurationMs
+  fullName: Wss.CoreModule.ScheduleDefinition.DurationMs
+- uid: Wss.CoreModule.ScheduleDefinition.SyncSignal*
+  commentId: Overload:Wss.CoreModule.ScheduleDefinition.SyncSignal
+  href: Wss.CoreModule.ScheduleDefinition.html#Wss_CoreModule_ScheduleDefinition_SyncSignal
+  name: SyncSignal
+  nameWithType: ScheduleDefinition.SyncSignal
+  fullName: Wss.CoreModule.ScheduleDefinition.SyncSignal

@@ -106,13 +106,13 @@ streaming loop. Public mutator methods enqueue device edits and return immediate
 
 
   <a id="Wss_CoreModule_WssStimulationCore__ctor_" data-uid="Wss.CoreModule.WssStimulationCore.#ctor*"></a>
-  <h4 id="Wss_CoreModule_WssStimulationCore__ctor_System_String_System_Boolean_System_Int32_" data-uid="Wss.CoreModule.WssStimulationCore.#ctor(System.String,System.Boolean,System.Int32)">WssStimulationCore(string, bool, int)</h4>
-  <div class="markdown level1 summary"><p>Construct without specifying COM port (let transport decide).</p>
+  <h4 id="Wss_CoreModule_WssStimulationCore__ctor_Wss_CoreModule_ITransport_Wss_CoreModule_WssStimulationCoreOptions_" data-uid="Wss.CoreModule.WssStimulationCore.#ctor(Wss.CoreModule.ITransport,Wss.CoreModule.WssStimulationCoreOptions)">WssStimulationCore(ITransport, WssStimulationCoreOptions)</h4>
+  <div class="markdown level1 summary"><p>Initializes a stimulation core over a caller-provided transport.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public WssStimulationCore(string JSONpath, bool testMode = false, int maxSetupTries = 5)</code></pre>
+    <pre><code class="lang-csharp hljs">public WssStimulationCore(ITransport transport, WssStimulationCoreOptions options)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-condensed">
@@ -125,62 +125,46 @@ streaming loop. Public mutator methods enqueue device edits and return immediate
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">string</span></td>
-        <td><span class="parametername">JSONpath</span></td>
-        <td></td>
+        <td><a class="xref" href="Wss.CoreModule.ITransport.html">ITransport</a></td>
+        <td><span class="parametername">transport</span></td>
+        <td><p>Transport used to communicate with the WSS device(s).</p>
+</td>
       </tr>
       <tr>
-        <td><span class="xref">bool</span></td>
-        <td><span class="parametername">testMode</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">int</span></td>
-        <td><span class="parametername">maxSetupTries</span></td>
-        <td></td>
+        <td><a class="xref" href="Wss.CoreModule.WssStimulationCoreOptions.html">WssStimulationCoreOptions</a></td>
+        <td><span class="parametername">options</span></td>
+        <td><p>Core configuration path, setup retry behavior, and default stimulation values used during initial setup.</p>
+</td>
       </tr>
     </tbody>
   </table>
-
-
-  <a id="Wss_CoreModule_WssStimulationCore__ctor_" data-uid="Wss.CoreModule.WssStimulationCore.#ctor*"></a>
-  <h4 id="Wss_CoreModule_WssStimulationCore__ctor_System_String_System_String_System_Boolean_System_Int32_" data-uid="Wss.CoreModule.WssStimulationCore.#ctor(System.String,System.String,System.Boolean,System.Int32)">WssStimulationCore(string, string, bool, int)</h4>
-  <div class="markdown level1 summary"><p>Construct with explicit COM port.</p>
+  <h5 id="Wss_CoreModule_WssStimulationCore__ctor_Wss_CoreModule_ITransport_Wss_CoreModule_WssStimulationCoreOptions__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The core owns the lifetime of <code class="paramref">transport</code> and disposes it when the core is disposed.
+Call <a class="xref" href="Wss.CoreModule.WssStimulationCore.html#Wss_CoreModule_WssStimulationCore_Shutdown">Shutdown()</a> to stop streaming/disconnect without disposing the transport.</p>
 </div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public WssStimulationCore(string comPort, string JSONpath, bool testMode = false, int maxSetupTries = 5)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
+  <h5 class="exceptions">Exceptions</h5>
   <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
+        <th>Condition</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">string</span></td>
-        <td><span class="parametername">comPort</span></td>
-        <td></td>
+        <td><span class="xref">ArgumentNullException</span></td>
+        <td><p>Thrown when <code class="paramref">transport</code> or <code class="paramref">options</code> is null.</p>
+</td>
       </tr>
       <tr>
-        <td><span class="xref">string</span></td>
-        <td><span class="parametername">JSONpath</span></td>
-        <td></td>
+        <td><span class="xref">ArgumentException</span></td>
+        <td><p>Thrown when <a class="xref" href="Wss.CoreModule.WssStimulationCoreOptions.html#Wss_CoreModule_WssStimulationCoreOptions_ConfigPath">ConfigPath</a> is null, empty, or whitespace.</p>
+</td>
       </tr>
       <tr>
-        <td><span class="xref">bool</span></td>
-        <td><span class="parametername">testMode</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">int</span></td>
-        <td><span class="parametername">maxSetupTries</span></td>
-        <td></td>
+        <td><span class="xref">ArgumentOutOfRangeException</span></td>
+        <td><p>Thrown when <a class="xref" href="Wss.CoreModule.WssStimulationCoreOptions.html#Wss_CoreModule_WssStimulationCoreOptions_MaxSetupTries">MaxSetupTries</a> is less than 1.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -190,13 +174,16 @@ streaming loop. Public mutator methods enqueue device edits and return immediate
 
   <a id="Wss_CoreModule_WssStimulationCore_Dispose_" data-uid="Wss.CoreModule.WssStimulationCore.Dispose*"></a>
   <h4 id="Wss_CoreModule_WssStimulationCore_Dispose" data-uid="Wss.CoreModule.WssStimulationCore.Dispose">Dispose()</h4>
-  <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
   </div>
+  <h5 id="Wss_CoreModule_WssStimulationCore_Dispose_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Calls <a class="xref" href="Wss.CoreModule.WssStimulationCore.html#Wss_CoreModule_WssStimulationCore_Shutdown">Shutdown()</a> and then disposes the transport instance provided at construction time.
+Safe to call multiple times.</p>
+</div>
 
 
   <a id="Wss_CoreModule_WssStimulationCore_GetCoreConfigController_" data-uid="Wss.CoreModule.WssStimulationCore.GetCoreConfigController*"></a>
@@ -240,6 +227,22 @@ to the transport. Non-blocking; call <a class="xref" href="Wss.CoreModule.IStimu
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Initialize()</code></pre>
   </div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ObjectDisposedException</span></td>
+        <td><p>Thrown when the core has been disposed.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
 
 
   <a id="Wss_CoreModule_WssStimulationCore_IsChannelInRange_" data-uid="Wss.CoreModule.WssStimulationCore.IsChannelInRange*"></a>

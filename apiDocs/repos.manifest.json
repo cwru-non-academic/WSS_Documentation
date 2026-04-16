@@ -6,7 +6,7 @@
       "kind": "csharp",
       "enabled": true,
       "root": "${WSS_CORE_REPO_ROOT}",
-      "csproj": "/home/lemf/Documents/GitHub/WSSCoreInterface/WSS_Core_Interface.csproj",
+      "solution": "/home/lemf/Documents/GitHub/WSSCoreInterface/WSS_Core_Interface.sln",
       "docfxDest": "api/core",
       "entryUid": "Wss.CoreModule",
       "msbuildProperties": {

@@ -187,6 +187,42 @@ If a directory path is provided, &quot;stimConfig.json&quot; is created inside i
       </tr>
     </tbody>
   </table>
+  <h5 id="Wss_CoreModule_CoreConfigController_AmpCurves_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The returned array is the live in-memory configuration array, not a defensive copy.
+Mutating the returned array or its entries changes the loaded configuration until it is reloaded.
+Call <a class="xref" href="Wss.CoreModule.CoreConfigController.html#Wss_CoreModule_CoreConfigController_SaveJson">SaveJson()</a> to persist those changes.</p>
+</div>
+
+
+  <a id="Wss_CoreModule_CoreConfigController_BroadcastTarget_" data-uid="Wss.CoreModule.CoreConfigController.BroadcastTarget*"></a>
+  <h4 id="Wss_CoreModule_CoreConfigController_BroadcastTarget" data-uid="Wss.CoreModule.CoreConfigController.BroadcastTarget">BroadcastTarget</h4>
+  <div class="markdown level1 summary"><p>Gets the configured on-wire broadcast receiver address.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte BroadcastTarget { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">byte</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Wss_CoreModule_CoreConfigController_BroadcastTarget_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The value is read from the persisted hexadecimal string in <a class="xref" href="Wss.CoreModule.CoreConfig.html#Wss_CoreModule_CoreConfig_broadcastTarget">broadcastTarget</a>.
+If the stored value is missing or invalid, the historical default <code>0x8F</code> is returned and
+the normalized value is immediately persisted back to disk.</p>
+</div>
 
 
   <a id="Wss_CoreModule_CoreConfigController_Firmware_" data-uid="Wss.CoreModule.CoreConfigController.Firmware*"></a>
@@ -295,6 +331,37 @@ Thread safe get.</p>
   </table>
 
 
+  <a id="Wss_CoreModule_CoreConfigController_WssTargets_" data-uid="Wss.CoreModule.CoreConfigController.WssTargets*"></a>
+  <h4 id="Wss_CoreModule_CoreConfigController_WssTargets" data-uid="Wss.CoreModule.CoreConfigController.WssTargets">WssTargets</h4>
+  <div class="markdown level1 summary"><p>Gets the configured on-wire receiver addresses for logical Wss1..Wss3.
+A normalized three-entry copy is returned.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte[] WssTargets { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">byte</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Wss_CoreModule_CoreConfigController_WssTargets_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Missing entries are backfilled with the historical defaults <code>0x81</code>, <code>0x82</code>, and <code>0x83</code>.
+When normalization changes the in-memory configuration, the updated values are immediately persisted.</p>
+</div>
+
+
   <a id="Wss_CoreModule_CoreConfigController__configPath_" data-uid="Wss.CoreModule.CoreConfigController._configPath*"></a>
   <h4 id="Wss_CoreModule_CoreConfigController__configPath" data-uid="Wss.CoreModule.CoreConfigController._configPath">_configPath</h4>
   <div class="markdown level1 summary"><p>Resolved file path to the configuration JSON.</p>
@@ -338,7 +405,7 @@ Safe to call multiple times.</p>
   <a id="Wss_CoreModule_CoreConfigController_LoadJson_" data-uid="Wss.CoreModule.CoreConfigController.LoadJson*"></a>
   <h4 id="Wss_CoreModule_CoreConfigController_LoadJson_System_String_" data-uid="Wss.CoreModule.CoreConfigController.LoadJson(System.String)">LoadJson(string)</h4>
   <div class="markdown level1 summary"><p>Loads the core configuration from disk at the specified <code class="paramref">path</code>.
-If <code class="paramref">path</code> is a directory, the file name <code>core.json</code> is appended.
+If <code class="paramref">path</code> is a directory, the file name <code>stimConfig.json</code> is appended.
 If the file does not exist or is invalid, a default configuration is created and saved.
 Safe to call multiple times; the operation is thread-safe.</p>
 </div>
@@ -413,6 +480,27 @@ Thread safe.</p>
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ArgumentNullException</span></td>
+        <td><p>Thrown when <code class="paramref">verHandler</code> is null.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">ArgumentException</span></td>
+        <td><p>Thrown when <code class="paramref">v</code> is not supported by <code class="paramref">verHandler</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
 
 
   <a id="Wss_CoreModule_CoreConfigController_SetMaxWss_" data-uid="Wss.CoreModule.CoreConfigController.SetMaxWss*"></a>
@@ -439,6 +527,22 @@ and immediately persists the change to disk. Thread safe.</p>
         <td><span class="xref">int</span></td>
         <td><span class="parametername">v</span></td>
         <td><p>New maximum WSS count. Must be greater than zero.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ArgumentOutOfRangeException</span></td>
+        <td><p>Thrown when <code class="paramref">v</code> is less than or equal to zero.</p>
 </td>
       </tr>
     </tbody>

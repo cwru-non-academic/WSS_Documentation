@@ -101,7 +101,11 @@ items:
   assemblies:
   - HFI_WSS_Csharp_Implementation
   namespace: HFI.Wss
-  summary: True after <xref href="HFI.Wss.StimulationController.StartStimulation" data-throw-if-not-resolved="false"></xref> succeeds.
+  summary: True after this controller issues a successful <xref href="HFI.Wss.StimulationController.StartStimulation" data-throw-if-not-resolved="false"></xref> request.
+  remarks: >-
+    This is a controller-managed flag and may temporarily differ from <xref href="HFI.Wss.StimulationController.Started" data-throw-if-not-resolved="false"></xref>, which
+
+    queries the underlying WSS stack for its current state.
   example: []
   syntax:
     content: public bool started { get; }
@@ -147,14 +151,17 @@ items:
   assemblies:
   - HFI_WSS_Csharp_Implementation
   namespace: HFI.Wss
-  summary: Creates a controller instance with the provided connection and configuration options.
+  summary: Creates a controller instance with the provided stimulation configuration options.
   example: []
   syntax:
     content: public StimulationController(StimulationOptions options)
     parameters:
     - id: options
       type: HFI.Wss.StimulationOptions
-      description: Options that control transport, config paths, and tick behavior.
+      description: >-
+        Options that control transport selection, config paths, and tick behavior without exposing
+
+        transport implementation details to the caller.
     content.vb: Public Sub New(options As StimulationOptions)
   overload: HFI.Wss.StimulationController.#ctor*
   exceptions:
@@ -188,6 +195,16 @@ items:
     Builds the full stimulation stack and initializes the hardware connection.
 
     Automatically starts the background tick loop.
+  remarks: >-
+    The controller creates the transport internally based on <xref href="HFI.Wss.StimulationOptions.Transport" data-throw-if-not-resolved="false"></xref>:
+
+    test mode uses <xref href="Wss.CoreModule.TestModeTransport" data-throw-if-not-resolved="false"></xref>, serial uses <xref href="Wss.CoreModule.SerialPortTransport" data-throw-if-not-resolved="false"></xref>,
+
+    and BLE uses <xref href="HFI.Wss.BleNusTransport" data-throw-if-not-resolved="false"></xref>.
+
+    This method is idempotent and returns immediately when the controller is already initialized.
+
+    Initialization failures from the underlying WSS stack propagate to the caller.
   example: []
   syntax:
     content: public void Initialize()
@@ -207,7 +224,11 @@ items:
   assemblies:
   - HFI_WSS_Csharp_Implementation
   namespace: HFI.Wss
-  summary: Stops ticking and tears down the connection.
+  summary: Stops the background tick loop and tears down the active connection.
+  remarks: >-
+    This method blocks until the current tick loop exits and then shuts down and disposes the active
+
+    WSS stack. It is safe to call multiple times; calls made before initialization return without error.
   example: []
   syntax:
     content: public void Shutdown()
@@ -227,7 +248,11 @@ items:
   assemblies:
   - HFI_WSS_Csharp_Implementation
   namespace: HFI.Wss
-  summary: Explicitly releases the radio connection.
+  summary: Explicitly releases the active radio connection.
+  remarks: >-
+    This is equivalent to calling <xref href="HFI.Wss.StimulationController.Shutdown" data-throw-if-not-resolved="false"></xref> and has the same blocking and idempotent
+
+    behavior.
   example: []
   syntax:
     content: public void releaseRadio()
@@ -248,6 +273,10 @@ items:
   - HFI_WSS_Csharp_Implementation
   namespace: HFI.Wss
   summary: Performs a radio reset by shutting down and re-initializing the connection.
+  remarks: >-
+    This method stops the current tick loop, reinitializes the underlying WSS stack in place, and then
+
+    starts ticking again. If the controller has not been initialized yet, this method does nothing.
   example: []
   syntax:
     content: public void resetRadio()
@@ -356,7 +385,10 @@ items:
   - HFI_WSS_Csharp_Implementation
   namespace: HFI.Wss
   summary: Persists basic-stimulation configuration to the target device.
-  remarks: If basic stimulation is not supported, this method logs an error and returns without throwing.
+  remarks: >-
+    If the basic-stimulation API is unavailable, including before initialization, this method logs an
+
+    error and returns without throwing.
   example: []
   syntax:
     content: public void Save(int targetWSS)
@@ -384,7 +416,10 @@ items:
   - HFI_WSS_Csharp_Implementation
   namespace: HFI.Wss
   summary: Persists basic-stimulation configuration to all devices.
-  remarks: If basic stimulation is not supported, this method logs an error and returns without throwing.
+  remarks: >-
+    If the basic-stimulation API is unavailable, including before initialization, this method logs an
+
+    error and returns without throwing.
   example: []
   syntax:
     content: public void Save()
@@ -405,7 +440,10 @@ items:
   - HFI_WSS_Csharp_Implementation
   namespace: HFI.Wss
   summary: Loads basic-stimulation configuration from the target device.
-  remarks: If basic stimulation is not supported, this method logs an error and returns without throwing.
+  remarks: >-
+    If the basic-stimulation API is unavailable, including before initialization, this method logs an
+
+    error and returns without throwing.
   example: []
   syntax:
     content: public void load(int targetWSS)
@@ -433,7 +471,10 @@ items:
   - HFI_WSS_Csharp_Implementation
   namespace: HFI.Wss
   summary: Loads basic-stimulation configuration from all devices.
-  remarks: If basic stimulation is not supported, this method logs an error and returns without throwing.
+  remarks: >-
+    If the basic-stimulation API is unavailable, including before initialization, this method logs an
+
+    error and returns without throwing.
   example: []
   syntax:
     content: public void load()
@@ -454,7 +495,10 @@ items:
   - HFI_WSS_Csharp_Implementation
   namespace: HFI.Wss
   summary: Requests a configuration payload from the target device.
-  remarks: If basic stimulation is not supported, this method logs an error and returns without throwing.
+  remarks: >-
+    If the basic-stimulation API is unavailable, including before initialization, this method logs an
+
+    error and returns without throwing.
   example: []
   syntax:
     content: public void request_Configs(int targetWSS, int command, int id)
@@ -488,7 +532,10 @@ items:
   - HFI_WSS_Csharp_Implementation
   namespace: HFI.Wss
   summary: Updates a waveform definition on all devices.
-  remarks: If basic stimulation is not supported, this method logs an error and returns without throwing.
+  remarks: >-
+    If the basic-stimulation API is unavailable, including before initialization, this method logs an
+
+    error and returns without throwing.
   example: []
   syntax:
     content: public void updateWaveform(int[] waveform, int eventID)
@@ -519,7 +566,10 @@ items:
   - HFI_WSS_Csharp_Implementation
   namespace: HFI.Wss
   summary: Updates a waveform definition on the target device.
-  remarks: If basic stimulation is not supported, this method logs an error and returns without throwing.
+  remarks: >-
+    If the basic-stimulation API is unavailable, including before initialization, this method logs an
+
+    error and returns without throwing.
   example: []
   syntax:
     content: public void updateWaveform(int targetWSS, int[] waveform, int eventID)
@@ -553,7 +603,10 @@ items:
   - HFI_WSS_Csharp_Implementation
   namespace: HFI.Wss
   summary: Updates an event shape using cathodic/anodic waveform identifiers on all devices.
-  remarks: If basic stimulation is not supported, this method logs an error and returns without throwing.
+  remarks: >-
+    If the basic-stimulation API is unavailable, including before initialization, this method logs an
+
+    error and returns without throwing.
   example: []
   syntax:
     content: public void updateWaveform(int cathodicWaveform, int anodicWaveform, int eventID)
@@ -587,7 +640,10 @@ items:
   - HFI_WSS_Csharp_Implementation
   namespace: HFI.Wss
   summary: Updates an event shape using cathodic/anodic waveform identifiers on the target device.
-  remarks: If basic stimulation is not supported, this method logs an error and returns without throwing.
+  remarks: >-
+    If the basic-stimulation API is unavailable, including before initialization, this method logs an
+
+    error and returns without throwing.
   example: []
   syntax:
     content: public void updateWaveform(int targetWSS, int cathodicWaveform, int anodicWaveform, int eventID)
@@ -624,7 +680,10 @@ items:
   - HFI_WSS_Csharp_Implementation
   namespace: HFI.Wss
   summary: Updates a waveform definition on all devices.
-  remarks: If basic stimulation is not supported, this method logs an error and returns without throwing.
+  remarks: >-
+    If the basic-stimulation API is unavailable, including before initialization, this method logs an
+
+    error and returns without throwing.
   example: []
   syntax:
     content: public void updateWaveform(WaveformBuilder waveform, int eventID)
@@ -655,7 +714,10 @@ items:
   - HFI_WSS_Csharp_Implementation
   namespace: HFI.Wss
   summary: Updates a waveform definition on the target device.
-  remarks: If basic stimulation is not supported, this method logs an error and returns without throwing.
+  remarks: >-
+    If the basic-stimulation API is unavailable, including before initialization, this method logs an
+
+    error and returns without throwing.
   example: []
   syntax:
     content: public void updateWaveform(int targetWSS, WaveformBuilder waveform, int eventID)
@@ -689,7 +751,10 @@ items:
   - HFI_WSS_Csharp_Implementation
   namespace: HFI.Wss
   summary: Loads a waveform file into the specified event slot.
-  remarks: If basic stimulation is not supported, this method logs an error and returns without throwing.
+  remarks: >-
+    If the basic-stimulation API is unavailable, including before initialization, this method logs an
+
+    error and returns without throwing.
   example: []
   syntax:
     content: public void loadWaveform(string fileName, int eventID)
@@ -720,7 +785,10 @@ items:
   - HFI_WSS_Csharp_Implementation
   namespace: HFI.Wss
   summary: Performs waveform setup for an event on all devices.
-  remarks: If basic stimulation is not supported, this method logs an error and returns without throwing.
+  remarks: >-
+    If the basic-stimulation API is unavailable, including before initialization, this method logs an
+
+    error and returns without throwing.
   example: []
   syntax:
     content: public void WaveformSetup(WaveformBuilder wave, int eventID)
@@ -751,7 +819,10 @@ items:
   - HFI_WSS_Csharp_Implementation
   namespace: HFI.Wss
   summary: Performs waveform setup for an event on the target device.
-  remarks: If basic stimulation is not supported, this method logs an error and returns without throwing.
+  remarks: >-
+    If the basic-stimulation API is unavailable, including before initialization, this method logs an
+
+    error and returns without throwing.
   example: []
   syntax:
     content: public void WaveformSetup(int targetWSS, WaveformBuilder wave, int eventID)
@@ -785,7 +856,10 @@ items:
   - HFI_WSS_Csharp_Implementation
   namespace: HFI.Wss
   summary: Updates the inter-phase delay for an event on all devices.
-  remarks: If basic stimulation is not supported, this method logs an error and returns without throwing.
+  remarks: >-
+    If the basic-stimulation API is unavailable, including before initialization, this method logs an
+
+    error and returns without throwing.
   example: []
   syntax:
     content: public void UpdateIPD(int ipd, int eventID)
@@ -816,7 +890,10 @@ items:
   - HFI_WSS_Csharp_Implementation
   namespace: HFI.Wss
   summary: Updates the inter-phase delay for an event on the target device.
-  remarks: If basic stimulation is not supported, this method logs an error and returns without throwing.
+  remarks: >-
+    If the basic-stimulation API is unavailable, including before initialization, this method logs an
+
+    error and returns without throwing.
   example: []
   syntax:
     content: public void UpdateIPD(int targetWSS, int ipd, int eventID)
@@ -1663,6 +1740,10 @@ items:
   - HFI_WSS_Csharp_Implementation
   namespace: HFI.Wss
   summary: Shuts down the controller and releases any underlying resources.
+  remarks: >-
+    This method performs synchronous shutdown and waits for the background tick loop to stop before
+
+    returning.
   example: []
   syntax:
     content: public void Dispose()
@@ -1682,7 +1763,11 @@ items:
   assemblies:
   - HFI_WSS_Csharp_Implementation
   namespace: HFI.Wss
-  summary: Asynchronously shuts down the controller and releases any underlying resources.
+  summary: Shuts down the controller and releases any underlying resources.
+  remarks: >-
+    Disposal is performed synchronously by calling <xref href="HFI.Wss.StimulationController.Shutdown" data-throw-if-not-resolved="false"></xref>. The returned
+
+    <xref href="System.Threading.Tasks.ValueTask" data-throw-if-not-resolved="false"></xref> is already complete when this method returns.
   example: []
   syntax:
     content: public ValueTask DisposeAsync()
@@ -1784,6 +1869,24 @@ references:
     href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_StartStimulation
   - name: (
   - name: )
+- uid: HFI.Wss.StimulationController.Started
+  commentId: M:HFI.Wss.StimulationController.Started
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Started
+  name: Started()
+  nameWithType: StimulationController.Started()
+  fullName: HFI.Wss.StimulationController.Started()
+  spec.csharp:
+  - uid: HFI.Wss.StimulationController.Started
+    name: Started
+    href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Started
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: HFI.Wss.StimulationController.Started
+    name: Started
+    href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Started
+  - name: (
+  - name: )
 - uid: HFI.Wss.StimulationController.started*
   commentId: Overload:HFI.Wss.StimulationController.started
   href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_started
@@ -1840,6 +1943,33 @@ references:
   name: StimulationOptions
   nameWithType: StimulationOptions
   fullName: HFI.Wss.StimulationOptions
+- uid: HFI.Wss.StimulationOptions.Transport
+  commentId: P:HFI.Wss.StimulationOptions.Transport
+  href: HFI.Wss.StimulationOptions.html#HFI_Wss_StimulationOptions_Transport
+  name: Transport
+  nameWithType: StimulationOptions.Transport
+  fullName: HFI.Wss.StimulationOptions.Transport
+- uid: Wss.CoreModule.TestModeTransport
+  commentId: T:Wss.CoreModule.TestModeTransport
+  isExternal: true
+  href: https://github.com/cwru-non-academic/WSSCoreInterface/blob/a9b8427b8a40ea64e7941872c1647cc7fbde8a0d/CoreModule/TestModeTransport.cs
+  name: TestModeTransport
+  nameWithType: TestModeTransport
+  fullName: Wss.CoreModule.TestModeTransport
+- uid: Wss.CoreModule.SerialPortTransport
+  commentId: T:Wss.CoreModule.SerialPortTransport
+  isExternal: true
+  href: https://github.com/cwru-non-academic/WSSCoreInterface/blob/a9b8427b8a40ea64e7941872c1647cc7fbde8a0d/WSS.Transport.Serial/SerialPortTransport.cs
+  name: SerialPortTransport
+  nameWithType: SerialPortTransport
+  fullName: Wss.CoreModule.SerialPortTransport
+- uid: HFI.Wss.BleNusTransport
+  commentId: T:HFI.Wss.BleNusTransport
+  isExternal: true
+  href: https://github.com/cwru-non-academic/WSSCoreInterface/blob/a9b8427b8a40ea64e7941872c1647cc7fbde8a0d/BleNusTransport.cs
+  name: BleNusTransport
+  nameWithType: BleNusTransport
+  fullName: HFI.Wss.BleNusTransport
 - uid: HFI.Wss.StimulationController.Initialize*
   commentId: Overload:HFI.Wss.StimulationController.Initialize
   href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_Initialize
@@ -1962,7 +2092,7 @@ references:
   commentId: T:Wss.CoreModule.WaveformBuilder
   parent: Wss.CoreModule
   isExternal: true
-  href: https://github.com/cwru-non-academic/WSSCoreInterface/blob/6d57dc93f5e1e6ab6f1a07147624443ac43a2431/CoreModule/SideFunctions/WaveformBuilder.cs
+  href: https://github.com/cwru-non-academic/WSSCoreInterface/blob/a9b8427b8a40ea64e7941872c1647cc7fbde8a0d/CoreModule/SideFunctions/WaveformBuilder.cs
   name: WaveformBuilder
   nameWithType: WaveformBuilder
   fullName: Wss.CoreModule.WaveformBuilder
@@ -2266,7 +2396,7 @@ references:
   commentId: T:Wss.ModelModule.ModelConfigController
   parent: Wss.ModelModule
   isExternal: true
-  href: https://github.com/cwru-non-academic/WSSCoreInterface/blob/6d57dc93f5e1e6ab6f1a07147624443ac43a2431/ModelModule/ModelConfigController.cs
+  href: https://github.com/cwru-non-academic/WSSCoreInterface/blob/a9b8427b8a40ea64e7941872c1647cc7fbde8a0d/ModelModule/ModelConfigController.cs
   name: ModelConfigController
   nameWithType: ModelConfigController
   fullName: Wss.ModelModule.ModelConfigController
@@ -2302,7 +2432,7 @@ references:
   commentId: T:Wss.CoreModule.CoreConfigController
   parent: Wss.CoreModule
   isExternal: true
-  href: https://github.com/cwru-non-academic/WSSCoreInterface/blob/6d57dc93f5e1e6ab6f1a07147624443ac43a2431/CoreModule/CoreJsonConfig/CoreConfigController.cs
+  href: https://github.com/cwru-non-academic/WSSCoreInterface/blob/a9b8427b8a40ea64e7941872c1647cc7fbde8a0d/CoreModule/CoreJsonConfig/CoreConfigController.cs
   name: CoreConfigController
   nameWithType: CoreConfigController
   fullName: Wss.CoreModule.CoreConfigController
@@ -2318,12 +2448,6 @@ references:
   name: Dispose
   nameWithType: StimulationController.Dispose
   fullName: HFI.Wss.StimulationController.Dispose
-- uid: HFI.Wss.StimulationController.DisposeAsync*
-  commentId: Overload:HFI.Wss.StimulationController.DisposeAsync
-  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_DisposeAsync
-  name: DisposeAsync
-  nameWithType: StimulationController.DisposeAsync
-  fullName: HFI.Wss.StimulationController.DisposeAsync
 - uid: System.Threading.Tasks.ValueTask
   commentId: T:System.Threading.Tasks.ValueTask
   parent: System.Threading.Tasks
@@ -2331,6 +2455,12 @@ references:
   name: ValueTask
   nameWithType: ValueTask
   fullName: System.Threading.Tasks.ValueTask
+- uid: HFI.Wss.StimulationController.DisposeAsync*
+  commentId: Overload:HFI.Wss.StimulationController.DisposeAsync
+  href: HFI.Wss.StimulationController.html#HFI_Wss_StimulationController_DisposeAsync
+  name: DisposeAsync
+  nameWithType: StimulationController.DisposeAsync
+  fullName: HFI.Wss.StimulationController.DisposeAsync
 - uid: System.Threading.Tasks
   commentId: N:System.Threading.Tasks
   isExternal: true

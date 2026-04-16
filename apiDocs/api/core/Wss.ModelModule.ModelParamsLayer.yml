@@ -1624,7 +1624,6 @@ items:
   assemblies:
   - WSS_Core_Interface
   namespace: Wss.ModelModule
-  summary: Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
   example: []
   syntax:
     content: public void Dispose()

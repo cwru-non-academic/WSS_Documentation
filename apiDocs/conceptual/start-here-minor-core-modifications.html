@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Start Here: Minor Core Modifications | WSS Documentation Hub </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Start Here: Minor Core Modifications | WSS Documentation Hub ">
+    
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="start-here-minor-core-modifications">Start Here: Minor Core Modifications</h1>
+
+<p><a href="../index.html">Home</a> | <a href="../start-here.html">Back to Start Here</a></p>
+<h2 id="who-this-is-for">Who This Is For</h2>
+<p>This guide is for contributors making focused changes inside the existing WSS core without introducing a new layer or redesigning the overall architecture.</p>
+<p>Use this path when you need to make a targeted change such as:</p>
+<ul>
+<li>adding a new supported firmware version</li>
+<li>updating an existing message definition</li>
+<li>changing the numeric limits or bounds for an existing message</li>
+<li>updating how module settings are decoded from a device reply</li>
+<li>changing the order or content of the initial setup sequence</li>
+</ul>
+<h2 id="what-counts-as-a-minor-core-modification">What Counts As a Minor Core Modification</h2>
+<p>Minor core modifications usually keep the current architecture intact and change one well-defined part of the shared core behavior.</p>
+<p>Common examples are:</p>
+<ul>
+<li>extending <code>WSSVersionHandler</code> for a new firmware version</li>
+<li>updating <code>WSSMessageIDs</code> or the payload expectations for an existing command</li>
+<li>adjusting <code>WSSLimits</code> when firmware or protocol bounds change</li>
+<li>updating <code>ModuleSettings</code> decoding when a <code>ModuleQuery</code> payload changes</li>
+<li>changing <code>NormalSetup()</code> so startup sends a different ordered set of startup setup steps</li>
+</ul>
+<h2 id="what-does-not-count">What Does Not Count</h2>
+<p>This is not the right path when you are:</p>
+<ul>
+<li>adding a new optional layer</li>
+<li>changing the transport abstraction or creating a new transport for another platform</li>
+<li>redesigning lifecycle ownership or streaming ownership</li>
+<li>exposing WSS to a new language or runtime</li>
+<li>making a large architectural change that affects how capabilities are composed</li>
+</ul>
+<p>If your change is broader than a targeted core update, use <a href="start-here-adding-layers-or-core-functionality.html">Start Here: Adding Layers or Core Functionality</a> instead.</p>
+<h2 id="start-with-these-questions">Start With These Questions</h2>
+<p>Before editing the core, answer these questions first:</p>
+<ol>
+<li>Is this change firmware-specific or should it apply to all supported devices?</li>
+<li>Does it change message layout, version gating, runtime limits, decoded settings, or setup order?</li>
+<li>Does it affect startup only, or also mid-stream edits and runtime behavior?</li>
+<li>Does the change require documentation updates in firmware compatibility, config docs, command docs, or troubleshooting?</li>
+</ol>
+<p>Those questions usually tell you which core class should own the change.</p>
+<h2 id="which-part-owns-the-change">Which Part Owns the Change</h2>
+<p>The most important thing in a minor modification is putting the change in the correct place.</p>
+<ul>
+<li><code>WSSVersionHandler</code>
+<ul>
+<li>Owns firmware parsing, supported-version checks, and feature-gating behavior.</li>
+<li>Use this when a feature becomes available only in a newer firmware version.</li>
+</ul>
+</li>
+<li><code>WSSMessageIDs</code>
+<ul>
+<li>Owns protocol command identifiers.</li>
+<li>Use this when the on-wire command code itself changes or a new message ID is added.</li>
+</ul>
+</li>
+<li><code>WSSLimits</code>
+<ul>
+<li>Owns shared protocol and device numeric bounds.</li>
+<li>Use this when maximum values such as pulse width, IPD, waveform amplitude, or field sizes change.</li>
+</ul>
+</li>
+<li><code>WssFrameCodec</code>
+<ul>
+<li>Owns framing, escaping, deframing, and checksum validation.</li>
+<li>Use this only when the wire format itself changes.</li>
+</ul>
+</li>
+<li><code>WssClient</code>
+<ul>
+<li>Owns low-level command construction, sending, and reply correlation.</li>
+<li>Use this when an existing command payload or reply handling changes.</li>
+</ul>
+</li>
+<li><code>ModuleSettings</code>
+<ul>
+<li>Owns decoding and exposing the meaning of a <code>ModuleQuery</code> settings payload.</li>
+<li>Use this when the device reports settings differently or exposes new settings fields.</li>
+<li>That decoded snapshot includes hardware configuration flags, PA and PW limits, thresholds for battery and impedance, and a derived amplitude-curve choice such as <code>10mA</code> vs <code>72mA</code>.</li>
+</ul>
+</li>
+<li><code>WssStimulationCore</code>
+<ul>
+<li>Owns setup orchestration, state transitions, queued setup changes, and streaming behavior.</li>
+<li>Use this when you need to change startup setup order, scheduling behavior, or lifecycle handling.</li>
+</ul>
+</li>
+</ul>
+<h2 id="common-change-types">Common Change Types</h2>
+<h3 id="adding-a-new-firmware-version">Adding a New Firmware Version</h3>
+<p>Use this path when the protocol is mostly the same, but the core needs to recognize a new firmware string and gate features correctly.</p>
+<p>Typical areas involved:</p>
+<ul>
+<li><code>WSSVersionHandler</code></li>
+<li>possibly <code>WssClient</code> if a command is only valid in that version</li>
+<li>firmware compatibility documentation</li>
+</ul>
+<h3 id="updating-an-existing-message">Updating an Existing Message</h3>
+<p>Use this when the command already exists, but one of these changes:</p>
+<ul>
+<li>payload fields</li>
+<li>reply expectations</li>
+<li>a selector or subcommand meaning</li>
+<li>a version-gated feature for that message</li>
+</ul>
+<p>Typical areas involved:</p>
+<ul>
+<li><code>WSSMessageIDs</code> if the command code changed</li>
+<li><code>WssClient</code> if framing of the payload or reply handling changed</li>
+<li><code>wssCommands.Rmd</code> so the reference matches the code</li>
+<li><code>WSSVersionHandler</code> if the change is firmware-specific</li>
+</ul>
+<h3 id="changing-limits-or-bounds">Changing Limits or Bounds</h3>
+<p>Use this when an existing command or parameter keeps the same meaning but the valid numeric range changes.</p>
+<p>Typical areas involved:</p>
+<ul>
+<li><code>WSSLimits</code></li>
+<li>any validation paths that rely on those limits</li>
+<li>config reference and config examples docs</li>
+<li>troubleshooting notes if old values now fail validation</li>
+</ul>
+<h3 id="updating-module-settings-decoding">Updating Module Settings Decoding</h3>
+<p>Use this when queried device settings need to be interpreted differently.</p>
+<p>Typical areas involved:</p>
+<ul>
+<li><code>ModuleSettings</code></li>
+<li><code>WssClient.ModuleQuery(...)</code> only if the request or reply handling changed</li>
+<li>firmware compatibility docs if the payload meaning varies by firmware</li>
+</ul>
+<h3 id="changing-setup">Changing Setup</h3>
+<p>Use this when startup needs to send a different ordered set of setup actions or when a new step must be added to initialization.</p>
+<p>Typical areas involved:</p>
+<ul>
+<li><code>WssStimulationCore.NormalSetup()</code></li>
+<li>the queued setup runner behavior in the core</li>
+<li>command docs if the startup sequence now depends on a different command order</li>
+<li>troubleshooting docs if setup failures or readiness conditions change</li>
+</ul>
+<p>See <a href="setup-order-and-modification.html">Setup Order and Modification</a> for the reusable setup-order guide and for the distinction between initial core setup and later setup replacement from an integration library or application.</p>
+<h2 id="changing-setup-what-owns-it">Changing Setup: What Owns It</h2>
+<p>Setup is owned by <code>WssStimulationCore</code>, not by <code>ModuleSettings</code>.</p>
+<p><code>NormalSetup()</code> is the main entry point for the initial startup sequence. It seeds the per-target setup step lists for a full initial configuration and starts the setup runner. This happens after connection succeeds and before the system becomes <code>Ready</code>.</p>
+<p>That does not mean every setup change belongs in the core. The core only owns the default initial setup path. If an integration library or application exposes the necessary setup-related methods, it can also replace or override setup later by sending the right command sequence after startup.</p>
+<p>That means setup changes belong in the core orchestration logic whenever you need to:</p>
+<ul>
+<li>insert a new setup step</li>
+<li>remove a step</li>
+<li>reorder setup steps</li>
+<li>make setup version-dependent</li>
+<li>change which commands must complete before <code>Ready</code></li>
+</ul>
+<p>The setup order, dependency rules, and the distinction between initial setup and later setup replacement are documented in <a href="setup-order-and-modification.html">Setup Order and Modification</a>.</p>
+<h2 id="quickstart-for-a-minor-core-modification">Quickstart for a Minor Core Modification</h2>
+<p>If you are making a small targeted change, a good order is:</p>
+<ol>
+<li>Decide whether the change is about versioning, message shape, limits, settings decoding, or setup.</li>
+<li>Identify the owning class before editing anything.</li>
+<li>Change the smallest relevant code path.</li>
+<li>Check whether the change also needs a version gate.</li>
+<li>Update the matching documentation page.</li>
+<li>Verify that initialization, readiness, and shutdown semantics still make sense.</li>
+</ol>
+<h2 id="documentation-to-update-alongside-the-code">Documentation to Update Alongside the Code</h2>
+<p>Depending on the change type, update the matching docs as part of the same work:</p>
+<ul>
+<li>firmware changes
+<ul>
+<li>firmware compatibility matrix</li>
+</ul>
+</li>
+<li>message changes
+<ul>
+<li><code>WSS Commands Reference</code></li>
+</ul>
+</li>
+<li>limit changes
+<ul>
+<li>config reference and config examples/ranges</li>
+</ul>
+</li>
+<li>setup changes
+<ul>
+<li>lifecycle/state docs, troubleshooting docs, and this page if the documented setup order changes</li>
+</ul>
+</li>
+<li>module settings changes
+<ul>
+<li>firmware compatibility notes and any diagnostics-oriented docs</li>
+</ul>
+</li>
+</ul>
+<h2 id="related-guides">Related Guides</h2>
+<ul>
+<li><a href="core-architecture.html">Core Architecture (Transport, Codec, Core)</a></li>
+<li><a href="layering-guide.html">Layering Guide (Modules)</a></li>
+<li><a href="firmware-compatibility-matrix.html">Firmware Compatibility Matrix</a></li>
+<li><a href="config-files-reference.html">Config Files Reference</a></li>
+<li><a href="start-here-building-a-new-integration-library.html">Start Here: Building a New Integration Library</a></li>
+<li><a href="start-here-adding-layers-or-core-functionality.html">Start Here: Adding Layers or Core Functionality</a></li>
+</ul>
+<p>Navigation:</p>
+<ul>
+<li><a href="../index.html">Back to Home</a></li>
+<li><a href="../start-here.html">Back to Start Here</a></li>
+<li><a href="start-here-building-a-new-integration-library.html">Previous: Start Here: Building a New Integration Library</a></li>
+<li><a href="start-here-adding-layers-or-core-functionality.html">Next: Start Here: Adding Layers or Core Functionality</a></li>
+</ul>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/cwru-non-academic/WSS_Documentation/blob/main/apiDocs/conceptual/start-here-minor-core-modifications.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

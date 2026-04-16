@@ -95,7 +95,7 @@ Wraps <span class="xref">System.IO.Ports.SerialPort</span> and exposes an event-
     <div><a class="xref" href="Wss.CoreModule.ITransport.html">ITransport</a></div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Wss.html">Wss</a>.<a class="xref" href="Wss.CoreModule.html">CoreModule</a></h6>
-  <h6><strong>Assembly</strong>: WSS_Core_Interface.dll</h6>
+  <h6><strong>Assembly</strong>: WSS.Transport.Serial.dll</h6>
   <h5 id="Wss_CoreModule_SerialPortTransport_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public sealed class SerialPortTransport : ITransport</code></pre>
@@ -113,13 +113,13 @@ which are normal with short read timeouts.</p>
 
 
   <a id="Wss_CoreModule_SerialPortTransport__ctor_" data-uid="Wss.CoreModule.SerialPortTransport.#ctor*"></a>
-  <h4 id="Wss_CoreModule_SerialPortTransport__ctor_System_Int32_System_IO_Ports_Parity_System_Int32_System_IO_Ports_StopBits_System_Int32_" data-uid="Wss.CoreModule.SerialPortTransport.#ctor(System.Int32,System.IO.Ports.Parity,System.Int32,System.IO.Ports.StopBits,System.Int32)">SerialPortTransport(int, Parity, int, StopBits, int)</h4>
-  <div class="markdown level1 summary"><p>Creates a serial transport bound to the given parameters. Th port name is automatically selected as the firts port in the list.</p>
+  <h4 id="Wss_CoreModule_SerialPortTransport__ctor_Wss_CoreModule_SerialPortTransportOptions_" data-uid="Wss.CoreModule.SerialPortTransport.#ctor(Wss.CoreModule.SerialPortTransportOptions)">SerialPortTransport(SerialPortTransportOptions)</h4>
+  <div class="markdown level1 summary"><p>Creates a serial transport from a single options object.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public SerialPortTransport(int baud = 115200, Parity parity = Parity.None, int dataBits = 8, StopBits stopBits = StopBits.One, int readTimeoutMs = 10)</code></pre>
+    <pre><code class="lang-csharp hljs">public SerialPortTransport(SerialPortTransportOptions options)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-condensed">
@@ -132,94 +132,34 @@ which are normal with short read timeouts.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">int</span></td>
-        <td><span class="parametername">baud</span></td>
-        <td><p>Baud rate. Default is 115200.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">Parity</span></td>
-        <td><span class="parametername">parity</span></td>
-        <td><p>Parity setting. Default is <span class="xref">System.IO.Ports.Parity.None</span>.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">int</span></td>
-        <td><span class="parametername">dataBits</span></td>
-        <td><p>Data bits. Default is 8.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">StopBits</span></td>
-        <td><span class="parametername">stopBits</span></td>
-        <td><p>Stop bits. Default is <span class="xref">System.IO.Ports.StopBits.One</span>.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">int</span></td>
-        <td><span class="parametername">readTimeoutMs</span></td>
-        <td><p>Synchronous read timeout in milliseconds (used by <span class="xref">System.IO.Ports.SerialPort.Read(byte[], int, int)</span>).
-Typical value is small (e.g., 10ms). Timeouts are caught and ignored in the read loop.</p>
+        <td><a class="xref" href="Wss.CoreModule.SerialPortTransportOptions.html">SerialPortTransportOptions</a></td>
+        <td><span class="parametername">options</span></td>
+        <td><p>Serial transport configuration, including connection settings and port selection mode.</p>
 </td>
       </tr>
     </tbody>
   </table>
-
-
-  <a id="Wss_CoreModule_SerialPortTransport__ctor_" data-uid="Wss.CoreModule.SerialPortTransport.#ctor*"></a>
-  <h4 id="Wss_CoreModule_SerialPortTransport__ctor_System_String_System_Int32_System_IO_Ports_Parity_System_Int32_System_IO_Ports_StopBits_System_Int32_" data-uid="Wss.CoreModule.SerialPortTransport.#ctor(System.String,System.Int32,System.IO.Ports.Parity,System.Int32,System.IO.Ports.StopBits,System.Int32)">SerialPortTransport(string, int, Parity, int, StopBits, int)</h4>
-  <div class="markdown level1 summary"><p>Creates a serial transport bound to the given port name and parameters.</p>
+  <h5 id="Wss_CoreModule_SerialPortTransport__ctor_Wss_CoreModule_SerialPortTransportOptions__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Exactly one port selection mode must be configured: either set <a class="xref" href="Wss.CoreModule.SerialPortTransportOptions.html#Wss_CoreModule_SerialPortTransportOptions_AutoSelectPort">AutoSelectPort</a>
+to <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> or provide a non-empty <a class="xref" href="Wss.CoreModule.SerialPortTransportOptions.html#Wss_CoreModule_SerialPortTransportOptions_PortName">PortName</a>.</p>
 </div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public SerialPortTransport(string portName, int baud = 115200, Parity parity = Parity.None, int dataBits = 8, StopBits stopBits = StopBits.One, int readTimeoutMs = 10)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
+  <h5 class="exceptions">Exceptions</h5>
   <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
+        <th>Condition</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">string</span></td>
-        <td><span class="parametername">portName</span></td>
-        <td><p>Port name (e.g., <code>&quot;COM5&quot;</code> on Windows, <code>&quot;/dev/ttyUSB0&quot;</code> on Linux/macOS).</p>
+        <td><span class="xref">ArgumentNullException</span></td>
+        <td><p>Thrown when <code class="paramref">options</code> is null.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">int</span></td>
-        <td><span class="parametername">baud</span></td>
-        <td><p>Baud rate. Default is 115200.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">Parity</span></td>
-        <td><span class="parametername">parity</span></td>
-        <td><p>Parity setting. Default is <span class="xref">System.IO.Ports.Parity.None</span>.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">int</span></td>
-        <td><span class="parametername">dataBits</span></td>
-        <td><p>Data bits. Default is 8.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">StopBits</span></td>
-        <td><span class="parametername">stopBits</span></td>
-        <td><p>Stop bits. Default is <span class="xref">System.IO.Ports.StopBits.One</span>.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">int</span></td>
-        <td><span class="parametername">readTimeoutMs</span></td>
-        <td><p>Synchronous read timeout in milliseconds (used by <span class="xref">System.IO.Ports.SerialPort.Read(byte[], int, int)</span>).
-Typical value is small (e.g., 10ms). Timeouts are caught and ignored in the read loop.</p>
+        <td><span class="xref">ArgumentException</span></td>
+        <td><p>Thrown when the port selection settings specify both an explicit port and auto-selection, or neither.</p>
 </td>
       </tr>
     </tbody>

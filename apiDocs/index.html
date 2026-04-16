@@ -72,22 +72,97 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="wss-documentation-hub">WSS Documentation Hub</h1>
 
-<p>This site combines conceptual documentation with API references from multiple repositories.</p>
-<p>Use the left navigation to browse all namespaces, interfaces, classes, and guides.</p>
-<h2 id="guides">Guides</h2>
+<p>This site is organized first for people using WSS applications and for developers building applications or integrations on top of WSS.</p>
+<h2 id="choose-your-path">Choose Your Path</h2>
 <ul>
-<li><a href="conceptual/core-architecture.html">Core Architecture (Transport, Codec, Core)</a></li>
-<li><a href="conceptual/layering-guide.html">Layering Guide (Modules)</a></li>
+<li><a href="start-here.html">Start Here</a>
+<ul>
+<li>The best entry point if you are deciding whether you are using an existing application, building a new application, creating a new integration library, or making focused core changes.</li>
 </ul>
-<h2 id="c-api">C# API</h2>
+</li>
+<li><a href="conceptual/start-here-using-an-application.html">Using an Application</a>
+<ul>
+<li>Start here if you want to run WSS through an existing GUI, CLI, Unity, or Python workflow.</li>
+</ul>
+</li>
+<li><a href="conceptual/start-here-developing-an-application.html">Developing an Application</a>
+<ul>
+<li>Start here if you are building a user-facing tool on top of an existing WSS integration library.</li>
+</ul>
+</li>
+<li><a href="conceptual/start-here-building-a-new-integration-library.html">Building a New Integration Library</a>
+<ul>
+<li>Start here if you need to expose WSS to a new language, platform, or transport environment.</li>
+</ul>
+</li>
+</ul>
+<h2 id="repository-and-kit-links">Repository And Kit Links</h2>
+<ul>
+<li><a href="conceptual/repository-and-kit-links.html">Repository and Kit Links</a>
+<ul>
+<li>One page for grouped application, integration library, and core repository and kit links.</li>
+</ul>
+</li>
+</ul>
+<h2 id="core-concepts">Core Concepts</h2>
+<ul>
+<li><a href="concepts.html">Concepts</a>
+<ul>
+<li>Overview of the main architecture, layering, setup, firmware compatibility, and config references.</li>
+</ul>
+</li>
+<li><a href="conceptual/layering-guide.html">Layering Guide (Modules)</a>
+<ul>
+<li>Explains how WSS grows from Core to Params to Model and where new reusable functionality should live.</li>
+</ul>
+</li>
+<li><a href="conceptual/core-architecture.html">Core Architecture (Transport, Codec, Core)</a>
+<ul>
+<li>Explains transports, framing, lifecycle, setup sequencing, and streaming behavior.</li>
+</ul>
+</li>
+<li><a href="conceptual/config-files-reference.html">Config Files Reference</a>
+<ul>
+<li>Describes the standard config files used by applications and integration libraries.</li>
+</ul>
+</li>
+</ul>
+<h2 id="api-reference">API Reference</h2>
 <ul>
 <li><a class="xref" href="api/core/Wss.CoreModule.html">API: Core (C#)</a></li>
-<li><a class="xref" href="api/csharp/HFI.Wss.html">API: C# Integration (C#)</a></li>
-<li><a class="xref" href="api/unity/WSS.Unity.html">API: Unity Integration (C#)</a></li>
+<li><a class="xref" href="api/core/HFI.Wss.html">API: C# Integration (C#)</a></li>
+<li><a href="xref:WSS.Unity">API: Unity Integration (C#)</a></li>
 </ul>
-<h2 id="python-api">Python API</h2>
+<h2 id="advanced-reference">Advanced Reference</h2>
 <ul>
-<li><a href="external/python-integration/index.html">API: Python Integration (Python)</a></li>
+<li><a href="advanced.html">Advanced</a>
+<ul>
+<li>Lower-level protocol and raw communication material for debugging and direct device work.</li>
+</ul>
+</li>
+<li><a href="conceptual/wss-commands-reference.html">WSS Commands Reference</a>
+<ul>
+<li>Byte-level command and protocol reference.</li>
+</ul>
+</li>
+<li><a href="conceptual/simple-serial-communication.html">Simple Serial Communication with WSS</a>
+<ul>
+<li>Raw serial communication examples for macOS, Windows, and MATLAB.</li>
+</ul>
+</li>
+</ul>
+<h2 id="docs-maintenance">Docs Maintenance</h2>
+<ul>
+<li><a href="maintainers.html">Maintainers</a>
+<ul>
+<li>Build and maintain the documentation hub itself.</li>
+</ul>
+</li>
+<li><a href="conceptual/building-software-api-docs.html">Building Software API Docs</a>
+<ul>
+<li>Build workflow for the multi-repository DocFX site and generated API docs.</li>
+</ul>
+</li>
 </ul>
 
 </article>

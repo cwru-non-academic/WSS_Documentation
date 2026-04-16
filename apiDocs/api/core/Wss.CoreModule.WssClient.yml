@@ -5,7 +5,7 @@ items:
   id: WssClient
   parent: Wss.CoreModule
   children:
-  - Wss.CoreModule.WssClient.#ctor(Wss.CoreModule.ITransport,Wss.CoreModule.IFrameCodec,Wss.CoreModule.WSSVersionHandler,System.Byte)
+  - Wss.CoreModule.WssClient.#ctor(Wss.CoreModule.ITransport,Wss.CoreModule.IFrameCodec,Wss.CoreModule.WSSVersionHandler,Wss.CoreModule.WssClientOptions)
   - Wss.CoreModule.WssClient.AddEventToSchedule(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
   - Wss.CoreModule.WssClient.ChangeGroupState(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
   - Wss.CoreModule.WssClient.ChangeScheduleDuration(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
@@ -13,12 +13,9 @@ items:
   - Wss.CoreModule.WssClient.ChangeScheduleState(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
   - Wss.CoreModule.WssClient.Clear(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
   - Wss.CoreModule.WssClient.ConnectAsync(System.Threading.CancellationToken)
-  - Wss.CoreModule.WssClient.CreateContactConfig(System.Int32,System.Int32[],System.Int32[],System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
-  - Wss.CoreModule.WssClient.CreateEvent(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32[],System.Int32[],System.Int32[],Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
-  - Wss.CoreModule.WssClient.CreateEvent(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
-  - Wss.CoreModule.WssClient.CreateEvent(System.Int32,System.Int32,System.Int32,System.Int32[],System.Int32[],System.Int32[],Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
-  - Wss.CoreModule.WssClient.CreateEvent(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
-  - Wss.CoreModule.WssClient.CreateSchedule(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.CreateContactConfig(Wss.CoreModule.ContactConfigDefinition,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.CreateEvent(Wss.CoreModule.CreateEventRequest,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.CreateSchedule(Wss.CoreModule.ScheduleDefinition,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
   - Wss.CoreModule.WssClient.DeleteContactConfig(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
   - Wss.CoreModule.WssClient.DeleteEvent(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
   - Wss.CoreModule.WssClient.DeleteEventFromSchedule(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
@@ -49,7 +46,7 @@ items:
   - Wss.CoreModule.WssClient.StartStim(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
   - Wss.CoreModule.WssClient.Started
   - Wss.CoreModule.WssClient.StopStim(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
-  - Wss.CoreModule.WssClient.StreamChange(System.Int32[],System.Int32[],System.Int32[],Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  - Wss.CoreModule.WssClient.StreamChange(Wss.CoreModule.StreamChangeRequest,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
   - Wss.CoreModule.WssClient.SyncGroup(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
   - Wss.CoreModule.WssClient.TryGetModuleQueryData(Wss.CoreModule.WssTarget,System.Byte[]@)
   - Wss.CoreModule.WssClient.ZeroOutStim(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
@@ -98,42 +95,57 @@ items:
       type: System.Boolean
     content.vb: Public Property Started As Boolean
   overload: Wss.CoreModule.WssClient.Started*
-- uid: Wss.CoreModule.WssClient.#ctor(Wss.CoreModule.ITransport,Wss.CoreModule.IFrameCodec,Wss.CoreModule.WSSVersionHandler,System.Byte)
-  commentId: M:Wss.CoreModule.WssClient.#ctor(Wss.CoreModule.ITransport,Wss.CoreModule.IFrameCodec,Wss.CoreModule.WSSVersionHandler,System.Byte)
-  id: '#ctor(Wss.CoreModule.ITransport,Wss.CoreModule.IFrameCodec,Wss.CoreModule.WSSVersionHandler,System.Byte)'
+- uid: Wss.CoreModule.WssClient.#ctor(Wss.CoreModule.ITransport,Wss.CoreModule.IFrameCodec,Wss.CoreModule.WSSVersionHandler,Wss.CoreModule.WssClientOptions)
+  commentId: M:Wss.CoreModule.WssClient.#ctor(Wss.CoreModule.ITransport,Wss.CoreModule.IFrameCodec,Wss.CoreModule.WSSVersionHandler,Wss.CoreModule.WssClientOptions)
+  id: '#ctor(Wss.CoreModule.ITransport,Wss.CoreModule.IFrameCodec,Wss.CoreModule.WSSVersionHandler,Wss.CoreModule.WssClientOptions)'
   parent: Wss.CoreModule.WssClient
   langs:
   - csharp
   - vb
-  name: WssClient(ITransport, IFrameCodec, WSSVersionHandler, byte)
-  nameWithType: WssClient.WssClient(ITransport, IFrameCodec, WSSVersionHandler, byte)
-  fullName: Wss.CoreModule.WssClient.WssClient(Wss.CoreModule.ITransport, Wss.CoreModule.IFrameCodec, Wss.CoreModule.WSSVersionHandler, byte)
+  name: WssClient(ITransport, IFrameCodec, WSSVersionHandler, WssClientOptions)
+  nameWithType: WssClient.WssClient(ITransport, IFrameCodec, WSSVersionHandler, WssClientOptions)
+  fullName: Wss.CoreModule.WssClient.WssClient(Wss.CoreModule.ITransport, Wss.CoreModule.IFrameCodec, Wss.CoreModule.WSSVersionHandler, Wss.CoreModule.WssClientOptions)
   type: Constructor
   assemblies:
   - WSS_Core_Interface
   namespace: Wss.CoreModule
-  summary: Initializes a new client over the provided transport and frame codec.
+  summary: Creates a low-level protocol client over a caller-provided transport and frame codec.
+  remarks: >-
+    <xref href="Wss.CoreModule.ITransport.BytesReceived" data-throw-if-not-resolved="false"></xref> may be raised on a background thread depending on the transport implementation.
+
+    Reply correlation primarily matches responses by <code>(target,msgId)</code>, with additional handling for
+
+    protocol error replies and firmware paths that answer <xref href="Wss.CoreModule.WSSMessageIDs.ModuleQuery" data-throw-if-not-resolved="false"></xref> using
+
+    <xref href="Wss.CoreModule.WSSMessageIDs.RequestAnalog" data-throw-if-not-resolved="false"></xref>.
   example: []
   syntax:
-    content: public WssClient(ITransport transport, IFrameCodec codec, WSSVersionHandler versionHandler, byte sender = 0)
+    content: public WssClient(ITransport transport, IFrameCodec codec, WSSVersionHandler versionHandler, WssClientOptions options)
     parameters:
     - id: transport
       type: Wss.CoreModule.ITransport
-      description: Underlying byte transport (e.g., serial, BLE).
+      description: Underlying byte transport (for example, serial or BLE).
     - id: codec
       type: Wss.CoreModule.IFrameCodec
-      description: Frame codec (escape/unescape + checksum).
+      description: Frame codec used for escaping/deframing and checksum validation.
     - id: versionHandler
       type: Wss.CoreModule.WSSVersionHandler
       description: Firmware version handler used for version-gated commands.
-    - id: sender
-      type: System.Byte
-      description: Sender address byte (defaults to 0x00).
-    content.vb: Public Sub New(transport As ITransport, codec As IFrameCodec, versionHandler As WSSVersionHandler, sender As Byte = 0)
+    - id: options
+      type: Wss.CoreModule.WssClientOptions
+      description: Client options including sender address, transport ownership, reply timeout, and logical target address mapping.
+    content.vb: Public Sub New(transport As ITransport, codec As IFrameCodec, versionHandler As WSSVersionHandler, options As WssClientOptions)
   overload: Wss.CoreModule.WssClient.#ctor*
-  nameWithType.vb: WssClient.New(ITransport, IFrameCodec, WSSVersionHandler, Byte)
-  fullName.vb: Wss.CoreModule.WssClient.New(Wss.CoreModule.ITransport, Wss.CoreModule.IFrameCodec, Wss.CoreModule.WSSVersionHandler, Byte)
-  name.vb: New(ITransport, IFrameCodec, WSSVersionHandler, Byte)
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when <code class="paramref">transport</code>, <code class="paramref">codec</code>, <code class="paramref">versionHandler</code>, or <code class="paramref">options</code> is null.
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: Thrown when the configured response timeout is not positive.
+  nameWithType.vb: WssClient.New(ITransport, IFrameCodec, WSSVersionHandler, WssClientOptions)
+  fullName.vb: Wss.CoreModule.WssClient.New(Wss.CoreModule.ITransport, Wss.CoreModule.IFrameCodec, Wss.CoreModule.WSSVersionHandler, Wss.CoreModule.WssClientOptions)
+  name.vb: New(ITransport, IFrameCodec, WSSVersionHandler, WssClientOptions)
 - uid: Wss.CoreModule.WssClient.ConnectAsync(System.Threading.CancellationToken)
   commentId: M:Wss.CoreModule.WssClient.ConnectAsync(System.Threading.CancellationToken)
   id: ConnectAsync(System.Threading.CancellationToken)
@@ -223,6 +235,7 @@ items:
   - WSS_Core_Interface
   namespace: Wss.CoreModule
   summary: Gets the last cached ModuleQuery data (data-only slice) for a target, if present.
+  remarks: The returned array is the cached in-memory instance for the latest reply, not a defensive copy.
   example: []
   syntax:
     content: public bool TryGetModuleQueryData(WssTarget target, out byte[] data)
@@ -232,7 +245,7 @@ items:
       description: Target device that produced the ModuleQuery reply.
     - id: data
       type: System.Byte[]
-      description: The cached data bytes (snapshot reference).
+      description: The cached data bytes for the most recent reply from <code class="paramref">target</code>.
     return:
       type: System.Boolean
       description: True if cached data exists; otherwise false.
@@ -277,10 +290,13 @@ items:
   assemblies:
   - WSS_Core_Interface
   namespace: Wss.CoreModule
-  summary: >-
-    Releases all resources used by the <xref href="Wss.CoreModule.WssClient" data-throw-if-not-resolved="false"></xref>.
+  summary: Unsubscribes from inbound bytes and releases client state.
+  remarks: >-
+    Disposes the underlying transport only when this instance was constructed with
 
-    Closes the connection and cleans up internal state.
+    <code>ownsTransport</code> set to <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>. This method does not call
+
+    <xref href="Wss.CoreModule.WssClient.DisconnectAsync(System.Threading.CancellationToken)" data-throw-if-not-resolved="false"></xref> automatically.
   example: []
   syntax:
     content: public void Dispose()
@@ -602,16 +618,16 @@ items:
   nameWithType.vb: WssClient.RequestConfigs(Integer, Integer, WssTarget, CancellationToken)
   fullName.vb: Wss.CoreModule.WssClient.RequestConfigs(Integer, Integer, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
   name.vb: RequestConfigs(Integer, Integer, WssTarget, CancellationToken)
-- uid: Wss.CoreModule.WssClient.CreateContactConfig(System.Int32,System.Int32[],System.Int32[],System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
-  commentId: M:Wss.CoreModule.WssClient.CreateContactConfig(System.Int32,System.Int32[],System.Int32[],System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
-  id: CreateContactConfig(System.Int32,System.Int32[],System.Int32[],System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+- uid: Wss.CoreModule.WssClient.CreateContactConfig(Wss.CoreModule.ContactConfigDefinition,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.CreateContactConfig(Wss.CoreModule.ContactConfigDefinition,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: CreateContactConfig(Wss.CoreModule.ContactConfigDefinition,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
   parent: Wss.CoreModule.WssClient
   langs:
   - csharp
   - vb
-  name: CreateContactConfig(int, int[], int[], int, WssTarget, CancellationToken)
-  nameWithType: WssClient.CreateContactConfig(int, int[], int[], int, WssTarget, CancellationToken)
-  fullName: Wss.CoreModule.WssClient.CreateContactConfig(int, int[], int[], int, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  name: CreateContactConfig(ContactConfigDefinition, WssTarget, CancellationToken)
+  nameWithType: WssClient.CreateContactConfig(ContactConfigDefinition, WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.CreateContactConfig(Wss.CoreModule.ContactConfigDefinition, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
   type: Method
   assemblies:
   - WSS_Core_Interface
@@ -622,39 +638,14 @@ items:
     Defines the sources and sinks for stimulation and recharge phases.
   example: []
   syntax:
-    content: public Task<string> CreateContactConfig(int contactId, int[] stimSetup, int[] rechargeSetup, int LEDs, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
+    content: public Task<string> CreateContactConfig(ContactConfigDefinition definition, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
     parameters:
-    - id: contactId
-      type: System.Int32
-      description: ID for the contact configuration (0–255).
-    - id: stimSetup
-      type: System.Int32[]
+    - id: definition
+      type: Wss.CoreModule.ContactConfigDefinition
       description: >-
-        Array of 4 integers (0 = not used, 1 = source, 2 = sink) representing
+        Contact configuration values to encode and send, including the contact id, four-output stimulation setup,
 
-        the stimulation phase for each output on the stimulator.  
-
-        Index 0 = closest to switch, index 3 = farthest from switch.
-    - id: rechargeSetup
-      type: System.Int32[]
-      description: >-
-        Array of 4 integers (0 = not used, 1 = source, 2 = sink) representing
-
-        the recharge phase for each output on the stimulator.  
-
-        Index 0 = closest to switch, index 3 = farthest from switch.
-    - id: LEDs
-      type: System.Int32
-      description: >-
-        Optional int representing LED locations to light during stimulation
-
-        Index int read as binary so 0011 or 3 is both the first and second LEDs (first is clossest to the switch).
-
-        1 in binary is on and 0 is off. The trigering of the event will trigger the on LEDs
-
-        Ignored if not supported by firmware.
-
-        Pass -1 to indicate no LED configuration.
+        four-output recharge setup, and optional LED bitmask.
     - id: target
       type: Wss.CoreModule.WssTarget
       description: The WSS target device to send the configuration to.
@@ -664,11 +655,15 @@ items:
     return:
       type: System.Threading.Tasks.Task{System.String}
       description: Processed response string from the WSS target.
-    content.vb: Public Function CreateContactConfig(contactId As Integer, stimSetup As Integer(), rechargeSetup As Integer(), LEDs As Integer, target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
+    content.vb: Public Function CreateContactConfig(definition As ContactConfigDefinition, target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
   overload: Wss.CoreModule.WssClient.CreateContactConfig*
-  nameWithType.vb: WssClient.CreateContactConfig(Integer, Integer(), Integer(), Integer, WssTarget, CancellationToken)
-  fullName.vb: Wss.CoreModule.WssClient.CreateContactConfig(Integer, Integer(), Integer(), Integer, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
-  name.vb: CreateContactConfig(Integer, Integer(), Integer(), Integer, WssTarget, CancellationToken)
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when <code class="paramref">definition</code> is null.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when either setup array in <code class="paramref">definition</code> is null or does not contain exactly four entries.
 - uid: Wss.CoreModule.WssClient.DeleteContactConfig(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
   commentId: M:Wss.CoreModule.WssClient.DeleteContactConfig(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
   id: DeleteContactConfig(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
@@ -705,34 +700,33 @@ items:
   nameWithType.vb: WssClient.DeleteContactConfig(Integer, WssTarget, CancellationToken)
   fullName.vb: Wss.CoreModule.WssClient.DeleteContactConfig(Integer, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
   name.vb: DeleteContactConfig(Integer, WssTarget, CancellationToken)
-- uid: Wss.CoreModule.WssClient.CreateEvent(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
-  commentId: M:Wss.CoreModule.WssClient.CreateEvent(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
-  id: CreateEvent(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+- uid: Wss.CoreModule.WssClient.CreateEvent(Wss.CoreModule.CreateEventRequest,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.CreateEvent(Wss.CoreModule.CreateEventRequest,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: CreateEvent(Wss.CoreModule.CreateEventRequest,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
   parent: Wss.CoreModule.WssClient
   langs:
   - csharp
   - vb
-  name: CreateEvent(int, int, int, WssTarget, CancellationToken)
-  nameWithType: WssClient.CreateEvent(int, int, int, WssTarget, CancellationToken)
-  fullName: Wss.CoreModule.WssClient.CreateEvent(int, int, int, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  name: CreateEvent(CreateEventRequest, WssTarget, CancellationToken)
+  nameWithType: WssClient.CreateEvent(CreateEventRequest, WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.CreateEvent(Wss.CoreModule.CreateEventRequest, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
   type: Method
   assemblies:
   - WSS_Core_Interface
   namespace: Wss.CoreModule
-  summary: Creates a basic event on the WSS device.
+  summary: >-
+    Creates an event on the WSS device from a grouped request model.
+
+    The request supports the same payload combinations as the previous overload set:
+
+    basic, shape-only, amplitudes plus pulse widths, or shapes plus amplitudes plus pulse widths.
   example: []
   syntax:
-    content: public Task<string> CreateEvent(int eventId, int delayMs, int contactConfigId, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
+    content: public Task<string> CreateEvent(CreateEventRequest request, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
     parameters:
-    - id: eventId
-      type: System.Int32
-      description: Event ID (0–255).
-    - id: delayMs
-      type: System.Int32
-      description: Delay from schedule start in milliseconds (0–255 in this command variant).
-    - id: contactConfigId
-      type: System.Int32
-      description: Contact configuration ID (0–255).
+    - id: request
+      type: Wss.CoreModule.CreateEventRequest
+      description: Grouped event request to encode and validate.
     - id: target
       type: Wss.CoreModule.WssTarget
       description: 'Target WSS device (default: Wss1).'
@@ -742,205 +736,18 @@ items:
     return:
       type: System.Threading.Tasks.Task{System.String}
       description: Processed response string from the WSS target.
-    content.vb: Public Function CreateEvent(eventId As Integer, delayMs As Integer, contactConfigId As Integer, target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
+    content.vb: Public Function CreateEvent(request As CreateEventRequest, target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
   overload: Wss.CoreModule.WssClient.CreateEvent*
-  nameWithType.vb: WssClient.CreateEvent(Integer, Integer, Integer, WssTarget, CancellationToken)
-  fullName.vb: Wss.CoreModule.WssClient.CreateEvent(Integer, Integer, Integer, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
-  name.vb: CreateEvent(Integer, Integer, Integer, WssTarget, CancellationToken)
-- uid: Wss.CoreModule.WssClient.CreateEvent(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
-  commentId: M:Wss.CoreModule.WssClient.CreateEvent(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
-  id: CreateEvent(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
-  parent: Wss.CoreModule.WssClient
-  langs:
-  - csharp
-  - vb
-  name: CreateEvent(int, int, int, int, int, WssTarget, CancellationToken)
-  nameWithType: WssClient.CreateEvent(int, int, int, int, int, WssTarget, CancellationToken)
-  fullName: Wss.CoreModule.WssClient.CreateEvent(int, int, int, int, int, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
-  type: Method
-  assemblies:
-  - WSS_Core_Interface
-  namespace: Wss.CoreModule
-  summary: Creates an event with explicit shape IDs for the standard and recharge phases.
-  example: []
-  syntax:
-    content: public Task<string> CreateEvent(int eventId, int delayMs, int contactConfigId, int standardShapeId, int rechargeShapeId, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
-    parameters:
-    - id: eventId
-      type: System.Int32
-      description: Event ID (0–255).
-    - id: delayMs
-      type: System.Int32
-      description: Delay from schedule start in milliseconds (0–255 in this command variant).
-    - id: contactConfigId
-      type: System.Int32
-      description: Contact configuration ID (0–255).
-    - id: standardShapeId
-      type: System.Int32
-      description: >-
-        Shape ID used during the standard (stim) phase:
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when <code class="paramref">request</code> is null.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: >-
+      Thrown when the request mixes incompatible combinations, such as only one shape ID,
 
-        0=Rectangular (default), 1=Rectangular (DAC), 2=Sine, 3=Gaussian,
-
-        4=Exponential Increase, 5=Exponential Decrease,
-
-        6=Linear Increase, 7=Linear Decrease,
-
-        10=Trapezoid (setup required),
-
-        11=User Program 1 (setup required),
-
-        12=User Program 2 (setup required),
-
-        13=User Program 3 (setup required).
-    - id: rechargeShapeId
-      type: System.Int32
-      description: Shape ID used during the recharge phase (same mapping as <code class="paramref">standardShapeId</code>).
-    - id: target
-      type: Wss.CoreModule.WssTarget
-      description: 'Target WSS device (default: Wss1).'
-    - id: ct
-      type: System.Threading.CancellationToken
-      description: Optional cancellation token.
-    return:
-      type: System.Threading.Tasks.Task{System.String}
-      description: Processed response string from the WSS target.
-    content.vb: Public Function CreateEvent(eventId As Integer, delayMs As Integer, contactConfigId As Integer, standardShapeId As Integer, rechargeShapeId As Integer, target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
-  overload: Wss.CoreModule.WssClient.CreateEvent*
-  nameWithType.vb: WssClient.CreateEvent(Integer, Integer, Integer, Integer, Integer, WssTarget, CancellationToken)
-  fullName.vb: Wss.CoreModule.WssClient.CreateEvent(Integer, Integer, Integer, Integer, Integer, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
-  name.vb: CreateEvent(Integer, Integer, Integer, Integer, Integer, WssTarget, CancellationToken)
-- uid: Wss.CoreModule.WssClient.CreateEvent(System.Int32,System.Int32,System.Int32,System.Int32[],System.Int32[],System.Int32[],Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
-  commentId: M:Wss.CoreModule.WssClient.CreateEvent(System.Int32,System.Int32,System.Int32,System.Int32[],System.Int32[],System.Int32[],Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
-  id: CreateEvent(System.Int32,System.Int32,System.Int32,System.Int32[],System.Int32[],System.Int32[],Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
-  parent: Wss.CoreModule.WssClient
-  langs:
-  - csharp
-  - vb
-  name: CreateEvent(int, int, int, int[], int[], int[], WssTarget, CancellationToken)
-  nameWithType: WssClient.CreateEvent(int, int, int, int[], int[], int[], WssTarget, CancellationToken)
-  fullName: Wss.CoreModule.WssClient.CreateEvent(int, int, int, int[], int[], int[], Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
-  type: Method
-  assemblies:
-  - WSS_Core_Interface
-  namespace: Wss.CoreModule
-  summary: >-
-    Creates an event with amplitude arrays for standard/recharge phases plus pulse width settings.
-
-    PW fields are sent as 8-bit if all ≤ oneByte; otherwise all three (std, IPD, rech) are encoded as 16-bit big-endian.
-
-    Wire order for PW matches your original: [stdPW, IPD, rechPW].
-  example: []
-  syntax:
-    content: public Task<string> CreateEvent(int eventId, int delayMs, int contactConfigId, int[] standardAmp, int[] rechargeAmp, int[] pw, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
-    parameters:
-    - id: eventId
-      type: System.Int32
-      description: Event ID (0–255 or your chosen cap).
-    - id: delayMs
-      type: System.Int32
-      description: Delay from schedule start in milliseconds (0–255 in this variant).
-    - id: contactConfigId
-      type: System.Int32
-      description: Contact configuration ID (0–255).
-    - id: standardAmp
-      type: System.Int32[]
-      description: Four amplitudes for the standard (stim) phase (0–255 each).
-    - id: rechargeAmp
-      type: System.Int32[]
-      description: Four amplitudes for the recharge phase (0–255 each).
-    - id: pw
-      type: System.Int32[]
-      description: 'Three PW parameters: [standardPW, rechargePW, IPD] in microseconds.'
-    - id: target
-      type: Wss.CoreModule.WssTarget
-      description: Target WSS device.
-    - id: ct
-      type: System.Threading.CancellationToken
-      description: Cancellation token.
-    return:
-      type: System.Threading.Tasks.Task{System.String}
-    content.vb: Public Function CreateEvent(eventId As Integer, delayMs As Integer, contactConfigId As Integer, standardAmp As Integer(), rechargeAmp As Integer(), pw As Integer(), target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
-  overload: Wss.CoreModule.WssClient.CreateEvent*
-  nameWithType.vb: WssClient.CreateEvent(Integer, Integer, Integer, Integer(), Integer(), Integer(), WssTarget, CancellationToken)
-  fullName.vb: Wss.CoreModule.WssClient.CreateEvent(Integer, Integer, Integer, Integer(), Integer(), Integer(), Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
-  name.vb: CreateEvent(Integer, Integer, Integer, Integer(), Integer(), Integer(), WssTarget, CancellationToken)
-- uid: Wss.CoreModule.WssClient.CreateEvent(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32[],System.Int32[],System.Int32[],Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
-  commentId: M:Wss.CoreModule.WssClient.CreateEvent(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32[],System.Int32[],System.Int32[],Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
-  id: CreateEvent(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32[],System.Int32[],System.Int32[],Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
-  parent: Wss.CoreModule.WssClient
-  langs:
-  - csharp
-  - vb
-  name: CreateEvent(int, int, int, int, int, int[], int[], int[], WssTarget, CancellationToken)
-  nameWithType: WssClient.CreateEvent(int, int, int, int, int, int[], int[], int[], WssTarget, CancellationToken)
-  fullName: Wss.CoreModule.WssClient.CreateEvent(int, int, int, int, int, int[], int[], int[], Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
-  type: Method
-  assemblies:
-  - WSS_Core_Interface
-  namespace: Wss.CoreModule
-  summary: >-
-    Creates an event with explicit shape IDs, amplitude arrays for standard/recharge phases, and pulse width settings.
-
-    PW fields are sent as 8-bit if all ≤ oneByte; otherwise all three (std, IPD, rech) are encoded as 16-bit big-endian.
-
-    Wire order for PW matches your original: [stdPW, IPD, rechPW].
-  example: []
-  syntax:
-    content: public Task<string> CreateEvent(int eventId, int delayMs, int contactConfigId, int standardShapeId, int rechargeShapeId, int[] standardAmp, int[] rechargeAmp, int[] pw, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
-    parameters:
-    - id: eventId
-      type: System.Int32
-      description: Event ID (0–255 or your chosen cap).
-    - id: delayMs
-      type: System.Int32
-      description: Delay from schedule start in milliseconds (0–255 in this variant).
-    - id: contactConfigId
-      type: System.Int32
-      description: Contact configuration ID (0–255).
-    - id: standardShapeId
-      type: System.Int32
-      description: >-
-        Shape ID used during the standard (stim) phase:
-
-        0=Rectangular (default), 1=Rectangular (DAC), 2=Sine, 3=Gaussian,
-
-        4=Exponential Increase, 5=Exponential Decrease,
-
-        6=Linear Increase, 7=Linear Decrease,
-
-        10=Trapezoid (setup required),
-
-        11=User Program 1 (setup required),
-
-        12=User Program 2 (setup required),
-
-        13=User Program 3 (setup required).
-    - id: rechargeShapeId
-      type: System.Int32
-      description: Shape ID used during the recharge phase (same mapping as <code class="paramref">standardShapeId</code>).
-    - id: standardAmp
-      type: System.Int32[]
-      description: Four amplitudes for the standard (stim) phase (0–255 each).
-    - id: rechargeAmp
-      type: System.Int32[]
-      description: Four amplitudes for the recharge phase (0–255 each).
-    - id: pw
-      type: System.Int32[]
-      description: 'Three PW parameters: [standardPW, rechargePW, IPD] in microseconds.'
-    - id: target
-      type: Wss.CoreModule.WssTarget
-      description: Target WSS device.
-    - id: ct
-      type: System.Threading.CancellationToken
-      description: Cancellation token.
-    return:
-      type: System.Threading.Tasks.Task{System.String}
-    content.vb: Public Function CreateEvent(eventId As Integer, delayMs As Integer, contactConfigId As Integer, standardShapeId As Integer, rechargeShapeId As Integer, standardAmp As Integer(), rechargeAmp As Integer(), pw As Integer(), target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
-  overload: Wss.CoreModule.WssClient.CreateEvent*
-  nameWithType.vb: WssClient.CreateEvent(Integer, Integer, Integer, Integer, Integer, Integer(), Integer(), Integer(), WssTarget, CancellationToken)
-  fullName.vb: Wss.CoreModule.WssClient.CreateEvent(Integer, Integer, Integer, Integer, Integer, Integer(), Integer(), Integer(), Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
-  name.vb: CreateEvent(Integer, Integer, Integer, Integer, Integer, Integer(), Integer(), Integer(), WssTarget, CancellationToken)
+      only one amplitude array, or pulse widths without both amplitude arrays.
 - uid: Wss.CoreModule.WssClient.DeleteEvent(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
   commentId: M:Wss.CoreModule.WssClient.DeleteEvent(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
   id: DeleteEvent(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
@@ -1385,34 +1192,28 @@ items:
   nameWithType.vb: WssClient.EditEventEnableBit(Integer, Integer, WssTarget, CancellationToken)
   fullName.vb: Wss.CoreModule.WssClient.EditEventEnableBit(Integer, Integer, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
   name.vb: EditEventEnableBit(Integer, Integer, WssTarget, CancellationToken)
-- uid: Wss.CoreModule.WssClient.CreateSchedule(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
-  commentId: M:Wss.CoreModule.WssClient.CreateSchedule(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
-  id: CreateSchedule(System.Int32,System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+- uid: Wss.CoreModule.WssClient.CreateSchedule(Wss.CoreModule.ScheduleDefinition,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.CreateSchedule(Wss.CoreModule.ScheduleDefinition,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: CreateSchedule(Wss.CoreModule.ScheduleDefinition,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
   parent: Wss.CoreModule.WssClient
   langs:
   - csharp
   - vb
-  name: CreateSchedule(int, int, int, WssTarget, CancellationToken)
-  nameWithType: WssClient.CreateSchedule(int, int, int, WssTarget, CancellationToken)
-  fullName: Wss.CoreModule.WssClient.CreateSchedule(int, int, int, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  name: CreateSchedule(ScheduleDefinition, WssTarget, CancellationToken)
+  nameWithType: WssClient.CreateSchedule(ScheduleDefinition, WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.CreateSchedule(Wss.CoreModule.ScheduleDefinition, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
   type: Method
   assemblies:
   - WSS_Core_Interface
   namespace: Wss.CoreModule
-  summary: Creates a schedule.
+  summary: Creates a schedule from a grouped definition model.
   example: []
   syntax:
-    content: public Task<string> CreateSchedule(int scheduleId, int durationMs, int syncSignal, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
+    content: public Task<string> CreateSchedule(ScheduleDefinition definition, WssTarget target = WssTarget.Wss1, CancellationToken ct = default)
     parameters:
-    - id: scheduleId
-      type: System.Int32
-      description: Schedule ID (0–255).
-    - id: durationMs
-      type: System.Int32
-      description: Duration in milliseconds (16-bit, big-endian on wire).
-    - id: syncSignal
-      type: System.Int32
-      description: Sync group ID (0–255).
+    - id: definition
+      type: Wss.CoreModule.ScheduleDefinition
+      description: Schedule ID, duration, and sync group values.
     - id: target
       type: Wss.CoreModule.WssTarget
       description: Target WSS device.
@@ -1421,11 +1222,16 @@ items:
       description: Cancellation token.
     return:
       type: System.Threading.Tasks.Task{System.String}
-    content.vb: Public Function CreateSchedule(scheduleId As Integer, durationMs As Integer, syncSignal As Integer, target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
+      description: Processed response string from the WSS target.
+    content.vb: Public Function CreateSchedule(definition As ScheduleDefinition, target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
   overload: Wss.CoreModule.WssClient.CreateSchedule*
-  nameWithType.vb: WssClient.CreateSchedule(Integer, Integer, Integer, WssTarget, CancellationToken)
-  fullName.vb: Wss.CoreModule.WssClient.CreateSchedule(Integer, Integer, Integer, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
-  name.vb: CreateSchedule(Integer, Integer, Integer, WssTarget, CancellationToken)
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when <code class="paramref">definition</code> is null.
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: Thrown when a value in <code class="paramref">definition</code> falls outside the protocol-supported range.
 - uid: Wss.CoreModule.WssClient.DeleteSchedule(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
   commentId: M:Wss.CoreModule.WssClient.DeleteSchedule(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
   id: DeleteSchedule(System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
@@ -1880,16 +1686,16 @@ items:
       type: System.Threading.Tasks.Task{System.String}
     content.vb: Public Function GetLog(target As WssTarget = WssTarget.Wss1, ct As CancellationToken = Nothing) As Task(Of String)
   overload: Wss.CoreModule.WssClient.GetLog*
-- uid: Wss.CoreModule.WssClient.StreamChange(System.Int32[],System.Int32[],System.Int32[],Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
-  commentId: M:Wss.CoreModule.WssClient.StreamChange(System.Int32[],System.Int32[],System.Int32[],Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
-  id: StreamChange(System.Int32[],System.Int32[],System.Int32[],Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+- uid: Wss.CoreModule.WssClient.StreamChange(Wss.CoreModule.StreamChangeRequest,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.StreamChange(Wss.CoreModule.StreamChangeRequest,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
+  id: StreamChange(Wss.CoreModule.StreamChangeRequest,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
   parent: Wss.CoreModule.WssClient
   langs:
   - csharp
   - vb
-  name: StreamChange(int[], int[], int[], WssTarget, CancellationToken)
-  nameWithType: WssClient.StreamChange(int[], int[], int[], WssTarget, CancellationToken)
-  fullName: Wss.CoreModule.WssClient.StreamChange(int[], int[], int[], Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
+  name: StreamChange(StreamChangeRequest, WssTarget, CancellationToken)
+  nameWithType: WssClient.StreamChange(StreamChangeRequest, WssTarget, CancellationToken)
+  fullName: Wss.CoreModule.WssClient.StreamChange(Wss.CoreModule.StreamChangeRequest, Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
   type: Method
   assemblies:
   - WSS_Core_Interface
@@ -1897,24 +1703,18 @@ items:
   summary: >-
     Streams changes to PA (amplitude), PW (pulse width), and IPI (period) for up to three schedules in one shot.
 
-    Pass exactly one of the arrays as <code>null</code> to omit that group (protocol supports omitting at most one group).
+    The grouped request may omit at most one of the three data groups.
 
     Uses opcodes:
       0x30 = PA+PW+IPI,  0x31 = PA+PW (no IPI),  0x32 = PA+IPI (no PW),  0x33 = PW+IPI (no PA).
     All elements are 0..255 in this streaming variant (one byte each).
   example: []
   syntax:
-    content: public Task StreamChange(int[] pa, int[] pw, int[] ipi, WssTarget target = WssTarget.Broadcast, CancellationToken ct = default)
+    content: public Task StreamChange(StreamChangeRequest request, WssTarget target = WssTarget.Broadcast, CancellationToken ct = default)
     parameters:
-    - id: pa
-      type: System.Int32[]
-      description: Three amplitudes (0..255) or null to keep PA unchanged.
-    - id: pw
-      type: System.Int32[]
-      description: Three pulse widths (0..255) or null to keep PW unchanged.
-    - id: ipi
-      type: System.Int32[]
-      description: Three periods in ms (0..255) or null to keep IPI unchanged.
+    - id: request
+      type: Wss.CoreModule.StreamChangeRequest
+      description: Grouped PA/PW/IPI request.
     - id: target
       type: Wss.CoreModule.WssTarget
       description: Target WSS; streaming commonly uses Broadcast.
@@ -1923,11 +1723,19 @@ items:
       description: Cancellation token.
     return:
       type: System.Threading.Tasks.Task
-    content.vb: Public Function StreamChange(pa As Integer(), pw As Integer(), ipi As Integer(), target As WssTarget = WssTarget.Broadcast, ct As CancellationToken = Nothing) As Task
+      description: A task representing the outbound streaming send.
+    content.vb: Public Function StreamChange(request As StreamChangeRequest, target As WssTarget = WssTarget.Broadcast, ct As CancellationToken = Nothing) As Task
   overload: Wss.CoreModule.WssClient.StreamChange*
-  nameWithType.vb: WssClient.StreamChange(Integer(), Integer(), Integer(), WssTarget, CancellationToken)
-  fullName.vb: Wss.CoreModule.WssClient.StreamChange(Integer(), Integer(), Integer(), Wss.CoreModule.WssTarget, System.Threading.CancellationToken)
-  name.vb: StreamChange(Integer(), Integer(), Integer(), WssTarget, CancellationToken)
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when <code class="paramref">request</code> is null.
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: Thrown when more than one data group is omitted.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when a supplied group does not contain exactly 3 elements.
 - uid: Wss.CoreModule.WssClient.ZeroOutStim(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
   commentId: M:Wss.CoreModule.WssClient.ZeroOutStim(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
   id: ZeroOutStim(Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
@@ -2030,9 +1838,40 @@ references:
   nameWithType.vb: Boolean
   fullName.vb: Boolean
   name.vb: Boolean
+- uid: Wss.CoreModule.ITransport.BytesReceived
+  commentId: E:Wss.CoreModule.ITransport.BytesReceived
+  parent: Wss.CoreModule.ITransport
+  href: Wss.CoreModule.ITransport.html#Wss_CoreModule_ITransport_BytesReceived
+  name: BytesReceived
+  nameWithType: ITransport.BytesReceived
+  fullName: Wss.CoreModule.ITransport.BytesReceived
+- uid: Wss.CoreModule.WSSMessageIDs.ModuleQuery
+  commentId: F:Wss.CoreModule.WSSMessageIDs.ModuleQuery
+  href: Wss.CoreModule.WSSMessageIDs.html#Wss_CoreModule_WSSMessageIDs_ModuleQuery
+  name: ModuleQuery
+  nameWithType: WSSMessageIDs.ModuleQuery
+  fullName: Wss.CoreModule.WSSMessageIDs.ModuleQuery
+- uid: Wss.CoreModule.WSSMessageIDs.RequestAnalog
+  commentId: F:Wss.CoreModule.WSSMessageIDs.RequestAnalog
+  href: Wss.CoreModule.WSSMessageIDs.html#Wss_CoreModule_WSSMessageIDs_RequestAnalog
+  name: RequestAnalog
+  nameWithType: WSSMessageIDs.RequestAnalog
+  fullName: Wss.CoreModule.WSSMessageIDs.RequestAnalog
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+  isExternal: true
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.ArgumentOutOfRangeException
+  commentId: T:System.ArgumentOutOfRangeException
+  isExternal: true
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
 - uid: Wss.CoreModule.WssClient.#ctor*
   commentId: Overload:Wss.CoreModule.WssClient.#ctor
-  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient__ctor_Wss_CoreModule_ITransport_Wss_CoreModule_IFrameCodec_Wss_CoreModule_WSSVersionHandler_System_Byte_
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient__ctor_Wss_CoreModule_ITransport_Wss_CoreModule_IFrameCodec_Wss_CoreModule_WSSVersionHandler_Wss_CoreModule_WssClientOptions_
   name: WssClient
   nameWithType: WssClient.WssClient
   fullName: Wss.CoreModule.WssClient.WssClient
@@ -2046,16 +1885,13 @@ references:
   name: WSSVersionHandler
   nameWithType: WSSVersionHandler
   fullName: Wss.CoreModule.WSSVersionHandler
-- uid: System.Byte
-  commentId: T:System.Byte
-  parent: System
-  isExternal: true
-  name: byte
-  nameWithType: byte
-  fullName: byte
-  nameWithType.vb: Byte
-  fullName.vb: Byte
-  name.vb: Byte
+- uid: Wss.CoreModule.WssClientOptions
+  commentId: T:Wss.CoreModule.WssClientOptions
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.WssClientOptions.html
+  name: WssClientOptions
+  nameWithType: WssClientOptions
+  fullName: Wss.CoreModule.WssClientOptions
 - uid: System.InvalidOperationException
   commentId: T:System.InvalidOperationException
   isExternal: true
@@ -2203,12 +2039,31 @@ references:
   name: IsModuleQueryAvailable
   nameWithType: WssClient.IsModuleQueryAvailable
   fullName: Wss.CoreModule.WssClient.IsModuleQueryAvailable
-- uid: Wss.CoreModule.WssClient
-  commentId: T:Wss.CoreModule.WssClient
-  href: Wss.CoreModule.WssClient.html
-  name: WssClient
-  nameWithType: WssClient
-  fullName: Wss.CoreModule.WssClient
+- uid: Wss.CoreModule.WssClient.DisconnectAsync(System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.WssClient.DisconnectAsync(System.Threading.CancellationToken)
+  isExternal: true
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_DisconnectAsync_System_Threading_CancellationToken_
+  name: DisconnectAsync(CancellationToken)
+  nameWithType: WssClient.DisconnectAsync(CancellationToken)
+  fullName: Wss.CoreModule.WssClient.DisconnectAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Wss.CoreModule.WssClient.DisconnectAsync(System.Threading.CancellationToken)
+    name: DisconnectAsync
+    href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_DisconnectAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.WssClient.DisconnectAsync(System.Threading.CancellationToken)
+    name: DisconnectAsync
+    href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_DisconnectAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+  - name: )
 - uid: Wss.CoreModule.WssClient.Dispose*
   commentId: Overload:Wss.CoreModule.WssClient.Dispose
   href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_Dispose
@@ -2372,32 +2227,25 @@ references:
   name: RequestConfigs
   nameWithType: WssClient.RequestConfigs
   fullName: Wss.CoreModule.WssClient.RequestConfigs
+- uid: System.ArgumentException
+  commentId: T:System.ArgumentException
+  isExternal: true
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
 - uid: Wss.CoreModule.WssClient.CreateContactConfig*
   commentId: Overload:Wss.CoreModule.WssClient.CreateContactConfig
-  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_CreateContactConfig_System_Int32_System_Int32___System_Int32___System_Int32_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_CreateContactConfig_Wss_CoreModule_ContactConfigDefinition_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
   name: CreateContactConfig
   nameWithType: WssClient.CreateContactConfig
   fullName: Wss.CoreModule.WssClient.CreateContactConfig
-- uid: System.Int32[]
-  isExternal: true
-  name: int[]
-  nameWithType: int[]
-  fullName: int[]
-  nameWithType.vb: Integer()
-  fullName.vb: Integer()
-  name.vb: Integer()
-  spec.csharp:
-  - uid: System.Int32
-    name: int
-    isExternal: true
-  - name: '['
-  - name: ']'
-  spec.vb:
-  - uid: System.Int32
-    name: Integer
-    isExternal: true
-  - name: (
-  - name: )
+- uid: Wss.CoreModule.ContactConfigDefinition
+  commentId: T:Wss.CoreModule.ContactConfigDefinition
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.ContactConfigDefinition.html
+  name: ContactConfigDefinition
+  nameWithType: ContactConfigDefinition
+  fullName: Wss.CoreModule.ContactConfigDefinition
 - uid: Wss.CoreModule.WssClient.DeleteContactConfig*
   commentId: Overload:Wss.CoreModule.WssClient.DeleteContactConfig
   href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_DeleteContactConfig_System_Int32_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
@@ -2406,10 +2254,17 @@ references:
   fullName: Wss.CoreModule.WssClient.DeleteContactConfig
 - uid: Wss.CoreModule.WssClient.CreateEvent*
   commentId: Overload:Wss.CoreModule.WssClient.CreateEvent
-  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_CreateEvent_System_Int32_System_Int32_System_Int32_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_CreateEvent_Wss_CoreModule_CreateEventRequest_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
   name: CreateEvent
   nameWithType: WssClient.CreateEvent
   fullName: Wss.CoreModule.WssClient.CreateEvent
+- uid: Wss.CoreModule.CreateEventRequest
+  commentId: T:Wss.CoreModule.CreateEventRequest
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.CreateEventRequest.html
+  name: CreateEventRequest
+  nameWithType: CreateEventRequest
+  fullName: Wss.CoreModule.CreateEventRequest
 - uid: Wss.CoreModule.WssClient.DeleteEvent*
   commentId: Overload:Wss.CoreModule.WssClient.DeleteEvent
   href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_DeleteEvent_System_Int32_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
@@ -2446,6 +2301,26 @@ references:
   name: EditEventPw
   nameWithType: WssClient.EditEventPw
   fullName: Wss.CoreModule.WssClient.EditEventPw
+- uid: System.Int32[]
+  isExternal: true
+  name: int[]
+  nameWithType: int[]
+  fullName: int[]
+  nameWithType.vb: Integer()
+  fullName.vb: Integer()
+  name.vb: Integer()
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+  - name: (
+  - name: )
 - uid: Wss.CoreModule.WssClient.EditEventAmp*
   commentId: Overload:Wss.CoreModule.WssClient.EditEventAmp
   href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_EditEventAmp_System_Int32_System_Int32___System_Int32___Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
@@ -2478,10 +2353,17 @@ references:
   fullName: Wss.CoreModule.WssClient.EditEventEnableBit
 - uid: Wss.CoreModule.WssClient.CreateSchedule*
   commentId: Overload:Wss.CoreModule.WssClient.CreateSchedule
-  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_CreateSchedule_System_Int32_System_Int32_System_Int32_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_CreateSchedule_Wss_CoreModule_ScheduleDefinition_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
   name: CreateSchedule
   nameWithType: WssClient.CreateSchedule
   fullName: Wss.CoreModule.WssClient.CreateSchedule
+- uid: Wss.CoreModule.ScheduleDefinition
+  commentId: T:Wss.CoreModule.ScheduleDefinition
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.ScheduleDefinition.html
+  name: ScheduleDefinition
+  nameWithType: ScheduleDefinition
+  fullName: Wss.CoreModule.ScheduleDefinition
 - uid: Wss.CoreModule.WssClient.DeleteSchedule*
   commentId: Overload:Wss.CoreModule.WssClient.DeleteSchedule
   href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_DeleteSchedule_System_Int32_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
@@ -2560,12 +2442,25 @@ references:
   name: GetLog
   nameWithType: WssClient.GetLog
   fullName: Wss.CoreModule.WssClient.GetLog
+- uid: System.NotSupportedException
+  commentId: T:System.NotSupportedException
+  isExternal: true
+  name: NotSupportedException
+  nameWithType: NotSupportedException
+  fullName: System.NotSupportedException
 - uid: Wss.CoreModule.WssClient.StreamChange*
   commentId: Overload:Wss.CoreModule.WssClient.StreamChange
-  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_StreamChange_System_Int32___System_Int32___System_Int32___Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_StreamChange_Wss_CoreModule_StreamChangeRequest_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_
   name: StreamChange
   nameWithType: WssClient.StreamChange
   fullName: Wss.CoreModule.WssClient.StreamChange
+- uid: Wss.CoreModule.StreamChangeRequest
+  commentId: T:Wss.CoreModule.StreamChangeRequest
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.StreamChangeRequest.html
+  name: StreamChangeRequest
+  nameWithType: StreamChangeRequest
+  fullName: Wss.CoreModule.StreamChangeRequest
 - uid: Wss.CoreModule.WssClient.ZeroOutStim*
   commentId: Overload:Wss.CoreModule.WssClient.ZeroOutStim
   href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient_ZeroOutStim_Wss_CoreModule_WssTarget_System_Threading_CancellationToken_

@@ -1,6 +1,10 @@
 ﻿# Core Architecture (Transport, Codec, Core)
 
+[Home](../index.md) | [Back to Concepts](../concepts.md)
+
 This guide explains the stack beneath the core—how bytes move from transports to the frame codec to the core—and the lifecycle flows (initialize, setup, start/stop streaming, mid-stream edits with replies, reset/shutdown).
+
+For a guide focused specifically on setup order, initial setup versus later setup replacement, and where setup changes can be made, see [Setup Order and Modification](setup-order-and-modification.md).
 
 ## Stack Summary
 - Transport (`WSSBaseCode/Interfaces/ITransport.cs`)
@@ -133,3 +137,9 @@ _ = ScheduleSetupChangeAsync(WssTarget.Wss1,
   - Pauses streaming if active, enqueues setup steps that await device replies, and resumes streaming when the queue drains.
   - Ensures mid-stream edits are safe and ordered across targets.
 - Future: split into finer capabilities (waveform upload, event editing, config persistence/query) to align with firmware/hardware feature variations.
+
+Navigation:
+
+- [Back to Home](../index.md)
+- [Back to Concepts](../concepts.md)
+- [Related: Layering Guide (Modules)](layering-guide.md)

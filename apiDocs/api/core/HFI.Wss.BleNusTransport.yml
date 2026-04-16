@@ -1,0 +1,862 @@
+### YamlMime:ManagedReference
+items:
+- uid: HFI.Wss.BleNusTransport
+  commentId: T:HFI.Wss.BleNusTransport
+  id: BleNusTransport
+  parent: HFI.Wss
+  children:
+  - HFI.Wss.BleNusTransport.#ctor(HFI.Wss.BleNusTransportOptions)
+  - HFI.Wss.BleNusTransport.#ctor(System.String)
+  - HFI.Wss.BleNusTransport.BytesReceived
+  - HFI.Wss.BleNusTransport.ConnectAsync(System.Threading.CancellationToken)
+  - HFI.Wss.BleNusTransport.CreateDefaultOptions(System.String)
+  - HFI.Wss.BleNusTransport.DefaultNotifyCharacteristicUuid
+  - HFI.Wss.BleNusTransport.DefaultServiceUuid
+  - HFI.Wss.BleNusTransport.DefaultWriteCharacteristicUuid
+  - HFI.Wss.BleNusTransport.DisconnectAsync(System.Threading.CancellationToken)
+  - HFI.Wss.BleNusTransport.Dispose
+  - HFI.Wss.BleNusTransport.IsConnected
+  - HFI.Wss.BleNusTransport.SendAsync(System.Byte[],System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: BleNusTransport
+  nameWithType: BleNusTransport
+  fullName: HFI.Wss.BleNusTransport
+  type: Class
+  assemblies:
+  - WSS.Transport.BLE
+  namespace: HFI.Wss
+  summary: BLE transport backed by the Nordic UART Service (NUS).
+  remarks: >-
+    This is a low-level byte transport only. Outbound messages are written with response
+
+    to the NUS RX characteristic, inbound messages arrive as notifications from the NUS
+
+    TX characteristic, and writes are serialized so only one GATT write is in flight at a time.
+
+    Device selection follows <xref href="HFI.Wss.BleNusTransportOptions.AutoSelectDevice" data-throw-if-not-resolved="false"></xref>:
+
+    when enabled, the transport scans for compatible BLE devices and chooses the best
+
+    valid candidate; otherwise it requires an explicit <xref href="HFI.Wss.BleNusTransportOptions.DeviceId" data-throw-if-not-resolved="false"></xref>
+
+    or <xref href="HFI.Wss.BleNusTransportOptions.DeviceName" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: 'public sealed class BleNusTransport : ITransport'
+    content.vb: Public NotInheritable Class BleNusTransport Implements ITransport
+  inheritance:
+  - System.Object
+  implements:
+  - Wss.CoreModule.ITransport
+- uid: HFI.Wss.BleNusTransport.DefaultServiceUuid
+  commentId: F:HFI.Wss.BleNusTransport.DefaultServiceUuid
+  id: DefaultServiceUuid
+  parent: HFI.Wss.BleNusTransport
+  langs:
+  - csharp
+  - vb
+  name: DefaultServiceUuid
+  nameWithType: BleNusTransport.DefaultServiceUuid
+  fullName: HFI.Wss.BleNusTransport.DefaultServiceUuid
+  type: Field
+  assemblies:
+  - WSS.Transport.BLE
+  namespace: HFI.Wss
+  summary: Gets the default Nordic UART Service UUID used to discover compatible BLE devices.
+  example: []
+  syntax:
+    content: public static readonly Guid DefaultServiceUuid
+    return:
+      type: System.Guid
+    content.vb: Public Shared ReadOnly DefaultServiceUuid As Guid
+- uid: HFI.Wss.BleNusTransport.DefaultWriteCharacteristicUuid
+  commentId: F:HFI.Wss.BleNusTransport.DefaultWriteCharacteristicUuid
+  id: DefaultWriteCharacteristicUuid
+  parent: HFI.Wss.BleNusTransport
+  langs:
+  - csharp
+  - vb
+  name: DefaultWriteCharacteristicUuid
+  nameWithType: BleNusTransport.DefaultWriteCharacteristicUuid
+  fullName: HFI.Wss.BleNusTransport.DefaultWriteCharacteristicUuid
+  type: Field
+  assemblies:
+  - WSS.Transport.BLE
+  namespace: HFI.Wss
+  summary: Gets the default Nordic UART Service write characteristic UUID used for outbound bytes.
+  example: []
+  syntax:
+    content: public static readonly Guid DefaultWriteCharacteristicUuid
+    return:
+      type: System.Guid
+    content.vb: Public Shared ReadOnly DefaultWriteCharacteristicUuid As Guid
+- uid: HFI.Wss.BleNusTransport.DefaultNotifyCharacteristicUuid
+  commentId: F:HFI.Wss.BleNusTransport.DefaultNotifyCharacteristicUuid
+  id: DefaultNotifyCharacteristicUuid
+  parent: HFI.Wss.BleNusTransport
+  langs:
+  - csharp
+  - vb
+  name: DefaultNotifyCharacteristicUuid
+  nameWithType: BleNusTransport.DefaultNotifyCharacteristicUuid
+  fullName: HFI.Wss.BleNusTransport.DefaultNotifyCharacteristicUuid
+  type: Field
+  assemblies:
+  - WSS.Transport.BLE
+  namespace: HFI.Wss
+  summary: Gets the default Nordic UART Service notification characteristic UUID used for inbound bytes.
+  example: []
+  syntax:
+    content: public static readonly Guid DefaultNotifyCharacteristicUuid
+    return:
+      type: System.Guid
+    content.vb: Public Shared ReadOnly DefaultNotifyCharacteristicUuid As Guid
+- uid: HFI.Wss.BleNusTransport.#ctor(HFI.Wss.BleNusTransportOptions)
+  commentId: M:HFI.Wss.BleNusTransport.#ctor(HFI.Wss.BleNusTransportOptions)
+  id: '#ctor(HFI.Wss.BleNusTransportOptions)'
+  parent: HFI.Wss.BleNusTransport
+  langs:
+  - csharp
+  - vb
+  name: BleNusTransport(BleNusTransportOptions)
+  nameWithType: BleNusTransport.BleNusTransport(BleNusTransportOptions)
+  fullName: HFI.Wss.BleNusTransport.BleNusTransport(HFI.Wss.BleNusTransportOptions)
+  type: Constructor
+  assemblies:
+  - WSS.Transport.BLE
+  namespace: HFI.Wss
+  summary: Creates a BLE transport from a fully specified options object.
+  example: []
+  syntax:
+    content: public BleNusTransport(BleNusTransportOptions options)
+    parameters:
+    - id: options
+      type: HFI.Wss.BleNusTransportOptions
+      description: BLE transport configuration including device selection and required UUIDs.
+    content.vb: Public Sub New(options As BleNusTransportOptions)
+  overload: HFI.Wss.BleNusTransport.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when <code class="paramref">options</code> is null.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when the supplied options are invalid.
+  nameWithType.vb: BleNusTransport.New(BleNusTransportOptions)
+  fullName.vb: HFI.Wss.BleNusTransport.New(HFI.Wss.BleNusTransportOptions)
+  name.vb: New(BleNusTransportOptions)
+- uid: HFI.Wss.BleNusTransport.#ctor(System.String)
+  commentId: M:HFI.Wss.BleNusTransport.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: HFI.Wss.BleNusTransport
+  langs:
+  - csharp
+  - vb
+  name: BleNusTransport(string)
+  nameWithType: BleNusTransport.BleNusTransport(string)
+  fullName: HFI.Wss.BleNusTransport.BleNusTransport(string)
+  type: Constructor
+  assemblies:
+  - WSS.Transport.BLE
+  namespace: HFI.Wss
+  summary: Creates a BLE transport that connects to a device with the specified advertised name.
+  example: []
+  syntax:
+    content: public BleNusTransport(string deviceName)
+    parameters:
+    - id: deviceName
+      type: System.String
+      description: Exact BLE device name to scan for.
+    content.vb: Public Sub New(deviceName As String)
+  overload: HFI.Wss.BleNusTransport.#ctor*
+  nameWithType.vb: BleNusTransport.New(String)
+  fullName.vb: HFI.Wss.BleNusTransport.New(String)
+  name.vb: New(String)
+- uid: HFI.Wss.BleNusTransport.IsConnected
+  commentId: P:HFI.Wss.BleNusTransport.IsConnected
+  id: IsConnected
+  parent: HFI.Wss.BleNusTransport
+  langs:
+  - csharp
+  - vb
+  name: IsConnected
+  nameWithType: BleNusTransport.IsConnected
+  fullName: HFI.Wss.BleNusTransport.IsConnected
+  type: Property
+  assemblies:
+  - WSS.Transport.BLE
+  namespace: HFI.Wss
+  summary: Gets whether the transport currently has an active BLE session and both required GATT characteristics.
+  example: []
+  syntax:
+    content: public bool IsConnected { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsConnected As Boolean
+  overload: HFI.Wss.BleNusTransport.IsConnected*
+  implements:
+  - Wss.CoreModule.ITransport.IsConnected
+- uid: HFI.Wss.BleNusTransport.BytesReceived
+  commentId: E:HFI.Wss.BleNusTransport.BytesReceived
+  id: BytesReceived
+  parent: HFI.Wss.BleNusTransport
+  langs:
+  - csharp
+  - vb
+  name: BytesReceived
+  nameWithType: BleNusTransport.BytesReceived
+  fullName: HFI.Wss.BleNusTransport.BytesReceived
+  type: Event
+  assemblies:
+  - WSS.Transport.BLE
+  namespace: HFI.Wss
+  summary: Raised when raw bytes are received from the BLE notification characteristic.
+  remarks: >-
+    Handlers may be invoked on a background thread supplied by the underlying BLE stack.
+
+    Marshal to the required context before touching thread-affine state.
+  example: []
+  syntax:
+    content: public event Action<byte[]>? BytesReceived
+    return:
+      type: System.Action{System.Byte[]}
+    content.vb: Public Event BytesReceived As Action(Of Byte())
+  implements:
+  - Wss.CoreModule.ITransport.BytesReceived
+- uid: HFI.Wss.BleNusTransport.ConnectAsync(System.Threading.CancellationToken)
+  commentId: M:HFI.Wss.BleNusTransport.ConnectAsync(System.Threading.CancellationToken)
+  id: ConnectAsync(System.Threading.CancellationToken)
+  parent: HFI.Wss.BleNusTransport
+  langs:
+  - csharp
+  - vb
+  name: ConnectAsync(CancellationToken)
+  nameWithType: BleNusTransport.ConnectAsync(CancellationToken)
+  fullName: HFI.Wss.BleNusTransport.ConnectAsync(System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS.Transport.BLE
+  namespace: HFI.Wss
+  summary: Asynchronously scans for and connects to the configured BLE device.
+  example: []
+  syntax:
+    content: public Task ConnectAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task
+      description: A task that completes when the BLE session and required characteristics are ready.
+    content.vb: Public Function ConnectAsync(ct As CancellationToken = Nothing) As Task
+  overload: HFI.Wss.BleNusTransport.ConnectAsync*
+  exceptions:
+  - type: System.ObjectDisposedException
+    commentId: T:System.ObjectDisposedException
+    description: Thrown when the transport has been disposed.
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when no compatible BLE device can be resolved or the required service and characteristics are unavailable.
+  - type: System.OperationCanceledException
+    commentId: T:System.OperationCanceledException
+    description: Thrown when the operation is canceled.
+  implements:
+  - Wss.CoreModule.ITransport.ConnectAsync(System.Threading.CancellationToken)
+- uid: HFI.Wss.BleNusTransport.DisconnectAsync(System.Threading.CancellationToken)
+  commentId: M:HFI.Wss.BleNusTransport.DisconnectAsync(System.Threading.CancellationToken)
+  id: DisconnectAsync(System.Threading.CancellationToken)
+  parent: HFI.Wss.BleNusTransport
+  langs:
+  - csharp
+  - vb
+  name: DisconnectAsync(CancellationToken)
+  nameWithType: BleNusTransport.DisconnectAsync(CancellationToken)
+  fullName: HFI.Wss.BleNusTransport.DisconnectAsync(System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS.Transport.BLE
+  namespace: HFI.Wss
+  summary: Asynchronously disconnects the active BLE session and stops inbound notifications.
+  example: []
+  syntax:
+    content: public Task DisconnectAsync(CancellationToken ct = default)
+    parameters:
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task
+      description: A task that completes when platform-specific BLE resources have been released.
+    content.vb: Public Function DisconnectAsync(ct As CancellationToken = Nothing) As Task
+  overload: HFI.Wss.BleNusTransport.DisconnectAsync*
+  exceptions:
+  - type: System.OperationCanceledException
+    commentId: T:System.OperationCanceledException
+    description: Thrown when the operation is canceled.
+  implements:
+  - Wss.CoreModule.ITransport.DisconnectAsync(System.Threading.CancellationToken)
+- uid: HFI.Wss.BleNusTransport.SendAsync(System.Byte[],System.Threading.CancellationToken)
+  commentId: M:HFI.Wss.BleNusTransport.SendAsync(System.Byte[],System.Threading.CancellationToken)
+  id: SendAsync(System.Byte[],System.Threading.CancellationToken)
+  parent: HFI.Wss.BleNusTransport
+  langs:
+  - csharp
+  - vb
+  name: SendAsync(byte[], CancellationToken)
+  nameWithType: BleNusTransport.SendAsync(byte[], CancellationToken)
+  fullName: HFI.Wss.BleNusTransport.SendAsync(byte[], System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - WSS.Transport.BLE
+  namespace: HFI.Wss
+  summary: Sends a block of raw bytes over the BLE write characteristic.
+  remarks: Writes are serialized so only one GATT write is in flight at a time.
+  example: []
+  syntax:
+    content: public Task SendAsync(byte[] data, CancellationToken ct = default)
+    parameters:
+    - id: data
+      type: System.Byte[]
+      description: Raw payload bytes to write.
+    - id: ct
+      type: System.Threading.CancellationToken
+      description: Cancellation token.
+    return:
+      type: System.Threading.Tasks.Task
+      description: A task that completes when the write has been handed off to the platform BLE stack.
+    content.vb: Public Function SendAsync(data As Byte(), ct As CancellationToken = Nothing) As Task
+  overload: HFI.Wss.BleNusTransport.SendAsync*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when <code class="paramref">data</code> is null.
+  - type: System.ObjectDisposedException
+    commentId: T:System.ObjectDisposedException
+    description: Thrown when the transport has been disposed.
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when the transport is not connected.
+  - type: System.OperationCanceledException
+    commentId: T:System.OperationCanceledException
+    description: Thrown when the operation is canceled.
+  implements:
+  - Wss.CoreModule.ITransport.SendAsync(System.Byte[],System.Threading.CancellationToken)
+  nameWithType.vb: BleNusTransport.SendAsync(Byte(), CancellationToken)
+  fullName.vb: HFI.Wss.BleNusTransport.SendAsync(Byte(), System.Threading.CancellationToken)
+  name.vb: SendAsync(Byte(), CancellationToken)
+- uid: HFI.Wss.BleNusTransport.Dispose
+  commentId: M:HFI.Wss.BleNusTransport.Dispose
+  id: Dispose
+  parent: HFI.Wss.BleNusTransport
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: BleNusTransport.Dispose()
+  fullName: HFI.Wss.BleNusTransport.Dispose()
+  type: Method
+  assemblies:
+  - WSS.Transport.BLE
+  namespace: HFI.Wss
+  summary: Disconnects the transport and releases managed resources.
+  remarks: This method performs a best-effort synchronous disconnect and logs disconnect failures instead of rethrowing them.
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: HFI.Wss.BleNusTransport.Dispose*
+- uid: HFI.Wss.BleNusTransport.CreateDefaultOptions(System.String)
+  commentId: M:HFI.Wss.BleNusTransport.CreateDefaultOptions(System.String)
+  id: CreateDefaultOptions(System.String)
+  parent: HFI.Wss.BleNusTransport
+  langs:
+  - csharp
+  - vb
+  name: CreateDefaultOptions(string)
+  nameWithType: BleNusTransport.CreateDefaultOptions(string)
+  fullName: HFI.Wss.BleNusTransport.CreateDefaultOptions(string)
+  type: Method
+  assemblies:
+  - WSS.Transport.BLE
+  namespace: HFI.Wss
+  summary: Creates a default options object that resolves a BLE device by advertised name.
+  example: []
+  syntax:
+    content: public static BleNusTransportOptions CreateDefaultOptions(string deviceName)
+    parameters:
+    - id: deviceName
+      type: System.String
+      description: Exact BLE device name to scan for.
+    return:
+      type: HFI.Wss.BleNusTransportOptions
+      description: A new options object with <xref href="HFI.Wss.BleNusTransportOptions.DeviceName" data-throw-if-not-resolved="false"></xref> set.
+    content.vb: Public Shared Function CreateDefaultOptions(deviceName As String) As BleNusTransportOptions
+  overload: HFI.Wss.BleNusTransport.CreateDefaultOptions*
+  nameWithType.vb: BleNusTransport.CreateDefaultOptions(String)
+  fullName.vb: HFI.Wss.BleNusTransport.CreateDefaultOptions(String)
+  name.vb: CreateDefaultOptions(String)
+references:
+- uid: HFI.Wss.BleNusTransportOptions.AutoSelectDevice
+  commentId: P:HFI.Wss.BleNusTransportOptions.AutoSelectDevice
+  href: HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_AutoSelectDevice
+  name: AutoSelectDevice
+  nameWithType: BleNusTransportOptions.AutoSelectDevice
+  fullName: HFI.Wss.BleNusTransportOptions.AutoSelectDevice
+- uid: HFI.Wss.BleNusTransportOptions.DeviceId
+  commentId: P:HFI.Wss.BleNusTransportOptions.DeviceId
+  href: HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_DeviceId
+  name: DeviceId
+  nameWithType: BleNusTransportOptions.DeviceId
+  fullName: HFI.Wss.BleNusTransportOptions.DeviceId
+- uid: HFI.Wss.BleNusTransportOptions.DeviceName
+  commentId: P:HFI.Wss.BleNusTransportOptions.DeviceName
+  href: HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_DeviceName
+  name: DeviceName
+  nameWithType: BleNusTransportOptions.DeviceName
+  fullName: HFI.Wss.BleNusTransportOptions.DeviceName
+- uid: HFI.Wss
+  commentId: N:HFI.Wss
+  href: HFI.html
+  name: HFI.Wss
+  nameWithType: HFI.Wss
+  fullName: HFI.Wss
+  spec.csharp:
+  - uid: HFI
+    name: HFI
+    href: HFI.html
+  - name: .
+  - uid: HFI.Wss
+    name: Wss
+    href: HFI.Wss.html
+  spec.vb:
+  - uid: HFI
+    name: HFI
+    href: HFI.html
+  - name: .
+  - uid: HFI.Wss
+    name: Wss
+    href: HFI.Wss.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Wss.CoreModule.ITransport
+  commentId: T:Wss.CoreModule.ITransport
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.ITransport.html
+  name: ITransport
+  nameWithType: ITransport
+  fullName: Wss.CoreModule.ITransport
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Wss.CoreModule
+  commentId: N:Wss.CoreModule
+  href: Wss.html
+  name: Wss.CoreModule
+  nameWithType: Wss.CoreModule
+  fullName: Wss.CoreModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+  isExternal: true
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.ArgumentException
+  commentId: T:System.ArgumentException
+  isExternal: true
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: HFI.Wss.BleNusTransport.#ctor*
+  commentId: Overload:HFI.Wss.BleNusTransport.#ctor
+  href: HFI.Wss.BleNusTransport.html#HFI_Wss_BleNusTransport__ctor_HFI_Wss_BleNusTransportOptions_
+  name: BleNusTransport
+  nameWithType: BleNusTransport.BleNusTransport
+  fullName: HFI.Wss.BleNusTransport.BleNusTransport
+  nameWithType.vb: BleNusTransport.New
+  fullName.vb: HFI.Wss.BleNusTransport.New
+  name.vb: New
+- uid: HFI.Wss.BleNusTransportOptions
+  commentId: T:HFI.Wss.BleNusTransportOptions
+  parent: HFI.Wss
+  href: HFI.Wss.BleNusTransportOptions.html
+  name: BleNusTransportOptions
+  nameWithType: BleNusTransportOptions
+  fullName: HFI.Wss.BleNusTransportOptions
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: HFI.Wss.BleNusTransport.IsConnected*
+  commentId: Overload:HFI.Wss.BleNusTransport.IsConnected
+  href: HFI.Wss.BleNusTransport.html#HFI_Wss_BleNusTransport_IsConnected
+  name: IsConnected
+  nameWithType: BleNusTransport.IsConnected
+  fullName: HFI.Wss.BleNusTransport.IsConnected
+- uid: Wss.CoreModule.ITransport.IsConnected
+  commentId: P:Wss.CoreModule.ITransport.IsConnected
+  parent: Wss.CoreModule.ITransport
+  href: Wss.CoreModule.ITransport.html#Wss_CoreModule_ITransport_IsConnected
+  name: IsConnected
+  nameWithType: ITransport.IsConnected
+  fullName: Wss.CoreModule.ITransport.IsConnected
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Wss.CoreModule.ITransport.BytesReceived
+  commentId: E:Wss.CoreModule.ITransport.BytesReceived
+  parent: Wss.CoreModule.ITransport
+  href: Wss.CoreModule.ITransport.html#Wss_CoreModule_ITransport_BytesReceived
+  name: BytesReceived
+  nameWithType: ITransport.BytesReceived
+  fullName: Wss.CoreModule.ITransport.BytesReceived
+- uid: System.Action{System.Byte[]}
+  commentId: T:System.Action{System.Byte[]}
+  parent: System
+  definition: System.Action`1
+  name: Action<byte[]>
+  nameWithType: Action<byte[]>
+  fullName: System.Action<byte[]>
+  nameWithType.vb: Action(Of Byte())
+  fullName.vb: System.Action(Of Byte())
+  name.vb: Action(Of Byte())
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+  - name: <
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+  - name: '['
+  - name: ']'
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+  - name: (
+  - name: )
+  - name: )
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.ObjectDisposedException
+  commentId: T:System.ObjectDisposedException
+  isExternal: true
+  name: ObjectDisposedException
+  nameWithType: ObjectDisposedException
+  fullName: System.ObjectDisposedException
+- uid: System.InvalidOperationException
+  commentId: T:System.InvalidOperationException
+  isExternal: true
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
+- uid: System.OperationCanceledException
+  commentId: T:System.OperationCanceledException
+  isExternal: true
+  name: OperationCanceledException
+  nameWithType: OperationCanceledException
+  fullName: System.OperationCanceledException
+- uid: HFI.Wss.BleNusTransport.ConnectAsync*
+  commentId: Overload:HFI.Wss.BleNusTransport.ConnectAsync
+  href: HFI.Wss.BleNusTransport.html#HFI_Wss_BleNusTransport_ConnectAsync_System_Threading_CancellationToken_
+  name: ConnectAsync
+  nameWithType: BleNusTransport.ConnectAsync
+  fullName: HFI.Wss.BleNusTransport.ConnectAsync
+- uid: Wss.CoreModule.ITransport.ConnectAsync(System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.ITransport.ConnectAsync(System.Threading.CancellationToken)
+  parent: Wss.CoreModule.ITransport
+  isExternal: true
+  href: Wss.CoreModule.ITransport.html#Wss_CoreModule_ITransport_ConnectAsync_System_Threading_CancellationToken_
+  name: ConnectAsync(CancellationToken)
+  nameWithType: ITransport.ConnectAsync(CancellationToken)
+  fullName: Wss.CoreModule.ITransport.ConnectAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Wss.CoreModule.ITransport.ConnectAsync(System.Threading.CancellationToken)
+    name: ConnectAsync
+    href: Wss.CoreModule.ITransport.html#Wss_CoreModule_ITransport_ConnectAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.ITransport.ConnectAsync(System.Threading.CancellationToken)
+    name: ConnectAsync
+    href: Wss.CoreModule.ITransport.html#Wss_CoreModule_ITransport_ConnectAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+  - name: )
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: HFI.Wss.BleNusTransport.DisconnectAsync*
+  commentId: Overload:HFI.Wss.BleNusTransport.DisconnectAsync
+  href: HFI.Wss.BleNusTransport.html#HFI_Wss_BleNusTransport_DisconnectAsync_System_Threading_CancellationToken_
+  name: DisconnectAsync
+  nameWithType: BleNusTransport.DisconnectAsync
+  fullName: HFI.Wss.BleNusTransport.DisconnectAsync
+- uid: Wss.CoreModule.ITransport.DisconnectAsync(System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.ITransport.DisconnectAsync(System.Threading.CancellationToken)
+  parent: Wss.CoreModule.ITransport
+  isExternal: true
+  href: Wss.CoreModule.ITransport.html#Wss_CoreModule_ITransport_DisconnectAsync_System_Threading_CancellationToken_
+  name: DisconnectAsync(CancellationToken)
+  nameWithType: ITransport.DisconnectAsync(CancellationToken)
+  fullName: Wss.CoreModule.ITransport.DisconnectAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Wss.CoreModule.ITransport.DisconnectAsync(System.Threading.CancellationToken)
+    name: DisconnectAsync
+    href: Wss.CoreModule.ITransport.html#Wss_CoreModule_ITransport_DisconnectAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.ITransport.DisconnectAsync(System.Threading.CancellationToken)
+    name: DisconnectAsync
+    href: Wss.CoreModule.ITransport.html#Wss_CoreModule_ITransport_DisconnectAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+  - name: )
+- uid: HFI.Wss.BleNusTransport.SendAsync*
+  commentId: Overload:HFI.Wss.BleNusTransport.SendAsync
+  href: HFI.Wss.BleNusTransport.html#HFI_Wss_BleNusTransport_SendAsync_System_Byte___System_Threading_CancellationToken_
+  name: SendAsync
+  nameWithType: BleNusTransport.SendAsync
+  fullName: HFI.Wss.BleNusTransport.SendAsync
+- uid: Wss.CoreModule.ITransport.SendAsync(System.Byte[],System.Threading.CancellationToken)
+  commentId: M:Wss.CoreModule.ITransport.SendAsync(System.Byte[],System.Threading.CancellationToken)
+  parent: Wss.CoreModule.ITransport
+  isExternal: true
+  href: Wss.CoreModule.ITransport.html#Wss_CoreModule_ITransport_SendAsync_System_Byte___System_Threading_CancellationToken_
+  name: SendAsync(byte[], CancellationToken)
+  nameWithType: ITransport.SendAsync(byte[], CancellationToken)
+  fullName: Wss.CoreModule.ITransport.SendAsync(byte[], System.Threading.CancellationToken)
+  nameWithType.vb: ITransport.SendAsync(Byte(), CancellationToken)
+  fullName.vb: Wss.CoreModule.ITransport.SendAsync(Byte(), System.Threading.CancellationToken)
+  name.vb: SendAsync(Byte(), CancellationToken)
+  spec.csharp:
+  - uid: Wss.CoreModule.ITransport.SendAsync(System.Byte[],System.Threading.CancellationToken)
+    name: SendAsync
+    href: Wss.CoreModule.ITransport.html#Wss_CoreModule_ITransport_SendAsync_System_Byte___System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Wss.CoreModule.ITransport.SendAsync(System.Byte[],System.Threading.CancellationToken)
+    name: SendAsync
+    href: Wss.CoreModule.ITransport.html#Wss_CoreModule_ITransport_SendAsync_System_Byte___System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+  - name: )
+- uid: System.Byte[]
+  isExternal: true
+  name: byte[]
+  nameWithType: byte[]
+  fullName: byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+  - name: (
+  - name: )
+- uid: HFI.Wss.BleNusTransport.Dispose*
+  commentId: Overload:HFI.Wss.BleNusTransport.Dispose
+  href: HFI.Wss.BleNusTransport.html#HFI_Wss_BleNusTransport_Dispose
+  name: Dispose
+  nameWithType: BleNusTransport.Dispose
+  fullName: HFI.Wss.BleNusTransport.Dispose
+- uid: HFI.Wss.BleNusTransport.CreateDefaultOptions*
+  commentId: Overload:HFI.Wss.BleNusTransport.CreateDefaultOptions
+  href: HFI.Wss.BleNusTransport.html#HFI_Wss_BleNusTransport_CreateDefaultOptions_System_String_
+  name: CreateDefaultOptions
+  nameWithType: BleNusTransport.CreateDefaultOptions
+  fullName: HFI.Wss.BleNusTransport.CreateDefaultOptions

@@ -5,7 +5,7 @@ items:
   id: TestModeTransport
   parent: Wss.CoreModule
   children:
-  - Wss.CoreModule.TestModeTransport.#ctor(System.Nullable{System.TimeSpan},System.Int32,System.Int32,System.Double,System.Random,System.Byte[],System.Func{System.Byte[],System.Threading.Tasks.Task{System.Byte[]}})
+  - Wss.CoreModule.TestModeTransport.#ctor(Wss.CoreModule.TestModeTransportOptions)
   - Wss.CoreModule.TestModeTransport.AutoResponderAsync
   - Wss.CoreModule.TestModeTransport.BaseLatency
   - Wss.CoreModule.TestModeTransport.BytesReceived
@@ -274,51 +274,41 @@ items:
     content.vb: Public Event BytesReceived As Action(Of Byte())
   implements:
   - Wss.CoreModule.ITransport.BytesReceived
-- uid: Wss.CoreModule.TestModeTransport.#ctor(System.Nullable{System.TimeSpan},System.Int32,System.Int32,System.Double,System.Random,System.Byte[],System.Func{System.Byte[],System.Threading.Tasks.Task{System.Byte[]}})
-  commentId: M:Wss.CoreModule.TestModeTransport.#ctor(System.Nullable{System.TimeSpan},System.Int32,System.Int32,System.Double,System.Random,System.Byte[],System.Func{System.Byte[],System.Threading.Tasks.Task{System.Byte[]}})
-  id: '#ctor(System.Nullable{System.TimeSpan},System.Int32,System.Int32,System.Double,System.Random,System.Byte[],System.Func{System.Byte[],System.Threading.Tasks.Task{System.Byte[]}})'
+- uid: Wss.CoreModule.TestModeTransport.#ctor(Wss.CoreModule.TestModeTransportOptions)
+  commentId: M:Wss.CoreModule.TestModeTransport.#ctor(Wss.CoreModule.TestModeTransportOptions)
+  id: '#ctor(Wss.CoreModule.TestModeTransportOptions)'
   parent: Wss.CoreModule.TestModeTransport
   langs:
   - csharp
   - vb
-  name: TestModeTransport(TimeSpan?, int, int, double, Random, byte[], Func<byte[], Task<byte[]>>)
-  nameWithType: TestModeTransport.TestModeTransport(TimeSpan?, int, int, double, Random, byte[], Func<byte[], Task<byte[]>>)
-  fullName: Wss.CoreModule.TestModeTransport.TestModeTransport(System.TimeSpan?, int, int, double, System.Random, byte[], System.Func<byte[], System.Threading.Tasks.Task<byte[]>>)
+  name: TestModeTransport(TestModeTransportOptions)
+  nameWithType: TestModeTransport.TestModeTransport(TestModeTransportOptions)
+  fullName: Wss.CoreModule.TestModeTransport.TestModeTransport(Wss.CoreModule.TestModeTransportOptions)
   type: Constructor
   assemblies:
   - WSS_Core_Interface
   namespace: Wss.CoreModule
-  summary: Initializes a new <xref href="Wss.CoreModule.TestModeTransport" data-throw-if-not-resolved="false"></xref> with optional configuration.
+  summary: Initializes a new <xref href="Wss.CoreModule.TestModeTransport" data-throw-if-not-resolved="false"></xref> with a single options object.
+  remarks: >-
+    Null <xref href="Wss.CoreModule.TestModeTransportOptions.Rng" data-throw-if-not-resolved="false"></xref> and <xref href="Wss.CoreModule.TestModeTransportOptions.FallbackPayload" data-throw-if-not-resolved="false"></xref>
+
+    values are replaced with safe defaults.
   example: []
   syntax:
-    content: public TestModeTransport(TimeSpan? baseLatency = null, int jitterMs = 0, int maxInboundChunkSize = 0, double inboundDropProbability = 0, Random rng = null, byte[] fallbackPayload = null, Func<byte[], Task<byte[]>> autoResponderAsync = null)
+    content: public TestModeTransport(TestModeTransportOptions options)
     parameters:
-    - id: baseLatency
-      type: System.Nullable{System.TimeSpan}
-      description: Artificial latency applied to inbound delivery (default 0).
-    - id: jitterMs
-      type: System.Int32
-      description: Random jitter in milliseconds (default 0).
-    - id: maxInboundChunkSize
-      type: System.Int32
-      description: If &gt;0, splits inbound payloads (default 0).
-    - id: inboundDropProbability
-      type: System.Double
-      description: Probability [0..1] of dropping an inbound chunk (default 0.0).
-    - id: rng
-      type: System.Random
-      description: Random generator to use (default new Random(1234)).
-    - id: fallbackPayload
-      type: System.Byte[]
-      description: Payload used when checksum fails (default {0xE1,0xE2,0xE3}).
-    - id: autoResponderAsync
-      type: System.Func{System.Byte[],System.Threading.Tasks.Task{System.Byte[]}}
-      description: Optional override auto-responder (default null = built-in).
-    content.vb: Public Sub New(baseLatency As TimeSpan? = Nothing, jitterMs As Integer = 0, maxInboundChunkSize As Integer = 0, inboundDropProbability As Double = 0, rng As Random = Nothing, fallbackPayload As Byte() = Nothing, autoResponderAsync As Func(Of Byte(), Task(Of Byte())) = Nothing)
+    - id: options
+      type: Wss.CoreModule.TestModeTransportOptions
+      description: In-memory transport behavior settings.
+    content.vb: Public Sub New(options As TestModeTransportOptions)
   overload: Wss.CoreModule.TestModeTransport.#ctor*
-  nameWithType.vb: TestModeTransport.New(TimeSpan?, Integer, Integer, Double, Random, Byte(), Func(Of Byte(), Task(Of Byte())))
-  fullName.vb: Wss.CoreModule.TestModeTransport.New(System.TimeSpan?, Integer, Integer, Double, System.Random, Byte(), System.Func(Of Byte(), System.Threading.Tasks.Task(Of Byte())))
-  name.vb: New(TimeSpan?, Integer, Integer, Double, Random, Byte(), Func(Of Byte(), Task(Of Byte())))
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when <code class="paramref">options</code> is null.
+  nameWithType.vb: TestModeTransport.New(TestModeTransportOptions)
+  fullName.vb: Wss.CoreModule.TestModeTransport.New(Wss.CoreModule.TestModeTransportOptions)
+  name.vb: New(TestModeTransportOptions)
 - uid: Wss.CoreModule.TestModeTransport.ConnectAsync(System.Threading.CancellationToken)
   commentId: M:Wss.CoreModule.TestModeTransport.ConnectAsync(System.Threading.CancellationToken)
   id: ConnectAsync(System.Threading.CancellationToken)
@@ -495,7 +485,7 @@ items:
   assemblies:
   - WSS_Core_Interface
   namespace: Wss.CoreModule
-  summary: Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+  summary: Disposes the transport, cancels background operations, and releases resources.
   example: []
   syntax:
     content: public void Dispose()
@@ -830,57 +820,40 @@ references:
   name: TestModeTransport
   nameWithType: TestModeTransport
   fullName: Wss.CoreModule.TestModeTransport
+- uid: Wss.CoreModule.TestModeTransportOptions.Rng
+  commentId: P:Wss.CoreModule.TestModeTransportOptions.Rng
+  href: Wss.CoreModule.TestModeTransportOptions.html#Wss_CoreModule_TestModeTransportOptions_Rng
+  name: Rng
+  nameWithType: TestModeTransportOptions.Rng
+  fullName: Wss.CoreModule.TestModeTransportOptions.Rng
+- uid: Wss.CoreModule.TestModeTransportOptions.FallbackPayload
+  commentId: P:Wss.CoreModule.TestModeTransportOptions.FallbackPayload
+  href: Wss.CoreModule.TestModeTransportOptions.html#Wss_CoreModule_TestModeTransportOptions_FallbackPayload
+  name: FallbackPayload
+  nameWithType: TestModeTransportOptions.FallbackPayload
+  fullName: Wss.CoreModule.TestModeTransportOptions.FallbackPayload
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+  isExternal: true
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
 - uid: Wss.CoreModule.TestModeTransport.#ctor*
   commentId: Overload:Wss.CoreModule.TestModeTransport.#ctor
-  href: Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport__ctor_System_Nullable_System_TimeSpan__System_Int32_System_Int32_System_Double_System_Random_System_Byte___System_Func_System_Byte___System_Threading_Tasks_Task_System_Byte_____
+  href: Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport__ctor_Wss_CoreModule_TestModeTransportOptions_
   name: TestModeTransport
   nameWithType: TestModeTransport.TestModeTransport
   fullName: Wss.CoreModule.TestModeTransport.TestModeTransport
   nameWithType.vb: TestModeTransport.New
   fullName.vb: Wss.CoreModule.TestModeTransport.New
   name.vb: New
-- uid: System.Nullable{System.TimeSpan}
-  commentId: T:System.Nullable{System.TimeSpan}
-  parent: System
-  definition: System.Nullable`1
-  name: TimeSpan?
-  nameWithType: TimeSpan?
-  fullName: System.TimeSpan?
-  spec.csharp:
-  - uid: System.TimeSpan
-    name: TimeSpan
-    isExternal: true
-  - name: '?'
-  spec.vb:
-  - uid: System.TimeSpan
-    name: TimeSpan
-    isExternal: true
-  - name: '?'
-- uid: System.Nullable`1
-  commentId: T:System.Nullable`1
-  isExternal: true
-  name: Nullable<T>
-  nameWithType: Nullable<T>
-  fullName: System.Nullable<T>
-  nameWithType.vb: Nullable(Of T)
-  fullName.vb: System.Nullable(Of T)
-  name.vb: Nullable(Of T)
-  spec.csharp:
-  - uid: System.Nullable`1
-    name: Nullable
-    isExternal: true
-  - name: <
-  - name: T
-  - name: '>'
-  spec.vb:
-  - uid: System.Nullable`1
-    name: Nullable
-    isExternal: true
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: )
+- uid: Wss.CoreModule.TestModeTransportOptions
+  commentId: T:Wss.CoreModule.TestModeTransportOptions
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.TestModeTransportOptions.html
+  name: TestModeTransportOptions
+  nameWithType: TestModeTransportOptions
+  fullName: Wss.CoreModule.TestModeTransportOptions
 - uid: System.ObjectDisposedException
   commentId: T:System.ObjectDisposedException
   isExternal: true

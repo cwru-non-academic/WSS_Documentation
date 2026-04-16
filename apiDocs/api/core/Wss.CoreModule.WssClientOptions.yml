@@ -1,0 +1,322 @@
+### YamlMime:ManagedReference
+items:
+- uid: Wss.CoreModule.WssClientOptions
+  commentId: T:Wss.CoreModule.WssClientOptions
+  id: WssClientOptions
+  parent: Wss.CoreModule
+  children:
+  - Wss.CoreModule.WssClientOptions.BroadcastTarget
+  - Wss.CoreModule.WssClientOptions.OwnsTransport
+  - Wss.CoreModule.WssClientOptions.ResponseTimeout
+  - Wss.CoreModule.WssClientOptions.Sender
+  - Wss.CoreModule.WssClientOptions.WssTargets
+  langs:
+  - csharp
+  - vb
+  name: WssClientOptions
+  nameWithType: WssClientOptions
+  fullName: Wss.CoreModule.WssClientOptions
+  type: Class
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: Holds behavioral settings for <xref href="Wss.CoreModule.WssClient" data-throw-if-not-resolved="false"></xref>.
+  remarks: >-
+    The constructor requires a non-null options instance and validates <xref href="Wss.CoreModule.WssClientOptions.ResponseTimeout" data-throw-if-not-resolved="false"></xref> to ensure it is
+
+    greater than zero. Address settings control how logical targets map to on-wire receiver addresses.
+  example: []
+  syntax:
+    content: public sealed class WssClientOptions
+    content.vb: Public NotInheritable Class WssClientOptions
+  inheritance:
+  - System.Object
+- uid: Wss.CoreModule.WssClientOptions.Sender
+  commentId: P:Wss.CoreModule.WssClientOptions.Sender
+  id: Sender
+  parent: Wss.CoreModule.WssClientOptions
+  langs:
+  - csharp
+  - vb
+  name: Sender
+  nameWithType: WssClientOptions.Sender
+  fullName: Wss.CoreModule.WssClientOptions.Sender
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Gets or sets the sender address byte placed in outbound frames.
+
+    The default is <code>0x00</code>.
+  example: []
+  syntax:
+    content: public byte Sender { get; set; }
+    parameters: []
+    return:
+      type: System.Byte
+    content.vb: Public Property Sender As Byte
+  overload: Wss.CoreModule.WssClientOptions.Sender*
+- uid: Wss.CoreModule.WssClientOptions.OwnsTransport
+  commentId: P:Wss.CoreModule.WssClientOptions.OwnsTransport
+  id: OwnsTransport
+  parent: Wss.CoreModule.WssClientOptions
+  langs:
+  - csharp
+  - vb
+  name: OwnsTransport
+  nameWithType: WssClientOptions.OwnsTransport
+  fullName: Wss.CoreModule.WssClientOptions.OwnsTransport
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Gets or sets whether disposing the client also disposes the underlying transport.
+
+    The default is true.
+  example: []
+  syntax:
+    content: public bool OwnsTransport { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property OwnsTransport As Boolean
+  overload: Wss.CoreModule.WssClientOptions.OwnsTransport*
+- uid: Wss.CoreModule.WssClientOptions.BroadcastTarget
+  commentId: P:Wss.CoreModule.WssClientOptions.BroadcastTarget
+  id: BroadcastTarget
+  parent: Wss.CoreModule.WssClientOptions
+  langs:
+  - csharp
+  - vb
+  name: BroadcastTarget
+  nameWithType: WssClientOptions.BroadcastTarget
+  fullName: Wss.CoreModule.WssClientOptions.BroadcastTarget
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Gets or sets the on-wire broadcast receiver address used for logical <xref href="Wss.CoreModule.WssTarget.Broadcast" data-throw-if-not-resolved="false"></xref>.
+
+    The default is <code>0x8F</code>.
+  example: []
+  syntax:
+    content: public byte BroadcastTarget { get; set; }
+    parameters: []
+    return:
+      type: System.Byte
+    content.vb: Public Property BroadcastTarget As Byte
+  overload: Wss.CoreModule.WssClientOptions.BroadcastTarget*
+- uid: Wss.CoreModule.WssClientOptions.WssTargets
+  commentId: P:Wss.CoreModule.WssClientOptions.WssTargets
+  id: WssTargets
+  parent: Wss.CoreModule.WssClientOptions
+  langs:
+  - csharp
+  - vb
+  name: WssTargets
+  nameWithType: WssClientOptions.WssTargets
+  fullName: Wss.CoreModule.WssClientOptions.WssTargets
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Gets or sets the on-wire receiver addresses for logical <xref href="Wss.CoreModule.WssTarget.Wss1" data-throw-if-not-resolved="false"></xref>,
+
+    <xref href="Wss.CoreModule.WssTarget.Wss2" data-throw-if-not-resolved="false"></xref>, and <xref href="Wss.CoreModule.WssTarget.Wss3" data-throw-if-not-resolved="false"></xref>.
+  remarks: >-
+    Index 0 maps to <xref href="Wss.CoreModule.WssTarget.Wss1" data-throw-if-not-resolved="false"></xref>, index 1 to <xref href="Wss.CoreModule.WssTarget.Wss2" data-throw-if-not-resolved="false"></xref>, and index 2 to
+
+    <xref href="Wss.CoreModule.WssTarget.Wss3" data-throw-if-not-resolved="false"></xref>. When null or shorter than three entries, the client falls back to the
+
+    historical defaults for missing values.
+  example: []
+  syntax:
+    content: public byte[] WssTargets { get; set; }
+    parameters: []
+    return:
+      type: System.Byte[]
+    content.vb: Public Property WssTargets As Byte()
+  overload: Wss.CoreModule.WssClientOptions.WssTargets*
+- uid: Wss.CoreModule.WssClientOptions.ResponseTimeout
+  commentId: P:Wss.CoreModule.WssClientOptions.ResponseTimeout
+  id: ResponseTimeout
+  parent: Wss.CoreModule.WssClientOptions
+  langs:
+  - csharp
+  - vb
+  name: ResponseTimeout
+  nameWithType: WssClientOptions.ResponseTimeout
+  fullName: Wss.CoreModule.WssClientOptions.ResponseTimeout
+  type: Property
+  assemblies:
+  - WSS_Core_Interface
+  namespace: Wss.CoreModule
+  summary: >-
+    Gets or sets the maximum time to wait for a correlated reply before canceling the request.
+
+    This must be greater than zero. The default is 2 seconds.
+  example: []
+  syntax:
+    content: public TimeSpan ResponseTimeout { get; set; }
+    parameters: []
+    return:
+      type: System.TimeSpan
+    content.vb: Public Property ResponseTimeout As TimeSpan
+  overload: Wss.CoreModule.WssClientOptions.ResponseTimeout*
+references:
+- uid: Wss.CoreModule.WssClient
+  commentId: T:Wss.CoreModule.WssClient
+  href: Wss.CoreModule.WssClient.html
+  name: WssClient
+  nameWithType: WssClient
+  fullName: Wss.CoreModule.WssClient
+- uid: Wss.CoreModule.WssClientOptions.ResponseTimeout
+  commentId: P:Wss.CoreModule.WssClientOptions.ResponseTimeout
+  href: Wss.CoreModule.WssClientOptions.html#Wss_CoreModule_WssClientOptions_ResponseTimeout
+  name: ResponseTimeout
+  nameWithType: WssClientOptions.ResponseTimeout
+  fullName: Wss.CoreModule.WssClientOptions.ResponseTimeout
+- uid: Wss.CoreModule
+  commentId: N:Wss.CoreModule
+  href: Wss.html
+  name: Wss.CoreModule
+  nameWithType: Wss.CoreModule
+  fullName: Wss.CoreModule
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.CoreModule
+    name: CoreModule
+    href: Wss.CoreModule.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Wss.CoreModule.WssClientOptions.Sender*
+  commentId: Overload:Wss.CoreModule.WssClientOptions.Sender
+  href: Wss.CoreModule.WssClientOptions.html#Wss_CoreModule_WssClientOptions_Sender
+  name: Sender
+  nameWithType: WssClientOptions.Sender
+  fullName: Wss.CoreModule.WssClientOptions.Sender
+- uid: System.Byte
+  commentId: T:System.Byte
+  parent: System
+  isExternal: true
+  name: byte
+  nameWithType: byte
+  fullName: byte
+  nameWithType.vb: Byte
+  fullName.vb: Byte
+  name.vb: Byte
+- uid: Wss.CoreModule.WssClientOptions.OwnsTransport*
+  commentId: Overload:Wss.CoreModule.WssClientOptions.OwnsTransport
+  href: Wss.CoreModule.WssClientOptions.html#Wss_CoreModule_WssClientOptions_OwnsTransport
+  name: OwnsTransport
+  nameWithType: WssClientOptions.OwnsTransport
+  fullName: Wss.CoreModule.WssClientOptions.OwnsTransport
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Wss.CoreModule.WssTarget.Broadcast
+  commentId: F:Wss.CoreModule.WssTarget.Broadcast
+  href: Wss.CoreModule.WssTarget.html#Wss_CoreModule_WssTarget_Broadcast
+  name: Broadcast
+  nameWithType: WssTarget.Broadcast
+  fullName: Wss.CoreModule.WssTarget.Broadcast
+- uid: Wss.CoreModule.WssClientOptions.BroadcastTarget*
+  commentId: Overload:Wss.CoreModule.WssClientOptions.BroadcastTarget
+  href: Wss.CoreModule.WssClientOptions.html#Wss_CoreModule_WssClientOptions_BroadcastTarget
+  name: BroadcastTarget
+  nameWithType: WssClientOptions.BroadcastTarget
+  fullName: Wss.CoreModule.WssClientOptions.BroadcastTarget
+- uid: Wss.CoreModule.WssTarget.Wss1
+  commentId: F:Wss.CoreModule.WssTarget.Wss1
+  href: Wss.CoreModule.WssTarget.html#Wss_CoreModule_WssTarget_Wss1
+  name: Wss1
+  nameWithType: WssTarget.Wss1
+  fullName: Wss.CoreModule.WssTarget.Wss1
+- uid: Wss.CoreModule.WssTarget.Wss2
+  commentId: F:Wss.CoreModule.WssTarget.Wss2
+  href: Wss.CoreModule.WssTarget.html#Wss_CoreModule_WssTarget_Wss2
+  name: Wss2
+  nameWithType: WssTarget.Wss2
+  fullName: Wss.CoreModule.WssTarget.Wss2
+- uid: Wss.CoreModule.WssTarget.Wss3
+  commentId: F:Wss.CoreModule.WssTarget.Wss3
+  href: Wss.CoreModule.WssTarget.html#Wss_CoreModule_WssTarget_Wss3
+  name: Wss3
+  nameWithType: WssTarget.Wss3
+  fullName: Wss.CoreModule.WssTarget.Wss3
+- uid: Wss.CoreModule.WssClientOptions.WssTargets*
+  commentId: Overload:Wss.CoreModule.WssClientOptions.WssTargets
+  href: Wss.CoreModule.WssClientOptions.html#Wss_CoreModule_WssClientOptions_WssTargets
+  name: WssTargets
+  nameWithType: WssClientOptions.WssTargets
+  fullName: Wss.CoreModule.WssClientOptions.WssTargets
+- uid: System.Byte[]
+  isExternal: true
+  name: byte[]
+  nameWithType: byte[]
+  fullName: byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Wss.CoreModule.WssClientOptions.ResponseTimeout*
+  commentId: Overload:Wss.CoreModule.WssClientOptions.ResponseTimeout
+  href: Wss.CoreModule.WssClientOptions.html#Wss_CoreModule_WssClientOptions_ResponseTimeout
+  name: ResponseTimeout
+  nameWithType: WssClientOptions.ResponseTimeout
+  fullName: Wss.CoreModule.WssClientOptions.ResponseTimeout
+- uid: System.TimeSpan
+  commentId: T:System.TimeSpan
+  parent: System
+  isExternal: true
+  name: TimeSpan
+  nameWithType: TimeSpan
+  fullName: System.TimeSpan

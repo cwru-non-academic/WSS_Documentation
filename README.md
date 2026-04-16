@@ -1,46 +1,41 @@
-﻿# WSS Documentation
+# WSS Documentation
 
-This repository contains end‑to‑end documentation for the Wearable Stimulation System (WSS): hardware, serial/command protocol, and a generated software API site (DocFX).
+This repository contains documentation for the Wearable Stimulation System (WSS): application guidance, software concepts, API references, protocol details, hardware material, and docs-maintainer workflows.
 
-## Quick Links
-  - Start Here: [GitHub Pages](https://cwru-non-academic.github.io/WSS_Documentation/) use to access all of the content bellow in html format.
-  
-- Repos
-  - Core C# Library: [GitHub](https://github.com/cwru-non-academic/WSSCoreInterface)
-  - Unity Implementation: [GitHub](https://github.com/cwru-non-academic/HFI_WSS_Unity_Interface)
-  - Python Implementation: [GitHub](https://github.com/cwru-non-academic/HFI_WSS_Python_Interface)
-  - C# Standalone Implementation: [GitHub](https://github.com/cwru-non-academic/HFI_WSS_Csharp_Implementation)
+## Main Docs
+
+- [GitHub Pages Documentation Hub](https://cwru-non-academic.github.io/WSS_Documentation/)
+  - The main entry point for application users and developers.
+- [Local Documentation Hub Source](./apiDocs/)
+  - DocFX content for the landing page, section pages, conceptual guides, and API navigation.
+
+## Start Here
+
+- [Using an Application](./apiDocs/conceptual/start-here-using-an-application.md)
+- [Developing an Application](./apiDocs/conceptual/start-here-developing-an-application.md)
+- [Building a New Integration Library](./apiDocs/conceptual/start-here-building-a-new-integration-library.md)
+
+## Core Concepts
+
+- [Documentation Hub Home](./apiDocs/)
+- [Concepts](./apiDocs/concepts.md)
+- [Config Files Reference](./apiDocs/conceptual/config-files-reference.md)
+- [Core Architecture](./apiDocs/conceptual/core-architecture.md)
+
+## Advanced And Maintenance
 
 - [Hardware Overview](./hardwareDocs/wsshardware.html)
-  - What: Photos, panels, cables/electrodes, and the gold control unit.
-
-- [Software Documentation Hub](./apiDocs/)
-  - What: DocFX site that hosts conceptual guides plus separated API references (Core C#, C# implementation, Unity Implementation, Python Implementation) in one place.
-
 - [WSS Commands Reference](./wssCommandsDocs/wsscommands.html)
-  - What: Complete message construction guide (IDs, inputs/units, examples, checksum) with a linked index.
+- [Building Software API Docs (DocFX)](./howtoCompileAPIDocs/BuildSoftwareDocs.html)
 
-- [Simple Serial Guide](./simpleSerialPortDocs/SimpleSerial.html) (Windows, macOS, MATLAB)
-  - What: How to list ports, configure, and send/receive Echo frames on each platform.
+## Docs Build Modes
 
-## Building the documentation site (multi-repo)
+- Full build: `./apiDocs/build-docs.sh --manifest ./apiDocs/repos.manifest.json`
+- Main/core only: `./apiDocs/build-docs.sh --manifest ./apiDocs/repos.manifest.json --main`
+- Skip Python docs: `./apiDocs/build-docs.sh --manifest ./apiDocs/repos.manifest.json --skip-python`
 
-Scripts live under `apiDocs/`:
-- PowerShell (Windows): `apiDocs/build-docs.ps1`
-- Bash (macOS/Linux/Git Bash): `apiDocs/build-docs.sh`
+Without `--main`, the docs build includes all enabled external repositories from `apiDocs/repos.manifest.json`. In the default manifest, `--main` builds the root WSS core solution, which includes the shared core and any transport projects linked into that solution.
 
-The docs hub supports multiple repositories and tools via `apiDocs/repos.manifest.json`:
-- C# repos: DocFX API metadata (separate API sections per repo)
-- Python repos: Sphinx HTML builds hosted inside the DocFX site
+Use `--skip-python` in Bash or `-SkipPython` in PowerShell to skip building Python/Sphinx documentation while still building the DocFX hub and any enabled C# API sections.
 
-Run with the manifest:
-
-```bash
-./apiDocs/build-docs.sh --manifest ./apiDocs/repos.manifest.json
-```
-
-```powershell
-./apiDocs/build-docs.ps1 -ManifestPath ./apiDocs/repos.manifest.json
-```
-
-See [How to Compile Docs using DocFX](./howtoCompileAPIDocs/BuildSoftwareDocs.html) for step‑by‑step instructions, prerequisites, and troubleshooting.
+For OS-specific setup steps, including installing prerequisites on macOS/Linux, see `howtoCompileAPIDocs/BuildSoftwareDocs.Rmd` (rendered as `BuildSoftwareDocs.html`).

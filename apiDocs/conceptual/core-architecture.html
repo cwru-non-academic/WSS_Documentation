@@ -72,7 +72,9 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="core-architecture-transport-codec-core">Core Architecture (Transport, Codec, Core)</h1>
 
+<p><a href="../index.html">Home</a> | <a href="../concepts.html">Back to Concepts</a></p>
 <p>This guide explains the stack beneath the core—how bytes move from transports to the frame codec to the core—and the lifecycle flows (initialize, setup, start/stop streaming, mid-stream edits with replies, reset/shutdown).</p>
+<p>For a guide focused specifically on setup order, initial setup versus later setup replacement, and where setup changes can be made, see <a href="setup-order-and-modification.html">Setup Order and Modification</a>.</p>
 <h2 id="stack-summary">Stack Summary</h2>
 <ul>
 <li>Transport (<code>WSSBaseCode/Interfaces/ITransport.cs</code>)
@@ -225,6 +227,12 @@
 </ul>
 </li>
 <li>Future: split into finer capabilities (waveform upload, event editing, config persistence/query) to align with firmware/hardware feature variations.</li>
+</ul>
+<p>Navigation:</p>
+<ul>
+<li><a href="../index.html">Back to Home</a></li>
+<li><a href="../concepts.html">Back to Concepts</a></li>
+<li><a href="layering-guide.html">Related: Layering Guide (Modules)</a></li>
 </ul>
 
 </article>

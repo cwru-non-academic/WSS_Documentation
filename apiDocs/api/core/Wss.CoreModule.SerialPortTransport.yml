@@ -5,8 +5,7 @@ items:
   id: SerialPortTransport
   parent: Wss.CoreModule
   children:
-  - Wss.CoreModule.SerialPortTransport.#ctor(System.Int32,System.IO.Ports.Parity,System.Int32,System.IO.Ports.StopBits,System.Int32)
-  - Wss.CoreModule.SerialPortTransport.#ctor(System.String,System.Int32,System.IO.Ports.Parity,System.Int32,System.IO.Ports.StopBits,System.Int32)
+  - Wss.CoreModule.SerialPortTransport.#ctor(Wss.CoreModule.SerialPortTransportOptions)
   - Wss.CoreModule.SerialPortTransport.BytesReceived
   - Wss.CoreModule.SerialPortTransport.ConnectAsync(System.Threading.CancellationToken)
   - Wss.CoreModule.SerialPortTransport.DisconnectAsync(System.Threading.CancellationToken)
@@ -21,7 +20,7 @@ items:
   fullName: Wss.CoreModule.SerialPortTransport
   type: Class
   assemblies:
-  - WSS_Core_Interface
+  - WSS.Transport.Serial
   namespace: Wss.CoreModule
   summary: >-
     Serial-port implementation of <xref href="Wss.CoreModule.ITransport" data-throw-if-not-resolved="false"></xref> for WSS communications.
@@ -47,93 +46,44 @@ items:
   - System.Object
   implements:
   - Wss.CoreModule.ITransport
-- uid: Wss.CoreModule.SerialPortTransport.#ctor(System.String,System.Int32,System.IO.Ports.Parity,System.Int32,System.IO.Ports.StopBits,System.Int32)
-  commentId: M:Wss.CoreModule.SerialPortTransport.#ctor(System.String,System.Int32,System.IO.Ports.Parity,System.Int32,System.IO.Ports.StopBits,System.Int32)
-  id: '#ctor(System.String,System.Int32,System.IO.Ports.Parity,System.Int32,System.IO.Ports.StopBits,System.Int32)'
+- uid: Wss.CoreModule.SerialPortTransport.#ctor(Wss.CoreModule.SerialPortTransportOptions)
+  commentId: M:Wss.CoreModule.SerialPortTransport.#ctor(Wss.CoreModule.SerialPortTransportOptions)
+  id: '#ctor(Wss.CoreModule.SerialPortTransportOptions)'
   parent: Wss.CoreModule.SerialPortTransport
   langs:
   - csharp
   - vb
-  name: SerialPortTransport(string, int, Parity, int, StopBits, int)
-  nameWithType: SerialPortTransport.SerialPortTransport(string, int, Parity, int, StopBits, int)
-  fullName: Wss.CoreModule.SerialPortTransport.SerialPortTransport(string, int, System.IO.Ports.Parity, int, System.IO.Ports.StopBits, int)
+  name: SerialPortTransport(SerialPortTransportOptions)
+  nameWithType: SerialPortTransport.SerialPortTransport(SerialPortTransportOptions)
+  fullName: Wss.CoreModule.SerialPortTransport.SerialPortTransport(Wss.CoreModule.SerialPortTransportOptions)
   type: Constructor
   assemblies:
-  - WSS_Core_Interface
+  - WSS.Transport.Serial
   namespace: Wss.CoreModule
-  summary: Creates a serial transport bound to the given port name and parameters.
+  summary: Creates a serial transport from a single options object.
+  remarks: >-
+    Exactly one port selection mode must be configured: either set <xref href="Wss.CoreModule.SerialPortTransportOptions.AutoSelectPort" data-throw-if-not-resolved="false"></xref>
+
+    to <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> or provide a non-empty <xref href="Wss.CoreModule.SerialPortTransportOptions.PortName" data-throw-if-not-resolved="false"></xref>.
   example: []
   syntax:
-    content: public SerialPortTransport(string portName, int baud = 115200, Parity parity = Parity.None, int dataBits = 8, StopBits stopBits = StopBits.One, int readTimeoutMs = 10)
+    content: public SerialPortTransport(SerialPortTransportOptions options)
     parameters:
-    - id: portName
-      type: System.String
-      description: Port name (e.g., <code>"COM5"</code> on Windows, <code>"/dev/ttyUSB0"</code> on Linux/macOS).
-    - id: baud
-      type: System.Int32
-      description: Baud rate. Default is 115200.
-    - id: parity
-      type: System.IO.Ports.Parity
-      description: Parity setting. Default is <xref href="System.IO.Ports.Parity.None" data-throw-if-not-resolved="false"></xref>.
-    - id: dataBits
-      type: System.Int32
-      description: Data bits. Default is 8.
-    - id: stopBits
-      type: System.IO.Ports.StopBits
-      description: Stop bits. Default is <xref href="System.IO.Ports.StopBits.One" data-throw-if-not-resolved="false"></xref>.
-    - id: readTimeoutMs
-      type: System.Int32
-      description: >-
-        Synchronous read timeout in milliseconds (used by <xref href="System.IO.Ports.SerialPort.Read(System.Byte%5b%5d%2cSystem.Int32%2cSystem.Int32)" data-throw-if-not-resolved="false"></xref>).
-
-        Typical value is small (e.g., 10ms). Timeouts are caught and ignored in the read loop.
-    content.vb: Public Sub New(portName As String, baud As Integer = 115200, parity As Parity = Parity.None, dataBits As Integer = 8, stopBits As StopBits = StopBits.One, readTimeoutMs As Integer = 10)
+    - id: options
+      type: Wss.CoreModule.SerialPortTransportOptions
+      description: Serial transport configuration, including connection settings and port selection mode.
+    content.vb: Public Sub New(options As SerialPortTransportOptions)
   overload: Wss.CoreModule.SerialPortTransport.#ctor*
-  nameWithType.vb: SerialPortTransport.New(String, Integer, Parity, Integer, StopBits, Integer)
-  fullName.vb: Wss.CoreModule.SerialPortTransport.New(String, Integer, System.IO.Ports.Parity, Integer, System.IO.Ports.StopBits, Integer)
-  name.vb: New(String, Integer, Parity, Integer, StopBits, Integer)
-- uid: Wss.CoreModule.SerialPortTransport.#ctor(System.Int32,System.IO.Ports.Parity,System.Int32,System.IO.Ports.StopBits,System.Int32)
-  commentId: M:Wss.CoreModule.SerialPortTransport.#ctor(System.Int32,System.IO.Ports.Parity,System.Int32,System.IO.Ports.StopBits,System.Int32)
-  id: '#ctor(System.Int32,System.IO.Ports.Parity,System.Int32,System.IO.Ports.StopBits,System.Int32)'
-  parent: Wss.CoreModule.SerialPortTransport
-  langs:
-  - csharp
-  - vb
-  name: SerialPortTransport(int, Parity, int, StopBits, int)
-  nameWithType: SerialPortTransport.SerialPortTransport(int, Parity, int, StopBits, int)
-  fullName: Wss.CoreModule.SerialPortTransport.SerialPortTransport(int, System.IO.Ports.Parity, int, System.IO.Ports.StopBits, int)
-  type: Constructor
-  assemblies:
-  - WSS_Core_Interface
-  namespace: Wss.CoreModule
-  summary: Creates a serial transport bound to the given parameters. Th port name is automatically selected as the firts port in the list.
-  example: []
-  syntax:
-    content: public SerialPortTransport(int baud = 115200, Parity parity = Parity.None, int dataBits = 8, StopBits stopBits = StopBits.One, int readTimeoutMs = 10)
-    parameters:
-    - id: baud
-      type: System.Int32
-      description: Baud rate. Default is 115200.
-    - id: parity
-      type: System.IO.Ports.Parity
-      description: Parity setting. Default is <xref href="System.IO.Ports.Parity.None" data-throw-if-not-resolved="false"></xref>.
-    - id: dataBits
-      type: System.Int32
-      description: Data bits. Default is 8.
-    - id: stopBits
-      type: System.IO.Ports.StopBits
-      description: Stop bits. Default is <xref href="System.IO.Ports.StopBits.One" data-throw-if-not-resolved="false"></xref>.
-    - id: readTimeoutMs
-      type: System.Int32
-      description: >-
-        Synchronous read timeout in milliseconds (used by <xref href="System.IO.Ports.SerialPort.Read(System.Byte%5b%5d%2cSystem.Int32%2cSystem.Int32)" data-throw-if-not-resolved="false"></xref>).
-
-        Typical value is small (e.g., 10ms). Timeouts are caught and ignored in the read loop.
-    content.vb: Public Sub New(baud As Integer = 115200, parity As Parity = Parity.None, dataBits As Integer = 8, stopBits As StopBits = StopBits.One, readTimeoutMs As Integer = 10)
-  overload: Wss.CoreModule.SerialPortTransport.#ctor*
-  nameWithType.vb: SerialPortTransport.New(Integer, Parity, Integer, StopBits, Integer)
-  fullName.vb: Wss.CoreModule.SerialPortTransport.New(Integer, System.IO.Ports.Parity, Integer, System.IO.Ports.StopBits, Integer)
-  name.vb: New(Integer, Parity, Integer, StopBits, Integer)
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when <code class="paramref">options</code> is null.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when the port selection settings specify both an explicit port and auto-selection, or neither.
+  nameWithType.vb: SerialPortTransport.New(SerialPortTransportOptions)
+  fullName.vb: Wss.CoreModule.SerialPortTransport.New(Wss.CoreModule.SerialPortTransportOptions)
+  name.vb: New(SerialPortTransportOptions)
 - uid: Wss.CoreModule.SerialPortTransport.IsConnected
   commentId: P:Wss.CoreModule.SerialPortTransport.IsConnected
   id: IsConnected
@@ -146,7 +96,7 @@ items:
   fullName: Wss.CoreModule.SerialPortTransport.IsConnected
   type: Property
   assemblies:
-  - WSS_Core_Interface
+  - WSS.Transport.Serial
   namespace: Wss.CoreModule
   summary: Gets whether the transport is currently connected/open.
   example: []
@@ -171,7 +121,7 @@ items:
   fullName: Wss.CoreModule.SerialPortTransport.BytesReceived
   type: Event
   assemblies:
-  - WSS_Core_Interface
+  - WSS.Transport.Serial
   namespace: Wss.CoreModule
   summary: >-
     Raised whenever raw bytes arrive from the underlying transport.
@@ -215,7 +165,7 @@ items:
   fullName: Wss.CoreModule.SerialPortTransport.ConnectAsync(System.Threading.CancellationToken)
   type: Method
   assemblies:
-  - WSS_Core_Interface
+  - WSS.Transport.Serial
   namespace: Wss.CoreModule
   summary: Opens/initializes the transport connection (e.g., open a serial port, connect a socket, start BLE session).
   remarks: Opens the serial port and starts a background read loop that forwards incoming data to <xref href="Wss.CoreModule.SerialPortTransport.BytesReceived" data-throw-if-not-resolved="false"></xref>.
@@ -255,7 +205,7 @@ items:
   fullName: Wss.CoreModule.SerialPortTransport.DisconnectAsync(System.Threading.CancellationToken)
   type: Method
   assemblies:
-  - WSS_Core_Interface
+  - WSS.Transport.Serial
   namespace: Wss.CoreModule
   summary: Closes the transport connection and stops any background receive loop.
   remarks: Stops the background read loop and closes the serial port.
@@ -292,7 +242,7 @@ items:
   fullName: Wss.CoreModule.SerialPortTransport.SendAsync(byte[], System.Threading.CancellationToken)
   type: Method
   assemblies:
-  - WSS_Core_Interface
+  - WSS.Transport.Serial
   namespace: Wss.CoreModule
   summary: Sends a block of bytes over the transport.
   remarks: Writes the buffer synchronously to the underlying <xref href="System.IO.Ports.SerialPort" data-throw-if-not-resolved="false"></xref> and flushes the base stream.
@@ -341,7 +291,7 @@ items:
   fullName: Wss.CoreModule.SerialPortTransport.Dispose()
   type: Method
   assemblies:
-  - WSS_Core_Interface
+  - WSS.Transport.Serial
   namespace: Wss.CoreModule
   summary: Disposes the serial port and stops the read loop.
   example: []
@@ -420,149 +370,46 @@ references:
   name: System
   nameWithType: System
   fullName: System
-- uid: System.IO.Ports.Parity.None
-  commentId: F:System.IO.Ports.Parity.None
+- uid: Wss.CoreModule.SerialPortTransportOptions.AutoSelectPort
+  commentId: P:Wss.CoreModule.SerialPortTransportOptions.AutoSelectPort
+  href: Wss.CoreModule.SerialPortTransportOptions.html#Wss_CoreModule_SerialPortTransportOptions_AutoSelectPort
+  name: AutoSelectPort
+  nameWithType: SerialPortTransportOptions.AutoSelectPort
+  fullName: Wss.CoreModule.SerialPortTransportOptions.AutoSelectPort
+- uid: Wss.CoreModule.SerialPortTransportOptions.PortName
+  commentId: P:Wss.CoreModule.SerialPortTransportOptions.PortName
+  href: Wss.CoreModule.SerialPortTransportOptions.html#Wss_CoreModule_SerialPortTransportOptions_PortName
+  name: PortName
+  nameWithType: SerialPortTransportOptions.PortName
+  fullName: Wss.CoreModule.SerialPortTransportOptions.PortName
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
   isExternal: true
-  name: None
-  nameWithType: Parity.None
-  fullName: System.IO.Ports.Parity.None
-- uid: System.IO.Ports.StopBits.One
-  commentId: F:System.IO.Ports.StopBits.One
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.ArgumentException
+  commentId: T:System.ArgumentException
   isExternal: true
-  name: One
-  nameWithType: StopBits.One
-  fullName: System.IO.Ports.StopBits.One
-- uid: System.IO.Ports.SerialPort.Read(System.Byte[],System.Int32,System.Int32)
-  commentId: M:System.IO.Ports.SerialPort.Read(System.Byte[],System.Int32,System.Int32)
-  isExternal: true
-  name: Read(byte[], int, int)
-  nameWithType: SerialPort.Read(byte[], int, int)
-  fullName: System.IO.Ports.SerialPort.Read(byte[], int, int)
-  nameWithType.vb: SerialPort.Read(Byte(), Integer, Integer)
-  fullName.vb: System.IO.Ports.SerialPort.Read(Byte(), Integer, Integer)
-  name.vb: Read(Byte(), Integer, Integer)
-  spec.csharp:
-  - uid: System.IO.Ports.SerialPort.Read(System.Byte[],System.Int32,System.Int32)
-    name: Read
-    isExternal: true
-  - name: (
-  - uid: System.Byte
-    name: byte
-    isExternal: true
-  - name: '['
-  - name: ']'
-  - name: ','
-  - name: " "
-  - uid: System.Int32
-    name: int
-    isExternal: true
-  - name: ','
-  - name: " "
-  - uid: System.Int32
-    name: int
-    isExternal: true
-  - name: )
-  spec.vb:
-  - uid: System.IO.Ports.SerialPort.Read(System.Byte[],System.Int32,System.Int32)
-    name: Read
-    isExternal: true
-  - name: (
-  - uid: System.Byte
-    name: Byte
-    isExternal: true
-  - name: (
-  - name: )
-  - name: ','
-  - name: " "
-  - uid: System.Int32
-    name: Integer
-    isExternal: true
-  - name: ','
-  - name: " "
-  - uid: System.Int32
-    name: Integer
-    isExternal: true
-  - name: )
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
 - uid: Wss.CoreModule.SerialPortTransport.#ctor*
   commentId: Overload:Wss.CoreModule.SerialPortTransport.#ctor
-  href: Wss.CoreModule.SerialPortTransport.html#Wss_CoreModule_SerialPortTransport__ctor_System_String_System_Int32_System_IO_Ports_Parity_System_Int32_System_IO_Ports_StopBits_System_Int32_
+  href: Wss.CoreModule.SerialPortTransport.html#Wss_CoreModule_SerialPortTransport__ctor_Wss_CoreModule_SerialPortTransportOptions_
   name: SerialPortTransport
   nameWithType: SerialPortTransport.SerialPortTransport
   fullName: Wss.CoreModule.SerialPortTransport.SerialPortTransport
   nameWithType.vb: SerialPortTransport.New
   fullName.vb: Wss.CoreModule.SerialPortTransport.New
   name.vb: New
-- uid: System.String
-  commentId: T:System.String
-  parent: System
-  isExternal: true
-  name: string
-  nameWithType: string
-  fullName: string
-  nameWithType.vb: String
-  fullName.vb: String
-  name.vb: String
-- uid: System.Int32
-  commentId: T:System.Int32
-  parent: System
-  isExternal: true
-  name: int
-  nameWithType: int
-  fullName: int
-  nameWithType.vb: Integer
-  fullName.vb: Integer
-  name.vb: Integer
-- uid: System.IO.Ports.Parity
-  commentId: T:System.IO.Ports.Parity
-  parent: System.IO.Ports
-  isExternal: true
-  name: Parity
-  nameWithType: Parity
-  fullName: System.IO.Ports.Parity
-- uid: System.IO.Ports.StopBits
-  commentId: T:System.IO.Ports.StopBits
-  parent: System.IO.Ports
-  isExternal: true
-  name: StopBits
-  nameWithType: StopBits
-  fullName: System.IO.Ports.StopBits
-- uid: System.IO.Ports
-  commentId: N:System.IO.Ports
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system
-  name: System.IO.Ports
-  nameWithType: System.IO.Ports
-  fullName: System.IO.Ports
-  spec.csharp:
-  - uid: System
-    name: System
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system
-  - name: .
-  - uid: System.IO
-    name: IO
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.io
-  - name: .
-  - uid: System.IO.Ports
-    name: Ports
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.io.ports
-  spec.vb:
-  - uid: System
-    name: System
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system
-  - name: .
-  - uid: System.IO
-    name: IO
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.io
-  - name: .
-  - uid: System.IO.Ports
-    name: Ports
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.io.ports
+- uid: Wss.CoreModule.SerialPortTransportOptions
+  commentId: T:Wss.CoreModule.SerialPortTransportOptions
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.SerialPortTransportOptions.html
+  name: SerialPortTransportOptions
+  nameWithType: SerialPortTransportOptions
+  fullName: Wss.CoreModule.SerialPortTransportOptions
 - uid: Wss.CoreModule.SerialPortTransport.IsConnected*
   commentId: Overload:Wss.CoreModule.SerialPortTransport.IsConnected
   href: Wss.CoreModule.SerialPortTransport.html#Wss_CoreModule_SerialPortTransport_IsConnected

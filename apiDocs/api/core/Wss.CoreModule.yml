@@ -5,9 +5,12 @@ items:
   id: Wss.CoreModule
   children:
   - Wss.CoreModule.AmpCurveParams
+  - Wss.CoreModule.ContactConfigDefinition
   - Wss.CoreModule.CoreConfig
   - Wss.CoreModule.CoreConfigController
+  - Wss.CoreModule.CreateEventRequest
   - Wss.CoreModule.DictConfigBase
+  - Wss.CoreModule.EventPulseWidths
   - Wss.CoreModule.IBasicStimulation
   - Wss.CoreModule.ICoreConfig
   - Wss.CoreModule.IFrameCodec
@@ -20,9 +23,13 @@ items:
   - Wss.CoreModule.ModuleSettings.FingerswitchConfig
   - Wss.CoreModule.ModuleSettings.HwConfigFlags
   - Wss.CoreModule.ModuleSettings.ParameterStepKind
+  - Wss.CoreModule.ScheduleDefinition
   - Wss.CoreModule.SerialPortTransport
+  - Wss.CoreModule.SerialPortTransportOptions
   - Wss.CoreModule.StimParamsBasicExtensions
+  - Wss.CoreModule.StreamChangeRequest
   - Wss.CoreModule.TestModeTransport
+  - Wss.CoreModule.TestModeTransportOptions
   - Wss.CoreModule.WSSLimits
   - Wss.CoreModule.WSSMessageIDs
   - Wss.CoreModule.WSSVersionHandler
@@ -30,8 +37,10 @@ items:
   - Wss.CoreModule.Waveform
   - Wss.CoreModule.WaveformBuilder
   - Wss.CoreModule.WssClient
+  - Wss.CoreModule.WssClientOptions
   - Wss.CoreModule.WssFrameCodec
   - Wss.CoreModule.WssStimulationCore
+  - Wss.CoreModule.WssStimulationCoreOptions
   - Wss.CoreModule.WssTarget
   langs:
   - csharp
@@ -43,6 +52,13 @@ items:
   assemblies:
   - WSS_Core_Interface
 references:
+- uid: Wss.CoreModule.ContactConfigDefinition
+  commentId: T:Wss.CoreModule.ContactConfigDefinition
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.ContactConfigDefinition.html
+  name: ContactConfigDefinition
+  nameWithType: ContactConfigDefinition
+  fullName: Wss.CoreModule.ContactConfigDefinition
 - uid: Wss.CoreModule.CoreConfig
   commentId: T:Wss.CoreModule.CoreConfig
   href: Wss.CoreModule.CoreConfig.html
@@ -76,6 +92,20 @@ references:
   name: JsonReader
   nameWithType: JsonReader
   fullName: Wss.CoreModule.JsonReader
+- uid: Wss.CoreModule.CreateEventRequest
+  commentId: T:Wss.CoreModule.CreateEventRequest
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.CreateEventRequest.html
+  name: CreateEventRequest
+  nameWithType: CreateEventRequest
+  fullName: Wss.CoreModule.CreateEventRequest
+- uid: Wss.CoreModule.EventPulseWidths
+  commentId: T:Wss.CoreModule.EventPulseWidths
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.EventPulseWidths.html
+  name: EventPulseWidths
+  nameWithType: EventPulseWidths
+  fullName: Wss.CoreModule.EventPulseWidths
 - uid: Wss.CoreModule.IBasicStimulation
   commentId: T:Wss.CoreModule.IBasicStimulation
   parent: Wss.CoreModule
@@ -187,12 +217,13 @@ references:
   - uid: Wss.CoreModule.ModuleSettings.ParameterStepKind
     name: ParameterStepKind
     href: Wss.CoreModule.ModuleSettings.ParameterStepKind.html
-- uid: Wss.CoreModule.SerialPortTransport
-  commentId: T:Wss.CoreModule.SerialPortTransport
-  href: Wss.CoreModule.SerialPortTransport.html
-  name: SerialPortTransport
-  nameWithType: SerialPortTransport
-  fullName: Wss.CoreModule.SerialPortTransport
+- uid: Wss.CoreModule.ScheduleDefinition
+  commentId: T:Wss.CoreModule.ScheduleDefinition
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.ScheduleDefinition.html
+  name: ScheduleDefinition
+  nameWithType: ScheduleDefinition
+  fullName: Wss.CoreModule.ScheduleDefinition
 - uid: Wss.CoreModule.StimParamsBasicExtensions
   commentId: T:Wss.CoreModule.StimParamsBasicExtensions
   parent: Wss.CoreModule
@@ -214,6 +245,13 @@ references:
   name: WaveformBuilder
   nameWithType: WaveformBuilder
   fullName: Wss.CoreModule.WaveformBuilder
+- uid: Wss.CoreModule.StreamChangeRequest
+  commentId: T:Wss.CoreModule.StreamChangeRequest
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.StreamChangeRequest.html
+  name: StreamChangeRequest
+  nameWithType: StreamChangeRequest
+  fullName: Wss.CoreModule.StreamChangeRequest
 - uid: Wss.CoreModule.Log
   commentId: T:Wss.CoreModule.Log
   href: Wss.CoreModule.Log.html
@@ -249,12 +287,26 @@ references:
   name: TestModeTransport
   nameWithType: TestModeTransport
   fullName: Wss.CoreModule.TestModeTransport
+- uid: Wss.CoreModule.TestModeTransportOptions
+  commentId: T:Wss.CoreModule.TestModeTransportOptions
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.TestModeTransportOptions.html
+  name: TestModeTransportOptions
+  nameWithType: TestModeTransportOptions
+  fullName: Wss.CoreModule.TestModeTransportOptions
 - uid: Wss.CoreModule.WssClient
   commentId: T:Wss.CoreModule.WssClient
   href: Wss.CoreModule.WssClient.html
   name: WssClient
   nameWithType: WssClient
   fullName: Wss.CoreModule.WssClient
+- uid: Wss.CoreModule.WssClientOptions
+  commentId: T:Wss.CoreModule.WssClientOptions
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.WssClientOptions.html
+  name: WssClientOptions
+  nameWithType: WssClientOptions
+  fullName: Wss.CoreModule.WssClientOptions
 - uid: Wss.CoreModule.WssFrameCodec
   commentId: T:Wss.CoreModule.WssFrameCodec
   href: Wss.CoreModule.WssFrameCodec.html
@@ -281,6 +333,13 @@ references:
   name: WssStimulationCore
   nameWithType: WssStimulationCore
   fullName: Wss.CoreModule.WssStimulationCore
+- uid: Wss.CoreModule.WssStimulationCoreOptions
+  commentId: T:Wss.CoreModule.WssStimulationCoreOptions
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.WssStimulationCoreOptions.html
+  name: WssStimulationCoreOptions
+  nameWithType: WssStimulationCoreOptions
+  fullName: Wss.CoreModule.WssStimulationCoreOptions
 - uid: Wss.CoreModule.WssTarget
   commentId: T:Wss.CoreModule.WssTarget
   parent: Wss.CoreModule
@@ -318,6 +377,19 @@ references:
   - uid: Wss.CoreModule.WSSVersionHandler.SupportedVersions
     name: SupportedVersions
     href: Wss.CoreModule.WSSVersionHandler.SupportedVersions.html
+- uid: Wss.CoreModule.SerialPortTransport
+  commentId: T:Wss.CoreModule.SerialPortTransport
+  href: Wss.CoreModule.SerialPortTransport.html
+  name: SerialPortTransport
+  nameWithType: SerialPortTransport
+  fullName: Wss.CoreModule.SerialPortTransport
+- uid: Wss.CoreModule.SerialPortTransportOptions
+  commentId: T:Wss.CoreModule.SerialPortTransportOptions
+  parent: Wss.CoreModule
+  href: Wss.CoreModule.SerialPortTransportOptions.html
+  name: SerialPortTransportOptions
+  nameWithType: SerialPortTransportOptions
+  fullName: Wss.CoreModule.SerialPortTransportOptions
 - uid: Wss.CoreModule
   commentId: N:Wss.CoreModule
   href: Wss.html
