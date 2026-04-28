@@ -6,7 +6,7 @@ output:
 ---
 # Simple Serial Communication with WSS
 
-[Home](../README.md) | [Docs Hub](../apiDocs/index.md) | [Back to Advanced](../apiDocs/advanced.md)
+[Home](../index.html) | [Docs Hub](../apiDocs/index.html) | [Back to Advanced](../apiDocs/advanced.html)
 
 This guide shows how to list ports, configure a serial connection, and send/receive a simple Echo message to a WSS device from macOS, Windows, and MATLAB.
 
@@ -117,6 +117,6 @@ end
 
 Navigation:
 
-- [Back to Home](../README.md)
-- [Back to Docs Hub](../apiDocs/index.md)
-- [Back to Advanced](../apiDocs/advanced.md)
+- [Back to Home](../index.html)
+- [Back to Docs Hub](../apiDocs/index.html)
+- [Back to Advanced](../apiDocs/advanced.html)

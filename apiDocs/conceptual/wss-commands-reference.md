@@ -2,17 +2,11 @@
 
 [Home](../index.md) | [Back to Advanced](../advanced.md)
 
-This DocFX page exists so the documentation hub can link to the WSS command reference without pointing at generated HTML outside `apiDocs/`.
+This DocFX page exists so the documentation hub can link to the WSS command reference.
 
-The source for the full command and protocol reference lives in:
+Use the rendered guide for the byte-level command list, protocol details, and raw command examples:
 
-- `wssCommandsDocs/wsscommands.Rmd`
-
-The rendered output is generated alongside that source as:
-
-- `wssCommandsDocs/wsscommands.html`
-
-Use that document for the byte-level command list, protocol details, and raw command examples.
+- [WSS Commands Reference](../../wssCommandsDocs/wsscommands.html)
 
 Navigation:
 

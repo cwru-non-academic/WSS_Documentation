@@ -6,7 +6,7 @@ output:
 ---
 # Building Software API Docs (DocFX)
 
-[Home](../README.md) | [Docs Hub](../apiDocs/index.md) | [Back to Maintainers](../apiDocs/maintainers.md)
+[Home](../index.html) | [Docs Hub](../apiDocs/index.html) | [Back to Maintainers](../apiDocs/maintainers.html)
 
 This guide explains how to generate the WSS documentation hub while keeping code in external repositories.
 
@@ -394,6 +394,6 @@ Where:
 
 Navigation:
 
-- [Back to Home](../README.md)
-- [Back to Docs Hub](../apiDocs/index.md)
-- [Back to Maintainers](../apiDocs/maintainers.md)
+- [Back to Home](../index.html)
+- [Back to Docs Hub](../apiDocs/index.html)
+- [Back to Maintainers](../apiDocs/maintainers.html)

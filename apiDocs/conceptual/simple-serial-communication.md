@@ -2,17 +2,11 @@
 
 [Home](../index.md) | [Back to Advanced](../advanced.md)
 
-This DocFX page exists so the documentation hub can link to the simple serial communication guide without pointing at generated HTML outside `apiDocs/`.
+This DocFX page exists so the documentation hub can link to the simple serial communication guide.
 
-The source for the guide lives in:
+Use the rendered guide for raw serial communication examples for macOS, Windows, and MATLAB:
 
-- `simpleSerialPortDocs/SimpleSerial.Rmd`
-
-The rendered output is generated alongside that source as:
-
-- `simpleSerialPortDocs/SimpleSerial.html`
-
-Use that document for raw serial communication examples for macOS, Windows, and MATLAB.
+- [Simple Serial Communication with WSS](../../simpleSerialPortDocs/SimpleSerial.html)
 
 Navigation:
 
