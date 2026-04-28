@@ -8,7 +8,6 @@
       "root": "${WSS_CORE_REPO_ROOT}",
       "solution": "/home/lemf/Documents/GitHub/WSSCoreInterface/WSS_Core_Interface.sln",
       "docfxDest": "api/core",
-      "entryUid": "Wss.CoreModule",
       "msbuildProperties": {
         "Configuration": "Debug"
       }
@@ -21,7 +20,6 @@
       "root": "${WSS_CSHARP_REPO_ROOT}",
       "csproj": "/home/lemf/Documents/GitHub/HFI_WSS_Csharp_Implementation/src/HFI_WSS_Csharp_Implementation.csproj",
       "docfxDest": "api/csharp",
-      "entryUid": "HFI.Wss",
       "msbuildProperties": {
         "Configuration": "Debug"
       }
@@ -36,7 +34,6 @@
       "csproj": "apiDocs/shims/UnitySubmodule/UnitySubmodule.Docs.csproj",
       "docfxDest": "api/unity",
       "globalNamespaceId": "WSS.Unity",
-      "entryUid": "WSS.Unity",
       "msbuildProperties": {
         "DocsSourceRoot": "${WSS_UNITY_INTEGRATION_SRC}",
         "DocsInclude": "${WSS_UNITY_INTEGRATION_SRC}/UnityImplementation/**/*.cs",

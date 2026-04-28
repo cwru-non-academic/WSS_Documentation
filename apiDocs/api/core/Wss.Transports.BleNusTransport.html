@@ -76,11 +76,11 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="HFI.Wss.BleNusTransport">
+            <article class="content wrap" id="_content" data-uid="Wss.Transports.BleNusTransport">
 
 
 
-  <h1 id="HFI_Wss_BleNusTransport" data-uid="HFI.Wss.BleNusTransport" class="text-break">Class BleNusTransport</h1>
+  <h1 id="Wss_Transports_BleNusTransport" data-uid="Wss.Transports.BleNusTransport" class="text-break">Class BleNusTransport</h1>
   <div class="markdown level0 summary"><p>BLE transport backed by the Nordic UART Service (NUS).</p>
 </div>
   <div class="markdown level0 conceptual"></div>
@@ -91,29 +91,58 @@
   </div>
   <div class="implements">
     <h5>Implements</h5>
-    <div><a class="xref" href="Wss.CoreModule.ITransport.html">ITransport</a></div>
+    <div><a class="xref" href="Wss.Transports.ITransport.html">ITransport</a></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="HFI.html">HFI</a>.<a class="xref" href="HFI.Wss.html">Wss</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Wss.html">Wss</a>.<a class="xref" href="Wss.Transports.html">Transports</a></h6>
   <h6><strong>Assembly</strong>: WSS.Transport.BLE.dll</h6>
-  <h5 id="HFI_Wss_BleNusTransport_syntax">Syntax</h5>
+  <h5 id="Wss_Transports_BleNusTransport_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public sealed class BleNusTransport : ITransport</code></pre>
   </div>
-  <h5 id="HFI_Wss_BleNusTransport_remarks"><strong>Remarks</strong></h5>
+  <h5 id="Wss_Transports_BleNusTransport_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>This is a low-level byte transport only. Outbound messages are written with response
 to the NUS RX characteristic, inbound messages arrive as notifications from the NUS
 TX characteristic, and writes are serialized so only one GATT write is in flight at a time.
-Device selection follows <a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_AutoSelectDevice">AutoSelectDevice</a>:
+Device selection follows <a class="xref" href="Wss.Transports.BleNusTransportOptions.html#Wss_Transports_BleNusTransportOptions_AutoSelectDevice">AutoSelectDevice</a>:
 when enabled, the transport scans for compatible BLE devices and chooses the best
-valid candidate; otherwise it requires an explicit <a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_DeviceId">DeviceId</a>
-or <a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_DeviceName">DeviceName</a>.</p>
+valid candidate; otherwise it requires an explicit <a class="xref" href="Wss.Transports.BleNusTransportOptions.html#Wss_Transports_BleNusTransportOptions_DeviceId">DeviceId</a>
+or <a class="xref" href="Wss.Transports.BleNusTransportOptions.html#Wss_Transports_BleNusTransportOptions_DeviceName">DeviceName</a>.</p>
 </div>
   <h3 id="constructors">Constructors
 </h3>
 
 
-  <a id="HFI_Wss_BleNusTransport__ctor_" data-uid="HFI.Wss.BleNusTransport.#ctor*"></a>
-  <h4 id="HFI_Wss_BleNusTransport__ctor_HFI_Wss_BleNusTransportOptions_" data-uid="HFI.Wss.BleNusTransport.#ctor(HFI.Wss.BleNusTransportOptions)">BleNusTransport(BleNusTransportOptions)</h4>
+  <a id="Wss_Transports_BleNusTransport__ctor_" data-uid="Wss.Transports.BleNusTransport.#ctor*"></a>
+  <h4 id="Wss_Transports_BleNusTransport__ctor_System_String_" data-uid="Wss.Transports.BleNusTransport.#ctor(System.String)">BleNusTransport(string)</h4>
+  <div class="markdown level1 summary"><p>Creates a BLE transport that connects to a device with the specified advertised name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BleNusTransport(string deviceName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">deviceName</span></td>
+        <td><p>Exact BLE device name to scan for.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_Transports_BleNusTransport__ctor_" data-uid="Wss.Transports.BleNusTransport.#ctor*"></a>
+  <h4 id="Wss_Transports_BleNusTransport__ctor_Wss_Transports_BleNusTransportOptions_" data-uid="Wss.Transports.BleNusTransport.#ctor(Wss.Transports.BleNusTransportOptions)">BleNusTransport(BleNusTransportOptions)</h4>
   <div class="markdown level1 summary"><p>Creates a BLE transport from a fully specified options object.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -132,7 +161,7 @@ or <a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTrans
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="HFI.Wss.BleNusTransportOptions.html">BleNusTransportOptions</a></td>
+        <td><a class="xref" href="Wss.Transports.BleNusTransportOptions.html">BleNusTransportOptions</a></td>
         <td><span class="parametername">options</span></td>
         <td><p>BLE transport configuration including device selection and required UUIDs.</p>
 </td>
@@ -160,40 +189,11 @@ or <a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTrans
       </tr>
     </tbody>
   </table>
-
-
-  <a id="HFI_Wss_BleNusTransport__ctor_" data-uid="HFI.Wss.BleNusTransport.#ctor*"></a>
-  <h4 id="HFI_Wss_BleNusTransport__ctor_System_String_" data-uid="HFI.Wss.BleNusTransport.#ctor(System.String)">BleNusTransport(string)</h4>
-  <div class="markdown level1 summary"><p>Creates a BLE transport that connects to a device with the specified advertised name.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public BleNusTransport(string deviceName)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">string</span></td>
-        <td><span class="parametername">deviceName</span></td>
-        <td><p>Exact BLE device name to scan for.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
   <h3 id="fields">Fields
 </h3>
 
 
-  <h4 id="HFI_Wss_BleNusTransport_DefaultNotifyCharacteristicUuid" data-uid="HFI.Wss.BleNusTransport.DefaultNotifyCharacteristicUuid">DefaultNotifyCharacteristicUuid</h4>
+  <h4 id="Wss_Transports_BleNusTransport_DefaultNotifyCharacteristicUuid" data-uid="Wss.Transports.BleNusTransport.DefaultNotifyCharacteristicUuid">DefaultNotifyCharacteristicUuid</h4>
   <div class="markdown level1 summary"><p>Gets the default Nordic UART Service notification characteristic UUID used for inbound bytes.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -218,7 +218,7 @@ or <a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTrans
   </table>
 
 
-  <h4 id="HFI_Wss_BleNusTransport_DefaultServiceUuid" data-uid="HFI.Wss.BleNusTransport.DefaultServiceUuid">DefaultServiceUuid</h4>
+  <h4 id="Wss_Transports_BleNusTransport_DefaultServiceUuid" data-uid="Wss.Transports.BleNusTransport.DefaultServiceUuid">DefaultServiceUuid</h4>
   <div class="markdown level1 summary"><p>Gets the default Nordic UART Service UUID used to discover compatible BLE devices.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -243,7 +243,7 @@ or <a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTrans
   </table>
 
 
-  <h4 id="HFI_Wss_BleNusTransport_DefaultWriteCharacteristicUuid" data-uid="HFI.Wss.BleNusTransport.DefaultWriteCharacteristicUuid">DefaultWriteCharacteristicUuid</h4>
+  <h4 id="Wss_Transports_BleNusTransport_DefaultWriteCharacteristicUuid" data-uid="Wss.Transports.BleNusTransport.DefaultWriteCharacteristicUuid">DefaultWriteCharacteristicUuid</h4>
   <div class="markdown level1 summary"><p>Gets the default Nordic UART Service write characteristic UUID used for outbound bytes.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -270,8 +270,8 @@ or <a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTrans
 </h3>
 
 
-  <a id="HFI_Wss_BleNusTransport_IsConnected_" data-uid="HFI.Wss.BleNusTransport.IsConnected*"></a>
-  <h4 id="HFI_Wss_BleNusTransport_IsConnected" data-uid="HFI.Wss.BleNusTransport.IsConnected">IsConnected</h4>
+  <a id="Wss_Transports_BleNusTransport_IsConnected_" data-uid="Wss.Transports.BleNusTransport.IsConnected*"></a>
+  <h4 id="Wss_Transports_BleNusTransport_IsConnected" data-uid="Wss.Transports.BleNusTransport.IsConnected">IsConnected</h4>
   <div class="markdown level1 summary"><p>Gets whether the transport currently has an active BLE session and both required GATT characteristics.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -298,8 +298,8 @@ or <a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTrans
 </h3>
 
 
-  <a id="HFI_Wss_BleNusTransport_ConnectAsync_" data-uid="HFI.Wss.BleNusTransport.ConnectAsync*"></a>
-  <h4 id="HFI_Wss_BleNusTransport_ConnectAsync_System_Threading_CancellationToken_" data-uid="HFI.Wss.BleNusTransport.ConnectAsync(System.Threading.CancellationToken)">ConnectAsync(CancellationToken)</h4>
+  <a id="Wss_Transports_BleNusTransport_ConnectAsync_" data-uid="Wss.Transports.BleNusTransport.ConnectAsync*"></a>
+  <h4 id="Wss_Transports_BleNusTransport_ConnectAsync_System_Threading_CancellationToken_" data-uid="Wss.Transports.BleNusTransport.ConnectAsync(System.Threading.CancellationToken)">ConnectAsync(CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Asynchronously scans for and connects to the configured BLE device.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -369,8 +369,8 @@ or <a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTrans
   </table>
 
 
-  <a id="HFI_Wss_BleNusTransport_CreateDefaultOptions_" data-uid="HFI.Wss.BleNusTransport.CreateDefaultOptions*"></a>
-  <h4 id="HFI_Wss_BleNusTransport_CreateDefaultOptions_System_String_" data-uid="HFI.Wss.BleNusTransport.CreateDefaultOptions(System.String)">CreateDefaultOptions(string)</h4>
+  <a id="Wss_Transports_BleNusTransport_CreateDefaultOptions_" data-uid="Wss.Transports.BleNusTransport.CreateDefaultOptions*"></a>
+  <h4 id="Wss_Transports_BleNusTransport_CreateDefaultOptions_System_String_" data-uid="Wss.Transports.BleNusTransport.CreateDefaultOptions(System.String)">CreateDefaultOptions(string)</h4>
   <div class="markdown level1 summary"><p>Creates a default options object that resolves a BLE device by advertised name.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -406,16 +406,16 @@ or <a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTrans
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="HFI.Wss.BleNusTransportOptions.html">BleNusTransportOptions</a></td>
-        <td><p>A new options object with <a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_DeviceName">DeviceName</a> set.</p>
+        <td><a class="xref" href="Wss.Transports.BleNusTransportOptions.html">BleNusTransportOptions</a></td>
+        <td><p>A new options object with <a class="xref" href="Wss.Transports.BleNusTransportOptions.html#Wss_Transports_BleNusTransportOptions_DeviceName">DeviceName</a> set.</p>
 </td>
       </tr>
     </tbody>
   </table>
 
 
-  <a id="HFI_Wss_BleNusTransport_DisconnectAsync_" data-uid="HFI.Wss.BleNusTransport.DisconnectAsync*"></a>
-  <h4 id="HFI_Wss_BleNusTransport_DisconnectAsync_System_Threading_CancellationToken_" data-uid="HFI.Wss.BleNusTransport.DisconnectAsync(System.Threading.CancellationToken)">DisconnectAsync(CancellationToken)</h4>
+  <a id="Wss_Transports_BleNusTransport_DisconnectAsync_" data-uid="Wss.Transports.BleNusTransport.DisconnectAsync*"></a>
+  <h4 id="Wss_Transports_BleNusTransport_DisconnectAsync_System_Threading_CancellationToken_" data-uid="Wss.Transports.BleNusTransport.DisconnectAsync(System.Threading.CancellationToken)">DisconnectAsync(CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Asynchronously disconnects the active BLE session and stops inbound notifications.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -475,8 +475,8 @@ or <a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTrans
   </table>
 
 
-  <a id="HFI_Wss_BleNusTransport_Dispose_" data-uid="HFI.Wss.BleNusTransport.Dispose*"></a>
-  <h4 id="HFI_Wss_BleNusTransport_Dispose" data-uid="HFI.Wss.BleNusTransport.Dispose">Dispose()</h4>
+  <a id="Wss_Transports_BleNusTransport_Dispose_" data-uid="Wss.Transports.BleNusTransport.Dispose*"></a>
+  <h4 id="Wss_Transports_BleNusTransport_Dispose" data-uid="Wss.Transports.BleNusTransport.Dispose">Dispose()</h4>
   <div class="markdown level1 summary"><p>Disconnects the transport and releases managed resources.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -484,13 +484,13 @@ or <a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTrans
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
   </div>
-  <h5 id="HFI_Wss_BleNusTransport_Dispose_remarks">Remarks</h5>
+  <h5 id="Wss_Transports_BleNusTransport_Dispose_remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>This method performs a best-effort synchronous disconnect and logs disconnect failures instead of rethrowing them.</p>
 </div>
 
 
-  <a id="HFI_Wss_BleNusTransport_SendAsync_" data-uid="HFI.Wss.BleNusTransport.SendAsync*"></a>
-  <h4 id="HFI_Wss_BleNusTransport_SendAsync_System_Byte___System_Threading_CancellationToken_" data-uid="HFI.Wss.BleNusTransport.SendAsync(System.Byte[],System.Threading.CancellationToken)">SendAsync(byte[], CancellationToken)</h4>
+  <a id="Wss_Transports_BleNusTransport_SendAsync_" data-uid="Wss.Transports.BleNusTransport.SendAsync*"></a>
+  <h4 id="Wss_Transports_BleNusTransport_SendAsync_System_Byte___System_Threading_CancellationToken_" data-uid="Wss.Transports.BleNusTransport.SendAsync(System.Byte[],System.Threading.CancellationToken)">SendAsync(byte[], CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Sends a block of raw bytes over the BLE write characteristic.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -538,7 +538,7 @@ or <a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTrans
       </tr>
     </tbody>
   </table>
-  <h5 id="HFI_Wss_BleNusTransport_SendAsync_System_Byte___System_Threading_CancellationToken__remarks">Remarks</h5>
+  <h5 id="Wss_Transports_BleNusTransport_SendAsync_System_Byte___System_Threading_CancellationToken__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>Writes are serialized so only one GATT write is in flight at a time.</p>
 </div>
   <h5 class="exceptions">Exceptions</h5>
@@ -576,7 +576,7 @@ or <a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTrans
 </h3>
 
 
-  <h4 id="HFI_Wss_BleNusTransport_BytesReceived" data-uid="HFI.Wss.BleNusTransport.BytesReceived">BytesReceived</h4>
+  <h4 id="Wss_Transports_BleNusTransport_BytesReceived" data-uid="Wss.Transports.BleNusTransport.BytesReceived">BytesReceived</h4>
   <div class="markdown level1 summary"><p>Raised when raw bytes are received from the BLE notification characteristic.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -599,13 +599,13 @@ or <a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTrans
       </tr>
     </tbody>
   </table>
-  <h5 id="HFI_Wss_BleNusTransport_BytesReceived_remarks">Remarks</h5>
+  <h5 id="Wss_Transports_BleNusTransport_BytesReceived_remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>Handlers may be invoked on a background thread supplied by the underlying BLE stack.
 Marshal to the required context before touching thread-affine state.</p>
 </div>
   <h3 id="implements">Implements</h3>
   <div>
-      <a class="xref" href="Wss.CoreModule.ITransport.html">ITransport</a>
+      <a class="xref" href="Wss.Transports.ITransport.html">ITransport</a>
   </div>
 
 </article>

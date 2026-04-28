@@ -1,0 +1,91 @@
+### YamlMime:ManagedReference
+items:
+- uid: Wss.Transports
+  commentId: N:Wss.Transports
+  id: Wss.Transports
+  children:
+  - Wss.Transports.BleNusTransport
+  - Wss.Transports.BleNusTransportOptions
+  - Wss.Transports.ITransport
+  - Wss.Transports.SerialPortTransport
+  - Wss.Transports.SerialPortTransportOptions
+  - Wss.Transports.TestModeTransport
+  - Wss.Transports.TestModeTransportOptions
+  langs:
+  - csharp
+  - vb
+  name: Wss.Transports
+  nameWithType: Wss.Transports
+  fullName: Wss.Transports
+  type: Namespace
+  assemblies:
+  - WSS_Core_Interface
+references:
+- uid: Wss.Transports.ITransport
+  commentId: T:Wss.Transports.ITransport
+  parent: Wss.Transports
+  href: Wss.Transports.ITransport.html
+  name: ITransport
+  nameWithType: ITransport
+  fullName: Wss.Transports.ITransport
+- uid: Wss.Transports.TestModeTransport
+  commentId: T:Wss.Transports.TestModeTransport
+  href: Wss.Transports.TestModeTransport.html
+  name: TestModeTransport
+  nameWithType: TestModeTransport
+  fullName: Wss.Transports.TestModeTransport
+- uid: Wss.Transports.TestModeTransportOptions
+  commentId: T:Wss.Transports.TestModeTransportOptions
+  parent: Wss.Transports
+  href: Wss.Transports.TestModeTransportOptions.html
+  name: TestModeTransportOptions
+  nameWithType: TestModeTransportOptions
+  fullName: Wss.Transports.TestModeTransportOptions
+- uid: Wss.Transports.SerialPortTransport
+  commentId: T:Wss.Transports.SerialPortTransport
+  href: Wss.Transports.SerialPortTransport.html
+  name: SerialPortTransport
+  nameWithType: SerialPortTransport
+  fullName: Wss.Transports.SerialPortTransport
+- uid: Wss.Transports.SerialPortTransportOptions
+  commentId: T:Wss.Transports.SerialPortTransportOptions
+  parent: Wss.Transports
+  href: Wss.Transports.SerialPortTransportOptions.html
+  name: SerialPortTransportOptions
+  nameWithType: SerialPortTransportOptions
+  fullName: Wss.Transports.SerialPortTransportOptions
+- uid: Wss.Transports.BleNusTransport
+  commentId: T:Wss.Transports.BleNusTransport
+  href: Wss.Transports.BleNusTransport.html
+  name: BleNusTransport
+  nameWithType: BleNusTransport
+  fullName: Wss.Transports.BleNusTransport
+- uid: Wss.Transports.BleNusTransportOptions
+  commentId: T:Wss.Transports.BleNusTransportOptions
+  parent: Wss.Transports
+  href: Wss.Transports.BleNusTransportOptions.html
+  name: BleNusTransportOptions
+  nameWithType: BleNusTransportOptions
+  fullName: Wss.Transports.BleNusTransportOptions
+- uid: Wss.Transports
+  commentId: N:Wss.Transports
+  href: Wss.html
+  name: Wss.Transports
+  nameWithType: Wss.Transports
+  fullName: Wss.Transports
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.Transports
+    name: Transports
+    href: Wss.Transports.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.Transports
+    name: Transports
+    href: Wss.Transports.html

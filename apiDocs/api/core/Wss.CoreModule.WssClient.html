@@ -82,7 +82,7 @@
 
   <h1 id="Wss_CoreModule_WssClient" data-uid="Wss.CoreModule.WssClient" class="text-break">Class WssClient</h1>
   <div class="markdown level0 summary"><p>Low-level protocol client. Frames commands using an <a class="xref" href="Wss.CoreModule.IFrameCodec.html">IFrameCodec</a>,
-sends them over an <a class="xref" href="Wss.CoreModule.ITransport.html">ITransport</a>, and correlates responses by
+sends them over an <a class="xref" href="Wss.Transports.ITransport.html">ITransport</a>, and correlates responses by
 <code>(target,msgId)</code>.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
@@ -102,7 +102,7 @@ sends them over an <a class="xref" href="Wss.CoreModule.ITransport.html">ITransp
 
 
   <a id="Wss_CoreModule_WssClient__ctor_" data-uid="Wss.CoreModule.WssClient.#ctor*"></a>
-  <h4 id="Wss_CoreModule_WssClient__ctor_Wss_CoreModule_ITransport_Wss_CoreModule_IFrameCodec_Wss_CoreModule_WSSVersionHandler_Wss_CoreModule_WssClientOptions_" data-uid="Wss.CoreModule.WssClient.#ctor(Wss.CoreModule.ITransport,Wss.CoreModule.IFrameCodec,Wss.CoreModule.WSSVersionHandler,Wss.CoreModule.WssClientOptions)">WssClient(ITransport, IFrameCodec, WSSVersionHandler, WssClientOptions)</h4>
+  <h4 id="Wss_CoreModule_WssClient__ctor_Wss_Transports_ITransport_Wss_CoreModule_IFrameCodec_Wss_CoreModule_WSSVersionHandler_Wss_CoreModule_WssClientOptions_" data-uid="Wss.CoreModule.WssClient.#ctor(Wss.Transports.ITransport,Wss.CoreModule.IFrameCodec,Wss.CoreModule.WSSVersionHandler,Wss.CoreModule.WssClientOptions)">WssClient(ITransport, IFrameCodec, WSSVersionHandler, WssClientOptions)</h4>
   <div class="markdown level1 summary"><p>Creates a low-level protocol client over a caller-provided transport and frame codec.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -121,7 +121,7 @@ sends them over an <a class="xref" href="Wss.CoreModule.ITransport.html">ITransp
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Wss.CoreModule.ITransport.html">ITransport</a></td>
+        <td><a class="xref" href="Wss.Transports.ITransport.html">ITransport</a></td>
         <td><span class="parametername">transport</span></td>
         <td><p>Underlying byte transport (for example, serial or BLE).</p>
 </td>
@@ -146,8 +146,8 @@ sends them over an <a class="xref" href="Wss.CoreModule.ITransport.html">ITransp
       </tr>
     </tbody>
   </table>
-  <h5 id="Wss_CoreModule_WssClient__ctor_Wss_CoreModule_ITransport_Wss_CoreModule_IFrameCodec_Wss_CoreModule_WSSVersionHandler_Wss_CoreModule_WssClientOptions__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p><a class="xref" href="Wss.CoreModule.ITransport.html#Wss_CoreModule_ITransport_BytesReceived">BytesReceived</a> may be raised on a background thread depending on the transport implementation.
+  <h5 id="Wss_CoreModule_WssClient__ctor_Wss_Transports_ITransport_Wss_CoreModule_IFrameCodec_Wss_CoreModule_WSSVersionHandler_Wss_CoreModule_WssClientOptions__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p><a class="xref" href="Wss.Transports.ITransport.html#Wss_Transports_ITransport_BytesReceived">BytesReceived</a> may be raised on a background thread depending on the transport implementation.
 Reply correlation primarily matches responses by <code>(target,msgId)</code>, with additional handling for
 protocol error replies and firmware paths that answer <a class="xref" href="Wss.CoreModule.WSSMessageIDs.html#Wss_CoreModule_WSSMessageIDs_ModuleQuery">ModuleQuery</a> using
 <a class="xref" href="Wss.CoreModule.WSSMessageIDs.html#Wss_CoreModule_WSSMessageIDs_RequestAnalog">RequestAnalog</a>.</p>

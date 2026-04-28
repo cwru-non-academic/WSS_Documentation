@@ -5,7 +5,7 @@ items:
   id: WssStimulationCore
   parent: Wss.CoreModule
   children:
-  - Wss.CoreModule.WssStimulationCore.#ctor(Wss.CoreModule.ITransport,Wss.CoreModule.WssStimulationCoreOptions)
+  - Wss.CoreModule.WssStimulationCore.#ctor(Wss.Transports.ITransport,Wss.CoreModule.WssStimulationCoreOptions)
   - Wss.CoreModule.WssStimulationCore.Dispose
   - Wss.CoreModule.WssStimulationCore.GetCoreConfigController
   - Wss.CoreModule.WssStimulationCore.Initialize
@@ -54,16 +54,16 @@ items:
   implements:
   - Wss.CoreModule.IStimulationCore
   - Wss.CoreModule.IBasicStimulation
-- uid: Wss.CoreModule.WssStimulationCore.#ctor(Wss.CoreModule.ITransport,Wss.CoreModule.WssStimulationCoreOptions)
-  commentId: M:Wss.CoreModule.WssStimulationCore.#ctor(Wss.CoreModule.ITransport,Wss.CoreModule.WssStimulationCoreOptions)
-  id: '#ctor(Wss.CoreModule.ITransport,Wss.CoreModule.WssStimulationCoreOptions)'
+- uid: Wss.CoreModule.WssStimulationCore.#ctor(Wss.Transports.ITransport,Wss.CoreModule.WssStimulationCoreOptions)
+  commentId: M:Wss.CoreModule.WssStimulationCore.#ctor(Wss.Transports.ITransport,Wss.CoreModule.WssStimulationCoreOptions)
+  id: '#ctor(Wss.Transports.ITransport,Wss.CoreModule.WssStimulationCoreOptions)'
   parent: Wss.CoreModule.WssStimulationCore
   langs:
   - csharp
   - vb
   name: WssStimulationCore(ITransport, WssStimulationCoreOptions)
   nameWithType: WssStimulationCore.WssStimulationCore(ITransport, WssStimulationCoreOptions)
-  fullName: Wss.CoreModule.WssStimulationCore.WssStimulationCore(Wss.CoreModule.ITransport, Wss.CoreModule.WssStimulationCoreOptions)
+  fullName: Wss.CoreModule.WssStimulationCore.WssStimulationCore(Wss.Transports.ITransport, Wss.CoreModule.WssStimulationCoreOptions)
   type: Constructor
   assemblies:
   - WSS_Core_Interface
@@ -78,7 +78,7 @@ items:
     content: public WssStimulationCore(ITransport transport, WssStimulationCoreOptions options)
     parameters:
     - id: transport
-      type: Wss.CoreModule.ITransport
+      type: Wss.Transports.ITransport
       description: Transport used to communicate with the WSS device(s).
     - id: options
       type: Wss.CoreModule.WssStimulationCoreOptions
@@ -96,7 +96,7 @@ items:
     commentId: T:System.ArgumentOutOfRangeException
     description: Thrown when <xref href="Wss.CoreModule.WssStimulationCoreOptions.MaxSetupTries" data-throw-if-not-resolved="false"></xref> is less than 1.
   nameWithType.vb: WssStimulationCore.New(ITransport, WssStimulationCoreOptions)
-  fullName.vb: Wss.CoreModule.WssStimulationCore.New(Wss.CoreModule.ITransport, Wss.CoreModule.WssStimulationCoreOptions)
+  fullName.vb: Wss.CoreModule.WssStimulationCore.New(Wss.Transports.ITransport, Wss.CoreModule.WssStimulationCoreOptions)
   name.vb: New(ITransport, WssStimulationCoreOptions)
 - uid: Wss.CoreModule.WssStimulationCore.Initialize
   commentId: M:Wss.CoreModule.WssStimulationCore.Initialize
@@ -949,20 +949,20 @@ references:
   fullName: System.ArgumentOutOfRangeException
 - uid: Wss.CoreModule.WssStimulationCore.#ctor*
   commentId: Overload:Wss.CoreModule.WssStimulationCore.#ctor
-  href: Wss.CoreModule.WssStimulationCore.html#Wss_CoreModule_WssStimulationCore__ctor_Wss_CoreModule_ITransport_Wss_CoreModule_WssStimulationCoreOptions_
+  href: Wss.CoreModule.WssStimulationCore.html#Wss_CoreModule_WssStimulationCore__ctor_Wss_Transports_ITransport_Wss_CoreModule_WssStimulationCoreOptions_
   name: WssStimulationCore
   nameWithType: WssStimulationCore.WssStimulationCore
   fullName: Wss.CoreModule.WssStimulationCore.WssStimulationCore
   nameWithType.vb: WssStimulationCore.New
   fullName.vb: Wss.CoreModule.WssStimulationCore.New
   name.vb: New
-- uid: Wss.CoreModule.ITransport
-  commentId: T:Wss.CoreModule.ITransport
-  parent: Wss.CoreModule
-  href: Wss.CoreModule.ITransport.html
+- uid: Wss.Transports.ITransport
+  commentId: T:Wss.Transports.ITransport
+  parent: Wss.Transports
+  href: Wss.Transports.ITransport.html
   name: ITransport
   nameWithType: ITransport
-  fullName: Wss.CoreModule.ITransport
+  fullName: Wss.Transports.ITransport
 - uid: Wss.CoreModule.WssStimulationCoreOptions
   commentId: T:Wss.CoreModule.WssStimulationCoreOptions
   parent: Wss.CoreModule
@@ -970,6 +970,28 @@ references:
   name: WssStimulationCoreOptions
   nameWithType: WssStimulationCoreOptions
   fullName: Wss.CoreModule.WssStimulationCoreOptions
+- uid: Wss.Transports
+  commentId: N:Wss.Transports
+  href: Wss.html
+  name: Wss.Transports
+  nameWithType: Wss.Transports
+  fullName: Wss.Transports
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.Transports
+    name: Transports
+    href: Wss.Transports.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.Transports
+    name: Transports
+    href: Wss.Transports.html
 - uid: Wss.CoreModule.IStimulationCore.Tick
   commentId: M:Wss.CoreModule.IStimulationCore.Tick
   parent: Wss.CoreModule.IStimulationCore

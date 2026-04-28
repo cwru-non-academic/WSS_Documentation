@@ -171,6 +171,10 @@ foreach ($repo in $enabledRepos) {
   if ([string]::IsNullOrWhiteSpace($repoKind)) { throw "Repository '$repoId' is missing 'kind'." }
   if ([string]::IsNullOrWhiteSpace($repoRootValue)) { throw "Repository '$repoId' is missing 'root'." }
 
+  if ($SkipPython -and $repoKind -eq 'python') {
+    continue
+  }
+
   $resolvedRoot = Resolve-ConfiguredPath -BasePath $repoRoot -PathValue $repoRootValue
   if (-not (Test-Path -LiteralPath $resolvedRoot)) {
     throw "Repository root not found for '$repoId': $resolvedRoot"
@@ -251,7 +255,6 @@ foreach ($repo in $csharpRepos) {
   $csharpSourceFile = [System.IO.Path]::GetFileName($csharpSourcePath)
 
   $destValue = [string](Get-OptionalProperty -Object $repo -Name 'docfxDest')
-  $entryUid = [string](Get-OptionalProperty -Object $repo -Name 'entryUid')
   $dest = if ([string]::IsNullOrWhiteSpace($destValue)) { "api/$repoId" } else { $destValue }
   if (-not $dest.StartsWith('api/')) {
     $dest = "api/$dest"
@@ -293,7 +296,7 @@ foreach ($repo in $csharpRepos) {
   $apiNavItems += [pscustomobject]@{
     title = if (-not [string]::IsNullOrWhiteSpace([string](Get-OptionalProperty -Object $repo -Name 'title'))) { [string](Get-OptionalProperty -Object $repo -Name 'title') } else { "API: $repoId" }
     href = "$dest/toc.yml"
-    pageHref = if (-not [string]::IsNullOrWhiteSpace($entryUid)) { "xref:$entryUid" } else { "$dest/toc.html" }
+    pageHref = "$dest/toc.html"
   }
 }
 
@@ -412,6 +415,12 @@ if ($apiNavItems.Count -gt 0) {
   }
   $indexLines.Add('')
 }
+
+$indexLines.Add('## Hardware Documentation')
+$indexLines.Add('')
+$indexLines.Add('- [Hardware Overview](../hardwareDocs/wsshardware.html)')
+$indexLines.Add('  - Direct access to the hardware documentation.')
+$indexLines.Add('')
 
 $indexLines.Add('## Advanced Reference')
 $indexLines.Add('')

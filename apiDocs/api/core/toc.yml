@@ -1,15 +1,5 @@
 ### YamlMime:TableOfContent
 items:
-- uid: HFI.Wss
-  name: HFI.Wss
-  type: Namespace
-  items:
-  - uid: HFI.Wss.BleNusTransport
-    name: BleNusTransport
-    type: Class
-  - uid: HFI.Wss.BleNusTransportOptions
-    name: BleNusTransportOptions
-    type: Class
 - uid: Wss.CalibrationModule
   name: Wss.CalibrationModule
   type: Namespace
@@ -63,9 +53,6 @@ items:
   - uid: Wss.CoreModule.IStimulationCore
     name: IStimulationCore
     type: Interface
-  - uid: Wss.CoreModule.ITransport
-    name: ITransport
-    type: Interface
   - uid: Wss.CoreModule.JsonReader
     name: JsonReader
     type: Class
@@ -90,23 +77,11 @@ items:
   - uid: Wss.CoreModule.ScheduleDefinition
     name: ScheduleDefinition
     type: Class
-  - uid: Wss.CoreModule.SerialPortTransport
-    name: SerialPortTransport
-    type: Class
-  - uid: Wss.CoreModule.SerialPortTransportOptions
-    name: SerialPortTransportOptions
-    type: Class
   - uid: Wss.CoreModule.StimParamsBasicExtensions
     name: StimParamsBasicExtensions
     type: Class
   - uid: Wss.CoreModule.StreamChangeRequest
     name: StreamChangeRequest
-    type: Class
-  - uid: Wss.CoreModule.TestModeTransport
-    name: TestModeTransport
-    type: Class
-  - uid: Wss.CoreModule.TestModeTransportOptions
-    name: TestModeTransportOptions
     type: Class
   - uid: Wss.CoreModule.WSSLimits
     name: WSSLimits
@@ -159,5 +134,30 @@ items:
     type: Class
   - uid: Wss.ModelModule.ModelParamsLayer
     name: ModelParamsLayer
+    type: Class
+- uid: Wss.Transports
+  name: Wss.Transports
+  type: Namespace
+  items:
+  - uid: Wss.Transports.BleNusTransport
+    name: BleNusTransport
+    type: Class
+  - uid: Wss.Transports.BleNusTransportOptions
+    name: BleNusTransportOptions
+    type: Class
+  - uid: Wss.Transports.ITransport
+    name: ITransport
+    type: Interface
+  - uid: Wss.Transports.SerialPortTransport
+    name: SerialPortTransport
+    type: Class
+  - uid: Wss.Transports.SerialPortTransportOptions
+    name: SerialPortTransportOptions
+    type: Class
+  - uid: Wss.Transports.TestModeTransport
+    name: TestModeTransport
+    type: Class
+  - uid: Wss.Transports.TestModeTransportOptions
+    name: TestModeTransportOptions
     type: Class
 memberLayout: SamePage

@@ -5,11 +5,11 @@
   <head>
     <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      <title>Class BleNusTransportOptions | WSS Documentation Hub </title>
+      <title>Class TestModeTransportOptions | WSS Documentation Hub </title>
       <meta name="viewport" content="width=device-width">
-      <meta name="title" content="Class BleNusTransportOptions | WSS Documentation Hub ">
+      <meta name="title" content="Class TestModeTransportOptions | WSS Documentation Hub ">
     
-    <meta name="description" content="Configuration for .">
+    <meta name="description" content="Holds behavior settings for .">
       <link rel="shortcut icon" href="../../favicon.ico">
       <link rel="stylesheet" href="../../styles/docfx.vendor.min.css">
       <link rel="stylesheet" href="../../styles/docfx.css">
@@ -76,45 +76,42 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="HFI.Wss.BleNusTransportOptions">
+            <article class="content wrap" id="_content" data-uid="Wss.Transports.TestModeTransportOptions">
 
 
 
-  <h1 id="HFI_Wss_BleNusTransportOptions" data-uid="HFI.Wss.BleNusTransportOptions" class="text-break">Class BleNusTransportOptions</h1>
-  <div class="markdown level0 summary"><p>Configuration for <a class="xref" href="HFI.Wss.BleNusTransport.html">BleNusTransport</a>.</p>
+  <h1 id="Wss_Transports_TestModeTransportOptions" data-uid="Wss.Transports.TestModeTransportOptions" class="text-break">Class TestModeTransportOptions</h1>
+  <div class="markdown level0 summary"><p>Holds behavior settings for <a class="xref" href="Wss.Transports.TestModeTransport.html">TestModeTransport</a>.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">object</span></div>
-    <div class="level1"><span class="xref">BleNusTransportOptions</span></div>
+    <div class="level1"><span class="xref">TestModeTransportOptions</span></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="HFI.html">HFI</a>.<a class="xref" href="HFI.Wss.html">Wss</a></h6>
-  <h6><strong>Assembly</strong>: WSS.Transport.BLE.dll</h6>
-  <h5 id="HFI_Wss_BleNusTransportOptions_syntax">Syntax</h5>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Wss.html">Wss</a>.<a class="xref" href="Wss.Transports.html">Transports</a></h6>
+  <h6><strong>Assembly</strong>: WSS_Core_Interface.dll</h6>
+  <h5 id="Wss_Transports_TestModeTransportOptions_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class BleNusTransportOptions</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class TestModeTransportOptions</code></pre>
   </div>
-  <h5 id="HFI_Wss_BleNusTransportOptions_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>When <a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_AutoSelectDevice">AutoSelectDevice</a> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>, callers must provide either
-<a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_DeviceId">DeviceId</a> or <a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_DeviceName">DeviceName</a>. Scan-based operations honor <a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_ScanTimeout">ScanTimeout</a>
-when a timeout is configured.</p>
+  <h5 id="Wss_Transports_TestModeTransportOptions_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>The transport constructor requires a non-null options instance. When <a class="xref" href="Wss.Transports.TestModeTransportOptions.html#Wss_Transports_TestModeTransportOptions_Rng">Rng</a> or
+<a class="xref" href="Wss.Transports.TestModeTransportOptions.html#Wss_Transports_TestModeTransportOptions_FallbackPayload">FallbackPayload</a> is left null, <a class="xref" href="Wss.Transports.TestModeTransport.html">TestModeTransport</a> substitutes safe defaults.</p>
 </div>
   <h3 id="properties">Properties
 </h3>
 
 
-  <a id="HFI_Wss_BleNusTransportOptions_AutoSelectDevice_" data-uid="HFI.Wss.BleNusTransportOptions.AutoSelectDevice*"></a>
-  <h4 id="HFI_Wss_BleNusTransportOptions_AutoSelectDevice" data-uid="HFI.Wss.BleNusTransportOptions.AutoSelectDevice">AutoSelectDevice</h4>
-  <div class="markdown level1 summary"><p>When true, scans for compatible BLE devices and auto-selects the best valid candidate.
-Auto-selection only accepts devices that expose the configured service and both required
-characteristics with the expected properties, then prefers stronger RSSI.
-When false, the caller must provide <a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_DeviceId">DeviceId</a> or <a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_DeviceName">DeviceName</a>.</p>
+  <a id="Wss_Transports_TestModeTransportOptions_AutoResponderAsync_" data-uid="Wss.Transports.TestModeTransportOptions.AutoResponderAsync*"></a>
+  <h4 id="Wss_Transports_TestModeTransportOptions_AutoResponderAsync" data-uid="Wss.Transports.TestModeTransportOptions.AutoResponderAsync">AutoResponderAsync</h4>
+  <div class="markdown level1 summary"><p>Gets or sets an optional override auto-responder.
+When null, the built-in responder is used.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool AutoSelectDevice { get; init; }</code></pre>
+    <pre><code class="lang-csharp hljs">public Func&lt;byte[], Task&lt;byte[]&gt;&gt; AutoResponderAsync { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-condensed">
@@ -126,22 +123,21 @@ When false, the caller must provide <a class="xref" href="HFI.Wss.BleNusTranspor
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">bool</span></td>
+        <td><span class="xref">Func</span>&lt;<span class="xref">byte</span>[], <span class="xref">Task</span>&lt;<span class="xref">byte</span>[]&gt;&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
 
 
-  <a id="HFI_Wss_BleNusTransportOptions_DeviceId_" data-uid="HFI.Wss.BleNusTransportOptions.DeviceId*"></a>
-  <h4 id="HFI_Wss_BleNusTransportOptions_DeviceId" data-uid="HFI.Wss.BleNusTransportOptions.DeviceId">DeviceId</h4>
-  <div class="markdown level1 summary"><p>Explicit BLE device identifier to connect to when <a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_AutoSelectDevice">AutoSelectDevice</a> is disabled.
-When provided, it takes precedence over <a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_DeviceName">DeviceName</a>.</p>
+  <a id="Wss_Transports_TestModeTransportOptions_BaseLatency_" data-uid="Wss.Transports.TestModeTransportOptions.BaseLatency*"></a>
+  <h4 id="Wss_Transports_TestModeTransportOptions_BaseLatency" data-uid="Wss.Transports.TestModeTransportOptions.BaseLatency">BaseLatency</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the artificial latency applied to inbound delivery.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string? DeviceId { get; init; }</code></pre>
+    <pre><code class="lang-csharp hljs">public TimeSpan BaseLatency { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-condensed">
@@ -153,22 +149,22 @@ When provided, it takes precedence over <a class="xref" href="HFI.Wss.BleNusTran
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">string</span></td>
+        <td><span class="xref">TimeSpan</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
 
 
-  <a id="HFI_Wss_BleNusTransportOptions_DeviceName_" data-uid="HFI.Wss.BleNusTransportOptions.DeviceName*"></a>
-  <h4 id="HFI_Wss_BleNusTransportOptions_DeviceName" data-uid="HFI.Wss.BleNusTransportOptions.DeviceName">DeviceName</h4>
-  <div class="markdown level1 summary"><p>Exact BLE device name to scan for when <a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_AutoSelectDevice">AutoSelectDevice</a> is disabled and
-<a class="xref" href="HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_DeviceId">DeviceId</a> is not provided.</p>
+  <a id="Wss_Transports_TestModeTransportOptions_FallbackPayload_" data-uid="Wss.Transports.TestModeTransportOptions.FallbackPayload*"></a>
+  <h4 id="Wss_Transports_TestModeTransportOptions_FallbackPayload" data-uid="Wss.Transports.TestModeTransportOptions.FallbackPayload">FallbackPayload</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the payload used when an incoming checksum is invalid.
+When null, <a class="xref" href="Wss.Transports.TestModeTransport.html">TestModeTransport</a> uses a default fallback payload.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string? DeviceName { get; init; }</code></pre>
+    <pre><code class="lang-csharp hljs">public byte[] FallbackPayload { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-condensed">
@@ -180,22 +176,21 @@ When provided, it takes precedence over <a class="xref" href="HFI.Wss.BleNusTran
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">string</span></td>
+        <td><span class="xref">byte</span>[]</td>
         <td></td>
       </tr>
     </tbody>
   </table>
 
 
-  <a id="HFI_Wss_BleNusTransportOptions_NotifyCharacteristicUuid_" data-uid="HFI.Wss.BleNusTransportOptions.NotifyCharacteristicUuid*"></a>
-  <h4 id="HFI_Wss_BleNusTransportOptions_NotifyCharacteristicUuid" data-uid="HFI.Wss.BleNusTransportOptions.NotifyCharacteristicUuid">NotifyCharacteristicUuid</h4>
-  <div class="markdown level1 summary"><p>Required BLE notification characteristic UUID. Auto-select rejects devices that do not expose it
-with notify or indicate support.</p>
+  <a id="Wss_Transports_TestModeTransportOptions_InboundDropProbability_" data-uid="Wss.Transports.TestModeTransportOptions.InboundDropProbability*"></a>
+  <h4 id="Wss_Transports_TestModeTransportOptions_InboundDropProbability" data-uid="Wss.Transports.TestModeTransportOptions.InboundDropProbability">InboundDropProbability</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the probability in the range [0..1] of randomly dropping an inbound chunk.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Guid NotifyCharacteristicUuid { get; init; }</code></pre>
+    <pre><code class="lang-csharp hljs">public double InboundDropProbability { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-condensed">
@@ -207,21 +202,21 @@ with notify or indicate support.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Guid</span></td>
+        <td><span class="xref">double</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
 
 
-  <a id="HFI_Wss_BleNusTransportOptions_ScanTimeout_" data-uid="HFI.Wss.BleNusTransportOptions.ScanTimeout*"></a>
-  <h4 id="HFI_Wss_BleNusTransportOptions_ScanTimeout" data-uid="HFI.Wss.BleNusTransportOptions.ScanTimeout">ScanTimeout</h4>
-  <div class="markdown level1 summary"><p>Maximum scan duration used for configured-name lookup and auto-selection.</p>
+  <a id="Wss_Transports_TestModeTransportOptions_JitterMs_" data-uid="Wss.Transports.TestModeTransportOptions.JitterMs*"></a>
+  <h4 id="Wss_Transports_TestModeTransportOptions_JitterMs" data-uid="Wss.Transports.TestModeTransportOptions.JitterMs">JitterMs</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the random jitter added to <a class="xref" href="Wss.Transports.TestModeTransportOptions.html#Wss_Transports_TestModeTransportOptions_BaseLatency">BaseLatency</a>, in milliseconds.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TimeSpan? ScanTimeout { get; init; }</code></pre>
+    <pre><code class="lang-csharp hljs">public int JitterMs { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-condensed">
@@ -233,21 +228,22 @@ with notify or indicate support.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">TimeSpan</span>?</td>
+        <td><span class="xref">int</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
 
 
-  <a id="HFI_Wss_BleNusTransportOptions_ServiceUuid_" data-uid="HFI.Wss.BleNusTransportOptions.ServiceUuid*"></a>
-  <h4 id="HFI_Wss_BleNusTransportOptions_ServiceUuid" data-uid="HFI.Wss.BleNusTransportOptions.ServiceUuid">ServiceUuid</h4>
-  <div class="markdown level1 summary"><p>Required BLE service UUID. Auto-select only considers devices that expose this service.</p>
+  <a id="Wss_Transports_TestModeTransportOptions_MaxInboundChunkSize_" data-uid="Wss.Transports.TestModeTransportOptions.MaxInboundChunkSize*"></a>
+  <h4 id="Wss_Transports_TestModeTransportOptions_MaxInboundChunkSize" data-uid="Wss.Transports.TestModeTransportOptions.MaxInboundChunkSize">MaxInboundChunkSize</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the maximum inbound chunk size.
+Values greater than zero split inbound payloads into chunks up to this size.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Guid ServiceUuid { get; init; }</code></pre>
+    <pre><code class="lang-csharp hljs">public int MaxInboundChunkSize { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-condensed">
@@ -259,22 +255,22 @@ with notify or indicate support.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Guid</span></td>
+        <td><span class="xref">int</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
 
 
-  <a id="HFI_Wss_BleNusTransportOptions_WriteCharacteristicUuid_" data-uid="HFI.Wss.BleNusTransportOptions.WriteCharacteristicUuid*"></a>
-  <h4 id="HFI_Wss_BleNusTransportOptions_WriteCharacteristicUuid" data-uid="HFI.Wss.BleNusTransportOptions.WriteCharacteristicUuid">WriteCharacteristicUuid</h4>
-  <div class="markdown level1 summary"><p>Required BLE write characteristic UUID. Auto-select rejects devices that do not expose it
-with write-with-response support.</p>
+  <a id="Wss_Transports_TestModeTransportOptions_Rng_" data-uid="Wss.Transports.TestModeTransportOptions.Rng*"></a>
+  <h4 id="Wss_Transports_TestModeTransportOptions_Rng" data-uid="Wss.Transports.TestModeTransportOptions.Rng">Rng</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the random generator used for jitter, chunk sizing, drops, and synthetic replies.
+When null, <a class="xref" href="Wss.Transports.TestModeTransport.html">TestModeTransport</a> creates a default instance.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Guid WriteCharacteristicUuid { get; init; }</code></pre>
+    <pre><code class="lang-csharp hljs">public Random Rng { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-condensed">
@@ -286,7 +282,7 @@ with write-with-response support.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Guid</span></td>
+        <td><span class="xref">Random</span></td>
         <td></td>
       </tr>
     </tbody>

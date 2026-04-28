@@ -17,7 +17,7 @@ This shim:
 
 Example (submodule checkout):
 
-- `.../MyUnityApp/Assets/SubModules/WSSUnityIntegration`
+- `.../MyUnityApp/Assets/SubModules/WSSInterfacingModule`
 
 2) Add a repo entry in `apiDocs/repos.manifest.json`.
 
@@ -58,7 +58,7 @@ Example (bash):
 
 ```bash
 export WSS_UNITY_REPO_ROOT="/abs/path/to/MyUnityApp"
-export WSS_UNITY_INTEGRATION_SRC="$WSS_UNITY_REPO_ROOT/Assets/SubModules/WSSUnityIntegration"
+export WSS_UNITY_INTEGRATION_SRC="$WSS_UNITY_REPO_ROOT/Assets/SubModules/WSSInterfacingModule"
 ```
 
 Note: the shim also supports providing the source root *without* MSBuild properties by setting

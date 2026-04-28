@@ -22,48 +22,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/core/HFI.Wss.BleNusTransport.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/core/HFI.Wss.BleNusTransport.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "HFI.Wss.BleNusTransport",
-      "Summary": "<p sourcefile=\"api/core/HFI.Wss.BleNusTransport.yml\" sourcestartlinenumber=\"1\">BLE transport backed by the Nordic UART Service (NUS).</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/core/HFI.Wss.BleNusTransportOptions.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/core/HFI.Wss.BleNusTransportOptions.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "HFI.Wss.BleNusTransportOptions",
-      "Summary": "<p sourcefile=\"api/core/HFI.Wss.BleNusTransportOptions.yml\" sourcestartlinenumber=\"1\">Configuration for <xref href=\"HFI.Wss.BleNusTransport\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/core/HFI.Wss.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/core/HFI.Wss.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "HFI.Wss",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/core/Wss.CalibrationModule.IStimParamsCore.yml",
       "output": {
         ".html": {
@@ -288,20 +246,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/core/Wss.CoreModule.ITransport.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/core/Wss.CoreModule.ITransport.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Wss.CoreModule.ITransport",
-      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.ITransport.yml\" sourcestartlinenumber=\"1\">Abstraction over a byte-stream transport (e.g., Serial, Bluetooth, TCP).\nImplementations surface incoming bytes via <xref href=\"Wss.CoreModule.ITransport.BytesReceived\" data-throw-if-not-resolved=\"false\"></xref> and provide\nasync connect/disconnect/send operations.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/core/Wss.CoreModule.JsonReader.yml",
       "output": {
         ".html": {
@@ -414,34 +358,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/core/Wss.CoreModule.SerialPortTransport.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/core/Wss.CoreModule.SerialPortTransport.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Wss.CoreModule.SerialPortTransport",
-      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.SerialPortTransport.yml\" sourcestartlinenumber=\"1\">Serial-port implementation of <xref href=\"Wss.CoreModule.ITransport\" data-throw-if-not-resolved=\"false\"></xref> for WSS communications.\nWraps <xref href=\"System.IO.Ports.SerialPort\" data-throw-if-not-resolved=\"false\"></xref> and exposes an event-driven receive API that works well in Unity/.NET Standard 2.0.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/core/Wss.CoreModule.SerialPortTransportOptions.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/core/Wss.CoreModule.SerialPortTransportOptions.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Wss.CoreModule.SerialPortTransportOptions",
-      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.SerialPortTransportOptions.yml\" sourcestartlinenumber=\"1\">Holds connection settings for <xref href=\"Wss.CoreModule.SerialPortTransport\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/core/Wss.CoreModule.StimParamsBasicExtensions.yml",
       "output": {
         ".html": {
@@ -467,34 +383,6 @@
       "IsMRef": true,
       "Title": "Wss.CoreModule.StreamChangeRequest",
       "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.StreamChangeRequest.yml\" sourcestartlinenumber=\"1\">Describes a streaming update for PA, PW, and IPI groups.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/core/Wss.CoreModule.TestModeTransport.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/core/Wss.CoreModule.TestModeTransport.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Wss.CoreModule.TestModeTransport",
-      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.TestModeTransport.yml\" sourcestartlinenumber=\"1\">In-memory transport for debugging and unit tests. No real I/O.\nFeatures: artificial latency, jitter, inbound chunking, and drop simulation.\nDefault auto-responder validates checksum, flips sender/target, and echoes or replaces payload.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/core/Wss.CoreModule.TestModeTransportOptions.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/core/Wss.CoreModule.TestModeTransportOptions.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Wss.CoreModule.TestModeTransportOptions",
-      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.TestModeTransportOptions.yml\" sourcestartlinenumber=\"1\">Holds behavior settings for <xref href=\"Wss.CoreModule.TestModeTransport\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -592,7 +480,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Wss.CoreModule.WssClient",
-      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.WssClient.yml\" sourcestartlinenumber=\"1\">Low-level protocol client. Frames commands using an <xref href=\"Wss.CoreModule.IFrameCodec\" data-throw-if-not-resolved=\"false\"></xref>,\nsends them over an <xref href=\"Wss.CoreModule.ITransport\" data-throw-if-not-resolved=\"false\"></xref>, and correlates responses by\n<code>(target,msgId)</code>.</p>\n"
+      "Summary": "<p sourcefile=\"api/core/Wss.CoreModule.WssClient.yml\" sourcestartlinenumber=\"1\">Low-level protocol client. Frames commands using an <xref href=\"Wss.CoreModule.IFrameCodec\" data-throw-if-not-resolved=\"false\"></xref>,\nsends them over an <xref href=\"Wss.Transports.ITransport\" data-throw-if-not-resolved=\"false\"></xref>, and correlates responses by\n<code>(target,msgId)</code>.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -749,6 +637,118 @@
       "Summary": null
     },
     {
+      "type": "ManagedReference",
+      "source_relative_path": "api/core/Wss.Transports.BleNusTransport.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/core/Wss.Transports.BleNusTransport.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Wss.Transports.BleNusTransport",
+      "Summary": "<p sourcefile=\"api/core/Wss.Transports.BleNusTransport.yml\" sourcestartlinenumber=\"1\">BLE transport backed by the Nordic UART Service (NUS).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/core/Wss.Transports.BleNusTransportOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/core/Wss.Transports.BleNusTransportOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Wss.Transports.BleNusTransportOptions",
+      "Summary": "<p sourcefile=\"api/core/Wss.Transports.BleNusTransportOptions.yml\" sourcestartlinenumber=\"1\">Configuration for <xref href=\"Wss.Transports.BleNusTransport\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/core/Wss.Transports.ITransport.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/core/Wss.Transports.ITransport.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Wss.Transports.ITransport",
+      "Summary": "<p sourcefile=\"api/core/Wss.Transports.ITransport.yml\" sourcestartlinenumber=\"1\">Abstraction over a byte-stream transport (e.g., Serial, Bluetooth, TCP).\nImplementations surface incoming bytes via <xref href=\"Wss.Transports.ITransport.BytesReceived\" data-throw-if-not-resolved=\"false\"></xref> and provide\nasync connect/disconnect/send operations.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/core/Wss.Transports.SerialPortTransport.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/core/Wss.Transports.SerialPortTransport.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Wss.Transports.SerialPortTransport",
+      "Summary": "<p sourcefile=\"api/core/Wss.Transports.SerialPortTransport.yml\" sourcestartlinenumber=\"1\">Serial-port implementation of <xref href=\"Wss.Transports.ITransport\" data-throw-if-not-resolved=\"false\"></xref> for WSS communications.\nWraps <xref href=\"System.IO.Ports.SerialPort\" data-throw-if-not-resolved=\"false\"></xref> and exposes an event-driven receive API that works well in Unity/.NET Standard 2.0.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/core/Wss.Transports.SerialPortTransportOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/core/Wss.Transports.SerialPortTransportOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Wss.Transports.SerialPortTransportOptions",
+      "Summary": "<p sourcefile=\"api/core/Wss.Transports.SerialPortTransportOptions.yml\" sourcestartlinenumber=\"1\">Holds connection settings for <xref href=\"Wss.Transports.SerialPortTransport\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/core/Wss.Transports.TestModeTransport.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/core/Wss.Transports.TestModeTransport.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Wss.Transports.TestModeTransport",
+      "Summary": "<p sourcefile=\"api/core/Wss.Transports.TestModeTransport.yml\" sourcestartlinenumber=\"1\">In-memory transport for debugging and unit tests. No real I/O.\nFeatures: artificial latency, jitter, inbound chunking, and drop simulation.\nDefault auto-responder validates checksum, flips sender/target, and echoes or replaces payload.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/core/Wss.Transports.TestModeTransportOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/core/Wss.Transports.TestModeTransportOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Wss.Transports.TestModeTransportOptions",
+      "Summary": "<p sourcefile=\"api/core/Wss.Transports.TestModeTransportOptions.yml\" sourcestartlinenumber=\"1\">Holds behavior settings for <xref href=\"Wss.Transports.TestModeTransport\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/core/Wss.Transports.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/core/Wss.Transports.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Wss.Transports",
+      "Summary": null
+    },
+    {
       "type": "Toc",
       "source_relative_path": "api/core/toc.yml",
       "output": {
@@ -826,6 +826,89 @@
         },
         ".html": {
           "relative_path": "api/csharp/toc.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/unity/WSS.Unity.Stimulation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/unity/WSS.Unity.Stimulation.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Stimulation",
+      "Summary": "<p sourcefile=\"api/unity/WSS.Unity.Stimulation.yml\" sourcestartlinenumber=\"1\">Provides a Unity-facing API for WSS stimulation using the full params + model stack.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/unity/WSS.Unity.StimulationParams.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/unity/WSS.Unity.StimulationParams.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "StimulationParams",
+      "Summary": "<p sourcefile=\"api/unity/WSS.Unity.StimulationParams.yml\" sourcestartlinenumber=\"1\">Provides a Unity-facing API for WSS stimulation using the core + params layer.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/unity/WSS.Unity.Stimulationbasic.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/unity/WSS.Unity.Stimulationbasic.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Stimulationbasic",
+      "Summary": "<p sourcefile=\"api/unity/WSS.Unity.Stimulationbasic.yml\" sourcestartlinenumber=\"1\">Provides a Unity-facing API for the basic WSS stimulation core.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/unity/WSS.Unity.portScanner.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/unity/WSS.Unity.portScanner.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "portScanner",
+      "Summary": "<p sourcefile=\"api/unity/WSS.Unity.portScanner.yml\" sourcestartlinenumber=\"1\">Simple Unity helper that scans available serial ports and allows selecting\none from a UI dropdown to force the COM port used by the stimulation script.\nAttach this to a separate GameObject and wire the <code>selectPort()</code>\nmethod to a UI event (e.g., button click) to apply the chosen port.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/unity/WSS.Unity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/unity/WSS.Unity.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "",
+      "Summary": null
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/unity/toc.yml",
+      "output": {
+        ".json": {
+          "relative_path": "api/unity/toc.json"
+        },
+        ".html": {
+          "relative_path": "api/unity/toc.html"
         }
       },
       "version": ""

@@ -825,8 +825,8 @@ Automatically starts the background tick loop.</p>
   </div>
   <h5 id="HFI_Wss_StimulationController_Initialize_remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>The controller creates the transport internally based on <a class="xref" href="HFI.Wss.StimulationOptions.html#HFI_Wss_StimulationOptions_Transport">Transport</a>:
-test mode uses <a class="xref" href="../core/Wss.CoreModule.TestModeTransport.html">TestModeTransport</a>, serial uses <a class="xref" href="../core/Wss.CoreModule.SerialPortTransport.html">SerialPortTransport</a>,
-and BLE uses <a class="xref" href="../core/HFI.Wss.BleNusTransport.html">BleNusTransport</a>.
+test mode uses <a class="xref" href="https://github.com/cwru-non-academic/WSSCoreInterface/blob/a9b8427b8a40ea64e7941872c1647cc7fbde8a0d/CoreModule/TestModeTransport.cs">TestModeTransport</a>, serial uses <a class="xref" href="https://github.com/cwru-non-academic/WSSCoreInterface/blob/a9b8427b8a40ea64e7941872c1647cc7fbde8a0d/WSS.Transport.Serial/SerialPortTransport.cs">SerialPortTransport</a>,
+and BLE uses <a class="xref" href="https://github.com/cwru-non-academic/WSSCoreInterface/blob/a9b8427b8a40ea64e7941872c1647cc7fbde8a0d/BleNusTransport.cs">BleNusTransport</a>.
 This method is idempotent and returns immediately when the controller is already initialized.
 Initialization failures from the underlying WSS stack propagate to the caller.</p>
 </div>

@@ -5,11 +5,11 @@
   <head>
     <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      <title>Class SerialPortTransport | WSS Documentation Hub </title>
+      <title>Interface ITransport | WSS Documentation Hub </title>
       <meta name="viewport" content="width=device-width">
-      <meta name="title" content="Class SerialPortTransport | WSS Documentation Hub ">
+      <meta name="title" content="Interface ITransport | WSS Documentation Hub ">
     
-    <meta name="description" content="Serial-port implementation of  for WSS communications. Wraps  and exposes an event-driven receive API that works well in Unity/.NET Standard 2.0.">
+    <meta name="description" content="Abstraction over a byte-stream transport (e.g., Serial, Bluetooth, TCP). Implementations surface incoming bytes via  and provide async connect/disconnect/send operations.">
       <link rel="shortcut icon" href="../../favicon.ico">
       <link rel="stylesheet" href="../../styles/docfx.vendor.min.css">
       <link rel="stylesheet" href="../../styles/docfx.css">
@@ -76,106 +76,48 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Wss.CoreModule.SerialPortTransport">
+            <article class="content wrap" id="_content" data-uid="Wss.Transports.ITransport">
 
 
 
-  <h1 id="Wss_CoreModule_SerialPortTransport" data-uid="Wss.CoreModule.SerialPortTransport" class="text-break">Class SerialPortTransport</h1>
-  <div class="markdown level0 summary"><p>Serial-port implementation of <a class="xref" href="Wss.CoreModule.ITransport.html">ITransport</a> for WSS communications.
-Wraps <span class="xref">System.IO.Ports.SerialPort</span> and exposes an event-driven receive API that works well in Unity/.NET Standard 2.0.</p>
+  <h1 id="Wss_Transports_ITransport" data-uid="Wss.Transports.ITransport" class="text-break">Interface ITransport</h1>
+  <div class="markdown level0 summary"><p>Abstraction over a byte-stream transport (e.g., Serial, Bluetooth, TCP).
+Implementations surface incoming bytes via <a class="xref" href="Wss.Transports.ITransport.html#Wss_Transports_ITransport_BytesReceived">BytesReceived</a> and provide
+async connect/disconnect/send operations.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">object</span></div>
-    <div class="level1"><span class="xref">SerialPortTransport</span></div>
-  </div>
-  <div class="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="Wss.CoreModule.ITransport.html">ITransport</a></div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Wss.html">Wss</a>.<a class="xref" href="Wss.CoreModule.html">CoreModule</a></h6>
-  <h6><strong>Assembly</strong>: WSS.Transport.Serial.dll</h6>
-  <h5 id="Wss_CoreModule_SerialPortTransport_syntax">Syntax</h5>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Wss.html">Wss</a>.<a class="xref" href="Wss.Transports.html">Transports</a></h6>
+  <h6><strong>Assembly</strong>: WSS_Core_Interface.dll</h6>
+  <h5 id="Wss_Transports_ITransport_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class SerialPortTransport : ITransport</code></pre>
+    <pre><code class="lang-csharp hljs">public interface ITransport</code></pre>
   </div>
-  <h5 id="Wss_CoreModule_SerialPortTransport_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p><b>Threading:</b> <a class="xref" href="Wss.CoreModule.SerialPortTransport.html#Wss_CoreModule_SerialPortTransport_BytesReceived">BytesReceived</a> is raised from a background task. If your app (e.g., Unity)
-requires main-thread processing, marshal the callback to the main thread before touching UI/GameObjects.</p>
-<p><b>Chunking:</b> Serial I/O does not preserve message boundaries. Each chunk may contain partial frames or
-multiple frames. Always pass chunks to a frame codec/deframer.</p>
-<p><b>Timeouts:</b> The read loop polls <span class="xref">System.IO.Ports.SerialPort.BytesToRead</span> and catches <span class="xref">System.TimeoutException</span>s,
-which are normal with short read timeouts.</p>
+  <h5 id="Wss_Transports_ITransport_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>
+This interface is intentionally minimal and transport-agnostic so higher-level code
+can be reused with different physical links (UART/COM, RFCOMM, BLE GATT, sockets).
+</p>
+<p>
+<b>Threading:</b> Implementations typically raise <a class="xref" href="Wss.Transports.ITransport.html#Wss_Transports_ITransport_BytesReceived">BytesReceived</a> from a background thread.
+If your application requires main-thread access, marshal the callback to the main thread.
+</p>
+<p>
+<b>Chunking:</b> Incoming chunks may contain partial frames, multiple frames, or arbitrary boundaries.
+Always pass chunks to a frame codec/deframer instead of assuming message boundaries align with reads.
+</p>
 </div>
-  <h3 id="constructors">Constructors
-</h3>
-
-
-  <a id="Wss_CoreModule_SerialPortTransport__ctor_" data-uid="Wss.CoreModule.SerialPortTransport.#ctor*"></a>
-  <h4 id="Wss_CoreModule_SerialPortTransport__ctor_Wss_CoreModule_SerialPortTransportOptions_" data-uid="Wss.CoreModule.SerialPortTransport.#ctor(Wss.CoreModule.SerialPortTransportOptions)">SerialPortTransport(SerialPortTransportOptions)</h4>
-  <div class="markdown level1 summary"><p>Creates a serial transport from a single options object.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public SerialPortTransport(SerialPortTransportOptions options)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Wss.CoreModule.SerialPortTransportOptions.html">SerialPortTransportOptions</a></td>
-        <td><span class="parametername">options</span></td>
-        <td><p>Serial transport configuration, including connection settings and port selection mode.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Wss_CoreModule_SerialPortTransport__ctor_Wss_CoreModule_SerialPortTransportOptions__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>Exactly one port selection mode must be configured: either set <a class="xref" href="Wss.CoreModule.SerialPortTransportOptions.html#Wss_CoreModule_SerialPortTransportOptions_AutoSelectPort">AutoSelectPort</a>
-to <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> or provide a non-empty <a class="xref" href="Wss.CoreModule.SerialPortTransportOptions.html#Wss_CoreModule_SerialPortTransportOptions_PortName">PortName</a>.</p>
-</div>
-  <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Condition</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">ArgumentNullException</span></td>
-        <td><p>Thrown when <code class="paramref">options</code> is null.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">ArgumentException</span></td>
-        <td><p>Thrown when the port selection settings specify both an explicit port and auto-selection, or neither.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
   <h3 id="properties">Properties
 </h3>
 
 
-  <a id="Wss_CoreModule_SerialPortTransport_IsConnected_" data-uid="Wss.CoreModule.SerialPortTransport.IsConnected*"></a>
-  <h4 id="Wss_CoreModule_SerialPortTransport_IsConnected" data-uid="Wss.CoreModule.SerialPortTransport.IsConnected">IsConnected</h4>
+  <a id="Wss_Transports_ITransport_IsConnected_" data-uid="Wss.Transports.ITransport.IsConnected*"></a>
+  <h4 id="Wss_Transports_ITransport_IsConnected" data-uid="Wss.Transports.ITransport.IsConnected">IsConnected</h4>
   <div class="markdown level1 summary"><p>Gets whether the transport is currently connected/open.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool IsConnected { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">bool IsConnected { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-condensed">
@@ -196,14 +138,14 @@ to <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin
 </h3>
 
 
-  <a id="Wss_CoreModule_SerialPortTransport_ConnectAsync_" data-uid="Wss.CoreModule.SerialPortTransport.ConnectAsync*"></a>
-  <h4 id="Wss_CoreModule_SerialPortTransport_ConnectAsync_System_Threading_CancellationToken_" data-uid="Wss.CoreModule.SerialPortTransport.ConnectAsync(System.Threading.CancellationToken)">ConnectAsync(CancellationToken)</h4>
+  <a id="Wss_Transports_ITransport_ConnectAsync_" data-uid="Wss.Transports.ITransport.ConnectAsync*"></a>
+  <h4 id="Wss_Transports_ITransport_ConnectAsync_System_Threading_CancellationToken_" data-uid="Wss.Transports.ITransport.ConnectAsync(System.Threading.CancellationToken)">ConnectAsync(CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Opens/initializes the transport connection (e.g., open a serial port, connect a socket, start BLE session).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task ConnectAsync(CancellationToken ct = default)</code></pre>
+    <pre><code class="lang-csharp hljs">Task ConnectAsync(CancellationToken ct = default)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-condensed">
@@ -239,9 +181,6 @@ to <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin
       </tr>
     </tbody>
   </table>
-  <h5 id="Wss_CoreModule_SerialPortTransport_ConnectAsync_System_Threading_CancellationToken__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>Opens the serial port and starts a background read loop that forwards incoming data to <a class="xref" href="Wss.CoreModule.SerialPortTransport.html#Wss_CoreModule_SerialPortTransport_BytesReceived">BytesReceived</a>.</p>
-</div>
   <h5 class="exceptions">Exceptions</h5>
   <table class="table table-bordered table-condensed">
     <thead>
@@ -270,14 +209,14 @@ to <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin
   </table>
 
 
-  <a id="Wss_CoreModule_SerialPortTransport_DisconnectAsync_" data-uid="Wss.CoreModule.SerialPortTransport.DisconnectAsync*"></a>
-  <h4 id="Wss_CoreModule_SerialPortTransport_DisconnectAsync_System_Threading_CancellationToken_" data-uid="Wss.CoreModule.SerialPortTransport.DisconnectAsync(System.Threading.CancellationToken)">DisconnectAsync(CancellationToken)</h4>
+  <a id="Wss_Transports_ITransport_DisconnectAsync_" data-uid="Wss.Transports.ITransport.DisconnectAsync*"></a>
+  <h4 id="Wss_Transports_ITransport_DisconnectAsync_System_Threading_CancellationToken_" data-uid="Wss.Transports.ITransport.DisconnectAsync(System.Threading.CancellationToken)">DisconnectAsync(CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Closes the transport connection and stops any background receive loop.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task DisconnectAsync(CancellationToken ct = default)</code></pre>
+    <pre><code class="lang-csharp hljs">Task DisconnectAsync(CancellationToken ct = default)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-condensed">
@@ -313,9 +252,6 @@ to <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin
       </tr>
     </tbody>
   </table>
-  <h5 id="Wss_CoreModule_SerialPortTransport_DisconnectAsync_System_Threading_CancellationToken__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>Stops the background read loop and closes the serial port.</p>
-</div>
   <h5 class="exceptions">Exceptions</h5>
   <table class="table table-bordered table-condensed">
     <thead>
@@ -339,25 +275,14 @@ to <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin
   </table>
 
 
-  <a id="Wss_CoreModule_SerialPortTransport_Dispose_" data-uid="Wss.CoreModule.SerialPortTransport.Dispose*"></a>
-  <h4 id="Wss_CoreModule_SerialPortTransport_Dispose" data-uid="Wss.CoreModule.SerialPortTransport.Dispose">Dispose()</h4>
-  <div class="markdown level1 summary"><p>Disposes the serial port and stops the read loop.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
-  </div>
-
-
-  <a id="Wss_CoreModule_SerialPortTransport_SendAsync_" data-uid="Wss.CoreModule.SerialPortTransport.SendAsync*"></a>
-  <h4 id="Wss_CoreModule_SerialPortTransport_SendAsync_System_Byte___System_Threading_CancellationToken_" data-uid="Wss.CoreModule.SerialPortTransport.SendAsync(System.Byte[],System.Threading.CancellationToken)">SendAsync(byte[], CancellationToken)</h4>
+  <a id="Wss_Transports_ITransport_SendAsync_" data-uid="Wss.Transports.ITransport.SendAsync*"></a>
+  <h4 id="Wss_Transports_ITransport_SendAsync_System_Byte___System_Threading_CancellationToken_" data-uid="Wss.Transports.ITransport.SendAsync(System.Byte[],System.Threading.CancellationToken)">SendAsync(byte[], CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Sends a block of bytes over the transport.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task SendAsync(byte[] data, CancellationToken ct = default)</code></pre>
+    <pre><code class="lang-csharp hljs">Task SendAsync(byte[] data, CancellationToken ct = default)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-condensed">
@@ -400,9 +325,6 @@ For some transports (e.g., synchronous serial writes), cancellation may only be 
       </tr>
     </tbody>
   </table>
-  <h5 id="Wss_CoreModule_SerialPortTransport_SendAsync_System_Byte___System_Threading_CancellationToken__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>Writes the buffer synchronously to the underlying <span class="xref">System.IO.Ports.SerialPort</span> and flushes the base stream.</p>
-</div>
   <h5 class="exceptions">Exceptions</h5>
   <table class="table table-bordered table-condensed">
     <thead>
@@ -433,7 +355,7 @@ For some transports (e.g., synchronous serial writes), cancellation may only be 
 </h3>
 
 
-  <h4 id="Wss_CoreModule_SerialPortTransport_BytesReceived" data-uid="Wss.CoreModule.SerialPortTransport.BytesReceived">BytesReceived</h4>
+  <h4 id="Wss_Transports_ITransport_BytesReceived" data-uid="Wss.Transports.ITransport.BytesReceived">BytesReceived</h4>
   <div class="markdown level1 summary"><p>Raised whenever raw bytes arrive from the underlying transport.
 Each invocation may represent any number of bytes (including zero, depending on implementation),
 and may contain partial or multiple protocol frames.</p>
@@ -441,7 +363,7 @@ and may contain partial or multiple protocol frames.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public event Action&lt;byte[]&gt; BytesReceived</code></pre>
+    <pre><code class="lang-csharp hljs">event Action&lt;byte[]&gt; BytesReceived</code></pre>
   </div>
   <h5 class="eventType">Event Type</h5>
   <table class="table table-bordered table-condensed">
@@ -458,7 +380,7 @@ and may contain partial or multiple protocol frames.</p>
       </tr>
     </tbody>
   </table>
-  <h5 id="Wss_CoreModule_SerialPortTransport_BytesReceived_remarks">Remarks</h5>
+  <h5 id="Wss_Transports_ITransport_BytesReceived_remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>
 Implementations should invoke this event promptly as data becomes available.
 Callers should treat the provided buffer as read-only and copy it if they need to retain it.
@@ -468,10 +390,6 @@ This event is typically raised on a background thread. Consumers should marshal 
 if required by their environment.
 </p>
 </div>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="Wss.CoreModule.ITransport.html">ITransport</a>
-  </div>
 
 </article>
           </div>

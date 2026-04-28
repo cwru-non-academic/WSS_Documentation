@@ -5,7 +5,7 @@ items:
   id: WssClient
   parent: Wss.CoreModule
   children:
-  - Wss.CoreModule.WssClient.#ctor(Wss.CoreModule.ITransport,Wss.CoreModule.IFrameCodec,Wss.CoreModule.WSSVersionHandler,Wss.CoreModule.WssClientOptions)
+  - Wss.CoreModule.WssClient.#ctor(Wss.Transports.ITransport,Wss.CoreModule.IFrameCodec,Wss.CoreModule.WSSVersionHandler,Wss.CoreModule.WssClientOptions)
   - Wss.CoreModule.WssClient.AddEventToSchedule(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
   - Wss.CoreModule.WssClient.ChangeGroupState(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
   - Wss.CoreModule.WssClient.ChangeScheduleDuration(System.Int32,System.Int32,Wss.CoreModule.WssTarget,System.Threading.CancellationToken)
@@ -63,7 +63,7 @@ items:
   summary: >-
     Low-level protocol client. Frames commands using an <xref href="Wss.CoreModule.IFrameCodec" data-throw-if-not-resolved="false"></xref>,
 
-    sends them over an <xref href="Wss.CoreModule.ITransport" data-throw-if-not-resolved="false"></xref>, and correlates responses by
+    sends them over an <xref href="Wss.Transports.ITransport" data-throw-if-not-resolved="false"></xref>, and correlates responses by
 
     <code>(target,msgId)</code>.
   example: []
@@ -95,23 +95,23 @@ items:
       type: System.Boolean
     content.vb: Public Property Started As Boolean
   overload: Wss.CoreModule.WssClient.Started*
-- uid: Wss.CoreModule.WssClient.#ctor(Wss.CoreModule.ITransport,Wss.CoreModule.IFrameCodec,Wss.CoreModule.WSSVersionHandler,Wss.CoreModule.WssClientOptions)
-  commentId: M:Wss.CoreModule.WssClient.#ctor(Wss.CoreModule.ITransport,Wss.CoreModule.IFrameCodec,Wss.CoreModule.WSSVersionHandler,Wss.CoreModule.WssClientOptions)
-  id: '#ctor(Wss.CoreModule.ITransport,Wss.CoreModule.IFrameCodec,Wss.CoreModule.WSSVersionHandler,Wss.CoreModule.WssClientOptions)'
+- uid: Wss.CoreModule.WssClient.#ctor(Wss.Transports.ITransport,Wss.CoreModule.IFrameCodec,Wss.CoreModule.WSSVersionHandler,Wss.CoreModule.WssClientOptions)
+  commentId: M:Wss.CoreModule.WssClient.#ctor(Wss.Transports.ITransport,Wss.CoreModule.IFrameCodec,Wss.CoreModule.WSSVersionHandler,Wss.CoreModule.WssClientOptions)
+  id: '#ctor(Wss.Transports.ITransport,Wss.CoreModule.IFrameCodec,Wss.CoreModule.WSSVersionHandler,Wss.CoreModule.WssClientOptions)'
   parent: Wss.CoreModule.WssClient
   langs:
   - csharp
   - vb
   name: WssClient(ITransport, IFrameCodec, WSSVersionHandler, WssClientOptions)
   nameWithType: WssClient.WssClient(ITransport, IFrameCodec, WSSVersionHandler, WssClientOptions)
-  fullName: Wss.CoreModule.WssClient.WssClient(Wss.CoreModule.ITransport, Wss.CoreModule.IFrameCodec, Wss.CoreModule.WSSVersionHandler, Wss.CoreModule.WssClientOptions)
+  fullName: Wss.CoreModule.WssClient.WssClient(Wss.Transports.ITransport, Wss.CoreModule.IFrameCodec, Wss.CoreModule.WSSVersionHandler, Wss.CoreModule.WssClientOptions)
   type: Constructor
   assemblies:
   - WSS_Core_Interface
   namespace: Wss.CoreModule
   summary: Creates a low-level protocol client over a caller-provided transport and frame codec.
   remarks: >-
-    <xref href="Wss.CoreModule.ITransport.BytesReceived" data-throw-if-not-resolved="false"></xref> may be raised on a background thread depending on the transport implementation.
+    <xref href="Wss.Transports.ITransport.BytesReceived" data-throw-if-not-resolved="false"></xref> may be raised on a background thread depending on the transport implementation.
 
     Reply correlation primarily matches responses by <code>(target,msgId)</code>, with additional handling for
 
@@ -123,7 +123,7 @@ items:
     content: public WssClient(ITransport transport, IFrameCodec codec, WSSVersionHandler versionHandler, WssClientOptions options)
     parameters:
     - id: transport
-      type: Wss.CoreModule.ITransport
+      type: Wss.Transports.ITransport
       description: Underlying byte transport (for example, serial or BLE).
     - id: codec
       type: Wss.CoreModule.IFrameCodec
@@ -144,7 +144,7 @@ items:
     commentId: T:System.ArgumentOutOfRangeException
     description: Thrown when the configured response timeout is not positive.
   nameWithType.vb: WssClient.New(ITransport, IFrameCodec, WSSVersionHandler, WssClientOptions)
-  fullName.vb: Wss.CoreModule.WssClient.New(Wss.CoreModule.ITransport, Wss.CoreModule.IFrameCodec, Wss.CoreModule.WSSVersionHandler, Wss.CoreModule.WssClientOptions)
+  fullName.vb: Wss.CoreModule.WssClient.New(Wss.Transports.ITransport, Wss.CoreModule.IFrameCodec, Wss.CoreModule.WSSVersionHandler, Wss.CoreModule.WssClientOptions)
   name.vb: New(ITransport, IFrameCodec, WSSVersionHandler, WssClientOptions)
 - uid: Wss.CoreModule.WssClient.ConnectAsync(System.Threading.CancellationToken)
   commentId: M:Wss.CoreModule.WssClient.ConnectAsync(System.Threading.CancellationToken)
@@ -1776,13 +1776,13 @@ references:
   name: IFrameCodec
   nameWithType: IFrameCodec
   fullName: Wss.CoreModule.IFrameCodec
-- uid: Wss.CoreModule.ITransport
-  commentId: T:Wss.CoreModule.ITransport
-  parent: Wss.CoreModule
-  href: Wss.CoreModule.ITransport.html
+- uid: Wss.Transports.ITransport
+  commentId: T:Wss.Transports.ITransport
+  parent: Wss.Transports
+  href: Wss.Transports.ITransport.html
   name: ITransport
   nameWithType: ITransport
-  fullName: Wss.CoreModule.ITransport
+  fullName: Wss.Transports.ITransport
 - uid: Wss.CoreModule
   commentId: N:Wss.CoreModule
   href: Wss.html
@@ -1815,6 +1815,28 @@ references:
   nameWithType.vb: Object
   fullName.vb: Object
   name.vb: Object
+- uid: Wss.Transports
+  commentId: N:Wss.Transports
+  href: Wss.html
+  name: Wss.Transports
+  nameWithType: Wss.Transports
+  fullName: Wss.Transports
+  spec.csharp:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.Transports
+    name: Transports
+    href: Wss.Transports.html
+  spec.vb:
+  - uid: Wss
+    name: Wss
+    href: Wss.html
+  - name: .
+  - uid: Wss.Transports
+    name: Transports
+    href: Wss.Transports.html
 - uid: System
   commentId: N:System
   isExternal: true
@@ -1838,13 +1860,13 @@ references:
   nameWithType.vb: Boolean
   fullName.vb: Boolean
   name.vb: Boolean
-- uid: Wss.CoreModule.ITransport.BytesReceived
-  commentId: E:Wss.CoreModule.ITransport.BytesReceived
-  parent: Wss.CoreModule.ITransport
-  href: Wss.CoreModule.ITransport.html#Wss_CoreModule_ITransport_BytesReceived
+- uid: Wss.Transports.ITransport.BytesReceived
+  commentId: E:Wss.Transports.ITransport.BytesReceived
+  parent: Wss.Transports.ITransport
+  href: Wss.Transports.ITransport.html#Wss_Transports_ITransport_BytesReceived
   name: BytesReceived
   nameWithType: ITransport.BytesReceived
-  fullName: Wss.CoreModule.ITransport.BytesReceived
+  fullName: Wss.Transports.ITransport.BytesReceived
 - uid: Wss.CoreModule.WSSMessageIDs.ModuleQuery
   commentId: F:Wss.CoreModule.WSSMessageIDs.ModuleQuery
   href: Wss.CoreModule.WSSMessageIDs.html#Wss_CoreModule_WSSMessageIDs_ModuleQuery
@@ -1871,7 +1893,7 @@ references:
   fullName: System.ArgumentOutOfRangeException
 - uid: Wss.CoreModule.WssClient.#ctor*
   commentId: Overload:Wss.CoreModule.WssClient.#ctor
-  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient__ctor_Wss_CoreModule_ITransport_Wss_CoreModule_IFrameCodec_Wss_CoreModule_WSSVersionHandler_Wss_CoreModule_WssClientOptions_
+  href: Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient__ctor_Wss_Transports_ITransport_Wss_CoreModule_IFrameCodec_Wss_CoreModule_WSSVersionHandler_Wss_CoreModule_WssClientOptions_
   name: WssClient
   nameWithType: WssClient.WssClient
   fullName: Wss.CoreModule.WssClient.WssClient

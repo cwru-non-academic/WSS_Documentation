@@ -3,249 +3,10 @@ sorted: true
 references:
 - uid: HFI.Wss
   name: HFI.Wss
-  href: api/core/HFI.Wss.html
+  href: api/csharp/HFI.Wss.html
   commentId: N:HFI.Wss
   fullName: HFI.Wss
   nameWithType: HFI.Wss
-- uid: HFI.Wss.BleNusTransport
-  name: BleNusTransport
-  href: api/core/HFI.Wss.BleNusTransport.html
-  commentId: T:HFI.Wss.BleNusTransport
-  fullName: HFI.Wss.BleNusTransport
-  nameWithType: BleNusTransport
-- uid: HFI.Wss.BleNusTransport.#ctor(HFI.Wss.BleNusTransportOptions)
-  name: BleNusTransport(BleNusTransportOptions)
-  href: api/core/HFI.Wss.BleNusTransport.html#HFI_Wss_BleNusTransport__ctor_HFI_Wss_BleNusTransportOptions_
-  commentId: M:HFI.Wss.BleNusTransport.#ctor(HFI.Wss.BleNusTransportOptions)
-  name.vb: New(BleNusTransportOptions)
-  fullName: HFI.Wss.BleNusTransport.BleNusTransport(HFI.Wss.BleNusTransportOptions)
-  fullName.vb: HFI.Wss.BleNusTransport.New(HFI.Wss.BleNusTransportOptions)
-  nameWithType: BleNusTransport.BleNusTransport(BleNusTransportOptions)
-  nameWithType.vb: BleNusTransport.New(BleNusTransportOptions)
-- uid: HFI.Wss.BleNusTransport.#ctor(System.String)
-  name: BleNusTransport(string)
-  href: api/core/HFI.Wss.BleNusTransport.html#HFI_Wss_BleNusTransport__ctor_System_String_
-  commentId: M:HFI.Wss.BleNusTransport.#ctor(System.String)
-  name.vb: New(String)
-  fullName: HFI.Wss.BleNusTransport.BleNusTransport(string)
-  fullName.vb: HFI.Wss.BleNusTransport.New(String)
-  nameWithType: BleNusTransport.BleNusTransport(string)
-  nameWithType.vb: BleNusTransport.New(String)
-- uid: HFI.Wss.BleNusTransport.#ctor*
-  name: BleNusTransport
-  href: api/core/HFI.Wss.BleNusTransport.html#HFI_Wss_BleNusTransport__ctor_
-  commentId: Overload:HFI.Wss.BleNusTransport.#ctor
-  isSpec: "True"
-  name.vb: New
-  fullName: HFI.Wss.BleNusTransport.BleNusTransport
-  fullName.vb: HFI.Wss.BleNusTransport.New
-  nameWithType: BleNusTransport.BleNusTransport
-  nameWithType.vb: BleNusTransport.New
-- uid: HFI.Wss.BleNusTransport.BytesReceived
-  name: BytesReceived
-  href: api/core/HFI.Wss.BleNusTransport.html#HFI_Wss_BleNusTransport_BytesReceived
-  commentId: E:HFI.Wss.BleNusTransport.BytesReceived
-  fullName: HFI.Wss.BleNusTransport.BytesReceived
-  nameWithType: BleNusTransport.BytesReceived
-- uid: HFI.Wss.BleNusTransport.ConnectAsync(System.Threading.CancellationToken)
-  name: ConnectAsync(CancellationToken)
-  href: api/core/HFI.Wss.BleNusTransport.html#HFI_Wss_BleNusTransport_ConnectAsync_System_Threading_CancellationToken_
-  commentId: M:HFI.Wss.BleNusTransport.ConnectAsync(System.Threading.CancellationToken)
-  fullName: HFI.Wss.BleNusTransport.ConnectAsync(System.Threading.CancellationToken)
-  nameWithType: BleNusTransport.ConnectAsync(CancellationToken)
-- uid: HFI.Wss.BleNusTransport.ConnectAsync*
-  name: ConnectAsync
-  href: api/core/HFI.Wss.BleNusTransport.html#HFI_Wss_BleNusTransport_ConnectAsync_
-  commentId: Overload:HFI.Wss.BleNusTransport.ConnectAsync
-  isSpec: "True"
-  fullName: HFI.Wss.BleNusTransport.ConnectAsync
-  nameWithType: BleNusTransport.ConnectAsync
-- uid: HFI.Wss.BleNusTransport.CreateDefaultOptions(System.String)
-  name: CreateDefaultOptions(string)
-  href: api/core/HFI.Wss.BleNusTransport.html#HFI_Wss_BleNusTransport_CreateDefaultOptions_System_String_
-  commentId: M:HFI.Wss.BleNusTransport.CreateDefaultOptions(System.String)
-  name.vb: CreateDefaultOptions(String)
-  fullName: HFI.Wss.BleNusTransport.CreateDefaultOptions(string)
-  fullName.vb: HFI.Wss.BleNusTransport.CreateDefaultOptions(String)
-  nameWithType: BleNusTransport.CreateDefaultOptions(string)
-  nameWithType.vb: BleNusTransport.CreateDefaultOptions(String)
-- uid: HFI.Wss.BleNusTransport.CreateDefaultOptions*
-  name: CreateDefaultOptions
-  href: api/core/HFI.Wss.BleNusTransport.html#HFI_Wss_BleNusTransport_CreateDefaultOptions_
-  commentId: Overload:HFI.Wss.BleNusTransport.CreateDefaultOptions
-  isSpec: "True"
-  fullName: HFI.Wss.BleNusTransport.CreateDefaultOptions
-  nameWithType: BleNusTransport.CreateDefaultOptions
-- uid: HFI.Wss.BleNusTransport.DefaultNotifyCharacteristicUuid
-  name: DefaultNotifyCharacteristicUuid
-  href: api/core/HFI.Wss.BleNusTransport.html#HFI_Wss_BleNusTransport_DefaultNotifyCharacteristicUuid
-  commentId: F:HFI.Wss.BleNusTransport.DefaultNotifyCharacteristicUuid
-  fullName: HFI.Wss.BleNusTransport.DefaultNotifyCharacteristicUuid
-  nameWithType: BleNusTransport.DefaultNotifyCharacteristicUuid
-- uid: HFI.Wss.BleNusTransport.DefaultServiceUuid
-  name: DefaultServiceUuid
-  href: api/core/HFI.Wss.BleNusTransport.html#HFI_Wss_BleNusTransport_DefaultServiceUuid
-  commentId: F:HFI.Wss.BleNusTransport.DefaultServiceUuid
-  fullName: HFI.Wss.BleNusTransport.DefaultServiceUuid
-  nameWithType: BleNusTransport.DefaultServiceUuid
-- uid: HFI.Wss.BleNusTransport.DefaultWriteCharacteristicUuid
-  name: DefaultWriteCharacteristicUuid
-  href: api/core/HFI.Wss.BleNusTransport.html#HFI_Wss_BleNusTransport_DefaultWriteCharacteristicUuid
-  commentId: F:HFI.Wss.BleNusTransport.DefaultWriteCharacteristicUuid
-  fullName: HFI.Wss.BleNusTransport.DefaultWriteCharacteristicUuid
-  nameWithType: BleNusTransport.DefaultWriteCharacteristicUuid
-- uid: HFI.Wss.BleNusTransport.DisconnectAsync(System.Threading.CancellationToken)
-  name: DisconnectAsync(CancellationToken)
-  href: api/core/HFI.Wss.BleNusTransport.html#HFI_Wss_BleNusTransport_DisconnectAsync_System_Threading_CancellationToken_
-  commentId: M:HFI.Wss.BleNusTransport.DisconnectAsync(System.Threading.CancellationToken)
-  fullName: HFI.Wss.BleNusTransport.DisconnectAsync(System.Threading.CancellationToken)
-  nameWithType: BleNusTransport.DisconnectAsync(CancellationToken)
-- uid: HFI.Wss.BleNusTransport.DisconnectAsync*
-  name: DisconnectAsync
-  href: api/core/HFI.Wss.BleNusTransport.html#HFI_Wss_BleNusTransport_DisconnectAsync_
-  commentId: Overload:HFI.Wss.BleNusTransport.DisconnectAsync
-  isSpec: "True"
-  fullName: HFI.Wss.BleNusTransport.DisconnectAsync
-  nameWithType: BleNusTransport.DisconnectAsync
-- uid: HFI.Wss.BleNusTransport.Dispose
-  name: Dispose()
-  href: api/core/HFI.Wss.BleNusTransport.html#HFI_Wss_BleNusTransport_Dispose
-  commentId: M:HFI.Wss.BleNusTransport.Dispose
-  fullName: HFI.Wss.BleNusTransport.Dispose()
-  nameWithType: BleNusTransport.Dispose()
-- uid: HFI.Wss.BleNusTransport.Dispose*
-  name: Dispose
-  href: api/core/HFI.Wss.BleNusTransport.html#HFI_Wss_BleNusTransport_Dispose_
-  commentId: Overload:HFI.Wss.BleNusTransport.Dispose
-  isSpec: "True"
-  fullName: HFI.Wss.BleNusTransport.Dispose
-  nameWithType: BleNusTransport.Dispose
-- uid: HFI.Wss.BleNusTransport.IsConnected
-  name: IsConnected
-  href: api/core/HFI.Wss.BleNusTransport.html#HFI_Wss_BleNusTransport_IsConnected
-  commentId: P:HFI.Wss.BleNusTransport.IsConnected
-  fullName: HFI.Wss.BleNusTransport.IsConnected
-  nameWithType: BleNusTransport.IsConnected
-- uid: HFI.Wss.BleNusTransport.IsConnected*
-  name: IsConnected
-  href: api/core/HFI.Wss.BleNusTransport.html#HFI_Wss_BleNusTransport_IsConnected_
-  commentId: Overload:HFI.Wss.BleNusTransport.IsConnected
-  isSpec: "True"
-  fullName: HFI.Wss.BleNusTransport.IsConnected
-  nameWithType: BleNusTransport.IsConnected
-- uid: HFI.Wss.BleNusTransport.SendAsync(System.Byte[],System.Threading.CancellationToken)
-  name: SendAsync(byte[], CancellationToken)
-  href: api/core/HFI.Wss.BleNusTransport.html#HFI_Wss_BleNusTransport_SendAsync_System_Byte___System_Threading_CancellationToken_
-  commentId: M:HFI.Wss.BleNusTransport.SendAsync(System.Byte[],System.Threading.CancellationToken)
-  name.vb: SendAsync(Byte(), CancellationToken)
-  fullName: HFI.Wss.BleNusTransport.SendAsync(byte[], System.Threading.CancellationToken)
-  fullName.vb: HFI.Wss.BleNusTransport.SendAsync(Byte(), System.Threading.CancellationToken)
-  nameWithType: BleNusTransport.SendAsync(byte[], CancellationToken)
-  nameWithType.vb: BleNusTransport.SendAsync(Byte(), CancellationToken)
-- uid: HFI.Wss.BleNusTransport.SendAsync*
-  name: SendAsync
-  href: api/core/HFI.Wss.BleNusTransport.html#HFI_Wss_BleNusTransport_SendAsync_
-  commentId: Overload:HFI.Wss.BleNusTransport.SendAsync
-  isSpec: "True"
-  fullName: HFI.Wss.BleNusTransport.SendAsync
-  nameWithType: BleNusTransport.SendAsync
-- uid: HFI.Wss.BleNusTransportOptions
-  name: BleNusTransportOptions
-  href: api/core/HFI.Wss.BleNusTransportOptions.html
-  commentId: T:HFI.Wss.BleNusTransportOptions
-  fullName: HFI.Wss.BleNusTransportOptions
-  nameWithType: BleNusTransportOptions
-- uid: HFI.Wss.BleNusTransportOptions.AutoSelectDevice
-  name: AutoSelectDevice
-  href: api/core/HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_AutoSelectDevice
-  commentId: P:HFI.Wss.BleNusTransportOptions.AutoSelectDevice
-  fullName: HFI.Wss.BleNusTransportOptions.AutoSelectDevice
-  nameWithType: BleNusTransportOptions.AutoSelectDevice
-- uid: HFI.Wss.BleNusTransportOptions.AutoSelectDevice*
-  name: AutoSelectDevice
-  href: api/core/HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_AutoSelectDevice_
-  commentId: Overload:HFI.Wss.BleNusTransportOptions.AutoSelectDevice
-  isSpec: "True"
-  fullName: HFI.Wss.BleNusTransportOptions.AutoSelectDevice
-  nameWithType: BleNusTransportOptions.AutoSelectDevice
-- uid: HFI.Wss.BleNusTransportOptions.DeviceId
-  name: DeviceId
-  href: api/core/HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_DeviceId
-  commentId: P:HFI.Wss.BleNusTransportOptions.DeviceId
-  fullName: HFI.Wss.BleNusTransportOptions.DeviceId
-  nameWithType: BleNusTransportOptions.DeviceId
-- uid: HFI.Wss.BleNusTransportOptions.DeviceId*
-  name: DeviceId
-  href: api/core/HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_DeviceId_
-  commentId: Overload:HFI.Wss.BleNusTransportOptions.DeviceId
-  isSpec: "True"
-  fullName: HFI.Wss.BleNusTransportOptions.DeviceId
-  nameWithType: BleNusTransportOptions.DeviceId
-- uid: HFI.Wss.BleNusTransportOptions.DeviceName
-  name: DeviceName
-  href: api/core/HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_DeviceName
-  commentId: P:HFI.Wss.BleNusTransportOptions.DeviceName
-  fullName: HFI.Wss.BleNusTransportOptions.DeviceName
-  nameWithType: BleNusTransportOptions.DeviceName
-- uid: HFI.Wss.BleNusTransportOptions.DeviceName*
-  name: DeviceName
-  href: api/core/HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_DeviceName_
-  commentId: Overload:HFI.Wss.BleNusTransportOptions.DeviceName
-  isSpec: "True"
-  fullName: HFI.Wss.BleNusTransportOptions.DeviceName
-  nameWithType: BleNusTransportOptions.DeviceName
-- uid: HFI.Wss.BleNusTransportOptions.NotifyCharacteristicUuid
-  name: NotifyCharacteristicUuid
-  href: api/core/HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_NotifyCharacteristicUuid
-  commentId: P:HFI.Wss.BleNusTransportOptions.NotifyCharacteristicUuid
-  fullName: HFI.Wss.BleNusTransportOptions.NotifyCharacteristicUuid
-  nameWithType: BleNusTransportOptions.NotifyCharacteristicUuid
-- uid: HFI.Wss.BleNusTransportOptions.NotifyCharacteristicUuid*
-  name: NotifyCharacteristicUuid
-  href: api/core/HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_NotifyCharacteristicUuid_
-  commentId: Overload:HFI.Wss.BleNusTransportOptions.NotifyCharacteristicUuid
-  isSpec: "True"
-  fullName: HFI.Wss.BleNusTransportOptions.NotifyCharacteristicUuid
-  nameWithType: BleNusTransportOptions.NotifyCharacteristicUuid
-- uid: HFI.Wss.BleNusTransportOptions.ScanTimeout
-  name: ScanTimeout
-  href: api/core/HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_ScanTimeout
-  commentId: P:HFI.Wss.BleNusTransportOptions.ScanTimeout
-  fullName: HFI.Wss.BleNusTransportOptions.ScanTimeout
-  nameWithType: BleNusTransportOptions.ScanTimeout
-- uid: HFI.Wss.BleNusTransportOptions.ScanTimeout*
-  name: ScanTimeout
-  href: api/core/HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_ScanTimeout_
-  commentId: Overload:HFI.Wss.BleNusTransportOptions.ScanTimeout
-  isSpec: "True"
-  fullName: HFI.Wss.BleNusTransportOptions.ScanTimeout
-  nameWithType: BleNusTransportOptions.ScanTimeout
-- uid: HFI.Wss.BleNusTransportOptions.ServiceUuid
-  name: ServiceUuid
-  href: api/core/HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_ServiceUuid
-  commentId: P:HFI.Wss.BleNusTransportOptions.ServiceUuid
-  fullName: HFI.Wss.BleNusTransportOptions.ServiceUuid
-  nameWithType: BleNusTransportOptions.ServiceUuid
-- uid: HFI.Wss.BleNusTransportOptions.ServiceUuid*
-  name: ServiceUuid
-  href: api/core/HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_ServiceUuid_
-  commentId: Overload:HFI.Wss.BleNusTransportOptions.ServiceUuid
-  isSpec: "True"
-  fullName: HFI.Wss.BleNusTransportOptions.ServiceUuid
-  nameWithType: BleNusTransportOptions.ServiceUuid
-- uid: HFI.Wss.BleNusTransportOptions.WriteCharacteristicUuid
-  name: WriteCharacteristicUuid
-  href: api/core/HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_WriteCharacteristicUuid
-  commentId: P:HFI.Wss.BleNusTransportOptions.WriteCharacteristicUuid
-  fullName: HFI.Wss.BleNusTransportOptions.WriteCharacteristicUuid
-  nameWithType: BleNusTransportOptions.WriteCharacteristicUuid
-- uid: HFI.Wss.BleNusTransportOptions.WriteCharacteristicUuid*
-  name: WriteCharacteristicUuid
-  href: api/core/HFI.Wss.BleNusTransportOptions.html#HFI_Wss_BleNusTransportOptions_WriteCharacteristicUuid_
-  commentId: Overload:HFI.Wss.BleNusTransportOptions.WriteCharacteristicUuid
-  isSpec: "True"
-  fullName: HFI.Wss.BleNusTransportOptions.WriteCharacteristicUuid
-  nameWithType: BleNusTransportOptions.WriteCharacteristicUuid
 - uid: HFI.Wss.StimulationController
   name: StimulationController
   href: api/csharp/HFI.Wss.StimulationController.html
@@ -1133,6 +894,1639 @@ references:
   commentId: F:HFI.Wss.StimulationTransportKind.Test
   fullName: HFI.Wss.StimulationTransportKind.Test
   nameWithType: StimulationTransportKind.Test
+- uid: WSS.Unity
+  name: ''
+  href: api/unity/WSS.Unity.html
+- uid: WSS.Unity.Stimulation
+  name: Stimulation
+  href: api/unity/WSS.Unity.Stimulation.html
+  commentId: T:WSS.Unity.Stimulation
+  fullName: Stimulation
+  nameWithType: Stimulation
+- uid: WSS.Unity.Stimulation.AddOrUpdateStimParam(System.String,System.Single)
+  name: AddOrUpdateStimParam(string, float)
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_AddOrUpdateStimParam_System_String_System_Single_
+  commentId: M:WSS.Unity.Stimulation.AddOrUpdateStimParam(System.String,System.Single)
+  name.vb: AddOrUpdateStimParam(String, Single)
+  fullName: Stimulation.AddOrUpdateStimParam(string, float)
+  fullName.vb: Stimulation.AddOrUpdateStimParam(String, Single)
+  nameWithType: Stimulation.AddOrUpdateStimParam(string, float)
+  nameWithType.vb: Stimulation.AddOrUpdateStimParam(String, Single)
+- uid: WSS.Unity.Stimulation.AddOrUpdateStimParam*
+  name: AddOrUpdateStimParam
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_AddOrUpdateStimParam_
+  commentId: Overload:WSS.Unity.Stimulation.AddOrUpdateStimParam
+  isSpec: "True"
+  fullName: Stimulation.AddOrUpdateStimParam
+  nameWithType: Stimulation.AddOrUpdateStimParam
+- uid: WSS.Unity.Stimulation.Awake
+  name: Awake()
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_Awake
+  commentId: M:WSS.Unity.Stimulation.Awake
+  fullName: Stimulation.Awake()
+  nameWithType: Stimulation.Awake()
+- uid: WSS.Unity.Stimulation.Awake*
+  name: Awake
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_Awake_
+  commentId: Overload:WSS.Unity.Stimulation.Awake
+  isSpec: "True"
+  fullName: Stimulation.Awake
+  nameWithType: Stimulation.Awake
+- uid: WSS.Unity.Stimulation.GetAllStimParams
+  name: GetAllStimParams()
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_GetAllStimParams
+  commentId: M:WSS.Unity.Stimulation.GetAllStimParams
+  fullName: Stimulation.GetAllStimParams()
+  nameWithType: Stimulation.GetAllStimParams()
+- uid: WSS.Unity.Stimulation.GetAllStimParams*
+  name: GetAllStimParams
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_GetAllStimParams_
+  commentId: Overload:WSS.Unity.Stimulation.GetAllStimParams
+  isSpec: "True"
+  fullName: Stimulation.GetAllStimParams
+  nameWithType: Stimulation.GetAllStimParams
+- uid: WSS.Unity.Stimulation.GetChannelAmp(System.String)
+  name: GetChannelAmp(string)
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_GetChannelAmp_System_String_
+  commentId: M:WSS.Unity.Stimulation.GetChannelAmp(System.String)
+  name.vb: GetChannelAmp(String)
+  fullName: Stimulation.GetChannelAmp(string)
+  fullName.vb: Stimulation.GetChannelAmp(String)
+  nameWithType: Stimulation.GetChannelAmp(string)
+  nameWithType.vb: Stimulation.GetChannelAmp(String)
+- uid: WSS.Unity.Stimulation.GetChannelAmp*
+  name: GetChannelAmp
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_GetChannelAmp_
+  commentId: Overload:WSS.Unity.Stimulation.GetChannelAmp
+  isSpec: "True"
+  fullName: Stimulation.GetChannelAmp
+  nameWithType: Stimulation.GetChannelAmp
+- uid: WSS.Unity.Stimulation.GetChannelIPI(System.String)
+  name: GetChannelIPI(string)
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_GetChannelIPI_System_String_
+  commentId: M:WSS.Unity.Stimulation.GetChannelIPI(System.String)
+  name.vb: GetChannelIPI(String)
+  fullName: Stimulation.GetChannelIPI(string)
+  fullName.vb: Stimulation.GetChannelIPI(String)
+  nameWithType: Stimulation.GetChannelIPI(string)
+  nameWithType.vb: Stimulation.GetChannelIPI(String)
+- uid: WSS.Unity.Stimulation.GetChannelIPI*
+  name: GetChannelIPI
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_GetChannelIPI_
+  commentId: Overload:WSS.Unity.Stimulation.GetChannelIPI
+  isSpec: "True"
+  fullName: Stimulation.GetChannelIPI
+  nameWithType: Stimulation.GetChannelIPI
+- uid: WSS.Unity.Stimulation.GetChannelPWMax(System.String)
+  name: GetChannelPWMax(string)
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_GetChannelPWMax_System_String_
+  commentId: M:WSS.Unity.Stimulation.GetChannelPWMax(System.String)
+  name.vb: GetChannelPWMax(String)
+  fullName: Stimulation.GetChannelPWMax(string)
+  fullName.vb: Stimulation.GetChannelPWMax(String)
+  nameWithType: Stimulation.GetChannelPWMax(string)
+  nameWithType.vb: Stimulation.GetChannelPWMax(String)
+- uid: WSS.Unity.Stimulation.GetChannelPWMax*
+  name: GetChannelPWMax
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_GetChannelPWMax_
+  commentId: Overload:WSS.Unity.Stimulation.GetChannelPWMax
+  isSpec: "True"
+  fullName: Stimulation.GetChannelPWMax
+  nameWithType: Stimulation.GetChannelPWMax
+- uid: WSS.Unity.Stimulation.GetChannelPWMin(System.String)
+  name: GetChannelPWMin(string)
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_GetChannelPWMin_System_String_
+  commentId: M:WSS.Unity.Stimulation.GetChannelPWMin(System.String)
+  name.vb: GetChannelPWMin(String)
+  fullName: Stimulation.GetChannelPWMin(string)
+  fullName.vb: Stimulation.GetChannelPWMin(String)
+  nameWithType: Stimulation.GetChannelPWMin(string)
+  nameWithType.vb: Stimulation.GetChannelPWMin(String)
+- uid: WSS.Unity.Stimulation.GetChannelPWMin*
+  name: GetChannelPWMin
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_GetChannelPWMin_
+  commentId: Overload:WSS.Unity.Stimulation.GetChannelPWMin
+  isSpec: "True"
+  fullName: Stimulation.GetChannelPWMin
+  nameWithType: Stimulation.GetChannelPWMin
+- uid: WSS.Unity.Stimulation.GetCoreConfigCTRL
+  name: GetCoreConfigCTRL()
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_GetCoreConfigCTRL
+  commentId: M:WSS.Unity.Stimulation.GetCoreConfigCTRL
+  fullName: Stimulation.GetCoreConfigCTRL()
+  nameWithType: Stimulation.GetCoreConfigCTRL()
+- uid: WSS.Unity.Stimulation.GetCoreConfigCTRL*
+  name: GetCoreConfigCTRL
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_GetCoreConfigCTRL_
+  commentId: Overload:WSS.Unity.Stimulation.GetCoreConfigCTRL
+  isSpec: "True"
+  fullName: Stimulation.GetCoreConfigCTRL
+  nameWithType: Stimulation.GetCoreConfigCTRL
+- uid: WSS.Unity.Stimulation.GetModelConfigCTRL
+  name: GetModelConfigCTRL()
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_GetModelConfigCTRL
+  commentId: M:WSS.Unity.Stimulation.GetModelConfigCTRL
+  fullName: Stimulation.GetModelConfigCTRL()
+  nameWithType: Stimulation.GetModelConfigCTRL()
+- uid: WSS.Unity.Stimulation.GetModelConfigCTRL*
+  name: GetModelConfigCTRL
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_GetModelConfigCTRL_
+  commentId: Overload:WSS.Unity.Stimulation.GetModelConfigCTRL
+  isSpec: "True"
+  fullName: Stimulation.GetModelConfigCTRL
+  nameWithType: Stimulation.GetModelConfigCTRL
+- uid: WSS.Unity.Stimulation.GetStimIntensity(System.String)
+  name: GetStimIntensity(string)
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_GetStimIntensity_System_String_
+  commentId: M:WSS.Unity.Stimulation.GetStimIntensity(System.String)
+  name.vb: GetStimIntensity(String)
+  fullName: Stimulation.GetStimIntensity(string)
+  fullName.vb: Stimulation.GetStimIntensity(String)
+  nameWithType: Stimulation.GetStimIntensity(string)
+  nameWithType.vb: Stimulation.GetStimIntensity(String)
+- uid: WSS.Unity.Stimulation.GetStimIntensity*
+  name: GetStimIntensity
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_GetStimIntensity_
+  commentId: Overload:WSS.Unity.Stimulation.GetStimIntensity
+  isSpec: "True"
+  fullName: Stimulation.GetStimIntensity
+  nameWithType: Stimulation.GetStimIntensity
+- uid: WSS.Unity.Stimulation.GetStimParam(System.String)
+  name: GetStimParam(string)
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_GetStimParam_System_String_
+  commentId: M:WSS.Unity.Stimulation.GetStimParam(System.String)
+  name.vb: GetStimParam(String)
+  fullName: Stimulation.GetStimParam(string)
+  fullName.vb: Stimulation.GetStimParam(String)
+  nameWithType: Stimulation.GetStimParam(string)
+  nameWithType.vb: Stimulation.GetStimParam(String)
+- uid: WSS.Unity.Stimulation.GetStimParam*
+  name: GetStimParam
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_GetStimParam_
+  commentId: Overload:WSS.Unity.Stimulation.GetStimParam
+  isSpec: "True"
+  fullName: Stimulation.GetStimParam
+  nameWithType: Stimulation.GetStimParam
+- uid: WSS.Unity.Stimulation.IsFingerValid(System.String)
+  name: IsFingerValid(string)
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_IsFingerValid_System_String_
+  commentId: M:WSS.Unity.Stimulation.IsFingerValid(System.String)
+  name.vb: IsFingerValid(String)
+  fullName: Stimulation.IsFingerValid(string)
+  fullName.vb: Stimulation.IsFingerValid(String)
+  nameWithType: Stimulation.IsFingerValid(string)
+  nameWithType.vb: Stimulation.IsFingerValid(String)
+- uid: WSS.Unity.Stimulation.IsFingerValid*
+  name: IsFingerValid
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_IsFingerValid_
+  commentId: Overload:WSS.Unity.Stimulation.IsFingerValid
+  isSpec: "True"
+  fullName: Stimulation.IsFingerValid
+  nameWithType: Stimulation.IsFingerValid
+- uid: WSS.Unity.Stimulation.LoadParamsJson
+  name: LoadParamsJson()
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_LoadParamsJson
+  commentId: M:WSS.Unity.Stimulation.LoadParamsJson
+  fullName: Stimulation.LoadParamsJson()
+  nameWithType: Stimulation.LoadParamsJson()
+- uid: WSS.Unity.Stimulation.LoadParamsJson(System.String)
+  name: LoadParamsJson(string)
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_LoadParamsJson_System_String_
+  commentId: M:WSS.Unity.Stimulation.LoadParamsJson(System.String)
+  name.vb: LoadParamsJson(String)
+  fullName: Stimulation.LoadParamsJson(string)
+  fullName.vb: Stimulation.LoadParamsJson(String)
+  nameWithType: Stimulation.LoadParamsJson(string)
+  nameWithType.vb: Stimulation.LoadParamsJson(String)
+- uid: WSS.Unity.Stimulation.LoadParamsJson*
+  name: LoadParamsJson
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_LoadParamsJson_
+  commentId: Overload:WSS.Unity.Stimulation.LoadParamsJson
+  isSpec: "True"
+  fullName: Stimulation.LoadParamsJson
+  nameWithType: Stimulation.LoadParamsJson
+- uid: WSS.Unity.Stimulation.Ready
+  name: Ready()
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_Ready
+  commentId: M:WSS.Unity.Stimulation.Ready
+  fullName: Stimulation.Ready()
+  nameWithType: Stimulation.Ready()
+- uid: WSS.Unity.Stimulation.Ready*
+  name: Ready
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_Ready_
+  commentId: Overload:WSS.Unity.Stimulation.Ready
+  isSpec: "True"
+  fullName: Stimulation.Ready
+  nameWithType: Stimulation.Ready
+- uid: WSS.Unity.Stimulation.Save
+  name: Save()
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_Save
+  commentId: M:WSS.Unity.Stimulation.Save
+  fullName: Stimulation.Save()
+  nameWithType: Stimulation.Save()
+- uid: WSS.Unity.Stimulation.Save(System.Int32)
+  name: Save(int)
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_Save_System_Int32_
+  commentId: M:WSS.Unity.Stimulation.Save(System.Int32)
+  name.vb: Save(Integer)
+  fullName: Stimulation.Save(int)
+  fullName.vb: Stimulation.Save(Integer)
+  nameWithType: Stimulation.Save(int)
+  nameWithType.vb: Stimulation.Save(Integer)
+- uid: WSS.Unity.Stimulation.Save*
+  name: Save
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_Save_
+  commentId: Overload:WSS.Unity.Stimulation.Save
+  isSpec: "True"
+  fullName: Stimulation.Save
+  nameWithType: Stimulation.Save
+- uid: WSS.Unity.Stimulation.SaveParamsJson
+  name: SaveParamsJson()
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_SaveParamsJson
+  commentId: M:WSS.Unity.Stimulation.SaveParamsJson
+  fullName: Stimulation.SaveParamsJson()
+  nameWithType: Stimulation.SaveParamsJson()
+- uid: WSS.Unity.Stimulation.SaveParamsJson*
+  name: SaveParamsJson
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_SaveParamsJson_
+  commentId: Overload:WSS.Unity.Stimulation.SaveParamsJson
+  isSpec: "True"
+  fullName: Stimulation.SaveParamsJson
+  nameWithType: Stimulation.SaveParamsJson
+- uid: WSS.Unity.Stimulation.SetChannelAmp(System.String,System.Single)
+  name: SetChannelAmp(string, float)
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_SetChannelAmp_System_String_System_Single_
+  commentId: M:WSS.Unity.Stimulation.SetChannelAmp(System.String,System.Single)
+  name.vb: SetChannelAmp(String, Single)
+  fullName: Stimulation.SetChannelAmp(string, float)
+  fullName.vb: Stimulation.SetChannelAmp(String, Single)
+  nameWithType: Stimulation.SetChannelAmp(string, float)
+  nameWithType.vb: Stimulation.SetChannelAmp(String, Single)
+- uid: WSS.Unity.Stimulation.SetChannelAmp*
+  name: SetChannelAmp
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_SetChannelAmp_
+  commentId: Overload:WSS.Unity.Stimulation.SetChannelAmp
+  isSpec: "True"
+  fullName: Stimulation.SetChannelAmp
+  nameWithType: Stimulation.SetChannelAmp
+- uid: WSS.Unity.Stimulation.SetChannelIPI(System.String,System.Int32)
+  name: SetChannelIPI(string, int)
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_SetChannelIPI_System_String_System_Int32_
+  commentId: M:WSS.Unity.Stimulation.SetChannelIPI(System.String,System.Int32)
+  name.vb: SetChannelIPI(String, Integer)
+  fullName: Stimulation.SetChannelIPI(string, int)
+  fullName.vb: Stimulation.SetChannelIPI(String, Integer)
+  nameWithType: Stimulation.SetChannelIPI(string, int)
+  nameWithType.vb: Stimulation.SetChannelIPI(String, Integer)
+- uid: WSS.Unity.Stimulation.SetChannelIPI*
+  name: SetChannelIPI
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_SetChannelIPI_
+  commentId: Overload:WSS.Unity.Stimulation.SetChannelIPI
+  isSpec: "True"
+  fullName: Stimulation.SetChannelIPI
+  nameWithType: Stimulation.SetChannelIPI
+- uid: WSS.Unity.Stimulation.SetChannelPWMax(System.String,System.Int32)
+  name: SetChannelPWMax(string, int)
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_SetChannelPWMax_System_String_System_Int32_
+  commentId: M:WSS.Unity.Stimulation.SetChannelPWMax(System.String,System.Int32)
+  name.vb: SetChannelPWMax(String, Integer)
+  fullName: Stimulation.SetChannelPWMax(string, int)
+  fullName.vb: Stimulation.SetChannelPWMax(String, Integer)
+  nameWithType: Stimulation.SetChannelPWMax(string, int)
+  nameWithType.vb: Stimulation.SetChannelPWMax(String, Integer)
+- uid: WSS.Unity.Stimulation.SetChannelPWMax*
+  name: SetChannelPWMax
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_SetChannelPWMax_
+  commentId: Overload:WSS.Unity.Stimulation.SetChannelPWMax
+  isSpec: "True"
+  fullName: Stimulation.SetChannelPWMax
+  nameWithType: Stimulation.SetChannelPWMax
+- uid: WSS.Unity.Stimulation.SetChannelPWMin(System.String,System.Int32)
+  name: SetChannelPWMin(string, int)
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_SetChannelPWMin_System_String_System_Int32_
+  commentId: M:WSS.Unity.Stimulation.SetChannelPWMin(System.String,System.Int32)
+  name.vb: SetChannelPWMin(String, Integer)
+  fullName: Stimulation.SetChannelPWMin(string, int)
+  fullName.vb: Stimulation.SetChannelPWMin(String, Integer)
+  nameWithType: Stimulation.SetChannelPWMin(string, int)
+  nameWithType.vb: Stimulation.SetChannelPWMin(String, Integer)
+- uid: WSS.Unity.Stimulation.SetChannelPWMin*
+  name: SetChannelPWMin
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_SetChannelPWMin_
+  commentId: Overload:WSS.Unity.Stimulation.SetChannelPWMin
+  isSpec: "True"
+  fullName: Stimulation.SetChannelPWMin
+  nameWithType: Stimulation.SetChannelPWMin
+- uid: WSS.Unity.Stimulation.StartStimulation
+  name: StartStimulation()
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_StartStimulation
+  commentId: M:WSS.Unity.Stimulation.StartStimulation
+  fullName: Stimulation.StartStimulation()
+  nameWithType: Stimulation.StartStimulation()
+- uid: WSS.Unity.Stimulation.StartStimulation*
+  name: StartStimulation
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_StartStimulation_
+  commentId: Overload:WSS.Unity.Stimulation.StartStimulation
+  isSpec: "True"
+  fullName: Stimulation.StartStimulation
+  nameWithType: Stimulation.StartStimulation
+- uid: WSS.Unity.Stimulation.Started
+  name: Started()
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_Started
+  commentId: M:WSS.Unity.Stimulation.Started
+  fullName: Stimulation.Started()
+  nameWithType: Stimulation.Started()
+- uid: WSS.Unity.Stimulation.Started*
+  name: Started
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_Started_
+  commentId: Overload:WSS.Unity.Stimulation.Started
+  isSpec: "True"
+  fullName: Stimulation.Started
+  nameWithType: Stimulation.Started
+- uid: WSS.Unity.Stimulation.StimWithMode(System.String,System.Single)
+  name: StimWithMode(string, float)
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_StimWithMode_System_String_System_Single_
+  commentId: M:WSS.Unity.Stimulation.StimWithMode(System.String,System.Single)
+  name.vb: StimWithMode(String, Single)
+  fullName: Stimulation.StimWithMode(string, float)
+  fullName.vb: Stimulation.StimWithMode(String, Single)
+  nameWithType: Stimulation.StimWithMode(string, float)
+  nameWithType.vb: Stimulation.StimWithMode(String, Single)
+- uid: WSS.Unity.Stimulation.StimWithMode*
+  name: StimWithMode
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_StimWithMode_
+  commentId: Overload:WSS.Unity.Stimulation.StimWithMode
+  isSpec: "True"
+  fullName: Stimulation.StimWithMode
+  nameWithType: Stimulation.StimWithMode
+- uid: WSS.Unity.Stimulation.StimulateAnalog(System.String,System.Int32,System.Int32,System.Int32)
+  name: StimulateAnalog(string, int, int, int)
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_StimulateAnalog_System_String_System_Int32_System_Int32_System_Int32_
+  commentId: M:WSS.Unity.Stimulation.StimulateAnalog(System.String,System.Int32,System.Int32,System.Int32)
+  name.vb: StimulateAnalog(String, Integer, Integer, Integer)
+  fullName: Stimulation.StimulateAnalog(string, int, int, int)
+  fullName.vb: Stimulation.StimulateAnalog(String, Integer, Integer, Integer)
+  nameWithType: Stimulation.StimulateAnalog(string, int, int, int)
+  nameWithType.vb: Stimulation.StimulateAnalog(String, Integer, Integer, Integer)
+- uid: WSS.Unity.Stimulation.StimulateAnalog*
+  name: StimulateAnalog
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_StimulateAnalog_
+  commentId: Overload:WSS.Unity.Stimulation.StimulateAnalog
+  isSpec: "True"
+  fullName: Stimulation.StimulateAnalog
+  nameWithType: Stimulation.StimulateAnalog
+- uid: WSS.Unity.Stimulation.StimulateNormalized(System.String,System.Single)
+  name: StimulateNormalized(string, float)
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_StimulateNormalized_System_String_System_Single_
+  commentId: M:WSS.Unity.Stimulation.StimulateNormalized(System.String,System.Single)
+  name.vb: StimulateNormalized(String, Single)
+  fullName: Stimulation.StimulateNormalized(string, float)
+  fullName.vb: Stimulation.StimulateNormalized(String, Single)
+  nameWithType: Stimulation.StimulateNormalized(string, float)
+  nameWithType.vb: Stimulation.StimulateNormalized(String, Single)
+- uid: WSS.Unity.Stimulation.StimulateNormalized*
+  name: StimulateNormalized
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_StimulateNormalized_
+  commentId: Overload:WSS.Unity.Stimulation.StimulateNormalized
+  isSpec: "True"
+  fullName: Stimulation.StimulateNormalized
+  nameWithType: Stimulation.StimulateNormalized
+- uid: WSS.Unity.Stimulation.StopStimulation
+  name: StopStimulation()
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_StopStimulation
+  commentId: M:WSS.Unity.Stimulation.StopStimulation
+  fullName: Stimulation.StopStimulation()
+  nameWithType: Stimulation.StopStimulation()
+- uid: WSS.Unity.Stimulation.StopStimulation*
+  name: StopStimulation
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_StopStimulation_
+  commentId: Overload:WSS.Unity.Stimulation.StopStimulation
+  isSpec: "True"
+  fullName: Stimulation.StopStimulation
+  nameWithType: Stimulation.StopStimulation
+- uid: WSS.Unity.Stimulation.TryGetStimParam(System.String,System.Single@)
+  name: TryGetStimParam(string, out float)
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_TryGetStimParam_System_String_System_Single__
+  commentId: M:WSS.Unity.Stimulation.TryGetStimParam(System.String,System.Single@)
+  name.vb: TryGetStimParam(String, Single)
+  fullName: Stimulation.TryGetStimParam(string, out float)
+  fullName.vb: Stimulation.TryGetStimParam(String, Single)
+  nameWithType: Stimulation.TryGetStimParam(string, out float)
+  nameWithType.vb: Stimulation.TryGetStimParam(String, Single)
+- uid: WSS.Unity.Stimulation.TryGetStimParam*
+  name: TryGetStimParam
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_TryGetStimParam_
+  commentId: Overload:WSS.Unity.Stimulation.TryGetStimParam
+  isSpec: "True"
+  fullName: Stimulation.TryGetStimParam
+  nameWithType: Stimulation.TryGetStimParam
+- uid: WSS.Unity.Stimulation.UpdateChannelParams(System.String,System.Int32,System.Int32,System.Int32)
+  name: UpdateChannelParams(string, int, int, int)
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_UpdateChannelParams_System_String_System_Int32_System_Int32_System_Int32_
+  commentId: M:WSS.Unity.Stimulation.UpdateChannelParams(System.String,System.Int32,System.Int32,System.Int32)
+  name.vb: UpdateChannelParams(String, Integer, Integer, Integer)
+  fullName: Stimulation.UpdateChannelParams(string, int, int, int)
+  fullName.vb: Stimulation.UpdateChannelParams(String, Integer, Integer, Integer)
+  nameWithType: Stimulation.UpdateChannelParams(string, int, int, int)
+  nameWithType.vb: Stimulation.UpdateChannelParams(String, Integer, Integer, Integer)
+- uid: WSS.Unity.Stimulation.UpdateChannelParams*
+  name: UpdateChannelParams
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_UpdateChannelParams_
+  commentId: Overload:WSS.Unity.Stimulation.UpdateChannelParams
+  isSpec: "True"
+  fullName: Stimulation.UpdateChannelParams
+  nameWithType: Stimulation.UpdateChannelParams
+- uid: WSS.Unity.Stimulation.UpdateIPD(System.Int32,System.Int32)
+  name: UpdateIPD(int, int)
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_UpdateIPD_System_Int32_System_Int32_
+  commentId: M:WSS.Unity.Stimulation.UpdateIPD(System.Int32,System.Int32)
+  name.vb: UpdateIPD(Integer, Integer)
+  fullName: Stimulation.UpdateIPD(int, int)
+  fullName.vb: Stimulation.UpdateIPD(Integer, Integer)
+  nameWithType: Stimulation.UpdateIPD(int, int)
+  nameWithType.vb: Stimulation.UpdateIPD(Integer, Integer)
+- uid: WSS.Unity.Stimulation.UpdateIPD(System.Int32,System.Int32,System.Int32)
+  name: UpdateIPD(int, int, int)
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_UpdateIPD_System_Int32_System_Int32_System_Int32_
+  commentId: M:WSS.Unity.Stimulation.UpdateIPD(System.Int32,System.Int32,System.Int32)
+  name.vb: UpdateIPD(Integer, Integer, Integer)
+  fullName: Stimulation.UpdateIPD(int, int, int)
+  fullName.vb: Stimulation.UpdateIPD(Integer, Integer, Integer)
+  nameWithType: Stimulation.UpdateIPD(int, int, int)
+  nameWithType.vb: Stimulation.UpdateIPD(Integer, Integer, Integer)
+- uid: WSS.Unity.Stimulation.UpdateIPD*
+  name: UpdateIPD
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_UpdateIPD_
+  commentId: Overload:WSS.Unity.Stimulation.UpdateIPD
+  isSpec: "True"
+  fullName: Stimulation.UpdateIPD
+  nameWithType: Stimulation.UpdateIPD
+- uid: WSS.Unity.Stimulation.WaveformSetup(System.Int32,Wss.CoreModule.WaveformBuilder,System.Int32)
+  name: WaveformSetup(int, WaveformBuilder, int)
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_WaveformSetup_System_Int32_Wss_CoreModule_WaveformBuilder_System_Int32_
+  commentId: M:WSS.Unity.Stimulation.WaveformSetup(System.Int32,Wss.CoreModule.WaveformBuilder,System.Int32)
+  name.vb: WaveformSetup(Integer, WaveformBuilder, Integer)
+  fullName: Stimulation.WaveformSetup(int, Wss.CoreModule.WaveformBuilder, int)
+  fullName.vb: Stimulation.WaveformSetup(Integer, Wss.CoreModule.WaveformBuilder, Integer)
+  nameWithType: Stimulation.WaveformSetup(int, WaveformBuilder, int)
+  nameWithType.vb: Stimulation.WaveformSetup(Integer, WaveformBuilder, Integer)
+- uid: WSS.Unity.Stimulation.WaveformSetup(Wss.CoreModule.WaveformBuilder,System.Int32)
+  name: WaveformSetup(WaveformBuilder, int)
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_WaveformSetup_Wss_CoreModule_WaveformBuilder_System_Int32_
+  commentId: M:WSS.Unity.Stimulation.WaveformSetup(Wss.CoreModule.WaveformBuilder,System.Int32)
+  name.vb: WaveformSetup(WaveformBuilder, Integer)
+  fullName: Stimulation.WaveformSetup(Wss.CoreModule.WaveformBuilder, int)
+  fullName.vb: Stimulation.WaveformSetup(Wss.CoreModule.WaveformBuilder, Integer)
+  nameWithType: Stimulation.WaveformSetup(WaveformBuilder, int)
+  nameWithType.vb: Stimulation.WaveformSetup(WaveformBuilder, Integer)
+- uid: WSS.Unity.Stimulation.WaveformSetup*
+  name: WaveformSetup
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_WaveformSetup_
+  commentId: Overload:WSS.Unity.Stimulation.WaveformSetup
+  isSpec: "True"
+  fullName: Stimulation.WaveformSetup
+  nameWithType: Stimulation.WaveformSetup
+- uid: WSS.Unity.Stimulation.comPort
+  name: comPort
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_comPort
+  commentId: F:WSS.Unity.Stimulation.comPort
+  fullName: Stimulation.comPort
+  nameWithType: Stimulation.comPort
+- uid: WSS.Unity.Stimulation.forcePort
+  name: forcePort
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_forcePort
+  commentId: F:WSS.Unity.Stimulation.forcePort
+  fullName: Stimulation.forcePort
+  nameWithType: Stimulation.forcePort
+- uid: WSS.Unity.Stimulation.isModeValid
+  name: isModeValid()
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_isModeValid
+  commentId: M:WSS.Unity.Stimulation.isModeValid
+  fullName: Stimulation.isModeValid()
+  nameWithType: Stimulation.isModeValid()
+- uid: WSS.Unity.Stimulation.isModeValid*
+  name: isModeValid
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_isModeValid_
+  commentId: Overload:WSS.Unity.Stimulation.isModeValid
+  isSpec: "True"
+  fullName: Stimulation.isModeValid
+  nameWithType: Stimulation.isModeValid
+- uid: WSS.Unity.Stimulation.load
+  name: load()
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_load
+  commentId: M:WSS.Unity.Stimulation.load
+  fullName: Stimulation.load()
+  nameWithType: Stimulation.load()
+- uid: WSS.Unity.Stimulation.load(System.Int32)
+  name: load(int)
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_load_System_Int32_
+  commentId: M:WSS.Unity.Stimulation.load(System.Int32)
+  name.vb: load(Integer)
+  fullName: Stimulation.load(int)
+  fullName.vb: Stimulation.load(Integer)
+  nameWithType: Stimulation.load(int)
+  nameWithType.vb: Stimulation.load(Integer)
+- uid: WSS.Unity.Stimulation.load*
+  name: load
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_load_
+  commentId: Overload:WSS.Unity.Stimulation.load
+  isSpec: "True"
+  fullName: Stimulation.load
+  nameWithType: Stimulation.load
+- uid: WSS.Unity.Stimulation.loadWaveform(System.String,System.Int32)
+  name: loadWaveform(string, int)
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_loadWaveform_System_String_System_Int32_
+  commentId: M:WSS.Unity.Stimulation.loadWaveform(System.String,System.Int32)
+  name.vb: loadWaveform(String, Integer)
+  fullName: Stimulation.loadWaveform(string, int)
+  fullName.vb: Stimulation.loadWaveform(String, Integer)
+  nameWithType: Stimulation.loadWaveform(string, int)
+  nameWithType.vb: Stimulation.loadWaveform(String, Integer)
+- uid: WSS.Unity.Stimulation.loadWaveform*
+  name: loadWaveform
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_loadWaveform_
+  commentId: Overload:WSS.Unity.Stimulation.loadWaveform
+  isSpec: "True"
+  fullName: Stimulation.loadWaveform
+  nameWithType: Stimulation.loadWaveform
+- uid: WSS.Unity.Stimulation.releaseRadio
+  name: releaseRadio()
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_releaseRadio
+  commentId: M:WSS.Unity.Stimulation.releaseRadio
+  fullName: Stimulation.releaseRadio()
+  nameWithType: Stimulation.releaseRadio()
+- uid: WSS.Unity.Stimulation.releaseRadio*
+  name: releaseRadio
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_releaseRadio_
+  commentId: Overload:WSS.Unity.Stimulation.releaseRadio
+  isSpec: "True"
+  fullName: Stimulation.releaseRadio
+  nameWithType: Stimulation.releaseRadio
+- uid: WSS.Unity.Stimulation.request_Configs(System.Int32,System.Int32,System.Int32)
+  name: request_Configs(int, int, int)
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_request_Configs_System_Int32_System_Int32_System_Int32_
+  commentId: M:WSS.Unity.Stimulation.request_Configs(System.Int32,System.Int32,System.Int32)
+  name.vb: request_Configs(Integer, Integer, Integer)
+  fullName: Stimulation.request_Configs(int, int, int)
+  fullName.vb: Stimulation.request_Configs(Integer, Integer, Integer)
+  nameWithType: Stimulation.request_Configs(int, int, int)
+  nameWithType.vb: Stimulation.request_Configs(Integer, Integer, Integer)
+- uid: WSS.Unity.Stimulation.request_Configs*
+  name: request_Configs
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_request_Configs_
+  commentId: Overload:WSS.Unity.Stimulation.request_Configs
+  isSpec: "True"
+  fullName: Stimulation.request_Configs
+  nameWithType: Stimulation.request_Configs
+- uid: WSS.Unity.Stimulation.resetRadio
+  name: resetRadio()
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_resetRadio
+  commentId: M:WSS.Unity.Stimulation.resetRadio
+  fullName: Stimulation.resetRadio()
+  nameWithType: Stimulation.resetRadio()
+- uid: WSS.Unity.Stimulation.resetRadio*
+  name: resetRadio
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_resetRadio_
+  commentId: Overload:WSS.Unity.Stimulation.resetRadio
+  isSpec: "True"
+  fullName: Stimulation.resetRadio
+  nameWithType: Stimulation.resetRadio
+- uid: WSS.Unity.Stimulation.started
+  name: started
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_started
+  commentId: F:WSS.Unity.Stimulation.started
+  fullName: Stimulation.started
+  nameWithType: Stimulation.started
+- uid: WSS.Unity.Stimulation.updateWaveform(System.Int32,System.Int32,System.Int32)
+  name: updateWaveform(int, int, int)
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_updateWaveform_System_Int32_System_Int32_System_Int32_
+  commentId: M:WSS.Unity.Stimulation.updateWaveform(System.Int32,System.Int32,System.Int32)
+  name.vb: updateWaveform(Integer, Integer, Integer)
+  fullName: Stimulation.updateWaveform(int, int, int)
+  fullName.vb: Stimulation.updateWaveform(Integer, Integer, Integer)
+  nameWithType: Stimulation.updateWaveform(int, int, int)
+  nameWithType.vb: Stimulation.updateWaveform(Integer, Integer, Integer)
+- uid: WSS.Unity.Stimulation.updateWaveform(System.Int32,System.Int32,System.Int32,System.Int32)
+  name: updateWaveform(int, int, int, int)
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_updateWaveform_System_Int32_System_Int32_System_Int32_System_Int32_
+  commentId: M:WSS.Unity.Stimulation.updateWaveform(System.Int32,System.Int32,System.Int32,System.Int32)
+  name.vb: updateWaveform(Integer, Integer, Integer, Integer)
+  fullName: Stimulation.updateWaveform(int, int, int, int)
+  fullName.vb: Stimulation.updateWaveform(Integer, Integer, Integer, Integer)
+  nameWithType: Stimulation.updateWaveform(int, int, int, int)
+  nameWithType.vb: Stimulation.updateWaveform(Integer, Integer, Integer, Integer)
+- uid: WSS.Unity.Stimulation.updateWaveform(System.Int32,System.Int32[],System.Int32)
+  name: updateWaveform(int, int[], int)
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_updateWaveform_System_Int32_System_Int32___System_Int32_
+  commentId: M:WSS.Unity.Stimulation.updateWaveform(System.Int32,System.Int32[],System.Int32)
+  name.vb: updateWaveform(Integer, Integer(), Integer)
+  fullName: Stimulation.updateWaveform(int, int[], int)
+  fullName.vb: Stimulation.updateWaveform(Integer, Integer(), Integer)
+  nameWithType: Stimulation.updateWaveform(int, int[], int)
+  nameWithType.vb: Stimulation.updateWaveform(Integer, Integer(), Integer)
+- uid: WSS.Unity.Stimulation.updateWaveform(System.Int32,Wss.CoreModule.WaveformBuilder,System.Int32)
+  name: updateWaveform(int, WaveformBuilder, int)
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_updateWaveform_System_Int32_Wss_CoreModule_WaveformBuilder_System_Int32_
+  commentId: M:WSS.Unity.Stimulation.updateWaveform(System.Int32,Wss.CoreModule.WaveformBuilder,System.Int32)
+  name.vb: updateWaveform(Integer, WaveformBuilder, Integer)
+  fullName: Stimulation.updateWaveform(int, Wss.CoreModule.WaveformBuilder, int)
+  fullName.vb: Stimulation.updateWaveform(Integer, Wss.CoreModule.WaveformBuilder, Integer)
+  nameWithType: Stimulation.updateWaveform(int, WaveformBuilder, int)
+  nameWithType.vb: Stimulation.updateWaveform(Integer, WaveformBuilder, Integer)
+- uid: WSS.Unity.Stimulation.updateWaveform(System.Int32[],System.Int32)
+  name: updateWaveform(int[], int)
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_updateWaveform_System_Int32___System_Int32_
+  commentId: M:WSS.Unity.Stimulation.updateWaveform(System.Int32[],System.Int32)
+  name.vb: updateWaveform(Integer(), Integer)
+  fullName: Stimulation.updateWaveform(int[], int)
+  fullName.vb: Stimulation.updateWaveform(Integer(), Integer)
+  nameWithType: Stimulation.updateWaveform(int[], int)
+  nameWithType.vb: Stimulation.updateWaveform(Integer(), Integer)
+- uid: WSS.Unity.Stimulation.updateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32)
+  name: updateWaveform(WaveformBuilder, int)
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_updateWaveform_Wss_CoreModule_WaveformBuilder_System_Int32_
+  commentId: M:WSS.Unity.Stimulation.updateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32)
+  name.vb: updateWaveform(WaveformBuilder, Integer)
+  fullName: Stimulation.updateWaveform(Wss.CoreModule.WaveformBuilder, int)
+  fullName.vb: Stimulation.updateWaveform(Wss.CoreModule.WaveformBuilder, Integer)
+  nameWithType: Stimulation.updateWaveform(WaveformBuilder, int)
+  nameWithType.vb: Stimulation.updateWaveform(WaveformBuilder, Integer)
+- uid: WSS.Unity.Stimulation.updateWaveform*
+  name: updateWaveform
+  href: api/unity/WSS.Unity.Stimulation.html#WSS_Unity_Stimulation_updateWaveform_
+  commentId: Overload:WSS.Unity.Stimulation.updateWaveform
+  isSpec: "True"
+  fullName: Stimulation.updateWaveform
+  nameWithType: Stimulation.updateWaveform
+- uid: WSS.Unity.StimulationParams
+  name: StimulationParams
+  href: api/unity/WSS.Unity.StimulationParams.html
+  commentId: T:WSS.Unity.StimulationParams
+  fullName: StimulationParams
+  nameWithType: StimulationParams
+- uid: WSS.Unity.StimulationParams.AddOrUpdateStimParam(System.String,System.Single)
+  name: AddOrUpdateStimParam(string, float)
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_AddOrUpdateStimParam_System_String_System_Single_
+  commentId: M:WSS.Unity.StimulationParams.AddOrUpdateStimParam(System.String,System.Single)
+  name.vb: AddOrUpdateStimParam(String, Single)
+  fullName: StimulationParams.AddOrUpdateStimParam(string, float)
+  fullName.vb: StimulationParams.AddOrUpdateStimParam(String, Single)
+  nameWithType: StimulationParams.AddOrUpdateStimParam(string, float)
+  nameWithType.vb: StimulationParams.AddOrUpdateStimParam(String, Single)
+- uid: WSS.Unity.StimulationParams.AddOrUpdateStimParam*
+  name: AddOrUpdateStimParam
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_AddOrUpdateStimParam_
+  commentId: Overload:WSS.Unity.StimulationParams.AddOrUpdateStimParam
+  isSpec: "True"
+  fullName: StimulationParams.AddOrUpdateStimParam
+  nameWithType: StimulationParams.AddOrUpdateStimParam
+- uid: WSS.Unity.StimulationParams.Awake
+  name: Awake()
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_Awake
+  commentId: M:WSS.Unity.StimulationParams.Awake
+  fullName: StimulationParams.Awake()
+  nameWithType: StimulationParams.Awake()
+- uid: WSS.Unity.StimulationParams.Awake*
+  name: Awake
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_Awake_
+  commentId: Overload:WSS.Unity.StimulationParams.Awake
+  isSpec: "True"
+  fullName: StimulationParams.Awake
+  nameWithType: StimulationParams.Awake
+- uid: WSS.Unity.StimulationParams.GetAllStimParams
+  name: GetAllStimParams()
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_GetAllStimParams
+  commentId: M:WSS.Unity.StimulationParams.GetAllStimParams
+  fullName: StimulationParams.GetAllStimParams()
+  nameWithType: StimulationParams.GetAllStimParams()
+- uid: WSS.Unity.StimulationParams.GetAllStimParams*
+  name: GetAllStimParams
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_GetAllStimParams_
+  commentId: Overload:WSS.Unity.StimulationParams.GetAllStimParams
+  isSpec: "True"
+  fullName: StimulationParams.GetAllStimParams
+  nameWithType: StimulationParams.GetAllStimParams
+- uid: WSS.Unity.StimulationParams.GetChannelAmp(System.String)
+  name: GetChannelAmp(string)
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_GetChannelAmp_System_String_
+  commentId: M:WSS.Unity.StimulationParams.GetChannelAmp(System.String)
+  name.vb: GetChannelAmp(String)
+  fullName: StimulationParams.GetChannelAmp(string)
+  fullName.vb: StimulationParams.GetChannelAmp(String)
+  nameWithType: StimulationParams.GetChannelAmp(string)
+  nameWithType.vb: StimulationParams.GetChannelAmp(String)
+- uid: WSS.Unity.StimulationParams.GetChannelAmp*
+  name: GetChannelAmp
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_GetChannelAmp_
+  commentId: Overload:WSS.Unity.StimulationParams.GetChannelAmp
+  isSpec: "True"
+  fullName: StimulationParams.GetChannelAmp
+  nameWithType: StimulationParams.GetChannelAmp
+- uid: WSS.Unity.StimulationParams.GetChannelIPI(System.String)
+  name: GetChannelIPI(string)
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_GetChannelIPI_System_String_
+  commentId: M:WSS.Unity.StimulationParams.GetChannelIPI(System.String)
+  name.vb: GetChannelIPI(String)
+  fullName: StimulationParams.GetChannelIPI(string)
+  fullName.vb: StimulationParams.GetChannelIPI(String)
+  nameWithType: StimulationParams.GetChannelIPI(string)
+  nameWithType.vb: StimulationParams.GetChannelIPI(String)
+- uid: WSS.Unity.StimulationParams.GetChannelIPI*
+  name: GetChannelIPI
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_GetChannelIPI_
+  commentId: Overload:WSS.Unity.StimulationParams.GetChannelIPI
+  isSpec: "True"
+  fullName: StimulationParams.GetChannelIPI
+  nameWithType: StimulationParams.GetChannelIPI
+- uid: WSS.Unity.StimulationParams.GetChannelPWMax(System.String)
+  name: GetChannelPWMax(string)
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_GetChannelPWMax_System_String_
+  commentId: M:WSS.Unity.StimulationParams.GetChannelPWMax(System.String)
+  name.vb: GetChannelPWMax(String)
+  fullName: StimulationParams.GetChannelPWMax(string)
+  fullName.vb: StimulationParams.GetChannelPWMax(String)
+  nameWithType: StimulationParams.GetChannelPWMax(string)
+  nameWithType.vb: StimulationParams.GetChannelPWMax(String)
+- uid: WSS.Unity.StimulationParams.GetChannelPWMax*
+  name: GetChannelPWMax
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_GetChannelPWMax_
+  commentId: Overload:WSS.Unity.StimulationParams.GetChannelPWMax
+  isSpec: "True"
+  fullName: StimulationParams.GetChannelPWMax
+  nameWithType: StimulationParams.GetChannelPWMax
+- uid: WSS.Unity.StimulationParams.GetChannelPWMin(System.String)
+  name: GetChannelPWMin(string)
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_GetChannelPWMin_System_String_
+  commentId: M:WSS.Unity.StimulationParams.GetChannelPWMin(System.String)
+  name.vb: GetChannelPWMin(String)
+  fullName: StimulationParams.GetChannelPWMin(string)
+  fullName.vb: StimulationParams.GetChannelPWMin(String)
+  nameWithType: StimulationParams.GetChannelPWMin(string)
+  nameWithType.vb: StimulationParams.GetChannelPWMin(String)
+- uid: WSS.Unity.StimulationParams.GetChannelPWMin*
+  name: GetChannelPWMin
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_GetChannelPWMin_
+  commentId: Overload:WSS.Unity.StimulationParams.GetChannelPWMin
+  isSpec: "True"
+  fullName: StimulationParams.GetChannelPWMin
+  nameWithType: StimulationParams.GetChannelPWMin
+- uid: WSS.Unity.StimulationParams.GetCoreConfigCTRL
+  name: GetCoreConfigCTRL()
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_GetCoreConfigCTRL
+  commentId: M:WSS.Unity.StimulationParams.GetCoreConfigCTRL
+  fullName: StimulationParams.GetCoreConfigCTRL()
+  nameWithType: StimulationParams.GetCoreConfigCTRL()
+- uid: WSS.Unity.StimulationParams.GetCoreConfigCTRL*
+  name: GetCoreConfigCTRL
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_GetCoreConfigCTRL_
+  commentId: Overload:WSS.Unity.StimulationParams.GetCoreConfigCTRL
+  isSpec: "True"
+  fullName: StimulationParams.GetCoreConfigCTRL
+  nameWithType: StimulationParams.GetCoreConfigCTRL
+- uid: WSS.Unity.StimulationParams.GetLastPulseWidth(System.String)
+  name: GetLastPulseWidth(string)
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_GetLastPulseWidth_System_String_
+  commentId: M:WSS.Unity.StimulationParams.GetLastPulseWidth(System.String)
+  name.vb: GetLastPulseWidth(String)
+  fullName: StimulationParams.GetLastPulseWidth(string)
+  fullName.vb: StimulationParams.GetLastPulseWidth(String)
+  nameWithType: StimulationParams.GetLastPulseWidth(string)
+  nameWithType.vb: StimulationParams.GetLastPulseWidth(String)
+- uid: WSS.Unity.StimulationParams.GetLastPulseWidth*
+  name: GetLastPulseWidth
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_GetLastPulseWidth_
+  commentId: Overload:WSS.Unity.StimulationParams.GetLastPulseWidth
+  isSpec: "True"
+  fullName: StimulationParams.GetLastPulseWidth
+  nameWithType: StimulationParams.GetLastPulseWidth
+- uid: WSS.Unity.StimulationParams.GetStimParam(System.String)
+  name: GetStimParam(string)
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_GetStimParam_System_String_
+  commentId: M:WSS.Unity.StimulationParams.GetStimParam(System.String)
+  name.vb: GetStimParam(String)
+  fullName: StimulationParams.GetStimParam(string)
+  fullName.vb: StimulationParams.GetStimParam(String)
+  nameWithType: StimulationParams.GetStimParam(string)
+  nameWithType.vb: StimulationParams.GetStimParam(String)
+- uid: WSS.Unity.StimulationParams.GetStimParam*
+  name: GetStimParam
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_GetStimParam_
+  commentId: Overload:WSS.Unity.StimulationParams.GetStimParam
+  isSpec: "True"
+  fullName: StimulationParams.GetStimParam
+  nameWithType: StimulationParams.GetStimParam
+- uid: WSS.Unity.StimulationParams.IsFingerValid(System.String)
+  name: IsFingerValid(string)
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_IsFingerValid_System_String_
+  commentId: M:WSS.Unity.StimulationParams.IsFingerValid(System.String)
+  name.vb: IsFingerValid(String)
+  fullName: StimulationParams.IsFingerValid(string)
+  fullName.vb: StimulationParams.IsFingerValid(String)
+  nameWithType: StimulationParams.IsFingerValid(string)
+  nameWithType.vb: StimulationParams.IsFingerValid(String)
+- uid: WSS.Unity.StimulationParams.IsFingerValid*
+  name: IsFingerValid
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_IsFingerValid_
+  commentId: Overload:WSS.Unity.StimulationParams.IsFingerValid
+  isSpec: "True"
+  fullName: StimulationParams.IsFingerValid
+  nameWithType: StimulationParams.IsFingerValid
+- uid: WSS.Unity.StimulationParams.LoadParamsJson
+  name: LoadParamsJson()
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_LoadParamsJson
+  commentId: M:WSS.Unity.StimulationParams.LoadParamsJson
+  fullName: StimulationParams.LoadParamsJson()
+  nameWithType: StimulationParams.LoadParamsJson()
+- uid: WSS.Unity.StimulationParams.LoadParamsJson(System.String)
+  name: LoadParamsJson(string)
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_LoadParamsJson_System_String_
+  commentId: M:WSS.Unity.StimulationParams.LoadParamsJson(System.String)
+  name.vb: LoadParamsJson(String)
+  fullName: StimulationParams.LoadParamsJson(string)
+  fullName.vb: StimulationParams.LoadParamsJson(String)
+  nameWithType: StimulationParams.LoadParamsJson(string)
+  nameWithType.vb: StimulationParams.LoadParamsJson(String)
+- uid: WSS.Unity.StimulationParams.LoadParamsJson*
+  name: LoadParamsJson
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_LoadParamsJson_
+  commentId: Overload:WSS.Unity.StimulationParams.LoadParamsJson
+  isSpec: "True"
+  fullName: StimulationParams.LoadParamsJson
+  nameWithType: StimulationParams.LoadParamsJson
+- uid: WSS.Unity.StimulationParams.Ready
+  name: Ready()
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_Ready
+  commentId: M:WSS.Unity.StimulationParams.Ready
+  fullName: StimulationParams.Ready()
+  nameWithType: StimulationParams.Ready()
+- uid: WSS.Unity.StimulationParams.Ready*
+  name: Ready
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_Ready_
+  commentId: Overload:WSS.Unity.StimulationParams.Ready
+  isSpec: "True"
+  fullName: StimulationParams.Ready
+  nameWithType: StimulationParams.Ready
+- uid: WSS.Unity.StimulationParams.Save
+  name: Save()
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_Save
+  commentId: M:WSS.Unity.StimulationParams.Save
+  fullName: StimulationParams.Save()
+  nameWithType: StimulationParams.Save()
+- uid: WSS.Unity.StimulationParams.Save(System.Int32)
+  name: Save(int)
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_Save_System_Int32_
+  commentId: M:WSS.Unity.StimulationParams.Save(System.Int32)
+  name.vb: Save(Integer)
+  fullName: StimulationParams.Save(int)
+  fullName.vb: StimulationParams.Save(Integer)
+  nameWithType: StimulationParams.Save(int)
+  nameWithType.vb: StimulationParams.Save(Integer)
+- uid: WSS.Unity.StimulationParams.Save*
+  name: Save
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_Save_
+  commentId: Overload:WSS.Unity.StimulationParams.Save
+  isSpec: "True"
+  fullName: StimulationParams.Save
+  nameWithType: StimulationParams.Save
+- uid: WSS.Unity.StimulationParams.SaveParamsJson
+  name: SaveParamsJson()
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_SaveParamsJson
+  commentId: M:WSS.Unity.StimulationParams.SaveParamsJson
+  fullName: StimulationParams.SaveParamsJson()
+  nameWithType: StimulationParams.SaveParamsJson()
+- uid: WSS.Unity.StimulationParams.SaveParamsJson*
+  name: SaveParamsJson
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_SaveParamsJson_
+  commentId: Overload:WSS.Unity.StimulationParams.SaveParamsJson
+  isSpec: "True"
+  fullName: StimulationParams.SaveParamsJson
+  nameWithType: StimulationParams.SaveParamsJson
+- uid: WSS.Unity.StimulationParams.SetChannelAmp(System.String,System.Single)
+  name: SetChannelAmp(string, float)
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_SetChannelAmp_System_String_System_Single_
+  commentId: M:WSS.Unity.StimulationParams.SetChannelAmp(System.String,System.Single)
+  name.vb: SetChannelAmp(String, Single)
+  fullName: StimulationParams.SetChannelAmp(string, float)
+  fullName.vb: StimulationParams.SetChannelAmp(String, Single)
+  nameWithType: StimulationParams.SetChannelAmp(string, float)
+  nameWithType.vb: StimulationParams.SetChannelAmp(String, Single)
+- uid: WSS.Unity.StimulationParams.SetChannelAmp*
+  name: SetChannelAmp
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_SetChannelAmp_
+  commentId: Overload:WSS.Unity.StimulationParams.SetChannelAmp
+  isSpec: "True"
+  fullName: StimulationParams.SetChannelAmp
+  nameWithType: StimulationParams.SetChannelAmp
+- uid: WSS.Unity.StimulationParams.SetChannelIPI(System.String,System.Int32)
+  name: SetChannelIPI(string, int)
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_SetChannelIPI_System_String_System_Int32_
+  commentId: M:WSS.Unity.StimulationParams.SetChannelIPI(System.String,System.Int32)
+  name.vb: SetChannelIPI(String, Integer)
+  fullName: StimulationParams.SetChannelIPI(string, int)
+  fullName.vb: StimulationParams.SetChannelIPI(String, Integer)
+  nameWithType: StimulationParams.SetChannelIPI(string, int)
+  nameWithType.vb: StimulationParams.SetChannelIPI(String, Integer)
+- uid: WSS.Unity.StimulationParams.SetChannelIPI*
+  name: SetChannelIPI
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_SetChannelIPI_
+  commentId: Overload:WSS.Unity.StimulationParams.SetChannelIPI
+  isSpec: "True"
+  fullName: StimulationParams.SetChannelIPI
+  nameWithType: StimulationParams.SetChannelIPI
+- uid: WSS.Unity.StimulationParams.SetChannelPWMax(System.String,System.Int32)
+  name: SetChannelPWMax(string, int)
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_SetChannelPWMax_System_String_System_Int32_
+  commentId: M:WSS.Unity.StimulationParams.SetChannelPWMax(System.String,System.Int32)
+  name.vb: SetChannelPWMax(String, Integer)
+  fullName: StimulationParams.SetChannelPWMax(string, int)
+  fullName.vb: StimulationParams.SetChannelPWMax(String, Integer)
+  nameWithType: StimulationParams.SetChannelPWMax(string, int)
+  nameWithType.vb: StimulationParams.SetChannelPWMax(String, Integer)
+- uid: WSS.Unity.StimulationParams.SetChannelPWMax*
+  name: SetChannelPWMax
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_SetChannelPWMax_
+  commentId: Overload:WSS.Unity.StimulationParams.SetChannelPWMax
+  isSpec: "True"
+  fullName: StimulationParams.SetChannelPWMax
+  nameWithType: StimulationParams.SetChannelPWMax
+- uid: WSS.Unity.StimulationParams.SetChannelPWMin(System.String,System.Int32)
+  name: SetChannelPWMin(string, int)
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_SetChannelPWMin_System_String_System_Int32_
+  commentId: M:WSS.Unity.StimulationParams.SetChannelPWMin(System.String,System.Int32)
+  name.vb: SetChannelPWMin(String, Integer)
+  fullName: StimulationParams.SetChannelPWMin(string, int)
+  fullName.vb: StimulationParams.SetChannelPWMin(String, Integer)
+  nameWithType: StimulationParams.SetChannelPWMin(string, int)
+  nameWithType.vb: StimulationParams.SetChannelPWMin(String, Integer)
+- uid: WSS.Unity.StimulationParams.SetChannelPWMin*
+  name: SetChannelPWMin
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_SetChannelPWMin_
+  commentId: Overload:WSS.Unity.StimulationParams.SetChannelPWMin
+  isSpec: "True"
+  fullName: StimulationParams.SetChannelPWMin
+  nameWithType: StimulationParams.SetChannelPWMin
+- uid: WSS.Unity.StimulationParams.StartStimulation
+  name: StartStimulation()
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_StartStimulation
+  commentId: M:WSS.Unity.StimulationParams.StartStimulation
+  fullName: StimulationParams.StartStimulation()
+  nameWithType: StimulationParams.StartStimulation()
+- uid: WSS.Unity.StimulationParams.StartStimulation*
+  name: StartStimulation
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_StartStimulation_
+  commentId: Overload:WSS.Unity.StimulationParams.StartStimulation
+  isSpec: "True"
+  fullName: StimulationParams.StartStimulation
+  nameWithType: StimulationParams.StartStimulation
+- uid: WSS.Unity.StimulationParams.Started
+  name: Started()
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_Started
+  commentId: M:WSS.Unity.StimulationParams.Started
+  fullName: StimulationParams.Started()
+  nameWithType: StimulationParams.Started()
+- uid: WSS.Unity.StimulationParams.Started*
+  name: Started
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_Started_
+  commentId: Overload:WSS.Unity.StimulationParams.Started
+  isSpec: "True"
+  fullName: StimulationParams.Started
+  nameWithType: StimulationParams.Started
+- uid: WSS.Unity.StimulationParams.StimulateAnalog(System.String,System.Int32,System.Int32,System.Int32)
+  name: StimulateAnalog(string, int, int, int)
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_StimulateAnalog_System_String_System_Int32_System_Int32_System_Int32_
+  commentId: M:WSS.Unity.StimulationParams.StimulateAnalog(System.String,System.Int32,System.Int32,System.Int32)
+  name.vb: StimulateAnalog(String, Integer, Integer, Integer)
+  fullName: StimulationParams.StimulateAnalog(string, int, int, int)
+  fullName.vb: StimulationParams.StimulateAnalog(String, Integer, Integer, Integer)
+  nameWithType: StimulationParams.StimulateAnalog(string, int, int, int)
+  nameWithType.vb: StimulationParams.StimulateAnalog(String, Integer, Integer, Integer)
+- uid: WSS.Unity.StimulationParams.StimulateAnalog*
+  name: StimulateAnalog
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_StimulateAnalog_
+  commentId: Overload:WSS.Unity.StimulationParams.StimulateAnalog
+  isSpec: "True"
+  fullName: StimulationParams.StimulateAnalog
+  nameWithType: StimulationParams.StimulateAnalog
+- uid: WSS.Unity.StimulationParams.StimulateNormalized(System.String,System.Single)
+  name: StimulateNormalized(string, float)
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_StimulateNormalized_System_String_System_Single_
+  commentId: M:WSS.Unity.StimulationParams.StimulateNormalized(System.String,System.Single)
+  name.vb: StimulateNormalized(String, Single)
+  fullName: StimulationParams.StimulateNormalized(string, float)
+  fullName.vb: StimulationParams.StimulateNormalized(String, Single)
+  nameWithType: StimulationParams.StimulateNormalized(string, float)
+  nameWithType.vb: StimulationParams.StimulateNormalized(String, Single)
+- uid: WSS.Unity.StimulationParams.StimulateNormalized*
+  name: StimulateNormalized
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_StimulateNormalized_
+  commentId: Overload:WSS.Unity.StimulationParams.StimulateNormalized
+  isSpec: "True"
+  fullName: StimulationParams.StimulateNormalized
+  nameWithType: StimulationParams.StimulateNormalized
+- uid: WSS.Unity.StimulationParams.StopStimulation
+  name: StopStimulation()
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_StopStimulation
+  commentId: M:WSS.Unity.StimulationParams.StopStimulation
+  fullName: StimulationParams.StopStimulation()
+  nameWithType: StimulationParams.StopStimulation()
+- uid: WSS.Unity.StimulationParams.StopStimulation*
+  name: StopStimulation
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_StopStimulation_
+  commentId: Overload:WSS.Unity.StimulationParams.StopStimulation
+  isSpec: "True"
+  fullName: StimulationParams.StopStimulation
+  nameWithType: StimulationParams.StopStimulation
+- uid: WSS.Unity.StimulationParams.TryGetStimParam(System.String,System.Single@)
+  name: TryGetStimParam(string, out float)
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_TryGetStimParam_System_String_System_Single__
+  commentId: M:WSS.Unity.StimulationParams.TryGetStimParam(System.String,System.Single@)
+  name.vb: TryGetStimParam(String, Single)
+  fullName: StimulationParams.TryGetStimParam(string, out float)
+  fullName.vb: StimulationParams.TryGetStimParam(String, Single)
+  nameWithType: StimulationParams.TryGetStimParam(string, out float)
+  nameWithType.vb: StimulationParams.TryGetStimParam(String, Single)
+- uid: WSS.Unity.StimulationParams.TryGetStimParam*
+  name: TryGetStimParam
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_TryGetStimParam_
+  commentId: Overload:WSS.Unity.StimulationParams.TryGetStimParam
+  isSpec: "True"
+  fullName: StimulationParams.TryGetStimParam
+  nameWithType: StimulationParams.TryGetStimParam
+- uid: WSS.Unity.StimulationParams.UpdateChannelParams(System.String,System.Int32,System.Int32,System.Int32)
+  name: UpdateChannelParams(string, int, int, int)
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_UpdateChannelParams_System_String_System_Int32_System_Int32_System_Int32_
+  commentId: M:WSS.Unity.StimulationParams.UpdateChannelParams(System.String,System.Int32,System.Int32,System.Int32)
+  name.vb: UpdateChannelParams(String, Integer, Integer, Integer)
+  fullName: StimulationParams.UpdateChannelParams(string, int, int, int)
+  fullName.vb: StimulationParams.UpdateChannelParams(String, Integer, Integer, Integer)
+  nameWithType: StimulationParams.UpdateChannelParams(string, int, int, int)
+  nameWithType.vb: StimulationParams.UpdateChannelParams(String, Integer, Integer, Integer)
+- uid: WSS.Unity.StimulationParams.UpdateChannelParams*
+  name: UpdateChannelParams
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_UpdateChannelParams_
+  commentId: Overload:WSS.Unity.StimulationParams.UpdateChannelParams
+  isSpec: "True"
+  fullName: StimulationParams.UpdateChannelParams
+  nameWithType: StimulationParams.UpdateChannelParams
+- uid: WSS.Unity.StimulationParams.UpdateIPD(System.Int32,System.Int32)
+  name: UpdateIPD(int, int)
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_UpdateIPD_System_Int32_System_Int32_
+  commentId: M:WSS.Unity.StimulationParams.UpdateIPD(System.Int32,System.Int32)
+  name.vb: UpdateIPD(Integer, Integer)
+  fullName: StimulationParams.UpdateIPD(int, int)
+  fullName.vb: StimulationParams.UpdateIPD(Integer, Integer)
+  nameWithType: StimulationParams.UpdateIPD(int, int)
+  nameWithType.vb: StimulationParams.UpdateIPD(Integer, Integer)
+- uid: WSS.Unity.StimulationParams.UpdateIPD(System.Int32,System.Int32,System.Int32)
+  name: UpdateIPD(int, int, int)
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_UpdateIPD_System_Int32_System_Int32_System_Int32_
+  commentId: M:WSS.Unity.StimulationParams.UpdateIPD(System.Int32,System.Int32,System.Int32)
+  name.vb: UpdateIPD(Integer, Integer, Integer)
+  fullName: StimulationParams.UpdateIPD(int, int, int)
+  fullName.vb: StimulationParams.UpdateIPD(Integer, Integer, Integer)
+  nameWithType: StimulationParams.UpdateIPD(int, int, int)
+  nameWithType.vb: StimulationParams.UpdateIPD(Integer, Integer, Integer)
+- uid: WSS.Unity.StimulationParams.UpdateIPD*
+  name: UpdateIPD
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_UpdateIPD_
+  commentId: Overload:WSS.Unity.StimulationParams.UpdateIPD
+  isSpec: "True"
+  fullName: StimulationParams.UpdateIPD
+  nameWithType: StimulationParams.UpdateIPD
+- uid: WSS.Unity.StimulationParams.WaveformSetup(System.Int32,Wss.CoreModule.WaveformBuilder,System.Int32)
+  name: WaveformSetup(int, WaveformBuilder, int)
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_WaveformSetup_System_Int32_Wss_CoreModule_WaveformBuilder_System_Int32_
+  commentId: M:WSS.Unity.StimulationParams.WaveformSetup(System.Int32,Wss.CoreModule.WaveformBuilder,System.Int32)
+  name.vb: WaveformSetup(Integer, WaveformBuilder, Integer)
+  fullName: StimulationParams.WaveformSetup(int, Wss.CoreModule.WaveformBuilder, int)
+  fullName.vb: StimulationParams.WaveformSetup(Integer, Wss.CoreModule.WaveformBuilder, Integer)
+  nameWithType: StimulationParams.WaveformSetup(int, WaveformBuilder, int)
+  nameWithType.vb: StimulationParams.WaveformSetup(Integer, WaveformBuilder, Integer)
+- uid: WSS.Unity.StimulationParams.WaveformSetup(Wss.CoreModule.WaveformBuilder,System.Int32)
+  name: WaveformSetup(WaveformBuilder, int)
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_WaveformSetup_Wss_CoreModule_WaveformBuilder_System_Int32_
+  commentId: M:WSS.Unity.StimulationParams.WaveformSetup(Wss.CoreModule.WaveformBuilder,System.Int32)
+  name.vb: WaveformSetup(WaveformBuilder, Integer)
+  fullName: StimulationParams.WaveformSetup(Wss.CoreModule.WaveformBuilder, int)
+  fullName.vb: StimulationParams.WaveformSetup(Wss.CoreModule.WaveformBuilder, Integer)
+  nameWithType: StimulationParams.WaveformSetup(WaveformBuilder, int)
+  nameWithType.vb: StimulationParams.WaveformSetup(WaveformBuilder, Integer)
+- uid: WSS.Unity.StimulationParams.WaveformSetup*
+  name: WaveformSetup
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_WaveformSetup_
+  commentId: Overload:WSS.Unity.StimulationParams.WaveformSetup
+  isSpec: "True"
+  fullName: StimulationParams.WaveformSetup
+  nameWithType: StimulationParams.WaveformSetup
+- uid: WSS.Unity.StimulationParams.comPort
+  name: comPort
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_comPort
+  commentId: F:WSS.Unity.StimulationParams.comPort
+  fullName: StimulationParams.comPort
+  nameWithType: StimulationParams.comPort
+- uid: WSS.Unity.StimulationParams.forcePort
+  name: forcePort
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_forcePort
+  commentId: F:WSS.Unity.StimulationParams.forcePort
+  fullName: StimulationParams.forcePort
+  nameWithType: StimulationParams.forcePort
+- uid: WSS.Unity.StimulationParams.load
+  name: load()
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_load
+  commentId: M:WSS.Unity.StimulationParams.load
+  fullName: StimulationParams.load()
+  nameWithType: StimulationParams.load()
+- uid: WSS.Unity.StimulationParams.load(System.Int32)
+  name: load(int)
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_load_System_Int32_
+  commentId: M:WSS.Unity.StimulationParams.load(System.Int32)
+  name.vb: load(Integer)
+  fullName: StimulationParams.load(int)
+  fullName.vb: StimulationParams.load(Integer)
+  nameWithType: StimulationParams.load(int)
+  nameWithType.vb: StimulationParams.load(Integer)
+- uid: WSS.Unity.StimulationParams.load*
+  name: load
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_load_
+  commentId: Overload:WSS.Unity.StimulationParams.load
+  isSpec: "True"
+  fullName: StimulationParams.load
+  nameWithType: StimulationParams.load
+- uid: WSS.Unity.StimulationParams.loadWaveform(System.String,System.Int32)
+  name: loadWaveform(string, int)
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_loadWaveform_System_String_System_Int32_
+  commentId: M:WSS.Unity.StimulationParams.loadWaveform(System.String,System.Int32)
+  name.vb: loadWaveform(String, Integer)
+  fullName: StimulationParams.loadWaveform(string, int)
+  fullName.vb: StimulationParams.loadWaveform(String, Integer)
+  nameWithType: StimulationParams.loadWaveform(string, int)
+  nameWithType.vb: StimulationParams.loadWaveform(String, Integer)
+- uid: WSS.Unity.StimulationParams.loadWaveform*
+  name: loadWaveform
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_loadWaveform_
+  commentId: Overload:WSS.Unity.StimulationParams.loadWaveform
+  isSpec: "True"
+  fullName: StimulationParams.loadWaveform
+  nameWithType: StimulationParams.loadWaveform
+- uid: WSS.Unity.StimulationParams.releaseRadio
+  name: releaseRadio()
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_releaseRadio
+  commentId: M:WSS.Unity.StimulationParams.releaseRadio
+  fullName: StimulationParams.releaseRadio()
+  nameWithType: StimulationParams.releaseRadio()
+- uid: WSS.Unity.StimulationParams.releaseRadio*
+  name: releaseRadio
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_releaseRadio_
+  commentId: Overload:WSS.Unity.StimulationParams.releaseRadio
+  isSpec: "True"
+  fullName: StimulationParams.releaseRadio
+  nameWithType: StimulationParams.releaseRadio
+- uid: WSS.Unity.StimulationParams.request_Configs(System.Int32,System.Int32,System.Int32)
+  name: request_Configs(int, int, int)
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_request_Configs_System_Int32_System_Int32_System_Int32_
+  commentId: M:WSS.Unity.StimulationParams.request_Configs(System.Int32,System.Int32,System.Int32)
+  name.vb: request_Configs(Integer, Integer, Integer)
+  fullName: StimulationParams.request_Configs(int, int, int)
+  fullName.vb: StimulationParams.request_Configs(Integer, Integer, Integer)
+  nameWithType: StimulationParams.request_Configs(int, int, int)
+  nameWithType.vb: StimulationParams.request_Configs(Integer, Integer, Integer)
+- uid: WSS.Unity.StimulationParams.request_Configs*
+  name: request_Configs
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_request_Configs_
+  commentId: Overload:WSS.Unity.StimulationParams.request_Configs
+  isSpec: "True"
+  fullName: StimulationParams.request_Configs
+  nameWithType: StimulationParams.request_Configs
+- uid: WSS.Unity.StimulationParams.resetRadio
+  name: resetRadio()
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_resetRadio
+  commentId: M:WSS.Unity.StimulationParams.resetRadio
+  fullName: StimulationParams.resetRadio()
+  nameWithType: StimulationParams.resetRadio()
+- uid: WSS.Unity.StimulationParams.resetRadio*
+  name: resetRadio
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_resetRadio_
+  commentId: Overload:WSS.Unity.StimulationParams.resetRadio
+  isSpec: "True"
+  fullName: StimulationParams.resetRadio
+  nameWithType: StimulationParams.resetRadio
+- uid: WSS.Unity.StimulationParams.started
+  name: started
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_started
+  commentId: F:WSS.Unity.StimulationParams.started
+  fullName: StimulationParams.started
+  nameWithType: StimulationParams.started
+- uid: WSS.Unity.StimulationParams.updateWaveform(System.Int32,System.Int32,System.Int32)
+  name: updateWaveform(int, int, int)
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_updateWaveform_System_Int32_System_Int32_System_Int32_
+  commentId: M:WSS.Unity.StimulationParams.updateWaveform(System.Int32,System.Int32,System.Int32)
+  name.vb: updateWaveform(Integer, Integer, Integer)
+  fullName: StimulationParams.updateWaveform(int, int, int)
+  fullName.vb: StimulationParams.updateWaveform(Integer, Integer, Integer)
+  nameWithType: StimulationParams.updateWaveform(int, int, int)
+  nameWithType.vb: StimulationParams.updateWaveform(Integer, Integer, Integer)
+- uid: WSS.Unity.StimulationParams.updateWaveform(System.Int32,System.Int32,System.Int32,System.Int32)
+  name: updateWaveform(int, int, int, int)
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_updateWaveform_System_Int32_System_Int32_System_Int32_System_Int32_
+  commentId: M:WSS.Unity.StimulationParams.updateWaveform(System.Int32,System.Int32,System.Int32,System.Int32)
+  name.vb: updateWaveform(Integer, Integer, Integer, Integer)
+  fullName: StimulationParams.updateWaveform(int, int, int, int)
+  fullName.vb: StimulationParams.updateWaveform(Integer, Integer, Integer, Integer)
+  nameWithType: StimulationParams.updateWaveform(int, int, int, int)
+  nameWithType.vb: StimulationParams.updateWaveform(Integer, Integer, Integer, Integer)
+- uid: WSS.Unity.StimulationParams.updateWaveform(System.Int32,System.Int32[],System.Int32)
+  name: updateWaveform(int, int[], int)
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_updateWaveform_System_Int32_System_Int32___System_Int32_
+  commentId: M:WSS.Unity.StimulationParams.updateWaveform(System.Int32,System.Int32[],System.Int32)
+  name.vb: updateWaveform(Integer, Integer(), Integer)
+  fullName: StimulationParams.updateWaveform(int, int[], int)
+  fullName.vb: StimulationParams.updateWaveform(Integer, Integer(), Integer)
+  nameWithType: StimulationParams.updateWaveform(int, int[], int)
+  nameWithType.vb: StimulationParams.updateWaveform(Integer, Integer(), Integer)
+- uid: WSS.Unity.StimulationParams.updateWaveform(System.Int32,Wss.CoreModule.WaveformBuilder,System.Int32)
+  name: updateWaveform(int, WaveformBuilder, int)
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_updateWaveform_System_Int32_Wss_CoreModule_WaveformBuilder_System_Int32_
+  commentId: M:WSS.Unity.StimulationParams.updateWaveform(System.Int32,Wss.CoreModule.WaveformBuilder,System.Int32)
+  name.vb: updateWaveform(Integer, WaveformBuilder, Integer)
+  fullName: StimulationParams.updateWaveform(int, Wss.CoreModule.WaveformBuilder, int)
+  fullName.vb: StimulationParams.updateWaveform(Integer, Wss.CoreModule.WaveformBuilder, Integer)
+  nameWithType: StimulationParams.updateWaveform(int, WaveformBuilder, int)
+  nameWithType.vb: StimulationParams.updateWaveform(Integer, WaveformBuilder, Integer)
+- uid: WSS.Unity.StimulationParams.updateWaveform(System.Int32[],System.Int32)
+  name: updateWaveform(int[], int)
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_updateWaveform_System_Int32___System_Int32_
+  commentId: M:WSS.Unity.StimulationParams.updateWaveform(System.Int32[],System.Int32)
+  name.vb: updateWaveform(Integer(), Integer)
+  fullName: StimulationParams.updateWaveform(int[], int)
+  fullName.vb: StimulationParams.updateWaveform(Integer(), Integer)
+  nameWithType: StimulationParams.updateWaveform(int[], int)
+  nameWithType.vb: StimulationParams.updateWaveform(Integer(), Integer)
+- uid: WSS.Unity.StimulationParams.updateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32)
+  name: updateWaveform(WaveformBuilder, int)
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_updateWaveform_Wss_CoreModule_WaveformBuilder_System_Int32_
+  commentId: M:WSS.Unity.StimulationParams.updateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32)
+  name.vb: updateWaveform(WaveformBuilder, Integer)
+  fullName: StimulationParams.updateWaveform(Wss.CoreModule.WaveformBuilder, int)
+  fullName.vb: StimulationParams.updateWaveform(Wss.CoreModule.WaveformBuilder, Integer)
+  nameWithType: StimulationParams.updateWaveform(WaveformBuilder, int)
+  nameWithType.vb: StimulationParams.updateWaveform(WaveformBuilder, Integer)
+- uid: WSS.Unity.StimulationParams.updateWaveform*
+  name: updateWaveform
+  href: api/unity/WSS.Unity.StimulationParams.html#WSS_Unity_StimulationParams_updateWaveform_
+  commentId: Overload:WSS.Unity.StimulationParams.updateWaveform
+  isSpec: "True"
+  fullName: StimulationParams.updateWaveform
+  nameWithType: StimulationParams.updateWaveform
+- uid: WSS.Unity.Stimulationbasic
+  name: Stimulationbasic
+  href: api/unity/WSS.Unity.Stimulationbasic.html
+  commentId: T:WSS.Unity.Stimulationbasic
+  fullName: Stimulationbasic
+  nameWithType: Stimulationbasic
+- uid: WSS.Unity.Stimulationbasic.Awake
+  name: Awake()
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_Awake
+  commentId: M:WSS.Unity.Stimulationbasic.Awake
+  fullName: Stimulationbasic.Awake()
+  nameWithType: Stimulationbasic.Awake()
+- uid: WSS.Unity.Stimulationbasic.Awake*
+  name: Awake
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_Awake_
+  commentId: Overload:WSS.Unity.Stimulationbasic.Awake
+  isSpec: "True"
+  fullName: Stimulationbasic.Awake
+  nameWithType: Stimulationbasic.Awake
+- uid: WSS.Unity.Stimulationbasic.GetCoreConfigCTRL
+  name: GetCoreConfigCTRL()
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_GetCoreConfigCTRL
+  commentId: M:WSS.Unity.Stimulationbasic.GetCoreConfigCTRL
+  fullName: Stimulationbasic.GetCoreConfigCTRL()
+  nameWithType: Stimulationbasic.GetCoreConfigCTRL()
+- uid: WSS.Unity.Stimulationbasic.GetCoreConfigCTRL*
+  name: GetCoreConfigCTRL
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_GetCoreConfigCTRL_
+  commentId: Overload:WSS.Unity.Stimulationbasic.GetCoreConfigCTRL
+  isSpec: "True"
+  fullName: Stimulationbasic.GetCoreConfigCTRL
+  nameWithType: Stimulationbasic.GetCoreConfigCTRL
+- uid: WSS.Unity.Stimulationbasic.Ready
+  name: Ready()
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_Ready
+  commentId: M:WSS.Unity.Stimulationbasic.Ready
+  fullName: Stimulationbasic.Ready()
+  nameWithType: Stimulationbasic.Ready()
+- uid: WSS.Unity.Stimulationbasic.Ready*
+  name: Ready
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_Ready_
+  commentId: Overload:WSS.Unity.Stimulationbasic.Ready
+  isSpec: "True"
+  fullName: Stimulationbasic.Ready
+  nameWithType: Stimulationbasic.Ready
+- uid: WSS.Unity.Stimulationbasic.Save
+  name: Save()
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_Save
+  commentId: M:WSS.Unity.Stimulationbasic.Save
+  fullName: Stimulationbasic.Save()
+  nameWithType: Stimulationbasic.Save()
+- uid: WSS.Unity.Stimulationbasic.Save(System.Int32)
+  name: Save(int)
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_Save_System_Int32_
+  commentId: M:WSS.Unity.Stimulationbasic.Save(System.Int32)
+  name.vb: Save(Integer)
+  fullName: Stimulationbasic.Save(int)
+  fullName.vb: Stimulationbasic.Save(Integer)
+  nameWithType: Stimulationbasic.Save(int)
+  nameWithType.vb: Stimulationbasic.Save(Integer)
+- uid: WSS.Unity.Stimulationbasic.Save*
+  name: Save
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_Save_
+  commentId: Overload:WSS.Unity.Stimulationbasic.Save
+  isSpec: "True"
+  fullName: Stimulationbasic.Save
+  nameWithType: Stimulationbasic.Save
+- uid: WSS.Unity.Stimulationbasic.StartStimulation
+  name: StartStimulation()
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_StartStimulation
+  commentId: M:WSS.Unity.Stimulationbasic.StartStimulation
+  fullName: Stimulationbasic.StartStimulation()
+  nameWithType: Stimulationbasic.StartStimulation()
+- uid: WSS.Unity.Stimulationbasic.StartStimulation*
+  name: StartStimulation
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_StartStimulation_
+  commentId: Overload:WSS.Unity.Stimulationbasic.StartStimulation
+  isSpec: "True"
+  fullName: Stimulationbasic.StartStimulation
+  nameWithType: Stimulationbasic.StartStimulation
+- uid: WSS.Unity.Stimulationbasic.Started
+  name: Started()
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_Started
+  commentId: M:WSS.Unity.Stimulationbasic.Started
+  fullName: Stimulationbasic.Started()
+  nameWithType: Stimulationbasic.Started()
+- uid: WSS.Unity.Stimulationbasic.Started*
+  name: Started
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_Started_
+  commentId: Overload:WSS.Unity.Stimulationbasic.Started
+  isSpec: "True"
+  fullName: Stimulationbasic.Started
+  nameWithType: Stimulationbasic.Started
+- uid: WSS.Unity.Stimulationbasic.StimulateAnalog(System.String,System.Int32,System.Int32,System.Int32)
+  name: StimulateAnalog(string, int, int, int)
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_StimulateAnalog_System_String_System_Int32_System_Int32_System_Int32_
+  commentId: M:WSS.Unity.Stimulationbasic.StimulateAnalog(System.String,System.Int32,System.Int32,System.Int32)
+  name.vb: StimulateAnalog(String, Integer, Integer, Integer)
+  fullName: Stimulationbasic.StimulateAnalog(string, int, int, int)
+  fullName.vb: Stimulationbasic.StimulateAnalog(String, Integer, Integer, Integer)
+  nameWithType: Stimulationbasic.StimulateAnalog(string, int, int, int)
+  nameWithType.vb: Stimulationbasic.StimulateAnalog(String, Integer, Integer, Integer)
+- uid: WSS.Unity.Stimulationbasic.StimulateAnalog*
+  name: StimulateAnalog
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_StimulateAnalog_
+  commentId: Overload:WSS.Unity.Stimulationbasic.StimulateAnalog
+  isSpec: "True"
+  fullName: Stimulationbasic.StimulateAnalog
+  nameWithType: Stimulationbasic.StimulateAnalog
+- uid: WSS.Unity.Stimulationbasic.StopStimulation
+  name: StopStimulation()
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_StopStimulation
+  commentId: M:WSS.Unity.Stimulationbasic.StopStimulation
+  fullName: Stimulationbasic.StopStimulation()
+  nameWithType: Stimulationbasic.StopStimulation()
+- uid: WSS.Unity.Stimulationbasic.StopStimulation*
+  name: StopStimulation
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_StopStimulation_
+  commentId: Overload:WSS.Unity.Stimulationbasic.StopStimulation
+  isSpec: "True"
+  fullName: Stimulationbasic.StopStimulation
+  nameWithType: Stimulationbasic.StopStimulation
+- uid: WSS.Unity.Stimulationbasic.UpdateIPD(System.Int32,System.Int32)
+  name: UpdateIPD(int, int)
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_UpdateIPD_System_Int32_System_Int32_
+  commentId: M:WSS.Unity.Stimulationbasic.UpdateIPD(System.Int32,System.Int32)
+  name.vb: UpdateIPD(Integer, Integer)
+  fullName: Stimulationbasic.UpdateIPD(int, int)
+  fullName.vb: Stimulationbasic.UpdateIPD(Integer, Integer)
+  nameWithType: Stimulationbasic.UpdateIPD(int, int)
+  nameWithType.vb: Stimulationbasic.UpdateIPD(Integer, Integer)
+- uid: WSS.Unity.Stimulationbasic.UpdateIPD(System.Int32,System.Int32,System.Int32)
+  name: UpdateIPD(int, int, int)
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_UpdateIPD_System_Int32_System_Int32_System_Int32_
+  commentId: M:WSS.Unity.Stimulationbasic.UpdateIPD(System.Int32,System.Int32,System.Int32)
+  name.vb: UpdateIPD(Integer, Integer, Integer)
+  fullName: Stimulationbasic.UpdateIPD(int, int, int)
+  fullName.vb: Stimulationbasic.UpdateIPD(Integer, Integer, Integer)
+  nameWithType: Stimulationbasic.UpdateIPD(int, int, int)
+  nameWithType.vb: Stimulationbasic.UpdateIPD(Integer, Integer, Integer)
+- uid: WSS.Unity.Stimulationbasic.UpdateIPD*
+  name: UpdateIPD
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_UpdateIPD_
+  commentId: Overload:WSS.Unity.Stimulationbasic.UpdateIPD
+  isSpec: "True"
+  fullName: Stimulationbasic.UpdateIPD
+  nameWithType: Stimulationbasic.UpdateIPD
+- uid: WSS.Unity.Stimulationbasic.WaveformSetup(System.Int32,Wss.CoreModule.WaveformBuilder,System.Int32)
+  name: WaveformSetup(int, WaveformBuilder, int)
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_WaveformSetup_System_Int32_Wss_CoreModule_WaveformBuilder_System_Int32_
+  commentId: M:WSS.Unity.Stimulationbasic.WaveformSetup(System.Int32,Wss.CoreModule.WaveformBuilder,System.Int32)
+  name.vb: WaveformSetup(Integer, WaveformBuilder, Integer)
+  fullName: Stimulationbasic.WaveformSetup(int, Wss.CoreModule.WaveformBuilder, int)
+  fullName.vb: Stimulationbasic.WaveformSetup(Integer, Wss.CoreModule.WaveformBuilder, Integer)
+  nameWithType: Stimulationbasic.WaveformSetup(int, WaveformBuilder, int)
+  nameWithType.vb: Stimulationbasic.WaveformSetup(Integer, WaveformBuilder, Integer)
+- uid: WSS.Unity.Stimulationbasic.WaveformSetup(Wss.CoreModule.WaveformBuilder,System.Int32)
+  name: WaveformSetup(WaveformBuilder, int)
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_WaveformSetup_Wss_CoreModule_WaveformBuilder_System_Int32_
+  commentId: M:WSS.Unity.Stimulationbasic.WaveformSetup(Wss.CoreModule.WaveformBuilder,System.Int32)
+  name.vb: WaveformSetup(WaveformBuilder, Integer)
+  fullName: Stimulationbasic.WaveformSetup(Wss.CoreModule.WaveformBuilder, int)
+  fullName.vb: Stimulationbasic.WaveformSetup(Wss.CoreModule.WaveformBuilder, Integer)
+  nameWithType: Stimulationbasic.WaveformSetup(WaveformBuilder, int)
+  nameWithType.vb: Stimulationbasic.WaveformSetup(WaveformBuilder, Integer)
+- uid: WSS.Unity.Stimulationbasic.WaveformSetup*
+  name: WaveformSetup
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_WaveformSetup_
+  commentId: Overload:WSS.Unity.Stimulationbasic.WaveformSetup
+  isSpec: "True"
+  fullName: Stimulationbasic.WaveformSetup
+  nameWithType: Stimulationbasic.WaveformSetup
+- uid: WSS.Unity.Stimulationbasic.comPort
+  name: comPort
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_comPort
+  commentId: F:WSS.Unity.Stimulationbasic.comPort
+  fullName: Stimulationbasic.comPort
+  nameWithType: Stimulationbasic.comPort
+- uid: WSS.Unity.Stimulationbasic.forcePort
+  name: forcePort
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_forcePort
+  commentId: F:WSS.Unity.Stimulationbasic.forcePort
+  fullName: Stimulationbasic.forcePort
+  nameWithType: Stimulationbasic.forcePort
+- uid: WSS.Unity.Stimulationbasic.load
+  name: load()
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_load
+  commentId: M:WSS.Unity.Stimulationbasic.load
+  fullName: Stimulationbasic.load()
+  nameWithType: Stimulationbasic.load()
+- uid: WSS.Unity.Stimulationbasic.load(System.Int32)
+  name: load(int)
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_load_System_Int32_
+  commentId: M:WSS.Unity.Stimulationbasic.load(System.Int32)
+  name.vb: load(Integer)
+  fullName: Stimulationbasic.load(int)
+  fullName.vb: Stimulationbasic.load(Integer)
+  nameWithType: Stimulationbasic.load(int)
+  nameWithType.vb: Stimulationbasic.load(Integer)
+- uid: WSS.Unity.Stimulationbasic.load*
+  name: load
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_load_
+  commentId: Overload:WSS.Unity.Stimulationbasic.load
+  isSpec: "True"
+  fullName: Stimulationbasic.load
+  nameWithType: Stimulationbasic.load
+- uid: WSS.Unity.Stimulationbasic.loadWaveform(System.String,System.Int32)
+  name: loadWaveform(string, int)
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_loadWaveform_System_String_System_Int32_
+  commentId: M:WSS.Unity.Stimulationbasic.loadWaveform(System.String,System.Int32)
+  name.vb: loadWaveform(String, Integer)
+  fullName: Stimulationbasic.loadWaveform(string, int)
+  fullName.vb: Stimulationbasic.loadWaveform(String, Integer)
+  nameWithType: Stimulationbasic.loadWaveform(string, int)
+  nameWithType.vb: Stimulationbasic.loadWaveform(String, Integer)
+- uid: WSS.Unity.Stimulationbasic.loadWaveform*
+  name: loadWaveform
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_loadWaveform_
+  commentId: Overload:WSS.Unity.Stimulationbasic.loadWaveform
+  isSpec: "True"
+  fullName: Stimulationbasic.loadWaveform
+  nameWithType: Stimulationbasic.loadWaveform
+- uid: WSS.Unity.Stimulationbasic.releaseRadio
+  name: releaseRadio()
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_releaseRadio
+  commentId: M:WSS.Unity.Stimulationbasic.releaseRadio
+  fullName: Stimulationbasic.releaseRadio()
+  nameWithType: Stimulationbasic.releaseRadio()
+- uid: WSS.Unity.Stimulationbasic.releaseRadio*
+  name: releaseRadio
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_releaseRadio_
+  commentId: Overload:WSS.Unity.Stimulationbasic.releaseRadio
+  isSpec: "True"
+  fullName: Stimulationbasic.releaseRadio
+  nameWithType: Stimulationbasic.releaseRadio
+- uid: WSS.Unity.Stimulationbasic.request_Configs(System.Int32,System.Int32,System.Int32)
+  name: request_Configs(int, int, int)
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_request_Configs_System_Int32_System_Int32_System_Int32_
+  commentId: M:WSS.Unity.Stimulationbasic.request_Configs(System.Int32,System.Int32,System.Int32)
+  name.vb: request_Configs(Integer, Integer, Integer)
+  fullName: Stimulationbasic.request_Configs(int, int, int)
+  fullName.vb: Stimulationbasic.request_Configs(Integer, Integer, Integer)
+  nameWithType: Stimulationbasic.request_Configs(int, int, int)
+  nameWithType.vb: Stimulationbasic.request_Configs(Integer, Integer, Integer)
+- uid: WSS.Unity.Stimulationbasic.request_Configs*
+  name: request_Configs
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_request_Configs_
+  commentId: Overload:WSS.Unity.Stimulationbasic.request_Configs
+  isSpec: "True"
+  fullName: Stimulationbasic.request_Configs
+  nameWithType: Stimulationbasic.request_Configs
+- uid: WSS.Unity.Stimulationbasic.resetRadio
+  name: resetRadio()
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_resetRadio
+  commentId: M:WSS.Unity.Stimulationbasic.resetRadio
+  fullName: Stimulationbasic.resetRadio()
+  nameWithType: Stimulationbasic.resetRadio()
+- uid: WSS.Unity.Stimulationbasic.resetRadio*
+  name: resetRadio
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_resetRadio_
+  commentId: Overload:WSS.Unity.Stimulationbasic.resetRadio
+  isSpec: "True"
+  fullName: Stimulationbasic.resetRadio
+  nameWithType: Stimulationbasic.resetRadio
+- uid: WSS.Unity.Stimulationbasic.started
+  name: started
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_started
+  commentId: F:WSS.Unity.Stimulationbasic.started
+  fullName: Stimulationbasic.started
+  nameWithType: Stimulationbasic.started
+- uid: WSS.Unity.Stimulationbasic.updateWaveform(System.Int32,System.Int32,System.Int32)
+  name: updateWaveform(int, int, int)
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_updateWaveform_System_Int32_System_Int32_System_Int32_
+  commentId: M:WSS.Unity.Stimulationbasic.updateWaveform(System.Int32,System.Int32,System.Int32)
+  name.vb: updateWaveform(Integer, Integer, Integer)
+  fullName: Stimulationbasic.updateWaveform(int, int, int)
+  fullName.vb: Stimulationbasic.updateWaveform(Integer, Integer, Integer)
+  nameWithType: Stimulationbasic.updateWaveform(int, int, int)
+  nameWithType.vb: Stimulationbasic.updateWaveform(Integer, Integer, Integer)
+- uid: WSS.Unity.Stimulationbasic.updateWaveform(System.Int32,System.Int32,System.Int32,System.Int32)
+  name: updateWaveform(int, int, int, int)
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_updateWaveform_System_Int32_System_Int32_System_Int32_System_Int32_
+  commentId: M:WSS.Unity.Stimulationbasic.updateWaveform(System.Int32,System.Int32,System.Int32,System.Int32)
+  name.vb: updateWaveform(Integer, Integer, Integer, Integer)
+  fullName: Stimulationbasic.updateWaveform(int, int, int, int)
+  fullName.vb: Stimulationbasic.updateWaveform(Integer, Integer, Integer, Integer)
+  nameWithType: Stimulationbasic.updateWaveform(int, int, int, int)
+  nameWithType.vb: Stimulationbasic.updateWaveform(Integer, Integer, Integer, Integer)
+- uid: WSS.Unity.Stimulationbasic.updateWaveform(System.Int32,System.Int32[],System.Int32)
+  name: updateWaveform(int, int[], int)
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_updateWaveform_System_Int32_System_Int32___System_Int32_
+  commentId: M:WSS.Unity.Stimulationbasic.updateWaveform(System.Int32,System.Int32[],System.Int32)
+  name.vb: updateWaveform(Integer, Integer(), Integer)
+  fullName: Stimulationbasic.updateWaveform(int, int[], int)
+  fullName.vb: Stimulationbasic.updateWaveform(Integer, Integer(), Integer)
+  nameWithType: Stimulationbasic.updateWaveform(int, int[], int)
+  nameWithType.vb: Stimulationbasic.updateWaveform(Integer, Integer(), Integer)
+- uid: WSS.Unity.Stimulationbasic.updateWaveform(System.Int32,Wss.CoreModule.WaveformBuilder,System.Int32)
+  name: updateWaveform(int, WaveformBuilder, int)
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_updateWaveform_System_Int32_Wss_CoreModule_WaveformBuilder_System_Int32_
+  commentId: M:WSS.Unity.Stimulationbasic.updateWaveform(System.Int32,Wss.CoreModule.WaveformBuilder,System.Int32)
+  name.vb: updateWaveform(Integer, WaveformBuilder, Integer)
+  fullName: Stimulationbasic.updateWaveform(int, Wss.CoreModule.WaveformBuilder, int)
+  fullName.vb: Stimulationbasic.updateWaveform(Integer, Wss.CoreModule.WaveformBuilder, Integer)
+  nameWithType: Stimulationbasic.updateWaveform(int, WaveformBuilder, int)
+  nameWithType.vb: Stimulationbasic.updateWaveform(Integer, WaveformBuilder, Integer)
+- uid: WSS.Unity.Stimulationbasic.updateWaveform(System.Int32[],System.Int32)
+  name: updateWaveform(int[], int)
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_updateWaveform_System_Int32___System_Int32_
+  commentId: M:WSS.Unity.Stimulationbasic.updateWaveform(System.Int32[],System.Int32)
+  name.vb: updateWaveform(Integer(), Integer)
+  fullName: Stimulationbasic.updateWaveform(int[], int)
+  fullName.vb: Stimulationbasic.updateWaveform(Integer(), Integer)
+  nameWithType: Stimulationbasic.updateWaveform(int[], int)
+  nameWithType.vb: Stimulationbasic.updateWaveform(Integer(), Integer)
+- uid: WSS.Unity.Stimulationbasic.updateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32)
+  name: updateWaveform(WaveformBuilder, int)
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_updateWaveform_Wss_CoreModule_WaveformBuilder_System_Int32_
+  commentId: M:WSS.Unity.Stimulationbasic.updateWaveform(Wss.CoreModule.WaveformBuilder,System.Int32)
+  name.vb: updateWaveform(WaveformBuilder, Integer)
+  fullName: Stimulationbasic.updateWaveform(Wss.CoreModule.WaveformBuilder, int)
+  fullName.vb: Stimulationbasic.updateWaveform(Wss.CoreModule.WaveformBuilder, Integer)
+  nameWithType: Stimulationbasic.updateWaveform(WaveformBuilder, int)
+  nameWithType.vb: Stimulationbasic.updateWaveform(WaveformBuilder, Integer)
+- uid: WSS.Unity.Stimulationbasic.updateWaveform*
+  name: updateWaveform
+  href: api/unity/WSS.Unity.Stimulationbasic.html#WSS_Unity_Stimulationbasic_updateWaveform_
+  commentId: Overload:WSS.Unity.Stimulationbasic.updateWaveform
+  isSpec: "True"
+  fullName: Stimulationbasic.updateWaveform
+  nameWithType: Stimulationbasic.updateWaveform
+- uid: WSS.Unity.portScanner
+  name: portScanner
+  href: api/unity/WSS.Unity.portScanner.html
+  commentId: T:WSS.Unity.portScanner
+  fullName: portScanner
+  nameWithType: portScanner
+- uid: WSS.Unity.portScanner.selectPort
+  name: selectPort()
+  href: api/unity/WSS.Unity.portScanner.html#WSS_Unity_portScanner_selectPort
+  commentId: M:WSS.Unity.portScanner.selectPort
+  fullName: portScanner.selectPort()
+  nameWithType: portScanner.selectPort()
+- uid: WSS.Unity.portScanner.selectPort*
+  name: selectPort
+  href: api/unity/WSS.Unity.portScanner.html#WSS_Unity_portScanner_selectPort_
+  commentId: Overload:WSS.Unity.portScanner.selectPort
+  isSpec: "True"
+  fullName: portScanner.selectPort
+  nameWithType: portScanner.selectPort
 - uid: Wss.CalibrationModule
   name: Wss.CalibrationModule
   href: api/core/Wss.CalibrationModule.html
@@ -4035,73 +5429,6 @@ references:
   isSpec: "True"
   fullName: Wss.CoreModule.IStimulationCore.ZeroOutStim
   nameWithType: IStimulationCore.ZeroOutStim
-- uid: Wss.CoreModule.ITransport
-  name: ITransport
-  href: api/core/Wss.CoreModule.ITransport.html
-  commentId: T:Wss.CoreModule.ITransport
-  fullName: Wss.CoreModule.ITransport
-  nameWithType: ITransport
-- uid: Wss.CoreModule.ITransport.BytesReceived
-  name: BytesReceived
-  href: api/core/Wss.CoreModule.ITransport.html#Wss_CoreModule_ITransport_BytesReceived
-  commentId: E:Wss.CoreModule.ITransport.BytesReceived
-  fullName: Wss.CoreModule.ITransport.BytesReceived
-  nameWithType: ITransport.BytesReceived
-- uid: Wss.CoreModule.ITransport.ConnectAsync(System.Threading.CancellationToken)
-  name: ConnectAsync(CancellationToken)
-  href: api/core/Wss.CoreModule.ITransport.html#Wss_CoreModule_ITransport_ConnectAsync_System_Threading_CancellationToken_
-  commentId: M:Wss.CoreModule.ITransport.ConnectAsync(System.Threading.CancellationToken)
-  fullName: Wss.CoreModule.ITransport.ConnectAsync(System.Threading.CancellationToken)
-  nameWithType: ITransport.ConnectAsync(CancellationToken)
-- uid: Wss.CoreModule.ITransport.ConnectAsync*
-  name: ConnectAsync
-  href: api/core/Wss.CoreModule.ITransport.html#Wss_CoreModule_ITransport_ConnectAsync_
-  commentId: Overload:Wss.CoreModule.ITransport.ConnectAsync
-  isSpec: "True"
-  fullName: Wss.CoreModule.ITransport.ConnectAsync
-  nameWithType: ITransport.ConnectAsync
-- uid: Wss.CoreModule.ITransport.DisconnectAsync(System.Threading.CancellationToken)
-  name: DisconnectAsync(CancellationToken)
-  href: api/core/Wss.CoreModule.ITransport.html#Wss_CoreModule_ITransport_DisconnectAsync_System_Threading_CancellationToken_
-  commentId: M:Wss.CoreModule.ITransport.DisconnectAsync(System.Threading.CancellationToken)
-  fullName: Wss.CoreModule.ITransport.DisconnectAsync(System.Threading.CancellationToken)
-  nameWithType: ITransport.DisconnectAsync(CancellationToken)
-- uid: Wss.CoreModule.ITransport.DisconnectAsync*
-  name: DisconnectAsync
-  href: api/core/Wss.CoreModule.ITransport.html#Wss_CoreModule_ITransport_DisconnectAsync_
-  commentId: Overload:Wss.CoreModule.ITransport.DisconnectAsync
-  isSpec: "True"
-  fullName: Wss.CoreModule.ITransport.DisconnectAsync
-  nameWithType: ITransport.DisconnectAsync
-- uid: Wss.CoreModule.ITransport.IsConnected
-  name: IsConnected
-  href: api/core/Wss.CoreModule.ITransport.html#Wss_CoreModule_ITransport_IsConnected
-  commentId: P:Wss.CoreModule.ITransport.IsConnected
-  fullName: Wss.CoreModule.ITransport.IsConnected
-  nameWithType: ITransport.IsConnected
-- uid: Wss.CoreModule.ITransport.IsConnected*
-  name: IsConnected
-  href: api/core/Wss.CoreModule.ITransport.html#Wss_CoreModule_ITransport_IsConnected_
-  commentId: Overload:Wss.CoreModule.ITransport.IsConnected
-  isSpec: "True"
-  fullName: Wss.CoreModule.ITransport.IsConnected
-  nameWithType: ITransport.IsConnected
-- uid: Wss.CoreModule.ITransport.SendAsync(System.Byte[],System.Threading.CancellationToken)
-  name: SendAsync(byte[], CancellationToken)
-  href: api/core/Wss.CoreModule.ITransport.html#Wss_CoreModule_ITransport_SendAsync_System_Byte___System_Threading_CancellationToken_
-  commentId: M:Wss.CoreModule.ITransport.SendAsync(System.Byte[],System.Threading.CancellationToken)
-  name.vb: SendAsync(Byte(), CancellationToken)
-  fullName: Wss.CoreModule.ITransport.SendAsync(byte[], System.Threading.CancellationToken)
-  fullName.vb: Wss.CoreModule.ITransport.SendAsync(Byte(), System.Threading.CancellationToken)
-  nameWithType: ITransport.SendAsync(byte[], CancellationToken)
-  nameWithType.vb: ITransport.SendAsync(Byte(), CancellationToken)
-- uid: Wss.CoreModule.ITransport.SendAsync*
-  name: SendAsync
-  href: api/core/Wss.CoreModule.ITransport.html#Wss_CoreModule_ITransport_SendAsync_
-  commentId: Overload:Wss.CoreModule.ITransport.SendAsync
-  isSpec: "True"
-  fullName: Wss.CoreModule.ITransport.SendAsync
-  nameWithType: ITransport.SendAsync
 - uid: Wss.CoreModule.JsonReader
   name: JsonReader
   href: api/core/Wss.CoreModule.JsonReader.html
@@ -4681,202 +6008,6 @@ references:
   isSpec: "True"
   fullName: Wss.CoreModule.ScheduleDefinition.SyncSignal
   nameWithType: ScheduleDefinition.SyncSignal
-- uid: Wss.CoreModule.SerialPortTransport
-  name: SerialPortTransport
-  href: api/core/Wss.CoreModule.SerialPortTransport.html
-  commentId: T:Wss.CoreModule.SerialPortTransport
-  fullName: Wss.CoreModule.SerialPortTransport
-  nameWithType: SerialPortTransport
-- uid: Wss.CoreModule.SerialPortTransport.#ctor(Wss.CoreModule.SerialPortTransportOptions)
-  name: SerialPortTransport(SerialPortTransportOptions)
-  href: api/core/Wss.CoreModule.SerialPortTransport.html#Wss_CoreModule_SerialPortTransport__ctor_Wss_CoreModule_SerialPortTransportOptions_
-  commentId: M:Wss.CoreModule.SerialPortTransport.#ctor(Wss.CoreModule.SerialPortTransportOptions)
-  name.vb: New(SerialPortTransportOptions)
-  fullName: Wss.CoreModule.SerialPortTransport.SerialPortTransport(Wss.CoreModule.SerialPortTransportOptions)
-  fullName.vb: Wss.CoreModule.SerialPortTransport.New(Wss.CoreModule.SerialPortTransportOptions)
-  nameWithType: SerialPortTransport.SerialPortTransport(SerialPortTransportOptions)
-  nameWithType.vb: SerialPortTransport.New(SerialPortTransportOptions)
-- uid: Wss.CoreModule.SerialPortTransport.#ctor*
-  name: SerialPortTransport
-  href: api/core/Wss.CoreModule.SerialPortTransport.html#Wss_CoreModule_SerialPortTransport__ctor_
-  commentId: Overload:Wss.CoreModule.SerialPortTransport.#ctor
-  isSpec: "True"
-  name.vb: New
-  fullName: Wss.CoreModule.SerialPortTransport.SerialPortTransport
-  fullName.vb: Wss.CoreModule.SerialPortTransport.New
-  nameWithType: SerialPortTransport.SerialPortTransport
-  nameWithType.vb: SerialPortTransport.New
-- uid: Wss.CoreModule.SerialPortTransport.BytesReceived
-  name: BytesReceived
-  href: api/core/Wss.CoreModule.SerialPortTransport.html#Wss_CoreModule_SerialPortTransport_BytesReceived
-  commentId: E:Wss.CoreModule.SerialPortTransport.BytesReceived
-  fullName: Wss.CoreModule.SerialPortTransport.BytesReceived
-  nameWithType: SerialPortTransport.BytesReceived
-- uid: Wss.CoreModule.SerialPortTransport.ConnectAsync(System.Threading.CancellationToken)
-  name: ConnectAsync(CancellationToken)
-  href: api/core/Wss.CoreModule.SerialPortTransport.html#Wss_CoreModule_SerialPortTransport_ConnectAsync_System_Threading_CancellationToken_
-  commentId: M:Wss.CoreModule.SerialPortTransport.ConnectAsync(System.Threading.CancellationToken)
-  fullName: Wss.CoreModule.SerialPortTransport.ConnectAsync(System.Threading.CancellationToken)
-  nameWithType: SerialPortTransport.ConnectAsync(CancellationToken)
-- uid: Wss.CoreModule.SerialPortTransport.ConnectAsync*
-  name: ConnectAsync
-  href: api/core/Wss.CoreModule.SerialPortTransport.html#Wss_CoreModule_SerialPortTransport_ConnectAsync_
-  commentId: Overload:Wss.CoreModule.SerialPortTransport.ConnectAsync
-  isSpec: "True"
-  fullName: Wss.CoreModule.SerialPortTransport.ConnectAsync
-  nameWithType: SerialPortTransport.ConnectAsync
-- uid: Wss.CoreModule.SerialPortTransport.DisconnectAsync(System.Threading.CancellationToken)
-  name: DisconnectAsync(CancellationToken)
-  href: api/core/Wss.CoreModule.SerialPortTransport.html#Wss_CoreModule_SerialPortTransport_DisconnectAsync_System_Threading_CancellationToken_
-  commentId: M:Wss.CoreModule.SerialPortTransport.DisconnectAsync(System.Threading.CancellationToken)
-  fullName: Wss.CoreModule.SerialPortTransport.DisconnectAsync(System.Threading.CancellationToken)
-  nameWithType: SerialPortTransport.DisconnectAsync(CancellationToken)
-- uid: Wss.CoreModule.SerialPortTransport.DisconnectAsync*
-  name: DisconnectAsync
-  href: api/core/Wss.CoreModule.SerialPortTransport.html#Wss_CoreModule_SerialPortTransport_DisconnectAsync_
-  commentId: Overload:Wss.CoreModule.SerialPortTransport.DisconnectAsync
-  isSpec: "True"
-  fullName: Wss.CoreModule.SerialPortTransport.DisconnectAsync
-  nameWithType: SerialPortTransport.DisconnectAsync
-- uid: Wss.CoreModule.SerialPortTransport.Dispose
-  name: Dispose()
-  href: api/core/Wss.CoreModule.SerialPortTransport.html#Wss_CoreModule_SerialPortTransport_Dispose
-  commentId: M:Wss.CoreModule.SerialPortTransport.Dispose
-  fullName: Wss.CoreModule.SerialPortTransport.Dispose()
-  nameWithType: SerialPortTransport.Dispose()
-- uid: Wss.CoreModule.SerialPortTransport.Dispose*
-  name: Dispose
-  href: api/core/Wss.CoreModule.SerialPortTransport.html#Wss_CoreModule_SerialPortTransport_Dispose_
-  commentId: Overload:Wss.CoreModule.SerialPortTransport.Dispose
-  isSpec: "True"
-  fullName: Wss.CoreModule.SerialPortTransport.Dispose
-  nameWithType: SerialPortTransport.Dispose
-- uid: Wss.CoreModule.SerialPortTransport.IsConnected
-  name: IsConnected
-  href: api/core/Wss.CoreModule.SerialPortTransport.html#Wss_CoreModule_SerialPortTransport_IsConnected
-  commentId: P:Wss.CoreModule.SerialPortTransport.IsConnected
-  fullName: Wss.CoreModule.SerialPortTransport.IsConnected
-  nameWithType: SerialPortTransport.IsConnected
-- uid: Wss.CoreModule.SerialPortTransport.IsConnected*
-  name: IsConnected
-  href: api/core/Wss.CoreModule.SerialPortTransport.html#Wss_CoreModule_SerialPortTransport_IsConnected_
-  commentId: Overload:Wss.CoreModule.SerialPortTransport.IsConnected
-  isSpec: "True"
-  fullName: Wss.CoreModule.SerialPortTransport.IsConnected
-  nameWithType: SerialPortTransport.IsConnected
-- uid: Wss.CoreModule.SerialPortTransport.SendAsync(System.Byte[],System.Threading.CancellationToken)
-  name: SendAsync(byte[], CancellationToken)
-  href: api/core/Wss.CoreModule.SerialPortTransport.html#Wss_CoreModule_SerialPortTransport_SendAsync_System_Byte___System_Threading_CancellationToken_
-  commentId: M:Wss.CoreModule.SerialPortTransport.SendAsync(System.Byte[],System.Threading.CancellationToken)
-  name.vb: SendAsync(Byte(), CancellationToken)
-  fullName: Wss.CoreModule.SerialPortTransport.SendAsync(byte[], System.Threading.CancellationToken)
-  fullName.vb: Wss.CoreModule.SerialPortTransport.SendAsync(Byte(), System.Threading.CancellationToken)
-  nameWithType: SerialPortTransport.SendAsync(byte[], CancellationToken)
-  nameWithType.vb: SerialPortTransport.SendAsync(Byte(), CancellationToken)
-- uid: Wss.CoreModule.SerialPortTransport.SendAsync*
-  name: SendAsync
-  href: api/core/Wss.CoreModule.SerialPortTransport.html#Wss_CoreModule_SerialPortTransport_SendAsync_
-  commentId: Overload:Wss.CoreModule.SerialPortTransport.SendAsync
-  isSpec: "True"
-  fullName: Wss.CoreModule.SerialPortTransport.SendAsync
-  nameWithType: SerialPortTransport.SendAsync
-- uid: Wss.CoreModule.SerialPortTransportOptions
-  name: SerialPortTransportOptions
-  href: api/core/Wss.CoreModule.SerialPortTransportOptions.html
-  commentId: T:Wss.CoreModule.SerialPortTransportOptions
-  fullName: Wss.CoreModule.SerialPortTransportOptions
-  nameWithType: SerialPortTransportOptions
-- uid: Wss.CoreModule.SerialPortTransportOptions.AutoSelectPort
-  name: AutoSelectPort
-  href: api/core/Wss.CoreModule.SerialPortTransportOptions.html#Wss_CoreModule_SerialPortTransportOptions_AutoSelectPort
-  commentId: P:Wss.CoreModule.SerialPortTransportOptions.AutoSelectPort
-  fullName: Wss.CoreModule.SerialPortTransportOptions.AutoSelectPort
-  nameWithType: SerialPortTransportOptions.AutoSelectPort
-- uid: Wss.CoreModule.SerialPortTransportOptions.AutoSelectPort*
-  name: AutoSelectPort
-  href: api/core/Wss.CoreModule.SerialPortTransportOptions.html#Wss_CoreModule_SerialPortTransportOptions_AutoSelectPort_
-  commentId: Overload:Wss.CoreModule.SerialPortTransportOptions.AutoSelectPort
-  isSpec: "True"
-  fullName: Wss.CoreModule.SerialPortTransportOptions.AutoSelectPort
-  nameWithType: SerialPortTransportOptions.AutoSelectPort
-- uid: Wss.CoreModule.SerialPortTransportOptions.Baud
-  name: Baud
-  href: api/core/Wss.CoreModule.SerialPortTransportOptions.html#Wss_CoreModule_SerialPortTransportOptions_Baud
-  commentId: P:Wss.CoreModule.SerialPortTransportOptions.Baud
-  fullName: Wss.CoreModule.SerialPortTransportOptions.Baud
-  nameWithType: SerialPortTransportOptions.Baud
-- uid: Wss.CoreModule.SerialPortTransportOptions.Baud*
-  name: Baud
-  href: api/core/Wss.CoreModule.SerialPortTransportOptions.html#Wss_CoreModule_SerialPortTransportOptions_Baud_
-  commentId: Overload:Wss.CoreModule.SerialPortTransportOptions.Baud
-  isSpec: "True"
-  fullName: Wss.CoreModule.SerialPortTransportOptions.Baud
-  nameWithType: SerialPortTransportOptions.Baud
-- uid: Wss.CoreModule.SerialPortTransportOptions.DataBits
-  name: DataBits
-  href: api/core/Wss.CoreModule.SerialPortTransportOptions.html#Wss_CoreModule_SerialPortTransportOptions_DataBits
-  commentId: P:Wss.CoreModule.SerialPortTransportOptions.DataBits
-  fullName: Wss.CoreModule.SerialPortTransportOptions.DataBits
-  nameWithType: SerialPortTransportOptions.DataBits
-- uid: Wss.CoreModule.SerialPortTransportOptions.DataBits*
-  name: DataBits
-  href: api/core/Wss.CoreModule.SerialPortTransportOptions.html#Wss_CoreModule_SerialPortTransportOptions_DataBits_
-  commentId: Overload:Wss.CoreModule.SerialPortTransportOptions.DataBits
-  isSpec: "True"
-  fullName: Wss.CoreModule.SerialPortTransportOptions.DataBits
-  nameWithType: SerialPortTransportOptions.DataBits
-- uid: Wss.CoreModule.SerialPortTransportOptions.Parity
-  name: Parity
-  href: api/core/Wss.CoreModule.SerialPortTransportOptions.html#Wss_CoreModule_SerialPortTransportOptions_Parity
-  commentId: P:Wss.CoreModule.SerialPortTransportOptions.Parity
-  fullName: Wss.CoreModule.SerialPortTransportOptions.Parity
-  nameWithType: SerialPortTransportOptions.Parity
-- uid: Wss.CoreModule.SerialPortTransportOptions.Parity*
-  name: Parity
-  href: api/core/Wss.CoreModule.SerialPortTransportOptions.html#Wss_CoreModule_SerialPortTransportOptions_Parity_
-  commentId: Overload:Wss.CoreModule.SerialPortTransportOptions.Parity
-  isSpec: "True"
-  fullName: Wss.CoreModule.SerialPortTransportOptions.Parity
-  nameWithType: SerialPortTransportOptions.Parity
-- uid: Wss.CoreModule.SerialPortTransportOptions.PortName
-  name: PortName
-  href: api/core/Wss.CoreModule.SerialPortTransportOptions.html#Wss_CoreModule_SerialPortTransportOptions_PortName
-  commentId: P:Wss.CoreModule.SerialPortTransportOptions.PortName
-  fullName: Wss.CoreModule.SerialPortTransportOptions.PortName
-  nameWithType: SerialPortTransportOptions.PortName
-- uid: Wss.CoreModule.SerialPortTransportOptions.PortName*
-  name: PortName
-  href: api/core/Wss.CoreModule.SerialPortTransportOptions.html#Wss_CoreModule_SerialPortTransportOptions_PortName_
-  commentId: Overload:Wss.CoreModule.SerialPortTransportOptions.PortName
-  isSpec: "True"
-  fullName: Wss.CoreModule.SerialPortTransportOptions.PortName
-  nameWithType: SerialPortTransportOptions.PortName
-- uid: Wss.CoreModule.SerialPortTransportOptions.ReadTimeoutMs
-  name: ReadTimeoutMs
-  href: api/core/Wss.CoreModule.SerialPortTransportOptions.html#Wss_CoreModule_SerialPortTransportOptions_ReadTimeoutMs
-  commentId: P:Wss.CoreModule.SerialPortTransportOptions.ReadTimeoutMs
-  fullName: Wss.CoreModule.SerialPortTransportOptions.ReadTimeoutMs
-  nameWithType: SerialPortTransportOptions.ReadTimeoutMs
-- uid: Wss.CoreModule.SerialPortTransportOptions.ReadTimeoutMs*
-  name: ReadTimeoutMs
-  href: api/core/Wss.CoreModule.SerialPortTransportOptions.html#Wss_CoreModule_SerialPortTransportOptions_ReadTimeoutMs_
-  commentId: Overload:Wss.CoreModule.SerialPortTransportOptions.ReadTimeoutMs
-  isSpec: "True"
-  fullName: Wss.CoreModule.SerialPortTransportOptions.ReadTimeoutMs
-  nameWithType: SerialPortTransportOptions.ReadTimeoutMs
-- uid: Wss.CoreModule.SerialPortTransportOptions.StopBits
-  name: StopBits
-  href: api/core/Wss.CoreModule.SerialPortTransportOptions.html#Wss_CoreModule_SerialPortTransportOptions_StopBits
-  commentId: P:Wss.CoreModule.SerialPortTransportOptions.StopBits
-  fullName: Wss.CoreModule.SerialPortTransportOptions.StopBits
-  nameWithType: SerialPortTransportOptions.StopBits
-- uid: Wss.CoreModule.SerialPortTransportOptions.StopBits*
-  name: StopBits
-  href: api/core/Wss.CoreModule.SerialPortTransportOptions.html#Wss_CoreModule_SerialPortTransportOptions_StopBits_
-  commentId: Overload:Wss.CoreModule.SerialPortTransportOptions.StopBits
-  isSpec: "True"
-  fullName: Wss.CoreModule.SerialPortTransportOptions.StopBits
-  nameWithType: SerialPortTransportOptions.StopBits
 - uid: Wss.CoreModule.StimParamsBasicExtensions
   name: StimParamsBasicExtensions
   href: api/core/Wss.CoreModule.StimParamsBasicExtensions.html
@@ -5059,309 +6190,6 @@ references:
   isSpec: "True"
   fullName: Wss.CoreModule.StreamChangeRequest.PulseWidths
   nameWithType: StreamChangeRequest.PulseWidths
-- uid: Wss.CoreModule.TestModeTransport
-  name: TestModeTransport
-  href: api/core/Wss.CoreModule.TestModeTransport.html
-  commentId: T:Wss.CoreModule.TestModeTransport
-  fullName: Wss.CoreModule.TestModeTransport
-  nameWithType: TestModeTransport
-- uid: Wss.CoreModule.TestModeTransport.#ctor(Wss.CoreModule.TestModeTransportOptions)
-  name: TestModeTransport(TestModeTransportOptions)
-  href: api/core/Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport__ctor_Wss_CoreModule_TestModeTransportOptions_
-  commentId: M:Wss.CoreModule.TestModeTransport.#ctor(Wss.CoreModule.TestModeTransportOptions)
-  name.vb: New(TestModeTransportOptions)
-  fullName: Wss.CoreModule.TestModeTransport.TestModeTransport(Wss.CoreModule.TestModeTransportOptions)
-  fullName.vb: Wss.CoreModule.TestModeTransport.New(Wss.CoreModule.TestModeTransportOptions)
-  nameWithType: TestModeTransport.TestModeTransport(TestModeTransportOptions)
-  nameWithType.vb: TestModeTransport.New(TestModeTransportOptions)
-- uid: Wss.CoreModule.TestModeTransport.#ctor*
-  name: TestModeTransport
-  href: api/core/Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport__ctor_
-  commentId: Overload:Wss.CoreModule.TestModeTransport.#ctor
-  isSpec: "True"
-  name.vb: New
-  fullName: Wss.CoreModule.TestModeTransport.TestModeTransport
-  fullName.vb: Wss.CoreModule.TestModeTransport.New
-  nameWithType: TestModeTransport.TestModeTransport
-  nameWithType.vb: TestModeTransport.New
-- uid: Wss.CoreModule.TestModeTransport.AutoResponderAsync
-  name: AutoResponderAsync
-  href: api/core/Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_AutoResponderAsync
-  commentId: P:Wss.CoreModule.TestModeTransport.AutoResponderAsync
-  fullName: Wss.CoreModule.TestModeTransport.AutoResponderAsync
-  nameWithType: TestModeTransport.AutoResponderAsync
-- uid: Wss.CoreModule.TestModeTransport.AutoResponderAsync*
-  name: AutoResponderAsync
-  href: api/core/Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_AutoResponderAsync_
-  commentId: Overload:Wss.CoreModule.TestModeTransport.AutoResponderAsync
-  isSpec: "True"
-  fullName: Wss.CoreModule.TestModeTransport.AutoResponderAsync
-  nameWithType: TestModeTransport.AutoResponderAsync
-- uid: Wss.CoreModule.TestModeTransport.BaseLatency
-  name: BaseLatency
-  href: api/core/Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_BaseLatency
-  commentId: P:Wss.CoreModule.TestModeTransport.BaseLatency
-  fullName: Wss.CoreModule.TestModeTransport.BaseLatency
-  nameWithType: TestModeTransport.BaseLatency
-- uid: Wss.CoreModule.TestModeTransport.BaseLatency*
-  name: BaseLatency
-  href: api/core/Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_BaseLatency_
-  commentId: Overload:Wss.CoreModule.TestModeTransport.BaseLatency
-  isSpec: "True"
-  fullName: Wss.CoreModule.TestModeTransport.BaseLatency
-  nameWithType: TestModeTransport.BaseLatency
-- uid: Wss.CoreModule.TestModeTransport.BytesReceived
-  name: BytesReceived
-  href: api/core/Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_BytesReceived
-  commentId: E:Wss.CoreModule.TestModeTransport.BytesReceived
-  fullName: Wss.CoreModule.TestModeTransport.BytesReceived
-  nameWithType: TestModeTransport.BytesReceived
-- uid: Wss.CoreModule.TestModeTransport.ConnectAsync(System.Threading.CancellationToken)
-  name: ConnectAsync(CancellationToken)
-  href: api/core/Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_ConnectAsync_System_Threading_CancellationToken_
-  commentId: M:Wss.CoreModule.TestModeTransport.ConnectAsync(System.Threading.CancellationToken)
-  fullName: Wss.CoreModule.TestModeTransport.ConnectAsync(System.Threading.CancellationToken)
-  nameWithType: TestModeTransport.ConnectAsync(CancellationToken)
-- uid: Wss.CoreModule.TestModeTransport.ConnectAsync*
-  name: ConnectAsync
-  href: api/core/Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_ConnectAsync_
-  commentId: Overload:Wss.CoreModule.TestModeTransport.ConnectAsync
-  isSpec: "True"
-  fullName: Wss.CoreModule.TestModeTransport.ConnectAsync
-  nameWithType: TestModeTransport.ConnectAsync
-- uid: Wss.CoreModule.TestModeTransport.DisconnectAsync(System.Threading.CancellationToken)
-  name: DisconnectAsync(CancellationToken)
-  href: api/core/Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_DisconnectAsync_System_Threading_CancellationToken_
-  commentId: M:Wss.CoreModule.TestModeTransport.DisconnectAsync(System.Threading.CancellationToken)
-  fullName: Wss.CoreModule.TestModeTransport.DisconnectAsync(System.Threading.CancellationToken)
-  nameWithType: TestModeTransport.DisconnectAsync(CancellationToken)
-- uid: Wss.CoreModule.TestModeTransport.DisconnectAsync*
-  name: DisconnectAsync
-  href: api/core/Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_DisconnectAsync_
-  commentId: Overload:Wss.CoreModule.TestModeTransport.DisconnectAsync
-  isSpec: "True"
-  fullName: Wss.CoreModule.TestModeTransport.DisconnectAsync
-  nameWithType: TestModeTransport.DisconnectAsync
-- uid: Wss.CoreModule.TestModeTransport.Dispose
-  name: Dispose()
-  href: api/core/Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_Dispose
-  commentId: M:Wss.CoreModule.TestModeTransport.Dispose
-  fullName: Wss.CoreModule.TestModeTransport.Dispose()
-  nameWithType: TestModeTransport.Dispose()
-- uid: Wss.CoreModule.TestModeTransport.Dispose*
-  name: Dispose
-  href: api/core/Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_Dispose_
-  commentId: Overload:Wss.CoreModule.TestModeTransport.Dispose
-  isSpec: "True"
-  fullName: Wss.CoreModule.TestModeTransport.Dispose
-  nameWithType: TestModeTransport.Dispose
-- uid: Wss.CoreModule.TestModeTransport.EnqueueIncoming(System.Byte[],System.Threading.CancellationToken)
-  name: EnqueueIncoming(byte[], CancellationToken)
-  href: api/core/Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_EnqueueIncoming_System_Byte___System_Threading_CancellationToken_
-  commentId: M:Wss.CoreModule.TestModeTransport.EnqueueIncoming(System.Byte[],System.Threading.CancellationToken)
-  name.vb: EnqueueIncoming(Byte(), CancellationToken)
-  fullName: Wss.CoreModule.TestModeTransport.EnqueueIncoming(byte[], System.Threading.CancellationToken)
-  fullName.vb: Wss.CoreModule.TestModeTransport.EnqueueIncoming(Byte(), System.Threading.CancellationToken)
-  nameWithType: TestModeTransport.EnqueueIncoming(byte[], CancellationToken)
-  nameWithType.vb: TestModeTransport.EnqueueIncoming(Byte(), CancellationToken)
-- uid: Wss.CoreModule.TestModeTransport.EnqueueIncoming*
-  name: EnqueueIncoming
-  href: api/core/Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_EnqueueIncoming_
-  commentId: Overload:Wss.CoreModule.TestModeTransport.EnqueueIncoming
-  isSpec: "True"
-  fullName: Wss.CoreModule.TestModeTransport.EnqueueIncoming
-  nameWithType: TestModeTransport.EnqueueIncoming
-- uid: Wss.CoreModule.TestModeTransport.FallbackPayload
-  name: FallbackPayload
-  href: api/core/Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_FallbackPayload
-  commentId: P:Wss.CoreModule.TestModeTransport.FallbackPayload
-  fullName: Wss.CoreModule.TestModeTransport.FallbackPayload
-  nameWithType: TestModeTransport.FallbackPayload
-- uid: Wss.CoreModule.TestModeTransport.FallbackPayload*
-  name: FallbackPayload
-  href: api/core/Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_FallbackPayload_
-  commentId: Overload:Wss.CoreModule.TestModeTransport.FallbackPayload
-  isSpec: "True"
-  fullName: Wss.CoreModule.TestModeTransport.FallbackPayload
-  nameWithType: TestModeTransport.FallbackPayload
-- uid: Wss.CoreModule.TestModeTransport.InboundDropProbability
-  name: InboundDropProbability
-  href: api/core/Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_InboundDropProbability
-  commentId: P:Wss.CoreModule.TestModeTransport.InboundDropProbability
-  fullName: Wss.CoreModule.TestModeTransport.InboundDropProbability
-  nameWithType: TestModeTransport.InboundDropProbability
-- uid: Wss.CoreModule.TestModeTransport.InboundDropProbability*
-  name: InboundDropProbability
-  href: api/core/Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_InboundDropProbability_
-  commentId: Overload:Wss.CoreModule.TestModeTransport.InboundDropProbability
-  isSpec: "True"
-  fullName: Wss.CoreModule.TestModeTransport.InboundDropProbability
-  nameWithType: TestModeTransport.InboundDropProbability
-- uid: Wss.CoreModule.TestModeTransport.IsConnected
-  name: IsConnected
-  href: api/core/Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_IsConnected
-  commentId: P:Wss.CoreModule.TestModeTransport.IsConnected
-  fullName: Wss.CoreModule.TestModeTransport.IsConnected
-  nameWithType: TestModeTransport.IsConnected
-- uid: Wss.CoreModule.TestModeTransport.IsConnected*
-  name: IsConnected
-  href: api/core/Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_IsConnected_
-  commentId: Overload:Wss.CoreModule.TestModeTransport.IsConnected
-  isSpec: "True"
-  fullName: Wss.CoreModule.TestModeTransport.IsConnected
-  nameWithType: TestModeTransport.IsConnected
-- uid: Wss.CoreModule.TestModeTransport.JitterMs
-  name: JitterMs
-  href: api/core/Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_JitterMs
-  commentId: P:Wss.CoreModule.TestModeTransport.JitterMs
-  fullName: Wss.CoreModule.TestModeTransport.JitterMs
-  nameWithType: TestModeTransport.JitterMs
-- uid: Wss.CoreModule.TestModeTransport.JitterMs*
-  name: JitterMs
-  href: api/core/Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_JitterMs_
-  commentId: Overload:Wss.CoreModule.TestModeTransport.JitterMs
-  isSpec: "True"
-  fullName: Wss.CoreModule.TestModeTransport.JitterMs
-  nameWithType: TestModeTransport.JitterMs
-- uid: Wss.CoreModule.TestModeTransport.MaxInboundChunkSize
-  name: MaxInboundChunkSize
-  href: api/core/Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_MaxInboundChunkSize
-  commentId: P:Wss.CoreModule.TestModeTransport.MaxInboundChunkSize
-  fullName: Wss.CoreModule.TestModeTransport.MaxInboundChunkSize
-  nameWithType: TestModeTransport.MaxInboundChunkSize
-- uid: Wss.CoreModule.TestModeTransport.MaxInboundChunkSize*
-  name: MaxInboundChunkSize
-  href: api/core/Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_MaxInboundChunkSize_
-  commentId: Overload:Wss.CoreModule.TestModeTransport.MaxInboundChunkSize
-  isSpec: "True"
-  fullName: Wss.CoreModule.TestModeTransport.MaxInboundChunkSize
-  nameWithType: TestModeTransport.MaxInboundChunkSize
-- uid: Wss.CoreModule.TestModeTransport.Rng
-  name: Rng
-  href: api/core/Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_Rng
-  commentId: P:Wss.CoreModule.TestModeTransport.Rng
-  fullName: Wss.CoreModule.TestModeTransport.Rng
-  nameWithType: TestModeTransport.Rng
-- uid: Wss.CoreModule.TestModeTransport.Rng*
-  name: Rng
-  href: api/core/Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_Rng_
-  commentId: Overload:Wss.CoreModule.TestModeTransport.Rng
-  isSpec: "True"
-  fullName: Wss.CoreModule.TestModeTransport.Rng
-  nameWithType: TestModeTransport.Rng
-- uid: Wss.CoreModule.TestModeTransport.SendAsync(System.Byte[],System.Threading.CancellationToken)
-  name: SendAsync(byte[], CancellationToken)
-  href: api/core/Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_SendAsync_System_Byte___System_Threading_CancellationToken_
-  commentId: M:Wss.CoreModule.TestModeTransport.SendAsync(System.Byte[],System.Threading.CancellationToken)
-  name.vb: SendAsync(Byte(), CancellationToken)
-  fullName: Wss.CoreModule.TestModeTransport.SendAsync(byte[], System.Threading.CancellationToken)
-  fullName.vb: Wss.CoreModule.TestModeTransport.SendAsync(Byte(), System.Threading.CancellationToken)
-  nameWithType: TestModeTransport.SendAsync(byte[], CancellationToken)
-  nameWithType.vb: TestModeTransport.SendAsync(Byte(), CancellationToken)
-- uid: Wss.CoreModule.TestModeTransport.SendAsync*
-  name: SendAsync
-  href: api/core/Wss.CoreModule.TestModeTransport.html#Wss_CoreModule_TestModeTransport_SendAsync_
-  commentId: Overload:Wss.CoreModule.TestModeTransport.SendAsync
-  isSpec: "True"
-  fullName: Wss.CoreModule.TestModeTransport.SendAsync
-  nameWithType: TestModeTransport.SendAsync
-- uid: Wss.CoreModule.TestModeTransportOptions
-  name: TestModeTransportOptions
-  href: api/core/Wss.CoreModule.TestModeTransportOptions.html
-  commentId: T:Wss.CoreModule.TestModeTransportOptions
-  fullName: Wss.CoreModule.TestModeTransportOptions
-  nameWithType: TestModeTransportOptions
-- uid: Wss.CoreModule.TestModeTransportOptions.AutoResponderAsync
-  name: AutoResponderAsync
-  href: api/core/Wss.CoreModule.TestModeTransportOptions.html#Wss_CoreModule_TestModeTransportOptions_AutoResponderAsync
-  commentId: P:Wss.CoreModule.TestModeTransportOptions.AutoResponderAsync
-  fullName: Wss.CoreModule.TestModeTransportOptions.AutoResponderAsync
-  nameWithType: TestModeTransportOptions.AutoResponderAsync
-- uid: Wss.CoreModule.TestModeTransportOptions.AutoResponderAsync*
-  name: AutoResponderAsync
-  href: api/core/Wss.CoreModule.TestModeTransportOptions.html#Wss_CoreModule_TestModeTransportOptions_AutoResponderAsync_
-  commentId: Overload:Wss.CoreModule.TestModeTransportOptions.AutoResponderAsync
-  isSpec: "True"
-  fullName: Wss.CoreModule.TestModeTransportOptions.AutoResponderAsync
-  nameWithType: TestModeTransportOptions.AutoResponderAsync
-- uid: Wss.CoreModule.TestModeTransportOptions.BaseLatency
-  name: BaseLatency
-  href: api/core/Wss.CoreModule.TestModeTransportOptions.html#Wss_CoreModule_TestModeTransportOptions_BaseLatency
-  commentId: P:Wss.CoreModule.TestModeTransportOptions.BaseLatency
-  fullName: Wss.CoreModule.TestModeTransportOptions.BaseLatency
-  nameWithType: TestModeTransportOptions.BaseLatency
-- uid: Wss.CoreModule.TestModeTransportOptions.BaseLatency*
-  name: BaseLatency
-  href: api/core/Wss.CoreModule.TestModeTransportOptions.html#Wss_CoreModule_TestModeTransportOptions_BaseLatency_
-  commentId: Overload:Wss.CoreModule.TestModeTransportOptions.BaseLatency
-  isSpec: "True"
-  fullName: Wss.CoreModule.TestModeTransportOptions.BaseLatency
-  nameWithType: TestModeTransportOptions.BaseLatency
-- uid: Wss.CoreModule.TestModeTransportOptions.FallbackPayload
-  name: FallbackPayload
-  href: api/core/Wss.CoreModule.TestModeTransportOptions.html#Wss_CoreModule_TestModeTransportOptions_FallbackPayload
-  commentId: P:Wss.CoreModule.TestModeTransportOptions.FallbackPayload
-  fullName: Wss.CoreModule.TestModeTransportOptions.FallbackPayload
-  nameWithType: TestModeTransportOptions.FallbackPayload
-- uid: Wss.CoreModule.TestModeTransportOptions.FallbackPayload*
-  name: FallbackPayload
-  href: api/core/Wss.CoreModule.TestModeTransportOptions.html#Wss_CoreModule_TestModeTransportOptions_FallbackPayload_
-  commentId: Overload:Wss.CoreModule.TestModeTransportOptions.FallbackPayload
-  isSpec: "True"
-  fullName: Wss.CoreModule.TestModeTransportOptions.FallbackPayload
-  nameWithType: TestModeTransportOptions.FallbackPayload
-- uid: Wss.CoreModule.TestModeTransportOptions.InboundDropProbability
-  name: InboundDropProbability
-  href: api/core/Wss.CoreModule.TestModeTransportOptions.html#Wss_CoreModule_TestModeTransportOptions_InboundDropProbability
-  commentId: P:Wss.CoreModule.TestModeTransportOptions.InboundDropProbability
-  fullName: Wss.CoreModule.TestModeTransportOptions.InboundDropProbability
-  nameWithType: TestModeTransportOptions.InboundDropProbability
-- uid: Wss.CoreModule.TestModeTransportOptions.InboundDropProbability*
-  name: InboundDropProbability
-  href: api/core/Wss.CoreModule.TestModeTransportOptions.html#Wss_CoreModule_TestModeTransportOptions_InboundDropProbability_
-  commentId: Overload:Wss.CoreModule.TestModeTransportOptions.InboundDropProbability
-  isSpec: "True"
-  fullName: Wss.CoreModule.TestModeTransportOptions.InboundDropProbability
-  nameWithType: TestModeTransportOptions.InboundDropProbability
-- uid: Wss.CoreModule.TestModeTransportOptions.JitterMs
-  name: JitterMs
-  href: api/core/Wss.CoreModule.TestModeTransportOptions.html#Wss_CoreModule_TestModeTransportOptions_JitterMs
-  commentId: P:Wss.CoreModule.TestModeTransportOptions.JitterMs
-  fullName: Wss.CoreModule.TestModeTransportOptions.JitterMs
-  nameWithType: TestModeTransportOptions.JitterMs
-- uid: Wss.CoreModule.TestModeTransportOptions.JitterMs*
-  name: JitterMs
-  href: api/core/Wss.CoreModule.TestModeTransportOptions.html#Wss_CoreModule_TestModeTransportOptions_JitterMs_
-  commentId: Overload:Wss.CoreModule.TestModeTransportOptions.JitterMs
-  isSpec: "True"
-  fullName: Wss.CoreModule.TestModeTransportOptions.JitterMs
-  nameWithType: TestModeTransportOptions.JitterMs
-- uid: Wss.CoreModule.TestModeTransportOptions.MaxInboundChunkSize
-  name: MaxInboundChunkSize
-  href: api/core/Wss.CoreModule.TestModeTransportOptions.html#Wss_CoreModule_TestModeTransportOptions_MaxInboundChunkSize
-  commentId: P:Wss.CoreModule.TestModeTransportOptions.MaxInboundChunkSize
-  fullName: Wss.CoreModule.TestModeTransportOptions.MaxInboundChunkSize
-  nameWithType: TestModeTransportOptions.MaxInboundChunkSize
-- uid: Wss.CoreModule.TestModeTransportOptions.MaxInboundChunkSize*
-  name: MaxInboundChunkSize
-  href: api/core/Wss.CoreModule.TestModeTransportOptions.html#Wss_CoreModule_TestModeTransportOptions_MaxInboundChunkSize_
-  commentId: Overload:Wss.CoreModule.TestModeTransportOptions.MaxInboundChunkSize
-  isSpec: "True"
-  fullName: Wss.CoreModule.TestModeTransportOptions.MaxInboundChunkSize
-  nameWithType: TestModeTransportOptions.MaxInboundChunkSize
-- uid: Wss.CoreModule.TestModeTransportOptions.Rng
-  name: Rng
-  href: api/core/Wss.CoreModule.TestModeTransportOptions.html#Wss_CoreModule_TestModeTransportOptions_Rng
-  commentId: P:Wss.CoreModule.TestModeTransportOptions.Rng
-  fullName: Wss.CoreModule.TestModeTransportOptions.Rng
-  nameWithType: TestModeTransportOptions.Rng
-- uid: Wss.CoreModule.TestModeTransportOptions.Rng*
-  name: Rng
-  href: api/core/Wss.CoreModule.TestModeTransportOptions.html#Wss_CoreModule_TestModeTransportOptions_Rng_
-  commentId: Overload:Wss.CoreModule.TestModeTransportOptions.Rng
-  isSpec: "True"
-  fullName: Wss.CoreModule.TestModeTransportOptions.Rng
-  nameWithType: TestModeTransportOptions.Rng
 - uid: Wss.CoreModule.WSSLimits
   name: WSSLimits
   href: api/core/Wss.CoreModule.WSSLimits.html
@@ -5876,13 +6704,13 @@ references:
   commentId: T:Wss.CoreModule.WssClient
   fullName: Wss.CoreModule.WssClient
   nameWithType: WssClient
-- uid: Wss.CoreModule.WssClient.#ctor(Wss.CoreModule.ITransport,Wss.CoreModule.IFrameCodec,Wss.CoreModule.WSSVersionHandler,Wss.CoreModule.WssClientOptions)
+- uid: Wss.CoreModule.WssClient.#ctor(Wss.Transports.ITransport,Wss.CoreModule.IFrameCodec,Wss.CoreModule.WSSVersionHandler,Wss.CoreModule.WssClientOptions)
   name: WssClient(ITransport, IFrameCodec, WSSVersionHandler, WssClientOptions)
-  href: api/core/Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient__ctor_Wss_CoreModule_ITransport_Wss_CoreModule_IFrameCodec_Wss_CoreModule_WSSVersionHandler_Wss_CoreModule_WssClientOptions_
-  commentId: M:Wss.CoreModule.WssClient.#ctor(Wss.CoreModule.ITransport,Wss.CoreModule.IFrameCodec,Wss.CoreModule.WSSVersionHandler,Wss.CoreModule.WssClientOptions)
+  href: api/core/Wss.CoreModule.WssClient.html#Wss_CoreModule_WssClient__ctor_Wss_Transports_ITransport_Wss_CoreModule_IFrameCodec_Wss_CoreModule_WSSVersionHandler_Wss_CoreModule_WssClientOptions_
+  commentId: M:Wss.CoreModule.WssClient.#ctor(Wss.Transports.ITransport,Wss.CoreModule.IFrameCodec,Wss.CoreModule.WSSVersionHandler,Wss.CoreModule.WssClientOptions)
   name.vb: New(ITransport, IFrameCodec, WSSVersionHandler, WssClientOptions)
-  fullName: Wss.CoreModule.WssClient.WssClient(Wss.CoreModule.ITransport, Wss.CoreModule.IFrameCodec, Wss.CoreModule.WSSVersionHandler, Wss.CoreModule.WssClientOptions)
-  fullName.vb: Wss.CoreModule.WssClient.New(Wss.CoreModule.ITransport, Wss.CoreModule.IFrameCodec, Wss.CoreModule.WSSVersionHandler, Wss.CoreModule.WssClientOptions)
+  fullName: Wss.CoreModule.WssClient.WssClient(Wss.Transports.ITransport, Wss.CoreModule.IFrameCodec, Wss.CoreModule.WSSVersionHandler, Wss.CoreModule.WssClientOptions)
+  fullName.vb: Wss.CoreModule.WssClient.New(Wss.Transports.ITransport, Wss.CoreModule.IFrameCodec, Wss.CoreModule.WSSVersionHandler, Wss.CoreModule.WssClientOptions)
   nameWithType: WssClient.WssClient(ITransport, IFrameCodec, WSSVersionHandler, WssClientOptions)
   nameWithType.vb: WssClient.New(ITransport, IFrameCodec, WSSVersionHandler, WssClientOptions)
 - uid: Wss.CoreModule.WssClient.#ctor*
@@ -6673,13 +7501,13 @@ references:
   commentId: T:Wss.CoreModule.WssStimulationCore
   fullName: Wss.CoreModule.WssStimulationCore
   nameWithType: WssStimulationCore
-- uid: Wss.CoreModule.WssStimulationCore.#ctor(Wss.CoreModule.ITransport,Wss.CoreModule.WssStimulationCoreOptions)
+- uid: Wss.CoreModule.WssStimulationCore.#ctor(Wss.Transports.ITransport,Wss.CoreModule.WssStimulationCoreOptions)
   name: WssStimulationCore(ITransport, WssStimulationCoreOptions)
-  href: api/core/Wss.CoreModule.WssStimulationCore.html#Wss_CoreModule_WssStimulationCore__ctor_Wss_CoreModule_ITransport_Wss_CoreModule_WssStimulationCoreOptions_
-  commentId: M:Wss.CoreModule.WssStimulationCore.#ctor(Wss.CoreModule.ITransport,Wss.CoreModule.WssStimulationCoreOptions)
+  href: api/core/Wss.CoreModule.WssStimulationCore.html#Wss_CoreModule_WssStimulationCore__ctor_Wss_Transports_ITransport_Wss_CoreModule_WssStimulationCoreOptions_
+  commentId: M:Wss.CoreModule.WssStimulationCore.#ctor(Wss.Transports.ITransport,Wss.CoreModule.WssStimulationCoreOptions)
   name.vb: New(ITransport, WssStimulationCoreOptions)
-  fullName: Wss.CoreModule.WssStimulationCore.WssStimulationCore(Wss.CoreModule.ITransport, Wss.CoreModule.WssStimulationCoreOptions)
-  fullName.vb: Wss.CoreModule.WssStimulationCore.New(Wss.CoreModule.ITransport, Wss.CoreModule.WssStimulationCoreOptions)
+  fullName: Wss.CoreModule.WssStimulationCore.WssStimulationCore(Wss.Transports.ITransport, Wss.CoreModule.WssStimulationCoreOptions)
+  fullName.vb: Wss.CoreModule.WssStimulationCore.New(Wss.Transports.ITransport, Wss.CoreModule.WssStimulationCoreOptions)
   nameWithType: WssStimulationCore.WssStimulationCore(ITransport, WssStimulationCoreOptions)
   nameWithType.vb: WssStimulationCore.New(ITransport, WssStimulationCoreOptions)
 - uid: Wss.CoreModule.WssStimulationCore.#ctor*
@@ -8236,3 +9064,814 @@ references:
   isSpec: "True"
   fullName: Wss.ModelModule.ModelParamsLayer.ZeroOutStim
   nameWithType: ModelParamsLayer.ZeroOutStim
+- uid: Wss.Transports
+  name: Wss.Transports
+  href: api/core/Wss.Transports.html
+  commentId: N:Wss.Transports
+  fullName: Wss.Transports
+  nameWithType: Wss.Transports
+- uid: Wss.Transports.BleNusTransport
+  name: BleNusTransport
+  href: api/core/Wss.Transports.BleNusTransport.html
+  commentId: T:Wss.Transports.BleNusTransport
+  fullName: Wss.Transports.BleNusTransport
+  nameWithType: BleNusTransport
+- uid: Wss.Transports.BleNusTransport.#ctor(System.String)
+  name: BleNusTransport(string)
+  href: api/core/Wss.Transports.BleNusTransport.html#Wss_Transports_BleNusTransport__ctor_System_String_
+  commentId: M:Wss.Transports.BleNusTransport.#ctor(System.String)
+  name.vb: New(String)
+  fullName: Wss.Transports.BleNusTransport.BleNusTransport(string)
+  fullName.vb: Wss.Transports.BleNusTransport.New(String)
+  nameWithType: BleNusTransport.BleNusTransport(string)
+  nameWithType.vb: BleNusTransport.New(String)
+- uid: Wss.Transports.BleNusTransport.#ctor(Wss.Transports.BleNusTransportOptions)
+  name: BleNusTransport(BleNusTransportOptions)
+  href: api/core/Wss.Transports.BleNusTransport.html#Wss_Transports_BleNusTransport__ctor_Wss_Transports_BleNusTransportOptions_
+  commentId: M:Wss.Transports.BleNusTransport.#ctor(Wss.Transports.BleNusTransportOptions)
+  name.vb: New(BleNusTransportOptions)
+  fullName: Wss.Transports.BleNusTransport.BleNusTransport(Wss.Transports.BleNusTransportOptions)
+  fullName.vb: Wss.Transports.BleNusTransport.New(Wss.Transports.BleNusTransportOptions)
+  nameWithType: BleNusTransport.BleNusTransport(BleNusTransportOptions)
+  nameWithType.vb: BleNusTransport.New(BleNusTransportOptions)
+- uid: Wss.Transports.BleNusTransport.#ctor*
+  name: BleNusTransport
+  href: api/core/Wss.Transports.BleNusTransport.html#Wss_Transports_BleNusTransport__ctor_
+  commentId: Overload:Wss.Transports.BleNusTransport.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Wss.Transports.BleNusTransport.BleNusTransport
+  fullName.vb: Wss.Transports.BleNusTransport.New
+  nameWithType: BleNusTransport.BleNusTransport
+  nameWithType.vb: BleNusTransport.New
+- uid: Wss.Transports.BleNusTransport.BytesReceived
+  name: BytesReceived
+  href: api/core/Wss.Transports.BleNusTransport.html#Wss_Transports_BleNusTransport_BytesReceived
+  commentId: E:Wss.Transports.BleNusTransport.BytesReceived
+  fullName: Wss.Transports.BleNusTransport.BytesReceived
+  nameWithType: BleNusTransport.BytesReceived
+- uid: Wss.Transports.BleNusTransport.ConnectAsync(System.Threading.CancellationToken)
+  name: ConnectAsync(CancellationToken)
+  href: api/core/Wss.Transports.BleNusTransport.html#Wss_Transports_BleNusTransport_ConnectAsync_System_Threading_CancellationToken_
+  commentId: M:Wss.Transports.BleNusTransport.ConnectAsync(System.Threading.CancellationToken)
+  fullName: Wss.Transports.BleNusTransport.ConnectAsync(System.Threading.CancellationToken)
+  nameWithType: BleNusTransport.ConnectAsync(CancellationToken)
+- uid: Wss.Transports.BleNusTransport.ConnectAsync*
+  name: ConnectAsync
+  href: api/core/Wss.Transports.BleNusTransport.html#Wss_Transports_BleNusTransport_ConnectAsync_
+  commentId: Overload:Wss.Transports.BleNusTransport.ConnectAsync
+  isSpec: "True"
+  fullName: Wss.Transports.BleNusTransport.ConnectAsync
+  nameWithType: BleNusTransport.ConnectAsync
+- uid: Wss.Transports.BleNusTransport.CreateDefaultOptions(System.String)
+  name: CreateDefaultOptions(string)
+  href: api/core/Wss.Transports.BleNusTransport.html#Wss_Transports_BleNusTransport_CreateDefaultOptions_System_String_
+  commentId: M:Wss.Transports.BleNusTransport.CreateDefaultOptions(System.String)
+  name.vb: CreateDefaultOptions(String)
+  fullName: Wss.Transports.BleNusTransport.CreateDefaultOptions(string)
+  fullName.vb: Wss.Transports.BleNusTransport.CreateDefaultOptions(String)
+  nameWithType: BleNusTransport.CreateDefaultOptions(string)
+  nameWithType.vb: BleNusTransport.CreateDefaultOptions(String)
+- uid: Wss.Transports.BleNusTransport.CreateDefaultOptions*
+  name: CreateDefaultOptions
+  href: api/core/Wss.Transports.BleNusTransport.html#Wss_Transports_BleNusTransport_CreateDefaultOptions_
+  commentId: Overload:Wss.Transports.BleNusTransport.CreateDefaultOptions
+  isSpec: "True"
+  fullName: Wss.Transports.BleNusTransport.CreateDefaultOptions
+  nameWithType: BleNusTransport.CreateDefaultOptions
+- uid: Wss.Transports.BleNusTransport.DefaultNotifyCharacteristicUuid
+  name: DefaultNotifyCharacteristicUuid
+  href: api/core/Wss.Transports.BleNusTransport.html#Wss_Transports_BleNusTransport_DefaultNotifyCharacteristicUuid
+  commentId: F:Wss.Transports.BleNusTransport.DefaultNotifyCharacteristicUuid
+  fullName: Wss.Transports.BleNusTransport.DefaultNotifyCharacteristicUuid
+  nameWithType: BleNusTransport.DefaultNotifyCharacteristicUuid
+- uid: Wss.Transports.BleNusTransport.DefaultServiceUuid
+  name: DefaultServiceUuid
+  href: api/core/Wss.Transports.BleNusTransport.html#Wss_Transports_BleNusTransport_DefaultServiceUuid
+  commentId: F:Wss.Transports.BleNusTransport.DefaultServiceUuid
+  fullName: Wss.Transports.BleNusTransport.DefaultServiceUuid
+  nameWithType: BleNusTransport.DefaultServiceUuid
+- uid: Wss.Transports.BleNusTransport.DefaultWriteCharacteristicUuid
+  name: DefaultWriteCharacteristicUuid
+  href: api/core/Wss.Transports.BleNusTransport.html#Wss_Transports_BleNusTransport_DefaultWriteCharacteristicUuid
+  commentId: F:Wss.Transports.BleNusTransport.DefaultWriteCharacteristicUuid
+  fullName: Wss.Transports.BleNusTransport.DefaultWriteCharacteristicUuid
+  nameWithType: BleNusTransport.DefaultWriteCharacteristicUuid
+- uid: Wss.Transports.BleNusTransport.DisconnectAsync(System.Threading.CancellationToken)
+  name: DisconnectAsync(CancellationToken)
+  href: api/core/Wss.Transports.BleNusTransport.html#Wss_Transports_BleNusTransport_DisconnectAsync_System_Threading_CancellationToken_
+  commentId: M:Wss.Transports.BleNusTransport.DisconnectAsync(System.Threading.CancellationToken)
+  fullName: Wss.Transports.BleNusTransport.DisconnectAsync(System.Threading.CancellationToken)
+  nameWithType: BleNusTransport.DisconnectAsync(CancellationToken)
+- uid: Wss.Transports.BleNusTransport.DisconnectAsync*
+  name: DisconnectAsync
+  href: api/core/Wss.Transports.BleNusTransport.html#Wss_Transports_BleNusTransport_DisconnectAsync_
+  commentId: Overload:Wss.Transports.BleNusTransport.DisconnectAsync
+  isSpec: "True"
+  fullName: Wss.Transports.BleNusTransport.DisconnectAsync
+  nameWithType: BleNusTransport.DisconnectAsync
+- uid: Wss.Transports.BleNusTransport.Dispose
+  name: Dispose()
+  href: api/core/Wss.Transports.BleNusTransport.html#Wss_Transports_BleNusTransport_Dispose
+  commentId: M:Wss.Transports.BleNusTransport.Dispose
+  fullName: Wss.Transports.BleNusTransport.Dispose()
+  nameWithType: BleNusTransport.Dispose()
+- uid: Wss.Transports.BleNusTransport.Dispose*
+  name: Dispose
+  href: api/core/Wss.Transports.BleNusTransport.html#Wss_Transports_BleNusTransport_Dispose_
+  commentId: Overload:Wss.Transports.BleNusTransport.Dispose
+  isSpec: "True"
+  fullName: Wss.Transports.BleNusTransport.Dispose
+  nameWithType: BleNusTransport.Dispose
+- uid: Wss.Transports.BleNusTransport.IsConnected
+  name: IsConnected
+  href: api/core/Wss.Transports.BleNusTransport.html#Wss_Transports_BleNusTransport_IsConnected
+  commentId: P:Wss.Transports.BleNusTransport.IsConnected
+  fullName: Wss.Transports.BleNusTransport.IsConnected
+  nameWithType: BleNusTransport.IsConnected
+- uid: Wss.Transports.BleNusTransport.IsConnected*
+  name: IsConnected
+  href: api/core/Wss.Transports.BleNusTransport.html#Wss_Transports_BleNusTransport_IsConnected_
+  commentId: Overload:Wss.Transports.BleNusTransport.IsConnected
+  isSpec: "True"
+  fullName: Wss.Transports.BleNusTransport.IsConnected
+  nameWithType: BleNusTransport.IsConnected
+- uid: Wss.Transports.BleNusTransport.SendAsync(System.Byte[],System.Threading.CancellationToken)
+  name: SendAsync(byte[], CancellationToken)
+  href: api/core/Wss.Transports.BleNusTransport.html#Wss_Transports_BleNusTransport_SendAsync_System_Byte___System_Threading_CancellationToken_
+  commentId: M:Wss.Transports.BleNusTransport.SendAsync(System.Byte[],System.Threading.CancellationToken)
+  name.vb: SendAsync(Byte(), CancellationToken)
+  fullName: Wss.Transports.BleNusTransport.SendAsync(byte[], System.Threading.CancellationToken)
+  fullName.vb: Wss.Transports.BleNusTransport.SendAsync(Byte(), System.Threading.CancellationToken)
+  nameWithType: BleNusTransport.SendAsync(byte[], CancellationToken)
+  nameWithType.vb: BleNusTransport.SendAsync(Byte(), CancellationToken)
+- uid: Wss.Transports.BleNusTransport.SendAsync*
+  name: SendAsync
+  href: api/core/Wss.Transports.BleNusTransport.html#Wss_Transports_BleNusTransport_SendAsync_
+  commentId: Overload:Wss.Transports.BleNusTransport.SendAsync
+  isSpec: "True"
+  fullName: Wss.Transports.BleNusTransport.SendAsync
+  nameWithType: BleNusTransport.SendAsync
+- uid: Wss.Transports.BleNusTransportOptions
+  name: BleNusTransportOptions
+  href: api/core/Wss.Transports.BleNusTransportOptions.html
+  commentId: T:Wss.Transports.BleNusTransportOptions
+  fullName: Wss.Transports.BleNusTransportOptions
+  nameWithType: BleNusTransportOptions
+- uid: Wss.Transports.BleNusTransportOptions.AutoSelectDevice
+  name: AutoSelectDevice
+  href: api/core/Wss.Transports.BleNusTransportOptions.html#Wss_Transports_BleNusTransportOptions_AutoSelectDevice
+  commentId: P:Wss.Transports.BleNusTransportOptions.AutoSelectDevice
+  fullName: Wss.Transports.BleNusTransportOptions.AutoSelectDevice
+  nameWithType: BleNusTransportOptions.AutoSelectDevice
+- uid: Wss.Transports.BleNusTransportOptions.AutoSelectDevice*
+  name: AutoSelectDevice
+  href: api/core/Wss.Transports.BleNusTransportOptions.html#Wss_Transports_BleNusTransportOptions_AutoSelectDevice_
+  commentId: Overload:Wss.Transports.BleNusTransportOptions.AutoSelectDevice
+  isSpec: "True"
+  fullName: Wss.Transports.BleNusTransportOptions.AutoSelectDevice
+  nameWithType: BleNusTransportOptions.AutoSelectDevice
+- uid: Wss.Transports.BleNusTransportOptions.DeviceId
+  name: DeviceId
+  href: api/core/Wss.Transports.BleNusTransportOptions.html#Wss_Transports_BleNusTransportOptions_DeviceId
+  commentId: P:Wss.Transports.BleNusTransportOptions.DeviceId
+  fullName: Wss.Transports.BleNusTransportOptions.DeviceId
+  nameWithType: BleNusTransportOptions.DeviceId
+- uid: Wss.Transports.BleNusTransportOptions.DeviceId*
+  name: DeviceId
+  href: api/core/Wss.Transports.BleNusTransportOptions.html#Wss_Transports_BleNusTransportOptions_DeviceId_
+  commentId: Overload:Wss.Transports.BleNusTransportOptions.DeviceId
+  isSpec: "True"
+  fullName: Wss.Transports.BleNusTransportOptions.DeviceId
+  nameWithType: BleNusTransportOptions.DeviceId
+- uid: Wss.Transports.BleNusTransportOptions.DeviceName
+  name: DeviceName
+  href: api/core/Wss.Transports.BleNusTransportOptions.html#Wss_Transports_BleNusTransportOptions_DeviceName
+  commentId: P:Wss.Transports.BleNusTransportOptions.DeviceName
+  fullName: Wss.Transports.BleNusTransportOptions.DeviceName
+  nameWithType: BleNusTransportOptions.DeviceName
+- uid: Wss.Transports.BleNusTransportOptions.DeviceName*
+  name: DeviceName
+  href: api/core/Wss.Transports.BleNusTransportOptions.html#Wss_Transports_BleNusTransportOptions_DeviceName_
+  commentId: Overload:Wss.Transports.BleNusTransportOptions.DeviceName
+  isSpec: "True"
+  fullName: Wss.Transports.BleNusTransportOptions.DeviceName
+  nameWithType: BleNusTransportOptions.DeviceName
+- uid: Wss.Transports.BleNusTransportOptions.NotifyCharacteristicUuid
+  name: NotifyCharacteristicUuid
+  href: api/core/Wss.Transports.BleNusTransportOptions.html#Wss_Transports_BleNusTransportOptions_NotifyCharacteristicUuid
+  commentId: P:Wss.Transports.BleNusTransportOptions.NotifyCharacteristicUuid
+  fullName: Wss.Transports.BleNusTransportOptions.NotifyCharacteristicUuid
+  nameWithType: BleNusTransportOptions.NotifyCharacteristicUuid
+- uid: Wss.Transports.BleNusTransportOptions.NotifyCharacteristicUuid*
+  name: NotifyCharacteristicUuid
+  href: api/core/Wss.Transports.BleNusTransportOptions.html#Wss_Transports_BleNusTransportOptions_NotifyCharacteristicUuid_
+  commentId: Overload:Wss.Transports.BleNusTransportOptions.NotifyCharacteristicUuid
+  isSpec: "True"
+  fullName: Wss.Transports.BleNusTransportOptions.NotifyCharacteristicUuid
+  nameWithType: BleNusTransportOptions.NotifyCharacteristicUuid
+- uid: Wss.Transports.BleNusTransportOptions.ScanTimeout
+  name: ScanTimeout
+  href: api/core/Wss.Transports.BleNusTransportOptions.html#Wss_Transports_BleNusTransportOptions_ScanTimeout
+  commentId: P:Wss.Transports.BleNusTransportOptions.ScanTimeout
+  fullName: Wss.Transports.BleNusTransportOptions.ScanTimeout
+  nameWithType: BleNusTransportOptions.ScanTimeout
+- uid: Wss.Transports.BleNusTransportOptions.ScanTimeout*
+  name: ScanTimeout
+  href: api/core/Wss.Transports.BleNusTransportOptions.html#Wss_Transports_BleNusTransportOptions_ScanTimeout_
+  commentId: Overload:Wss.Transports.BleNusTransportOptions.ScanTimeout
+  isSpec: "True"
+  fullName: Wss.Transports.BleNusTransportOptions.ScanTimeout
+  nameWithType: BleNusTransportOptions.ScanTimeout
+- uid: Wss.Transports.BleNusTransportOptions.ServiceUuid
+  name: ServiceUuid
+  href: api/core/Wss.Transports.BleNusTransportOptions.html#Wss_Transports_BleNusTransportOptions_ServiceUuid
+  commentId: P:Wss.Transports.BleNusTransportOptions.ServiceUuid
+  fullName: Wss.Transports.BleNusTransportOptions.ServiceUuid
+  nameWithType: BleNusTransportOptions.ServiceUuid
+- uid: Wss.Transports.BleNusTransportOptions.ServiceUuid*
+  name: ServiceUuid
+  href: api/core/Wss.Transports.BleNusTransportOptions.html#Wss_Transports_BleNusTransportOptions_ServiceUuid_
+  commentId: Overload:Wss.Transports.BleNusTransportOptions.ServiceUuid
+  isSpec: "True"
+  fullName: Wss.Transports.BleNusTransportOptions.ServiceUuid
+  nameWithType: BleNusTransportOptions.ServiceUuid
+- uid: Wss.Transports.BleNusTransportOptions.WriteCharacteristicUuid
+  name: WriteCharacteristicUuid
+  href: api/core/Wss.Transports.BleNusTransportOptions.html#Wss_Transports_BleNusTransportOptions_WriteCharacteristicUuid
+  commentId: P:Wss.Transports.BleNusTransportOptions.WriteCharacteristicUuid
+  fullName: Wss.Transports.BleNusTransportOptions.WriteCharacteristicUuid
+  nameWithType: BleNusTransportOptions.WriteCharacteristicUuid
+- uid: Wss.Transports.BleNusTransportOptions.WriteCharacteristicUuid*
+  name: WriteCharacteristicUuid
+  href: api/core/Wss.Transports.BleNusTransportOptions.html#Wss_Transports_BleNusTransportOptions_WriteCharacteristicUuid_
+  commentId: Overload:Wss.Transports.BleNusTransportOptions.WriteCharacteristicUuid
+  isSpec: "True"
+  fullName: Wss.Transports.BleNusTransportOptions.WriteCharacteristicUuid
+  nameWithType: BleNusTransportOptions.WriteCharacteristicUuid
+- uid: Wss.Transports.ITransport
+  name: ITransport
+  href: api/core/Wss.Transports.ITransport.html
+  commentId: T:Wss.Transports.ITransport
+  fullName: Wss.Transports.ITransport
+  nameWithType: ITransport
+- uid: Wss.Transports.ITransport.BytesReceived
+  name: BytesReceived
+  href: api/core/Wss.Transports.ITransport.html#Wss_Transports_ITransport_BytesReceived
+  commentId: E:Wss.Transports.ITransport.BytesReceived
+  fullName: Wss.Transports.ITransport.BytesReceived
+  nameWithType: ITransport.BytesReceived
+- uid: Wss.Transports.ITransport.ConnectAsync(System.Threading.CancellationToken)
+  name: ConnectAsync(CancellationToken)
+  href: api/core/Wss.Transports.ITransport.html#Wss_Transports_ITransport_ConnectAsync_System_Threading_CancellationToken_
+  commentId: M:Wss.Transports.ITransport.ConnectAsync(System.Threading.CancellationToken)
+  fullName: Wss.Transports.ITransport.ConnectAsync(System.Threading.CancellationToken)
+  nameWithType: ITransport.ConnectAsync(CancellationToken)
+- uid: Wss.Transports.ITransport.ConnectAsync*
+  name: ConnectAsync
+  href: api/core/Wss.Transports.ITransport.html#Wss_Transports_ITransport_ConnectAsync_
+  commentId: Overload:Wss.Transports.ITransport.ConnectAsync
+  isSpec: "True"
+  fullName: Wss.Transports.ITransport.ConnectAsync
+  nameWithType: ITransport.ConnectAsync
+- uid: Wss.Transports.ITransport.DisconnectAsync(System.Threading.CancellationToken)
+  name: DisconnectAsync(CancellationToken)
+  href: api/core/Wss.Transports.ITransport.html#Wss_Transports_ITransport_DisconnectAsync_System_Threading_CancellationToken_
+  commentId: M:Wss.Transports.ITransport.DisconnectAsync(System.Threading.CancellationToken)
+  fullName: Wss.Transports.ITransport.DisconnectAsync(System.Threading.CancellationToken)
+  nameWithType: ITransport.DisconnectAsync(CancellationToken)
+- uid: Wss.Transports.ITransport.DisconnectAsync*
+  name: DisconnectAsync
+  href: api/core/Wss.Transports.ITransport.html#Wss_Transports_ITransport_DisconnectAsync_
+  commentId: Overload:Wss.Transports.ITransport.DisconnectAsync
+  isSpec: "True"
+  fullName: Wss.Transports.ITransport.DisconnectAsync
+  nameWithType: ITransport.DisconnectAsync
+- uid: Wss.Transports.ITransport.IsConnected
+  name: IsConnected
+  href: api/core/Wss.Transports.ITransport.html#Wss_Transports_ITransport_IsConnected
+  commentId: P:Wss.Transports.ITransport.IsConnected
+  fullName: Wss.Transports.ITransport.IsConnected
+  nameWithType: ITransport.IsConnected
+- uid: Wss.Transports.ITransport.IsConnected*
+  name: IsConnected
+  href: api/core/Wss.Transports.ITransport.html#Wss_Transports_ITransport_IsConnected_
+  commentId: Overload:Wss.Transports.ITransport.IsConnected
+  isSpec: "True"
+  fullName: Wss.Transports.ITransport.IsConnected
+  nameWithType: ITransport.IsConnected
+- uid: Wss.Transports.ITransport.SendAsync(System.Byte[],System.Threading.CancellationToken)
+  name: SendAsync(byte[], CancellationToken)
+  href: api/core/Wss.Transports.ITransport.html#Wss_Transports_ITransport_SendAsync_System_Byte___System_Threading_CancellationToken_
+  commentId: M:Wss.Transports.ITransport.SendAsync(System.Byte[],System.Threading.CancellationToken)
+  name.vb: SendAsync(Byte(), CancellationToken)
+  fullName: Wss.Transports.ITransport.SendAsync(byte[], System.Threading.CancellationToken)
+  fullName.vb: Wss.Transports.ITransport.SendAsync(Byte(), System.Threading.CancellationToken)
+  nameWithType: ITransport.SendAsync(byte[], CancellationToken)
+  nameWithType.vb: ITransport.SendAsync(Byte(), CancellationToken)
+- uid: Wss.Transports.ITransport.SendAsync*
+  name: SendAsync
+  href: api/core/Wss.Transports.ITransport.html#Wss_Transports_ITransport_SendAsync_
+  commentId: Overload:Wss.Transports.ITransport.SendAsync
+  isSpec: "True"
+  fullName: Wss.Transports.ITransport.SendAsync
+  nameWithType: ITransport.SendAsync
+- uid: Wss.Transports.SerialPortTransport
+  name: SerialPortTransport
+  href: api/core/Wss.Transports.SerialPortTransport.html
+  commentId: T:Wss.Transports.SerialPortTransport
+  fullName: Wss.Transports.SerialPortTransport
+  nameWithType: SerialPortTransport
+- uid: Wss.Transports.SerialPortTransport.#ctor(Wss.Transports.SerialPortTransportOptions)
+  name: SerialPortTransport(SerialPortTransportOptions)
+  href: api/core/Wss.Transports.SerialPortTransport.html#Wss_Transports_SerialPortTransport__ctor_Wss_Transports_SerialPortTransportOptions_
+  commentId: M:Wss.Transports.SerialPortTransport.#ctor(Wss.Transports.SerialPortTransportOptions)
+  name.vb: New(SerialPortTransportOptions)
+  fullName: Wss.Transports.SerialPortTransport.SerialPortTransport(Wss.Transports.SerialPortTransportOptions)
+  fullName.vb: Wss.Transports.SerialPortTransport.New(Wss.Transports.SerialPortTransportOptions)
+  nameWithType: SerialPortTransport.SerialPortTransport(SerialPortTransportOptions)
+  nameWithType.vb: SerialPortTransport.New(SerialPortTransportOptions)
+- uid: Wss.Transports.SerialPortTransport.#ctor*
+  name: SerialPortTransport
+  href: api/core/Wss.Transports.SerialPortTransport.html#Wss_Transports_SerialPortTransport__ctor_
+  commentId: Overload:Wss.Transports.SerialPortTransport.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Wss.Transports.SerialPortTransport.SerialPortTransport
+  fullName.vb: Wss.Transports.SerialPortTransport.New
+  nameWithType: SerialPortTransport.SerialPortTransport
+  nameWithType.vb: SerialPortTransport.New
+- uid: Wss.Transports.SerialPortTransport.BytesReceived
+  name: BytesReceived
+  href: api/core/Wss.Transports.SerialPortTransport.html#Wss_Transports_SerialPortTransport_BytesReceived
+  commentId: E:Wss.Transports.SerialPortTransport.BytesReceived
+  fullName: Wss.Transports.SerialPortTransport.BytesReceived
+  nameWithType: SerialPortTransport.BytesReceived
+- uid: Wss.Transports.SerialPortTransport.ConnectAsync(System.Threading.CancellationToken)
+  name: ConnectAsync(CancellationToken)
+  href: api/core/Wss.Transports.SerialPortTransport.html#Wss_Transports_SerialPortTransport_ConnectAsync_System_Threading_CancellationToken_
+  commentId: M:Wss.Transports.SerialPortTransport.ConnectAsync(System.Threading.CancellationToken)
+  fullName: Wss.Transports.SerialPortTransport.ConnectAsync(System.Threading.CancellationToken)
+  nameWithType: SerialPortTransport.ConnectAsync(CancellationToken)
+- uid: Wss.Transports.SerialPortTransport.ConnectAsync*
+  name: ConnectAsync
+  href: api/core/Wss.Transports.SerialPortTransport.html#Wss_Transports_SerialPortTransport_ConnectAsync_
+  commentId: Overload:Wss.Transports.SerialPortTransport.ConnectAsync
+  isSpec: "True"
+  fullName: Wss.Transports.SerialPortTransport.ConnectAsync
+  nameWithType: SerialPortTransport.ConnectAsync
+- uid: Wss.Transports.SerialPortTransport.DisconnectAsync(System.Threading.CancellationToken)
+  name: DisconnectAsync(CancellationToken)
+  href: api/core/Wss.Transports.SerialPortTransport.html#Wss_Transports_SerialPortTransport_DisconnectAsync_System_Threading_CancellationToken_
+  commentId: M:Wss.Transports.SerialPortTransport.DisconnectAsync(System.Threading.CancellationToken)
+  fullName: Wss.Transports.SerialPortTransport.DisconnectAsync(System.Threading.CancellationToken)
+  nameWithType: SerialPortTransport.DisconnectAsync(CancellationToken)
+- uid: Wss.Transports.SerialPortTransport.DisconnectAsync*
+  name: DisconnectAsync
+  href: api/core/Wss.Transports.SerialPortTransport.html#Wss_Transports_SerialPortTransport_DisconnectAsync_
+  commentId: Overload:Wss.Transports.SerialPortTransport.DisconnectAsync
+  isSpec: "True"
+  fullName: Wss.Transports.SerialPortTransport.DisconnectAsync
+  nameWithType: SerialPortTransport.DisconnectAsync
+- uid: Wss.Transports.SerialPortTransport.Dispose
+  name: Dispose()
+  href: api/core/Wss.Transports.SerialPortTransport.html#Wss_Transports_SerialPortTransport_Dispose
+  commentId: M:Wss.Transports.SerialPortTransport.Dispose
+  fullName: Wss.Transports.SerialPortTransport.Dispose()
+  nameWithType: SerialPortTransport.Dispose()
+- uid: Wss.Transports.SerialPortTransport.Dispose*
+  name: Dispose
+  href: api/core/Wss.Transports.SerialPortTransport.html#Wss_Transports_SerialPortTransport_Dispose_
+  commentId: Overload:Wss.Transports.SerialPortTransport.Dispose
+  isSpec: "True"
+  fullName: Wss.Transports.SerialPortTransport.Dispose
+  nameWithType: SerialPortTransport.Dispose
+- uid: Wss.Transports.SerialPortTransport.IsConnected
+  name: IsConnected
+  href: api/core/Wss.Transports.SerialPortTransport.html#Wss_Transports_SerialPortTransport_IsConnected
+  commentId: P:Wss.Transports.SerialPortTransport.IsConnected
+  fullName: Wss.Transports.SerialPortTransport.IsConnected
+  nameWithType: SerialPortTransport.IsConnected
+- uid: Wss.Transports.SerialPortTransport.IsConnected*
+  name: IsConnected
+  href: api/core/Wss.Transports.SerialPortTransport.html#Wss_Transports_SerialPortTransport_IsConnected_
+  commentId: Overload:Wss.Transports.SerialPortTransport.IsConnected
+  isSpec: "True"
+  fullName: Wss.Transports.SerialPortTransport.IsConnected
+  nameWithType: SerialPortTransport.IsConnected
+- uid: Wss.Transports.SerialPortTransport.SendAsync(System.Byte[],System.Threading.CancellationToken)
+  name: SendAsync(byte[], CancellationToken)
+  href: api/core/Wss.Transports.SerialPortTransport.html#Wss_Transports_SerialPortTransport_SendAsync_System_Byte___System_Threading_CancellationToken_
+  commentId: M:Wss.Transports.SerialPortTransport.SendAsync(System.Byte[],System.Threading.CancellationToken)
+  name.vb: SendAsync(Byte(), CancellationToken)
+  fullName: Wss.Transports.SerialPortTransport.SendAsync(byte[], System.Threading.CancellationToken)
+  fullName.vb: Wss.Transports.SerialPortTransport.SendAsync(Byte(), System.Threading.CancellationToken)
+  nameWithType: SerialPortTransport.SendAsync(byte[], CancellationToken)
+  nameWithType.vb: SerialPortTransport.SendAsync(Byte(), CancellationToken)
+- uid: Wss.Transports.SerialPortTransport.SendAsync*
+  name: SendAsync
+  href: api/core/Wss.Transports.SerialPortTransport.html#Wss_Transports_SerialPortTransport_SendAsync_
+  commentId: Overload:Wss.Transports.SerialPortTransport.SendAsync
+  isSpec: "True"
+  fullName: Wss.Transports.SerialPortTransport.SendAsync
+  nameWithType: SerialPortTransport.SendAsync
+- uid: Wss.Transports.SerialPortTransportOptions
+  name: SerialPortTransportOptions
+  href: api/core/Wss.Transports.SerialPortTransportOptions.html
+  commentId: T:Wss.Transports.SerialPortTransportOptions
+  fullName: Wss.Transports.SerialPortTransportOptions
+  nameWithType: SerialPortTransportOptions
+- uid: Wss.Transports.SerialPortTransportOptions.AutoSelectPort
+  name: AutoSelectPort
+  href: api/core/Wss.Transports.SerialPortTransportOptions.html#Wss_Transports_SerialPortTransportOptions_AutoSelectPort
+  commentId: P:Wss.Transports.SerialPortTransportOptions.AutoSelectPort
+  fullName: Wss.Transports.SerialPortTransportOptions.AutoSelectPort
+  nameWithType: SerialPortTransportOptions.AutoSelectPort
+- uid: Wss.Transports.SerialPortTransportOptions.AutoSelectPort*
+  name: AutoSelectPort
+  href: api/core/Wss.Transports.SerialPortTransportOptions.html#Wss_Transports_SerialPortTransportOptions_AutoSelectPort_
+  commentId: Overload:Wss.Transports.SerialPortTransportOptions.AutoSelectPort
+  isSpec: "True"
+  fullName: Wss.Transports.SerialPortTransportOptions.AutoSelectPort
+  nameWithType: SerialPortTransportOptions.AutoSelectPort
+- uid: Wss.Transports.SerialPortTransportOptions.Baud
+  name: Baud
+  href: api/core/Wss.Transports.SerialPortTransportOptions.html#Wss_Transports_SerialPortTransportOptions_Baud
+  commentId: P:Wss.Transports.SerialPortTransportOptions.Baud
+  fullName: Wss.Transports.SerialPortTransportOptions.Baud
+  nameWithType: SerialPortTransportOptions.Baud
+- uid: Wss.Transports.SerialPortTransportOptions.Baud*
+  name: Baud
+  href: api/core/Wss.Transports.SerialPortTransportOptions.html#Wss_Transports_SerialPortTransportOptions_Baud_
+  commentId: Overload:Wss.Transports.SerialPortTransportOptions.Baud
+  isSpec: "True"
+  fullName: Wss.Transports.SerialPortTransportOptions.Baud
+  nameWithType: SerialPortTransportOptions.Baud
+- uid: Wss.Transports.SerialPortTransportOptions.DataBits
+  name: DataBits
+  href: api/core/Wss.Transports.SerialPortTransportOptions.html#Wss_Transports_SerialPortTransportOptions_DataBits
+  commentId: P:Wss.Transports.SerialPortTransportOptions.DataBits
+  fullName: Wss.Transports.SerialPortTransportOptions.DataBits
+  nameWithType: SerialPortTransportOptions.DataBits
+- uid: Wss.Transports.SerialPortTransportOptions.DataBits*
+  name: DataBits
+  href: api/core/Wss.Transports.SerialPortTransportOptions.html#Wss_Transports_SerialPortTransportOptions_DataBits_
+  commentId: Overload:Wss.Transports.SerialPortTransportOptions.DataBits
+  isSpec: "True"
+  fullName: Wss.Transports.SerialPortTransportOptions.DataBits
+  nameWithType: SerialPortTransportOptions.DataBits
+- uid: Wss.Transports.SerialPortTransportOptions.Parity
+  name: Parity
+  href: api/core/Wss.Transports.SerialPortTransportOptions.html#Wss_Transports_SerialPortTransportOptions_Parity
+  commentId: P:Wss.Transports.SerialPortTransportOptions.Parity
+  fullName: Wss.Transports.SerialPortTransportOptions.Parity
+  nameWithType: SerialPortTransportOptions.Parity
+- uid: Wss.Transports.SerialPortTransportOptions.Parity*
+  name: Parity
+  href: api/core/Wss.Transports.SerialPortTransportOptions.html#Wss_Transports_SerialPortTransportOptions_Parity_
+  commentId: Overload:Wss.Transports.SerialPortTransportOptions.Parity
+  isSpec: "True"
+  fullName: Wss.Transports.SerialPortTransportOptions.Parity
+  nameWithType: SerialPortTransportOptions.Parity
+- uid: Wss.Transports.SerialPortTransportOptions.PortName
+  name: PortName
+  href: api/core/Wss.Transports.SerialPortTransportOptions.html#Wss_Transports_SerialPortTransportOptions_PortName
+  commentId: P:Wss.Transports.SerialPortTransportOptions.PortName
+  fullName: Wss.Transports.SerialPortTransportOptions.PortName
+  nameWithType: SerialPortTransportOptions.PortName
+- uid: Wss.Transports.SerialPortTransportOptions.PortName*
+  name: PortName
+  href: api/core/Wss.Transports.SerialPortTransportOptions.html#Wss_Transports_SerialPortTransportOptions_PortName_
+  commentId: Overload:Wss.Transports.SerialPortTransportOptions.PortName
+  isSpec: "True"
+  fullName: Wss.Transports.SerialPortTransportOptions.PortName
+  nameWithType: SerialPortTransportOptions.PortName
+- uid: Wss.Transports.SerialPortTransportOptions.ReadTimeoutMs
+  name: ReadTimeoutMs
+  href: api/core/Wss.Transports.SerialPortTransportOptions.html#Wss_Transports_SerialPortTransportOptions_ReadTimeoutMs
+  commentId: P:Wss.Transports.SerialPortTransportOptions.ReadTimeoutMs
+  fullName: Wss.Transports.SerialPortTransportOptions.ReadTimeoutMs
+  nameWithType: SerialPortTransportOptions.ReadTimeoutMs
+- uid: Wss.Transports.SerialPortTransportOptions.ReadTimeoutMs*
+  name: ReadTimeoutMs
+  href: api/core/Wss.Transports.SerialPortTransportOptions.html#Wss_Transports_SerialPortTransportOptions_ReadTimeoutMs_
+  commentId: Overload:Wss.Transports.SerialPortTransportOptions.ReadTimeoutMs
+  isSpec: "True"
+  fullName: Wss.Transports.SerialPortTransportOptions.ReadTimeoutMs
+  nameWithType: SerialPortTransportOptions.ReadTimeoutMs
+- uid: Wss.Transports.SerialPortTransportOptions.StopBits
+  name: StopBits
+  href: api/core/Wss.Transports.SerialPortTransportOptions.html#Wss_Transports_SerialPortTransportOptions_StopBits
+  commentId: P:Wss.Transports.SerialPortTransportOptions.StopBits
+  fullName: Wss.Transports.SerialPortTransportOptions.StopBits
+  nameWithType: SerialPortTransportOptions.StopBits
+- uid: Wss.Transports.SerialPortTransportOptions.StopBits*
+  name: StopBits
+  href: api/core/Wss.Transports.SerialPortTransportOptions.html#Wss_Transports_SerialPortTransportOptions_StopBits_
+  commentId: Overload:Wss.Transports.SerialPortTransportOptions.StopBits
+  isSpec: "True"
+  fullName: Wss.Transports.SerialPortTransportOptions.StopBits
+  nameWithType: SerialPortTransportOptions.StopBits
+- uid: Wss.Transports.TestModeTransport
+  name: TestModeTransport
+  href: api/core/Wss.Transports.TestModeTransport.html
+  commentId: T:Wss.Transports.TestModeTransport
+  fullName: Wss.Transports.TestModeTransport
+  nameWithType: TestModeTransport
+- uid: Wss.Transports.TestModeTransport.#ctor(Wss.Transports.TestModeTransportOptions)
+  name: TestModeTransport(TestModeTransportOptions)
+  href: api/core/Wss.Transports.TestModeTransport.html#Wss_Transports_TestModeTransport__ctor_Wss_Transports_TestModeTransportOptions_
+  commentId: M:Wss.Transports.TestModeTransport.#ctor(Wss.Transports.TestModeTransportOptions)
+  name.vb: New(TestModeTransportOptions)
+  fullName: Wss.Transports.TestModeTransport.TestModeTransport(Wss.Transports.TestModeTransportOptions)
+  fullName.vb: Wss.Transports.TestModeTransport.New(Wss.Transports.TestModeTransportOptions)
+  nameWithType: TestModeTransport.TestModeTransport(TestModeTransportOptions)
+  nameWithType.vb: TestModeTransport.New(TestModeTransportOptions)
+- uid: Wss.Transports.TestModeTransport.#ctor*
+  name: TestModeTransport
+  href: api/core/Wss.Transports.TestModeTransport.html#Wss_Transports_TestModeTransport__ctor_
+  commentId: Overload:Wss.Transports.TestModeTransport.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Wss.Transports.TestModeTransport.TestModeTransport
+  fullName.vb: Wss.Transports.TestModeTransport.New
+  nameWithType: TestModeTransport.TestModeTransport
+  nameWithType.vb: TestModeTransport.New
+- uid: Wss.Transports.TestModeTransport.AutoResponderAsync
+  name: AutoResponderAsync
+  href: api/core/Wss.Transports.TestModeTransport.html#Wss_Transports_TestModeTransport_AutoResponderAsync
+  commentId: P:Wss.Transports.TestModeTransport.AutoResponderAsync
+  fullName: Wss.Transports.TestModeTransport.AutoResponderAsync
+  nameWithType: TestModeTransport.AutoResponderAsync
+- uid: Wss.Transports.TestModeTransport.AutoResponderAsync*
+  name: AutoResponderAsync
+  href: api/core/Wss.Transports.TestModeTransport.html#Wss_Transports_TestModeTransport_AutoResponderAsync_
+  commentId: Overload:Wss.Transports.TestModeTransport.AutoResponderAsync
+  isSpec: "True"
+  fullName: Wss.Transports.TestModeTransport.AutoResponderAsync
+  nameWithType: TestModeTransport.AutoResponderAsync
+- uid: Wss.Transports.TestModeTransport.BaseLatency
+  name: BaseLatency
+  href: api/core/Wss.Transports.TestModeTransport.html#Wss_Transports_TestModeTransport_BaseLatency
+  commentId: P:Wss.Transports.TestModeTransport.BaseLatency
+  fullName: Wss.Transports.TestModeTransport.BaseLatency
+  nameWithType: TestModeTransport.BaseLatency
+- uid: Wss.Transports.TestModeTransport.BaseLatency*
+  name: BaseLatency
+  href: api/core/Wss.Transports.TestModeTransport.html#Wss_Transports_TestModeTransport_BaseLatency_
+  commentId: Overload:Wss.Transports.TestModeTransport.BaseLatency
+  isSpec: "True"
+  fullName: Wss.Transports.TestModeTransport.BaseLatency
+  nameWithType: TestModeTransport.BaseLatency
+- uid: Wss.Transports.TestModeTransport.BytesReceived
+  name: BytesReceived
+  href: api/core/Wss.Transports.TestModeTransport.html#Wss_Transports_TestModeTransport_BytesReceived
+  commentId: E:Wss.Transports.TestModeTransport.BytesReceived
+  fullName: Wss.Transports.TestModeTransport.BytesReceived
+  nameWithType: TestModeTransport.BytesReceived
+- uid: Wss.Transports.TestModeTransport.ConnectAsync(System.Threading.CancellationToken)
+  name: ConnectAsync(CancellationToken)
+  href: api/core/Wss.Transports.TestModeTransport.html#Wss_Transports_TestModeTransport_ConnectAsync_System_Threading_CancellationToken_
+  commentId: M:Wss.Transports.TestModeTransport.ConnectAsync(System.Threading.CancellationToken)
+  fullName: Wss.Transports.TestModeTransport.ConnectAsync(System.Threading.CancellationToken)
+  nameWithType: TestModeTransport.ConnectAsync(CancellationToken)
+- uid: Wss.Transports.TestModeTransport.ConnectAsync*
+  name: ConnectAsync
+  href: api/core/Wss.Transports.TestModeTransport.html#Wss_Transports_TestModeTransport_ConnectAsync_
+  commentId: Overload:Wss.Transports.TestModeTransport.ConnectAsync
+  isSpec: "True"
+  fullName: Wss.Transports.TestModeTransport.ConnectAsync
+  nameWithType: TestModeTransport.ConnectAsync
+- uid: Wss.Transports.TestModeTransport.DisconnectAsync(System.Threading.CancellationToken)
+  name: DisconnectAsync(CancellationToken)
+  href: api/core/Wss.Transports.TestModeTransport.html#Wss_Transports_TestModeTransport_DisconnectAsync_System_Threading_CancellationToken_
+  commentId: M:Wss.Transports.TestModeTransport.DisconnectAsync(System.Threading.CancellationToken)
+  fullName: Wss.Transports.TestModeTransport.DisconnectAsync(System.Threading.CancellationToken)
+  nameWithType: TestModeTransport.DisconnectAsync(CancellationToken)
+- uid: Wss.Transports.TestModeTransport.DisconnectAsync*
+  name: DisconnectAsync
+  href: api/core/Wss.Transports.TestModeTransport.html#Wss_Transports_TestModeTransport_DisconnectAsync_
+  commentId: Overload:Wss.Transports.TestModeTransport.DisconnectAsync
+  isSpec: "True"
+  fullName: Wss.Transports.TestModeTransport.DisconnectAsync
+  nameWithType: TestModeTransport.DisconnectAsync
+- uid: Wss.Transports.TestModeTransport.Dispose
+  name: Dispose()
+  href: api/core/Wss.Transports.TestModeTransport.html#Wss_Transports_TestModeTransport_Dispose
+  commentId: M:Wss.Transports.TestModeTransport.Dispose
+  fullName: Wss.Transports.TestModeTransport.Dispose()
+  nameWithType: TestModeTransport.Dispose()
+- uid: Wss.Transports.TestModeTransport.Dispose*
+  name: Dispose
+  href: api/core/Wss.Transports.TestModeTransport.html#Wss_Transports_TestModeTransport_Dispose_
+  commentId: Overload:Wss.Transports.TestModeTransport.Dispose
+  isSpec: "True"
+  fullName: Wss.Transports.TestModeTransport.Dispose
+  nameWithType: TestModeTransport.Dispose
+- uid: Wss.Transports.TestModeTransport.EnqueueIncoming(System.Byte[],System.Threading.CancellationToken)
+  name: EnqueueIncoming(byte[], CancellationToken)
+  href: api/core/Wss.Transports.TestModeTransport.html#Wss_Transports_TestModeTransport_EnqueueIncoming_System_Byte___System_Threading_CancellationToken_
+  commentId: M:Wss.Transports.TestModeTransport.EnqueueIncoming(System.Byte[],System.Threading.CancellationToken)
+  name.vb: EnqueueIncoming(Byte(), CancellationToken)
+  fullName: Wss.Transports.TestModeTransport.EnqueueIncoming(byte[], System.Threading.CancellationToken)
+  fullName.vb: Wss.Transports.TestModeTransport.EnqueueIncoming(Byte(), System.Threading.CancellationToken)
+  nameWithType: TestModeTransport.EnqueueIncoming(byte[], CancellationToken)
+  nameWithType.vb: TestModeTransport.EnqueueIncoming(Byte(), CancellationToken)
+- uid: Wss.Transports.TestModeTransport.EnqueueIncoming*
+  name: EnqueueIncoming
+  href: api/core/Wss.Transports.TestModeTransport.html#Wss_Transports_TestModeTransport_EnqueueIncoming_
+  commentId: Overload:Wss.Transports.TestModeTransport.EnqueueIncoming
+  isSpec: "True"
+  fullName: Wss.Transports.TestModeTransport.EnqueueIncoming
+  nameWithType: TestModeTransport.EnqueueIncoming
+- uid: Wss.Transports.TestModeTransport.FallbackPayload
+  name: FallbackPayload
+  href: api/core/Wss.Transports.TestModeTransport.html#Wss_Transports_TestModeTransport_FallbackPayload
+  commentId: P:Wss.Transports.TestModeTransport.FallbackPayload
+  fullName: Wss.Transports.TestModeTransport.FallbackPayload
+  nameWithType: TestModeTransport.FallbackPayload
+- uid: Wss.Transports.TestModeTransport.FallbackPayload*
+  name: FallbackPayload
+  href: api/core/Wss.Transports.TestModeTransport.html#Wss_Transports_TestModeTransport_FallbackPayload_
+  commentId: Overload:Wss.Transports.TestModeTransport.FallbackPayload
+  isSpec: "True"
+  fullName: Wss.Transports.TestModeTransport.FallbackPayload
+  nameWithType: TestModeTransport.FallbackPayload
+- uid: Wss.Transports.TestModeTransport.InboundDropProbability
+  name: InboundDropProbability
+  href: api/core/Wss.Transports.TestModeTransport.html#Wss_Transports_TestModeTransport_InboundDropProbability
+  commentId: P:Wss.Transports.TestModeTransport.InboundDropProbability
+  fullName: Wss.Transports.TestModeTransport.InboundDropProbability
+  nameWithType: TestModeTransport.InboundDropProbability
+- uid: Wss.Transports.TestModeTransport.InboundDropProbability*
+  name: InboundDropProbability
+  href: api/core/Wss.Transports.TestModeTransport.html#Wss_Transports_TestModeTransport_InboundDropProbability_
+  commentId: Overload:Wss.Transports.TestModeTransport.InboundDropProbability
+  isSpec: "True"
+  fullName: Wss.Transports.TestModeTransport.InboundDropProbability
+  nameWithType: TestModeTransport.InboundDropProbability
+- uid: Wss.Transports.TestModeTransport.IsConnected
+  name: IsConnected
+  href: api/core/Wss.Transports.TestModeTransport.html#Wss_Transports_TestModeTransport_IsConnected
+  commentId: P:Wss.Transports.TestModeTransport.IsConnected
+  fullName: Wss.Transports.TestModeTransport.IsConnected
+  nameWithType: TestModeTransport.IsConnected
+- uid: Wss.Transports.TestModeTransport.IsConnected*
+  name: IsConnected
+  href: api/core/Wss.Transports.TestModeTransport.html#Wss_Transports_TestModeTransport_IsConnected_
+  commentId: Overload:Wss.Transports.TestModeTransport.IsConnected
+  isSpec: "True"
+  fullName: Wss.Transports.TestModeTransport.IsConnected
+  nameWithType: TestModeTransport.IsConnected
+- uid: Wss.Transports.TestModeTransport.JitterMs
+  name: JitterMs
+  href: api/core/Wss.Transports.TestModeTransport.html#Wss_Transports_TestModeTransport_JitterMs
+  commentId: P:Wss.Transports.TestModeTransport.JitterMs
+  fullName: Wss.Transports.TestModeTransport.JitterMs
+  nameWithType: TestModeTransport.JitterMs
+- uid: Wss.Transports.TestModeTransport.JitterMs*
+  name: JitterMs
+  href: api/core/Wss.Transports.TestModeTransport.html#Wss_Transports_TestModeTransport_JitterMs_
+  commentId: Overload:Wss.Transports.TestModeTransport.JitterMs
+  isSpec: "True"
+  fullName: Wss.Transports.TestModeTransport.JitterMs
+  nameWithType: TestModeTransport.JitterMs
+- uid: Wss.Transports.TestModeTransport.MaxInboundChunkSize
+  name: MaxInboundChunkSize
+  href: api/core/Wss.Transports.TestModeTransport.html#Wss_Transports_TestModeTransport_MaxInboundChunkSize
+  commentId: P:Wss.Transports.TestModeTransport.MaxInboundChunkSize
+  fullName: Wss.Transports.TestModeTransport.MaxInboundChunkSize
+  nameWithType: TestModeTransport.MaxInboundChunkSize
+- uid: Wss.Transports.TestModeTransport.MaxInboundChunkSize*
+  name: MaxInboundChunkSize
+  href: api/core/Wss.Transports.TestModeTransport.html#Wss_Transports_TestModeTransport_MaxInboundChunkSize_
+  commentId: Overload:Wss.Transports.TestModeTransport.MaxInboundChunkSize
+  isSpec: "True"
+  fullName: Wss.Transports.TestModeTransport.MaxInboundChunkSize
+  nameWithType: TestModeTransport.MaxInboundChunkSize
+- uid: Wss.Transports.TestModeTransport.Rng
+  name: Rng
+  href: api/core/Wss.Transports.TestModeTransport.html#Wss_Transports_TestModeTransport_Rng
+  commentId: P:Wss.Transports.TestModeTransport.Rng
+  fullName: Wss.Transports.TestModeTransport.Rng
+  nameWithType: TestModeTransport.Rng
+- uid: Wss.Transports.TestModeTransport.Rng*
+  name: Rng
+  href: api/core/Wss.Transports.TestModeTransport.html#Wss_Transports_TestModeTransport_Rng_
+  commentId: Overload:Wss.Transports.TestModeTransport.Rng
+  isSpec: "True"
+  fullName: Wss.Transports.TestModeTransport.Rng
+  nameWithType: TestModeTransport.Rng
+- uid: Wss.Transports.TestModeTransport.SendAsync(System.Byte[],System.Threading.CancellationToken)
+  name: SendAsync(byte[], CancellationToken)
+  href: api/core/Wss.Transports.TestModeTransport.html#Wss_Transports_TestModeTransport_SendAsync_System_Byte___System_Threading_CancellationToken_
+  commentId: M:Wss.Transports.TestModeTransport.SendAsync(System.Byte[],System.Threading.CancellationToken)
+  name.vb: SendAsync(Byte(), CancellationToken)
+  fullName: Wss.Transports.TestModeTransport.SendAsync(byte[], System.Threading.CancellationToken)
+  fullName.vb: Wss.Transports.TestModeTransport.SendAsync(Byte(), System.Threading.CancellationToken)
+  nameWithType: TestModeTransport.SendAsync(byte[], CancellationToken)
+  nameWithType.vb: TestModeTransport.SendAsync(Byte(), CancellationToken)
+- uid: Wss.Transports.TestModeTransport.SendAsync*
+  name: SendAsync
+  href: api/core/Wss.Transports.TestModeTransport.html#Wss_Transports_TestModeTransport_SendAsync_
+  commentId: Overload:Wss.Transports.TestModeTransport.SendAsync
+  isSpec: "True"
+  fullName: Wss.Transports.TestModeTransport.SendAsync
+  nameWithType: TestModeTransport.SendAsync
+- uid: Wss.Transports.TestModeTransportOptions
+  name: TestModeTransportOptions
+  href: api/core/Wss.Transports.TestModeTransportOptions.html
+  commentId: T:Wss.Transports.TestModeTransportOptions
+  fullName: Wss.Transports.TestModeTransportOptions
+  nameWithType: TestModeTransportOptions
+- uid: Wss.Transports.TestModeTransportOptions.AutoResponderAsync
+  name: AutoResponderAsync
+  href: api/core/Wss.Transports.TestModeTransportOptions.html#Wss_Transports_TestModeTransportOptions_AutoResponderAsync
+  commentId: P:Wss.Transports.TestModeTransportOptions.AutoResponderAsync
+  fullName: Wss.Transports.TestModeTransportOptions.AutoResponderAsync
+  nameWithType: TestModeTransportOptions.AutoResponderAsync
+- uid: Wss.Transports.TestModeTransportOptions.AutoResponderAsync*
+  name: AutoResponderAsync
+  href: api/core/Wss.Transports.TestModeTransportOptions.html#Wss_Transports_TestModeTransportOptions_AutoResponderAsync_
+  commentId: Overload:Wss.Transports.TestModeTransportOptions.AutoResponderAsync
+  isSpec: "True"
+  fullName: Wss.Transports.TestModeTransportOptions.AutoResponderAsync
+  nameWithType: TestModeTransportOptions.AutoResponderAsync
+- uid: Wss.Transports.TestModeTransportOptions.BaseLatency
+  name: BaseLatency
+  href: api/core/Wss.Transports.TestModeTransportOptions.html#Wss_Transports_TestModeTransportOptions_BaseLatency
+  commentId: P:Wss.Transports.TestModeTransportOptions.BaseLatency
+  fullName: Wss.Transports.TestModeTransportOptions.BaseLatency
+  nameWithType: TestModeTransportOptions.BaseLatency
+- uid: Wss.Transports.TestModeTransportOptions.BaseLatency*
+  name: BaseLatency
+  href: api/core/Wss.Transports.TestModeTransportOptions.html#Wss_Transports_TestModeTransportOptions_BaseLatency_
+  commentId: Overload:Wss.Transports.TestModeTransportOptions.BaseLatency
+  isSpec: "True"
+  fullName: Wss.Transports.TestModeTransportOptions.BaseLatency
+  nameWithType: TestModeTransportOptions.BaseLatency
+- uid: Wss.Transports.TestModeTransportOptions.FallbackPayload
+  name: FallbackPayload
+  href: api/core/Wss.Transports.TestModeTransportOptions.html#Wss_Transports_TestModeTransportOptions_FallbackPayload
+  commentId: P:Wss.Transports.TestModeTransportOptions.FallbackPayload
+  fullName: Wss.Transports.TestModeTransportOptions.FallbackPayload
+  nameWithType: TestModeTransportOptions.FallbackPayload
+- uid: Wss.Transports.TestModeTransportOptions.FallbackPayload*
+  name: FallbackPayload
+  href: api/core/Wss.Transports.TestModeTransportOptions.html#Wss_Transports_TestModeTransportOptions_FallbackPayload_
+  commentId: Overload:Wss.Transports.TestModeTransportOptions.FallbackPayload
+  isSpec: "True"
+  fullName: Wss.Transports.TestModeTransportOptions.FallbackPayload
+  nameWithType: TestModeTransportOptions.FallbackPayload
+- uid: Wss.Transports.TestModeTransportOptions.InboundDropProbability
+  name: InboundDropProbability
+  href: api/core/Wss.Transports.TestModeTransportOptions.html#Wss_Transports_TestModeTransportOptions_InboundDropProbability
+  commentId: P:Wss.Transports.TestModeTransportOptions.InboundDropProbability
+  fullName: Wss.Transports.TestModeTransportOptions.InboundDropProbability
+  nameWithType: TestModeTransportOptions.InboundDropProbability
+- uid: Wss.Transports.TestModeTransportOptions.InboundDropProbability*
+  name: InboundDropProbability
+  href: api/core/Wss.Transports.TestModeTransportOptions.html#Wss_Transports_TestModeTransportOptions_InboundDropProbability_
+  commentId: Overload:Wss.Transports.TestModeTransportOptions.InboundDropProbability
+  isSpec: "True"
+  fullName: Wss.Transports.TestModeTransportOptions.InboundDropProbability
+  nameWithType: TestModeTransportOptions.InboundDropProbability
+- uid: Wss.Transports.TestModeTransportOptions.JitterMs
+  name: JitterMs
+  href: api/core/Wss.Transports.TestModeTransportOptions.html#Wss_Transports_TestModeTransportOptions_JitterMs
+  commentId: P:Wss.Transports.TestModeTransportOptions.JitterMs
+  fullName: Wss.Transports.TestModeTransportOptions.JitterMs
+  nameWithType: TestModeTransportOptions.JitterMs
+- uid: Wss.Transports.TestModeTransportOptions.JitterMs*
+  name: JitterMs
+  href: api/core/Wss.Transports.TestModeTransportOptions.html#Wss_Transports_TestModeTransportOptions_JitterMs_
+  commentId: Overload:Wss.Transports.TestModeTransportOptions.JitterMs
+  isSpec: "True"
+  fullName: Wss.Transports.TestModeTransportOptions.JitterMs
+  nameWithType: TestModeTransportOptions.JitterMs
+- uid: Wss.Transports.TestModeTransportOptions.MaxInboundChunkSize
+  name: MaxInboundChunkSize
+  href: api/core/Wss.Transports.TestModeTransportOptions.html#Wss_Transports_TestModeTransportOptions_MaxInboundChunkSize
+  commentId: P:Wss.Transports.TestModeTransportOptions.MaxInboundChunkSize
+  fullName: Wss.Transports.TestModeTransportOptions.MaxInboundChunkSize
+  nameWithType: TestModeTransportOptions.MaxInboundChunkSize
+- uid: Wss.Transports.TestModeTransportOptions.MaxInboundChunkSize*
+  name: MaxInboundChunkSize
+  href: api/core/Wss.Transports.TestModeTransportOptions.html#Wss_Transports_TestModeTransportOptions_MaxInboundChunkSize_
+  commentId: Overload:Wss.Transports.TestModeTransportOptions.MaxInboundChunkSize
+  isSpec: "True"
+  fullName: Wss.Transports.TestModeTransportOptions.MaxInboundChunkSize
+  nameWithType: TestModeTransportOptions.MaxInboundChunkSize
+- uid: Wss.Transports.TestModeTransportOptions.Rng
+  name: Rng
+  href: api/core/Wss.Transports.TestModeTransportOptions.html#Wss_Transports_TestModeTransportOptions_Rng
+  commentId: P:Wss.Transports.TestModeTransportOptions.Rng
+  fullName: Wss.Transports.TestModeTransportOptions.Rng
+  nameWithType: TestModeTransportOptions.Rng
+- uid: Wss.Transports.TestModeTransportOptions.Rng*
+  name: Rng
+  href: api/core/Wss.Transports.TestModeTransportOptions.html#Wss_Transports_TestModeTransportOptions_Rng_
+  commentId: Overload:Wss.Transports.TestModeTransportOptions.Rng
+  isSpec: "True"
+  fullName: Wss.Transports.TestModeTransportOptions.Rng
+  nameWithType: TestModeTransportOptions.Rng

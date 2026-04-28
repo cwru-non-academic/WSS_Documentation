@@ -132,27 +132,12 @@ amplitude mapping behavior (e.g., 10 mA vs 72 mA based on HW flags).</p>
       <h4><a class="xref" href="Wss.CoreModule.ScheduleDefinition.html">ScheduleDefinition</a></h4>
       <section><p>Describes a schedule to create on the WSS device.</p>
 </section>
-      <h4><a class="xref" href="Wss.CoreModule.SerialPortTransport.html">SerialPortTransport</a></h4>
-      <section><p>Serial-port implementation of <a class="xref" href="Wss.CoreModule.ITransport.html">ITransport</a> for WSS communications.
-Wraps <span class="xref">System.IO.Ports.SerialPort</span> and exposes an event-driven receive API that works well in Unity/.NET Standard 2.0.</p>
-</section>
-      <h4><a class="xref" href="Wss.CoreModule.SerialPortTransportOptions.html">SerialPortTransportOptions</a></h4>
-      <section><p>Holds connection settings for <a class="xref" href="Wss.CoreModule.SerialPortTransport.html">SerialPortTransport</a>.</p>
-</section>
       <h4><a class="xref" href="Wss.CoreModule.StimParamsBasicExtensions.html">StimParamsBasicExtensions</a></h4>
       <section><p>Convenience extension methods over <a class="xref" href="Wss.CalibrationModule.IStimParamsCore.html">IStimParamsCore</a> that forward
 to the optional BASIC layer (<a class="xref" href="Wss.CoreModule.IBasicStimulation.html">IBasicStimulation</a>).</p>
 </section>
       <h4><a class="xref" href="Wss.CoreModule.StreamChangeRequest.html">StreamChangeRequest</a></h4>
       <section><p>Describes a streaming update for PA, PW, and IPI groups.</p>
-</section>
-      <h4><a class="xref" href="Wss.CoreModule.TestModeTransport.html">TestModeTransport</a></h4>
-      <section><p>In-memory transport for debugging and unit tests. No real I/O.
-Features: artificial latency, jitter, inbound chunking, and drop simulation.
-Default auto-responder validates checksum, flips sender/target, and echoes or replaces payload.</p>
-</section>
-      <h4><a class="xref" href="Wss.CoreModule.TestModeTransportOptions.html">TestModeTransportOptions</a></h4>
-      <section><p>Holds behavior settings for <a class="xref" href="Wss.CoreModule.TestModeTransport.html">TestModeTransport</a>.</p>
 </section>
       <h4><a class="xref" href="Wss.CoreModule.WSSVersionHandler.html">WSSVersionHandler</a></h4>
       <section><p>Handles firmware version parsing and feature availability based on known supported versions.</p>
@@ -167,7 +152,7 @@ exposes helpers to retrieve shapes and total area.</p>
 </section>
       <h4><a class="xref" href="Wss.CoreModule.WssClient.html">WssClient</a></h4>
       <section><p>Low-level protocol client. Frames commands using an <a class="xref" href="Wss.CoreModule.IFrameCodec.html">IFrameCodec</a>,
-sends them over an <a class="xref" href="Wss.CoreModule.ITransport.html">ITransport</a>, and correlates responses by
+sends them over an <a class="xref" href="Wss.Transports.ITransport.html">ITransport</a>, and correlates responses by
 <code>(target,msgId)</code>.</p>
 </section>
       <h4><a class="xref" href="Wss.CoreModule.WssClientOptions.html">WssClientOptions</a></h4>
@@ -204,11 +189,6 @@ setup steps and return immediately.</p>
       <section><p>Stimulation core lifecycle and control surface.
 Implementations manage connection, setup, and a background streaming loop.
 Public mutators should enqueue edits and return immediately.</p>
-</section>
-      <h4><a class="xref" href="Wss.CoreModule.ITransport.html">ITransport</a></h4>
-      <section><p>Abstraction over a byte-stream transport (e.g., Serial, Bluetooth, TCP).
-Implementations surface incoming bytes via <a class="xref" href="Wss.CoreModule.ITransport.html#Wss_CoreModule_ITransport_BytesReceived">BytesReceived</a> and provide
-async connect/disconnect/send operations.</p>
 </section>
     <h3 id="enums">
 Enums

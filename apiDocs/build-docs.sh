@@ -138,6 +138,10 @@ for repo in "${repos[@]}"; do
     exit 1
   fi
 
+  if [[ "$kind" == "python" && $SKIP_PYTHON -eq 1 ]]; then
+    continue
+  fi
+
   if ! resolve_path "$REPO_ROOT" "$root_raw"; then
     exit 1
   fi
@@ -182,7 +186,6 @@ for repo in "${repos[@]}"; do
     csharp_source_file="$(basename "$csharp_source_path")"
 
     dest="$(jq -r '.docfxDest // empty' <<<"$repo")"
-    entry_uid="$(jq -r '.entryUid // empty' <<<"$repo")"
     if [[ -z "$dest" ]]; then
       dest="api/$id"
     elif [[ "$dest" != api/* ]]; then
@@ -229,15 +232,8 @@ for repo in "${repos[@]}"; do
       title="API: $id"
     fi
     page_link="$dest/toc.html"
-    if [[ -n "$entry_uid" ]]; then
-      page_link="xref:$entry_uid"
-    fi
     api_nav+=("$title|$dest/toc.yml|$page_link")
   elif [[ "$kind" == "python" ]]; then
-    if [[ $SKIP_PYTHON -eq 1 ]]; then
-      continue
-    fi
-
     sphinx_source_raw="$(jq -r '.sphinxSource // "docs"' <<<"$repo")"
     publish_raw="$(jq -r --arg id "$id" '.publishDir // ("external/" + $id)' <<<"$repo")"
     if ! resolve_path "$root" "$sphinx_source_raw"; then
@@ -402,6 +398,12 @@ done
     fi
     printf '%s\n' ''
   fi
+
+  printf '%s\n' '## Hardware Documentation'
+  printf '%s\n' ''
+  printf '%s\n' '- [Hardware Overview](../hardwareDocs/wsshardware.html)'
+  printf '%s\n' '  - Direct access to the hardware documentation.'
+  printf '%s\n' ''
 
   printf '%s\n' '## Advanced Reference'
   printf '%s\n' ''

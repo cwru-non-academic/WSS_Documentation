@@ -15,7 +15,6 @@ items:
   - Wss.CoreModule.ICoreConfig
   - Wss.CoreModule.IFrameCodec
   - Wss.CoreModule.IStimulationCore
-  - Wss.CoreModule.ITransport
   - Wss.CoreModule.JsonReader
   - Wss.CoreModule.Log
   - Wss.CoreModule.Log.LogLevel
@@ -24,12 +23,8 @@ items:
   - Wss.CoreModule.ModuleSettings.HwConfigFlags
   - Wss.CoreModule.ModuleSettings.ParameterStepKind
   - Wss.CoreModule.ScheduleDefinition
-  - Wss.CoreModule.SerialPortTransport
-  - Wss.CoreModule.SerialPortTransportOptions
   - Wss.CoreModule.StimParamsBasicExtensions
   - Wss.CoreModule.StreamChangeRequest
-  - Wss.CoreModule.TestModeTransport
-  - Wss.CoreModule.TestModeTransportOptions
   - Wss.CoreModule.WSSLimits
   - Wss.CoreModule.WSSMessageIDs
   - Wss.CoreModule.WSSVersionHandler
@@ -134,13 +129,6 @@ references:
   name: IStimulationCore
   nameWithType: IStimulationCore
   fullName: Wss.CoreModule.IStimulationCore
-- uid: Wss.CoreModule.ITransport
-  commentId: T:Wss.CoreModule.ITransport
-  parent: Wss.CoreModule
-  href: Wss.CoreModule.ITransport.html
-  name: ITransport
-  nameWithType: ITransport
-  fullName: Wss.CoreModule.ITransport
 - uid: Wss.CoreModule.ModuleSettings
   commentId: T:Wss.CoreModule.ModuleSettings
   parent: Wss.CoreModule
@@ -281,19 +269,6 @@ references:
   - uid: Wss.CoreModule.Log.LogLevel
     name: LogLevel
     href: Wss.CoreModule.Log.LogLevel.html
-- uid: Wss.CoreModule.TestModeTransport
-  commentId: T:Wss.CoreModule.TestModeTransport
-  href: Wss.CoreModule.TestModeTransport.html
-  name: TestModeTransport
-  nameWithType: TestModeTransport
-  fullName: Wss.CoreModule.TestModeTransport
-- uid: Wss.CoreModule.TestModeTransportOptions
-  commentId: T:Wss.CoreModule.TestModeTransportOptions
-  parent: Wss.CoreModule
-  href: Wss.CoreModule.TestModeTransportOptions.html
-  name: TestModeTransportOptions
-  nameWithType: TestModeTransportOptions
-  fullName: Wss.CoreModule.TestModeTransportOptions
 - uid: Wss.CoreModule.WssClient
   commentId: T:Wss.CoreModule.WssClient
   href: Wss.CoreModule.WssClient.html
@@ -377,19 +352,6 @@ references:
   - uid: Wss.CoreModule.WSSVersionHandler.SupportedVersions
     name: SupportedVersions
     href: Wss.CoreModule.WSSVersionHandler.SupportedVersions.html
-- uid: Wss.CoreModule.SerialPortTransport
-  commentId: T:Wss.CoreModule.SerialPortTransport
-  href: Wss.CoreModule.SerialPortTransport.html
-  name: SerialPortTransport
-  nameWithType: SerialPortTransport
-  fullName: Wss.CoreModule.SerialPortTransport
-- uid: Wss.CoreModule.SerialPortTransportOptions
-  commentId: T:Wss.CoreModule.SerialPortTransportOptions
-  parent: Wss.CoreModule
-  href: Wss.CoreModule.SerialPortTransportOptions.html
-  name: SerialPortTransportOptions
-  nameWithType: SerialPortTransportOptions
-  fullName: Wss.CoreModule.SerialPortTransportOptions
 - uid: Wss.CoreModule
   commentId: N:Wss.CoreModule
   href: Wss.html

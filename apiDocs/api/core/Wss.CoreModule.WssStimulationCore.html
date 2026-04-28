@@ -106,7 +106,7 @@ streaming loop. Public mutator methods enqueue device edits and return immediate
 
 
   <a id="Wss_CoreModule_WssStimulationCore__ctor_" data-uid="Wss.CoreModule.WssStimulationCore.#ctor*"></a>
-  <h4 id="Wss_CoreModule_WssStimulationCore__ctor_Wss_CoreModule_ITransport_Wss_CoreModule_WssStimulationCoreOptions_" data-uid="Wss.CoreModule.WssStimulationCore.#ctor(Wss.CoreModule.ITransport,Wss.CoreModule.WssStimulationCoreOptions)">WssStimulationCore(ITransport, WssStimulationCoreOptions)</h4>
+  <h4 id="Wss_CoreModule_WssStimulationCore__ctor_Wss_Transports_ITransport_Wss_CoreModule_WssStimulationCoreOptions_" data-uid="Wss.CoreModule.WssStimulationCore.#ctor(Wss.Transports.ITransport,Wss.CoreModule.WssStimulationCoreOptions)">WssStimulationCore(ITransport, WssStimulationCoreOptions)</h4>
   <div class="markdown level1 summary"><p>Initializes a stimulation core over a caller-provided transport.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -125,7 +125,7 @@ streaming loop. Public mutator methods enqueue device edits and return immediate
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Wss.CoreModule.ITransport.html">ITransport</a></td>
+        <td><a class="xref" href="Wss.Transports.ITransport.html">ITransport</a></td>
         <td><span class="parametername">transport</span></td>
         <td><p>Transport used to communicate with the WSS device(s).</p>
 </td>
@@ -138,7 +138,7 @@ streaming loop. Public mutator methods enqueue device edits and return immediate
       </tr>
     </tbody>
   </table>
-  <h5 id="Wss_CoreModule_WssStimulationCore__ctor_Wss_CoreModule_ITransport_Wss_CoreModule_WssStimulationCoreOptions__remarks">Remarks</h5>
+  <h5 id="Wss_CoreModule_WssStimulationCore__ctor_Wss_Transports_ITransport_Wss_CoreModule_WssStimulationCoreOptions__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>The core owns the lifetime of <code class="paramref">transport</code> and disposes it when the core is disposed.
 Call <a class="xref" href="Wss.CoreModule.WssStimulationCore.html#Wss_CoreModule_WssStimulationCore_Shutdown">Shutdown()</a> to stop streaming/disconnect without disposing the transport.</p>
 </div>

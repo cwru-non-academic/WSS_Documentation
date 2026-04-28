@@ -5,11 +5,11 @@
   <head>
     <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      <title>Class SerialPortTransportOptions | WSS Documentation Hub </title>
+      <title>Class BleNusTransportOptions | WSS Documentation Hub </title>
       <meta name="viewport" content="width=device-width">
-      <meta name="title" content="Class SerialPortTransportOptions | WSS Documentation Hub ">
+      <meta name="title" content="Class BleNusTransportOptions | WSS Documentation Hub ">
     
-    <meta name="description" content="Holds connection settings for .">
+    <meta name="description" content="Configuration for .">
       <link rel="shortcut icon" href="../../favicon.ico">
       <link rel="stylesheet" href="../../styles/docfx.vendor.min.css">
       <link rel="stylesheet" href="../../styles/docfx.css">
@@ -76,42 +76,45 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Wss.CoreModule.SerialPortTransportOptions">
+            <article class="content wrap" id="_content" data-uid="Wss.Transports.BleNusTransportOptions">
 
 
 
-  <h1 id="Wss_CoreModule_SerialPortTransportOptions" data-uid="Wss.CoreModule.SerialPortTransportOptions" class="text-break">Class SerialPortTransportOptions</h1>
-  <div class="markdown level0 summary"><p>Holds connection settings for <a class="xref" href="Wss.CoreModule.SerialPortTransport.html">SerialPortTransport</a>.</p>
+  <h1 id="Wss_Transports_BleNusTransportOptions" data-uid="Wss.Transports.BleNusTransportOptions" class="text-break">Class BleNusTransportOptions</h1>
+  <div class="markdown level0 summary"><p>Configuration for <a class="xref" href="Wss.Transports.BleNusTransport.html">BleNusTransport</a>.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">object</span></div>
-    <div class="level1"><span class="xref">SerialPortTransportOptions</span></div>
+    <div class="level1"><span class="xref">BleNusTransportOptions</span></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Wss.html">Wss</a>.<a class="xref" href="Wss.CoreModule.html">CoreModule</a></h6>
-  <h6><strong>Assembly</strong>: WSS.Transport.Serial.dll</h6>
-  <h5 id="Wss_CoreModule_SerialPortTransportOptions_syntax">Syntax</h5>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Wss.html">Wss</a>.<a class="xref" href="Wss.Transports.html">Transports</a></h6>
+  <h6><strong>Assembly</strong>: WSS.Transport.BLE.dll</h6>
+  <h5 id="Wss_Transports_BleNusTransportOptions_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class SerialPortTransportOptions</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class BleNusTransportOptions</code></pre>
   </div>
-  <h5 id="Wss_CoreModule_SerialPortTransportOptions_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>Exactly one port selection mode must be used: either set <a class="xref" href="Wss.CoreModule.SerialPortTransportOptions.html#Wss_CoreModule_SerialPortTransportOptions_AutoSelectPort">AutoSelectPort</a> to true,
-or provide a non-empty <a class="xref" href="Wss.CoreModule.SerialPortTransportOptions.html#Wss_CoreModule_SerialPortTransportOptions_PortName">PortName</a>.</p>
+  <h5 id="Wss_Transports_BleNusTransportOptions_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>When <a class="xref" href="Wss.Transports.BleNusTransportOptions.html#Wss_Transports_BleNusTransportOptions_AutoSelectDevice">AutoSelectDevice</a> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>, callers must provide either
+<a class="xref" href="Wss.Transports.BleNusTransportOptions.html#Wss_Transports_BleNusTransportOptions_DeviceId">DeviceId</a> or <a class="xref" href="Wss.Transports.BleNusTransportOptions.html#Wss_Transports_BleNusTransportOptions_DeviceName">DeviceName</a>. Scan-based operations honor <a class="xref" href="Wss.Transports.BleNusTransportOptions.html#Wss_Transports_BleNusTransportOptions_ScanTimeout">ScanTimeout</a>
+when a timeout is configured.</p>
 </div>
   <h3 id="properties">Properties
 </h3>
 
 
-  <a id="Wss_CoreModule_SerialPortTransportOptions_AutoSelectPort_" data-uid="Wss.CoreModule.SerialPortTransportOptions.AutoSelectPort*"></a>
-  <h4 id="Wss_CoreModule_SerialPortTransportOptions_AutoSelectPort" data-uid="Wss.CoreModule.SerialPortTransportOptions.AutoSelectPort">AutoSelectPort</h4>
-  <div class="markdown level1 summary"><p>Gets or sets whether the transport should automatically select the best available serial port.
-When true, <a class="xref" href="Wss.CoreModule.SerialPortTransportOptions.html#Wss_CoreModule_SerialPortTransportOptions_PortName">PortName</a> must be left empty.</p>
+  <a id="Wss_Transports_BleNusTransportOptions_AutoSelectDevice_" data-uid="Wss.Transports.BleNusTransportOptions.AutoSelectDevice*"></a>
+  <h4 id="Wss_Transports_BleNusTransportOptions_AutoSelectDevice" data-uid="Wss.Transports.BleNusTransportOptions.AutoSelectDevice">AutoSelectDevice</h4>
+  <div class="markdown level1 summary"><p>When true, scans for compatible BLE devices and auto-selects the best valid candidate.
+Auto-selection only accepts devices that expose the configured service and both required
+characteristics with the expected properties, then prefers stronger RSSI.
+When false, the caller must provide <a class="xref" href="Wss.Transports.BleNusTransportOptions.html#Wss_Transports_BleNusTransportOptions_DeviceId">DeviceId</a> or <a class="xref" href="Wss.Transports.BleNusTransportOptions.html#Wss_Transports_BleNusTransportOptions_DeviceName">DeviceName</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool AutoSelectPort { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public bool AutoSelectDevice { get; init; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-condensed">
@@ -130,94 +133,15 @@ When true, <a class="xref" href="Wss.CoreModule.SerialPortTransportOptions.html#
   </table>
 
 
-  <a id="Wss_CoreModule_SerialPortTransportOptions_Baud_" data-uid="Wss.CoreModule.SerialPortTransportOptions.Baud*"></a>
-  <h4 id="Wss_CoreModule_SerialPortTransportOptions_Baud" data-uid="Wss.CoreModule.SerialPortTransportOptions.Baud">Baud</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the baud rate. The default is 115200.</p>
+  <a id="Wss_Transports_BleNusTransportOptions_DeviceId_" data-uid="Wss.Transports.BleNusTransportOptions.DeviceId*"></a>
+  <h4 id="Wss_Transports_BleNusTransportOptions_DeviceId" data-uid="Wss.Transports.BleNusTransportOptions.DeviceId">DeviceId</h4>
+  <div class="markdown level1 summary"><p>Explicit BLE device identifier to connect to when <a class="xref" href="Wss.Transports.BleNusTransportOptions.html#Wss_Transports_BleNusTransportOptions_AutoSelectDevice">AutoSelectDevice</a> is disabled.
+When provided, it takes precedence over <a class="xref" href="Wss.Transports.BleNusTransportOptions.html#Wss_Transports_BleNusTransportOptions_DeviceName">DeviceName</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int Baud { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">int</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-
-
-  <a id="Wss_CoreModule_SerialPortTransportOptions_DataBits_" data-uid="Wss.CoreModule.SerialPortTransportOptions.DataBits*"></a>
-  <h4 id="Wss_CoreModule_SerialPortTransportOptions_DataBits" data-uid="Wss.CoreModule.SerialPortTransportOptions.DataBits">DataBits</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the number of data bits. The default is 8.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int DataBits { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">int</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-
-
-  <a id="Wss_CoreModule_SerialPortTransportOptions_Parity_" data-uid="Wss.CoreModule.SerialPortTransportOptions.Parity*"></a>
-  <h4 id="Wss_CoreModule_SerialPortTransportOptions_Parity" data-uid="Wss.CoreModule.SerialPortTransportOptions.Parity">Parity</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the parity mode. The default is <span class="xref">System.IO.Ports.Parity.None</span>.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Parity Parity { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Parity</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-
-
-  <a id="Wss_CoreModule_SerialPortTransportOptions_PortName_" data-uid="Wss.CoreModule.SerialPortTransportOptions.PortName*"></a>
-  <h4 id="Wss_CoreModule_SerialPortTransportOptions_PortName" data-uid="Wss.CoreModule.SerialPortTransportOptions.PortName">PortName</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the explicit port name.
-Use values such as <code>COM5</code> on Windows or <code>/dev/ttyUSB0</code> on Linux/macOS.
-This must be provided when <a class="xref" href="Wss.CoreModule.SerialPortTransportOptions.html#Wss_CoreModule_SerialPortTransportOptions_AutoSelectPort">AutoSelectPort</a> is false.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string PortName { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string? DeviceId { get; init; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-condensed">
@@ -236,15 +160,15 @@ This must be provided when <a class="xref" href="Wss.CoreModule.SerialPortTransp
   </table>
 
 
-  <a id="Wss_CoreModule_SerialPortTransportOptions_ReadTimeoutMs_" data-uid="Wss.CoreModule.SerialPortTransportOptions.ReadTimeoutMs*"></a>
-  <h4 id="Wss_CoreModule_SerialPortTransportOptions_ReadTimeoutMs" data-uid="Wss.CoreModule.SerialPortTransportOptions.ReadTimeoutMs">ReadTimeoutMs</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the synchronous serial read timeout, in milliseconds.
-The default is 10.</p>
+  <a id="Wss_Transports_BleNusTransportOptions_DeviceName_" data-uid="Wss.Transports.BleNusTransportOptions.DeviceName*"></a>
+  <h4 id="Wss_Transports_BleNusTransportOptions_DeviceName" data-uid="Wss.Transports.BleNusTransportOptions.DeviceName">DeviceName</h4>
+  <div class="markdown level1 summary"><p>Exact BLE device name to scan for when <a class="xref" href="Wss.Transports.BleNusTransportOptions.html#Wss_Transports_BleNusTransportOptions_AutoSelectDevice">AutoSelectDevice</a> is disabled and
+<a class="xref" href="Wss.Transports.BleNusTransportOptions.html#Wss_Transports_BleNusTransportOptions_DeviceId">DeviceId</a> is not provided.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int ReadTimeoutMs { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string? DeviceName { get; init; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-condensed">
@@ -256,21 +180,22 @@ The default is 10.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">int</span></td>
+        <td><span class="xref">string</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
 
 
-  <a id="Wss_CoreModule_SerialPortTransportOptions_StopBits_" data-uid="Wss.CoreModule.SerialPortTransportOptions.StopBits*"></a>
-  <h4 id="Wss_CoreModule_SerialPortTransportOptions_StopBits" data-uid="Wss.CoreModule.SerialPortTransportOptions.StopBits">StopBits</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the stop-bit configuration. The default is <span class="xref">System.IO.Ports.StopBits.One</span>.</p>
+  <a id="Wss_Transports_BleNusTransportOptions_NotifyCharacteristicUuid_" data-uid="Wss.Transports.BleNusTransportOptions.NotifyCharacteristicUuid*"></a>
+  <h4 id="Wss_Transports_BleNusTransportOptions_NotifyCharacteristicUuid" data-uid="Wss.Transports.BleNusTransportOptions.NotifyCharacteristicUuid">NotifyCharacteristicUuid</h4>
+  <div class="markdown level1 summary"><p>Required BLE notification characteristic UUID. Auto-select rejects devices that do not expose it
+with notify or indicate support.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public StopBits StopBits { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public Guid NotifyCharacteristicUuid { get; init; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-condensed">
@@ -282,7 +207,86 @@ The default is 10.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">StopBits</span></td>
+        <td><span class="xref">Guid</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_Transports_BleNusTransportOptions_ScanTimeout_" data-uid="Wss.Transports.BleNusTransportOptions.ScanTimeout*"></a>
+  <h4 id="Wss_Transports_BleNusTransportOptions_ScanTimeout" data-uid="Wss.Transports.BleNusTransportOptions.ScanTimeout">ScanTimeout</h4>
+  <div class="markdown level1 summary"><p>Maximum scan duration used for configured-name lookup and auto-selection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TimeSpan? ScanTimeout { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TimeSpan</span>?</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_Transports_BleNusTransportOptions_ServiceUuid_" data-uid="Wss.Transports.BleNusTransportOptions.ServiceUuid*"></a>
+  <h4 id="Wss_Transports_BleNusTransportOptions_ServiceUuid" data-uid="Wss.Transports.BleNusTransportOptions.ServiceUuid">ServiceUuid</h4>
+  <div class="markdown level1 summary"><p>Required BLE service UUID. Auto-select only considers devices that expose this service.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Guid ServiceUuid { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Guid</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Wss_Transports_BleNusTransportOptions_WriteCharacteristicUuid_" data-uid="Wss.Transports.BleNusTransportOptions.WriteCharacteristicUuid*"></a>
+  <h4 id="Wss_Transports_BleNusTransportOptions_WriteCharacteristicUuid" data-uid="Wss.Transports.BleNusTransportOptions.WriteCharacteristicUuid">WriteCharacteristicUuid</h4>
+  <div class="markdown level1 summary"><p>Required BLE write characteristic UUID. Auto-select rejects devices that do not expose it
+with write-with-response support.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Guid WriteCharacteristicUuid { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Guid</span></td>
         <td></td>
       </tr>
     </tbody>
