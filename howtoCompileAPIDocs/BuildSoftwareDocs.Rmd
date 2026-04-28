@@ -17,8 +17,20 @@ The docs project lives under `apiDocs/` and uses `apiDocs/repos.manifest.json` t
 
 ## Prerequisites
 
+### Always needed for DocFX/API builds
+
 - .NET SDK 7.x or later (for C# API projects)
 - DocFX CLI in your PATH (https://dotnet.github.io/docfx/)
+- `jq` (required by `apiDocs/build-docs.sh` on Bash)
+
+### Needed when rerendering standalone `.Rmd` guides
+
+- R / `Rscript` (required to regenerate standalone `.Rmd` guides such as this page and the hardware guide)
+- Pandoc (required by `rmarkdown::render()` when regenerating standalone `.Rmd` guides)
+- R packages: `rmarkdown`, `knitr`
+
+### Needed only when Python docs are enabled
+
 - Python + Sphinx (`sphinx-build`) for Python API repos
 - PowerShell (Windows) or Bash (macOS/Linux/Git Bash on Windows)
 
@@ -32,7 +44,10 @@ Use the setup that matches your machine before running the build scripts.
 
 - Install the .NET SDK 7 or later.
 - Install DocFX and make sure `docfx` is on your `PATH`.
+- Install `jq` if you plan to run the Bash build.
 - Install Python 3.
+- Install R.
+- Install Pandoc.
 - Install Sphinx in the Python repo environment if you plan to build Python docs.
 - Run the docs build with PowerShell.
 
@@ -40,6 +55,8 @@ Typical commands:
 
 ```powershell
 dotnet tool install -g docfx
+winget install RProject.R
+winget install --id JohnMacFarlane.Pandoc -e
 python -m pip install -U pip
 python -m pip install sphinx
 ```
@@ -48,7 +65,10 @@ python -m pip install sphinx
 
 - Install the .NET SDK 7 or later.
 - Install DocFX and make sure `docfx` is on your `PATH`.
+- Install `jq` if you plan to run the Bash build.
 - Install Python 3.
+- Install R.
+- Install Pandoc.
 - Install Sphinx in the Python repo environment if you plan to build Python docs.
 - Run the docs build with Bash.
 
@@ -56,9 +76,13 @@ Typical commands:
 
 ```bash
 brew install --cask dotnet-sdk
+brew install --cask r
+brew install pandoc
+brew install jq
 dotnet tool install -g docfx
 python3 -m pip install -U pip
 python3 -m pip install sphinx
+Rscript -e "install.packages(c('rmarkdown', 'knitr'), repos='https://cloud.r-project.org')"
 ```
 
 If `docfx` is not found after installing it as a .NET global tool, add `~/.dotnet/tools` to your shell `PATH`.
@@ -67,21 +91,37 @@ If `docfx` is not found after installing it as a .NET global tool, add `~/.dotne
 
 - Install the .NET SDK 7 or later.
 - Install DocFX and make sure `docfx` is on your `PATH`.
+- Install `jq`.
 - Install Python 3 and `pip`.
+- Install R.
+- Install Pandoc.
 - Install Sphinx in the Python repo environment if you plan to build Python docs.
 - Run the docs build with Bash.
 
 Typical commands:
 
 ```bash
+sudo apt install -y r-base
+sudo apt install -y pandoc
+sudo apt install -y jq
 dotnet tool install -g docfx
 python3 -m pip install -U pip
 python3 -m pip install sphinx
+Rscript -e "install.packages(c('rmarkdown', 'knitr'), repos='https://cloud.r-project.org')"
 ```
 
 Install the .NET SDK with your distribution's package manager or Microsoft's installer for your distro before running the commands above.
 
 If `docfx` is not found after installing it as a .NET global tool, add `~/.dotnet/tools` to your shell `PATH`.
+
+If `rmarkdown::render()` reports that Pandoc is missing, install `pandoc` and retry the docs build.
+
+If R package installation fails because the system library is not writable, install to a user library instead:
+
+```bash
+mkdir -p "$HOME/R/x86_64-pc-linux-gnu-library/4.3"
+Rscript -e ".libPaths('$HOME/R/x86_64-pc-linux-gnu-library/4.3'); install.packages(c('rmarkdown', 'knitr'), repos='https://cloud.r-project.org')"
+```
 
 ## Configure linked repositories
 
@@ -108,6 +148,15 @@ If you want to skip Python docs, add the skip-Python flag:
 - PowerShell: `./apiDocs/build-docs.ps1 -ManifestPath ./apiDocs/repos.manifest.json -SkipPython`
 
 When `--skip-python` or `-SkipPython` is set, the scripts skip Sphinx builds for `kind: python` manifest entries while still building the DocFX hub and any enabled C# API sections.
+
+Python integration docs for the library are not currently supported in this local build workflow. For now, use `--skip-python` in Bash or `-SkipPython` in PowerShell.
+
+If you want to skip standalone RMarkdown rerendering, add the skip-RMD flag:
+
+- Bash: `./apiDocs/build-docs.sh --manifest ./apiDocs/repos.manifest.json --skip-rmd`
+- PowerShell: `./apiDocs/build-docs.ps1 -ManifestPath ./apiDocs/repos.manifest.json -SkipRmd`
+
+When `--skip-rmd` or `-SkipRmd` is set, the scripts skip regenerating the standalone `.Rmd`-based HTML guides while still building the DocFX hub and any enabled API sections.
 
 ### Required environment variables
 
@@ -224,6 +273,12 @@ Build only the main/core docs:
 ./apiDocs/build-docs.sh --manifest ./apiDocs/repos.manifest.json --main
 ```
 
+Build the docs hub without Python and without rerendering standalone RMarkdown docs:
+
+```bash
+./apiDocs/build-docs.sh --manifest ./apiDocs/repos.manifest.json --skip-python --skip-rmd
+```
+
 Serve locally after build:
 
 ```bash
@@ -251,10 +306,24 @@ bash ./apiDocs/build-docs.sh --manifest ./apiDocs/repos.manifest.json
 
 - Reads enabled entries from `apiDocs/repos.manifest.json`
 - If `--main` / `-Main` is set, keeps only the `core` entry and skips all optional external integrations
+- Renders the standalone RMarkdown guides before the DocFX build unless `--skip-rmd` / `-SkipRmd` is used:
+  - `hardwareDocs/wsshardware.rmd`
+  - `howtoCompileAPIDocs/BuildSoftwareDocs.Rmd`
+  - `simpleSerialPortDocs/SimpleSerial.Rmd`
+  - `wssCommandsDocs/wsscommands.Rmd`
 - Builds Python docs with Sphinx into `apiDocs/external/<repo-id>`
 - Generates a DocFX config file (`apiDocs/docfx.generated.json`) with one metadata section per C# repo
 - Regenerates `apiDocs/index.md` and `apiDocs/toc.yml` so all sections are accessible from the main page
 - Runs `docfx metadata` then `docfx build`
+
+## Adding more RMarkdown docs to the build
+
+If you add another standalone `.Rmd` guide that should be regenerated as part of the docs build:
+
+1. Add the file path to the `rmd_docs` array in `apiDocs/build-docs.sh`.
+2. Add the same file path to the `$rmdDocs` array in `apiDocs/build-docs.ps1`.
+3. Keep the path repo-relative (for example: `myDocs/MyGuide.Rmd`).
+4. Re-run the docs build and confirm the corresponding `.html` output is regenerated.
 
 ## Unity submodule repos (using a shim .csproj)
 

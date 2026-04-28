@@ -10,6 +10,7 @@ MANIFEST_PATH="${DOCS_MANIFEST_PATH:-$SCRIPT_DIR/repos.manifest.json}"
 SERVE=0
 SKIP_PYTHON=0
 MAIN_ONLY=0
+SKIP_RMD=0
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -29,9 +30,13 @@ while [[ $# -gt 0 ]]; do
       MAIN_ONLY=1
       shift
       ;;
+    --skip-rmd)
+      SKIP_RMD=1
+      shift
+      ;;
     *)
       echo "Unknown argument: $1" >&2
-      echo "Usage: ./apiDocs/build-docs.sh [--manifest <path>] [--serve] [--skip-python] [--main]" >&2
+      echo "Usage: ./apiDocs/build-docs.sh [--manifest <path>] [--serve] [--skip-python] [--skip-rmd] [--main]" >&2
       exit 1
       ;;
   esac
@@ -56,6 +61,35 @@ if ! command -v docfx >/dev/null 2>&1; then
   echo "ERROR: docfx is required and must be on PATH." >&2
   exit 1
 fi
+
+render_rmd_docs() {
+  if ! command -v Rscript >/dev/null 2>&1; then
+    echo "ERROR: Rscript is required to render standalone RMarkdown docs." >&2
+    echo "Install R (for example on Debian/Ubuntu/Pop!_OS: sudo apt install -y r-base) and retry." >&2
+    exit 1
+  fi
+
+  if ! command -v pandoc >/dev/null 2>&1; then
+    echo "ERROR: pandoc is required to render standalone RMarkdown docs." >&2
+    echo "Install pandoc (for example on Debian/Ubuntu/Pop!_OS: sudo apt install -y pandoc) and retry." >&2
+    exit 1
+  fi
+
+  local -a rmd_docs=(
+    "hardwareDocs/wsshardware.rmd"
+    "howtoCompileAPIDocs/BuildSoftwareDocs.Rmd"
+    "simpleSerialPortDocs/SimpleSerial.Rmd"
+    "wssCommandsDocs/wsscommands.Rmd"
+  )
+
+  for rmd_doc in "${rmd_docs[@]}"; do
+    echo "Rendering RMarkdown doc '$rmd_doc'..."
+    Rscript -e "rmarkdown::render('$rmd_doc')" || {
+      echo "ERROR: Failed to render RMarkdown doc: $rmd_doc" >&2
+      exit 1
+    }
+  done
+}
 
 expand_path_tokens() {
   local raw="$1"
@@ -124,6 +158,10 @@ if [[ $MAIN_ONLY -eq 1 ]]; then
 fi
 
 mapfile -t repos < <(jq -c "$repo_filter" "$MANIFEST_PATH")
+
+if [[ $SKIP_RMD -eq 0 ]]; then
+  render_rmd_docs
+fi
 
 rm -rf "$SCRIPT_DIR/api" "$SCRIPT_DIR/external"
 

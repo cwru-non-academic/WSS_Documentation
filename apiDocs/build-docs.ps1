@@ -2,6 +2,7 @@ param(
   [string]$ManifestPath,
   [switch]$Serve,
   [switch]$SkipPython,
+  [switch]$SkipRmd,
   [switch]$Main
 )
 
@@ -140,7 +141,38 @@ if (-not (Get-Command docfx -ErrorAction SilentlyContinue)) {
   throw "DocFX CLI not found in PATH. Install docfx and retry."
 }
 
+function Invoke-RMarkdownRender {
+  $rscript = Get-Command Rscript -ErrorAction SilentlyContinue
+  if (-not $rscript) {
+    throw "Rscript is required to render standalone RMarkdown docs. Install R and retry."
+  }
+
+  $pandoc = Get-Command pandoc -ErrorAction SilentlyContinue
+  if (-not $pandoc) {
+    throw "pandoc is required to render standalone RMarkdown docs. Install pandoc and retry."
+  }
+
+  $rmdDocs = @(
+    'hardwareDocs/wsshardware.rmd',
+    'howtoCompileAPIDocs/BuildSoftwareDocs.Rmd',
+    'simpleSerialPortDocs/SimpleSerial.Rmd',
+    'wssCommandsDocs/wsscommands.Rmd'
+  )
+
+  foreach ($rmdDoc in $rmdDocs) {
+    Write-Host "Rendering RMarkdown doc '$rmdDoc'..."
+    & $rscript.Source -e "rmarkdown::render('$rmdDoc')"
+    if ($LASTEXITCODE -ne 0) {
+      throw "Failed to render RMarkdown doc: $rmdDoc"
+    }
+  }
+}
+
 Write-Host "Using manifest: $ManifestPath"
+
+if (-not $SkipRmd) {
+  Invoke-RMarkdownRender
+}
 
 $manifest = Get-Content -LiteralPath $ManifestPath -Raw | ConvertFrom-Json -Depth 100
 if (-not $manifest.repositories) {
