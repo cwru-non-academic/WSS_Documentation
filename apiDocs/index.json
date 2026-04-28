@@ -322,7 +322,7 @@
   "conceptual/building-software-api-docs.html": {
     "href": "conceptual/building-software-api-docs.html",
     "title": "Building Software API Docs | WSS Documentation Hub",
-    "summary": "Building Software API Docs Home | Back to Maintainers This DocFX page exists so the documentation hub can link to the API-docs build guide without pointing at generated HTML outside apiDocs/. The source for the build guide lives in: howtoCompileAPIDocs/BuildSoftwareDocs.Rmd The rendered output is generated alongside that source as: howtoCompileAPIDocs/BuildSoftwareDocs.html Use that document for prerequisites, manifest configuration, and the build-docs.sh / build-docs.ps1 workflows. Navigation: Back to Home Back to Maintainers"
+    "summary": "Building Software API Docs Home | Back to Maintainers This DocFX page exists so the documentation hub can link to the API-docs build guide. Use the rendered guide for prerequisites, manifest configuration, and the build-docs.sh / build-docs.ps1 workflows: Building Software API Docs (DocFX) Navigation: Back to Home Back to Maintainers"
   },
   "conceptual/config-files-reference.html": {
     "href": "conceptual/config-files-reference.html",
