@@ -3,15 +3,15 @@
 - name: Start Here
   href: start-here.md
   items:
-  - name: Start Here: Using an Application
+  - name: "Start Here: Using an Application"
     href: conceptual/start-here-using-an-application.md
-  - name: Start Here: Developing an Application
+  - name: "Start Here: Developing an Application"
     href: conceptual/start-here-developing-an-application.md
-  - name: Start Here: Building a New Integration Library
+  - name: "Start Here: Building a New Integration Library"
     href: conceptual/start-here-building-a-new-integration-library.md
-  - name: Start Here: Minor Core Modifications
+  - name: "Start Here: Minor Core Modifications"
     href: conceptual/start-here-minor-core-modifications.md
-  - name: Start Here: Adding Layers or Core Functionality
+  - name: "Start Here: Adding Layers or Core Functionality"
     href: conceptual/start-here-adding-layers-or-core-functionality.md
   - name: Choosing a Runtime for an Integration Library
     href: conceptual/integration-library-runtime-selection.md
@@ -39,14 +39,19 @@
     href: conceptual/simple-serial-communication.md
 - name: C# API
   items:
-  - name: API: Core (C#)
+  - name: "API: Core (C#)"
     href: api/core/toc.yml
-  - name: API: C# Integration (C#)
+  - name: "API: C# Integration (C#)"
     href: api/csharp/toc.yml
-  - name: API: Unity Integration (C#)
+  - name: "API: Unity Integration (C#)"
     href: api/unity/toc.yml
 - name: Maintainers
   href: maintainers.md
   items:
   - name: Building Software API Docs
     href: conceptual/building-software-api-docs.md
+
+  - name: Maintaining Repository Links
+    href: conceptual/repository-links.md
+  - name: Publishing the Complete Site
+    href: conceptual/publishing-site.md

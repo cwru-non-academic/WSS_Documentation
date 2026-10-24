@@ -338,15 +338,15 @@ done
   printf '%s\n' '- name: Start Here'
   printf '%s\n' '  href: start-here.md'
   printf '%s\n' '  items:'
-  printf '%s\n' '  - name: Start Here: Using an Application'
+  printf '%s\n' '  - name: "Start Here: Using an Application"'
   printf '%s\n' '    href: conceptual/start-here-using-an-application.md'
-  printf '%s\n' '  - name: Start Here: Developing an Application'
+  printf '%s\n' '  - name: "Start Here: Developing an Application"'
   printf '%s\n' '    href: conceptual/start-here-developing-an-application.md'
-  printf '%s\n' '  - name: Start Here: Building a New Integration Library'
+  printf '%s\n' '  - name: "Start Here: Building a New Integration Library"'
   printf '%s\n' '    href: conceptual/start-here-building-a-new-integration-library.md'
-  printf '%s\n' '  - name: Start Here: Minor Core Modifications'
+  printf '%s\n' '  - name: "Start Here: Minor Core Modifications"'
   printf '%s\n' '    href: conceptual/start-here-minor-core-modifications.md'
-  printf '%s\n' '  - name: Start Here: Adding Layers or Core Functionality'
+  printf '%s\n' '  - name: "Start Here: Adding Layers or Core Functionality"'
   printf '%s\n' '    href: conceptual/start-here-adding-layers-or-core-functionality.md'
   printf '%s\n' '  - name: Choosing a Runtime for an Integration Library'
   printf '%s\n' '    href: conceptual/integration-library-runtime-selection.md'
@@ -380,7 +380,7 @@ done
       nav_title="${item%%|*}"
       rest="${item#*|}"
       nav_href="${rest%%|*}"
-      printf '  - name: %s\n' "$nav_title"
+      printf '  - name: %s\n' "$(jq -Rn --arg title "$nav_title" '$title')"
       printf '    href: %s\n' "$nav_href"
     done
   fi
@@ -390,6 +390,10 @@ done
   printf '%s\n' '  items:'
   printf '%s\n' '  - name: Building Software API Docs'
   printf '%s\n' '    href: conceptual/building-software-api-docs.md'
+  printf '%s\n' '  - name: Maintaining Repository Links'
+  printf '%s\n' '    href: conceptual/repository-links.md'
+  printf '%s\n' '  - name: Publishing the Complete Site'
+  printf '%s\n' '    href: conceptual/publishing-site.md'
 } > "$SCRIPT_DIR/toc.yml"
 
 {
