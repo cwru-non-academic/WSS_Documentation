@@ -46,7 +46,7 @@ The committed Unity automation notes describe older manual Editor evidence as pr
 
 ## Additional Applications
 
-The verified additional application is [ROS_Python_WSS_Application](https://github.com/cwru-non-academic/ROS_Python_WSS_Application), package `hfi_ros_wss_driver`. Its `HFI_WSS_Python_Interface` dependency pins the older Python integration revision abbreviated `60f29a8`. Its CI/promotion pipeline remains untouched. The Python CLI evidence and dispatch target do not establish ROS coverage. Resolve and record its full dependency SHA, production-path tests, evidence contract, and authorized promotion route separately before claiming full downstream propagation.
+The verified additional application is [ROS_Python_WSS_Application](xref:repo.python-ros), package `hfi_ros_wss_driver`. Its `HFI_WSS_Python_Interface` dependency pins the older Python integration revision abbreviated `60f29a8`. Its CI/promotion pipeline remains untouched. The Python CLI evidence and dispatch target do not establish ROS coverage. Resolve and record its full dependency SHA, production-path tests, evidence contract, and authorized promotion route separately before claiming full downstream propagation.
 
 ## Independent Adapter Work Still Required
 
