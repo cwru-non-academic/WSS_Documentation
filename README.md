@@ -85,3 +85,7 @@ DocFX 2.81.0 is pinned in `.config/dotnet-tools.json`. The hub-only preview is w
 The Windows/Linux CI workflow runs these same commands and uploads review artifacts without deploying them.
 This path requires no jq, Python, R, Pandoc, external checkout, or private machine paths.
 Full API/RMarkdown builds still require their additional dependencies and configured external checkout roots; they are a separate release stage.
+
+## Complete-site Publication
+
+Run `dotnet run --project tools/RepositoryLinks -- site` for the complete staged site, preserving API pages, root redirect and standalone guides. See [Publishing the Complete Site](./apiDocs/conceptual/publishing-site.md) for validation artifacts and the separate authorized Pages Actions activation step.
