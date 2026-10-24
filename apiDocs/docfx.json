@@ -39,6 +39,7 @@
       "templates/wss"
     ],
     "xref": [
+      "generated/repository-links/xrefmap.yml",
       "https://xref.docs.microsoft.com/query?uid={uid}"
     ],
     "markdownEngineName": "markdig"

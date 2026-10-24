@@ -6,7 +6,7 @@
       "kind": "csharp",
       "enabled": true,
       "root": "${WSS_CORE_REPO_ROOT}",
-      "solution": "/home/lemf/Documents/GitHub/WSSCoreInterface/WSS_Core_Interface.sln",
+      "solution": "WSS_Core_Interface.sln",
       "docfxDest": "api/core",
       "msbuildProperties": {
         "Configuration": "Debug"
@@ -18,7 +18,7 @@
       "kind": "csharp",
       "enabled": true,
       "root": "${WSS_CSHARP_REPO_ROOT}",
-      "csproj": "/home/lemf/Documents/GitHub/HFI_WSS_Csharp_Implementation/src/HFI_WSS_Csharp_Implementation.csproj",
+      "csproj": "src/HFI_WSS_Csharp_Implementation.csproj",
       "docfxDest": "api/csharp",
       "msbuildProperties": {
         "Configuration": "Debug"

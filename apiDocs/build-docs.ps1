@@ -137,9 +137,11 @@ if (-not (Test-Path -LiteralPath $docfxBaseConfig)) {
   throw "DocFX config not found: $docfxBaseConfig"
 }
 
-if (-not (Get-Command docfx -ErrorAction SilentlyContinue)) {
-  throw "DocFX CLI not found in PATH. Install docfx and retry."
+function Invoke-Docfx {
+  & dotnet tool run docfx -- @args
+  if ($LASTEXITCODE -ne 0) { throw "DocFX failed. Run 'dotnet tool restore' from the repository root and check the command output." }
 }
+Invoke-Docfx --version
 
 function Invoke-RMarkdownRender {
   $rscript = Get-Command Rscript -ErrorAction SilentlyContinue
@@ -167,6 +169,8 @@ function Invoke-RMarkdownRender {
     }
   }
 }
+
+& (Join-Path $docsDir 'generate-repository-links.ps1')
 
 Write-Host "Using manifest: $ManifestPath"
 
@@ -501,15 +505,15 @@ Push-Location $docsDir
 try {
   if ($metadataEntries.Count -gt 0) {
     Write-Host "Running DocFX metadata for $($metadataEntries.Count) C# repo(s)..."
-    docfx metadata $docfxGeneratedConfig
+    Invoke-Docfx metadata $docfxGeneratedConfig
   } else {
     Write-Host "No enabled C# repositories in manifest; skipping docfx metadata."
   }
 
   if ($Serve) {
-    docfx build $docfxGeneratedConfig --serve
+    Invoke-Docfx build $docfxGeneratedConfig --serve
   } else {
-    docfx build $docfxGeneratedConfig
+    Invoke-Docfx build $docfxGeneratedConfig
   }
 } finally {
   Pop-Location

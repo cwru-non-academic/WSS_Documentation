@@ -57,10 +57,13 @@ if ! command -v jq >/dev/null 2>&1; then
   exit 1
 fi
 
-if ! command -v docfx >/dev/null 2>&1; then
-  echo "ERROR: docfx is required and must be on PATH." >&2
+docfx() { dotnet tool run docfx -- "$@"; }
+if ! docfx --version >/dev/null 2>&1; then
+  echo "ERROR: Run dotnet tool restore from the repository root (see global.json)." >&2
   exit 1
 fi
+
+bash "$SCRIPT_DIR/generate-repository-links.sh"
 
 render_rmd_docs() {
   if ! command -v Rscript >/dev/null 2>&1; then

@@ -49,8 +49,8 @@ The docs build scripts also render the standalone RMarkdown guides before runnin
 
 ### Always needed for DocFX/API builds
 
-- .NET SDK 7 or later
-- DocFX CLI on `PATH`
+- .NET SDK pinned by `global.json` (currently 10.0.300)
+- pinned DocFX CLI restored with `dotnet tool restore`
 - `jq` for `apiDocs/build-docs.sh`
 
 ### Needed when rerendering standalone `.Rmd` guides
@@ -67,3 +67,21 @@ The docs build scripts also render the standalone RMarkdown guides before runnin
 - a valid `WSS_PYTHON_REPO_ROOT`
 
 For OS-specific setup steps, including installing prerequisites on macOS/Linux and `Rscript` / `pandoc`, see `howtoCompileAPIDocs/BuildSoftwareDocs.Rmd` (rendered as `BuildSoftwareDocs.html`).
+
+## Repository Links And Windows/Linux Validation
+
+Portable links in the DocFX hub use one [repository catalog](./apiDocs/repository-links.json).
+See [Maintaining Repository Links](./apiDocs/conceptual/repository-links.md) for organization moves, renames, deep links, copyable commands and CI/release stages.
+
+Install the .NET SDK pinned in `global.json` (10.0.300), then run the same commands on Windows or Linux:
+
+```text
+dotnet tool restore
+dotnet run --project tools/RepositoryLinks -- test --render
+dotnet run --project tools/RepositoryLinks -- hub
+```
+
+DocFX 2.81.0 is pinned in `.config/dotnet-tools.json`. The hub-only preview is written to `artifacts/hub`; add `--serve` to preview locally.
+The Windows/Linux CI workflow runs these same commands and uploads review artifacts without deploying them.
+This path requires no jq, Python, R, Pandoc, external checkout, or private machine paths.
+Full API/RMarkdown builds still require their additional dependencies and configured external checkout roots; they are a separate release stage.
