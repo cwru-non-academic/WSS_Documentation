@@ -2,6 +2,8 @@
 
 [Home](../index.md) | [Back to Start Here](../start-here.md)
 
+Before propagating a Core change through integrations and applications, see [First-party Core Promotion](ci-core-promotion.md) for producer, preflight, review, and promotion gates.
+
 ## Who This Is For
 
 This guide is for contributors making focused changes inside the existing WSS core without introducing a new layer or redesigning the overall architecture.

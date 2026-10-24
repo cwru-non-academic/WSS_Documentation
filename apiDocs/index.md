@@ -49,6 +49,11 @@ This site is organized first for people using WSS applications and for developer
 - [Simple Serial Communication with WSS](conceptual/simple-serial-communication.md)
   - Raw serial communication examples for macOS, Windows, and MATLAB.
 
+## CI and Dependency Updates
+
+- [CI and Dependency Updates](ci.md)
+  - Choose independent integration CI, application dependency updates, or coordinated first-party Core promotion.
+
 ## Docs Maintenance
 
 - [Maintainers](maintainers.md)

@@ -2,6 +2,8 @@
 
 [Home](../index.md) | [Back to Start Here](../start-here.md)
 
+For monitoring integration-library updates and proposing tested pinned-dependency changes in your application, see [Application Dependency Updates](ci-application-updates.md).
+
 ## Who This Is For
 
 This guide is for people building a new application on top of an existing WSS integration library.
