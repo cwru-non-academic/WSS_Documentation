@@ -1,3 +1,10 @@
 .DS_Store
 .Rhistory
 apiDocs/docfx.generated.json
+
+# Generated repository-link inputs (source: apiDocs/repository-links.json)
+apiDocs/generated/repository-links/
+# Shared documentation validation utility and hub previews
+tools/RepositoryLinks/bin/
+tools/RepositoryLinks/obj/
+artifacts/
