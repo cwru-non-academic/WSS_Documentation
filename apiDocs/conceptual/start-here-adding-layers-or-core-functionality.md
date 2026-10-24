@@ -2,6 +2,8 @@
 
 [Home](../index.md) | [Back to Start Here](../start-here.md) | [Back to Concepts](../concepts.md)
 
+For validating and propagating changes across the coordinated repositories, see [First-party Core Promotion](ci-core-promotion.md). Independent integration owners should use [Independent Integration CI](ci-independent-integrations.md).
+
 ## Who This Is For
 
 This guide is for contributors extending WSS itself rather than only consuming existing APIs.

@@ -30,6 +30,19 @@
     href: conceptual/firmware-compatibility-matrix.md
   - name: Config Files Reference
     href: conceptual/config-files-reference.md
+- name: CI and Dependency Updates
+  href: ci.md
+  items:
+  - name: Independent Integration CI
+    href: conceptual/ci-independent-integrations.md
+  - name: Application Dependency Updates
+    href: conceptual/ci-application-updates.md
+  - name: First-party Core Promotion
+    href: conceptual/ci-core-promotion.md
+  - name: Evidence, Permissions, and Operations
+    href: conceptual/ci-evidence-and-operations.md
+  - name: Workflow Reference and Verified Status
+    href: conceptual/ci-workflow-reference.md
 - name: Advanced
   href: advanced.md
   items:

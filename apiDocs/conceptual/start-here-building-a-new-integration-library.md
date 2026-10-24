@@ -2,6 +2,8 @@
 
 [Home](../index.md) | [Back to Start Here](../start-here.md)
 
+For upstream dependency monitoring, fresh candidate validation, and reviewable updates in a repository you control, see [Independent Integration CI](ci-independent-integrations.md).
+
 ## Who This Is For
 
 This guide is for people exposing WSS functionality to a new language or platform.
