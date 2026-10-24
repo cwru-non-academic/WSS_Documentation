@@ -7,6 +7,9 @@ Use this section when you are maintaining the documentation hub itself rather th
 - [Building Software API Docs (DocFX)](conceptual/building-software-api-docs.md)
   - How to build the multi-repository documentation hub and generated API docs.
 
+- [Maintaining Repository Links](conceptual/repository-links.md)
+  - Central repository catalog, link variables, deep links, clone snippets and validation.
+
 ## Typical Maintainer Tasks
 
 - rebuild the docs hub after changing conceptual pages or navigation

@@ -1,0 +1,39 @@
+name: Docs hub validation
+on:
+  pull_request:
+    paths: ['apiDocs/**', 'tools/RepositoryLinks/**', '.config/dotnet-tools.json', 'global.json', '.github/workflows/docs-hub-validation.yml']
+  push:
+    branches: [main]
+    paths: ['apiDocs/**', 'tools/RepositoryLinks/**', '.config/dotnet-tools.json', 'global.json', '.github/workflows/docs-hub-validation.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  hub:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-2022]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@v4.2.2
+      - uses: actions/setup-dotnet@v5.0.1
+        with:
+          global-json-file: global.json
+      - name: Restore pinned DocFX
+        run: dotnet tool restore
+      - name: Verify catalog and rendered organization-change fixtures
+        run: dotnet run --project tools/RepositoryLinks -- test --render
+      - name: Build hub-only preview with the shared local command
+        run: dotnet run --project tools/RepositoryLinks -- hub
+      - name: Upload preview for review (no deployment)
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          name: docs-hub-${{ matrix.os }}
+          path: artifacts/hub
+          if-no-files-found: error
+          retention-days: 7

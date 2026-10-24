@@ -1,0 +1,13 @@
+{
+  "defaultOwner": "cwru-non-academic",
+  "repositories": {
+    "python-cli": { "name": "CLI_Python_WSS_Application" },
+    "python-ros": { "name": "ROS_Python_WSS_Application" },
+    "csharp-cli": { "name": "CLI_CSharp_WSS_Application" },
+    "unity-app": { "name": "GUI_Unity_WSS_Application" },
+    "csharp": { "name": "CSharp_WSS_Integration_Lib" },
+    "python": { "name": "Python_WSS_Integration_Lib" },
+    "unity": { "name": "Unity_WSS_Integration_Lib" },
+    "core": { "name": "WSSCore" }
+  }
+}
