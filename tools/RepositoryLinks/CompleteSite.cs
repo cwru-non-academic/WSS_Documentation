@@ -37,7 +37,7 @@ internal static class CompleteSite
         var build = config["build"]!.AsObject();
         build["content"] = new JsonArray(new JsonObject
         {
-            ["src"] = Path.GetRelativePath(generated, docs), ["dest"] = "apiDocs",
+            ["src"] = "apiDocs", ["dest"] = "apiDocs",
             ["files"] = new JsonArray("*.md", "conceptual/**/*.md", "toc.yml", "api/**/*.yml", "api/**/index.md")
         });
         // Map preserved assets/standalone HTML as resources so DocFX can resolve cross-section links.
@@ -46,12 +46,14 @@ internal static class CompleteSite
         var resources = new JsonArray();
         foreach (var file in preserved.Where(p => !(p.StartsWith("apiDocs/", StringComparison.Ordinal) && p.EndsWith(".html", StringComparison.OrdinalIgnoreCase))))
             resources.Add(file);
-        build["resource"] = new JsonArray(new JsonObject { ["src"] = Path.GetRelativePath(generated, root), ["files"] = resources });
+        build["resource"] = new JsonArray(new JsonObject { ["files"] = resources });
         build["xref"] = new JsonArray(Path.Combine(generated, "xrefmap.yml"));
         build["template"] = new JsonArray("default", Path.Combine(docs, "templates/wss"));
         build["dest"] = output;
         build["disableGitFeatures"] = true;
-        var configPath = Path.Combine(generated, "site.docfx.json");
+        // Root the config above every source/resource; DocFX cannot export a manifest
+        // for resources reached through multiple parent-directory segments.
+        var configPath = Path.Combine(root, "docfx.site.generated.json");
         File.WriteAllText(configPath, config.ToJsonString(new JsonSerializerOptions { WriteIndented = true }));
         docfx(["build", configPath]);
         // Actions serves the artifact directly. Do not depend on Jekyll or a stale CNAME file.
