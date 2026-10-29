@@ -10,6 +10,9 @@ Use this section when you are maintaining the documentation hub itself rather th
 - [Maintaining Repository Links](conceptual/repository-links.md)
   - Central repository catalog, link variables, deep links, clone snippets and validation.
 
+- [Publishing the Complete Site](conceptual/publishing-site.md)
+  - Complete-site staging, preserved API/standalone content, CI review artifacts and gated Pages publication.
+
 ## Typical Maintainer Tasks
 
 - rebuild the docs hub after changing conceptual pages or navigation

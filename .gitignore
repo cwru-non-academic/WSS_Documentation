@@ -8,3 +8,4 @@ apiDocs/generated/repository-links/
 tools/RepositoryLinks/bin/
 tools/RepositoryLinks/obj/
 artifacts/
+docfx.site.generated.json

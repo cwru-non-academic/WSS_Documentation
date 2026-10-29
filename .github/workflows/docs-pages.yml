@@ -1,0 +1,81 @@
+name: Complete docs site
+on:
+  pull_request:
+    paths: ['apiDocs/**', 'tools/RepositoryLinks/**', 'hardwareDocs/**', 'howtoCompileAPIDocs/**', 'simpleSerialPortDocs/**', 'wssCommandsDocs/**', 'index.html', 'rmd-overrides.css', 'global.json', '.config/dotnet-tools.json', '.github/workflows/docs-pages.yml']
+  push:
+    branches: [main]
+    paths: ['apiDocs/**', 'tools/RepositoryLinks/**', 'hardwareDocs/**', 'howtoCompileAPIDocs/**', 'simpleSerialPortDocs/**', 'wssCommandsDocs/**', 'index.html', 'rmd-overrides.css', 'global.json', '.config/dotnet-tools.json', '.github/workflows/docs-pages.yml']
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: Deploy a validated main build after Pages is configured for Actions
+        type: boolean
+        default: false
+permissions:
+  contents: read
+concurrency:
+  group: complete-docs-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-2022]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@v5.0.0
+      - uses: actions/setup-dotnet@v5.0.1
+        with:
+          global-json-file: global.json
+      - run: dotnet tool restore
+      - name: Validate repository destinations and rendered fixtures
+        run: dotnet run --project tools/RepositoryLinks -- test --render
+      - name: Stage and validate the complete site
+        run: dotnet run --project tools/RepositoryLinks -- site
+      - name: Upload complete-site review artifact and preservation report
+        uses: actions/upload-artifact@v5.0.0
+        with:
+          name: complete-site-${{ matrix.os }}
+          path: |
+            artifacts/site
+            artifacts/site-validation.json
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 7
+      - name: Package the main-only Pages artifact
+        if: matrix.os == 'ubuntu-24.04' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v5.0.0
+        with:
+          path: artifacts/site
+  deploy:
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.publish))
+    needs: build
+    runs-on: ubuntu-24.04
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Require Pages Actions mode before deploying
+        id: pages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mode=$(gh api "repos/${GITHUB_REPOSITORY}/pages" --jq .build_type)
+          if [ "$mode" = workflow ]; then
+            echo 'ready=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'ready=false' >> "$GITHUB_OUTPUT"
+            echo 'Pages remains in branch mode. Deployment skipped until the approved settings switch.' >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Deploy validated main artifact
+        if: steps.pages.outputs.ready == 'true'
+        id: deployment
+        uses: actions/deploy-pages@v5.0.1

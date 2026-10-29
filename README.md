@@ -89,3 +89,6 @@ Full API/RMarkdown builds still require their additional dependencies and config
 ## Release review
 
 Start application or integration setup from the [repository guide](apiDocs/conceptual/repository-and-kit-links.md). Shared concepts live in this hub; installation and runnable examples live in each repository README. Review the [central 1.0 readiness checklist](apiDocs/conceptual/release-readiness.md) before publishing this documentation or the release.
+## Complete-site Publication
+
+Run `dotnet run --project tools/RepositoryLinks -- site` for the complete staged site, preserving API pages, root redirect and standalone guides. See [Publishing the Complete Site](./apiDocs/conceptual/publishing-site.md) for validation artifacts and the separate authorized Pages Actions activation step.

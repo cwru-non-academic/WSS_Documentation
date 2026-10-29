@@ -17,8 +17,12 @@ try
     {
         case "generate": Generate(Load(catalogPath), output); break;
         case "test": Test(root, catalogPath, args.Contains("--render") || tool != null, tool); break;
+        case "site":
+            Generate(Load(catalogPath), Path.Combine(root, "apiDocs/generated/repository-links"));
+            CompleteSite.Build(root, Option("--output") ?? Path.Combine(root, "artifacts/site"), a => Docfx(root, tool, a));
+            break;
         case "hub": Hub(root, catalogPath, Option("--output") ?? Path.Combine(root, "artifacts/hub"), tool, args.Contains("--serve")); break;
-        default: throw new ArgumentException("Use generate, test [--render], or hub [--serve]; optional --catalog, --output, --docfx <executable>.");
+        default: throw new ArgumentException("Use generate, test [--render], hub [--serve], or site; optional --catalog, --output, --docfx <executable>.");
     }
     return 0;
 }

@@ -130,6 +130,8 @@ A complete release should be added in separate stages:
 4. Add a separately authorized publish job with an explicit release trigger and
    destination. Publication and repository transfers are not part of this workflow.
 
+For the complete staged site and the gated deployment workflow, see [Publishing the Complete Site](publishing-site.md). The hub preview remains deliberately smaller and is never deployed by itself.
+
 ## Which links stay literal
 
 These are [native DocFX cross-references](https://dotnet.github.io/docfx/docs/links-and-cross-references.html).
