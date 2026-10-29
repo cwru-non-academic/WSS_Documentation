@@ -1,13 +1,71 @@
 {
   "defaultOwner": "cwru-non-academic",
   "repositories": {
-    "python-cli": { "name": "CLI_Python_WSS_Application" },
-    "python-ros": { "name": "ROS_Python_WSS_Application" },
-    "csharp-cli": { "name": "CLI_CSharp_WSS_Application" },
-    "unity-app": { "name": "GUI_Unity_WSS_Application" },
-    "csharp": { "name": "CSharp_WSS_Integration_Lib" },
-    "python": { "name": "Python_WSS_Integration_Lib" },
-    "unity": { "name": "Unity_WSS_Integration_Lib" },
-    "core": { "name": "WSSCore" }
+    "python-cli": {
+      "name": "CLI_Python_WSS_Application",
+      "links": {
+        "readme": "#readme"
+      }
+    },
+    "python-ros": {
+      "name": "ROS_Python_WSS_Application",
+      "links": {
+        "readme": "#readme"
+      }
+    },
+    "csharp-cli": {
+      "name": "CLI_CSharp_WSS_Application",
+      "links": {
+        "readme": "#readme"
+      }
+    },
+    "unity-app": {
+      "name": "GUI_Unity_WSS_Application",
+      "links": {
+        "readme": "#readme"
+      }
+    },
+    "csharp": {
+      "name": "CSharp_WSS_Integration_Lib",
+      "links": {
+        "readme": "#readme"
+      }
+    },
+    "python": {
+      "name": "Python_WSS_Integration_Lib",
+      "links": {
+        "readme": "#readme"
+      }
+    },
+    "unity": {
+      "name": "Unity_WSS_Integration_Lib",
+      "links": {
+        "readme": "#readme"
+      }
+    },
+    "core": {
+      "name": "WSSCore",
+      "links": {
+        "readme": "#readme"
+      }
+    },
+    "matlab": {
+      "name": "Matlab_WSS_Integration_Lib",
+      "links": {
+        "readme": "#readme"
+      }
+    },
+    "matlab-cli": {
+      "name": "CLI_Matlab_WSS_Application",
+      "links": {
+        "readme": "#readme"
+      }
+    },
+    "docs": {
+      "name": "WSS_Documentation",
+      "links": {
+        "readme": "#readme"
+      }
+    }
   }
 }

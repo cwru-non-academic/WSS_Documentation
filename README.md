@@ -41,7 +41,7 @@ Use `--skip-python` in Bash or `-SkipPython` in PowerShell to skip building Pyth
 
 Use `--skip-rmd` in Bash or `-SkipRmd` in PowerShell to skip regenerating the standalone RMarkdown-based HTML guides while still building the DocFX hub and any enabled API sections.
 
-Python integration docs for the library are not currently supported in this local build workflow. For now, use `--skip-python` in Bash or `-SkipPython` in PowerShell.
+For a hub/C# build without Sphinx output, use `--skip-python` in Bash or `-SkipPython` in PowerShell.
 
 The docs build scripts also render the standalone RMarkdown guides before running DocFX. This requires both `Rscript` and `pandoc` to be installed.
 
@@ -85,3 +85,7 @@ DocFX 2.81.0 is pinned in `.config/dotnet-tools.json`. The hub-only preview is w
 The Windows/Linux CI workflow runs these same commands and uploads review artifacts without deploying them.
 This path requires no jq, Python, R, Pandoc, external checkout, or private machine paths.
 Full API/RMarkdown builds still require their additional dependencies and configured external checkout roots; they are a separate release stage.
+
+## Release review
+
+Start application or integration setup from the [repository guide](apiDocs/conceptual/repository-and-kit-links.md). Shared concepts live in this hub; installation and runnable examples live in each repository README. Review the [central 1.0 readiness checklist](apiDocs/conceptual/release-readiness.md) before publishing this documentation or the release.

@@ -5,7 +5,7 @@ Use this section when your main question is what kind of WSS work you are trying
 ## Choose The Closest Path
 
 - [Using an Application](conceptual/start-here-using-an-application.md)
-  - Choose this if you want to operate WSS through an existing GUI, CLI, Unity workflow, or Python-based tool.
+  - Choose this if you want to operate WSS through an existing GUI, CLI, Unity, Python, ROS or MATLAB workflow.
   - This is the best starting point for application users.
 - [Developing an Application](conceptual/start-here-developing-an-application.md)
   - Choose this if you are building a user-facing tool on top of an existing WSS integration library.
@@ -39,7 +39,7 @@ Use this section when your main question is what kind of WSS work you are trying
   - Useful when you need to understand how setup, streaming, and lifecycle behavior actually work.
 - [Choosing a Runtime for an Integration Library](conceptual/integration-library-runtime-selection.md)
   - Useful before starting a new integration library.
-- [Repository and Kit Links](conceptual/repository-and-kit-links.md)
+- [Repositories and setup guides](conceptual/repository-and-kit-links.md)
   - Use this when you want one place to collect application, integration library, and core links.
 
 Navigation:

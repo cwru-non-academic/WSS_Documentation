@@ -2,68 +2,30 @@
 
 [Home](../index.md) | [Back to Start Here](../start-here.md) | [Back to Building a New Integration Library](start-here-building-a-new-integration-library.md)
 
-## Why This Page Exists
+Choose the application host separately from the portable Core and transport assemblies. A library's target framework describes its managed API compatibility; the host runtime and native OS/architecture assets determine where it runs.
 
-When you are choosing or building a WSS integration library, the target runtime affects compatibility, transport support, and whether the result can still be used from Unity.
+| Component | Managed target | Host responsibility |
+| --- | --- | --- |
+| Core `WSS_Core_Interface.csproj` | `netstandard2.0` | Supply a runtime and select a transport. |
+| Serial `WSS.Transport.Serial/WSS.Transport.Serial.csproj` | `netstandard2.0` | Include its managed dependencies and the correct runtime assets for the host. |
+| BLE transport abstraction and backends | `netstandard2.0` | Deploy the matching platform backend and native assets. A portable assembly target does not make a native backend portable. |
+| C# integration `src/Wss.CSharpImplementation.csproj` | `net9.0` | Use a .NET 9-compatible host and the complete dependency distribution. |
+| Unity integration | Unity project | Follow its supported Editor version and plugin import settings. A successful standalone .NET build does not establish Unity compatibility. |
+| Python integration | CPython plus pythonnet | Select the .NET runtime before importing the wrapper and retain the complete dependency distribution. |
+| MATLAB integration | MATLAB plus its .NET host | Follow the library README for MATLAB prerequisites, path setup and managed/native dependency loading. |
 
-Use this page to pick the most appropriate runtime before you commit to a transport or host environment.
+The documentation toolchain has its own pinned SDK and DocFX versions. Those build tools do not define the application's runtime requirement.
 
-## Quick Selection Guide
+## Choose an Existing Integration First
 
-| Target | Best for | Notes |
-|---|---|---|
-| `.NET Standard 2.0` | Broad compatibility and the base WSS core | Best when you want the most portable option and do not need a transport-specific integration bundled into the base library. |
-| `.NET Framework 4.8` | Serial transport and Unity-compatible workflows | Use this path when you need the current serial transport support and need to stay compatible with Unity-based integrations. |
-| `.NET 8` | Newer host environments and the BLE-oriented integration path | This is the newer integration target. Do not choose this path if Unity compatibility is required. |
+For a .NET application, use the [C# integration README](https://github.com/cwru-non-academic/CSharp_WSS_Integration_Lib#readme). For Python, use the [Python integration README](https://github.com/cwru-non-academic/Python_WSS_Integration_Lib#readme). For Unity, follow the [Unity integration README](https://github.com/cwru-non-academic/Unity_WSS_Integration_Lib#readme). For MATLAB, follow the [MATLAB integration README](https://github.com/cwru-non-academic/Matlab_WSS_Integration_Lib#readme).
 
-## Runtime Choices
+These READMEs own concrete installation commands, submodule paths, runtime setup and minimal examples. The [repository directory](repository-and-kit-links.md) links to the supported applications.
 
-### `.NET Standard 2.0`
-
-This is the most compatible starting point for the shared WSS core.
-
-- The current core project targets `.NET Standard 2.0`.
-- This is the best choice when you want a base library that works across older and newer .NET environments.
-- It is a good fit when you want the reusable WSS logic without committing to a specific transport-specific integration package.
-
-In practice, choose this when portability matters more than bundled transport support.
-
-### `.NET Framework 4.8`
-
-This is the current transport-specific choice for the serial path.
-
-- The serial transport project currently targets `.NET Framework 4.8`.
-- This is the safest choice when serial transport support is required and Unity compatibility still matters.
-- The current Unity-facing integration path uses the serial transport.
-
-If your priority is Unity compatibility, avoid jumping to the newer runtime path unless you are sure Unity support is no longer needed.
-
-### `.NET 8`
-
-This is the newer integration target.
-
-- The current C# integration library targets `.NET 8`.
-- This is the direction to use for newer integration work, including the BLE-oriented path.
-- This path should not be treated as Unity-compatible.
-
-If you choose this path for BLE or other newer host environments, document clearly that Unity is no longer a supported target for that integration.
-
-## Recommended Decision Pattern
-
-- Choose `.NET Standard 2.0` for the most reusable and broadly compatible base library.
-- Choose `.NET Framework 4.8` when you need serial transport support and Unity compatibility.
-- Choose `.NET 8` when you need the newer integration path and do not need Unity compatibility.
-
-## Verified Current Targets
-
-These statements match the projects currently referenced by this documentation workspace:
-
-- `WSS_Core_Interface.csproj` targets `.NET Standard 2.0`.
-- `WSS.Transport.Serial.csproj` targets `.NET Framework 4.8`.
-- `HFI_WSS_Csharp_Implementation.csproj` targets `.NET 8`.
+For a new integration, start with Core interfaces, define who owns initialization, ticking and shutdown, and make transport selection explicit. When composing Core directly, the host drives `Tick()`; existing wrappers can own that loop. See [Core Architecture](core-architecture.md).
 
 Navigation:
 
 - [Back to Home](../index.md)
 - [Back to Start Here](../start-here.md)
-- [Back to Start Here: Building a New Integration Library](start-here-building-a-new-integration-library.md)
+- [Back to Building a New Integration Library](start-here-building-a-new-integration-library.md)

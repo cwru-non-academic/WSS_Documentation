@@ -8,13 +8,13 @@ It is meant to be the human-readable companion to `WSSVersionHandler` and other 
 
 ## What This Page Covers
 
-This matrix is based on currently documented and transformed source behavior from:
+This matrix is based on Core source behavior from:
 
 - `WSSVersionHandler`
 - `WssClient`
 - the command reference where payload shape changes by firmware
 
-It only lists version-gated behavior that is explicitly visible in the current docs or transformed source.
+It only lists version-gated behavior that is explicitly visible in the Core source.
 
 ## How Firmware Selection Works
 
@@ -39,18 +39,14 @@ The currently documented supported firmware versions are:
 
 | Firmware | Recognized by Core | Fallback Target for Unknown String | AmplitudeCheck | LED Settings | ModuleQuery | Notes |
 |---|---|---|---|---|---|---|
-| `H03` | Yes | Yes | No | No | No | baseline/default documented behavior |
-| `J03` | Yes | No | Yes | Yes | Yes | adds LED-related behavior and ModuleQuery support |
+| `H03` | Yes | Yes | Not a current gate | No | No | baseline/default documented behavior |
+| `J03` | Yes | No | Not a current gate | Yes | Yes | adds LED-related behavior and ModuleQuery support |
 
 ## Feature Notes
 
 ### `AmplitudeCheck`
 
-- Version source: `WSSVersionHandler`
-- Current minimum version: `J03`
-- Meaning in the current code: this is a named version-gated feature exposed through `IsFeatureAvailable(...)` and `IsAmplitudeCheckAvailable()`
-
-At the moment, the current docs do not explain the higher-level user-facing behavior of amplitude checking in more detail, so this matrix only records that the feature gate exists.
+Core registers `LEDSettings` and `ModuleQuery` in `FeatureMinimumVersions`. Unknown feature names return false from `IsFeatureAvailable(...)`. Amplitude checking is not a registered feature gate.
 
 ### LED Settings
 
@@ -107,7 +103,7 @@ This page is currently based on these documented behaviors:
 
 - `WSSVersionHandler.SupportedVersions`: `H03`, `J03`
 - `WSSVersionHandler` unknown-string fallback to `H03`
-- `WSSVersionHandler` feature gates for `AmplitudeCheck` and `LEDSettings`
+- `WSSVersionHandler` feature gates for `LEDSettings` and `ModuleQuery`
 - `WssClient.CreateContactConfig(...)` LED behavior
 - `WssClient.ModuleQuery(...)` version-gated behavior
 

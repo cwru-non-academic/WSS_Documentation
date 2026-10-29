@@ -35,3 +35,6 @@ Use this section when you already know you are working with WSS and need to unde
 Navigation:
 
 - [Back to Home](index.md)
+
+- [Platforms and transports](conceptual/platform-support.md)
+- [Testing and deployment](conceptual/testing-and-deployment.md)

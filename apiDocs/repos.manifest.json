@@ -18,7 +18,7 @@
       "kind": "csharp",
       "enabled": true,
       "root": "${WSS_CSHARP_REPO_ROOT}",
-      "csproj": "src/HFI_WSS_Csharp_Implementation.csproj",
+      "csproj": "src/Wss.CSharpImplementation.csproj",
       "docfxDest": "api/csharp",
       "msbuildProperties": {
         "Configuration": "Debug"

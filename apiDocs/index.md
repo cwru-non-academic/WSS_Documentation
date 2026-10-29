@@ -7,16 +7,16 @@ This site is organized first for people using WSS applications and for developer
 - [Start Here](start-here.md)
   - The best entry point if you are deciding whether you are using an existing application, building a new application, creating a new integration library, or making focused core changes.
 - [Using an Application](conceptual/start-here-using-an-application.md)
-  - Start here if you want to run WSS through an existing GUI, CLI, Unity, or Python workflow.
+  - Start here if you want to run WSS through an existing GUI, CLI, Unity, Python, ROS or MATLAB workflow.
 - [Developing an Application](conceptual/start-here-developing-an-application.md)
   - Start here if you are building a user-facing tool on top of an existing WSS integration library.
 - [Building a New Integration Library](conceptual/start-here-building-a-new-integration-library.md)
   - Start here if you need to expose WSS to a new language, platform, or transport environment.
 
-## Repository And Kit Links
+## Repositories and setup guides
 
-- [Repository and Kit Links](conceptual/repository-and-kit-links.md)
-  - One page for grouped application, integration library, and core repository and kit links.
+- [Repositories and setup guides](conceptual/repository-and-kit-links.md)
+  - One page for grouped application, integration library, and core repository setup links.
 
 ## Core Concepts
 

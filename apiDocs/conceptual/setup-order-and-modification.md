@@ -44,23 +44,16 @@ So the key distinction is:
 
 ## Current Initial Setup Order
 
-The current documented startup flow is:
+`CoreModule/WssStimulationCore.cs` queues this sequence for each configured target after transport connection:
 
-1. `Initialize()`
-2. connect transport
-3. `NormalSetup()`
-4. `Clear`
-5. `Create`
-6. `Config`
-7. `Edit`
-8. `Add`
-9. `Sync`
-10. queue drains to `Ready`
-11. `StartStim(...)`
-12. device reports `Started`
-13. streaming begins
+1. `Clear(0, target)`.
+2. `ModuleQuery(1, target)`, then capture decoded unit settings (or version-gated defaults).
+3. For each of the three logical channels: create its schedule, create its contact configuration, create its event, edit the event ratio, then add the event to its schedule.
+4. `SyncGroup(...)`.
+5. `StartStim(target)` as the final queued setup step.
+6. Drain the queue; the state machine observes started state and begins background streaming.
 
-This is the best current high-level description of what the core does during automatic setup.
+`StartStim` is already in the automatic setup queue; it is not a separate application action that must happen after the queue reaches `Ready`. Initialization alone can advance into `Started`/`Streaming`. `Ready()` is therefore not a status to wait for exclusively. The command-intent examples below explain available operations; they are not a literal list of every command sent during `NormalSetup()`.
 
 ## Command-Intent Translation
 

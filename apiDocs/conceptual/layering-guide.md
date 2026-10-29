@@ -1,4 +1,4 @@
-﻿# Layering Guide (Modules)
+# Layering Guide (Modules)
 
 [Home](../index.md) | [Back to Concepts](../concepts.md)
 
@@ -20,9 +20,9 @@ flowchart LR
   - Frame parsing/assembly via `IFrameCodec`.
   - Background streaming loop; queued edits; lifecycle orchestration.
 - Key code:
-  - Core: `WSSBaseCode/WssStimulationCore.cs`
-  - Codec: `WSSBaseCode/WssFrameCodec.cs` (`WSSBaseCode/Interfaces/IFrameCodec.cs`)
-  - Transport: `WSSBaseCode/SerialPortTransport.cs`, `WSSBaseCode/TestModeTransport.cs` (`WSSBaseCode/Interfaces/ITransport.cs`)
+  - Core: `CoreModule/WssStimulationCore.cs`
+  - Codec: `CoreModule/WssFrameCodec.cs` (`CoreModule/Interfaces/IFrameCodec.cs`)
+  - Transport: `WSS.Transport.Serial/SerialPortTransport.cs`, `CoreModule/TestModeTransport.cs` (`CoreModule/Interfaces/ITransport.cs`)
 
 ## Core + Params Module
 
@@ -43,7 +43,7 @@ flowchart LR
   - Helpers to apply parameter sets to the device safely.
 - Key code:
   - Module: `CalibrationModule/StimParamsLayer.cs`, `CalibrationModule/StimParamsConfig.cs`, `CalibrationModule/StimParamsConfigController.cs`, `CalibrationModule/IStimParamsCore.cs`
-  - Config plumbing: `WSSBaseCode/CoreJsonConfig/*`
+  - Config plumbing: `CoreModule/CoreJsonConfig/*`
 
 ## Core + Params + Model Module
 
@@ -75,7 +75,7 @@ flowchart LR
 
 ## Optional Capability: Basic Stimulation
 
-The Basic Stimulation interface (`WSSBaseCode/Interfaces/IBasicStimulation.cs`) is an optional capability layer that adds higher-level stimulation operations on top of the core. It is suitable for firmware/hardware that supports waveform editing, event shaping, and config persistence. It serves stimulator-specific functionality.
+The Basic Stimulation interface (`CoreModule/Interfaces/IBasicStimulation.cs`) is an optional capability layer that adds higher-level stimulation operations on top of the core. It is suitable for firmware/hardware that supports waveform editing, event shaping, and config persistence. It serves stimulator-specific functionality.
 
 ```mermaid
 flowchart LR
@@ -95,9 +95,6 @@ flowchart LR
   - `UpdateIPD` (global or per-event)
 - Relationship to modules
   - Can be used with Core only, with Params, or with Params + Model. Modules can delegate to `IBasicStimulation` for device edits.
-- Future direction
-  - Split `IBasicStimulation` into smaller capability interfaces to match firmware/hardware feature sets (e.g., `IWaveformUpload`, `IEventEditing`, `IConfigPersistence`, `IConfigQuery`).
-  - Compose the final “stimulator” from supported capability interfaces at runtime.
 
 Navigation:
 

@@ -1,81 +1,36 @@
-# Repository and Kit Links
+# WSS repositories and setup guides
 
 [Home](../index.md) | [Back to Start Here](../start-here.md)
 
-This page collects the main WSS repositories and kit links in one place.
+Use the repository README for prerequisites, installation, configuration paths and runnable examples. The shared guides explain the contracts common to those examples. These links identify the academic WSS 1.0 repositories.
 
-Use the `Repository` link when you want the source code and project history.
+## Run an application
 
-Use the `Kit link` when you want the packaged app, release asset, package feed, or other distribution link.
+| Workflow | Setup and startup | Integration used |
+| --- | --- | --- |
+| .NET command line | [C# CLI README](xref:repo.csharp-cli.readme) | [C# library](xref:repo.csharp.readme) |
+| Python command line | [Python CLI README](xref:repo.python-cli.readme) | [Python library](xref:repo.python.readme) |
+| ROS 2 | [ROS driver README](xref:repo.python-ros.readme) | [Python library](xref:repo.python.readme) |
+| Unity GUI | [Unity application README](xref:repo.unity-app.readme) | [Unity library](xref:repo.unity.readme) |
+| MATLAB command line | [MATLAB CLI README](xref:repo.matlab-cli.readme) | [MATLAB library](xref:repo.matlab.readme) |
 
-## Applications
+## Integrate WSS into your own application
 
-These are user-facing tools built on top of an integration library.
+| Host | Installation, submodule integration and first example |
+| --- | --- |
+| C#/.NET | [C# integration README](xref:repo.csharp.readme) |
+| Python | [Python integration README](xref:repo.python.readme) |
+| Unity | [Unity integration README](xref:repo.unity.readme) |
+| MATLAB | [MATLAB integration README](xref:repo.matlab.readme) |
+| Direct Core or a new wrapper | [Core README](xref:repo.core.readme) and [building an integration](start-here-building-a-new-integration-library.md) |
 
-### Python Applications
+## Choose the next reference
 
-- Python CLI Application
-  - Repository: [Python CLI Application](xref:repo.python-cli)
-  - Kit link: [Python CLI Application Kit](PASTE_PYTHON_CLI_APPLICATION_KIT_URL_HERE)
-  - Notes:
-
-- Python ROS Application
-  - Repository: [Python ROS Application](xref:repo.python-ros)
-  - Kit link: [Python ROS Application Kit](PASTE_PYTHON_ROS_APPLICATION_KIT_URL_HERE)
-  - Notes:
-
-### C# Applications
-
-- C# CLI Application
-  - Repository: [C# CLI Application](xref:repo.csharp-cli)
-  - Kit link: [C# CLI Application Kit](PASTE_CSHARP_CLI_APPLICATION_KIT_URL_HERE)
-  - Notes:
-
-### Unity Applications
-
-- Unity Application
-  - Repository: [Unity Application](xref:repo.unity-app)
-  - Kit link: [Unity Application Kit](PASTE_UNITY_APPLICATION_KIT_URL_HERE)
-  - Notes:
-
-## Integration Libraries
-
-These are developer-facing libraries that expose WSS functionality to a language or platform.
-
-### C# Integration Library
-
-- Repository: [C# Integration Library](xref:repo.csharp)
-- Kit link: [C# Integration Library Kit](PASTE_CSHARP_INTEGRATION_LIBRARY_KIT_URL_HERE)
-- Notes:
-
-### Python Integration Library
-
-- Repository: [Python Integration Library](xref:repo.python)
-- Kit link: [Python Integration Library Kit](PASTE_PYTHON_INTEGRATION_LIBRARY_KIT_URL_HERE)
-- Notes:
-
-### Unity Integration Library
-
-- Repository: [Unity Integration Library](xref:repo.unity)
-- Kit link: [Unity Integration Library Kit](PASTE_UNITY_INTEGRATION_LIBRARY_KIT_URL_HERE)
-- Notes:
-
-## Core
-
-This is the shared WSS core that integration libraries build on top of.
-
-### Main Core
-
-- Repository: [Main Core](xref:repo.core)
-- Kit link: [Main Core Kit](PASTE_MAIN_CORE_KIT_URL_HERE)
-- Notes:
-
-## Related Guides
-
-- [Start Here: Using an Application](start-here-using-an-application.md)
-- [Start Here: Developing an Application](start-here-developing-an-application.md)
-- [Start Here: Building a New Integration Library](start-here-building-a-new-integration-library.md)
-- [Core Architecture (Transport, Codec, Core)](core-architecture.md)
+- [Platform and transport support](platform-support.md)
+- [Shared configuration](config-files-reference.md)
+- [Application lifecycle](start-here-developing-an-application.md)
+- [Testing and deployment](testing-and-deployment.md)
+- [Documentation source and build](xref:repo.docs.readme)
 
 Navigation:
 

@@ -4,6 +4,8 @@
 
 Before propagating a Core change through integrations and applications, see [First-party Core Promotion](ci-core-promotion.md) for producer, preflight, review, and promotion gates.
 
+For the shared checkout and software-only validation contract, see [Verify a Developer Checkout](developer-verification.md).
+
 ## Who This Is For
 
 This guide is for contributors making focused changes inside the existing WSS core without introducing a new layer or redesigning the overall architecture.

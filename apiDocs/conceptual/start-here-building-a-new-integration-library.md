@@ -4,13 +4,15 @@
 
 For upstream dependency monitoring, fresh candidate validation, and reviewable updates in a repository you control, see [Independent Integration CI](ci-independent-integrations.md).
 
+For the shared checkout and software-only validation contract, see [Verify a Developer Checkout](developer-verification.md).
+
 ## Who This Is For
 
 This guide is for people exposing WSS functionality to a new language or platform.
 
 Use this path when an existing integration library does not fit your target environment and you need to build a new reusable integration layer.
 
-Before choosing a transport or host-specific implementation, see [Choosing a Runtime for an Integration Library](integration-library-runtime-selection.md) to decide whether `.NET Standard 2.0`, `.NET Framework 4.8`, or `.NET 8` is the right fit.
+Before choosing a transport or host-specific implementation, see [Choosing a Runtime for an Integration Library](integration-library-runtime-selection.md) to distinguish portable managed library targets from host runtimes and platform assets.
 
 Examples include a new Python wrapper, a Unity-facing library, a C#-native integration layer, or a future library for another runtime.
 

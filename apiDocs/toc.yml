@@ -9,6 +9,8 @@
     href: conceptual/start-here-developing-an-application.md
   - name: Start Here: Building a New Integration Library
     href: conceptual/start-here-building-a-new-integration-library.md
+  - name: Verify a Developer Checkout
+    href: conceptual/developer-verification.md
   - name: Start Here: Minor Core Modifications
     href: conceptual/start-here-minor-core-modifications.md
   - name: Start Here: Adding Layers or Core Functionality
@@ -20,6 +22,10 @@
 - name: Concepts
   href: concepts.md
   items:
+  - name: Platforms and transports
+    href: conceptual/platform-support.md
+  - name: Testing and deployment
+    href: conceptual/testing-and-deployment.md
   - name: Layering Guide (Modules)
     href: conceptual/layering-guide.md
   - name: Core Architecture (Transport, Codec, Core)
@@ -41,7 +47,7 @@
     href: conceptual/ci-core-promotion.md
   - name: Evidence, Permissions, and Operations
     href: conceptual/ci-evidence-and-operations.md
-  - name: Workflow Reference and Verified Status
+  - name: Workflow Reference
     href: conceptual/ci-workflow-reference.md
 - name: Advanced
   href: advanced.md
@@ -50,6 +56,8 @@
     href: conceptual/wss-commands-reference.md
   - name: Simple Serial Communication with WSS
     href: conceptual/simple-serial-communication.md
+- name: API overview
+  href: conceptual/api-reference.md
 - name: C# API
   items:
   - name: API: Core (C#)
@@ -63,3 +71,5 @@
   items:
   - name: Building Software API Docs
     href: conceptual/building-software-api-docs.md
+  - name: Release 1.0 readiness
+    href: conceptual/release-readiness.md

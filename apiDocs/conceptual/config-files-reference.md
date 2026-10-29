@@ -23,6 +23,11 @@ Sections:
 - `firmware`
   - The firmware version string used by the core when it creates the WSS version handler.
   - See [Firmware Compatibility Matrix](firmware-compatibility-matrix.md) for the currently documented supported versions and version-gated features.
+- `broadcastTarget`
+  - Core defaults to the hexadecimal receiver address `"0x8F"` for broadcast commands.
+- `wssTargets`
+  - Core defaults to `["0x81", "0x82", "0x83"]`, mapping in order to logical `Wss1`, `Wss2`, and `Wss3`.
+  - These are on-wire receiver addresses, not serial port names or BLE device identifiers. Use the configuration schema supplied with the application's pinned dependency distribution.
 - `useConfigAmpCurves`
   - Controls whether amplitude conversion should come from this file or from the built-in/default mapping.
 - `ampCurves`
