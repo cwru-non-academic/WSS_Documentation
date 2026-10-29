@@ -26,7 +26,8 @@ separate release tasks with additional pinned upstream checkouts and dependencie
 
 Validation requires all inventoried public paths to survive. Root files and assets
 remain byte-identical. Standalone guides receive the centrally defined hub links;
-the build checks that their other content and section links remain unchanged.
+the build checks that their non-navigation content remains unchanged. Invalid
+same-page links are repaired only from uniquely matching heading labels.
 Fresh pages must be DocFX output, with resolved repository links and clone snippets,
 working local paths and fragments, and all three C# API sections in navigation.
 Conceptual pages, generated API pages and standalone guides have explicit header

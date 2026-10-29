@@ -38,7 +38,7 @@ This is a complete, self-contained reference for constructing and sending messag
 - [Reset Schedules (0x4F)](#reset-schedules-0x4f)
 - [Custom Waveform (0x9D)](#custom-waveform-0x9d)
 - [Stimulation Switch (0x0B)](#stimulation-switch-0x0b)
-- [Streaming Updates (0x30–0x33)](#streaming-updates-0x30–0x33)
+- [Streaming Updates (0x30–0x33)](#streaming-updates-0x300x33)
 
 ## Protocol Overview
 

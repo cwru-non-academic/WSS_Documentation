@@ -43,7 +43,8 @@ internal static class NavigationPresentation
     }
 
     // Apply the same narrow normalization to before/after HTML for preservation verification.
-    // It does not normalize prose, scripts, whitespace, section links or general HTML.
+    // It changes no prose/scripts: only generic hub navigation and uniquely resolved
+    // same-page heading fragments are normalized.
     internal static string NormalizeForPreservation(string html)
     {
         var clean = AddedNavigation.Replace(html, "");
@@ -72,7 +73,53 @@ internal static class NavigationPresentation
             return string.IsNullOrWhiteSpace(items) ? "" : block.Groups["heading"].Value + block.Groups["gap"].Value
                 + block.Groups["list"].Value + items + "</ul>";
         }, HtmlOptions);
-        return clean;
+        return RepairHeadingFragments(clean);
+    }
+
+    private static string RepairHeadingFragments(string html)
+    {
+        static string Attribute(string attributes, string name)
+        {
+            var match = Regex.Match(attributes, "(?:^|\\s)" + name + """\s*=\s*["'](?<value>[^"']*)["']""", HtmlOptions);
+            return match.Success ? WebUtility.HtmlDecode(match.Groups["value"].Value) : "";
+        }
+        static string Label(string text) => Regex.Replace(WebUtility.HtmlDecode(Regex.Replace(text, @"<[^>]*>", "")), @"\s+", " ").Trim();
+        // Keep raw script/style/code-block bytes outside the navigation scan.
+        // Spaces preserve offsets used to replace only an href in the original HTML.
+        var scannable = Regex.Replace(html, @"<(?<element>script|style|pre)\b[^>]*>.*?</\k<element>\s*>",
+            block => new string(' ', block.Length), HtmlOptions);
+
+        // A valid existing target always wins, even when its label differs.
+        var ids = Regex.Matches(scannable, @"<[A-Za-z][^>]*>", HtmlOptions)
+            .Select(tag => Attribute(tag.Value, "id")).Where(id => id.Length > 0).ToHashSet(StringComparer.Ordinal);
+        var headings = new Dictionary<string, HashSet<string>>(StringComparer.Ordinal);
+        void AddHeading(string id, string text)
+        {
+            var label = Label(text);
+            if (id.Length == 0 || label.Length == 0) return;
+            if (!headings.TryGetValue(label, out var targets)) headings.Add(label, targets = new(StringComparer.Ordinal));
+            targets.Add(id);
+        }
+        foreach (Match heading in Regex.Matches(scannable, @"<h(?<level>[1-6])\b(?<attributes>[^>]*)>(?<label>.*?)</h\k<level>\s*>", HtmlOptions))
+            AddHeading(Attribute(heading.Groups["attributes"].Value, "id"), heading.Groups["label"].Value);
+        // Pandoc assigns a section's ID to its wrapper div, not necessarily its hN.
+        foreach (Match section in Regex.Matches(scannable, @"<div\b(?<attributes>[^>]*)>\s*<h(?<level>[1-6])\b[^>]*>(?<label>.*?)</h\k<level>\s*>", HtmlOptions))
+        {
+            var classes = Attribute(section.Groups["attributes"].Value, "class");
+            if (Regex.IsMatch(classes, @"(?:^|\s)section(?:\s|$)") && Regex.IsMatch(classes, @"(?:^|\s)level[1-6](?:\s|$)"))
+                AddHeading(Attribute(section.Groups["attributes"].Value, "id"), section.Groups["label"].Value);
+        }
+        var result = html;
+        foreach (Match anchor in Anchor.Matches(scannable).Cast<Match>().Reverse())
+        {
+            var href = WebUtility.HtmlDecode(anchor.Groups["href"].Value);
+            if (!href.StartsWith('#') || href.Length == 1 || ids.Contains(Uri.UnescapeDataString(href[1..]))) continue;
+            if (!headings.TryGetValue(Label(anchor.Groups["label"].Value), out var targets) || targets.Count != 1)
+                continue; // Leave unresolved/ambiguous links for the strict site validator.
+            var group = anchor.Groups["href"];
+            result = result.Remove(group.Index, group.Length).Insert(group.Index, WebUtility.HtmlEncode("#" + targets.Single()));
+        }
+        return result;
     }
 
     private static bool IsGenericHubAnchor(Match anchor)
@@ -112,6 +159,20 @@ internal static class NavigationPresentation
             Require(!enhanced.Contains(">Docs Hub</a>", StringComparison.Ordinal) && !enhanced.Contains(">Back to Home</a>", StringComparison.Ordinal), "Generic legacy links remain.");
             const string onlyGeneric = "<html><body><h1>Fixture</h1><p><a href='../index.html'>Home</a> | <a href='../apiDocs/index.html'>Docs Hub</a></p><p>Navigation:</p><ul><li><a href='../index.html'>Back to Home</a></li></ul></body></html>";
             Require(NormalizeForPreservation(onlyGeneric) == "<html><body><h1>Fixture</h1></body></html>", "Empty legacy navigation containers remain.");
+            const string staleFragment = "<a class='toc' href='#streaming-updates-0x30–0x33'><code>Streaming updates</code> (0x30–0x33)</a><div id='streaming-updates-0x300x33' class='section level2'><h2>Streaming updates (0x30–0x33)</h2><p>Keep this exactly.</p></div>";
+            var repairedFragment = NormalizeForPreservation(staleFragment);
+            Require(repairedFragment == staleFragment.Replace("href='#streaming-updates-0x30–0x33'", "href='#streaming-updates-0x300x33'", StringComparison.Ordinal), "Fragment repair changed more than the target.");
+            Require(NormalizeForPreservation(repairedFragment) == repairedFragment, "Valid fragment changed on second pass.");
+            const string headingId = "<a href='#old'>A &amp; B</a><h3 id='actual'>A&nbsp;&amp; B</h3>";
+            Require(NormalizeForPreservation(headingId) == headingId.Replace("#old", "#actual", StringComparison.Ordinal), "Heading ID/HTML whitespace matching failed.");
+            const string ambiguousFragment = "<a href='#missing'>Same label</a><h2 id='one'>Same label</h2><div class='section level2' id='two'><h2>Same label</h2></div>";
+            Require(NormalizeForPreservation(ambiguousFragment) == ambiguousFragment, "Ambiguous heading guessed a target.");
+            const string unmatchedFragment = "<a href='#missing'>No matching heading</a><h2 id='one'>Other heading</h2>";
+            Require(NormalizeForPreservation(unmatchedFragment) == unmatchedFragment, "Unmatched heading guessed a target.");
+            const string validFragment = "<a href='#existing'>Different label</a><h2 id='existing'>Heading</h2>";
+            Require(NormalizeForPreservation(validFragment) == validFragment, "Existing fragment target was replaced.");
+            const string rawFragment = "<script>const html = \"<a href='#old'>Heading</a>\";</script><pre><a href='#old'>Heading</a></pre><h2 id='actual'>Heading</h2>";
+            Require(NormalizeForPreservation(rawFragment) == rawFragment, "Fragment repair changed script/code-block content.");
             Console.WriteLine("PASS: standalone navigation fixtures (nested paths, escaping, exclusion, idempotence, legacy/related links and non-navigation preservation).");
         }
         finally { Directory.Delete(root, true); }

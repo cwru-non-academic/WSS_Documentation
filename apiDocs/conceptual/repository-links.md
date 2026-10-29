@@ -42,7 +42,9 @@ footer. Their label and default destination are defined once in
 `apiDocs/docfx.json` (`_wssHubTitle` and `_wssHubPath`). Complete-site staging adjusts
 the destination for its `apiDocs/` output prefix. The same label supplies the
 staged standalone RMarkdown pages; only generic navigation is replaced there,
-while section links, content, images and scripts are preserved. Edit RMarkdown
+while content, images and scripts are preserved. A missing same-page fragment is
+repaired only when its label uniquely matches an actual heading; ambiguous links
+fail validation. Edit RMarkdown
 sources for guide content, rather than editing generated navigation in HTML.
 
 GitHub READMEs retain normal Markdown links. DocFX xrefs and code-inclusion
