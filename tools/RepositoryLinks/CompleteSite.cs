@@ -50,7 +50,9 @@ internal static class CompleteSite
         // Existing apiDocs HTML is copied above, but not declared as a resource that could collide
         // with newly rendered conceptual/API pages at the same URL.
         var resources = new JsonArray();
-        foreach (var file in preserved.Where(p => !(p.StartsWith("apiDocs/", StringComparison.Ordinal) && p.EndsWith(".html", StringComparison.OrdinalIgnoreCase))))
+        foreach (var file in preserved.Where(p =>
+            !(p.StartsWith("apiDocs/", StringComparison.Ordinal) && p.EndsWith(".html", StringComparison.OrdinalIgnoreCase))
+            && !(p.StartsWith("apiDocs/api/", StringComparison.Ordinal) && p.EndsWith("/toc.json", StringComparison.OrdinalIgnoreCase))))
             resources.Add(file);
         build["resource"] = new JsonArray(new JsonObject { ["files"] = resources });
         build["xref"] = new JsonArray(Path.Combine(generated, "xrefmap.yml"));
