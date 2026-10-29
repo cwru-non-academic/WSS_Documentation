@@ -24,11 +24,17 @@ redirect, standalone guides and their assets remain in their original locations.
 It does not regenerate external API metadata or rerender RMarkdown. Those remain
 separate release tasks with additional pinned upstream checkouts and dependencies.
 
-Validation requires all inventoried public paths to survive; root/standalone files
-must remain byte-identical. Fresh pages must be DocFX output, with resolved repository
-links and clone snippets, working local links/assets and all three API sections in
-navigation. Kit URL placeholders remain known incomplete external destinations.
-The report lists preserved paths and freshly generated pages for reviewers.
+Validation requires all inventoried public paths to survive. Root files and assets
+remain byte-identical. Standalone guides receive the centrally defined hub links;
+the build checks that their non-navigation content remains unchanged. Invalid
+same-page links are repaired only from uniquely matching heading labels.
+Fresh pages must be DocFX output, with resolved repository links and clone snippets,
+working local paths and fragments, and all three C# API sections in navigation.
+Conceptual pages, generated API pages and standalone guides have explicit header
+and footer routes back to the hub, without requiring JavaScript. The report lists
+preserved paths, navigation-adapted guides, freshly generated pages, the pages whose
+local paths/fragments were checked, and API pages whose hub backlinks were checked.
+API body-link freshness remains part of the separate API-reference review.
 
 ## Review builds and deployment permissions
 

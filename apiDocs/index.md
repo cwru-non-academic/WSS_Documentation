@@ -31,9 +31,9 @@ This site is organized first for people using WSS applications and for developer
 
 ## API Reference
 
-- [API: Core (C#)](api/core/toc.html)
-- [API: C# Integration (C#)](api/csharp/toc.html)
-- [API: Unity Integration (C#)](api/unity/toc.html)
+- [API: Core (C#)](xref:Wss.CoreModule)
+- [API: C# Integration (C#)](xref:HFI.Wss)
+- [API: Unity Integration (C#)](xref:WSS.Unity)
 
 ## Hardware Documentation
 

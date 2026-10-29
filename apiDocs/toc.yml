@@ -53,11 +53,14 @@
 - name: C# API
   items:
   - name: "API: Core (C#)"
-    href: api/core/toc.yml
+    topicHref: api/core/Wss.CoreModule.yml
+    tocHref: api/core/toc.yml
   - name: "API: C# Integration (C#)"
-    href: api/csharp/toc.yml
+    topicHref: api/csharp/HFI.Wss.yml
+    tocHref: api/csharp/toc.yml
   - name: "API: Unity Integration (C#)"
-    href: api/unity/toc.yml
+    topicHref: api/unity/WSS.Unity.yml
+    tocHref: api/unity/toc.yml
 - name: Maintainers
   href: maintainers.md
   items:
