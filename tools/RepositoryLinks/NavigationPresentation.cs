@@ -91,7 +91,9 @@ internal static class NavigationPresentation
 
         // A valid existing target always wins, even when its label differs.
         var ids = Regex.Matches(scannable, @"<[A-Za-z][^>]*>", HtmlOptions)
-            .Select(tag => Attribute(tag.Value, "id")).Where(id => id.Length > 0).ToHashSet(StringComparer.Ordinal);
+            .SelectMany(tag => new[] { Attribute(tag.Value, "id"),
+                Regex.IsMatch(tag.Value, @"^<a(?:\s|>)", RegexOptions.IgnoreCase) ? Attribute(tag.Value, "name") : "" })
+            .Where(id => id.Length > 0).ToHashSet(StringComparer.Ordinal);
         var headings = new Dictionary<string, HashSet<string>>(StringComparer.Ordinal);
         void AddHeading(string id, string text)
         {
@@ -113,7 +115,9 @@ internal static class NavigationPresentation
         foreach (Match anchor in Anchor.Matches(scannable).Cast<Match>().Reverse())
         {
             var href = WebUtility.HtmlDecode(anchor.Groups["href"].Value);
-            if (!href.StartsWith('#') || href.Length == 1 || ids.Contains(Uri.UnescapeDataString(href[1..]))) continue;
+            if (!href.StartsWith('#') || href.Length == 1) continue;
+            var fragment = Uri.UnescapeDataString(href[1..]);
+            if (fragment.Equals("top", StringComparison.OrdinalIgnoreCase) || ids.Contains(fragment)) continue;
             if (!headings.TryGetValue(Label(anchor.Groups["label"].Value), out var targets) || targets.Count != 1)
                 continue; // Leave unresolved/ambiguous links for the strict site validator.
             var group = anchor.Groups["href"];
@@ -171,6 +175,10 @@ internal static class NavigationPresentation
             Require(NormalizeForPreservation(unmatchedFragment) == unmatchedFragment, "Unmatched heading guessed a target.");
             const string validFragment = "<a href='#existing'>Different label</a><h2 id='existing'>Heading</h2>";
             Require(NormalizeForPreservation(validFragment) == validFragment, "Existing fragment target was replaced.");
+            const string namedFragment = "<a href='#legacy'>Heading</a><a name='legacy'></a><h2 id='other'>Heading</h2>";
+            Require(NormalizeForPreservation(namedFragment) == namedFragment, "Existing legacy named target was replaced.");
+            const string topFragment = "<a href='#ToP'>Heading</a><h2 id='other'>Heading</h2>";
+            Require(NormalizeForPreservation(topFragment) == topFragment, "Reserved top target was replaced.");
             const string rawFragment = "<script>const html = \"<a href='#old'>Heading</a>\";</script><pre><a href='#old'>Heading</a></pre><h2 id='actual'>Heading</h2>";
             Require(NormalizeForPreservation(rawFragment) == rawFragment, "Fragment repair changed script/code-block content.");
             Console.WriteLine("PASS: standalone navigation fixtures (nested paths, escaping, exclusion, idempotence, legacy/related links and non-navigation preservation).");
