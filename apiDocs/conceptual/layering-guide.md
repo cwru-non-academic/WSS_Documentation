@@ -23,16 +23,14 @@ flowchart TD
   Params --> Core
 ```
 
-Read the diagram from top to bottom: Application -> Integration -> optional
-Model -> Params -> Core. The direct Integration-to-Params route skips Model.
-This is a responsibility map, not a requirement to pass every operation through
-every transformation. Lifecycle and direct analog calls can be forwarded through
-the same objects without applying model math or normalized-value mapping.
+Model applies configured P/PD processing to an input magnitude and passes the
+result to Params. Applications that supply normalized values can use Params
+directly. Lifecycle operations and direct analog commands are forwarded through
+the layers without those transformations.
 
 Core also works on its own. A custom host can call Core directly, or wrap it
 with Params, or wrap Params with Model. Existing integrations supply their
-composition and host-facing API; follow their READMEs rather than constructing
-a second stack around them. The [repository directory](repository-and-kit-links.md)
+composition and host-facing API. The [repository directory](repository-and-kit-links.md)
 links to those setup instructions.
 
 ## Responsibilities and When to Use Them
@@ -46,8 +44,8 @@ links to those setup instructions.
 | Core (`WssStimulationCore`) | Coordinate connection, ordered device setup, queued edits, lifecycle state and background streaming. | Every shared-layer composition needs device orchestration; use Core directly when the host already supplies the higher-level parameter behavior. |
 
 Params wraps an `IStimulationCore`; Model wraps an `IStimParamsCore`.
-They add behavior and forward the underlying lifecycle calls. They are not
-independent device connections. Core delegates protocol operations to its client;
+They add behavior and forward lifecycle calls to the same underlying Core.
+Core delegates protocol operations to its client;
 client, codec and transport wiring belongs to the
 [Core architecture guide](core-architecture.md).
 
@@ -97,20 +95,19 @@ than sending a second stream of protocol commands from a layer.
 
 ## Optional Capability: Basic Stimulation
 
-`IBasicStimulation` is an optional interface, not another object to insert into
-the stack. `WssStimulationCore` implements it directly. Params discovers the
+Core exposes waveform, event and board-configuration operations through the
+optional `IBasicStimulation` interface. Params discovers the
 capability on its underlying Core; Model forwards that discovery through Params.
 Integration libraries expose the resulting capability using their host API.
 
 The interface includes waveform/event edits, board configuration save/load/query,
 and inter-phase-delay updates. Core schedules these operations through its setup
-machinery. Availability of the interface tells you that an implementation exposes
-these operations; it does not establish that every operation is supported by the
-selected firmware or a particular device. Consult the
+machinery. Supported operations depend on the selected firmware and device.
+Consult the
 [firmware compatibility matrix](firmware-compatibility-matrix.md) and API contract.
 
 The capability can be used with Core alone, Core + Params, or Core + Params +
-Model. Adding Model or Params does not create another Basic implementation.
+Model.
 
 ## Source References
 
