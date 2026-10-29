@@ -13,6 +13,7 @@ internal static class CompleteSite
 
     internal static void Build(string root, string output, Action<string[]> docfx)
     {
+        NavigationValidation.Sources(root, Path.Combine(root, "apiDocs/repository-links.json"));
         output = Path.GetFullPath(output);
         var artifactRoot = Path.Combine(root, "artifacts") + Path.DirectorySeparatorChar;
         var tempRoot = Path.GetFullPath(Path.GetTempPath()).TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar;
@@ -21,6 +22,8 @@ internal static class CompleteSite
         Require(!Directory.Exists(output) || !Directory.EnumerateFileSystemEntries(output).Any(),
             "Site output is not empty; choose a new --output directory. No existing site is deleted.");
         Directory.CreateDirectory(output);
+        var authoredInputs = new[] { "apiDocs/index.md", "apiDocs/toc.yml" }
+            .ToDictionary(path => path, path => Hash(Path.Combine(root, path)), StringComparer.Ordinal);
 
         var preserved = PublishedFiles(root);
         foreach (var file in preserved)
@@ -35,6 +38,9 @@ internal static class CompleteSite
         var config = JsonNode.Parse(File.ReadAllText(Path.Combine(docs, "docfx.json")))!.AsObject();
         config["metadata"] = new JsonArray(); // Use reviewed, checked-in API metadata; never inspect external checkouts here.
         var build = config["build"]!.AsObject();
+        build["globalMetadata"] ??= new JsonObject();
+        var hubPath = "apiDocs/index.html";
+        build["globalMetadata"]!["_wssHubPath"] = hubPath;
         build["content"] = new JsonArray(new JsonObject
         {
             ["src"] = "apiDocs", ["dest"] = "apiDocs",
@@ -56,9 +62,18 @@ internal static class CompleteSite
         var configPath = Path.Combine(root, "docfx.site.generated.json");
         File.WriteAllText(configPath, config.ToJsonString(new JsonSerializerOptions { WriteIndented = true }));
         docfx(["build", configPath]);
+        var hubTitle = build["globalMetadata"]!["_wssHubTitle"]!.GetValue<string>();
+        foreach (var file in preserved.Where(file => NavigationPresentation.IsStandalone(root, file)))
+        {
+            var destination = Path.Combine(output, file);
+            File.WriteAllText(destination, NavigationPresentation.EnhanceStandalone(root, file,
+                File.ReadAllText(destination), hubPath, hubTitle));
+        }
         // Actions serves the artifact directly. Do not depend on Jekyll or a stale CNAME file.
         File.WriteAllText(Path.Combine(output, ".nojekyll"), "");
         Verify(root, output, preserved);
+        foreach (var (path, hash) in authoredInputs)
+            Require(Hash(Path.Combine(root, path)) == hash, $"Build rewrote an authored navigation input: {path}");
     }
 
     private static List<string> PublishedFiles(string root)
@@ -81,9 +96,18 @@ internal static class CompleteSite
     private static void Verify(string root, string output, List<string> preserved)
     {
         foreach (var file in preserved) Require(File.Exists(Path.Combine(output, file)), $"Previously public path lost: {file}");
-        var unchanged = preserved.Where(p => !p.StartsWith("apiDocs/", StringComparison.Ordinal)).ToList();
+        var standalone = preserved.Where(file => NavigationPresentation.IsStandalone(root, file)).ToList();
+        var unchanged = preserved.Where(p => !p.StartsWith("apiDocs/", StringComparison.Ordinal) && !standalone.Contains(p)).ToList();
         foreach (var file in unchanged)
             Require(Hash(Path.Combine(root, file)) == Hash(Path.Combine(output, file)), $"Preserved root/standalone file changed: {file}");
+        foreach (var file in standalone)
+        {
+            var html = File.ReadAllText(Path.Combine(output, file));
+            Require(NavigationPresentation.NormalizeForPreservation(File.ReadAllText(Path.Combine(root, file)))
+                == NavigationPresentation.NormalizeForPreservation(html), $"Standalone content changed outside navigation: {file}");
+            NavigationValidation.RenderedLinks(output, Path.Combine(output, file), html);
+            VerifyHubNavigation(output, Path.Combine(output, file), html);
+        }
         Require(!File.Exists(Path.Combine(output, "CNAME")), "No custom domain may be assumed in the staged artifact.");
         Require(File.ReadAllText(Path.Combine(output, "index.html")).Contains("apiDocs/", StringComparison.Ordinal), "Root redirect missing.");
 
@@ -100,7 +124,8 @@ internal static class CompleteSite
                 Require(html.Contains("property=\"docfx:navrel\"", StringComparison.Ordinal), $"Page was not rendered by DocFX: {page}");
             var prose = Regex.Replace(html, @"<pre\b[^>]*>.*?</pre>", "", RegexOptions.Singleline | RegexOptions.IgnoreCase);
             Require(!Regex.IsMatch(prose, @"xref:repo\.|\[!code-"), $"Unresolved repository/snippet directive: {page}");
-            CheckLocalLinks(output, page, html);
+            NavigationValidation.RenderedLinks(output, page, html);
+            if (!page.EndsWith("toc.html", StringComparison.Ordinal)) VerifyHubNavigation(output, page, html);
         }
         var guide = File.ReadAllText(Path.Combine(output, "apiDocs/conceptual/repository-links.html"));
         var catalog = JsonNode.Parse(File.ReadAllText(Path.Combine(docs, "repository-links.json")))!;
@@ -113,31 +138,45 @@ internal static class CompleteSite
         {
             Require(File.Exists(Path.Combine(output, $"apiDocs/api/{section}/toc.html")), $"API navigation missing: {section}");
             Require(toc.Contains($"api/{section}/", StringComparison.Ordinal), $"API section lost from main navigation: {section}");
+            var apiToc = Path.Combine(output, $"apiDocs/api/{section}/toc.html");
+            NavigationValidation.RenderedLinks(output, apiToc, File.ReadAllText(apiToc));
+        }
+        var apiHubPages = Directory.EnumerateFiles(Path.Combine(docs, "api"), "*.yml", SearchOption.AllDirectories)
+            .Where(file => !Path.GetFileName(file).Equals("toc.yml", StringComparison.OrdinalIgnoreCase))
+            .Select(file => Path.Combine(output, "apiDocs", Path.ChangeExtension(Path.GetRelativePath(docs, file), ".html"))).ToList();
+        foreach (var page in apiHubPages)
+        {
+            Require(File.Exists(page), $"Missing generated API page: {page}");
+            VerifyHubNavigation(output, page, File.ReadAllText(page));
         }
         var report = new
         {
-            preservedPaths = preserved, byteIdenticalRootAndStandalone = unchanged,
+            preservedPaths = preserved, byteIdenticalRootAndAssets = unchanged, standaloneContentPreserved = standalone,
             freshDocfxPages = fresh.Select(p => Path.GetRelativePath(output, p).Replace('\\', '/')).ToList(),
-            checkedInApiMetadata = true, externalApiRegeneration = false, customDomainAssumed = false
+            checkedInApiMetadata = true, externalApiRegeneration = false, customDomainAssumed = false,
+            authoredNavigationValidated = true,
+            fragmentCheckedPages = fresh.Concat(standalone.Select(path => Path.Combine(output, path)))
+                .Concat(new[] { "core", "csharp", "unity" }.Select(section => Path.Combine(output, $"apiDocs/api/{section}/toc.html")))
+                .Select(page => Path.GetRelativePath(output, page).Replace('\\', '/')).ToList(),
+            apiHubBacklinkCheckedPages = apiHubPages.Select(page => Path.GetRelativePath(output, page).Replace('\\', '/')).ToList()
         };
         File.WriteAllText(Path.Combine(Path.GetDirectoryName(output)!, "site-validation.json"), JsonSerializer.Serialize(report, new JsonSerializerOptions { WriteIndented = true }));
-        Console.WriteLine($"PASS: complete site; {preserved.Count} public paths retained, {unchanged.Count} root/standalone files byte-identical, {fresh.Count} fresh pages and API navigation validated.");
+        Console.WriteLine($"PASS: complete site; {preserved.Count} public paths retained, {unchanged.Count} root/assets byte-identical, {standalone.Count} standalone guides changed only in navigation, {fresh.Count} fresh pages and API navigation validated.");
     }
 
-    private static void CheckLocalLinks(string site, string page, string html)
+    private static void VerifyHubNavigation(string site, string page, string html)
     {
-        foreach (Match match in Regex.Matches(html, "(?:href|src)=\"([^\"]+)\"", RegexOptions.IgnoreCase))
+        foreach (var position in new[] { "top", "bottom" })
         {
-            var url = WebUtility.HtmlDecode(match.Groups[1].Value);
-            if (url.Length == 0 || url[0] == '#' || url.StartsWith("//", StringComparison.Ordinal)
-                || Regex.IsMatch(url, @"^[A-Za-z][A-Za-z0-9+.-]*:") || url.Contains("PASTE_", StringComparison.Ordinal)) continue;
-            var path = Uri.UnescapeDataString(url.Split('?', '#')[0]);
-            if (path.Length == 0) continue;
-            var destination = path.StartsWith('/') ? Path.Combine(site, path.TrimStart('/')) : Path.Combine(Path.GetDirectoryName(page)!, path);
-            destination = Path.GetFullPath(destination);
-            Require(destination.StartsWith(Path.GetFullPath(site) + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase), $"Link escapes staged site: {url}");
-            if (Directory.Exists(destination)) destination = Path.Combine(destination, "index.html");
-            Require(File.Exists(destination), $"Broken staged local link in {Path.GetRelativePath(site, page)}: {url}");
+            var regions = Regex.Matches(html, @"<(?<tag>nav|span)\b[^>]*data-wss-navigation=""" + position
+                + @"""[^>]*>(?<content>.*?)</\k<tag>>", RegexOptions.Singleline | RegexOptions.IgnoreCase);
+            Require(regions.Count == 1, $"Expected one {position} hub navigation region: {page}");
+            var link = Regex.Match(regions[0].Groups["content"].Value, "href=\"([^\"]+)\"");
+            Require(link.Success, $"Missing {position} hub link: {page}");
+            var href = WebUtility.HtmlDecode(link.Groups[1].Value);
+            var destination = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(page)!, Uri.UnescapeDataString(href)));
+            Require(destination.Equals(Path.GetFullPath(Path.Combine(site, "apiDocs/index.html")), StringComparison.OrdinalIgnoreCase),
+                $"Wrong {position} hub destination in {page}: {href}");
         }
     }
 

@@ -32,6 +32,22 @@ this catalog. Owner overrides take precedence over the default owner.
 
 ## Adding links and copyable commands
 
+The authored `apiDocs/toc.yml` and `apiDocs/index.md` own the site hierarchy and
+entry points. Full API regeneration preserves those files. A nested API TOC uses
+`tocHref` for its structure and `topicHref` for a styled landing page; primary
+links must not open a bare `toc.html` fragment.
+
+The active `templates/wss` overlay owns the visible hub links in the header and
+footer. Their label and default destination are defined once in
+`apiDocs/docfx.json` (`_wssHubTitle` and `_wssHubPath`). Complete-site staging adjusts
+the destination for its `apiDocs/` output prefix. The same label supplies the
+staged standalone RMarkdown pages; only generic navigation is replaced there,
+while section links, content, images and scripts are preserved. Edit RMarkdown
+sources for guide content, rather than editing generated navigation in HTML.
+
+GitHub READMEs retain normal Markdown links. DocFX xrefs and code-inclusion
+directives belong only in the shared documentation inputs.
+
 Add a stable repository key to the catalog, then use native DocFX xrefs:
 
 ```markdown
@@ -70,6 +86,7 @@ From the repository root on either platform:
 
 ```text
 dotnet tool restore
+dotnet run --project tools/RepositoryLinks -- test
 dotnet run --project tools/RepositoryLinks -- test --render
 dotnet run --project tools/RepositoryLinks -- hub
 ```

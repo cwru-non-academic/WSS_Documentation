@@ -24,9 +24,9 @@ This repository contains documentation for the Wearable Stimulation System (WSS)
 
 ## Advanced And Maintenance
 
-- [Hardware Overview](./hardwareDocs/wsshardware.html)
-- [WSS Commands Reference](./wssCommandsDocs/wsscommands.html)
-- [Building Software API Docs (DocFX)](./howtoCompileAPIDocs/BuildSoftwareDocs.html)
+- [Hardware Overview source](./hardwareDocs/wsshardware.rmd)
+- [WSS Commands Reference source](./wssCommandsDocs/wsscommands.Rmd)
+- [Building Software API Docs source](./howtoCompileAPIDocs/BuildSoftwareDocs.Rmd)
 
 ## Docs Build Modes
 

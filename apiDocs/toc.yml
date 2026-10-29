@@ -3,21 +3,21 @@
 - name: Start Here
   href: start-here.md
   items:
-  - name: Start Here: Using an Application
+  - name: "Start Here: Using an Application"
     href: conceptual/start-here-using-an-application.md
-  - name: Start Here: Developing an Application
+  - name: "Start Here: Developing an Application"
     href: conceptual/start-here-developing-an-application.md
-  - name: Start Here: Building a New Integration Library
+  - name: "Start Here: Building a New Integration Library"
     href: conceptual/start-here-building-a-new-integration-library.md
   - name: Verify a Developer Checkout
     href: conceptual/developer-verification.md
-  - name: Start Here: Minor Core Modifications
+  - name: "Start Here: Minor Core Modifications"
     href: conceptual/start-here-minor-core-modifications.md
-  - name: Start Here: Adding Layers or Core Functionality
+  - name: "Start Here: Adding Layers or Core Functionality"
     href: conceptual/start-here-adding-layers-or-core-functionality.md
   - name: Choosing a Runtime for an Integration Library
     href: conceptual/integration-library-runtime-selection.md
-  - name: Repository and Kit Links
+  - name: WSS repositories and setup guides
     href: conceptual/repository-and-kit-links.md
 - name: Concepts
   href: concepts.md
@@ -60,12 +60,15 @@
   href: conceptual/api-reference.md
 - name: C# API
   items:
-  - name: API: Core (C#)
-    href: api/core/toc.yml
-  - name: API: C# Integration (C#)
-    href: api/csharp/toc.yml
-  - name: API: Unity Integration (C#)
-    href: api/unity/toc.yml
+  - name: "API: Core (C#)"
+    topicHref: api/core/Wss.CoreModule.html
+    tocHref: api/core/toc.yml
+  - name: "API: C# Integration (C#)"
+    topicHref: api/csharp/HFI.Wss.html
+    tocHref: api/csharp/toc.yml
+  - name: "API: Unity Integration (C#)"
+    topicHref: api/unity/WSS.Unity.html
+    tocHref: api/unity/toc.yml
 - name: Maintainers
   href: maintainers.md
   items:

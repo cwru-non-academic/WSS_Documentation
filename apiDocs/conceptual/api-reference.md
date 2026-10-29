@@ -9,14 +9,14 @@ Use the shared API reference to understand the Core interfaces and layers. Use e
 - [Core namespace](xref:Wss.CoreModule): lifecycle, configuration, protocol and client operations.
 - [Parameter layer](xref:Wss.CalibrationModule): per-channel parameters and stimulation limits.
 - [Model layer](xref:Wss.ModelModule): model-driven stimulation.
-- [Core repository](https://github.com/cwru-non-academic/WSSCore#readme): building and testing Core.
+- [Core repository](xref:repo.core.readme): building and testing Core.
 
 ## Integration Entry Points
 
-- [C# integration README](https://github.com/cwru-non-academic/CSharp_WSS_Integration_Lib#readme)
-- [Python integration README](https://github.com/cwru-non-academic/Python_WSS_Integration_Lib#readme)
-- [Unity integration README](https://github.com/cwru-non-academic/Unity_WSS_Integration_Lib#readme)
-- [MATLAB integration README](https://github.com/cwru-non-academic/Matlab_WSS_Integration_Lib#readme)
+- [C# integration README](xref:repo.csharp.readme)
+- [Python integration README](xref:repo.python.readme)
+- [Unity integration README](xref:repo.unity.readme)
+- [MATLAB integration README](xref:repo.matlab.readme)
 
 Use the public namespaces and signatures declared by the selected integration. A documentation grouping label does not itself declare a production namespace. Keep the source revision and bundled dependency distribution together when comparing APIs across repositories.
 

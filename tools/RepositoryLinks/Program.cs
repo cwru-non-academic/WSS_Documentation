@@ -121,6 +121,9 @@ static void CheckHtml(string path, IEnumerable<Reference> refs, string cloneRoot
 
 static void Test(string root, string catalogPath, bool render, string? tool)
 {
+    NavigationValidation.Fixtures();
+    NavigationPresentation.TestFixtures();
+    NavigationValidation.Sources(root, catalogPath);
     var temp = Path.Combine(Path.GetTempPath(), "wss-links-" + Guid.NewGuid().ToString("N"));
     Directory.CreateDirectory(temp);
     try
@@ -130,8 +133,8 @@ static void Test(string root, string catalogPath, bool render, string? tool)
         var repos = catalog["repositories"]!.AsObject();
         repos["core"]!["links"] = new JsonObject { ["readme"] = "/blob/main/README.md?plain=1#L10" };
         // Resolve every catalog root in a temporary page; the actual catalog is never modified.
-        var page = "# Repository fixture\n\n" + string.Join("\n\n", repos.Select(p => $"[{p.Key}](xref:repo.{p.Key})"))
-            + "\n\n[Deep](xref:repo.core.readme)\n\n[!code-bash[Clone](generated/core-clone.sh)]\n";
+        var page = "# Repository fixture\n\n" + string.Join("\n\n", Resolve(catalog).Select(r => $"[{r.uid}](xref:{r.uid})"))
+            + "\n\n[!code-bash[Clone](generated/core-clone.sh)]\n";
         File.WriteAllText(Path.Combine(temp, "index.md"), page);
         var config = new { build = new { content = new[] { new { files = new[] { "index.md" } } }, xref = new[] { "generated/xrefmap.yml" }, template = new[] { "default" }, dest = "_site", disableGitFeatures = true } };
         File.WriteAllText(Path.Combine(temp, "docfx.json"), JsonSerializer.Serialize(config));
@@ -144,7 +147,7 @@ static void Test(string root, string catalogPath, bool render, string? tool)
                 repos["core"]!["name"] = "fixture-renamed-core";
             }
             var refs = Generate(catalog, Path.Combine(temp, "generated"));
-            Require(refs.Count == repos.Count + 1, "Missing root or deep reference.");
+            Require(refs.Count == repos.Count + repos.Sum(p => p.Value!["links"]?.AsObject().Count ?? 0), "Missing root or deep reference.");
             foreach (var (id, repo) in repos)
             {
                 var expected = $"https://github.com/{Text(repo!["owner"] ?? catalog["defaultOwner"])}/{Text(repo["name"])}";
@@ -186,6 +189,7 @@ static void Test(string root, string catalogPath, bool render, string? tool)
 
 static void Hub(string root, string catalogPath, string output, string? tool, bool serve)
 {
+    NavigationValidation.Sources(root, catalogPath);
     var docs = Path.Combine(root, "apiDocs");
     var generated = Path.Combine(docs, "generated/repository-links");
     var refs = Generate(Load(catalogPath), generated);

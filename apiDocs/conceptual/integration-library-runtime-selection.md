@@ -18,7 +18,7 @@ The documentation toolchain has its own pinned SDK and DocFX versions. Those bui
 
 ## Choose an Existing Integration First
 
-For a .NET application, use the [C# integration README](https://github.com/cwru-non-academic/CSharp_WSS_Integration_Lib#readme). For Python, use the [Python integration README](https://github.com/cwru-non-academic/Python_WSS_Integration_Lib#readme). For Unity, follow the [Unity integration README](https://github.com/cwru-non-academic/Unity_WSS_Integration_Lib#readme). For MATLAB, follow the [MATLAB integration README](https://github.com/cwru-non-academic/Matlab_WSS_Integration_Lib#readme).
+For a .NET application, use the [C# integration README](xref:repo.csharp.readme). For Python, use the [Python integration README](xref:repo.python.readme). For Unity, follow the [Unity integration README](xref:repo.unity.readme). For MATLAB, follow the [MATLAB integration README](xref:repo.matlab.readme).
 
 These READMEs own concrete installation commands, submodule paths, runtime setup and minimal examples. The [repository directory](repository-and-kit-links.md) links to the supported applications.
 

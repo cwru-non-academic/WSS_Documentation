@@ -31,6 +31,8 @@
     ],
     "globalMetadata": {
       "_appTitle": "WSS Documentation Hub",
+      "_wssHubTitle": "Documentation hub",
+      "_wssHubPath": "index.html",
       "_enableSearch": true,
       "showExternalInherited": false
     },
