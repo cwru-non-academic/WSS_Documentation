@@ -1,0 +1,788 @@
+[
+  {
+    "path": "Core/README.md",
+    "lines": 79,
+    "candidateLines": 6,
+    "sha256": "3f7531fbe748f8f533b214d17a2261dcc523f9dedf828d300994f259b92950d9"
+  },
+  {
+    "path": "CSharp/README.md",
+    "lines": 95,
+    "candidateLines": 5,
+    "sha256": "743194525d4e6f66a5e7dd35e3f12c91c28abad1e14ab3dc5a77fe7057ae3305"
+  },
+  {
+    "path": "CSharpCLI/README.md",
+    "lines": 82,
+    "candidateLines": 4,
+    "sha256": "3e72ec4ce3bd87d15ef91c5d6a3151cbc5b9f3b957374db4a51bc150e84957f3"
+  },
+  {
+    "path": "DocsAPI/apiDocs/conceptual/api-regeneration.md",
+    "lines": 41,
+    "candidateLines": 8,
+    "sha256": "be1efe2bd89e21dfeac861956e40db5927c5017b3207adda1542266335a3fb23"
+  },
+  {
+    "path": "DocsAPI/apiDocs/overwrites/Wss.CalibrationModule.md",
+    "lines": 7,
+    "candidateLines": 1,
+    "sha256": "fe61f9e1c304592a6dcc486e7e6152f79abcd85d481f033500bbe189a228e2b8"
+  },
+  {
+    "path": "DocsAPI/apiDocs/overwrites/Wss.CoreModule.md",
+    "lines": 7,
+    "candidateLines": 0,
+    "sha256": "4390eae57bca02cc14896e78bbfe8e17537af116695ce6d93541be3252fdfb54"
+  },
+  {
+    "path": "DocsAPI/apiDocs/overwrites/Wss.ModelModule.md",
+    "lines": 7,
+    "candidateLines": 0,
+    "sha256": "5a5e56d000601b40034712e4952b32c82079cf4fcb8cc4b5b6b041001ffd5ac4"
+  },
+  {
+    "path": "DocsAPI/apiDocs/overwrites/Wss.Transports.md",
+    "lines": 7,
+    "candidateLines": 1,
+    "sha256": "ffebb6726abab802470103f8c05fc4288b09f3884b5228daee2f77b1105dfcd0"
+  },
+  {
+    "path": "DocsAPI/apiDocs/overwrites/WSS.Unity.md",
+    "lines": 7,
+    "candidateLines": 2,
+    "sha256": "5505383cc4a87dabffe4509a1a94da48c47bbb6521710373b4d754982c908230"
+  },
+  {
+    "path": "DocsArchitecture/apiDocs/conceptual/core-architecture.md",
+    "lines": 136,
+    "candidateLines": 21,
+    "sha256": "991367c62bc5a601f6d2b5c809dd874a5f9dc8e813643365e019a28619fc0aaf"
+  },
+  {
+    "path": "DocsLayering/apiDocs/conceptual/layering-guide.md",
+    "lines": 130,
+    "candidateLines": 6,
+    "sha256": "d4e652cbcc239dac130184a2b0b382211c72192defbf0c0fdbeac9cbbaf85788"
+  },
+  {
+    "path": "DocsNavigation/.opencode/skills/doc-page-navigation/SKILL.md",
+    "lines": 129,
+    "candidateLines": 10,
+    "sha256": "cc79536cb8311753d8e524167af4286f709986c6abac9de03826aae3a3cfaa61"
+  },
+  {
+    "path": "DocsNavigation/AGENTS.md",
+    "lines": 153,
+    "candidateLines": 12,
+    "sha256": "be27924780c542bb2b457e4ff9c6efbcee7e94196193b3bf7cd0d80978309d70"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/advanced.md",
+    "lines": 28,
+    "candidateLines": 1,
+    "sha256": "fe943159dd900c9b812dc22f4ddfc43e558d854bff304226a3ae3e2fc8c32ba0"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/toc.yml",
+    "lines": 163,
+    "candidateLines": 0,
+    "sha256": "bd2dfb3f5dcf96f845ab55a336ce1e7e7966ceda11e31fda38cbf188a210dfe2"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.CalibrationModule.IStimParamsCore.yml",
+    "lines": 2850,
+    "candidateLines": 4,
+    "sha256": "b15c3afb697481184e4b402ffc0fc5d43cad2374f04ec24774e4b91832a8c4a6"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.CalibrationModule.StimParamsConfig.yml",
+    "lines": 510,
+    "candidateLines": 1,
+    "sha256": "28c4eb7420a62c3ff5a91435ac5c757aab91251397b8f9f090687a601a42dfaa"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.CalibrationModule.StimParamsConfigController.yml",
+    "lines": 1222,
+    "candidateLines": 1,
+    "sha256": "043fe5c46c8fa249411cc53641875ac2e3e2da5b3c7810ccb99292d71c967941"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.CalibrationModule.StimParamsLayer.yml",
+    "lines": 4410,
+    "candidateLines": 9,
+    "sha256": "b7596a5b5259f8823063cf34c7ff456c5a3b32817fe9840924c3a1d7fa5d7bc2"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.CalibrationModule.yml",
+    "lines": 68,
+    "candidateLines": 0,
+    "sha256": "ea1724d5eb9a13aa8aa9fef3f70a59732db9405cf8e2d990d816e9806ae4b14b"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.CoreModule.AmpCurveParams.yml",
+    "lines": 268,
+    "candidateLines": 0,
+    "sha256": "52077d8e34268d2cb98c7a4334f8afb6e76f7e9e5cd4d06ba105fb8c3160df1a"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.CoreModule.ContactConfigDefinition.yml",
+    "lines": 282,
+    "candidateLines": 1,
+    "sha256": "78308f9f118ca3506993ba49f19eb9b6451b3225b6825c6798391cea7746f6fd"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.CoreModule.CoreConfig.yml",
+    "lines": 332,
+    "candidateLines": 0,
+    "sha256": "6c3ec81f9a52a1d030fb09c7b504b52c396db194ab4351fd16189696b4280ffc"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.CoreModule.CoreConfigController.yml",
+    "lines": 740,
+    "candidateLines": 6,
+    "sha256": "f598f85f375c91dac5e4ed7fabad263a9428f1b5b376eae9ca84751952ac868c"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.CoreModule.CreateEventRequest.yml",
+    "lines": 445,
+    "candidateLines": 8,
+    "sha256": "ee3628b2d09c8c55cac4eaf0fa4fe081f5be9559b86aace48ed7e426ceddc28a"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.CoreModule.DictConfigBase.yml",
+    "lines": 625,
+    "candidateLines": 3,
+    "sha256": "e56ec44b6a7cb797cbfc8a645290d9ad9760b3f853290e153c7e938fac0d7aca"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.CoreModule.EventPulseWidths.yml",
+    "lines": 164,
+    "candidateLines": 0,
+    "sha256": "7608b515a34e8dfede6b47a70a2ca372e2365cb35f981fce45cb7f402d06169b"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.CoreModule.IBasicStimulation.yml",
+    "lines": 499,
+    "candidateLines": 1,
+    "sha256": "b35a1febb0007cc392bcc6c015568dc0c4da51642595f08fc3037b75586a31ec"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.CoreModule.ICoreConfig.yml",
+    "lines": 132,
+    "candidateLines": 1,
+    "sha256": "cc744a3ad475421ecb6cdfa38c4843a1cc1379125802ff4c9c4528fd02856cfb"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.CoreModule.IFrameCodec.yml",
+    "lines": 266,
+    "candidateLines": 2,
+    "sha256": "d757249f9ccf2808cbd1c68eb2c5ff6f7f9a0be7714a8175d778a5523d0dec12"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.CoreModule.IStimulationCore.yml",
+    "lines": 511,
+    "candidateLines": 5,
+    "sha256": "476770c035009fb76d9b70d73e79f75cae3a13d1d28ec69ffd7e7d37d9ed8aab"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.CoreModule.JsonReader.yml",
+    "lines": 298,
+    "candidateLines": 5,
+    "sha256": "05e6ec9b02b84ff26e9368433079ec3cc28791b84cedc9a947d4c0acd92a8af2"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.CoreModule.Log.LogLevel.yml",
+    "lines": 131,
+    "candidateLines": 0,
+    "sha256": "2570da0618b6dbbe9816de872aec96825f346125e1f222eb4f64c334c66e1a2d"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.CoreModule.Log.yml",
+    "lines": 380,
+    "candidateLines": 0,
+    "sha256": "4c6d763988dfd85810dd3811b06e428ca144ad39e05e21ed85b06a8af87c6848"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.CoreModule.ModuleSettings.FingerswitchConfig.yml",
+    "lines": 152,
+    "candidateLines": 1,
+    "sha256": "4ed8d88c6217c101e094cc43a74998d9c8e1b8dab59b8c6f62e8a45da2b0f8ad"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.CoreModule.ModuleSettings.HwConfigFlags.yml",
+    "lines": 230,
+    "candidateLines": 2,
+    "sha256": "c459f36475585e01e55762d513adc9827e380dc3186fa77844cff3a29a52ca85"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.CoreModule.ModuleSettings.ParameterStepKind.yml",
+    "lines": 110,
+    "candidateLines": 0,
+    "sha256": "7b49284db0b39bf46a75ac1a11ae2efc65deead4b0d040280814e174f3ac4a36"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.CoreModule.ModuleSettings.yml",
+    "lines": 836,
+    "candidateLines": 10,
+    "sha256": "3b5148b235e23f3ebc89c0939a097df95caf8e3607ede53a27dc0ce0994be834"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.CoreModule.ScheduleDefinition.yml",
+    "lines": 186,
+    "candidateLines": 1,
+    "sha256": "aab48cb1613a6c9f78d1468006ee64859434969ff43527c19b6d03a05784d214"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.CoreModule.StimParamsBasicExtensions.yml",
+    "lines": 514,
+    "candidateLines": 3,
+    "sha256": "bbc57ce8b5fe9f5f64c50cd2dcac61342dd6c28538a1436395105c3b83980e82"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.CoreModule.StreamChangeRequest.yml",
+    "lines": 234,
+    "candidateLines": 1,
+    "sha256": "a05fbf54cbc03677d8ed7a4b4ede0b523102db6af6abdb952c75de86a6555526"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.CoreModule.Waveform.yml",
+    "lines": 220,
+    "candidateLines": 1,
+    "sha256": "793b3840a44a5f74ecc9dc670231c755848b5fb33b0f0b6a743967e6687a870a"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.CoreModule.WaveformBuilder.yml",
+    "lines": 290,
+    "candidateLines": 2,
+    "sha256": "e06826272e2c60a563e0757a393a4ac55d354bd4954cddc34c95b7bcba1bd2e0"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.CoreModule.WssClient.yml",
+    "lines": 2491,
+    "candidateLines": 27,
+    "sha256": "7dd0597caa540005877571efe51fe9835f6eb8411b4c3f0dd2f52c65b0e87650"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.CoreModule.WssClientOptions.yml",
+    "lines": 322,
+    "candidateLines": 7,
+    "sha256": "33be65e4e0f44bcd0cc836d2d7de5117807f1a88441f3afc8e7cf5ea52e1add6"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.CoreModule.WssFrameCodec.yml",
+    "lines": 524,
+    "candidateLines": 6,
+    "sha256": "d78784d6dacb52987d79d0b5d3902d80552e1aede7fdcd3cd01f82e0f9fd5d03"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.CoreModule.WSSLimits.yml",
+    "lines": 307,
+    "candidateLines": 0,
+    "sha256": "dce18b7106502337a7fa09b653db97312b4c0dd599863e110eac3eb3b00fc47d"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.CoreModule.WSSMessageIDs.yml",
+    "lines": 643,
+    "candidateLines": 3,
+    "sha256": "1d3e83a51b14c9c14e80a6828941264cdde8d5144cb9ab2b23771151019eaebd"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.CoreModule.WssStimulationCore.yml",
+    "lines": 1958,
+    "candidateLines": 12,
+    "sha256": "9461ca38fa1be5a60bfee74864bae364f9637b9ee4dfda09fb8f869e346d772c"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.CoreModule.WssStimulationCoreOptions.yml",
+    "lines": 353,
+    "candidateLines": 4,
+    "sha256": "fe19f48c9f1063d1abac4818b10f46f6b66319c9e74943713ed6baaf5be03502"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.CoreModule.WssTarget.yml",
+    "lines": 139,
+    "candidateLines": 0,
+    "sha256": "d4b4ecd35cedd087a6cc6d4d74954d34cc5c8fa49c740f28736eeac5472b29e8"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.CoreModule.WSSVersionHandler.SupportedVersions.yml",
+    "lines": 113,
+    "candidateLines": 0,
+    "sha256": "9b23ec0e2985d14dbf25286d7a13e7751e32e4d9d8076c0d4e30c6020720fa24"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.CoreModule.WSSVersionHandler.yml",
+    "lines": 379,
+    "candidateLines": 3,
+    "sha256": "055ef48b01024a6fd68bace36506043c0585ce5fe329ba0fc54a166db3190633"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.CoreModule.yml",
+    "lines": 376,
+    "candidateLines": 0,
+    "sha256": "c9128b40f8c890bada4f7be71b163ecc2f16ac98732ee5871c8559cabf5b39e5"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.ModelModule.IModelParamsCore.yml",
+    "lines": 2683,
+    "candidateLines": 1,
+    "sha256": "dff1a9605c277f93eb987dc55d916021073796637b7006959bd9579071bfd0ad"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.ModelModule.ModelConfig.yml",
+    "lines": 693,
+    "candidateLines": 2,
+    "sha256": "f0c40a9d4d82f3650a6ceb62cdcef566738488aa80bda1c399c15143d18dfc0f"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.ModelModule.ModelConfigController.yml",
+    "lines": 741,
+    "candidateLines": 7,
+    "sha256": "2bdb60745495806169aaef094bea374059f04304bd3425c00ddcb183f3de47af"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.ModelModule.ModelParamsLayer.yml",
+    "lines": 4664,
+    "candidateLines": 8,
+    "sha256": "40ee1771758e5c2ab692ff82607ea180b9b313349523686c24aa800f3f90c48e"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.ModelModule.yml",
+    "lines": 68,
+    "candidateLines": 0,
+    "sha256": "68e5d5522dddfc562fb5db87b29d91d4dcc34653332125e57ee67154591086ac"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.Transports.BleNusTransport.yml",
+    "lines": 840,
+    "candidateLines": 10,
+    "sha256": "8d112e2e387649e153e952eb05bdad6bf5e92cdaa9657a53d7b5398adaf15706"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.Transports.BleNusTransportOptions.yml",
+    "lines": 398,
+    "candidateLines": 12,
+    "sha256": "556f2b55f689130c42564c5f9a771d641f74ed8f003769e409eedb068c698ff2"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.Transports.ITransport.yml",
+    "lines": 498,
+    "candidateLines": 8,
+    "sha256": "ddb9faf6f0b3931db9ec874a20e962e71329b47903433428df0f8f5c4c936829"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.Transports.SerialPortTransport.yml",
+    "lines": 743,
+    "candidateLines": 14,
+    "sha256": "5acfda3b3d7558a7c5a3730934813adc34373d3fef3c2f5ab4d03fa5c70303ee"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.Transports.SerialPortTransportOptions.yml",
+    "lines": 400,
+    "candidateLines": 7,
+    "sha256": "0e9bff30fb7234084e01d6248cc0860753b95d7a3c35b5117e38c4c84402e06b"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.Transports.TestModeTransport.yml",
+    "lines": 1090,
+    "candidateLines": 9,
+    "sha256": "f28d9739cf01d6499709169e272175368f95677cb07e18679a3dea73798dfdd5"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.Transports.TestModeTransportOptions.yml",
+    "lines": 459,
+    "candidateLines": 6,
+    "sha256": "3eb374084d53f8278c2ba42a828b470dd0eb453b84aa70cdd6833a94be84de01"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/core/Wss.Transports.yml",
+    "lines": 91,
+    "candidateLines": 0,
+    "sha256": "243eaf2dc81076914a147949f9f44e29f08f981777c967f76c9a433f597b136d"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/csharp/HFI.Wss.StimulationController.yml",
+    "lines": 2500,
+    "candidateLines": 59,
+    "sha256": "e34b47d5a5ffadd0210ec1cfeb268f27758ee0d7232e9514ef25b8a6638b5770"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/csharp/HFI.Wss.StimulationOptions.yml",
+    "lines": 396,
+    "candidateLines": 2,
+    "sha256": "4b5e673688cd7d94773dcce2470d9b945fff097b9b38282fada91b9da862ac5f"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/csharp/HFI.Wss.StimulationTransportKind.yml",
+    "lines": 115,
+    "candidateLines": 1,
+    "sha256": "fb2048d01416143f2684885f0d0c3cd22ede0376feb6dcef868988235291cc06"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/csharp/HFI.Wss.yml",
+    "lines": 61,
+    "candidateLines": 0,
+    "sha256": "c5d3c42d6caba723cba8caf06e6cc12f4ff8fa47ac9bb5de657c673a434a4401"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/csharp/toc.yml",
+    "lines": 16,
+    "candidateLines": 0,
+    "sha256": "3812763e6a52315af9cce771c71fbd1deedf364a399f4191ab75d4fb5fe5d905"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/unity/toc.yml",
+    "lines": 19,
+    "candidateLines": 0,
+    "sha256": "7675c8a0f0bfc895c6375e14d8e6ec07bd8dda6450682600d29beceb8e5a5714"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/unity/WSS.Unity.portScanner.yml",
+    "lines": 142,
+    "candidateLines": 6,
+    "sha256": "167638d79d5742aaca6ae28a13eabd3b5446979f150c7fec5f53653965037330"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/unity/WSS.Unity.Stimulation.yml",
+    "lines": 2111,
+    "candidateLines": 25,
+    "sha256": "12cf7c147e6ba140b5f4de59c2009f2f393a4f9b3b9537eb3664ee36be17c225"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/unity/WSS.Unity.Stimulationbasic.yml",
+    "lines": 1207,
+    "candidateLines": 11,
+    "sha256": "d420256a4fa7cc4fc6343aa1640789345e7be9786e096bbbb8ed6cbbabd3c545"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/unity/WSS.Unity.StimulationParams.yml",
+    "lines": 1985,
+    "candidateLines": 26,
+    "sha256": "5447cbfe93ddf7c1dec638fdf770a729d49e6119973e39babaca35209ec3462b"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/api/unity/WSS.Unity.yml",
+    "lines": 43,
+    "candidateLines": 0,
+    "sha256": "389affe7513388537b51e046af996a528740d59e6e086345ab7df3f6562b2382"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/ci.md",
+    "lines": 37,
+    "candidateLines": 4,
+    "sha256": "a260198b1e0a529db09a82ad345f79b5bb217980cf73a4455a804d40ac299f20"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/classes/WssStimulationCore.md",
+    "lines": 23,
+    "candidateLines": 0,
+    "sha256": "491e07fc001a016a3e4be4800a45269e38617c33f8788c33dc9fd22cd9adb00a"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/concepts.md",
+    "lines": 40,
+    "candidateLines": 0,
+    "sha256": "30350136825e1169d0c24e1cec14d99c61ebd418a3e1223a7986f7474058ca22"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/conceptual/api-reference.md",
+    "lines": 28,
+    "candidateLines": 2,
+    "sha256": "dca6f563b4b8c7ef47b730b2b14a486b0c35634639a749e0750e29bf069af13c"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/conceptual/building-software-api-docs.md",
+    "lines": 14,
+    "candidateLines": 0,
+    "sha256": "a652eee12204a7f78290a4bfcfd149197293fb680c2b513a49bacce882c7be6c"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/conceptual/ci-application-updates.md",
+    "lines": 58,
+    "candidateLines": 12,
+    "sha256": "0d269056f63cd0155ca45dceeae649c3c7202c26859263976ebffc70f0a2eee0"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/conceptual/ci-core-promotion.md",
+    "lines": 73,
+    "candidateLines": 17,
+    "sha256": "0c311cd2f74dc6679997d335f8395be7a15bfacd432bb25a634ca8e4fe83a606"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/conceptual/ci-evidence-and-operations.md",
+    "lines": 76,
+    "candidateLines": 17,
+    "sha256": "8e5f8ee0abd351d22789f338828917fd015a66bf97b0ac00ad19dc808dc07416"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/conceptual/ci-independent-integrations.md",
+    "lines": 100,
+    "candidateLines": 17,
+    "sha256": "06d737f1c06fbde4ce89c5c8ea5749379adb5a93e6414d61cd8bf301310c9e77"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/conceptual/ci-workflow-reference.md",
+    "lines": 23,
+    "candidateLines": 1,
+    "sha256": "e5ff96715d3f28fe0978e7cf18dee134bf7426cea61f7c9606a01b73ce936c50"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/conceptual/config-files-reference.md",
+    "lines": 94,
+    "candidateLines": 1,
+    "sha256": "dbe83dcff37902d33083d16366c4db9f15f01c4396b9474e8afb4aece637ebcf"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/conceptual/core-architecture.md",
+    "lines": 146,
+    "candidateLines": 6,
+    "sha256": "ec14e2c0a82c936ebc59fdaf417d71ebc1a8215b647db9e8120a571a7bac3e99"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/conceptual/developer-verification.md",
+    "lines": 46,
+    "candidateLines": 8,
+    "sha256": "f149a5727ac1870f9a134488efdb8ef8d53256d3b6aa1ac4b20d0f9a3d99f46a"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/conceptual/firmware-compatibility-matrix.md",
+    "lines": 122,
+    "candidateLines": 6,
+    "sha256": "e5bdee0dbe201d5c7fd9e630ae2e96d40333aef936a8cd316b182353b28bd566"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/conceptual/integration-library-runtime-selection.md",
+    "lines": 31,
+    "candidateLines": 3,
+    "sha256": "cd3a0d988a4fa935e34a0a4f7ecccd93c07ed3f9c04d89ea7e6bb412fab274ef"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/conceptual/layering-guide.md",
+    "lines": 103,
+    "candidateLines": 5,
+    "sha256": "266ca650418d1c67b562f4c159f674935d60905358348e66f9d85fa700e928f7"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/conceptual/platform-support.md",
+    "lines": 35,
+    "candidateLines": 4,
+    "sha256": "f80e59d363f00fdc9496a3dc6129544e8650bc6d27509fd3429bf0606e589ac0"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/conceptual/publishing-site.md",
+    "lines": 92,
+    "candidateLines": 17,
+    "sha256": "f256db3592cc50514527e7d37259f093f15fb7110f23e05221ad60e699bff6ba"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/conceptual/release-readiness.md",
+    "lines": 98,
+    "candidateLines": 24,
+    "sha256": "bafc5d42b9af906ff7119ae203c3855f9ec5c01885ed61cf169a2a60a56f6c2c"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/conceptual/repository-and-kit-links.md",
+    "lines": 38,
+    "candidateLines": 0,
+    "sha256": "ac338d368c04a1b7103b052bbcd6a32fd1726690c9712411d19b51d0bb20c0d2"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/conceptual/repository-links.md",
+    "lines": 175,
+    "candidateLines": 31,
+    "sha256": "e2467de74f6752f393b2751d88737edf4947b33f35800b0bc4293f6b91139df2"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/conceptual/setup-order-and-modification.md",
+    "lines": 250,
+    "candidateLines": 20,
+    "sha256": "93cb348c40787879226809893954abbd8c059c032e3b655036854c53642242e2"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/conceptual/simple-serial-communication.md",
+    "lines": 14,
+    "candidateLines": 0,
+    "sha256": "008dc87074990af5cbfc7985c915536ba53af784be1ac0995455f3c48b06ba2f"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/conceptual/start-here-adding-layers-or-core-functionality.md",
+    "lines": 176,
+    "candidateLines": 31,
+    "sha256": "d06c17d502b6b2679dba0b057343c2931a051393117bd73d5b51e11440a37d50"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/conceptual/start-here-building-a-new-integration-library.md",
+    "lines": 207,
+    "candidateLines": 13,
+    "sha256": "00e8400f407b69dfeebaed9c4213c2c41eed93d46270eb2330f18622474abb33"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/conceptual/start-here-developing-an-application.md",
+    "lines": 44,
+    "candidateLines": 6,
+    "sha256": "de056818bf3728f035bb23e666f4fd4c83028807513e0dd5d5af9396910f8151"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/conceptual/start-here-minor-core-modifications.md",
+    "lines": 203,
+    "candidateLines": 16,
+    "sha256": "a64311cbaf7b63fc54435216efbe75d8c5d9d0af1a8f395f2d98b9e71f753c46"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/conceptual/start-here-using-an-application.md",
+    "lines": 37,
+    "candidateLines": 2,
+    "sha256": "87d8e29f844ec3c28429dafb8134102443a883d4321de23d89fdc2125b823e95"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/conceptual/testing-and-deployment.md",
+    "lines": 38,
+    "candidateLines": 4,
+    "sha256": "c123c38cd30499c5259ee3e2d41bd7861a56a41a7f04964fa7607063d81eb908"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/conceptual/wss-commands-reference.md",
+    "lines": 14,
+    "candidateLines": 0,
+    "sha256": "7093e67bd45966dbeaa39066db71630fc0781ea15f07e424d52645e080fd81d0"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/index.md",
+    "lines": 63,
+    "candidateLines": 0,
+    "sha256": "6d44b100d64c49fd448db5e0867ba22be90bbc1d077bdec68a93692ae4927f12"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/maintainers.md",
+    "lines": 32,
+    "candidateLines": 1,
+    "sha256": "238d470ef27db8555348b51aada60a03ddc3e411891e715032391938176d3462"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/shims/UnitySubmodule/README.md",
+    "lines": 80,
+    "candidateLines": 7,
+    "sha256": "b1eb2e20d8c52a21f3873c2de308c7967de9742304249760cdd1dad434ae01eb"
+  },
+  {
+    "path": "DocsNavigation/apiDocs/start-here.md",
+    "lines": 47,
+    "candidateLines": 4,
+    "sha256": "c58c1e98c118e7e23789837fa92a4546c1bf45afa9eaa0029b95b2d5efb19ac1"
+  },
+  {
+    "path": "DocsNavigation/hardwareDocs/wsshardware.rmd",
+    "lines": 168,
+    "candidateLines": 5,
+    "sha256": "4d53d2eda825d63105c4b9e3eb5366b9e5aedc648fd81f62c0cd9a068bbdba7f"
+  },
+  {
+    "path": "DocsNavigation/howtoCompileAPIDocs/BuildSoftwareDocs.Rmd",
+    "lines": 399,
+    "candidateLines": 19,
+    "sha256": "39b9982f6a3a150f56be2f08c617e9933077d7ff5ca6f645c7f2229c1ac0240a"
+  },
+  {
+    "path": "DocsNavigation/README.md",
+    "lines": 94,
+    "candidateLines": 7,
+    "sha256": "b011043e802c7d2eb4f64caf4c60b0305401c94e60153e9cd1bdaae070f1fc06"
+  },
+  {
+    "path": "DocsNavigation/simpleSerialPortDocs/SimpleSerial.Rmd",
+    "lines": 122,
+    "candidateLines": 6,
+    "sha256": "31223d6c35bebbde0e5591c0ef46ba3a4c3a71b553988c723ec2575b411cfc36"
+  },
+  {
+    "path": "DocsNavigation/wssCommandsDocs/wsscommands.Rmd",
+    "lines": 607,
+    "candidateLines": 7,
+    "sha256": "2d64f69ad4e33bfbbc0d5d15b8cfc17ea1184c734dcd9804c18d58eccf02add1"
+  },
+  {
+    "path": "MATLAB/README.md",
+    "lines": 112,
+    "candidateLines": 9,
+    "sha256": "31e465d15b403d087fc169c43fcbf11c63e98f06059b58b54c1759da5f2ef4e9"
+  },
+  {
+    "path": "MATLABCLI/README.md",
+    "lines": 94,
+    "candidateLines": 6,
+    "sha256": "a59adf6e14ad4655b2f688880b3a3842f358e27f2474b342823e1334092b863e"
+  },
+  {
+    "path": "Python/README.md",
+    "lines": 77,
+    "candidateLines": 10,
+    "sha256": "5ec5b9edd36fe65930820c1797247c80a586eed2c7583196599c820853539f5f"
+  },
+  {
+    "path": "PythonCLI/README.md",
+    "lines": 52,
+    "candidateLines": 5,
+    "sha256": "05188a3a4200c137ca6f26abdd2c1726bc71a7bf940c8888f9ecd89a8e309c53"
+  },
+  {
+    "path": "ROS/README.md",
+    "lines": 58,
+    "candidateLines": 5,
+    "sha256": "3f468fea95480f19110d5071df7eef2c7a5031cf820b929c0e66e678b5f8d267"
+  },
+  {
+    "path": "Unity/README.md",
+    "lines": 62,
+    "candidateLines": 4,
+    "sha256": "cfb0dadc55743486b9481bd306520e39ae18f89a057baeb128a7af8f0b417aa9"
+  },
+  {
+    "path": "UnityGUI/README.md",
+    "lines": 58,
+    "candidateLines": 7,
+    "sha256": "a9c756e79c4b67939b66b4361bdebfbc1d58b16cd9c132cecc43cac5e9a31efd"
+  },
+  {
+    "path": "DocsNavigation/readme.html",
+    "lines": 2498,
+    "candidateLines": null,
+    "sha256": "d94e0ff3a57f4af8143df7f33c7031cccae847073f46a9b6621eeacb354c29cc",
+    "note": "Supplemental context/source reviewed in variants or main-delta report; no raw-token count applied."
+  },
+  {
+    "path": "DocsAPI/apiDocs/refresh-api.ps1",
+    "lines": 128,
+    "candidateLines": null,
+    "sha256": "329c7be84496331b85abee6b495d392a7134807a90193439fd81856de0eddde9",
+    "note": "Supplemental context/source reviewed in variants or main-delta report; no raw-token count applied."
+  },
+  {
+    "path": "DocsAPI/apiDocs/tools/ApiInputHash.ps1",
+    "lines": 8,
+    "candidateLines": null,
+    "sha256": "cf7d5953e927fe52d27509c64a011a1d33229172f235eb48334099b9b87f40f4",
+    "note": "Supplemental context/source reviewed in variants or main-delta report; no raw-token count applied."
+  },
+  {
+    "path": "DocsAPI/apiDocs/tools/ApiPresentation.ps1",
+    "lines": 79,
+    "candidateLines": null,
+    "sha256": "87971e790844503b97102358c9ff5b937d7d9303f6bd41a27a6ff7d73766fff1",
+    "note": "Supplemental context/source reviewed in variants or main-delta report; no raw-token count applied."
+  },
+  {
+    "path": "DocsAPI/apiDocs/shims/PinnedUnity/PinnedUnity.Docs.csproj",
+    "lines": 24,
+    "candidateLines": null,
+    "sha256": "f07291f4286a1f77c72261b3d186cfe56056b7d058599de882aa03404fcdf74e",
+    "note": "Supplemental context/source reviewed in variants or main-delta report; no raw-token count applied."
+  },
+  {
+    "path": "DocsAPI/.github/workflows/docs-pages.yml",
+    "lines": 112,
+    "candidateLines": null,
+    "sha256": "2803666901bd84e8d758ee29a85f91d4429ce43da25f6fbd7cca2e9c471733fe",
+    "note": "Supplemental context/source reviewed in variants or main-delta report; no raw-token count applied."
+  }
+]
