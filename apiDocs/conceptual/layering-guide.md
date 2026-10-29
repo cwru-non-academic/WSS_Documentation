@@ -2,102 +2,132 @@
 
 [Home](../index.md) | [Back to Concepts](../concepts.md)
 
-This guide focuses on how functionality grows as you add modules on top of the core. It illustrates three configurations: Core only, Core + Params, and Core + Params + Model.
+An application chooses what to do; an integration makes WSS usable in its host;
+the shared layers turn those requests into device operations. Start with the
+integration for your language or engine. Compose the shared layers yourself
+when building a new integration or a specialized host.
 
-## Core Only
-
-```mermaid
-flowchart LR
-  App[Client / App / UI] --> Core[WssStimulationCore]
-  Core --> Codec[IFrameCodec]
-  Codec --> Transport[ITransport]
-  Transport --> Device[Device]
-  Device -. inbound .-> Codec -. deframe .-> Core -. events .-> App
-```
-
-- Capabilities:
-  - Connect/disconnect, send/receive via `ITransport`.
-  - Frame parsing/assembly via `IFrameCodec`.
-  - Background streaming loop; queued edits; lifecycle orchestration.
-- Key code:
-  - Core: `CoreModule/WssStimulationCore.cs`
-  - Codec: `CoreModule/WssFrameCodec.cs` (`CoreModule/Interfaces/IFrameCodec.cs`)
-  - Transport: `WSS.Transport.Serial/SerialPortTransport.cs`, `CoreModule/TestModeTransport.cs` (`CoreModule/Interfaces/ITransport.cs`)
-
-## Core + Params Module
+## The Big Picture
 
 ```mermaid
-flowchart LR
-  App[Client / App / UI]  --> Params[Stim Params Module]
-  Params --> Core[WssStimulationCore]
-  Core --> Codec[IFrameCodec]
-  Codec --> Transport[ITransport]
-  Transport --> Device[Device]
-  Device -. inbound .-> Codec -. deframe .-> Core -. events .-> App
-  Params-. parameters .-> App
-  Core <--> Params
+flowchart TD
+  App["Application: user workflow and configuration"]
+  Integration["Integration: host API and lifecycle"]
+  Model["Optional Model: transform input magnitude"]
+  Params["Params: map normalized values to channel parameters"]
+  Core["Core: device setup, state and streaming"]
+  App --> Integration
+  Integration --> Model
+  Model --> Params
+  Integration --> Params
+  Params --> Core
 ```
 
-- Enhancements over Core only:
-  - Centralized parameter definitions, defaults, and validation.
-  - Helpers to apply parameter sets to the device safely.
-- Key code:
-  - Module: `CalibrationModule/StimParamsLayer.cs`, `CalibrationModule/StimParamsConfig.cs`, `CalibrationModule/StimParamsConfigController.cs`, `CalibrationModule/IStimParamsCore.cs`
-  - Config plumbing: `CoreModule/CoreJsonConfig/*`
+Read the diagram from top to bottom: Application -> Integration -> optional
+Model -> Params -> Core. The direct Integration-to-Params route skips Model.
+This is a responsibility map, not a requirement to pass every operation through
+every transformation. Lifecycle and direct analog calls can be forwarded through
+the same objects without applying model math or normalized-value mapping.
 
-## Core + Params + Model Module
+Core also works on its own. A custom host can call Core directly, or wrap it
+with Params, or wrap Params with Model. Existing integrations supply their
+composition and host-facing API; follow their READMEs rather than constructing
+a second stack around them. The [repository directory](repository-and-kit-links.md)
+links to those setup instructions.
 
-```mermaid
-flowchart LR
-  App[Client / App / UI]  --> Model[Model Module]
-  Model --> Params[Stim Params Module]
-  Params --> Core[WssStimulationCore]
-  Core --> Codec[IFrameCodec]
-  Codec --> Transport[ITransport]
-  Transport --> Device[Device]
-  Device -. inbound .-> Codec -. deframe .-> Core -. events .-> App
-  Params-. parameters .-> App
-  Model-. parameters .-> App
-  Core <--> Params
-  Params <--> Model
-```
+## Responsibilities and When to Use Them
 
-- Enhancements over Core + Params:
-  - Model-specific configuration, constraints, and workflows layered on top of parameters.
-  - Clear separation of generic parameter management (Params) vs. model specialization (Model).
-- Key code:
-  - Module: `ModelModule/ModelParamsLayer.cs`, `ModelModule/ModelConfig.cs`, `ModelModule/ModelConfigController.cs`, `ModelModule/IModelParamsCore.cs`
+| Part | Responsibility | Use it when |
+| --- | --- | --- |
+| Application | User interface, experiment workflow, configuration selection, state display and shutdown boundary. | Running a CLI, GUI, robotics workflow or experiment. |
+| Integration | Adapt the shared stack to C#, Python, Unity or MATLAB; expose host-friendly methods and arrange lifecycle/update ownership. | Calling WSS from that host. Its README defines installation, update scheduling and cleanup. |
+| Model (`ModelParamsLayer`) | Apply configured P/PD processing through `StimWithMode`, then pass the resulting normalized magnitude to Params. | Input magnitude should be transformed by the configured model. Direct `StimulateNormalized` calls bypass this model calculation. |
+| Params (`StimParamsLayer`) | Map normalized input to per-channel pulse-width or amplitude settings using configured limits, defaults and interval; expose parameter access. | Applications should work with normalized values and reusable channel configuration. |
+| Core (`WssStimulationCore`) | Coordinate connection, ordered device setup, queued edits, lifecycle state and background streaming. | Every shared-layer composition needs device orchestration; use Core directly when the host already supplies the higher-level parameter behavior. |
 
-## Guidance
-- Compose the core with modules at the app boundary. Pass interfaces; avoid tight coupling.
-- Keep protocol framing and transport mechanics outside modules; modules should express domain behaviors and constraints.
-- See also: Core Architecture for transport/codec/core wiring and data flow.
+Params wraps an `IStimulationCore`; Model wraps an `IStimParamsCore`.
+They add behavior and forward the underlying lifecycle calls. They are not
+independent device connections. Core delegates protocol operations to its client;
+client, codec and transport wiring belongs to the
+[Core architecture guide](core-architecture.md).
+
+## One Request Through the Layers
+
+Consider a simulated channel configured for pulse-width control, with
+`minPW = 50` and `maxPW = 250`. These numbers illustrate the mapping; they
+are not an experiment configuration or a recommendation for a device.
+
+1. The application supplies a normalized value of `0.5` through its integration.
+2. With `StimulateNormalized`, Params receives that value directly. With
+   `StimWithMode`, Model first calculates a value from the selected P/PD model,
+   then forwards it to Params. A P model with gain `1` and offset `0` leaves
+   `0.5` unchanged.
+3. Params bounds the normalized value to `0..1`. In this pulse-width example,
+   it maps the positive value to `50 + (250 - 50) * 0.5 = 150`, rounds to an
+   integer pulse width, and takes amplitude and interval from channel configuration.
+4. Params calls Core's analog operation with those channel parameters. Core
+   applies its device/protocol behavior and updates the stimulation stream.
+
+In amplitude-control mode, Params varies amplitude and takes the configured
+default pulse width instead. At Params' input, a normalized value at or below zero uses the
+zero-output branch rather than the positive-value minimum. See the
+[configuration reference](config-files-reference.md) for the corresponding
+fields. Exact host method signatures and runnable examples belong to each
+integration's README and API reference.
+
+## Composition and Setup Order
+
+Choose the configuration directory and transport before initializing the
+integration. When composing layers directly, construct Core first, wrap it with
+Params if needed, then wrap Params with Model if needed. Initialize the outer
+object so initialization reaches the underlying stack.
+
+Device setup order is a separate concern from object construction. Core connects,
+queues the firmware-dependent setup steps, and advances the shared lifecycle.
+Its normal setup includes a start request and can advance into
+Started/Streaming; Ready can be transient. Follow the integration's documented
+operational-state check and update ownership, and do not add another tick loop
+around a controller that already owns one.
+
+Use [Setup Order and Modification](setup-order-and-modification.md) for the
+command sequence, initial setup versus later edits, and where to make setup
+changes. Use [Core Architecture](core-architecture.md) for scheduling, streaming
+and client/transport details. Keep device edits in Core's scheduling path rather
+than sending a second stream of protocol commands from a layer.
 
 ## Optional Capability: Basic Stimulation
 
-The Basic Stimulation interface (`CoreModule/Interfaces/IBasicStimulation.cs`) is an optional capability layer that adds higher-level stimulation operations on top of the core. It is suitable for firmware/hardware that supports waveform editing, event shaping, and config persistence. It serves stimulator-specific functionality.
+`IBasicStimulation` is an optional interface, not another object to insert into
+the stack. `WssStimulationCore` implements it directly. Params discovers the
+capability on its underlying Core; Model forwards that discovery through Params.
+Integration libraries expose the resulting capability using their host API.
 
-```mermaid
-flowchart LR
-  App[Client / App / UI] --> Core[WssStimulationCore+BasicStimulation]
-  Core --> Codec
-  Codec --> Transport[ITransport]
-  Transport --> Device[Device]
-  Device -. inbound .-> Codec -. deframe .-> Core -. events .-> App
-```
+The interface includes waveform/event edits, board configuration save/load/query,
+and inter-phase-delay updates. Core schedules these operations through its setup
+machinery. Availability of the interface tells you that an implementation exposes
+these operations; it does not establish that every operation is supported by the
+selected firmware or a particular device. Consult the
+[firmware compatibility matrix](firmware-compatibility-matrix.md) and API contract.
 
-- Purpose
-  - Provide a minimal, consistent API to upload/select waveforms and to save/load/query board configuration.
-  - All calls are non-blocking; implementations enqueue setup steps and wait for device replies.
-- Key operations
-  - `UpdateEventShape`, `UpdateWaveform` (builder or raw), `WaveformSetup`
-  - `Save`, `Load`, `Request_Configs`
-  - `UpdateIPD` (global or per-event)
-- Relationship to modules
-  - Can be used with Core only, with Params, or with Params + Model. Modules can delegate to `IBasicStimulation` for device edits.
+The capability can be used with Core alone, Core + Params, or Core + Params +
+Model. Adding Model or Params does not create another Basic implementation.
+
+## Source References
+
+These paths are in the [Core repository](xref:repo.core):
+
+- Core and capability: `CoreModule/WssStimulationCore.cs`,
+  `CoreModule/Interfaces/IBasicStimulation.cs`.
+- Params: `CalibrationModule/StimParamsLayer.cs`,
+  `StimParamsConfig.cs`, `StimParamsConfigController.cs`, `IStimParamsCore.cs`
+  in the same directory.
+- Model: `ModelModule/ModelParamsLayer.cs`, `ModelConfig.cs`,
+  `ModelConfigController.cs`, `IModelParamsCore.cs` in the same directory.
 
 Navigation:
 
 - [Back to Home](../index.md)
 - [Back to Concepts](../concepts.md)
-- [Related: Core Architecture (Transport, Codec, Core)](core-architecture.md)
+- [Related: Setup Order and Modification](setup-order-and-modification.md)
+- [Related: Core Architecture](core-architecture.md)
+- [Repository setup guides](repository-and-kit-links.md)
