@@ -27,8 +27,11 @@ belong in `repos.manifest.json`, separately from public URLs. For example:
 
 The deep links above illustrate syntax; verify the branch and file before adding
 them. Named suffixes support paths, queries and fragments and retain URL escaping.
-Roots are GitHub HTTPS URLs; arbitrary hosts and full URL overrides are outside
-this catalog. Owner overrides take precedence over the default owner.
+Repository roots are GitHub HTTPS URLs. Owner overrides take precedence over the
+default owner. Named destinations on other hosts use `externalLinks` in the same
+catalog, with `name` and an absolute HTTPS `href`; pages use
+`[label](xref:link.docfx)`. This supports changing external URLs once
+without adding another template engine.
 
 ## Adding links and copyable commands
 
@@ -153,7 +156,7 @@ For the complete staged site and the gated deployment workflow, see [Publishing 
 
 ## Which links stay literal
 
-These are [native DocFX cross-references](https://dotnet.github.io/docfx/docs/links-and-cross-references.html).
+These are [native DocFX cross-references](xref:link.docfx-cross-references).
 Published pages contain ordinary URLs. Raw GitHub Markdown does not resolve xrefs
 or code-inclusion directives; use the built preview. The root README retains normal
 relative links and its current GitHub Pages hosting URL so it stays usable on GitHub.
