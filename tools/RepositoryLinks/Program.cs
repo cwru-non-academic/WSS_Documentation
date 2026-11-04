@@ -77,6 +77,16 @@ static List<Reference> Resolve(JsonObject catalog)
             refs.Add(new($"repo.{id}.{linkId}", $"{name}: {linkId}", url + suffix));
         }
     }
+    foreach (var (id, node) in catalog["externalLinks"]?.AsObject() ?? new JsonObject())
+    {
+        Slug(id);
+        var href = Text(node?["href"]);
+        if (!Uri.TryCreate(href, UriKind.Absolute, out var uri) || uri.Scheme != "https"
+            || string.IsNullOrEmpty(uri.Host) || !string.IsNullOrEmpty(uri.UserInfo)
+            || href.Any(c => char.IsWhiteSpace(c) || "\\\"<>".Contains(c)))
+            throw new InvalidDataException($"External link {id} must be an absolute HTTPS URL without credentials.");
+        refs.Add(new($"link.{id}", Text(node?["name"]), href));
+    }
     if (refs.Select(r => r.uid).Distinct(StringComparer.OrdinalIgnoreCase).Count() != refs.Count)
         throw new InvalidDataException("Duplicate repository link UID.");
     return refs;
@@ -85,13 +95,49 @@ static List<Reference> Resolve(JsonObject catalog)
 static List<Reference> Generate(JsonObject catalog, string output)
 {
     var refs = Resolve(catalog); // Fully validate before creating output.
+    var pins = VerificationPins(catalog, refs);
     Directory.CreateDirectory(output);
     // JSON is YAML-compatible and accepted by DocFX as an xref map.
     File.WriteAllText(Path.Combine(output, "xrefmap.yml"), JsonSerializer.Serialize(new { references = refs }, new JsonSerializerOptions { WriteIndented = true }));
     foreach (var id in catalog["repositories"]!.AsObject().Select(p => p.Key))
         File.WriteAllText(Path.Combine(output, $"{id}-clone.sh"), $"git clone {refs.Single(r => r.uid == $"repo.{id}").href}.git\n");
+    File.WriteAllText(Path.Combine(output, "verification-pins.md"), pins);
     Console.WriteLine($"Generated {refs.Count} repository references in {output}");
     return refs;
+}
+
+static string VerificationPins(JsonObject catalog, List<Reference> refs)
+{
+    if (catalog["verificationPins"] == null) return "";
+    string Cell(JsonNode? node)
+    {
+        var value = Text(node);
+        if (value.Length == 0 || value.Any(c => "\r\n|<>[]".Contains(c)))
+            throw new InvalidDataException("Verification pin text must be a nonempty table cell.");
+        return value;
+    }
+    var snapshot = Text(catalog["verificationSnapshotDate"]);
+    if (!DateOnly.TryParseExact(snapshot, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture,
+        System.Globalization.DateTimeStyles.None, out _))
+        throw new InvalidDataException("Verification snapshot date must use yyyy-MM-dd.");
+    var lines = new List<string> { $"**Snapshot inspected: {snapshot}. These values are not live deployment status.**", "",
+        "| Verification identity | Recorded value | Purpose | Inspected immutable source |", "| --- | --- | --- | --- |" };
+    foreach (var (id, pin) in catalog["verificationPins"]?.AsObject() ?? new JsonObject())
+    {
+        Slug(id);
+        var value = Text(pin?["value"]);
+        var kind = Text(pin?["kind"]);
+        var length = kind switch { "commit" => 40, "sha256" => 64, _ => throw new InvalidDataException($"Unknown pin kind: {kind}") };
+        if (!Regex.IsMatch(value, $"\\A[0-9a-f]{{{length}}}\\z"))
+            throw new InvalidDataException($"Pin {id} requires a full lowercase {kind} value.");
+        var source = Text(pin?["source"]);
+        var reference = refs.SingleOrDefault(r => r.uid == source);
+        if (reference == null || !source.StartsWith("repo.", StringComparison.Ordinal)
+            || !Regex.IsMatch(reference.href, @"/blob/[0-9a-f]{40}/[^?#]+"))
+            throw new InvalidDataException($"Verification pin {id} requires a commit-pinned configuration source: {source}");
+        lines.Add($"| {Cell(pin?["name"])} | `{value}` ({kind}) | {Cell(pin?["purpose"])} | [Inspected source](xref:{source}) |");
+    }
+    return string.Join("\n", lines) + "\n";
 }
 
 static void Docfx(string root, string? executable, params string[] arguments)
@@ -129,12 +175,18 @@ static void Test(string root, string catalogPath, bool render, string? tool)
     try
     {
         var catalog = Load(catalogPath);
+        VerificationPins(catalog, Resolve(catalog));
         var originalOwner = Text(catalog["defaultOwner"]);
         var repos = catalog["repositories"]!.AsObject();
-        repos["core"]!["links"] = new JsonObject { ["readme"] = "/blob/main/README.md?plain=1#L10" };
+        repos["core"]!["links"] = new JsonObject { ["readme"] = "/blob/main/README.md?plain=1#L10",
+            ["reviewed-source"] = "/blob/" + new string('c', 40) + "/.github/fixture.json" };
         // Resolve every catalog root in a temporary page; the actual catalog is never modified.
+        catalog["externalLinks"] = new JsonObject { ["fixture"] = new JsonObject { ["name"] = "External fixture", ["href"] = "https://example.org/before?mode=one#anchor" } };
+        catalog["verificationPins"] = new JsonObject { ["fixture"] = new JsonObject {
+            ["name"] = "Fixture commit", ["kind"] = "commit", ["value"] = new string('a', 40),
+            ["purpose"] = "Reviewed source identity", ["source"] = "repo.core.reviewed-source" } };
         var page = "# Repository fixture\n\n" + string.Join("\n\n", Resolve(catalog).Select(r => $"[{r.uid}](xref:{r.uid})"))
-            + "\n\n[!code-bash[Clone](generated/core-clone.sh)]\n";
+            + "\n\n[!code-bash[Clone](generated/core-clone.sh)]\n\n[!include[](generated/verification-pins.md)]\n";
         File.WriteAllText(Path.Combine(temp, "index.md"), page);
         var config = new { build = new { content = new[] { new { files = new[] { "index.md" } } }, xref = new[] { "generated/xrefmap.yml" }, template = new[] { "default" }, dest = "_site", disableGitFeatures = true } };
         File.WriteAllText(Path.Combine(temp, "docfx.json"), JsonSerializer.Serialize(config));
@@ -145,9 +197,11 @@ static void Test(string root, string catalogPath, bool render, string? tool)
                 catalog["defaultOwner"] = "fixture-new-org";
                 repos["python"]!["owner"] = "fixture-retained-owner";
                 repos["core"]!["name"] = "fixture-renamed-core";
+                catalog["externalLinks"]!["fixture"]!["href"] = "https://example.net/after?mode=two#changed";
+                catalog["verificationPins"]!["fixture"]!["value"] = new string('b', 40);
             }
             var refs = Generate(catalog, Path.Combine(temp, "generated"));
-            Require(refs.Count == repos.Count + repos.Sum(p => p.Value!["links"]?.AsObject().Count ?? 0), "Missing root or deep reference.");
+            Require(refs.Count == repos.Count + repos.Sum(p => p.Value!["links"]?.AsObject().Count ?? 0) + 1, "Missing root, deep or external reference.");
             foreach (var (id, repo) in repos)
             {
                 var expected = $"https://github.com/{Text(repo!["owner"] ?? catalog["defaultOwner"])}/{Text(repo["name"])}";
@@ -159,8 +213,28 @@ static void Test(string root, string catalogPath, bool render, string? tool)
             if (!render) continue;
             Docfx(root, tool, "build", Path.Combine(temp, "docfx.json"), "--warningsAsErrors");
             CheckHtml(Path.Combine(temp, "_site/index.html"), refs, coreRoot);
+            var rendered = File.ReadAllText(Path.Combine(temp, "_site/index.html"));
+            Require(rendered.Contains(new string(phase == "move" ? 'b' : 'a', 40)), "Generated pin table did not render its current value.");
+            if (phase == "move") Require(!rendered.Contains(new string('a', 40)) && !rendered.Contains("https://example.org/before"), "Stale pin or external URL remained after catalog edit.");
             if (phase == "move") Require(!File.ReadAllText(Path.Combine(temp, "_site/index.html")).Contains($"https://github.com/{originalOwner}/"), "Stale owner in output.");
         }
+        foreach (var bad in new[] { "http://example.org", "javascript:alert(1)", "https://user:password@example.org", "//example.org" })
+        {
+            catalog["externalLinks"]!["fixture"]!["href"] = bad;
+            var rejected = false;
+            try { Resolve(catalog); } catch (InvalidDataException) { rejected = true; }
+            Require(rejected, $"Invalid external destination accepted: {bad}");
+        }
+        catalog["externalLinks"]!["fixture"]!["href"] = "https://example.net/after";
+        catalog["verificationPins"]!["fixture"]!["value"] = "main";
+        var floatingRejected = false;
+        try { Generate(catalog, Path.Combine(temp, "invalid")); } catch (InvalidDataException) { floatingRejected = true; }
+        Require(floatingRejected && !Directory.Exists(Path.Combine(temp, "invalid")), "Floating pin accepted or invalid catalog wrote output.");
+        catalog["verificationPins"]!["fixture"]!["value"] = new string('b', 40);
+        catalog["verificationPins"]!["fixture"]!["source"] = "repo.core.readme";
+        var floatingSourceRejected = false;
+        try { Generate(catalog, Path.Combine(temp, "invalid-source")); } catch (InvalidDataException) { floatingSourceRejected = true; }
+        Require(floatingSourceRejected && !Directory.Exists(Path.Combine(temp, "invalid-source")), "Moving-branch snapshot source accepted.");
         foreach (var bad in new[] { "//external.example/path", "/../other", "/bad path", "https://external.example" })
         {
             repos["core"]!["links"]!["bad"] = bad;
@@ -173,7 +247,7 @@ static void Test(string root, string catalogPath, bool render, string? tool)
             .Where(p => !p.Split(Path.DirectorySeparatorChar).Any(part => part is "api" or "external" or "generated" or "shims")))
         {
             var prose = Regex.Replace(File.ReadAllText(path), @"(?ms)^```.*?^```[^\r\n]*", "");
-            foreach (Match match in Regex.Matches(prose, @"xref:(repo\.[A-Za-z0-9_.-]+)"))
+            foreach (Match match in Regex.Matches(prose, @"xref:((?:repo|link)\.[A-Za-z0-9_.-]+)"))
                 Require(live.Contains(match.Groups[1].Value), $"Unknown xref in {path}: {match}");
         }
         Console.WriteLine("PASS: organization propagation, owner override, rename, deep links, copyable snippets, invalid suffixes and authored xrefs.");

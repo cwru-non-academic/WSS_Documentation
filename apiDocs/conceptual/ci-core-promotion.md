@@ -37,7 +37,7 @@ Identical payload bytes/projection produce a verified no-op rather than a metada
 
 ## Canonical Conformance Across Languages
 
-Unity and Python pin the C# fixture at `7145e2307f997f703748530bf74311ef94455e98` and verify its configured SHA-256. Only the controller factory/type alias is adapted. The ten canonical cases and eighteen `Assert.That` source expressions, values, finite waits, evaluator calls, and grouped assertions remain unchanged.
+Unity and Python select reviewed C# fixture sources and verify their configured SHA-256 identities. See [verification pin reference](verification-pin-reference.md) for the recorded values and authoritative configurations. Only the controller factory/type alias is adapted. The ten canonical cases and eighteen `Assert.That` source expressions, values, finite waits, evaluator calls, and grouped assertions remain unchanged.
 
 The cases cover initialization, direct analog stimulation, six normalized scenarios, runtime event editing/resumption, and stopping without unintended resumed streaming. Core's emulator/evaluator owns the protocol/state expectations. Eighteen is a count of source expressions; parameterized execution and setup can yield different runtime assertion counts.
 

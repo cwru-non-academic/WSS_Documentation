@@ -71,6 +71,23 @@ For OS-specific setup steps, including installing prerequisites on macOS/Linux a
 ## Repository Links And Windows/Linux Validation
 
 Portable links in the DocFX hub use one [repository catalog](./apiDocs/repository-links.json).
+The same catalog owns named external HTTPS destinations and the values displayed
+in the [Verification Pin Reference source](./apiDocs/conceptual/verification-pin-reference.md)
+page. These are documentation values; executable security pins remain in their
+owning repositories. Site pages reference destinations using `[label](xref:repo.core)`
+or `[label](xref:link.docfx)`. The build generates the pin table from this catalog;
+edit the JSON and rebuild rather than editing generated files. Ordinary GitHub
+READMEs keep normal Markdown links because GitHub does not resolve DocFX xrefs.
+Catalog `externalLinks` entries have `name` and `href` fields. `verificationPins`
+entries have `name`, `kind` (`commit` or `sha256`), full lowercase `value`, `purpose`
+and a commit-pinned catalog xref `source`. `verificationSnapshotDate` records the
+inspection date. This is a manually reconciled historical snapshot: update the
+value, immutable source URL and date together after the receiver change is reviewed.
+The build does not inspect external checkouts or query moving remote branches.
+The generated table is included by the published reference page. Rendered tests change URLs and pins in a temporary catalog and
+reject stale output, invalid URLs and floating revisions. This mechanism applies
+to authored DocFX references; historical immutable citations, RMarkdown content,
+imported API pages, hosting settings and Git remotes retain their own ownership.
 See [Maintaining Repository Links](./apiDocs/conceptual/repository-links.md) for organization moves, renames, deep links, copyable commands and CI/release stages.
 
 Install the .NET SDK pinned in `global.json` (10.0.300), then run the same commands on Windows or Linux:
@@ -121,20 +138,13 @@ pages and `apiDocs/toc.yml` as the guide. Repository metadata and shim instructi
 belong here rather than in the website navigation. Shared agent instructions and the
 navigation skill remain tracked as tooling entry points; they are not planning files.
 
-### Revision references in maintainer guides
+### Verification references
 
-The dated workflow reference links to exact commits so a later workflow change does
-not silently change the evidence behind its claims. Its SHA table is a historical
-inspection record, not a list of versions that new users need to install. The C#
-fixture commit identifies the precise behavioral baseline used for cross-language
-conformance; a SHA-256 separately verifies downloaded bytes. Changing either baseline
-requires coordinated validation in its owning repositories.
-
-These references are retained while their documentation placement is reviewed. They
-are already in the CI maintainer guides rather than the setup instructions. For a
-cleaner flow, retain full revisions in a collapsed evidence section of the workflow
-reference and use descriptive link labels in explanatory prose. Operational pins in
-workflows, provenance records and manifests must remain in their owning tooling.
+See the [Verification Pin Reference source](./apiDocs/conceptual/verification-pin-reference.md)
+and its [dated snapshot catalog](./apiDocs/repository-links.json) for recorded values,
+purposes and immutable evidence links. These are inspection records; the owning
+repositories retain the authoritative operational pins. The public page becomes
+available after reviewed dev-to-main promotion and site deployment.
 
 ## Unity Submodule DocFX Shim
 
