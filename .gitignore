@@ -9,3 +9,9 @@ tools/RepositoryLinks/bin/
 tools/RepositoryLinks/obj/
 artifacts/
 docfx.site.generated.json
+
+# Reproducible local MSBuild output and DocFX diagnostic logs
+**/bin/
+**/obj/
+/apiDocs/metadata.log.json
+/apiDocs/metadata2.log.json
