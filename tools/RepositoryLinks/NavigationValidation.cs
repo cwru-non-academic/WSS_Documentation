@@ -37,6 +37,8 @@ internal static class NavigationValidation
             foreach (var sourceLine in text.Split('\n'))
             {
                 line++;
+                // The catalog generates this include before DocFX builds; no authored file exists on a clean checkout.
+                if (sourceLine.Trim() == "[!include[](../generated/repository-links/verification-pins.md)]") continue;
                 // Explicit single-line exceptions require a reason. Pinned commit evidence is immutable history.
                 if (Regex.IsMatch(sourceLine, @"<!-- repository-link-literal: .{12,}? -->")) continue;
                 foreach (Match url in Regex.Matches(sourceLine, @"https://github\.com/([^/\s)]+)/([^/#?\s)]+)([^\s)]*)"))

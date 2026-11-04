@@ -71,6 +71,23 @@ For OS-specific setup steps, including installing prerequisites on macOS/Linux a
 ## Repository Links And Windows/Linux Validation
 
 Portable links in the DocFX hub use one [repository catalog](./apiDocs/repository-links.json).
+The same catalog owns named external HTTPS destinations and the values displayed
+on the published [Verification Pin Reference](./apiDocs/conceptual/verification-pin-reference.md)
+page. These are documentation values; executable security pins remain in their
+owning repositories. Site pages reference destinations using `[label](xref:repo.core)`
+or `[label](xref:link.docfx)`. The build generates the pin table from this catalog;
+edit the JSON and rebuild rather than editing generated files. Ordinary GitHub
+READMEs keep normal Markdown links because GitHub does not resolve DocFX xrefs.
+Catalog `externalLinks` entries have `name` and `href` fields. `verificationPins`
+entries have `name`, `kind` (`commit` or `sha256`), full lowercase `value`, `purpose`
+and a commit-pinned catalog xref `source`. `verificationSnapshotDate` records the
+inspection date. This is a manually reconciled historical snapshot: update the
+value, immutable source URL and date together after the receiver change is reviewed.
+The build does not inspect external checkouts or query moving remote branches.
+The generated table is included by the published reference page. Rendered tests change URLs and pins in a temporary catalog and
+reject stale output, invalid URLs and floating revisions. This mechanism applies
+to authored DocFX references; historical immutable citations, RMarkdown content,
+imported API pages, hosting settings and Git remotes retain their own ownership.
 See [Maintaining Repository Links](./apiDocs/conceptual/repository-links.md) for organization moves, renames, deep links, copyable commands and CI/release stages.
 
 Install the .NET SDK pinned in `global.json` (10.0.300), then run the same commands on Windows or Linux:
