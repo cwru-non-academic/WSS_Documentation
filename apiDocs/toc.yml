@@ -39,6 +39,8 @@
     href: conceptual/ci-application-updates.md
   - name: First-party Core Promotion
     href: conceptual/ci-core-promotion.md
+  - name: Shared First-party CI Implementation
+    href: conceptual/ci-shared-implementation.md
   - name: Evidence, Permissions, and Operations
     href: conceptual/ci-evidence-and-operations.md
   - name: Workflow Reference and Verified Status

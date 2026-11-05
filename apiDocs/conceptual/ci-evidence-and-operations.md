@@ -6,6 +6,8 @@ Use these rules with either an independent downstream adapter or the coordinated
 
 ## Pin Identity and Preserve Evidence
 
+For the migration under review, follow the [shared implementation's exact-attempt and ambiguity policy](ci-shared-implementation.md). Receipt acceptance rejects multiple eligible postmerge runs; choosing the latest success is not equivalent.
+
 Keep producer repository, full commit, workflow path/event, run and attempt context, artifact ID, archive filename/hash, consumer source SHAs, test-run IDs, runtime, fixture identity, and payload/projection hashes together. Where an implementation's JSON omits a field, retain the corresponding authoritative run metadata rather than inventing an accepted schema extension.
 
 Verify that evidence refers to the expected workflow, exact source, latest applicable execution, and actual successful required jobs. Validate real test XML, expected case identities, zero failures/skips, and log/XML hashes where required. An unrelated green job, manually edited PR body, or matching artifact name is not enough. Source changes affecting tests, references, behavior, or workflow trust require fresh evidence; use each validator's narrow source-difference rules rather than assuming all changed files are harmless.
