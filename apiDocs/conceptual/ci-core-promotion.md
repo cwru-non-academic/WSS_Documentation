@@ -2,6 +2,8 @@
 
 [Home](../index.md) | [CI and Dependency Updates](../ci.md)
 
+**Historical workflow description:** this page records October 24. See the [November 5 shared-CI migration](ci-shared-implementation.md) for the proposed all-four-family policy and deployment sequence. Current producer validation uses 17 required Core jobs rather than the older eleven-job lists described below.
+
 This guide is for maintainers authorized to coordinate Core, integrations, and applications. It describes the inspected implementation, including its gates and current readiness limits. Independent developers should use [their downstream-owned adapter](ci-independent-integrations.md).
 
 ## Producer Validation and Release Are Separate
