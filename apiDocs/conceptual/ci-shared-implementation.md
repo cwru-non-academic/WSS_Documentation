@@ -8,20 +8,20 @@ This November 5, 2026 reference describes the shared CI implementation deployed 
 
 GitHub Actions runs common orchestration as Node.js 24 ECMAScript modules, with PowerShell 7 archive, process and native-evidence bridges. Receivers copy actual source files rather than independently translating the same logic into each language.
 
-The deployed locks use [Core `815479c`](https://github.com/cwru-non-academic/WSSCore/tree/815479cd2b7d7c3eb5aa3e499080163e53d09a57/tools/ci) and [Python integration source `21ea1f7`](https://github.com/cwru-non-academic/Python_WSS_Integration_Lib/tree/21ea1f7eaf2b0b812eabf429163eb9234df3f195/.github/scripts/wss-ci). The [Core manifest](https://github.com/cwru-non-academic/WSSCore/blob/815479cd2b7d7c3eb5aa3e499080163e53d09a57/tools/ci/sync-tooling.json) declares both owners and repository scopes. Integration-only logic originates in the integration reference rather than a second Core implementation.
+The preflight/notifier adoption cohort copied [Core `8caa238`](https://github.com/cwru-non-academic/WSSCore/tree/8caa238c7ccfb7825695e1b8fb69602519935442/tools/ci) and [Python integration source `82e52b4`](https://github.com/cwru-non-academic/Python_WSS_Integration_Lib/tree/82e52b49af0224313231eaea50867bab1cd66e11/.github/scripts/wss-ci). Each branch's `.github/scripts/wss-ci.lock.json` is authoritative for subsequent maintenance revisions. The [Core manifest](https://github.com/cwru-non-academic/WSSCore/blob/8caa238c7ccfb7825695e1b8fb69602519935442/tools/ci/sync-tooling.json) declares both owners and repository scopes. Integration-only logic originates in the integration reference rather than a second Core implementation.
 
-| Integration | Deployed dev adoption | Applications |
+| Integration | Deployed preflight dev adoption | Applications |
 | --- | --- | --- |
-| C# | [Library #54](https://github.com/cwru-non-academic/CSharp_WSS_Integration_Lib/pull/54) | [CLI #33](https://github.com/cwru-non-academic/CLI_CSharp_WSS_Application/pull/33) |
-| Unity | [Library #37](https://github.com/cwru-non-academic/Unity_WSS_Integration_Lib/pull/37) | [GUI #24](https://github.com/cwru-non-academic/GUI_Unity_WSS_Application/pull/24) |
-| Python | [Library #34](https://github.com/cwru-non-academic/Python_WSS_Integration_Lib/pull/34) | [CLI #24](https://github.com/cwru-non-academic/CLI_Python_WSS_Application/pull/24), [ROS #19](https://github.com/cwru-non-academic/ROS_Python_WSS_Application/pull/19) |
-| MATLAB | [Library #34](https://github.com/cwru-non-academic/Matlab_WSS_Integration_Lib/pull/34) | [CLI #20](https://github.com/cwru-non-academic/CLI_Matlab_WSS_Application/pull/20) |
+| C# | [Library #56](https://github.com/cwru-non-academic/CSharp_WSS_Integration_Lib/pull/56) | [CLI #35](https://github.com/cwru-non-academic/CLI_CSharp_WSS_Application/pull/35) |
+| Unity | [Library #39](https://github.com/cwru-non-academic/Unity_WSS_Integration_Lib/pull/39) | [GUI #26](https://github.com/cwru-non-academic/GUI_Unity_WSS_Application/pull/26) |
+| Python | [Library #37](https://github.com/cwru-non-academic/Python_WSS_Integration_Lib/pull/37) | [CLI #27](https://github.com/cwru-non-academic/CLI_Python_WSS_Application/pull/27), [ROS #22](https://github.com/cwru-non-academic/ROS_Python_WSS_Application/pull/22) |
+| MATLAB | [Library #36](https://github.com/cwru-non-academic/Matlab_WSS_Integration_Lib/pull/36) | [CLI #22](https://github.com/cwru-non-academic/CLI_Matlab_WSS_Application/pull/22) |
 
-Main deployment records are [C# library #55](https://github.com/cwru-non-academic/CSharp_WSS_Integration_Lib/pull/55), [Unity library #38](https://github.com/cwru-non-academic/Unity_WSS_Integration_Lib/pull/38), [Python library #35](https://github.com/cwru-non-academic/Python_WSS_Integration_Lib/pull/35), [MATLAB library #35](https://github.com/cwru-non-academic/Matlab_WSS_Integration_Lib/pull/35), [C# CLI #34](https://github.com/cwru-non-academic/CLI_CSharp_WSS_Application/pull/34), [Unity GUI #25](https://github.com/cwru-non-academic/GUI_Unity_WSS_Application/pull/25), [Python CLI #25](https://github.com/cwru-non-academic/CLI_Python_WSS_Application/pull/25), [ROS #20](https://github.com/cwru-non-academic/ROS_Python_WSS_Application/pull/20) and [MATLAB CLI #21](https://github.com/cwru-non-academic/CLI_Matlab_WSS_Application/pull/21). Each main merge preserved the exact verified dev tree.
+Main deployment records for this cohort are [C# library #57](https://github.com/cwru-non-academic/CSharp_WSS_Integration_Lib/pull/57), [Unity library #40](https://github.com/cwru-non-academic/Unity_WSS_Integration_Lib/pull/40), [Python library #38](https://github.com/cwru-non-academic/Python_WSS_Integration_Lib/pull/38), [MATLAB library #37](https://github.com/cwru-non-academic/Matlab_WSS_Integration_Lib/pull/37), [C# CLI #36](https://github.com/cwru-non-academic/CLI_CSharp_WSS_Application/pull/36), [Unity GUI #27](https://github.com/cwru-non-academic/GUI_Unity_WSS_Application/pull/27), [Python CLI #28](https://github.com/cwru-non-academic/CLI_Python_WSS_Application/pull/28), [ROS #23](https://github.com/cwru-non-academic/ROS_Python_WSS_Application/pull/23) and [MATLAB CLI #23](https://github.com/cwru-non-academic/CLI_Matlab_WSS_Application/pull/23). Python's main promotions copied only reviewed CI files, preserving main's product payloads and gitlinks; the other cohort promotions preserved the verified dev tree.
 
 ## Shared Code and Required Adapters
 
-Integrations receive 25 managed files; applications receive 23. The two integration-only files implement the family notifier and workflow. All nine receivers run hosted `Shared CI source identity` checks against canonical Git blobs.
+Integrations receive 27 managed files; applications receive 25. The two integration-only files implement the family notifier and workflow. All nine receivers run hosted `Shared CI source identity` checks against canonical Git blobs.
 
 | Owner | Source | Responsibility |
 | --- | --- | --- |
@@ -31,11 +31,16 @@ Integrations receive 25 managed files; applications receive 23. The two integrat
 | Python integration | `.github/scripts/wss-ci/receipt.mjs`, `receipt-targets.json`, `verify-plan.mjs` | Actual merge receipts, the same Core plan validator, parent gitlinks and frozen tooling |
 | Python integration | `promotion.mjs`, `normalize-candidate.mjs` | Constrained publication, exact PR reuse, non-force pushes and six-field candidate records |
 | Python integration | `staging.mjs`, `dispatch-proof.mjs`, profiles and PowerShell bridges | Stage policy, durable intent, exact reuse and ambiguous/uncertain dispatch rejection |
+| Python integration | `preflight.mjs`, `Preflight.ps1` | One UTF-8 request serializer, correlated-run discovery and exact-run waiting across all four integration families |
 | Python integration | `Process.ps1`, `Evidence.ps1`, notifier module and workflow | Argument-safe processes, versioned evidence identity and guarded integration wake-ups |
 
 The common publisher resets inherited multi-valued Git authorization headers before supplying one delayed, repository-scoped publication token. Hosted contracts exercise a real Git HTTP endpoint on Linux, Windows and macOS. This corrects duplicate authorization headers without relaxing credential scope or source checks.
 
-Adapters retain C# packaged/native tests, Unity import rules, Python/pythonnet and ROS Humble tests, MATLAB native architecture/version checks, paired preflights, payload mappings and runtime gitlinks. Python application executable pins use source `4521613359b88e440c022ae0116832eabe353b8a`; MATLAB CLI uses adapter source `584e2a8fa93e528a2ffef9b0faa263e41cee7f21`. These pins are distinct from the common origin and runtime dependency gitlinks.
+The shared preflight engine writes literal UTF-8 JSON to a file and passes that path directly to `gh api`. It validates the registered target and exact source/run identity, rejects duplicate correlated runs, and does not automatically repeat a POST with an uncertain outcome. Language adapters retain only their wire inputs and rich runtime proof checks.
+
+Core runtime fixture pins are separate from orchestration-tool versions. The C# native Mac fixture uses reviewed Core source `0ac18df22a1371e5ff94d5485c6d3fa4b3e6538f`; its native fixture script rejects a different source. Updating common CI tooling does not authorize replacing that test fixture.
+
+Adapters retain C# packaged/native tests, Unity import rules, Python/pythonnet and ROS Humble tests, MATLAB native architecture/version checks, paired preflights, payload mappings and runtime gitlinks. Executable adapter pins are immutable revisions recorded in each branch's workflows; inspect the corresponding workflow rather than assuming that dev and main have already adopted the same maintenance revision. These pins are distinct from the common origin and runtime dependency gitlinks.
 
 ## Evidence Stages
 
@@ -53,7 +58,7 @@ Core pull-request checks build and test proposed changes; their routine downstre
 
 [Core #37](https://github.com/cwru-non-academic/WSSCore/pull/37) deployed the reviewed coordinator to trusted `main` without changing the producer workflow. `dev-propagation.yml` reconciles successful Core producers, scheduled checks and explicit requests. For frozen policies declaring `application_fanout: per-integration`, one integration can authorize its own applications after its reviewed dependency merge and unique successful committed-state CI. Other families do not delay that authorization. Older frozen policies retain their original all-integration barrier. Final acceptance still requires all applicable nine targets.
 
-The four integration notifiers are registered on their default branches. They observe eligible dependency merges and successful committed integration CI, validate candidate/frozen-source identity, and request a fixed Core reconciliation wake-up. They do not grant acceptance or publish anything. Human infrastructure PRs are excluded; source-adoption merges were observed with application fanout skipped.
+The four integration notifiers are registered on their default branches. They execute the immutable default-main workflow revision and independently validate the actual merged dev candidate. The workflow source SHA and merged dev SHA are different identities; equality between them is not required. They observe eligible dependency merges and successful committed integration CI, validate candidate/frozen-source identity, and request a fixed Core reconciliation wake-up. They do not grant acceptance or publish anything. Human infrastructure PRs are excluded; source-adoption merges were observed with application fanout skipped.
 
 Unity and Python integration/application workflows run full normal CI on applicable `dev` and `main` pushes. C# and MATLAB full normal suites use PR or explicit dispatch triggers; their shared identity checks run on pushes. Exact postmerge validation therefore includes explicit normal-CI runs where the workflow has no push trigger.
 
