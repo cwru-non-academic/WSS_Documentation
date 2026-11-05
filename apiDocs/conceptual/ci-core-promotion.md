@@ -2,6 +2,8 @@
 
 [Home](../index.md) | [CI and Dependency Updates](../ci.md)
 
+**Historical workflow description:** this page records October 24. See the [deployed shared-CI implementation](ci-shared-implementation.md) for current source ownership and evidence rules. Current producer validation uses 17 required Core jobs rather than the older eleven-job lists described below.
+
 This guide is for maintainers authorized to coordinate Core, integrations, and applications. It describes the inspected implementation, including its gates and current readiness limits. Independent developers should use [their downstream-owned adapter](ci-independent-integrations.md).
 
 ## Producer Validation and Release Are Separate
@@ -37,7 +39,7 @@ Identical payload bytes/projection produce a verified no-op rather than a metada
 
 ## Canonical Conformance Across Languages
 
-Unity and Python pin the C# fixture at `7145e2307f997f703748530bf74311ef94455e98` and verify its configured SHA-256. Only the controller factory/type alias is adapted. The ten canonical cases and eighteen `Assert.That` source expressions, values, finite waits, evaluator calls, and grouped assertions remain unchanged.
+Unity and Python select reviewed C# fixture sources and verify their configured SHA-256 identities. See [dated verification catalog](https://github.com/cwru-non-academic/WSS_Documentation/blob/15fcea54d6a7b5a8367eefb0c20d6d04d4772d25/apiDocs/repository-links.json) for the recorded values and authoritative configurations. Only the controller factory/type alias is adapted. The ten canonical cases and eighteen `Assert.That` source expressions, values, finite waits, evaluator calls, and grouped assertions remain unchanged.
 
 The cases cover initialization, direct analog stimulation, six normalized scenarios, runtime event editing/resumption, and stopping without unintended resumed streaming. Core's emulator/evaluator owns the protocol/state expectations. Eighteen is a count of source expressions; parameterized execution and setup can yield different runtime assertion counts.
 

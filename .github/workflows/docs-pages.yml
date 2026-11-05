@@ -38,6 +38,7 @@ jobs:
       - name: Stage and validate the complete site
         run: dotnet run --project tools/RepositoryLinks -- site
       - name: Upload complete-site review artifact and preservation report
+        if: always()
         uses: actions/upload-artifact@v5.0.0
         with:
           name: complete-site-${{ matrix.os }}
