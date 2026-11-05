@@ -24,10 +24,11 @@ Passing an integration preflight does not prove an application works. Passing an
 
 ## Shared Reference
 
+- [Shared first-party implementation](conceptual/ci-shared-implementation.md): deployed November 5 shared source, all four families, copy/update process and evidence boundaries.
 - [Evidence, permissions, and operations](conceptual/ci-evidence-and-operations.md): pinning, credentials, retention, review gates, and safe retries.
 - [Workflow reference and verified status](conceptual/ci-workflow-reference.md): actual file names, reusable parts, source revisions, and operational caveats.
 
-The implementation snapshot was inspected on **2026-10-24**. Workflow definitions, branch existence, credentials, and successful end-to-end execution are separate facts; see the dated status before relying on automatic promotion.
+The older workflow inventory is a **2026-10-24 historical snapshot**. Use the shared-implementation reference for deployed common source and its verification limits. Workflow definitions, deployed refs, credentials and successful end-to-end execution remain separate facts; inspect current source and checks before relying on automatic promotion.
 
 Navigation:
 
