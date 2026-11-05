@@ -66,6 +66,17 @@ Unity and Python integration/application workflows run full normal CI on applica
 
 `dev-release.yml` separates acceptance from publication. Acceptance is gated by `WSS_DEV_ACCEPTANCE_ENABLED`; publication additionally requires `WSS_DEV_RELEASE_ENABLED`, all live evidence and the reviewed tag guard. At this deployment's hosted inspection, acceptance was enabled and the release switch was unset. The deployed policy is dev/beta with stable publication disabled. Fingerprint tags use `dev-beta-<producer-run-id>-<plan-prefix>`; this is not semantic-version numbering. Source deployment or a green PR does not establish a published release.
 
+### Workflow tree snapshots
+
+[Core #40](https://github.com/cwru-non-academic/WSSCore/pull/40) deployed the Core-owned workflow guard to trusted main before [Core #38](https://github.com/cwru-non-academic/WSSCore/pull/38) activated it on dev. [Producer 42114110612](https://github.com/cwru-non-academic/WSSCore/actions/runs/42114110612) passed all seventeen gates and emitted the actual snapshot artifacts. This establishes producer and handoff behavior; it does not establish final nine-target acceptance.
+
+The reviewed producer policies declare `workflow_snapshot_policy: wss-workflow-snapshots/v1`. The versioned `workflow_snapshots` envelope records Git directory-tree identities outside the receiver-owned target profiles. The stage artifact covers all four integration dev/main workflow trees; the acceptance artifact covers all nine receiver dev trees and all four integration main trees. The directory identity includes nested reusable workers whose entrypoint YAML can remain unchanged.
+
+One Core-only module, `tools/ci/workflow-freeze.mjs`, verifies the declaration against policy at the actual producer commit and checks snapshot identities. The snapshots participate in the plan ID. Removing the declaration or metadata and recomputing hashes cannot select legacy behavior. Historical producers without the declaration retain their original frozen rules; their artifacts are not rewritten. Existing receiver target/check/parent/coverage profiles and their canonical source83 locks remain unchanged.
+
+The guard checks readiness, all four initial handoffs, integration-stage barriers, proof dispatch, live acceptance and the existing publisher's mutation boundary. The initial C# handoff runs inside its still-active producer; receivers retain their separate wait for successful producer completion. Per-family checks allow an unchanged integration to advance while another family is blocked. Final acceptance still requires every applicable target. Read-only evidence credentials remain separate from delayed write credentials, and existing publication switches and tag protection remain enforced.
+
+Editing a frozen local workflow, including a nested worker, invalidates its affected authorization. Preserve the old evidence and use a fresh verified campaign rather than changing frozen data or relaxing receiver profiles. This guard covers repository-local workflow definitions; existing third-party action pin policy is unchanged.
 ## Updating the Implementation
 
 1. Change the owning source once and verify its exact revision with hosted contracts. Core owns broadly shared validation; the integration reference owns receiver-only orchestration.
