@@ -2,63 +2,70 @@
 
 [Home](../index.md) | [CI and Dependency Updates](../ci.md)
 
-This November 5, 2026 source reference describes the coordinated shared-CI migration under review. It does not claim that the drafts have been merged, deployed to trusted `main`, or exercised by a fresh propagation plan. Inspect exact PR heads and checks before approving deployment. The [October workflow inventory](ci-workflow-reference.md) remains historical.
+This November 5, 2026 reference describes the shared CI implementation deployed to all nine receiver `dev` branches. Source adoption, default-branch registration and acceptance of an actual dependency rollout are separate facts. The adoption checks do not establish nine-target campaign acceptance. The [October workflow inventory](ci-workflow-reference.md) remains historical.
 
-## One Source and Runtime
+## Runtime and Source Ownership
 
-GitHub Actions runs common orchestration as Node.js 24 ECMAScript modules. Existing PowerShell 7 archive, process and native-evidence bridges are maintained once. [WSSCore owns the reference](https://github.com/cwru-non-academic/WSSCore/tree/11ad9dda62ce5566367d1f46b4b23be07ab911dd/tools/ci). Its [manifest](https://github.com/cwru-non-academic/WSSCore/blob/11ad9dda62ce5566367d1f46b4b23be07ab911dd/tools/ci/sync-tooling.json) copies actual source files to receivers, rather than translating their behavior into each language.
+GitHub Actions runs common orchestration as Node.js 24 ECMAScript modules, with PowerShell 7 archive, process and native-evidence bridges. Receivers copy actual source files rather than independently translating the same logic into each language.
 
-| Integration | Applications | Draft review |
+The deployed locks use [Core `815479c`](https://github.com/cwru-non-academic/WSSCore/tree/815479cd2b7d7c3eb5aa3e499080163e53d09a57/tools/ci) and [Python integration source `21ea1f7`](https://github.com/cwru-non-academic/Python_WSS_Integration_Lib/tree/21ea1f7eaf2b0b812eabf429163eb9234df3f195/.github/scripts/wss-ci). The [Core manifest](https://github.com/cwru-non-academic/WSSCore/blob/815479cd2b7d7c3eb5aa3e499080163e53d09a57/tools/ci/sync-tooling.json) declares both owners and repository scopes. Integration-only logic originates in the integration reference rather than a second Core implementation.
+
+| Integration | Deployed dev adoption | Applications |
 | --- | --- | --- |
-| C# | C# CLI | [Wrapper #52](https://github.com/cwru-non-academic/CSharp_WSS_Integration_Lib/pull/52), [CLI #32](https://github.com/cwru-non-academic/CLI_CSharp_WSS_Application/pull/32) |
-| Unity | Unity GUI | [Wrapper #34](https://github.com/cwru-non-academic/Unity_WSS_Integration_Lib/pull/34), [GUI #22](https://github.com/cwru-non-academic/GUI_Unity_WSS_Application/pull/22) |
-| Python | Python CLI and ROS | [Wrapper #32](https://github.com/cwru-non-academic/Python_WSS_Integration_Lib/pull/32), [CLI #22](https://github.com/cwru-non-academic/CLI_Python_WSS_Application/pull/22), [ROS #17](https://github.com/cwru-non-academic/ROS_Python_WSS_Application/pull/17) |
-| MATLAB | MATLAB CLI | [Wrapper #31](https://github.com/cwru-non-academic/Matlab_WSS_Integration_Lib/pull/31), [CLI #18](https://github.com/cwru-non-academic/CLI_Matlab_WSS_Application/pull/18) |
-
-[Core #34](https://github.com/cwru-non-academic/WSSCore/pull/34) supplies the common implementation. Draft links show review state, not immutable verification records or permission to merge.
+| C# | [Library #54](https://github.com/cwru-non-academic/CSharp_WSS_Integration_Lib/pull/54) | [CLI #33](https://github.com/cwru-non-academic/CLI_CSharp_WSS_Application/pull/33) |
+| Unity | [Library #37](https://github.com/cwru-non-academic/Unity_WSS_Integration_Lib/pull/37) | [GUI #24](https://github.com/cwru-non-academic/GUI_Unity_WSS_Application/pull/24) |
+| Python | [Library #34](https://github.com/cwru-non-academic/Python_WSS_Integration_Lib/pull/34) | [CLI #24](https://github.com/cwru-non-academic/CLI_Python_WSS_Application/pull/24), [ROS #19](https://github.com/cwru-non-academic/ROS_Python_WSS_Application/pull/19) |
+| MATLAB | [Library #34](https://github.com/cwru-non-academic/Matlab_WSS_Integration_Lib/pull/34) | [CLI #20](https://github.com/cwru-non-academic/CLI_Matlab_WSS_Application/pull/20) |
 
 ## Shared Code and Required Adapters
 
-| Shared source in Core | Responsibility |
-| --- | --- |
-| `tools/release/verify.mjs`, `github.mjs` | Candidate/plan/digest policy, bounded reads, exact run-attempt jobs and frozen producer-policy provenance |
-| `receipt.mjs`, `receipt-targets.json`, `normal-ci.mjs` | Read-only receipt orchestration, actual merge/source, unique postmerge CI, parent gitlinks, frozen tooling and late revalidation |
-| `producer-jobs.mjs` | The same 17 current Core gates, including the three BLE aggregate jobs |
-| `normalize-candidate.mjs` | Exactly six candidate fields; diagnostic release-tag selection stays separate |
-| `promotion.mjs` | Constrained staged changes, source/parent freshness, exact PR reuse, non-force publication and draft PR creation |
-| `staging.mjs`, `dispatch-proof.mjs` | Verified staging policy, durable dispatch intent, exact successful reuse and rejection of ambiguous/uncertain retries |
-| `tools/ci/shared/Assert-UniversalArchive.ps1`, `Process.ps1`, `Evidence.ps1` | ZIP path/type/size/hash checks, argument-safe process calls, evidence/hash checks and versioned CI identity |
+Integrations receive 25 managed files; applications receive 23. The two integration-only files implement the family notifier and workflow. All nine receivers run hosted `Shared CI source identity` checks against canonical Git blobs.
 
-Adapters retain C# packaged/native tests; Unity importer rules and real Editor versus .NET harness distinctions; Python/pythonnet and ROS Humble tests; MATLAB native architecture/version tests; rich paired preflights, payload mappings, source pins and runtime gitlinks. A six-field candidate record cannot replace those proofs.
+| Owner | Source | Responsibility |
+| --- | --- | --- |
+| Core | `tools/release/verify.mjs`, `github.mjs`, `policy.mjs` | Candidate/plan/digest validation, bounded reads, exact attempts and frozen producer-policy provenance |
+| Core | `producer-jobs.mjs`, `normal-ci.mjs` | The 17 Core gates, including three BLE aggregate jobs; unique committed-state CI selection |
+| Core | `tools/ci/sync-tooling.mjs`, manifest, archive bridge and identity workflow | Copying registered files, source locks and drift rejection |
+| Python integration | `.github/scripts/wss-ci/receipt.mjs`, `receipt-targets.json`, `verify-plan.mjs` | Actual merge receipts, the same Core plan validator, parent gitlinks and frozen tooling |
+| Python integration | `promotion.mjs`, `normalize-candidate.mjs` | Constrained publication, exact PR reuse, non-force pushes and six-field candidate records |
+| Python integration | `staging.mjs`, `dispatch-proof.mjs`, profiles and PowerShell bridges | Stage policy, durable intent, exact reuse and ambiguous/uncertain dispatch rejection |
+| Python integration | `Process.ps1`, `Evidence.ps1`, notifier module and workflow | Argument-safe processes, versioned evidence identity and guarded integration wake-ups |
+
+The common publisher resets inherited multi-valued Git authorization headers before supplying one delayed, repository-scoped publication token. Hosted contracts exercise a real Git HTTP endpoint on Linux, Windows and macOS. This corrects duplicate authorization headers without relaxing credential scope or source checks.
+
+Adapters retain C# packaged/native tests, Unity import rules, Python/pythonnet and ROS Humble tests, MATLAB native architecture/version checks, paired preflights, payload mappings and runtime gitlinks. Python application executable pins use source `4521613359b88e440c022ae0116832eabe353b8a`; MATLAB CLI uses adapter source `584e2a8fa93e528a2ffef9b0faa263e41cee7f21`. These pins are distinct from the common origin and runtime dependency gitlinks.
 
 ## Evidence Stages
 
-Promotion's PR-head checks prove a proposed dependency change before its actual merge exists. Receipt acceptance is later: it requires the actual same-repository dependency PR, human merge, current accepted tree and subsequent successful committed-state CI. Neither stage replaces the other.
+Promotion PR-head checks test proposed dependency state before its actual merge exists. Later receipt acceptance requires the actual same-repository bot dependency PR, human merge, current accepted tree and subsequent successful committed-state CI. An ordinary human infrastructure merge cannot authorize dependency fanout.
 
-Receipt selection requires exactly one eligible postmerge `push` or `workflow_dispatch` run. Multiple eligible runs are ambiguous even when the newest is green. Required jobs must be unique, completed and successful at the selected attempt. Inspect ambiguity instead of choosing an older success.
+Receipt selection requires exactly one eligible postmerge `push` or `workflow_dispatch` run. Multiple eligible runs are ambiguous even when the newest is green. Required jobs must be unique, completed and successful at the selected attempt. Full workflow reruns keep required jobs together; inspect partial reruns rather than combining unrelated attempts into proof.
 
-The shared nested schema `wss-ci-evidence-identity/v1` binds repository, run ID, attempt, source SHA and canonical architecture. Native adapters compare it with authoritative run metadata alongside existing runtime, coverage and file-hash checks. Another attempt must fail. Old committed-payload diagnostics may predate this schema; that does not authorize them as current candidate proof. Historical legacy inventory also cannot satisfy the current `macos-ble-v1` producer policy. ABI/load checks do not claim physical Bluetooth, stimulation or Unity Editor execution.
+The shared `wss-ci-evidence-identity/v1` schema binds repository, run ID, attempt, source SHA and canonical architecture. Native adapters compare it with authoritative metadata alongside runtime, coverage and file hashes. Python CLI and ROS worker outcomes call the same integration-owned helper as the reusable Python workflow. Older outcomes without this identity cannot satisfy the current validator.
+
+Unity's current automation uses a .NET production-source harness; its `personal-hosted-unverified` license route does not establish a real Unity Editor run. Native BLE ABI/load checks do not establish physical Bluetooth or stimulation tests. MATLAB uses real native MATLAB lanes, including separate Intel and Apple Silicon checks. Preserve these coverage limits when reading green CI.
 
 ## Updating the Implementation
 
-1. Change and commit common source in Core. Run its hosted contract matrix on Linux, Windows and macOS.
-2. From the Core checkout, copy registered files into a workspace containing all nine receiver checkouts:
+1. Change the owning source once and verify its exact revision with hosted contracts. Core owns broadly shared validation; the integration reference owns receiver-only orchestration.
+2. Commit and retain the exact source revisions declared by the manifest. From the reviewed Core checkout, copy the registered files into a workspace containing all nine receivers:
 
    ```text
    node tools/ci/sync-tooling.mjs copy <workspace>
    ```
 
-3. Review each receiver diff. Adapt required call sites, language-specific tests and explicit tooling pins. Do not hand-edit generated common files.
-4. Update draft PRs into `dev`; verify each current head with hosted normal CI and `Shared CI source identity`. Earlier green heads do not verify later changes.
-5. Obtain approval before each merge. Review Core, wrappers, then applications. Coordinate ordinary `dev`-to-`main` promotion, separately required workflow registration, validator pins and fresh frozen baselines before generating guarded candidate proof.
+3. Review receiver diffs and required adapters or executable pins. Do not independently edit generated common files.
+4. Use receiver PRs and hosted identity/platform checks to verify current heads. Earlier green heads do not verify later changes. Ordinary deployment proceeds through `dev` then `main`; default-branch registration is verified separately.
 
-`.github/scripts/wss-ci.lock.json` records the immutable Core source SHA, durable ref and per-file SHA-256. Hosted identity checks execute the literal SHA. `ci/tooling/<commit>` preserves reachability after feature deletion or squash merge. Retain that ref and pinned wrapper adapter sources. Git canonical blobs accommodate ordinary Windows/Unix line endings.
+The copier updates files and locks, not just a drift report. Branch pushes, PRs and merges remain separate reviewed operations. A common update is adopted only when affected receivers contain and verify the copied source.
 
-The copier updates all receivers; external branch/PR publication is separately authorized and reviewed. `publish-tooling.mjs` remains proposed bulk publication tooling and has not been successfully demonstrated. Its presence is not an activated or validated service. A common change is complete after receiver adoption and verification, not merely after drift detection.
+`.github/scripts/wss-ci.lock.json` records exact Core/integration SHAs, retained refs, origin paths and per-file SHA-256. Hosted checks fetch literal revisions. Retain `ci/tooling/<commit>` refs and pinned adapter sources so squash merges or feature deletion cannot remove the intended source reference. Git canonical blobs accommodate Windows/Unix line endings.
 
 ## Trust and Deployment
 
-Preserve separate read-only and target-only authoring/dispatch credentials, the four-wrapper barrier, late source rechecks, durable intent and uncertain-outcome inspection. Changing frozen scripts invalidates old plans. Installation on `dev` does not establish default-branch workflow registration. Hosted PR checks prove proposed code; full reconciliation needs reviewed deployment and fresh evidence. No merge, dispatch, producer activation or access expansion is authorized by this guide.
+Read-only evidence credentials remain separate from delayed target-only authoring/dispatch credentials. Source freshness, frozen tooling, durable intent and uncertain-outcome rejection remain enforced. Changing frozen scripts invalidates old evidence; a later green adoption PR does not repair an earlier candidate's proof.
+
+Default-branch notification registration, trusted-main coordinator code and receiver baselines are separate prerequisites from dev adoption. The notifier requests a wake-up only for a verified dependency merge and canonical producer; Core still revalidates authorization. Final acceptance requires all applicable nine targets. No receipt or build by itself is a published beta or stable release.
 
 Navigation:
 
