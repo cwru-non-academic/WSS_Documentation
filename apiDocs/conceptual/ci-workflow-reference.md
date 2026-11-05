@@ -2,7 +2,7 @@
 
 [Home](../index.md) | [CI and Dependency Updates](../ci.md)
 
-**Historical reference:** the [November 5 shared-CI migration](ci-shared-implementation.md) covers the current proposal, including MATLAB and ROS, common source locks, exact-attempt policy and deployment prerequisites. The inventory below records October 24 and is not an activation runbook.
+**Historical reference:** the [deployed shared-CI reference](ci-shared-implementation.md) covers MATLAB and ROS, common source locks, source ownership and exact-attempt policy. The inventory below records October 24 and is not an activation runbook.
 
 This is a source inspection snapshot from **2026-10-24**, not a continuous operational status report. Links below pin reviewed default-branch revisions. Routine first-party promotions target `dev`; default-branch registration and the workflow/script versions on the dispatched ref must both be ready.
 

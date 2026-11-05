@@ -6,7 +6,7 @@ Use these rules with either an independent downstream adapter or the coordinated
 
 ## Pin Identity and Preserve Evidence
 
-For the migration under review, follow the [shared implementation's exact-attempt and ambiguity policy](ci-shared-implementation.md). Receipt acceptance rejects multiple eligible postmerge runs; choosing the latest success is not equivalent.
+Follow the [deployed shared implementation's exact-attempt and ambiguity policy](ci-shared-implementation.md). Receipt acceptance rejects multiple eligible postmerge runs; choosing the latest success is not equivalent.
 
 Keep producer repository, full commit, workflow path/event, run and attempt context, artifact ID, archive filename/hash, consumer source SHAs, test-run IDs, runtime, fixture identity, and payload/projection hashes together. Where an implementation's JSON omits a field, retain the corresponding authoritative run metadata rather than inventing an accepted schema extension.
 
