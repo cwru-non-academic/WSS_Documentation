@@ -2,7 +2,7 @@
 
 [Home](../index.md) | [CI and Dependency Updates](../ci.md)
 
-This November 5, 2026 reference describes the shared CI implementation deployed to all nine receiver `dev` branches. Source adoption, default-branch registration and acceptance of an actual dependency rollout are separate facts. The adoption checks do not establish nine-target campaign acceptance. The [October workflow inventory](ci-workflow-reference.md) remains historical.
+This November 5, 2026 reference describes the shared CI implementation deployed to all nine receiver `dev` and `main` branches. Source adoption, default-branch registration and acceptance of an actual dependency rollout are separate facts. The adoption checks do not establish nine-target campaign acceptance. The [October workflow inventory](ci-workflow-reference.md) remains historical.
 
 ## Runtime and Source Ownership
 
@@ -16,6 +16,8 @@ The deployed locks use [Core `815479c`](https://github.com/cwru-non-academic/WSS
 | Unity | [Library #37](https://github.com/cwru-non-academic/Unity_WSS_Integration_Lib/pull/37) | [GUI #24](https://github.com/cwru-non-academic/GUI_Unity_WSS_Application/pull/24) |
 | Python | [Library #34](https://github.com/cwru-non-academic/Python_WSS_Integration_Lib/pull/34) | [CLI #24](https://github.com/cwru-non-academic/CLI_Python_WSS_Application/pull/24), [ROS #19](https://github.com/cwru-non-academic/ROS_Python_WSS_Application/pull/19) |
 | MATLAB | [Library #34](https://github.com/cwru-non-academic/Matlab_WSS_Integration_Lib/pull/34) | [CLI #20](https://github.com/cwru-non-academic/CLI_Matlab_WSS_Application/pull/20) |
+
+Main deployment records are [C# library #55](https://github.com/cwru-non-academic/CSharp_WSS_Integration_Lib/pull/55), [Unity library #38](https://github.com/cwru-non-academic/Unity_WSS_Integration_Lib/pull/38), [Python library #35](https://github.com/cwru-non-academic/Python_WSS_Integration_Lib/pull/35), [MATLAB library #35](https://github.com/cwru-non-academic/Matlab_WSS_Integration_Lib/pull/35), [C# CLI #34](https://github.com/cwru-non-academic/CLI_CSharp_WSS_Application/pull/34), [Unity GUI #25](https://github.com/cwru-non-academic/GUI_Unity_WSS_Application/pull/25), [Python CLI #25](https://github.com/cwru-non-academic/CLI_Python_WSS_Application/pull/25), [ROS #20](https://github.com/cwru-non-academic/ROS_Python_WSS_Application/pull/20) and [MATLAB CLI #21](https://github.com/cwru-non-academic/CLI_Matlab_WSS_Application/pull/21). Each main merge preserved the exact verified dev tree.
 
 ## Shared Code and Required Adapters
 
@@ -44,6 +46,18 @@ Receipt selection requires exactly one eligible postmerge `push` or `workflow_di
 The shared `wss-ci-evidence-identity/v1` schema binds repository, run ID, attempt, source SHA and canonical architecture. Native adapters compare it with authoritative metadata alongside runtime, coverage and file hashes. Python CLI and ROS worker outcomes call the same integration-owned helper as the reusable Python workflow. Older outcomes without this identity cannot satisfy the current validator.
 
 Unity's current automation uses a .NET production-source harness; its `personal-hosted-unverified` license route does not establish a real Unity Editor run. Native BLE ABI/load checks do not establish physical Bluetooth or stimulation tests. MATLAB uses real native MATLAB lanes, including separate Intel and Apple Silicon checks. Preserve these coverage limits when reading green CI.
+
+## Deployed Branch and Coordinator Behavior
+
+Core pull-request checks build and test proposed changes; their routine downstream handoff is skipped. Core's producer is triggered by `dev` pushes. It creates the identified universal candidate and frozen evidence plans. The deployed producer does not start a main-to-main candidate campaign on a Core `main` push.
+
+[Core #37](https://github.com/cwru-non-academic/WSSCore/pull/37) deployed the reviewed coordinator to trusted `main` without changing the producer workflow. `dev-propagation.yml` reconciles successful Core producers, scheduled checks and explicit requests. For frozen policies declaring `application_fanout: per-integration`, one integration can authorize its own applications after its reviewed dependency merge and unique successful committed-state CI. Other families do not delay that authorization. Older frozen policies retain their original all-integration barrier. Final acceptance still requires all applicable nine targets.
+
+The four integration notifiers are registered on their default branches. They observe eligible dependency merges and successful committed integration CI, validate candidate/frozen-source identity, and request a fixed Core reconciliation wake-up. They do not grant acceptance or publish anything. Human infrastructure PRs are excluded; source-adoption merges were observed with application fanout skipped.
+
+Unity and Python integration/application workflows run full normal CI on applicable `dev` and `main` pushes. C# and MATLAB full normal suites use PR or explicit dispatch triggers; their shared identity checks run on pushes. Exact postmerge validation therefore includes explicit normal-CI runs where the workflow has no push trigger.
+
+`dev-release.yml` separates acceptance from publication. Acceptance is gated by `WSS_DEV_ACCEPTANCE_ENABLED`; publication additionally requires `WSS_DEV_RELEASE_ENABLED`, all live evidence and the reviewed tag guard. At this deployment's hosted inspection, acceptance was enabled and the release switch was unset. The deployed policy is dev/beta with stable publication disabled. Fingerprint tags use `dev-beta-<producer-run-id>-<plan-prefix>`; this is not semantic-version numbering. Source deployment or a green PR does not establish a published release.
 
 ## Updating the Implementation
 
