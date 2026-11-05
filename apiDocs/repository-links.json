@@ -1,79 +1,13 @@
 {
   "defaultOwner": "cwru-non-academic",
   "repositories": {
-    "python-cli": { "name": "CLI_Python_WSS_Application", "links": { "receipt-workflow": "/blob/855c603b5c88fa1907c4968278157bc6914e7476/.github/workflows/release-receipt.yml" } },
-    "python-ros": { "name": "ROS_Python_WSS_Application", "links": { "ci-config": "/blob/dff0889ec4c6ebda13096e7cdfa84dcd66375baf/.github/python-ci.json", "receipt-workflow": "/blob/dff0889ec4c6ebda13096e7cdfa84dcd66375baf/.github/workflows/release-receipt.yml" } },
+    "python-cli": { "name": "CLI_Python_WSS_Application" },
+    "python-ros": { "name": "ROS_Python_WSS_Application" },
     "csharp-cli": { "name": "CLI_CSharp_WSS_Application" },
     "unity-app": { "name": "GUI_Unity_WSS_Application" },
     "csharp": { "name": "CSharp_WSS_Integration_Lib" },
-    "python": { "name": "Python_WSS_Integration_Lib", "links": { "ci-config": "/blob/ee296bbca8aa07eaf960fdcdab3c7643e4c448c5/.github/python-ci.json", "receipt-workflow": "/blob/ee296bbca8aa07eaf960fdcdab3c7643e4c448c5/.github/workflows/release-receipt.yml" } },
-    "unity": { "name": "Unity_WSS_Integration_Lib", "links": { "ci-config": "/blob/955b5cf0dafaf5c27714c5bde772d60b4a4b7c42/.github/unity-ci.json" } },
-    "matlab": { "name": "Matlab_WSS_Integration_Lib", "links": { "receipt-workflow": "/blob/c3b1d23b52aacaedd18a51834e0682f17b1baf6d/.github/workflows/release-receipt.yml" } },
-    "matlab-cli": { "name": "CLI_Matlab_WSS_Application", "links": { "receipt-workflow": "/blob/f9ba1a501d55eda5302d7a278d994a91b2979f0d/.github/workflows/release-receipt.yml" } },
+    "python": { "name": "Python_WSS_Integration_Lib" },
+    "unity": { "name": "Unity_WSS_Integration_Lib" },
     "core": { "name": "WSSCore" }
-  },
-  "externalLinks": {
-    "dotnet-install": { "name": "Install .NET", "href": "https://learn.microsoft.com/dotnet/core/install/" },
-    "docfx": { "name": "DocFX documentation", "href": "https://dotnet.github.io/docfx/" },
-    "docfx-cross-references": { "name": "DocFX cross-references", "href": "https://dotnet.github.io/docfx/docs/links-and-cross-references.html" }
-  },
-  "verificationSnapshotDate": "2026-11-04",
-  "verificationPins": {
-    "python-fixture-source": {
-      "name": "Python canonical C# fixture source",
-      "kind": "commit",
-      "value": "02172a64c55becd5535204f46f10b4755bf3ee05",
-      "purpose": "Selects the reviewed macOS-aware fixture used by Python and ROS conformance",
-      "source": "repo.python.ci-config"
-    },
-    "python-fixture-digest": {
-      "name": "Python canonical fixture digest",
-      "kind": "sha256",
-      "value": "1cdfb9448a1776011eadc9aef8356362216032013a4f268f50242746c50a0b44",
-      "purpose": "Rejects a fixture whose bytes differ from the configured canonical source",
-      "source": "repo.python.ci-config"
-    },
-    "unity-fixture-source": {
-      "name": "Unity canonical C# fixture source",
-      "kind": "commit",
-      "value": "7145e2307f997f703748530bf74311ef94455e98",
-      "purpose": "Selects Unity's reviewed canonical fixture independently of Python's fixture revision",
-      "source": "repo.unity.ci-config"
-    },
-    "unity-fixture-digest": {
-      "name": "Unity canonical fixture Git blob digest",
-      "kind": "sha256",
-      "value": "f6aeced83d35255532b6685d9c870307f856aad140da133695a77e9de6104ee2",
-      "purpose": "Identifies immutable fixture blob bytes independently of checkout line endings",
-      "source": "repo.unity.ci-config"
-    },
-    "python-receipt-contract": {
-      "name": "Python and ROS Core receipt verifier",
-      "kind": "commit",
-      "value": "de631fe4f1b80b5b4e2c6691f444625ef1730499",
-      "purpose": "Fixes the executable Core contract used by the inspected receiver workflows; later Core policy does not automatically update this checkout",
-      "source": "repo.python.receipt-workflow"
-    },
-    "python-application-receipt-tools": {
-      "name": "Python CLI and ROS shared receipt tools",
-      "kind": "commit",
-      "value": "733d661baf2d259688fe0623bba0ae9adc1ce9ad",
-      "purpose": "Fixes the Python validator implementation checked out by application receipt workflows",
-      "source": "repo.python-cli.receipt-workflow"
-    },
-    "matlab-receipt-contract": {
-      "name": "MATLAB Core receipt verifier",
-      "kind": "commit",
-      "value": "0fb9ae74504e03dc63777ed70a6ec51c4369d5ab",
-      "purpose": "Fixes the Core contract inspected in the MATLAB receipt workflows; newer policy requires a separate reviewed receiver update",
-      "source": "repo.matlab.receipt-workflow"
-    },
-    "matlab-application-receipt-tools": {
-      "name": "MATLAB CLI shared receipt tools",
-      "kind": "commit",
-      "value": "3ae1854883bf5c46bcfb8b83231cd866e16d50aa",
-      "purpose": "Fixes the MATLAB wrapper validator implementation used by the application receipt workflow",
-      "source": "repo.matlab-cli.receipt-workflow"
-    }
   }
 }
