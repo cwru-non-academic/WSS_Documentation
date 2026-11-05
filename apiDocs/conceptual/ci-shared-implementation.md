@@ -77,6 +77,16 @@ One Core-only module, `tools/ci/workflow-freeze.mjs`, verifies the declaration a
 The guard checks readiness, all four initial handoffs, integration-stage barriers, proof dispatch, live acceptance and the existing publisher's mutation boundary. The initial C# handoff runs inside its still-active producer; receivers retain their separate wait for successful producer completion. Per-family checks allow an unchanged integration to advance while another family is blocked. Final acceptance still requires every applicable target. Read-only evidence credentials remain separate from delayed write credentials, and existing publication switches and tag protection remain enforced.
 
 Editing a frozen local workflow, including a nested worker, invalidates its affected authorization. Preserve the old evidence and use a fresh verified campaign rather than changing frozen data or relaxing receiver profiles. This guard covers repository-local workflow definitions; existing third-party action pin policy is unchanged.
+### C# receipt policy boundary
+
+[C# library #63](https://github.com/cwru-non-academic/CSharp_WSS_Integration_Lib/pull/63) and [#64](https://github.com/cwru-non-academic/CSharp_WSS_Integration_Lib/pull/64) deployed the canonical receipt assertion to dev and trusted main. [C# CLI #42](https://github.com/cwru-non-academic/CLI_CSharp_WSS_Application/pull/42) copied the identical adapter and tests; [#43](https://github.com/cwru-non-academic/CLI_CSharp_WSS_Application/pull/43) promoted them to main. Actual postmerge platform checks passed on all four branches.
+
+Both C# adapters import the existing frozen Node `targetPolicy` and plan validator. They check the full context plan and digests, then require exact agreement with its canonical target. The integration reference's `receipt-targets.json` supplies the required jobs, parents, coverage and trusted paths, including the wrapper notifier. The C# adapter retains its role whitelist and rich native, projection, merge, source and CI-freshness checks. It has no second policy table.
+
+The PowerShell invocation is assertion-only: literal context/tool paths are separate native arguments, and a fixed argument sentinel prevents the imported module from entering its receipt CLI. Hosted Linux, Windows and macOS tests exercise the actual bridge with canonical profiles, malformed contexts, weakened policy, invalid digests, process failure and denied network/process/receipt-write effects. The shared Core/integration locks and receiver target profiles are unchanged.
+
+Changing a frozen adapter requires newly frozen campaign evidence. A successful tooling adoption does not repair an earlier plan or authorize substituting its scripts or receipts.
+
 ## Updating the Implementation
 
 1. Change the owning source once and verify its exact revision with hosted contracts. Core owns broadly shared validation; the integration reference owns receiver-only orchestration.
