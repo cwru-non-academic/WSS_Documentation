@@ -87,6 +87,28 @@ The PowerShell invocation is assertion-only: literal context/tool paths are sepa
 
 Changing a frozen adapter requires newly frozen campaign evidence. A successful tooling adoption does not repair an earlier plan or authorize substituting its scripts or receipts.
 
+### Verified nine-target dev campaign
+
+[Producer 42126584560](https://github.com/cwru-non-academic/WSSCore/actions/runs/42126584560), from Core dev commit `853d25c1e9e177f4478744e9eb7a7e4ea08adfa3`, passed the seventeen producer gates. [Core acceptance 42140895678](https://github.com/cwru-non-academic/WSSCore/actions/runs/42140895678) subsequently passed `Verify nine merged targets without publication`. It accepted all four integration libraries and all five linked applications using their actual dependency merges, successful committed-state CI and emitted receipts. Each family's application rollout proceeded independently; final acceptance required all nine targets.
+
+The acceptance artifact `dev-release-acceptance-42126584560` (artifact ID `13467619226`) records plan `dcc96fc6b057fc6d0eb2cbd4b786633e416bc81d8388e97f693290a728096e3b`. Its candidate is `WSS-Universal-ci.zip`, artifact ID `13462250767`, SHA-256 `1e216b41625c6fdec861e695c8afe3370d389b4d2b7c856a1e2b3f0aaeb7ee28`. It binds each target's dependency merge, selected CI run and attempt, receipt emitter/source, receipt artifact and byte hash, and required coverage.
+
+| Target | Accepted dependency PR | Committed-state CI | Receipt emitter |
+| --- | --- | --- | --- |
+| C# integration | [#65](https://github.com/cwru-non-academic/CSharp_WSS_Integration_Lib/pull/65) | `42128756636`, attempt 1 | `42130567921`, attempt 1 |
+| Unity integration | [#46](https://github.com/cwru-non-academic/Unity_WSS_Integration_Lib/pull/46) | `42130151880`, attempt 1 | `42130578687`, attempt 1 |
+| Python integration | [#44](https://github.com/cwru-non-academic/Python_WSS_Integration_Lib/pull/44) | `42129786024`, attempt 1 | `42130590118`, attempt 1 |
+| MATLAB integration | [#43](https://github.com/cwru-non-academic/Matlab_WSS_Integration_Lib/pull/43) | `42132329663`, attempt 1 | `42133838231`, attempt 1 |
+| C# CLI | [#44](https://github.com/cwru-non-academic/CLI_CSharp_WSS_Application/pull/44) | `42132285756`, attempt 1 | `42133802464`, attempt 1 |
+| Unity GUI | [#31](https://github.com/cwru-non-academic/GUI_Unity_WSS_Application/pull/31) | `42132467232`, attempt 1 | `42133811711`, attempt 1 |
+| Python CLI | [#33](https://github.com/cwru-non-academic/CLI_Python_WSS_Application/pull/33) | `42132479077`, attempt 1 | `42133820161`, attempt 1 |
+| Python ROS | [#28](https://github.com/cwru-non-academic/ROS_Python_WSS_Application/pull/28) | `42132787573`, attempt 1 | `42133828487`, attempt 1 |
+| MATLAB CLI | [#27](https://github.com/cwru-non-academic/CLI_Matlab_WSS_Application/pull/27) | `42138984269`, attempt 1 | `42140164023`, attempt 2 |
+
+The MATLAB CLI receipt's first attempt failed on a GitHub read with HTTP 502 before emitting a receipt. Inspection found no receipt artifact from that attempt; a full rerun of the same unchanged run succeeded. The acceptance artifact records emitter attempt 2 separately from committed-state CI attempt 1. Earlier failed campaigns and their frozen evidence were not rewritten or substituted.
+
+The publication job was skipped. This result proves dev-chain acceptance, including the repaired C# receipt boundary in both the library and CLI; it does not establish a published beta, main-to-main rollout, stable release, real Unity Editor execution or physical BLE tests.
+
 ## Updating the Implementation
 
 1. Change the owning source once and verify its exact revision with hosted contracts. Core owns broadly shared validation; the integration reference owns receiver-only orchestration.
