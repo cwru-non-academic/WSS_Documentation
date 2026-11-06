@@ -127,25 +127,29 @@ The MATLAB CLI receipt's first attempt failed on a GitHub read with HTTP 502 bef
 
 The publication job was skipped. This result proves dev-chain acceptance, including the repaired C# receipt boundary in both the library and CLI; it does not establish a published beta, main-to-main rollout, stable release, real Unity Editor execution or physical BLE tests.
 
-### Verified dev campaign with dual-channel tooling
+### Verified dev campaign with the common initial handoff
 
-The later [producer 42185421813](https://github.com/cwru-non-academic/WSSCore/actions/runs/42185421813), from Core dev commit `13c1f1701dd9713f90466858fe490f3c25acf289`, completed the fresh rollout after the ROS candidate-context repair. [Core acceptance 42197608572](https://github.com/cwru-non-academic/WSSCore/actions/runs/42197608572) passed `Verify nine merged targets without publication` at 09:51 UTC on November 6, 2026. It verified all four actual integration dependency merges and all five application dependency merges, their successful committed-state CI and their emitted receipts. The C# application advanced before the MATLAB integration merged, demonstrating independent family progress.
+The earlier [producer 42185421813](https://github.com/cwru-non-academic/WSSCore/actions/runs/42185421813), from Core dev `13c1f1701dd9713f90466858fe490f3c25acf289`, completed nine-target acceptance in [run 42197608572](https://github.com/cwru-non-academic/WSSCore/actions/runs/42197608572). Its plan `3f4543d5b2998d4295ca0b3fb6a7153234c765820e38c61aa1a0c3d5b2cea891` remains historical proof of the dual-channel receiver adoption and ROS repair, with publication skipped. It does not verify the subsequently changed Core completion handler.
 
-The acceptance artifact `dev-release-acceptance-42185421813` (artifact ID `13492992152`) records plan `3f4543d5b2998d4295ca0b3fb6a7153234c765820e38c61aa1a0c3d5b2cea891`. Its original candidate is `WSS-Universal-ci.zip`, artifact ID `13487676036`, SHA-256 `194da08b6891e464e3e4cc875f51182e4a1a7de0012eabfbea478ea09c601f21`. All nine downloaded receipt byte hashes match the acceptance record, including their exact merge, selected CI attempt, emitter source, coverage and parent gitlinks. Earlier campaign receipts were not substituted.
+The fresh [producer 42208004964](https://github.com/cwru-non-academic/WSSCore/actions/runs/42208004964), from Core dev `a515e7c72a9d6b7d2aa6739eaca701ea78c68fa7`, passed all seventeen producer gates. The three common completion handoffs ran successfully from trusted Core main `c233359367d484d1eabac063001365a044e383bf`. [Core acceptance 42219330337](https://github.com/cwru-non-academic/WSSCore/actions/runs/42219330337) passed `Verify nine merged targets without publication` at 12:43 UTC on November 6, 2026, accepting all four actual integration dependency merges and all five actual application dependency merges with their successful committed-state CI and emitted receipts. C# CLI merged before the MATLAB integration, demonstrating independent family progress.
+
+The actual acceptance artifact `dev-release-acceptance-42208004964` (artifact ID `13502264887`) records plan `b7b72bc7137d83b2923d602c4194bd746d2dd932528215094a28f581edace3f5`. Its candidate is `WSS-Universal-ci.zip`, artifact ID `13497242123`, SHA-256 `bda4f7f1ad8298b014e2f2d17fa14d45a45b4e516625af30f4471d5a2b39a445`. All nine downloaded receipt byte hashes match that acceptance record, including each exact PR head/merge, selected CI attempt, emitter source/attempt, coverage and parent gitlinks. The downloaded acceptance JSON has SHA-256 `77410a22961ee1cd17be77b2e613fd3dcb08725b0b7ec01cb68c60914a5d1a7e`. No earlier campaign receipts were substituted.
 
 | Target | Accepted dependency PR | Committed-state CI | Receipt emitter |
 | --- | --- | --- | --- |
-| csharp-wrapper | [#69](https://github.com/cwru-non-academic/CSharp_WSS_Integration_Lib/pull/69) | `42187475960`, attempt 1 | `42188081109`, attempt 1 |
-| csharp-cli | [#48](https://github.com/cwru-non-academic/CLI_CSharp_WSS_Application/pull/48) | `42189356521`, attempt 1 | `42191448581`, attempt 1 |
-| unity-wrapper | [#50](https://github.com/cwru-non-academic/Unity_WSS_Integration_Lib/pull/50) | `42187815533`, attempt 1 | `42188740610`, attempt 1 |
-| unity-gui | [#35](https://github.com/cwru-non-academic/GUI_Unity_WSS_Application/pull/35) | `42190144443`, attempt 1 | `42191456847`, attempt 1 |
-| python-wrapper | [#47](https://github.com/cwru-non-academic/Python_WSS_Integration_Lib/pull/47) | `42187495481`, attempt 1 | `42188090669`, attempt 1 |
-| python-cli | [#36](https://github.com/cwru-non-academic/CLI_Python_WSS_Application/pull/36) | `42190105283`, attempt 1 | `42191465233`, attempt 1 |
-| python-ros | [#33](https://github.com/cwru-non-academic/ROS_Python_WSS_Application/pull/33) | `42190429163`, attempt 1 | `42191473547`, attempt 1 |
-| matlab-wrapper | [#47](https://github.com/cwru-non-academic/Matlab_WSS_Integration_Lib/pull/47) | `42191208763`, attempt 1 | `42192259723`, attempt 1 |
-| matlab-cli | [#31](https://github.com/cwru-non-academic/CLI_Matlab_WSS_Application/pull/31) | `42196372988`, attempt 1 | `42197817047`, attempt 1 |
+| C# integration | [#70](https://github.com/cwru-non-academic/CSharp_WSS_Integration_Lib/pull/70) | `42210188486`, attempt 1 | `42211696447`, attempt 1 |
+| Unity integration | [#51](https://github.com/cwru-non-academic/Unity_WSS_Integration_Lib/pull/51) | `42211234060`, attempt 1 | `42211707035`, attempt 1 |
+| Python integration | [#48](https://github.com/cwru-non-academic/Python_WSS_Integration_Lib/pull/48) | `42210918877`, attempt 1 | `42211717096`, attempt 1 |
+| MATLAB integration | [#48](https://github.com/cwru-non-academic/Matlab_WSS_Integration_Lib/pull/48) | `42213128336`, attempt 1 | `42215434460`, attempt 1 |
+| C# CLI | [#49](https://github.com/cwru-non-academic/CLI_CSharp_WSS_Application/pull/49) | `42213516209`, attempt 1 | `42215391820`, attempt 1 |
+| Unity GUI | [#36](https://github.com/cwru-non-academic/GUI_Unity_WSS_Application/pull/36) | `42213954915`, attempt 1 | `42215403480`, attempt 1 |
+| Python CLI | [#37](https://github.com/cwru-non-academic/CLI_Python_WSS_Application/pull/37) | `42213881192`, attempt 1 | `42215413354`, attempt 1 |
+| Python ROS | [#34](https://github.com/cwru-non-academic/ROS_Python_WSS_Application/pull/34) | `42214428272`, attempt 1 | `42215423455`, attempt 1 |
+| MATLAB CLI | [#32](https://github.com/cwru-non-academic/CLI_Matlab_WSS_Application/pull/32) | `42217642416`, attempt 1 | `42219516341`, attempt 1 |
 
-The publication job was skipped. This verifies the deployed dual-channel tooling on the dev chain, including the repaired live ROS candidate path; it does not establish an activated main campaign, a published release, Unity Editor execution or physical BLE tests.
+Partial reconciliations retained durable dispatch intent and collected proof as it completed. Some final collection steps ran before newly dispatched receipts existed and therefore failed closed; subsequent successful receipts were independently checked before final acceptance. No duplicate eligible normal-CI runs, rewritten frozen source or borrowed artifacts were used.
+
+The publication job was skipped. Complete Core dev/main trees still matched after this proof; main campaign activation remained off. This result establishes the common initial implementation through the live dev chain, not a published beta, main-to-main acceptance, stable release, real Unity Editor execution or physical BLE testing.
 
 ## Updating the Implementation
 
