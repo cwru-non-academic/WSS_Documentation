@@ -19,7 +19,7 @@ The receiver locks now copy [Core `d965f6a`](https://github.com/cwru-non-academi
 
 These are CI-only adoptions: product payloads and runtime dependency gitlinks were preserved. CI parity does not imply identical product branches or accepted candidate records. Application executable pins select verified owner adoption revisions: C# `3673dbfef7b5fc00d19dd0a8d39a4762c7ff33bc`, Unity `555b6c217303d9e76fa4f3c88c5bd5467c5024df`, Python `7df83b26db1b6a89293f9c37a74ec6491433ceb4` and MATLAB `99099a98809fb87181f942c01ecd7c0b65724347`. Before pinning, the owner scripts, configuration, capability metadata and complete worker workflow trees were verified against both owner branches.
 
-[Core #39](https://github.com/cwru-non-academic/WSSCore/pull/39) previously aligned trusted-main executable tooling and replaced the older inline archive reader with the same guarded shared reader used by dev, without promoting Core product changes. Receiver adoption of the newer immutable source does not itself deploy a new Core producer or coordinator.
+[Core #39](https://github.com/cwru-non-academic/WSSCore/pull/39) previously aligned trusted-main executable tooling and replaced the older inline archive reader with the same guarded shared reader used by dev, without promoting Core product changes. Receiver adoption of the newer immutable source did not itself deploy a new Core producer or coordinator. Subsequently, [Core #43](https://github.com/cwru-non-academic/WSSCore/pull/43) deployed the matching trusted-main bootstrap, followed by [Core #42](https://github.com/cwru-non-academic/WSSCore/pull/42) on dev. The registered main-channel controllers remain inactive, and the producer still starts automatic candidates only on dev pushes.
 
 ## Shared Code and Required Adapters
 
@@ -86,6 +86,14 @@ Both C# adapters import the existing frozen Node `targetPolicy` and plan validat
 The PowerShell invocation is assertion-only: literal context/tool paths are separate native arguments, and a fixed argument sentinel prevents the imported module from entering its receipt CLI. Hosted Linux, Windows and macOS tests exercise the actual bridge with canonical profiles, malformed contexts, weakened policy, invalid digests, process failure and denied network/process/receipt-write effects. The shared Core/integration locks and receiver target profiles are unchanged.
 
 Changing a frozen adapter requires newly frozen campaign evidence. A successful tooling adoption does not repair an earlier plan or authorize substituting its scripts or receipts.
+
+### ROS candidate source boundary
+
+[ROS #31](https://github.com/cwru-non-academic/ROS_Python_WSS_Application/pull/31) deployed the candidate-context repair to dev; [#32](https://github.com/cwru-non-academic/ROS_Python_WSS_Application/pull/32) deployed the identical CI tree to main. All three candidate resolver jobs share one workflow guard. Before loading any helper from the selected checkout, it verifies the canonical repository, dispatch event, closed dev/main ref, registered workflow identity, clean source and exact agreement between the selected source commit, executing commit and workflow commit. It then loads the shared channel/plan helpers and verifies the Core checkout against the ROS-owned immutable lock before acquiring application-read credentials.
+
+The hosted boundary tests execute the production workflow guard on Windows, Linux and macOS for both channels. They reject incorrect caller/source identities, mismatched source and tooling roots, wrong or dirty guard checkouts and absent context. Alternate-source helpers write a marker if executed; the tests require rejection with the marker absent and detect a deliberately restored early-import ordering. These tests establish the source boundary, not a live main campaign or downstream receipt.
+
+The preceding [Core producer 42170422551](https://github.com/cwru-non-academic/WSSCore/actions/runs/42170422551) generated real C#, Unity and MATLAB dependency merges and six corresponding integration/application receipts. Its Python promotion stopped at ROS's missing explicit candidate context. The ROS workflow repair changes a frozen workflow, so that campaign remains incomplete; its receipts do not establish acceptance of a later plan. A new guarded candidate requires its own actual downstream proof.
 
 ### Verified nine-target dev campaign
 
