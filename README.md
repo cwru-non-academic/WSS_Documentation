@@ -12,6 +12,7 @@ This repository contains documentation for the Wearable Stimulation System (WSS)
 ## Start Here
 
 - [Using an Application](./apiDocs/conceptual/start-here-using-an-application.md)
+  - Links to all five application quickstarts and the [bench verification handoff](./apiDocs/conceptual/start-here-using-an-application.md#bench-verification).
 - [Developing an Application](./apiDocs/conceptual/start-here-developing-an-application.md)
 - [Building a New Integration Library](./apiDocs/conceptual/start-here-building-a-new-integration-library.md)
 

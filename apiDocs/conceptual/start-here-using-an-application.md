@@ -10,20 +10,25 @@ If you want to operate WSS through an existing GUI, CLI, Unity application, ROS 
 
 ## Which Applications Are Available
 
-- Unity application
-  - Built on top of the Unity integration library.
-  - This is the Unity-facing application path when WSS is being used from within a Unity project or Unity-based workflow.
-- C# application
-  - Built on top of the C# integration library.
-  - This is the .NET application path for desktop tools, experiment software, or other C#-native workflows.
-- Python CLI application
-  - Built on top of the Python integration library.
-  - This is a command-line entry point for initializing WSS, checking status, reloading config, and issuing stimulation commands.
-- Python ROS application
-  - Built on top of the Python integration library.
-  - This is the robotics-oriented application path when WSS needs to be controlled from a ROS workflow.
+Choose a README for the application you want to run. Each quickstart covers installation, application configuration, the first bench session, and shutdown.
 
-Applications sit on top of integration libraries. The integration library decides which WSS core and layer functionality is exposed to the application, and the application decides how a user interacts with it.
+| Application | When to use it |
+| --- | --- |
+| [C# CLI](https://github.com/cwru-non-academic/CLI_CSharp_WSS_Application#first-stimulation) | Run a standalone console with .NET. |
+| [Python CLI](https://github.com/cwru-non-academic/CLI_Python_WSS_Application#first-stimulation) | Run a standalone console from a Python environment. |
+| [MATLAB CLI](https://github.com/cwru-non-academic/CLI_Matlab_WSS_Application#first-stimulation) | Operate WSS from the MATLAB Command Window. |
+| [Unity GUI](https://github.com/cwru-non-academic/GUI_Unity_WSS_Application#first-stimulation-in-the-unity-editor) | Use the WSS controls in the Unity Console scene. |
+| [ROS 2 driver](https://github.com/cwru-non-academic/ROS_Python_WSS_Application#first-stimulation) | Control WSS from ROS topics. |
+
+## Bench Verification
+
+Use the [Hardware Overview](../../hardwareDocs/wsshardware.html) to identify the unit, connections, and selected output channel. Before starting a live application, obtain the approved WSS profile and bench measurement procedure for that unit from the lab or kit maintainer. The handoff should give you:
+
+- The correct firmware and receiver address, the logical channel and its physical output, and a matching copy of the three application configuration files.
+- The approved bench load, measurement equipment and connections. Use a bench setup with no person connected.
+- The application input to request, what output to expect on the selected channel, and how the bench procedure confirms output has stopped.
+
+In the application, wait for its documented setup milestone. Run the approved bench command or control, compare the measured output with the approved bench procedure, then use the application's stop or shutdown control and verify that output has ceased. App status and simulated output serve as software checks. Record the measured result separately during a bench check.
 
 ## How To Use the Config Files
 
@@ -60,6 +65,8 @@ When working with an application:
 - treat `stimConfig.json`, `stimParams.json`, and `modelConfig.json` as related pieces of one runtime configuration rather than unrelated files
 
 ## First Connection Flow
+
+Application quickstarts describe the controls and readiness signals specific to each app. The steps below describe the shared software lifecycle.
 
 The typical startup flow is:
 
