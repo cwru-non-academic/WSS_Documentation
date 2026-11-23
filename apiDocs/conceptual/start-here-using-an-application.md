@@ -14,11 +14,11 @@ Choose a README for the application you want to run. Each quickstart covers inst
 
 | Application | When to use it |
 | --- | --- |
-| [C# CLI](xref:repo.csharp-cli.quickstart) | Run a standalone console with .NET. |
-| [Python CLI](xref:repo.python-cli.quickstart) | Run a standalone console from a Python environment. |
-| [MATLAB CLI](xref:repo.matlab-cli.quickstart) | Operate WSS from the MATLAB Command Window. |
-| [Unity GUI](xref:repo.unity-app.quickstart) | Use the WSS controls in the Unity Console scene. |
-| [ROS 2 driver](xref:repo.python-ros.quickstart) | Control WSS from ROS topics. |
+| [C# CLI](https://github.com/cwru-non-academic/CLI_CSharp_WSS_Application#first-stimulation) | Run a standalone console with .NET. |
+| [Python CLI](https://github.com/cwru-non-academic/CLI_Python_WSS_Application#first-stimulation) | Run a standalone console from a Python environment. |
+| [MATLAB CLI](https://github.com/cwru-non-academic/CLI_Matlab_WSS_Application#first-stimulation) | Operate WSS from the MATLAB Command Window. |
+| [Unity GUI](https://github.com/cwru-non-academic/GUI_Unity_WSS_Application#first-stimulation-in-the-unity-editor) | Use the WSS controls in the Unity Console scene. |
+| [ROS 2 driver](https://github.com/cwru-non-academic/ROS_Python_WSS_Application#first-stimulation) | Control WSS from ROS topics. |
 
 ## Bench Verification
 
