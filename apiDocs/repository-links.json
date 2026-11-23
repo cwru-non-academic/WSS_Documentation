@@ -1,15 +1,15 @@
 {
   "defaultOwner": "cwru-non-academic",
   "repositories": {
-    "python-cli": { "name": "CLI_Python_WSS_Application", "links": { "receipt-workflow": "/blob/855c603b5c88fa1907c4968278157bc6914e7476/.github/workflows/release-receipt.yml" } },
-    "python-ros": { "name": "ROS_Python_WSS_Application", "links": { "ci-config": "/blob/dff0889ec4c6ebda13096e7cdfa84dcd66375baf/.github/python-ci.json", "receipt-workflow": "/blob/dff0889ec4c6ebda13096e7cdfa84dcd66375baf/.github/workflows/release-receipt.yml" } },
-    "csharp-cli": { "name": "CLI_CSharp_WSS_Application" },
-    "unity-app": { "name": "GUI_Unity_WSS_Application" },
+    "python-cli": { "name": "CLI_Python_WSS_Application", "links": { "quickstart": "/blob/dev/README.md#first-stimulation", "receipt-workflow": "/blob/855c603b5c88fa1907c4968278157bc6914e7476/.github/workflows/release-receipt.yml" } },
+    "python-ros": { "name": "ROS_Python_WSS_Application", "links": { "quickstart": "/blob/dev/README.md#first-stimulation", "ci-config": "/blob/dff0889ec4c6ebda13096e7cdfa84dcd66375baf/.github/python-ci.json", "receipt-workflow": "/blob/dff0889ec4c6ebda13096e7cdfa84dcd66375baf/.github/workflows/release-receipt.yml" } },
+    "csharp-cli": { "name": "CLI_CSharp_WSS_Application", "links": { "quickstart": "/blob/dev/README.md#first-stimulation" } },
+    "unity-app": { "name": "GUI_Unity_WSS_Application", "links": { "quickstart": "/blob/dev/README.md#first-stimulation-in-the-unity-editor" } },
     "csharp": { "name": "CSharp_WSS_Integration_Lib" },
     "python": { "name": "Python_WSS_Integration_Lib", "links": { "ci-config": "/blob/ee296bbca8aa07eaf960fdcdab3c7643e4c448c5/.github/python-ci.json", "receipt-workflow": "/blob/ee296bbca8aa07eaf960fdcdab3c7643e4c448c5/.github/workflows/release-receipt.yml" } },
     "unity": { "name": "Unity_WSS_Integration_Lib", "links": { "ci-config": "/blob/955b5cf0dafaf5c27714c5bde772d60b4a4b7c42/.github/unity-ci.json" } },
     "matlab": { "name": "Matlab_WSS_Integration_Lib", "links": { "receipt-workflow": "/blob/c3b1d23b52aacaedd18a51834e0682f17b1baf6d/.github/workflows/release-receipt.yml" } },
-    "matlab-cli": { "name": "CLI_Matlab_WSS_Application", "links": { "receipt-workflow": "/blob/f9ba1a501d55eda5302d7a278d994a91b2979f0d/.github/workflows/release-receipt.yml" } },
+    "matlab-cli": { "name": "CLI_Matlab_WSS_Application", "links": { "quickstart": "/blob/dev/README.md#first-stimulation", "receipt-workflow": "/blob/f9ba1a501d55eda5302d7a278d994a91b2979f0d/.github/workflows/release-receipt.yml" } },
     "core": { "name": "WSSCore" }
   },
   "externalLinks": {
