@@ -74,7 +74,13 @@ The four integration notifiers are registered on their default branches. They ex
 
 Unity and Python integration/application workflows run full normal CI on applicable `dev` and `main` pushes. C# and MATLAB full normal suites use PR or explicit dispatch triggers; their shared identity checks run on pushes. Exact postmerge validation therefore includes explicit normal-CI runs where the workflow has no push trigger.
 
-`dev-release.yml` and `main-release.yml` separate acceptance from publication. Both currently use `WSS_DEV_ACCEPTANCE_ENABLED` for acceptance and additionally require `WSS_DEV_RELEASE_ENABLED`, all live evidence and the reviewed tag guard for publication. The inspected deployment has acceptance enabled and no release switch set. Channel identity selects beta for dev and stable for main without granting publication permission. Fingerprint tags use `dev-beta-<producer-run-id>-<plan-prefix>` or `main-stable-<producer-run-id>-<plan-prefix>`; these are not semantic-version numbers. Source deployment or a green PR does not establish a published release.
+`dev-release.yml` and `main-release.yml` share `WSS_DEV_ACCEPTANCE_ENABLED` for verification. Publication uses `WSS_DEV_RELEASE_ENABLED` for dev beta and `WSS_MAIN_RELEASE_ENABLED` for main stable. A release requires a manual publish request from the protected controller, an explicit version tag for the channel, and nine current receipts tied to the exact producer run and original ZIP. The four integration receipts unlock application updates. The release app alone can create `v*` tags, and GitHub blocks updates and deletion. [Tag creation rules](https://github.com/cwru-non-academic/WSSCore/rules/27987974) [Tag protection rules](https://github.com/cwru-non-academic/WSSCore/rules/27987399)
+
+### Published dev beta
+
+WSSCore published `v1.0.0-beta.1` from dev commit `27895f0ffc91bb0fd947ff22aa97ee60e94e7501`. The release contains the original `WSS-Universal-ci.zip`, its checksum, the plan and the acceptance record. The workflow verified all four integration and five application receipts before publication. Stable publication remained disabled. [Beta release](https://github.com/cwru-non-academic/WSSCore/releases/tag/v1.0.0-beta.1) [Dev build 45416911781](https://github.com/cwru-non-academic/WSSCore/actions/runs/45416911781) [Acceptance 45437682454](https://github.com/cwru-non-academic/WSSCore/actions/runs/45437682454) [Publication 45442009177](https://github.com/cwru-non-academic/WSSCore/actions/runs/45442009177)
+
+The original ZIP has SHA-256 `01069d7f339f5fbbddb7dc957d355949edb972531b0b4d06572cd2d2549580d2`.
 
 ### Main activation and verified receiver repair
 
